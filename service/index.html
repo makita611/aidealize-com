@@ -364,10 +364,9 @@ footer a { color:inherit; }
 
   <!-- PCナビ -->
   <ul class="nav-links">
-    <li><a href="#set-plans">セットプラン</a></li>
-    <li><a href="https://aidealize.com/service/">サービス</a></li>
-    <li><a href="https://aidealize.com/company/">会社概要</a></li>
-    <li><a href="https://aidealize.com/lp/ai-lp1" class="nav-cta">無料診断を受ける</a></li>
+    <li><a href="#set-plans">プラン一覧</a></li>
+    <li><a href="../company.html">会社概要</a></li>
+    <li><a href="#contact" class="nav-cta">無料相談</a></li>
   </ul>
 
   <!-- ハンバーガーボタン -->
@@ -379,10 +378,9 @@ footer a { color:inherit; }
 <!-- ドロワー -->
 <div class="nav-drawer" id="navDrawer">
   <ul>
-    <li><a href="#set-plans" class="drawer-link">セットプラン</a></li>
-    <li><a href="https://aidealize.com/service/" class="drawer-link">サービス</a></li>
-    <li><a href="https://aidealize.com/company/" class="drawer-link">会社概要</a></li>
-    <li><a href="https://aidealize.com/lp/ai-lp1">無料診断を受ける</a></li>
+    <li><a href="#set-plans" class="drawer-link">プラン一覧</a></li>
+    <li><a href="../company.html" class="drawer-link">会社概要</a></li>
+    <li><a href="#contact">無料相談</a></li>
   </ul>
 </div>
 
@@ -876,18 +874,38 @@ footer a { color:inherit; }
 </div>
 
 <!-- CTA -->
-<div class="cta-section">
+<div class="cta-section" id="contact">
   <h2>まず30分、話してみてください。</h2>
-  <p>どのサービスが合うかわからない場合も、無料診断でお気軽にご相談ください。</p>
-  <div class="cta-buttons">
-    <a class="btn-primary" href="https://aidealize.com/lp/ai-lp1/">無料診断を受ける</a>
-    <a class="btn-ghost" href="/company/">会社概要を見る</a>
+  <p>どのサービスが合うかわからない場合も、お気軽にご相談ください。</p>
+
+  <div style="max-width:480px;margin:32px auto 0;text-align:left;">
+    <form class="gas-form" data-page="サービス一覧" data-formtype="無料相談"
+      style="background:#fff;padding:28px 24px;border-radius:8px;">
+      <div class="gas-form-group"><input type="text" name="name" placeholder="お名前" required></div>
+      <div class="gas-form-group"><input type="text" name="company" placeholder="会社名・事業所名"></div>
+      <div class="gas-form-group"><input type="email" name="email" placeholder="メールアドレス" required></div>
+      <div class="gas-form-group"><input type="tel" name="phone" placeholder="電話番号"></div>
+      <div class="gas-form-group">
+        <div class="gas-radio-group">
+          <label><input type="radio" name="request" value="資料請求" required> 資料請求</label>
+          <label><input type="radio" name="request" value="オンライン相談"> オンライン相談</label>
+          <label><input type="radio" name="request" value="導入を検討中"> 導入を検討中</label>
+        </div>
+      </div>
+      <button type="submit" class="gas-form-btn" style="background:#d42e42;color:#fff;">送信する</button>
+    </form>
+    <div class="gas-form-thanks" style="display:none;background:#fff;padding:24px;border-radius:8px;">
+      <p>✅ お問い合わせありがとうございます。<br>担当者より1〜2営業日以内にご連絡いたします。</p>
+    </div>
+    <div style="text-align:center;margin-top:20px;">
+      <a class="btn-ghost" href="../company.html">会社概要を見る</a>
+    </div>
   </div>
 </div>
 
 <footer>
   © 2026 AIdealize株式会社　|　<a href="https://aidealize.com">TOP</a>　|　<a href="/company/">会社概要</a>　|　<a href="https://aidealize.com/lp/ai-lp1/">無料診断</a>
 </footer>
-
+<script src="../js/gas-forms.js"></script>
 </body>
 </html>
