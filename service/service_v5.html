@@ -229,7 +229,7 @@ body {
   color:white;
   border-radius:8px;
   padding:40px;
-  margin-bottom:24px;
+  margin-bottom:0;
   position:relative;
   overflow:hidden;
 }
@@ -346,6 +346,10 @@ footer a { color:inherit; }
   .plans-grid { grid-template-columns:1fr; }
   .hanamaru-flow { flex-direction:column; }
   .hf-arrow { display:none; }
+  .setplan-grid { grid-template-columns:1fr !important; }
+  .approach-flow { flex-direction:column !important; }
+  .approach-flow > div[style*="background:var(--accent)"] { display:none !important; }
+  .approach-flow > div { border-radius:6px !important; border-right:1px solid var(--border) !important; margin-bottom:4px; }
 }
 </style>
 </head>
@@ -360,9 +364,8 @@ footer a { color:inherit; }
 
   <!-- PCナビ -->
   <ul class="nav-links">
-    <li><a href="#pain">課題</a></li>
+    <li><a href="#set-plans">セットプラン</a></li>
     <li><a href="https://aidealize.com/service/">サービス</a></li>
-    <li><a href="#results">実績</a></li>
     <li><a href="https://aidealize.com/company/">会社概要</a></li>
     <li><a href="https://aidealize.com/lp/ai-lp1" class="nav-cta">無料診断を受ける</a></li>
   </ul>
@@ -376,9 +379,8 @@ footer a { color:inherit; }
 <!-- ドロワー -->
 <div class="nav-drawer" id="navDrawer">
   <ul>
-    <li><a href="#pain" class="drawer-link">課題</a></li>
+    <li><a href="#set-plans" class="drawer-link">セットプラン</a></li>
     <li><a href="https://aidealize.com/service/" class="drawer-link">サービス</a></li>
-    <li><a href="#results" class="drawer-link">実績</a></li>
     <li><a href="https://aidealize.com/company/" class="drawer-link">会社概要</a></li>
     <li><a href="https://aidealize.com/lp/ai-lp1">無料診断を受ける</a></li>
   </ul>
@@ -416,6 +418,169 @@ footer a { color:inherit; }
   <div class="hero-label">ALL SERVICES</div>
   <h1>AIdealize の<br>全サービス一覧</h1>
   <p>業務改善・マニュアル自動生成・BCP策定・防災・人材育成まで。<br>中小企業の「困った」を、AIと経験で解決します。</p>
+</div>
+
+<hr class="divider">
+
+<!-- 課題別セットプラン -->
+<div class="section" id="set-plans">
+  <div class="section-label">SET PLANS</div>
+  <div class="section-title">「経営課題」に合わせて選ぶ、3つの投資最適化プラン</div>
+  <p style="font-size:14px;color:var(--muted);max-width:640px;line-height:1.9;margin-bottom:40px;">
+    「どのサービスを選べばいい？」と迷ったら、課題に合ったセットプランからスタートしてください。予算の名目（教育費・コンプライアンス・売上）ごとに、最も投資対効果の高い組み合わせを用意しています。
+  </p>
+
+  <div class="setplan-grid" style="display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-bottom:48px;">
+
+    <!-- Plan 01: 攻めのセット -->
+    <div style="background:#fff8f8;border:2px solid #f0d0d0;border-top:4px solid #c0272d;border-radius:8px;padding:32px;position:relative;">
+      <div style="position:absolute;top:-1px;left:32px;background:#c0272d;color:white;font-size:10px;font-weight:700;letter-spacing:2px;padding:4px 12px;border-radius:0 0 4px 4px;">PLAN 01</div>
+      <div style="margin-top:8px;">
+        <div style="font-size:11px;font-weight:700;color:#c0272d;letter-spacing:2px;margin-bottom:10px;">攻めのセット</div>
+        <div style="font-size:clamp(17px,1.8vw,21px);font-weight:900;color:#1a1a1a;margin-bottom:8px;line-height:1.35;">人手不足解消・<br>属人化脱却パック</div>
+        <div style="display:inline-block;font-size:11px;font-weight:700;background:#ffeeee;color:#c0272d;padding:4px 10px;border-radius:3px;margin-bottom:14px;">予算名目：教育コスト削減</div>
+        <div style="font-size:12px;color:#888;margin-bottom:14px;">離職率が高い・ベテランの退職を控えた中小企業</div>
+        <div style="font-size:13px;color:#5a3a3a;line-height:1.9;margin-bottom:20px;">「人が辞めても業務が回る」仕組みをAIで構築。マニュアルがゼロでも社内AIが即答できる環境を実現します。</div>
+
+        <div style="border-top:1px solid #f0d0d0;padding-top:16px;margin-bottom:20px;">
+          <div style="font-size:11px;font-weight:700;color:#888;margin-bottom:10px;">構成サービス</div>
+          <div style="display:flex;flex-direction:column;gap:8px;">
+            <div style="display:flex;align-items:center;gap:10px;background:white;border:1px solid #f0d0d0;border-radius:4px;padding:10px 12px;">
+              <span style="font-size:18px;">📋</span>
+              <div>
+                <div style="font-size:12px;font-weight:900;color:#1a1a1a;">はなまるAI（一般版）</div>
+                <div style="font-size:11px;color:#888;">暗黙知をAIインタビューで即マニュアル化</div>
+              </div>
+            </div>
+            <div style="display:flex;align-items:center;justify-content:center;color:#c0272d;font-size:13px;font-weight:700;">↓ そのまま連携</div>
+            <div style="display:flex;align-items:center;gap:10px;background:white;border:1px solid #f0d0d0;border-radius:4px;padding:10px 12px;">
+              <span style="font-size:18px;">🤖</span>
+              <div>
+                <div style="font-size:12px;font-weight:900;color:#1a1a1a;">社内RAGチャットボット構築</div>
+                <div style="font-size:11px;color:#888;">新人がいつでも質問できる社内AI</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div style="background:#c0272d;color:white;padding:12px 16px;border-radius:4px;font-size:12px;font-weight:700;line-height:1.7;">
+          💡 新人の教育に1ヶ月かかっていたのを、<br>初日から現場に出せるようにします
+        </div>
+      </div>
+    </div>
+
+    <!-- Plan 02: 守りのセット -->
+    <div style="background:#f5f8ff;border:2px solid #ccd5f0;border-top:4px solid #1976D2;border-radius:8px;padding:32px;position:relative;">
+      <div style="position:absolute;top:-1px;left:32px;background:#1976D2;color:white;font-size:10px;font-weight:700;letter-spacing:2px;padding:4px 12px;border-radius:0 0 4px 4px;">PLAN 02</div>
+      <div style="margin-top:8px;">
+        <div style="font-size:11px;font-weight:700;color:#1976D2;letter-spacing:2px;margin-bottom:10px;">守りのセット</div>
+        <div style="font-size:clamp(17px,1.8vw,21px);font-weight:900;color:#1a1a1a;margin-bottom:8px;line-height:1.35;">2025年義務化対応・<br>リスク管理パック</div>
+        <div style="display:inline-block;font-size:11px;font-weight:700;background:#eef2ff;color:#1976D2;padding:4px 10px;border-radius:3px;margin-bottom:14px;">予算名目：コンプライアンス対応</div>
+        <div style="font-size:12px;color:#888;margin-bottom:14px;">医療・介護・建設など、法改正への対応に追われている施設・企業</div>
+        <div style="font-size:13px;color:#3a4a6a;line-height:1.9;margin-bottom:20px;">未対応リスクをゼロにし、DXの土台を同時構築。罰則・指定取り消しのリスクを回避しながら現場を強化。</div>
+
+        <div style="border-top:1px solid #ccd5f0;padding-top:16px;margin-bottom:20px;">
+          <div style="font-size:11px;font-weight:700;color:#888;margin-bottom:10px;">構成サービス</div>
+          <div style="display:flex;flex-direction:column;gap:8px;">
+            <div style="display:flex;align-items:center;gap:10px;background:white;border:1px solid #ccd5f0;border-radius:4px;padding:10px 12px;">
+              <span style="font-size:18px;">🔒</span>
+              <div>
+                <div style="font-size:12px;font-weight:900;color:#1a1a1a;">AIデジタル査察 Prevention</div>
+                <div style="font-size:11px;color:#888;">サイバーリスクの可視化（Lv.1 無料）</div>
+              </div>
+            </div>
+            <div style="display:flex;align-items:center;gap:10px;background:white;border:1px solid #ccd5f0;border-radius:4px;padding:10px 12px;">
+              <span style="font-size:18px;">🛡️</span>
+              <div>
+                <div style="font-size:12px;font-weight:900;color:#1a1a1a;">BCP自動作成AI支援</div>
+                <div style="font-size:11px;color:#888;">義務化BCP策定をAIで効率化</div>
+              </div>
+            </div>
+            <div style="display:flex;align-items:center;gap:10px;background:white;border:1px solid #ccd5f0;border-radius:4px;padding:10px 12px;">
+              <span style="font-size:18px;">🏢</span>
+              <div>
+                <div style="font-size:12px;font-weight:900;color:#1a1a1a;">防災・連携支援</div>
+                <div style="font-size:11px;color:#888;">計画を実際の訓練・運用に落とし込む</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div style="background:#1976D2;color:white;padding:12px 16px;border-radius:4px;font-size:12px;font-weight:700;line-height:1.7;">
+          💡 コンプライアンス予算でリスクゼロ＋<br>DX基盤を一気に整備します
+        </div>
+      </div>
+    </div>
+
+    <!-- Plan 03: 業界特化 -->
+    <div style="background:#fffbf0;border:2px solid #e8d4a0;border-top:4px solid #b8892a;border-radius:8px;padding:32px;position:relative;">
+      <div style="position:absolute;top:-1px;left:32px;background:#b8892a;color:white;font-size:10px;font-weight:700;letter-spacing:2px;padding:4px 12px;border-radius:0 0 4px 4px;">PLAN 03</div>
+      <div style="margin-top:8px;">
+        <div style="font-size:11px;font-weight:700;color:#b8892a;letter-spacing:2px;margin-bottom:10px;">業界特化</div>
+        <div style="font-size:clamp(17px,1.8vw,21px);font-weight:900;color:#1a1a1a;margin-bottom:8px;line-height:1.35;">訪問看護・介護<br>DX加速パック</div>
+        <div style="display:inline-block;font-size:11px;font-weight:700;background:#fef4e0;color:#b8892a;padding:4px 10px;border-radius:3px;margin-bottom:14px;">予算名目：売上直結型</div>
+        <div style="font-size:12px;color:#888;margin-bottom:14px;">記録業務で残業が常態化している訪問看護ステーション・介護事業所</div>
+        <div style="font-size:13px;color:#5a4a2a;line-height:1.9;margin-bottom:20px;">「書く仕事」をゼロにして、ケアの質と利益率を同時向上。浮いた時間でスキルアップ・訪問件数を増やします。</div>
+
+        <div style="border-top:1px solid #e8d4a0;padding-top:16px;margin-bottom:20px;">
+          <div style="font-size:11px;font-weight:700;color:#888;margin-bottom:10px;">構成サービス</div>
+          <div style="display:flex;flex-direction:column;gap:8px;">
+            <div style="display:flex;align-items:center;gap:10px;background:white;border:1px solid #e8d4a0;border-radius:4px;padding:10px 12px;">
+              <span style="font-size:18px;">🏥</span>
+              <div>
+                <div style="font-size:12px;font-weight:900;color:#1a1a1a;">はなまるAI 看護版</div>
+                <div style="font-size:11px;color:#888;">音声でSOAPノートを自動生成</div>
+              </div>
+            </div>
+            <div style="display:flex;align-items:center;gap:10px;background:white;border:1px solid #e8d4a0;border-radius:4px;padding:10px 12px;">
+              <span style="font-size:18px;">🤝</span>
+              <div>
+                <div style="font-size:12px;font-weight:900;color:#1a1a1a;">はなまるAI 介護版</div>
+                <div style="font-size:11px;color:#888;font-style:italic;">開発中 — 日誌・ケア記録の自動作成</div>
+              </div>
+            </div>
+            <div style="display:flex;align-items:center;gap:10px;background:white;border:1px solid #e8d4a0;border-radius:4px;padding:10px 12px;">
+              <span style="font-size:18px;">👥</span>
+              <div>
+                <div style="font-size:12px;font-weight:900;color:#1a1a1a;">人材育成・研修支援</div>
+                <div style="font-size:11px;color:#888;">浮いた時間でスキルアップ研修を設計</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div style="background:#b8892a;color:white;padding:12px 16px;border-radius:4px;font-size:12px;font-weight:700;line-height:1.7;">
+          💡 記録業務をなくし、1日1件訪問を増やして<br>売上を直接伸ばします
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- 段階的アプローチ -->
+  <div style="background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:32px 40px;">
+    <div class="section-label" style="margin-bottom:8px;">RECOMMENDED APPROACH</div>
+    <div style="font-size:16px;font-weight:900;color:var(--ink);margin-bottom:24px;">段階的アプローチで、確実に成果を出す</div>
+    <div class="approach-flow" style="display:flex;align-items:stretch;gap:0;">
+      <div style="flex:1;padding:20px 24px;background:white;border:1px solid var(--border);border-radius:6px 0 0 6px;border-right:none;">
+        <div style="font-family:'Bebas Neue',sans-serif;font-size:28px;color:var(--accent);line-height:1;margin-bottom:8px;">STEP 01</div>
+        <div style="font-size:14px;font-weight:900;color:var(--ink);margin-bottom:6px;">診断（入口）</div>
+        <div style="font-size:12px;color:var(--muted);line-height:1.7;">AI業務診断 または Prevention Lv.1（無料）で課題を可視化。まずここから始めます。</div>
+      </div>
+      <div style="display:flex;align-items:center;justify-content:center;background:var(--accent);color:white;padding:0 10px;font-size:16px;flex-shrink:0;">›</div>
+      <div style="flex:1;padding:20px 24px;background:white;border:1px solid var(--border);border-right:none;">
+        <div style="font-family:'Bebas Neue',sans-serif;font-size:28px;color:var(--accent);line-height:1;margin-bottom:8px;">STEP 02</div>
+        <div style="font-size:14px;font-weight:900;color:var(--ink);margin-bottom:6px;">実行（セットプラン）</div>
+        <div style="font-size:12px;color:var(--muted);line-height:1.7;">診断で見つかった課題に対して、上記のセットプランを実行。</div>
+      </div>
+      <div style="display:flex;align-items:center;justify-content:center;background:var(--accent);color:white;padding:0 10px;font-size:16px;flex-shrink:0;">›</div>
+      <div style="flex:1;padding:20px 24px;background:white;border:1px solid var(--border);border-radius:0 6px 6px 0;">
+        <div style="font-family:'Bebas Neue',sans-serif;font-size:28px;color:var(--accent);line-height:1;margin-bottom:8px;">STEP 03</div>
+        <div style="font-size:14px;font-weight:900;color:var(--ink);margin-bottom:6px;">伴走（出口）</div>
+        <div style="font-size:12px;color:var(--muted);line-height:1.7;">月次伴走・AIモニタリングで定着をサポート。サブスクで継続改善。</div>
+      </div>
+    </div>
+  </div>
 </div>
 
 <hr class="divider">
@@ -500,14 +665,18 @@ footer a { color:inherit; }
 
 <!-- はなしてマニュアルAI -->
 <div class="section">
-  <div class="hanamaru-card fade-up" style="
+  <a href="https://aidealize.com/lp/hanamaruai/" class="hanamaru-card fade-up" style="
     background: #f9f5eb;
     border: 1px solid #d4a853;
-    border-radius: 8px;
+    border-radius: 8px 8px 0 0;
     padding: 40px;
     position: relative;
     overflow: hidden;
-  ">
+    display: block;
+    text-decoration: none;
+    color: inherit;
+    transition: border-color 0.2s, box-shadow 0.2s, transform 0.2s;
+  " onmouseover="this.style.borderColor='#8b5e1a';this.style.boxShadow='0 4px 24px rgba(184,137,42,0.2)';this.style.transform='translateY(-2px)'" onmouseout="this.style.borderColor='#d4a853';this.style.boxShadow='';this.style.transform=''">
     <!-- NEW バッジ -->
     <div style="
       display: inline-block;
@@ -536,20 +705,18 @@ footer a { color:inherit; }
       AIが担当者に1問1答でインタビューし、業務マニュアルを自動生成。マニュアルがゼロでも、書ける人がいなくても大丈夫。生成したマニュアルはそのまま社内RAGチャットボットに連携します。
     </div>
 
-    <!-- 詳細ページへのリンク -->
-    <a href="https://aidealize.com/lp/hanamaruai/" style="
+    <!-- 詳細ページへのリンク（カード全体がリンクなのでspanに） -->
+    <span style="
       display: inline-block;
-      margin-bottom: 28px;
+      margin-bottom: 20px;
       padding: 12px 28px;
       background: #b8892a;
       color: white;
       border-radius: 3px;
       font-size: 14px; font-weight: 700;
-      text-decoration: none;
-      transition: opacity 0.2s;
-    " onmouseover="this.style.opacity='0.85'" onmouseout="this.style.opacity='1'">
+    ">
       詳細・無料体験を見る →
-    </a>
+    </span>
 
     <!-- フロー -->
     <div style="
@@ -584,82 +751,94 @@ footer a { color:inherit; }
       </div>
     </div>
 
+  </a>
+
+  <!-- 看護版・介護版 — 大ボックス2枠 -->
+  <div style="display:grid; grid-template-columns:1fr 1fr; gap:0; border:1px solid #d4a853; border-top:none; border-radius:0 0 8px 8px; overflow:hidden;">
+
+    <!-- 看護版 -->
+    <a href="https://aidealize.com/lp/hanamaru-kango//" style="display:block; padding:36px 40px; text-decoration:none; color:inherit; background:#fff8ed; border-right:1px solid #d4a853; transition:background 0.2s;" onmouseover="this.style.background='#fef2d6'" onmouseout="this.style.background='#fff8ed'">
+      <div style="display:inline-block; font-size:10px; font-weight:700; letter-spacing:2px; color:#b8892a; border:1px solid rgba(184,137,42,0.4); padding:3px 10px; border-radius:2px; margin-bottom:16px;">▶ NURSING VER. — 提供中</div>
+      <div style="display:flex; align-items:center; gap:14px; margin-bottom:14px;">
+        <span style="font-size:36px;">🏥</span>
+        <div style="font-size:clamp(20px,2.2vw,26px); font-weight:900; color:#1a1a1a; line-height:1.3;">はなまるAI <span style="color:#b8892a;">看護版</span></div>
+      </div>
+      <div style="font-size:13px; color:#5a4a2a; line-height:1.9; margin-bottom:24px; max-width:420px;">
+        訪問看護師が音声で話すだけで、SOAPノートを自動生成。記録にかかる時間を大幅に削減し、ケアに集中できる環境をつくります。LINEまたはブラウザから利用可能。
+      </div>
+      <span style="display:inline-block; padding:11px 24px; background:#b8892a; color:white; font-size:13px; font-weight:700; border-radius:3px;">詳細・無料体験を見る →</span>
+    </a>
+
+    <!-- 介護版 -->
+    <div style="padding:36px 40px; background:#e8e8e8;">
+      <div style="display:inline-block; font-size:10px; font-weight:700; letter-spacing:2px; color:#a07820; border:1px dashed rgba(184,137,42,0.4); padding:3px 10px; border-radius:2px; margin-bottom:16px;">COMING SOON — 開発中</div>
+      <div style="display:flex; align-items:center; gap:14px; margin-bottom:14px;">
+        <span style="font-size:36px;">🤝</span>
+        <div style="font-size:clamp(20px,2.2vw,26px); font-weight:900; color:#3a3020; line-height:1.3;">はなまるAI <span style="color:#b8892a;">介護版</span></div>
+      </div>
+      <div style="font-size:13px; color:#6a5a40; line-height:1.9; margin-bottom:24px; max-width:420px;">
+        介護スタッフがAIと会話しながら日誌・ケア記録を自動作成。手書きや入力の負担をゼロに近づけます。訪問介護・デイサービスを想定して開発中です。
+      </div>
+      <span style="display:inline-block; padding:11px 24px; border:1px solid rgba(184,137,42,0.5); color:#a07820; font-size:13px; font-weight:700; border-radius:3px; opacity:0.75; cursor:default;">準備中（リリース予定あり）</span>
+    </div>
+
+  </div>
+</div>
+
+<hr class="divider">
+
+<!-- AI プロダクト開発 -->
+<div class="section">
+  <div class="section-label">AI PRODUCT DEVELOPMENT</div>
+  <div class="section-title">AIプロダクト開発</div>
+  <p style="font-size:14px;color:var(--muted);max-width:640px;line-height:1.9;margin-bottom:32px;">
+    AIidealizeが自社開発・提供するAIプロダクト。業界特化の課題をエンジニアリングで解決し、SaaSとして展開しています。
+  </p>
+
+  <div class="other-grid" style="grid-template-columns:repeat(auto-fit,minmax(280px,1fr));">
+
+    <!-- FaceBalance AI -->
+    <a href="artmake/" class="other-card fade-up" style="border-top:3px solid #b8892a;">
+      <div class="other-icon">💄</div>
+      <div style="display:inline-block;font-size:10px;font-weight:700;letter-spacing:2px;color:#b8892a;border:1px solid rgba(184,137,42,0.4);padding:2px 8px;border-radius:2px;margin-bottom:10px;">MEDTECH SAAS</div>
+      <div class="other-name">FaceBalance AI</div>
+      <div class="other-desc">MediaPipe搭載のAI顔面バランス解析SaaS。アートメイク施術の左右差を0.1mm単位で数値化し、術前・デザイン・術後の3フェーズを一元管理。クリニック向けCRM・アーティスト評価機能も開発中。</div>
+      <div style="margin-top:16px;font-size:12px;font-weight:700;color:#b8892a;">詳細を見る →</div>
+    </a>
+
+    <!-- Prevention -->
+    <a href="prevention/" class="other-card fade-up" style="border-top:3px solid #7a1a1a;">
+      <div class="other-icon">🔒</div>
+      <div style="display:inline-block;font-size:10px;font-weight:700;letter-spacing:2px;color:#9e2b2b;border:1px solid rgba(158,43,43,0.4);padding:2px 8px;border-radius:2px;margin-bottom:10px;">CYBERSECURITY</div>
+      <div class="other-name">AIデジタル査察 Prevention</div>
+      <div class="other-desc">元消防士の「点検する目」とAIを融合したIT査察点検サービス。医療・介護施設のサイバーリスクをBCP義務化対応含め5段階で可視化。外周目視点検（Lv.1）は無料で提供。</div>
+      <div style="margin-top:16px;font-size:12px;font-weight:700;color:#9e2b2b;">詳細を見る →</div>
+    </a>
+
+    <!-- AIdealize Engine -->
+    <a href="imageanalysis/" class="other-card fade-up" style="border-top:3px solid #1976D2;">
+      <div class="other-icon">🔬</div>
+      <div style="display:inline-block;font-size:10px;font-weight:700;letter-spacing:2px;color:#1976D2;border:1px solid rgba(25,118,210,0.4);padding:2px 8px;border-radius:2px;margin-bottom:10px;">IMAGE ANALYSIS ENGINE</div>
+      <div class="other-name">AI画像解析エンジン</div>
+      <div class="other-desc">MediaPipe・OpenCVを核とした汎用AI画像解析エンジン。アートメイクから製造ライン検査・教育・スポーツ分析まで。ミリ単位の計測・比較・異常検知をAPI提供・OEM対応で展開。</div>
+      <div style="margin-top:16px;font-size:12px;font-weight:700;color:#1976D2;">詳細を見る →</div>
+    </a>
+
+    <!-- コール営業 AI分析 -->
+    <a href="../lp/call-ai-lp1.html" class="other-card fade-up" style="border-top:3px solid #1a3f6f;">
+      <div class="other-icon">📞</div>
+      <div style="display:inline-block;font-size:10px;font-weight:700;letter-spacing:2px;color:#1a3f6f;border:1px solid rgba(26,63,111,0.4);padding:2px 8px;border-radius:2px;margin-bottom:10px;">CALL × AI</div>
+      <div class="other-name">コール営業 AI成約最大化</div>
+      <div class="other-desc">単年年商10億円を達成した構築ノウハウを基に、コール営業の成約率をAIで最大化。架電データ×コール履歴をAIが解析し"勝ちパターン"を特定。広告費を変えずに利益を劇的に向上させます。</div>
+      <div style="margin-top:16px;font-size:12px;font-weight:700;color:#1a3f6f;">詳細を見る →</div>
+    </a>
+
   </div>
 </div>
 
 <hr class="divider">
 
 <!-- その他サービス -->
-<hr class="divider">
-
-<!-- コール営業 AI分析 -->
-<div class="section">
-  <div class="fade-up" style="
-    background: #f0f4fa;
-    border: 1px solid #2563aa;
-    border-radius: 8px;
-    padding: 40px;
-    position: relative;
-    overflow: hidden;
-  ">
-    <div style="
-      display: inline-block;
-      background: #1a3f6f;
-      color: white;
-      font-size: 10px; font-weight: 700; letter-spacing: 2px;
-      padding: 3px 10px; border-radius: 2px;
-      margin-bottom: 16px;
-    ">CALL × AI</div>
-
-    <div style="
-      font-size: clamp(22px, 3vw, 32px);
-      font-weight: 900; margin-bottom: 14px; line-height: 1.3;
-      color: #1a1a1a;
-    ">
-      コール営業の成約率を、<span style="color:#1a3f6f;">AIで最大化</span>する
-    </div>
-
-    <div style="
-      font-size: 14px; color: #2a3a50;
-      line-height: 1.9; max-width: 640px;
-      margin-bottom: 28px;
-    ">
-      単年年商10億円を達成した構築ノウハウを基に、コール営業の成約率をAIで最大化します。集客からLP誘導、電話商談、成約に至るまでの全工程を「ファネル分析」で可視化。架電データやコール履歴をAIが解析し、媒体・時間帯・担当者の最適な組み合わせ＝"勝ちパターン"を特定します。現場のボトルネックを排除し、再現性のある運用ルールを構築することで、広告費を変えずに利益を劇的に向上させます。
-    </div>
-
-    <a href="../lp/call-ai-lp1.html" style="
-      display: inline-block;
-      margin-bottom: 28px;
-      padding: 12px 28px;
-      background: #1a3f6f;
-      color: white;
-      font-size: 13px; font-weight: 700;
-      border-radius: 4px;
-      text-decoration: none;
-      transition: opacity 0.2s;
-    " onmouseover="this.style.opacity='.8'" onmouseout="this.style.opacity='1'">
-      サービス詳細・無料相談はこちら →
-    </a>
-
-    <div style="display:flex; gap:32px; flex-wrap:wrap; padding-top:20px; border-top:1px solid #c0d0e8;">
-      <div style="text-align:center; min-width:80px;">
-        <div style="font-size:26px; font-weight:900; color:#1a3f6f;">全工程</div>
-        <div style="font-size:11px; color:#5a6a80; margin-top:4px;">ファネル可視化</div>
-      </div>
-      <div style="text-align:center; min-width:80px;">
-        <div style="font-size:26px; font-weight:900; color:#1a3f6f;">AI解析</div>
-        <div style="font-size:11px; color:#5a6a80; margin-top:4px;">架電データ×コール履歴</div>
-      </div>
-      <div style="text-align:center; min-width:80px;">
-        <div style="font-size:26px; font-weight:900; color:#1a3f6f;">広告費±0</div>
-        <div style="font-size:11px; color:#5a6a80; margin-top:4px;">で利益を向上</div>
-      </div>
-    </div>
-  </div>
-</div>
-
-<hr class="divider">
-
 <div class="section">
   <div class="section-label">SERVICES</div>
   <div class="section-title">その他のサービス</div>
@@ -692,6 +871,7 @@ footer a { color:inherit; }
       <div class="other-name">人材育成・研修支援</div>
       <div class="other-desc">AIを活用した人材育成プログラムの設計から、OJT効率化・研修コンテンツ自動生成まで。育てる仕組みをAIで構築します。</div>
     </a>
+
   </div>
 </div>
 
