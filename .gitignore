@@ -1,0 +1,19 @@
+# サーバーサイドファイル（Cloudflare Pagesでは動かない）
+*.php
+*.py
+*.ini
+liff/
+__pycache__/
+*.pyc
+
+# APIキーが含まれる可能性があるメモ
+*.md
+
+# データファイル
+*.csv
+*.pkl
+*.json
+
+# OS
+.DS_Store
+Thumbs.db

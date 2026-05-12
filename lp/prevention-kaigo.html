@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>介護BCP義務化対応 | AIデジタル査察 Prevention</title>
+<meta name="description" content="2025年4月から介護報酬減算が始まります。BCP未策定で月額最大90万円の損失リスク。Prevention が無料チェックリストから対応を支援します。">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:"Hiragino Kaku Gothic ProN","Hiragino Sans","Yu Gothic","Meiryo",sans-serif;background:#f9f9f9;color:#222;line-height:1.8;font-size:16px}
+
+:root{
+  --navy:#1e3c72;--navy2:#2a5298;
+  --gold:#ffd700;--gold-dk:#c9a84c;
+  --red:#ff6b6b;--red-dk:#e05555;
+  --green:#4caf50;
+  --ink:#1a1a1a;--mid:#555;--muted:#888;
+  --border-light:#e0e0e0;
+}
+
+/* NAV */
+nav{position:sticky;top:0;z-index:100;background:rgba(30,60,114,0.97);backdrop-filter:blur(8px);border-bottom:1px solid rgba(255,215,0,0.2);display:flex;align-items:center;justify-content:space-between;padding:0 5%;height:64px}
+.nav-logo{font-size:1rem;font-weight:700;color:#fff;letter-spacing:0.05em;text-decoration:none}
+.nav-logo span{color:var(--gold)}
+.nav-cta-btn{background:var(--red);color:#fff;border:none;padding:10px 22px;border-radius:4px;font-size:0.85rem;font-weight:700;cursor:pointer;transition:background 0.2s;text-decoration:none;display:inline-block}
+.nav-cta-btn:hover{background:var(--red-dk)}
+
+/* HERO */
+#hero{min-height:88vh;display:flex;align-items:center;justify-content:center;text-align:center;padding:80px 5% 60px;position:relative;overflow:hidden;background:#1e3c72}
+.hero-bg{position:absolute;inset:0;background:linear-gradient(160deg,#1e3c72 0%,#2a5298 60%,#1a3060 100%)}
+.hero-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(255,215,0,0.04) 1px,transparent 1px),linear-gradient(90deg,rgba(255,215,0,0.04) 1px,transparent 1px);background-size:48px 48px}
+.hero-content{position:relative;z-index:1;max-width:820px}
+.hero-badge{display:inline-block;background:rgba(255,107,107,0.2);border:1px solid rgba(255,107,107,0.6);color:#ffb3b3;font-size:0.78rem;font-weight:700;padding:6px 18px;border-radius:30px;letter-spacing:0.1em;margin-bottom:28px}
+.hero h1{font-size:clamp(1.8rem,4vw,3rem);font-weight:900;line-height:1.45;color:#fff;margin-bottom:20px}
+.hero h1 .gold{color:var(--gold)}
+.hero h1 .red{color:#ff9090}
+.hero-sub{font-size:clamp(1rem,2vw,1.3rem);font-weight:700;color:var(--gold);margin-bottom:28px;line-height:1.5}
+.hero-lead{font-size:1rem;color:rgba(255,255,255,0.78);max-width:600px;margin:0 auto 36px;line-height:1.9}
+.btn-hero{display:inline-block;background:var(--red);color:#fff;font-size:1.05rem;font-weight:700;padding:18px 44px;border-radius:50px;text-decoration:none;box-shadow:0 6px 24px rgba(255,107,107,0.4);transition:transform 0.2s,box-shadow 0.2s;border:none;cursor:pointer}
+.btn-hero:hover{transform:translateY(-2px);box-shadow:0 10px 32px rgba(255,107,107,0.5)}
+.hero-note{font-size:0.8rem;color:rgba(255,255,255,0.45);margin-top:12px}
+
+/* SECTIONS */
+section{padding:80px 5%}
+.section-inner{max-width:960px;margin:0 auto}
+.section-label{font-size:0.78rem;font-weight:700;color:var(--navy);letter-spacing:0.15em;margin-bottom:10px;display:block}
+h2{font-size:clamp(1.5rem,3vw,2.1rem);font-weight:900;line-height:1.4;color:var(--ink);margin-bottom:12px}
+h2 .accent{color:var(--navy2)}
+.divider-line{width:48px;height:3px;background:linear-gradient(90deg,var(--red),var(--gold));margin:0 0 32px;border-radius:2px}
+.section-desc{font-size:1rem;color:var(--mid);max-width:700px;line-height:1.9;margin-bottom:40px}
+
+/* PROBLEM */
+#problem{background:#fff}
+.risk-list{list-style:none;margin-bottom:40px}
+.risk-list li{padding:14px 0;border-bottom:1px solid var(--border-light);color:var(--mid);font-size:0.95rem;display:flex;gap:14px;align-items:flex-start}
+.risk-list li::before{content:"⚠";color:var(--red);flex-shrink:0;font-size:1rem;margin-top:2px}
+.risk-list li strong{color:var(--ink)}
+
+/* SIMULATOR */
+.simulator-box{background:linear-gradient(135deg,#1e3c72,#2a5298);border-radius:12px;padding:36px;max-width:600px;margin:0 auto 48px;color:#fff}
+.sim-title{font-size:0.85rem;font-weight:700;color:var(--gold);letter-spacing:0.12em;margin-bottom:20px;text-align:center}
+.sim-input-row{display:flex;gap:10px;margin-bottom:8px}
+.sim-input{flex:1;background:rgba(255,255,255,0.1);border:1px solid rgba(255,215,0,0.4);border-radius:6px;color:#fff;font-size:1rem;padding:12px 16px;outline:none;transition:border-color 0.2s}
+.sim-input::placeholder{color:rgba(255,255,255,0.4)}
+.sim-input:focus{border-color:var(--gold)}
+.sim-unit{display:flex;align-items:center;padding:0 12px;font-size:0.9rem;color:rgba(255,255,255,0.7)}
+.sim-btn{background:var(--red);color:#fff;border:none;border-radius:6px;padding:12px 24px;font-size:0.95rem;font-weight:700;cursor:pointer;transition:background 0.2s;white-space:nowrap}
+.sim-btn:hover{background:var(--red-dk)}
+#sim-result-kaigo{margin-top:20px;display:none;text-align:center}
+#sim-result-kaigo.show{display:block}
+.sim-result-text{font-size:1.1rem;font-weight:700;color:var(--gold);margin-bottom:8px}
+.sim-result-num{font-size:2rem;font-weight:900;color:#ff9090;line-height:1.2}
+.sim-result-sub{font-size:0.82rem;color:rgba(255,255,255,0.6);margin-top:8px}
+
+/* EVIDENCE */
+#evidence{background:#f5f5f5}
+.evidence-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:24px;margin-bottom:40px}
+.evidence-card{background:#fff;border-left:4px solid var(--navy2);border-radius:0 8px 8px 0;padding:28px 24px;box-shadow:0 2px 12px rgba(0,0,0,0.05)}
+.ev-label{font-size:0.78rem;font-weight:700;color:var(--navy);letter-spacing:0.1em;margin-bottom:10px}
+.ev-title{font-size:1rem;font-weight:900;color:var(--ink);margin-bottom:10px}
+.ev-body{font-size:0.9rem;color:var(--mid);line-height:1.8}
+.ev-body strong{color:var(--ink)}
+.profile-box{background:#fff;border:1px solid var(--border-light);border-radius:10px;padding:32px;display:flex;gap:24px;align-items:flex-start}
+.profile-avatar{width:72px;height:72px;border-radius:50%;background:linear-gradient(135deg,#1a3f70,#7a1a1a);display:flex;align-items:center;justify-content:center;font-size:2rem;flex-shrink:0}
+.profile-name{font-size:1rem;font-weight:700;color:var(--ink)}
+.profile-title{font-size:0.82rem;color:var(--navy);margin-top:4px;font-weight:700}
+.profile-desc{font-size:0.9rem;color:var(--mid);line-height:1.8;margin-top:10px}
+
+/* SERVICE */
+#service{background:#fff}
+.package-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.package-card{background:#fff;border:1px solid var(--border-light);border-top:4px solid var(--navy2);border-radius:8px;padding:32px 28px;transition:transform 0.2s,box-shadow 0.2s;position:relative}
+.package-card:hover{transform:translateY(-5px);box-shadow:0 12px 36px rgba(30,60,114,0.12)}
+.package-card.featured{border-top-color:var(--red);background:#fff8f8}
+.pkg-label{font-size:0.75rem;font-weight:700;letter-spacing:0.12em;color:var(--navy);margin-bottom:12px}
+.pkg-name{font-size:1.15rem;font-weight:900;color:var(--ink);margin-bottom:16px}
+.pkg-price{font-size:2rem;font-weight:900;color:var(--gold-dk);line-height:1;margin-bottom:6px}
+.pkg-price-sub{font-size:0.82rem;color:var(--muted);margin-bottom:20px}
+.pkg-features{list-style:none;margin-bottom:24px}
+.pkg-features li{padding:8px 0;border-bottom:1px solid #f0f0f0;font-size:0.9rem;color:var(--mid);display:flex;gap:10px;align-items:flex-start}
+.pkg-features li::before{content:"✓";color:var(--navy2);font-weight:700;flex-shrink:0}
+.btn-pkg{display:block;text-align:center;padding:13px 20px;border-radius:4px;font-weight:700;font-size:0.95rem;text-decoration:none;transition:all 0.2s;cursor:pointer;border:none;width:100%}
+.btn-pkg-primary{background:var(--red);color:#fff}
+.btn-pkg-primary:hover{background:var(--red-dk)}
+.btn-pkg-secondary{background:transparent;color:var(--navy);border:2px solid var(--navy)}
+.btn-pkg-secondary:hover{background:var(--navy);color:#fff}
+.badge-free{display:inline-block;background:rgba(255,215,0,0.15);color:var(--gold-dk);font-size:0.72rem;font-weight:700;padding:2px 10px;border-radius:20px;border:1px solid rgba(201,168,76,0.4);margin-bottom:8px}
+
+/* FOOTER CTA */
+#footer-cta{background:linear-gradient(160deg,#1e3c72,#2a5298);text-align:center;padding:80px 5%}
+.footer-cta-box{max-width:640px;margin:0 auto}
+.footer-cta-box h3{font-size:clamp(1.5rem,3vw,2.2rem);font-weight:900;color:#fff;margin-bottom:16px;line-height:1.4}
+.footer-cta-box p{color:rgba(255,255,255,0.7);font-size:1rem;line-height:1.9;margin-bottom:40px}
+.contact-btns{display:flex;flex-wrap:wrap;gap:16px;justify-content:center}
+.contact-btn{display:inline-flex;align-items:center;gap:8px;padding:14px 28px;border-radius:50px;font-size:0.95rem;font-weight:700;text-decoration:none;transition:transform 0.2s,box-shadow 0.2s}
+.contact-btn:hover{transform:translateY(-2px)}
+.btn-line{background:#06c755;color:#fff;box-shadow:0 4px 16px rgba(6,199,85,0.35)}
+.btn-line:hover{box-shadow:0 8px 24px rgba(6,199,85,0.5)}
+.btn-mail{background:rgba(255,255,255,0.12);color:#fff;border:1px solid rgba(255,255,255,0.3)}
+.btn-mail:hover{background:rgba(255,255,255,0.2)}
+.btn-tel{background:rgba(255,215,0,0.15);color:var(--gold);border:1px solid rgba(255,215,0,0.4)}
+.btn-tel:hover{background:rgba(255,215,0,0.25)}
+.btn-zoom{background:rgba(255,255,255,0.1);color:#fff;border:1px solid rgba(255,255,255,0.2)}
+.btn-zoom:hover{background:rgba(255,255,255,0.18)}
+
+/* FOOTER */
+footer{background:#010d1f;border-top:1px solid rgba(255,215,0,0.1);padding:32px 5%;text-align:center}
+.footer-logo{font-size:0.95rem;font-weight:700;color:#fff;margin-bottom:8px}
+.footer-logo span{color:var(--gold)}
+.footer-legal{font-size:0.75rem;color:#5a7a9a;line-height:1.8;max-width:760px;margin:0 auto}
+
+/* RESPONSIVE */
+@media(max-width:768px){
+  .package-grid{grid-template-columns:1fr}
+  .sim-input-row{flex-direction:column}
+  .profile-box{flex-direction:column}
+  .contact-btns{flex-direction:column;align-items:center}
+  .contact-btn{width:100%;max-width:320px;justify-content:center}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="index.html" class="nav-logo">AI査察 <span>Prevention</span></a>
+  <a href="#footer-cta" class="nav-cta-btn">無料チェックリストを申し込む</a>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-grid"></div>
+  <div class="hero-content">
+    <div class="hero-badge">🏥 介護事業所BCP義務化対応 ── 元消防士 × AI</div>
+    <h1>
+      <span class="red">2025年4月から<br>介護報酬が減算されます。</span><br>
+      あなたの施設は<br>対応できていますか？
+    </h1>
+    <div class="hero-sub">BCP未策定で月額<span style="color:#ff9090">30万円〜90万円</span>の損失リスク</div>
+    <p class="hero-lead">
+      令和6年度からBCP策定が完全義務化されました。<br>
+      対応が遅れるほど、報酬減算・指定取り消しのリスクが高まります。<br>
+      元消防士の現場目線とAIで、まず「現状の穴」を無料で可視化します。
+    </p>
+    <a href="#footer-cta" class="btn-hero">無料チェックリスト実施を申し込む</a>
+    <p class="hero-note">※ 費用は一切かかりません。30分のヒアリングから始まります。</p>
+  </div>
+</section>
+
+<!-- PROBLEM -->
+<section id="problem">
+  <div class="section-inner">
+    <span class="section-label">SECTION 01 ── RISK</span>
+    <h2>介護報酬減算の<span class="accent">危機が迫っています</span></h2>
+    <div class="divider-line"></div>
+    <p class="section-desc">
+      2025年4月以降、BCP・サイバーセキュリティ対策が未整備の施設は介護報酬が段階的に減算されます。
+      「知らなかった」では済まない、経営を直撃する問題です。
+    </p>
+
+    <!-- SIMULATOR -->
+    <div class="simulator-box">
+      <div class="sim-title">▶ 減算額シミュレーター ── あなたの施設の損失を試算</div>
+      <div class="sim-input-row">
+        <input id="kaigo-input" class="sim-input" type="number" placeholder="施設の月額収入（万円）" value="1000">
+        <span class="sim-unit">万円</span>
+        <button class="sim-btn" onclick="calcKaigo()">計算する</button>
+      </div>
+      <div id="sim-result-kaigo">
+        <div class="sim-result-text">BCP未対応による月額損失（推計）</div>
+        <div class="sim-result-num" id="kaigo-result-num">—</div>
+        <div class="sim-result-sub">※介護報酬改定に基づく1〜3%の減算率で試算</div>
+      </div>
+    </div>
+
+    <ul class="risk-list">
+      <li><strong>2024年4月：</strong>BCP策定・研修・訓練が完全義務化（経過措置終了）</li>
+      <li><strong>2025年4月：</strong>サイバーセキュリティ対策が報酬加算の要件に追加</li>
+      <li><strong>未対応の施設：</strong>行政指導・監査の対象となり、指定取り消しリスクも</li>
+      <li><strong>ランサムウェア被害：</strong>医療・介護施設への攻撃件数が年々増加。復旧費用は数千万〜数億円規模</li>
+      <li><strong>職員への影響：</strong>BCP未整備は採用・定着にも悪影響。「安全な職場」の証明が求められる時代に</li>
+    </ul>
+
+    <div style="text-align:center">
+      <a href="#footer-cta" class="btn-hero" style="font-size:1rem;padding:14px 36px">まず無料でリスクを確認する</a>
+    </div>
+  </div>
+</section>
+
+<!-- EVIDENCE -->
+<section id="evidence">
+  <div class="section-inner">
+    <span class="section-label">SECTION 02 ── EVIDENCE</span>
+    <h2>✅ 厚労省ガイドラインの<span class="accent">実装根拠</span></h2>
+    <div class="divider-line"></div>
+    <p class="section-desc">
+      Prevention のアドバイスは、厚生労働省の公式ガイドラインと実際の被害事例に基づいています。
+    </p>
+
+    <div class="evidence-grid">
+      <div class="evidence-card">
+        <div class="ev-label">📄 REFERENCE 01</div>
+        <div class="ev-title">介護報酬改定通知<br>「感染症・災害対応力強化加算」</div>
+        <div class="ev-body">
+          厚生労働省「令和6年度介護報酬改定」において、BCP策定・訓練・研修の実施が全サービス種別で<strong>完全義務化</strong>。未対応施設は減算対象となることが明記されています。
+          <br><br>
+          「介護施設等における感染症及び災害時業務継続計画に関する手引き（令和6年3月）」を根拠として対応を設計しています。
+        </div>
+      </div>
+      <div class="evidence-card">
+        <div class="ev-label">🧑‍🚒 PREVENTION の強み</div>
+        <div class="ev-title">元消防士による<br>「初動対応」の現場視点</div>
+        <div class="ev-body">
+          消防署の予防査察では「<strong>起きてから対応では遅い</strong>」が鉄則です。年1回の点検で、着火点を事前に除去します。<br><br>
+          IT・サイバーリスクも同じです。侵入口を放置した結果、介護記録システムが全暗号化された実例があります。
+          Prevention は消防査察と同じ「予防の論理」でITリスクを点検します。
+        </div>
+      </div>
+    </div>
+
+    <div class="profile-box">
+      <div class="profile-avatar">🧑‍🚒</div>
+      <div>
+        <div class="profile-name">Prevention 代表</div>
+        <div class="profile-title">元消防士（高崎消防局 8年）× AIエンジニア</div>
+        <div class="profile-desc">
+          消防署予防課・危険物係として約8年間、建物の審査・点検・検査を実施。東日本大震災では緊急消防援助隊として福島県へ派遣。
+          退職後はITエンジニアに転身し、上場企業向けのAI実装支援を経て Prevention を創設。
+          「火災も感染症も、備えてこそ現場は止まらない」という信念のもと、介護・医療施設のBCP支援を行っています。
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICE -->
+<section id="service">
+  <div class="section-inner">
+    <span class="section-label">SECTION 03 ── SERVICE</span>
+    <h2>🔧 Prevention の<span class="accent">3段階サポート</span></h2>
+    <div class="divider-line"></div>
+    <p class="section-desc">
+      施設の状況に合わせて、無料診断から月次サポートまで選べます。<br>
+      まずはLv.0の無料診断から始めてください。
+    </p>
+
+    <div class="package-grid">
+
+      <!-- Lv.0 -->
+      <div class="package-card">
+        <div class="pkg-label">LV.0 ── 初回診断</div>
+        <div class="pkg-name">BCP 無料チェック</div>
+        <div class="badge-free">無料</div>
+        <div class="pkg-price" style="color:var(--gold-dk)">0<span style="font-size:1rem;font-weight:400">円</span></div>
+        <div class="pkg-price-sub">まずここから始めてください</div>
+        <ul class="pkg-features">
+          <li>BCP策定状況チェック</li>
+          <li>優先対応項目の特定</li>
+          <li>タイムライン・ロードマップ確認</li>
+          <li>義務化対応ギャップレポート（PDF）</li>
+        </ul>
+        <a href="#footer-cta" class="btn-pkg btn-pkg-primary">無料で申し込む</a>
+      </div>
+
+      <!-- Lv.1 -->
+      <div class="package-card featured">
+        <div class="pkg-label">LV.1 ── 初動整備</div>
+        <div class="pkg-name">BCP 初動パック</div>
+        <div class="pkg-price" style="color:var(--red)">15<span style="font-size:1rem;font-weight:400">万円</span></div>
+        <div class="pkg-price-sub">3ヶ月プロジェクト型</div>
+        <ul class="pkg-features">
+          <li>台帳整備（職員・設備・連絡先）</li>
+          <li>緊急連絡体制図の作成</li>
+          <li>BCP初期ドラフト作成（雛形）</li>
+          <li>職員向け教育資料の整備</li>
+          <li>行政指導対応チェックリスト</li>
+        </ul>
+        <a href="#footer-cta" class="btn-pkg btn-pkg-primary">相談する</a>
+      </div>
+
+      <!-- Lv.2 -->
+      <div class="package-card">
+        <div class="pkg-label">LV.2 ── 月次支援</div>
+        <div class="pkg-name">月次伴走プラン</div>
+        <div class="pkg-price" style="color:var(--gold-dk)">1.5<span style="font-size:1rem;font-weight:400">万円〜/月</span></div>
+        <div class="pkg-price-sub">継続サブスクリプション型</div>
+        <ul class="pkg-features">
+          <li>月1回オンライン相談（60分）</li>
+          <li>年1回 BCP再点検・更新</li>
+          <li>訓練設計・進行支援</li>
+          <li>ベンダー交渉・セキュリティ対策サポート</li>
+          <li>法改正への迅速対応フォロー</li>
+        </ul>
+        <a href="#footer-cta" class="btn-pkg btn-pkg-secondary">相談する</a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER CTA -->
+<section id="footer-cta">
+  <div class="footer-cta-box">
+    <h3>🎯 2025年4月対応の<br>第一歩を踏み出しましょう</h3>
+    <p>
+      まずは無料チェックリストで現状を把握するだけでOKです。<br>
+      義務化対応が完了すれば、報酬減算リスクはゼロになります。
+    </p>
+    <div class="contact-btns">
+      <a href="https://lin.ee/" class="contact-btn btn-line" target="_blank">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="white"><path d="M12 2C6.477 2 2 6.138 2 11.2c0 3.174 1.793 5.978 4.5 7.688V22l3.285-1.807A11.87 11.87 0 0012 20.4c5.523 0 10-4.138 10-9.2C22 6.138 17.523 2 12 2z"/></svg>
+        💬 LINE 相談（無料）
+      </a>
+      <a href="mailto:info@prevention-security.jp" class="contact-btn btn-mail">
+        📧 メール相談
+      </a>
+      <a href="tel:080-XXXX-XXXX" class="contact-btn btn-tel">
+        📞 電話（080-XXXX-XXXX）
+      </a>
+      <a href="#footer-cta" class="contact-btn btn-zoom" onclick="alert('Zoom予約フォームに遷移します')">
+        🖥 Zoom 30分無料相談
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">AIデジタル査察 <span>Prevention</span> ── 介護版</div>
+  <p class="footer-legal">
+    本サービスは「厚生労働省 介護施設等における感染症及び災害時業務継続計画（BCP）に関する手引き」に準拠しています。<br>
+    記載の減算額はシミュレーションであり、実際の報酬改定内容・施設種別によって異なります。詳細は管轄の都道府県・市区町村にご確認ください。<br>
+    &copy; 2026 Prevention / AIdealize株式会社. All rights reserved.
+  </p>
+</footer>
+
+<script>
+function calcKaigo() {
+  const input = document.getElementById('kaigo-input');
+  const result = document.getElementById('sim-result-kaigo');
+  const numEl = document.getElementById('kaigo-result-num');
+  const revenue = parseFloat(input.value);
+  if (!revenue || revenue <= 0) {
+    numEl.textContent = '正しい金額を入力してください';
+    result.classList.add('show');
+    return;
+  }
+  const minLoss = Math.round(revenue * 0.01 * 10) / 10;
+  const maxLoss = Math.round(revenue * 0.03 * 10) / 10;
+  numEl.textContent = `月額 ${minLoss}万円 〜 ${maxLoss}万円 の損失`;
+  result.classList.add('show');
+}
+document.getElementById('kaigo-input').addEventListener('keydown', function(e) {
+  if (e.key === 'Enter') calcKaigo();
+});
+</script>
+
+</body>
+</html>

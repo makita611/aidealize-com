@@ -1,0 +1,982 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI導入ROI診断 | AIdealize株式会社</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700;900&family=Rajdhani:wght@600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --red: #C00000;
+  --red-dark: #8B0000;
+  --navy: #1F3864;
+  --navy-light: #2E5090;
+  --bg: #0A0D14;
+  --bg2: #111520;
+  --bg3: #161C2E;
+  --line: rgba(255,255,255,0.07);
+  --text: #E8EAF0;
+  --muted: #7A8099;
+  --gold: #D4A947;
+}
+
+* { margin:0; padding:0; box-sizing:border-box; }
+
+body {
+  font-family: 'Noto Sans JP', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* 背景グリッド */
+body::before {
+  content:'';
+  position:fixed; inset:0;
+  background-image:
+    linear-gradient(rgba(192,0,0,0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(192,0,0,0.03) 1px, transparent 1px);
+  background-size: 60px 60px;
+  pointer-events:none;
+  z-index:0;
+}
+
+.container {
+  max-width: 780px;
+  margin: 0 auto;
+  padding: 0 20px 80px;
+  position: relative;
+  z-index: 1;
+}
+
+/* ヘッダー */
+.header {
+  text-align: center;
+  padding: 60px 0 50px;
+}
+
+.header-badge {
+  display: inline-block;
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 11px;
+  letter-spacing: 3px;
+  color: var(--red);
+  border: 1px solid var(--red);
+  padding: 5px 16px;
+  margin-bottom: 24px;
+  text-transform: uppercase;
+}
+
+.header h1 {
+  font-size: clamp(26px, 5vw, 40px);
+  font-weight: 900;
+  line-height: 1.2;
+  letter-spacing: -0.5px;
+  margin-bottom: 16px;
+}
+
+.header h1 span {
+  color: var(--red);
+}
+
+.header p {
+  font-size: 14px;
+  color: var(--muted);
+  line-height: 1.8;
+}
+
+/* ステップインジケーター */
+.steps {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0;
+  margin-bottom: 48px;
+}
+
+.step-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 11px;
+  color: var(--muted);
+  letter-spacing: 1px;
+}
+
+.step-item.active { color: var(--text); }
+.step-item.active .step-num { background: var(--red); border-color: var(--red); color: #fff; }
+.step-item.done .step-num { background: var(--navy); border-color: var(--navy); color: #fff; }
+
+.step-num {
+  width: 26px; height: 26px;
+  border-radius: 50%;
+  border: 1px solid var(--muted);
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 13px; font-weight: 700;
+}
+
+.step-line {
+  width: 40px; height: 1px;
+  background: var(--line);
+  margin: 0 6px;
+}
+
+/* カード */
+.card {
+  background: var(--bg2);
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  padding: 36px;
+  margin-bottom: 16px;
+  position: relative;
+  overflow: hidden;
+}
+
+.card::before {
+  content:'';
+  position:absolute;
+  top:0; left:0; right:0;
+  height:2px;
+  background: linear-gradient(90deg, var(--red), var(--navy-light));
+}
+
+.card-title {
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  color: var(--muted);
+  text-transform: uppercase;
+  margin-bottom: 28px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.card-title::after {
+  content:'';
+  flex:1;
+  height:1px;
+  background: var(--line);
+}
+
+/* フォーム要素 */
+.field { margin-bottom: 28px; }
+
+.field label {
+  display: block;
+  font-size: 14px;
+  font-weight: 500;
+  margin-bottom: 12px;
+  color: var(--text);
+}
+
+.field label .required {
+  color: var(--red);
+  font-size: 11px;
+  margin-left: 6px;
+  font-weight: 400;
+}
+
+.field label .optional {
+  color: var(--muted);
+  font-size: 11px;
+  margin-left: 6px;
+  font-weight: 400;
+}
+
+/* スライダー */
+.slider-wrap {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.slider-wrap input[type=range] {
+  flex: 1;
+  -webkit-appearance: none;
+  height: 3px;
+  background: var(--bg3);
+  border-radius: 2px;
+  outline: none;
+  cursor: pointer;
+}
+
+.slider-wrap input[type=range]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 18px; height: 18px;
+  border-radius: 50%;
+  background: var(--red);
+  border: 2px solid #fff;
+  cursor: pointer;
+  box-shadow: 0 0 10px rgba(192,0,0,0.5);
+}
+
+.slider-val {
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 22px;
+  font-weight: 700;
+  color: #fff;
+  min-width: 80px;
+  text-align: right;
+}
+
+.slider-val span { font-size: 13px; color: var(--muted); font-weight: 400; font-family: 'Noto Sans JP', sans-serif; }
+
+/* チェックボックスグリッド */
+.check-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+@media(max-width:500px){ .check-grid { grid-template-columns: 1fr; } }
+
+.check-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 12px 14px;
+  background: var(--bg3);
+  border: 1px solid var(--line);
+  border-radius: 3px;
+  cursor: pointer;
+  transition: all .2s;
+  user-select: none;
+}
+
+.check-item:hover { border-color: rgba(192,0,0,0.4); background: rgba(192,0,0,0.05); }
+.check-item.checked { border-color: var(--red); background: rgba(192,0,0,0.08); }
+
+.check-item input { display: none; }
+
+.check-box {
+  width: 16px; height: 16px;
+  border: 1px solid var(--muted);
+  border-radius: 2px;
+  flex-shrink: 0;
+  margin-top: 1px;
+  display: flex; align-items: center; justify-content: center;
+  transition: all .2s;
+}
+
+.check-item.checked .check-box {
+  background: var(--red);
+  border-color: var(--red);
+}
+
+.check-box::after {
+  content: '✓';
+  color: #fff;
+  font-size: 10px;
+  display: none;
+}
+.check-item.checked .check-box::after { display: block; }
+
+.check-text { font-size: 13px; line-height: 1.5; }
+.check-text strong { display: block; font-size: 13px; font-weight: 500; }
+.check-text small { color: var(--muted); font-size: 11px; }
+
+/* 詳細オプション展開 */
+.advanced-toggle {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 13px;
+  color: var(--muted);
+  cursor: pointer;
+  padding: 12px 0;
+  border-top: 1px solid var(--line);
+  margin-top: 8px;
+  transition: color .2s;
+  user-select: none;
+}
+
+.advanced-toggle:hover { color: var(--text); }
+
+.toggle-icon {
+  width: 20px; height: 20px;
+  border: 1px solid var(--muted);
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 14px;
+  transition: all .3s;
+  flex-shrink: 0;
+}
+
+.advanced-toggle.open .toggle-icon {
+  transform: rotate(45deg);
+  border-color: var(--red);
+  color: var(--red);
+}
+
+.advanced-fields {
+  display: none;
+  padding-top: 24px;
+  border-top: 1px solid var(--line);
+  margin-top: 0;
+}
+
+.advanced-fields.open { display: block; }
+
+/* ラジオ風ボタン */
+.radio-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.radio-btn {
+  padding: 7px 14px;
+  border: 1px solid var(--line);
+  border-radius: 2px;
+  font-size: 12px;
+  cursor: pointer;
+  background: var(--bg3);
+  color: var(--muted);
+  transition: all .2s;
+  user-select: none;
+}
+
+.radio-btn:hover { border-color: var(--navy-light); color: var(--text); }
+.radio-btn.selected { border-color: var(--navy-light); background: rgba(46,80,144,0.2); color: #fff; }
+
+/* 計算ボタン */
+.calc-btn {
+  width: 100%;
+  padding: 18px;
+  background: var(--red);
+  color: #fff;
+  border: none;
+  border-radius: 3px;
+  font-family: 'Noto Sans JP', sans-serif;
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  transition: all .2s;
+  margin-top: 8px;
+}
+
+.calc-btn::before {
+  content:'';
+  position:absolute; inset:0;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+  transform: translateX(-100%);
+  transition: transform .5s;
+}
+
+.calc-btn:hover { background: #E00000; transform: translateY(-1px); box-shadow: 0 8px 30px rgba(192,0,0,0.4); }
+.calc-btn:hover::before { transform: translateX(100%); }
+.calc-btn:active { transform: translateY(0); }
+
+/* 結果エリア */
+#result-section {
+  display: none;
+  animation: fadeUp .5s ease forwards;
+}
+
+@keyframes fadeUp {
+  from { opacity:0; transform: translateY(20px); }
+  to { opacity:1; transform: translateY(0); }
+}
+
+.result-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+@media(max-width:600px){ .result-grid { grid-template-columns: 1fr; } }
+
+.result-card {
+  background: var(--bg3);
+  border: 1px solid var(--line);
+  border-radius: 3px;
+  padding: 20px 16px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.result-card.highlight {
+  border-color: var(--red);
+  background: rgba(192,0,0,0.06);
+}
+
+.result-card .r-label {
+  font-size: 10px;
+  letter-spacing: 2px;
+  color: var(--muted);
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
+
+.result-card .r-value {
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 36px;
+  font-weight: 700;
+  color: #fff;
+  line-height: 1;
+  margin-bottom: 4px;
+}
+
+.result-card.highlight .r-value { color: var(--red); }
+.result-card .r-unit { font-size: 12px; color: var(--muted); }
+
+/* コメントボックス */
+.comment-box {
+  background: rgba(31,56,100,0.2);
+  border: 1px solid rgba(46,80,144,0.4);
+  border-left: 3px solid var(--navy-light);
+  padding: 16px 20px;
+  border-radius: 2px;
+  font-size: 13px;
+  line-height: 1.8;
+  color: var(--text);
+  margin-bottom: 20px;
+}
+
+/* リード取得フォーム */
+.lead-card {
+  background: linear-gradient(135deg, rgba(31,56,100,0.3), rgba(192,0,0,0.1));
+  border: 1px solid rgba(192,0,0,0.2);
+  border-radius: 4px;
+  padding: 32px 36px;
+}
+
+.lead-card h3 {
+  font-size: 17px;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+.lead-card h3 span { color: var(--red); }
+
+.lead-card p {
+  font-size: 13px;
+  color: var(--muted);
+  margin-bottom: 24px;
+  line-height: 1.7;
+}
+
+.input-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+@media(max-width:500px){ .input-row { grid-template-columns: 1fr; } }
+
+.text-input {
+  width: 100%;
+  padding: 12px 14px;
+  background: var(--bg);
+  border: 1px solid var(--line);
+  border-radius: 2px;
+  color: var(--text);
+  font-family: 'Noto Sans JP', sans-serif;
+  font-size: 13px;
+  outline: none;
+  transition: border-color .2s;
+}
+
+.text-input:focus { border-color: var(--navy-light); }
+.text-input::placeholder { color: var(--muted); }
+
+.submit-btn {
+  width: 100%;
+  padding: 16px;
+  background: linear-gradient(135deg, var(--navy), var(--navy-light));
+  color: #fff;
+  border: none;
+  border-radius: 3px;
+  font-family: 'Noto Sans JP', sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  margin-top: 12px;
+  transition: all .2s;
+  letter-spacing: 0.5px;
+}
+
+.submit-btn:hover { opacity: .9; transform: translateY(-1px); box-shadow: 0 6px 20px rgba(31,56,100,0.4); }
+
+.privacy-note {
+  font-size: 11px;
+  color: var(--muted);
+  text-align: center;
+  margin-top: 12px;
+}
+
+/* 完了メッセージ */
+#complete-msg {
+  display: none;
+  text-align: center;
+  padding: 40px;
+}
+
+#complete-msg .big-check {
+  font-size: 48px;
+  margin-bottom: 16px;
+}
+
+#complete-msg h3 { font-size: 20px; margin-bottom: 10px; }
+#complete-msg p { font-size: 13px; color: var(--muted); line-height: 1.8; }
+
+/* フッター */
+.footer-link {
+  text-align: center;
+  margin-top: 40px;
+  font-size: 12px;
+  color: var(--muted);
+}
+
+.footer-link a { color: var(--muted); text-decoration: none; }
+.footer-link a:hover { color: var(--text); }
+
+/* 入力エラー */
+.error-msg {
+  font-size: 12px;
+  color: #FF6B6B;
+  margin-top: 6px;
+  display: none;
+}
+
+/* アニメーション数値カウント */
+.counting { animation: countUp .8s ease forwards; }
+</style>
+</head>
+<body>
+
+<div class="container">
+
+  <!-- ヘッダー -->
+  <div class="header">
+    <div class="header-badge">AI業務改善 ROI診断ツール</div>
+    <h1>あなたの会社は、<span>年間いくら</span>損していますか？</h1>
+    <p>3項目を入力するだけで、AI・RPA導入による<br>削減コストと投資回収期間を即時試算します。</p>
+  </div>
+
+  <!-- ステップ -->
+  <div class="steps">
+    <div class="step-item active" id="step1-ind">
+      <div class="step-num">1</div>
+      <span>会社情報</span>
+    </div>
+    <div class="step-line"></div>
+    <div class="step-item" id="step2-ind">
+      <div class="step-num">2</div>
+      <span>診断結果</span>
+    </div>
+    <div class="step-line"></div>
+    <div class="step-item" id="step3-ind">
+      <div class="step-num">3</div>
+      <span>事例レポート受取</span>
+    </div>
+  </div>
+
+  <!-- 入力フォーム -->
+  <div id="input-section">
+
+    <div class="card">
+      <div class="card-title">基本情報（必須）</div>
+
+      <!-- 従業員数 -->
+      <div class="field">
+        <label>対象部署の従業員数 <span class="required">必須</span></label>
+        <div class="slider-wrap">
+          <input type="range" id="emp" min="2" max="200" value="20" step="1" oninput="updateSlider('emp','emp-val',v=>v+'名')">
+          <div class="slider-val" id="emp-val">20<span>名</span></div>
+        </div>
+      </div>
+
+      <!-- 平均月給 -->
+      <div class="field">
+        <label>平均月給の目安 <span class="required">必須</span></label>
+        <div class="slider-wrap">
+          <input type="range" id="salary" min="20" max="70" value="35" step="5" oninput="updateSlider('salary','salary-val',v=>v+'万円')">
+          <div class="slider-val" id="salary-val">35<span>万円</span></div>
+        </div>
+      </div>
+
+      <!-- 改善したい業務 -->
+      <div class="field">
+        <label>改善したい業務 <span class="required">必須・複数選択可</span></label>
+        <div class="check-grid" id="task-grid">
+          <div class="check-item" data-value="form" onclick="toggleCheck(this)">
+            <div class="check-box"></div>
+            <div class="check-text">
+              <strong>📄 申込書・契約書処理</strong>
+              <small>FAX・紙→デジタル化、入力自動化</small>
+            </div>
+          </div>
+          <div class="check-item" data-value="report" onclick="toggleCheck(this)">
+            <div class="check-box"></div>
+            <div class="check-text">
+              <strong>📝 日報・報告書作成</strong>
+              <small>音声入力・自動生成</small>
+            </div>
+          </div>
+          <div class="check-item" data-value="order" onclick="toggleCheck(this)">
+            <div class="check-box"></div>
+            <div class="check-text">
+              <strong>🧾 発注書・請求書作成</strong>
+              <small>テンプレ自動生成・転記削減</small>
+            </div>
+          </div>
+          <div class="check-item" data-value="inquiry" onclick="toggleCheck(this)">
+            <div class="check-box"></div>
+            <div class="check-text">
+              <strong>📞 問い合わせ・電話対応</strong>
+              <small>AI一次対応・FAQ自動化</small>
+            </div>
+          </div>
+          <div class="check-item" data-value="data" onclick="toggleCheck(this)">
+            <div class="check-box"></div>
+            <div class="check-text">
+              <strong>📊 データ集計・転記</strong>
+              <small>Excel手作業→自動集計</small>
+            </div>
+          </div>
+          <div class="check-item" data-value="expense" onclick="toggleCheck(this)">
+            <div class="check-box"></div>
+            <div class="check-text">
+              <strong>💳 経費精算・交通費申請</strong>
+              <small>レシート読取・自動仕訳</small>
+            </div>
+          </div>
+          <div class="check-item" data-value="schedule" onclick="toggleCheck(this)">
+            <div class="check-box"></div>
+            <div class="check-text">
+              <strong>📅 勤怠・シフト管理</strong>
+              <small>集計・申請の自動化</small>
+            </div>
+          </div>
+          <div class="check-item" data-value="inventory" onclick="toggleCheck(this)">
+            <div class="check-box"></div>
+            <div class="check-text">
+              <strong>📦 在庫・発注管理</strong>
+              <small>自動発注・在庫アラート</small>
+            </div>
+          </div>
+        </div>
+        <div class="error-msg" id="task-error">業務を1つ以上選択してください</div>
+      </div>
+
+      <!-- 詳細オプション -->
+      <div class="advanced-toggle" id="adv-toggle" onclick="toggleAdvanced()">
+        <div class="toggle-icon">+</div>
+        詳細を入力してより精度の高い試算を行う（任意・+4項目）
+      </div>
+
+      <div class="advanced-fields" id="adv-fields">
+
+        <div class="field" style="margin-top:24px">
+          <label>対象業務にかけている時間 <span class="optional">任意</span></label>
+          <div class="slider-wrap">
+            <input type="range" id="hours" min="1" max="40" value="10" step="1" oninput="updateSlider('hours','hours-val',v=>v+'時間/週')">
+            <div class="slider-val" id="hours-val">10<span>時間/週</span></div>
+          </div>
+        </div>
+
+        <div class="field">
+          <label>残業が多い人数 <span class="optional">任意</span></label>
+          <div class="slider-wrap">
+            <input type="range" id="overtime" min="0" max="50" value="3" step="1" oninput="updateSlider('overtime','overtime-val',v=>v+'名')">
+            <div class="slider-val" id="overtime-val">3<span>名</span></div>
+          </div>
+        </div>
+
+        <div class="field">
+          <label>現在のシステム環境 <span class="optional">任意</span></label>
+          <div class="radio-group" id="sys-group">
+            <div class="radio-btn selected" onclick="selectRadio(this,'sys-group')">紙・FAX中心</div>
+            <div class="radio-btn" onclick="selectRadio(this,'sys-group')">Excel中心</div>
+            <div class="radio-btn" onclick="selectRadio(this,'sys-group')">既存システムあり</div>
+            <div class="radio-btn" onclick="selectRadio(this,'sys-group')">クラウドツールあり</div>
+          </div>
+        </div>
+
+        <div class="field">
+          <label>業種 <span class="optional">任意</span></label>
+          <div class="radio-group" id="industry-group">
+            <div class="radio-btn selected" onclick="selectRadio(this,'industry-group')">不動産</div>
+            <div class="radio-btn" onclick="selectRadio(this,'industry-group')">自動車買取・販売</div>
+            <div class="radio-btn" onclick="selectRadio(this,'industry-group')">冠婚葬祭</div>
+            <div class="radio-btn" onclick="selectRadio(this,'industry-group')">設備工事・建設</div>
+            <div class="radio-btn" onclick="selectRadio(this,'industry-group')">製造業</div>
+            <div class="radio-btn" onclick="selectRadio(this,'industry-group')">その他</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <button class="calc-btn" onclick="calculate()">
+      ▶ 無料でROIを診断する
+    </button>
+
+  </div><!-- /input-section -->
+
+
+  <!-- 結果セクション -->
+  <div id="result-section">
+
+    <div class="card">
+      <div class="card-title">診断結果</div>
+
+      <div class="result-grid">
+        <div class="result-card">
+          <div class="r-label">月間削減時間</div>
+          <div class="r-value" id="r-hours">—</div>
+          <div class="r-unit">時間 / 月</div>
+        </div>
+        <div class="result-card highlight">
+          <div class="r-label">年間削減コスト</div>
+          <div class="r-value" id="r-cost">—</div>
+          <div class="r-unit">万円 / 年</div>
+        </div>
+        <div class="result-card">
+          <div class="r-label">投資回収期間</div>
+          <div class="r-value" id="r-payback">—</div>
+          <div class="r-unit">ヶ月</div>
+        </div>
+      </div>
+
+      <div class="comment-box" id="r-comment">
+      </div>
+
+      <!-- 試算根拠（小さく表示） -->
+      <div style="font-size:11px; color:var(--muted); line-height:1.8; padding:12px 0; border-top:1px solid var(--line);">
+        ※本試算は、AIdealize株式会社の300社超の支援実績に基づく参考値です。実際の削減効果は業務内容・導入範囲により異なります。<br>
+        投資回収期間はAI業務診断パック（¥150,000〜）を基準に算出しています。
+      </div>
+    </div>
+
+    <!-- リード取得 -->
+    <div class="lead-card" id="lead-form-wrap">
+      <h3>📩 業界別<span>AI導入事例レポート</span>を無料でお送りします</h3>
+      <p>不動産・自動車買取・設備工事など、同業他社の具体的な削減事例と<br>導入ステップをまとめた資料です。メールアドレスを入力してください。</p>
+
+      <div class="input-row">
+        <input class="text-input" id="lead-name" type="text" placeholder="お名前（例：山田 太郎）">
+        <input class="text-input" id="lead-company" type="text" placeholder="会社名">
+      </div>
+      <input class="text-input" id="lead-email" type="email" placeholder="メールアドレス（例：info@example.com）" style="margin-bottom:0">
+      <div class="error-msg" id="lead-error">メールアドレスを入力してください</div>
+
+      <button class="submit-btn" onclick="submitLead()">
+        事例レポートを受け取る（無料）→
+      </button>
+      <div class="privacy-note">入力情報はAIdealize株式会社のご連絡・資料送付のみに使用します。</div>
+    </div>
+
+    <!-- 完了メッセージ -->
+    <div id="complete-msg">
+      <div class="big-check">✅</div>
+      <h3>ありがとうございます！</h3>
+      <p>入力いただいたメールアドレスに<br>事例レポートをお送りします（通常1営業日以内）。<br><br>
+      より詳しい無料診断をご希望の方は<br>
+      <a href="https://aidealize.com/lp/ai-lp1/" style="color:#5B8FD4;">こちらからご相談ください →</a></p>
+    </div>
+
+  </div><!-- /result-section -->
+
+  <div class="footer-link">
+    <a href="https://aidealize.com">AIdealize株式会社</a>
+    &nbsp;|&nbsp;
+    <a href="https://aidealize.com/lp/ai-lp1/">無料診断に申し込む</a>
+  </div>
+
+</div><!-- /container -->
+
+
+<script>
+const REDUCTION = {
+  form:     { rate: 0.62, label: '申込書・契約書処理' },
+  report:   { rate: 0.68, label: '日報・報告書作成' },
+  order:    { rate: 0.55, label: '発注書・請求書作成' },
+  inquiry:  { rate: 0.45, label: '問い合わせ対応' },
+  data:     { rate: 0.72, label: 'データ集計・転記' },
+  expense:  { rate: 0.70, label: '経費精算・交通費申請' },
+  schedule: { rate: 0.65, label: '勤怠・シフト管理' },
+  inventory:{ rate: 0.58, label: '在庫・発注管理' },
+};
+
+const INDUSTRY_HOURS = {
+  '不動産': 0.30, '自動車買取・販売': 0.28, '冠婚葬祭': 0.25,
+  '設備工事・建設': 0.32, '製造業': 0.28, 'その他': 0.25,
+};
+
+const SYS_MULTIPLIER = {
+  '紙・FAX中心': 1.2, 'Excel中心': 1.0,
+  '既存システムあり': 0.85, 'クラウドツールあり': 0.75,
+};
+
+function updateSlider(id, valId, fmt) {
+  const v = document.getElementById(id).value;
+  const el = document.getElementById(valId);
+  const text = fmt(parseInt(v));
+  const unit = el.querySelector('span');
+  if (unit) {
+    const parts = text.match(/^(\d+)(.+)$/);
+    if (parts) { el.childNodes[0].textContent = parts[1]; unit.textContent = parts[2]; }
+  } else { el.textContent = text; }
+}
+
+// チェック切り替え（data-value方式）
+function toggleCheck(el) {
+  el.classList.toggle('checked');
+  document.getElementById('task-error').style.display = 'none';
+}
+
+function selectRadio(el, groupId) {
+  document.querySelectorAll('#'+groupId+' .radio-btn').forEach(b => b.classList.remove('selected'));
+  el.classList.add('selected');
+}
+
+function toggleAdvanced() {
+  document.getElementById('adv-toggle').classList.toggle('open');
+  document.getElementById('adv-fields').classList.toggle('open');
+}
+
+function getRadioVal(groupId, defaultVal) {
+  const sel = document.querySelector('#'+groupId+' .radio-btn.selected');
+  return sel ? sel.textContent.trim() : defaultVal;
+}
+
+function calculate() {
+  // チェック済み取得（data-value属性から）
+  const checkedItems = [...document.querySelectorAll('#task-grid .check-item.checked')];
+  if (checkedItems.length === 0) {
+    document.getElementById('task-error').style.display = 'block';
+    return;
+  }
+
+  const emp = parseInt(document.getElementById('emp').value);
+  const salary = parseInt(document.getElementById('salary').value);
+  const isAdvOpen = document.getElementById('adv-fields').classList.contains('open');
+  const manualHours = isAdvOpen ? parseInt(document.getElementById('hours').value) : null;
+  const overtimeCount = isAdvOpen ? parseInt(document.getElementById('overtime').value) : 0;
+  const sysEnv = getRadioVal('sys-group', '紙・FAX中心');
+  const industry = getRadioVal('industry-group', 'その他');
+
+  const industryRatio = INDUSTRY_HOURS[industry] || 0.25;
+  const sysMultiplier = SYS_MULTIPLIER[sysEnv] || 1.0;
+
+  let taskHoursPerMonth;
+  if (manualHours !== null) {
+    taskHoursPerMonth = manualHours * 4.3 * emp;
+  } else {
+    taskHoursPerMonth = emp * 160 * industryRatio;
+  }
+
+  // data-value から削減率取得
+  const taskValues = checkedItems.map(el => REDUCTION[el.dataset.value]).filter(Boolean);
+  const avgRate = taskValues.reduce((s, t) => s + t.rate, 0) / taskValues.length;
+  const finalRate = Math.min(avgRate * sysMultiplier, 0.75);
+
+  const savedHoursMonth = Math.round(taskHoursPerMonth * finalRate);
+  const savedHoursYear = savedHoursMonth * 12;
+  const hourlyWage = (salary * 10000) / 160;
+  const overtimeHours = overtimeCount * 20;
+  const baseCost = Math.round(savedHoursYear * hourlyWage / 10000);
+  const overtimeSaving = Math.round(overtimeHours * 12 * hourlyWage * 0.25 / 10000);
+  const finalCost = baseCost + overtimeSaving;
+
+  const paybackMonths = finalCost > 0 ? Math.min(Math.ceil(15 / (finalCost / 12)), 36) : 36;
+
+  const topTask = taskValues.reduce((a, b) => a.rate > b.rate ? a : b);
+  const industryTip = {
+    '不動産': '審査・申込フローのデジタル化から着手すると最短で効果が出ます。',
+    '自動車買取・販売': 'コールセンターの応対記録自動化とSFA連携が即効性大です。',
+    '冠婚葬祭': '発注書・受注書の自動生成で繁忙期の工数を大幅削減できます。',
+    '設備工事・建設': '現場報告書の音声入力→自動作成が最も効果的です。',
+    '製造業': '発注・在庫管理の自動化から始めると全体最適につながります。',
+    'その他': topTask.label + 'の自動化から始めることをお勧めします。',
+  };
+
+  const comment = '診断結果：<strong>' + emp + '名・' + industry + '</strong>の組織では、' +
+    '<strong>' + topTask.label + '</strong>の自動化が最も高い削減効果（推定' + Math.round(finalRate*100) + '%削減）を見込めます。' +
+    (industryTip[industry] || industryTip['その他']) +
+    'まず2週間の「AI業務診断」でボトルネックを可視化し、確実に効果の出る業務から始めることをお勧めします。';
+
+  document.getElementById('input-section').style.display = 'none';
+  document.getElementById('result-section').style.display = 'block';
+  document.getElementById('step1-ind').classList.replace('active','done');
+  document.getElementById('step2-ind').classList.add('active');
+
+  animateCount('r-hours', savedHoursMonth, '');
+  animateCount('r-cost', finalCost, '');
+  animateCount('r-payback', paybackMonths, '');
+  document.getElementById('r-comment').innerHTML = comment;
+
+  // ★スプレッドシート記録（GAS経由）
+  // 仕組み：このHTMLからfetchでGASのWebアプリURLにPOSTする
+  // GASがリクエストを受け取ってスプレッドシートに1行書き込む
+  // no-corsモードなので応答は見えないがデータは届く
+  sendToGAS({
+    type: 'calc',
+    timestamp: new Date().toISOString(),
+    emp, salary, industry, sysEnv,
+    tasks: checkedItems.map(el => el.dataset.value).join(','),
+    savedHoursMonth, finalCost, paybackMonths,
+    advUsed: isAdvOpen
+  });
+
+  document.getElementById('result-section').scrollIntoView({behavior:'smooth', block:'start'});
+}
+
+function animateCount(id, target, suffix) {
+  const el = document.getElementById(id);
+  const start = Date.now();
+  const tick = () => {
+    const p = Math.min((Date.now()-start)/800, 1);
+    const ease = 1 - Math.pow(1-p, 3);
+    el.textContent = Math.round(target * ease) + suffix;
+    if (p < 1) requestAnimationFrame(tick);
+  };
+  requestAnimationFrame(tick);
+}
+
+// ---- GAS送信 ----
+// WordPressに設置後、GASのWebアプリURLをここに入れる
+// GASのコード（別途提供）がスプレッドシートに自動記録する
+const GAS_URL = 'https://script.google.com/macros/s/AKfycbznmcKuNRRfPrwP1Ev_alYlLIb5Z-b2fPBmNlnk-r923HibXl3OTc-tGJVP7750RgvQ/exec';
+
+function sendToGAS(data) {
+  if (GAS_URL === 'YOUR_GAS_WEB_APP_URL') return;
+  fetch(GAS_URL, {
+    method: 'POST',
+    mode: 'no-cors',
+    headers: {'Content-Type':'application/json'},
+    body: JSON.stringify(data)
+  }).catch(()=>{});
+}
+
+function submitLead() {
+  const name = document.getElementById('lead-name').value.trim();
+  const company = document.getElementById('lead-company').value.trim();
+  const email = document.getElementById('lead-email').value.trim();
+
+  if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+    document.getElementById('lead-error').style.display = 'block';
+    return;
+  }
+
+  sendToGAS({ type: 'lead', timestamp: new Date().toISOString(), name, company, email });
+
+  document.getElementById('lead-form-wrap').style.display = 'none';
+  document.getElementById('complete-msg').style.display = 'block';
+  document.getElementById('step2-ind').classList.replace('active','done');
+  document.getElementById('step3-ind').classList.add('active');
+}
+</script>
+</body>
+</html>

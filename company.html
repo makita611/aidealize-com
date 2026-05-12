@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>会社概要 | AIdealize株式会社</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;700;900&family=Bebas+Neue&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #ffffff;
+  --surface: #f7f7f5;
+  --border: #e5e5e0;
+  --accent: #d42e42;
+  --accent2: #e8960e;
+  --ink: #111118;
+  --muted: #777788;
+  --card: #fafaf8;
+  --red: #c0272d;
+  --red-dark: #a01f24;
+  --ink: #1a1a1a;
+  --mid: #555;
+  --white: #fff;
+  --border: #e8e8e8;
+}
+*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+html { scroll-behavior:smooth; }
+body {
+  font-family:'Noto Sans JP', sans-serif;
+  background:var(--bg);
+  color:var(--ink);
+  line-height:1.7;
+  overflow-x:hidden;
+}
+
+
+/* ── NAV ── */
+#mainNav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 60px; height: 68px;
+  background: rgba(255,255,255,0.97);
+  border-bottom: 1px solid var(--border);
+  backdrop-filter: blur(12px);
+  transition: box-shadow 0.3s;
+}
+#mainNav.scrolled { box-shadow: 0 4px 24px rgba(0,0,0,0.08); }
+
+/* ── ロゴ ── */
+.nav-logo {
+  display: flex; align-items: center; gap: 12px;
+  text-decoration: none;
+}
+.nav-logo img {
+  height: 36px; width: auto;
+}
+
+.nav-logo-text {
+  font-family: 'DM Mono', monospace;
+  font-size: 16px; font-weight: 500;
+  color: var(--ink); letter-spacing: 0.02em;
+}
+.nav-logo-text span { color: var(--red); }
+
+.nav-logo img {
+  height: 36px; width: auto;
+}
+
+/* ── PCナビ ── */
+.nav-links {
+  display: flex; align-items: center; gap: 36px;
+  list-style: none; margin: 0; padding: 0;
+}
+.nav-links a {
+  font-size: 13px; font-weight: 500;
+  color: var(--mid); text-decoration: none;
+  letter-spacing: 0.04em;
+  transition: color 0.2s;
+}
+.nav-links a:hover { color: var(--ink); }
+.nav-cta {
+  background: var(--red); color: var(--white) !important;
+  padding: 10px 22px; border-radius: 3px;
+  font-size: 12px !important; font-weight: 700 !important;
+  letter-spacing: 0.06em !important;
+  transition: background 0.2s !important;
+}
+.nav-cta:hover { background: var(--red-dark) !important; color: var(--white) !important; }
+
+/* ── ハンバーガーボタン（タブレット・スマホ） ── */
+.nav-hamburger {
+  display: none;
+  flex-direction: column; justify-content: center; gap: 5px;
+  width: 40px; height: 40px;
+  background: none; border: none; cursor: pointer; padding: 4px;
+}
+.nav-hamburger span {
+  display: block; width: 24px; height: 2px;
+  background: var(--ink);
+  transition: all 0.3s;
+  transform-origin: center;
+}
+/* × に変わるアニメーション */
+.nav-hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.nav-hamburger.open span:nth-child(2) { opacity: 0; }
+.nav-hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+/* ── ドロワーメニュー ── */
+.nav-drawer {
+  display: none;
+  position: fixed; top: 68px; left: 0; right: 0;
+  background: rgba(255,255,255,0.98);
+  border-bottom: 2px solid var(--red);
+  padding: 24px 32px 32px;
+  z-index: 999;
+  backdrop-filter: blur(12px);
+}
+.nav-drawer.open { display: block; }
+.nav-drawer ul {
+  list-style: none; margin: 0; padding: 0;
+  display: flex; flex-direction: column; gap: 0;
+}
+.nav-drawer ul li a {
+  display: block;
+  padding: 14px 0;
+  font-size: 15px; font-weight: 500;
+  color: var(--ink); text-decoration: none;
+  border-bottom: 1px solid var(--border);
+  letter-spacing: 0.04em;
+}
+.nav-drawer ul li:last-child a {
+  margin-top: 20px;
+  display: block; text-align: center;
+  background: var(--red); color: var(--white) !important;
+  padding: 14px 22px; border-radius: 3px;
+  font-weight: 700 !important; border-bottom: none;
+  letter-spacing: 0.06em;
+}
+
+/* ── タブレット（1024px以下） ── */
+@media (max-width: 1024px) {
+  #mainNav { padding: 0 32px; }
+  .nav-links { display: none; }
+  .nav-hamburger { display: flex; }
+}
+
+/* ── スマホ（480px以下） ── */
+@media (max-width: 480px) {
+  #mainNav { padding: 0 20px; height: 60px; }
+  .nav-drawer { top: 60px; padding: 20px 20px 28px; }
+  .nav-logo img { height: 30px; }
+}
+
+/* ヒーロー */
+.hero {
+  padding:140px 40px 70px;
+  max-width:1100px; margin:0 auto;
+  display:grid; grid-template-columns:1fr 400px; gap:80px; align-items:center;
+}
+.hero-label { display:inline-block; font-size:11px; font-weight:700; letter-spacing:3px; color:var(--accent); border:1px solid var(--accent); padding:4px 14px; border-radius:2px; margin-bottom:20px; }
+.hero h1 { font-size:clamp(26px,3.5vw,42px); font-weight:900; line-height:1.35; margin-bottom:20px; }
+.hero h1 em { font-style:normal; color:var(--accent); }
+.hero-lead { font-size:14px; color:var(--muted); line-height:2; }
+
+.ceo-card {
+  background:var(--ink);
+  color:white;
+  border-radius:8px;
+  padding:36px;
+  position:relative; overflow:hidden;
+}
+.ceo-card::before {
+  content:''; position:absolute; top:-40px; right:-40px;
+  width:160px; height:160px; border-radius:50%;
+  background:rgba(212,46,66,0.15); pointer-events:none;
+}
+.ceo-photo {
+  width:88px; height:88px; border-radius:50%;
+  background:linear-gradient(135deg, var(--accent), var(--accent2));
+  display:flex; align-items:center; justify-content:center;
+  font-size:32px; margin:0 auto 18px;
+  border:3px solid rgba(255,255,255,0.1);
+}
+.ceo-name { text-align:center; font-size:19px; font-weight:900; margin-bottom:3px; }
+.ceo-name-en { text-align:center; font-size:11px; color:rgba(255,255,255,0.4); letter-spacing:2px; margin-bottom:12px; font-family:'Bebas Neue',sans-serif; }
+.ceo-title { text-align:center; font-size:11px; color:var(--accent); font-weight:700; letter-spacing:1px; padding-bottom:16px; border-bottom:1px solid rgba(255,255,255,0.08); margin-bottom:16px; }
+.ceo-message { font-size:12px; color:rgba(255,255,255,0.6); line-height:1.9; }
+
+/* セクション共通 */
+.section { padding:60px 40px; max-width:1100px; margin:0 auto; }
+.section-label { font-size:11px; font-weight:700; letter-spacing:3px; color:var(--accent); margin-bottom:10px; }
+.section-title { font-size:clamp(20px,2.5vw,28px); font-weight:900; margin-bottom:36px; }
+.divider { border:none; border-top:1px solid var(--border); margin:0 40px; }
+
+/* 会社概要テーブル */
+.info-table { width:100%; border-collapse:collapse; }
+.info-table tr { border-bottom:1px solid var(--border); }
+.info-table tr:first-child { border-top:1px solid var(--border); }
+.info-table th { padding:18px 20px; text-align:left; font-size:12px; font-weight:700; color:var(--muted); letter-spacing:1px; width:160px; vertical-align:top; background:var(--surface); }
+.info-table td { padding:18px 20px; font-size:14px; line-height:1.8; vertical-align:top; }
+
+/* 経歴タイムライン */
+.timeline { position:relative; padding-left:36px; }
+.timeline::before { content:''; position:absolute; left:7px; top:8px; bottom:8px; width:1px; background:linear-gradient(180deg, var(--accent), rgba(212,46,66,0.1)); }
+.tl-item { position:relative; margin-bottom:32px; }
+.tl-item:last-child { margin-bottom:0; }
+.tl-item::before { content:''; position:absolute; left:-32px; top:7px; width:10px; height:10px; border-radius:50%; background:var(--accent); border:2px solid var(--bg); box-shadow:0 0 0 3px rgba(212,46,66,0.15); }
+.tl-org { font-family:'Bebas Neue',sans-serif; font-size:12px; color:var(--accent); letter-spacing:2px; margin-bottom:4px; }
+.tl-title { font-size:15px; font-weight:900; margin-bottom:6px; }
+.tl-desc { font-size:13px; color:var(--muted); line-height:1.8; }
+
+/* 実績バッジ */
+.clients-grid { display:flex; flex-wrap:wrap; gap:10px; margin-top:24px; }
+.client-badge {
+  padding:7px 16px;
+  background:var(--surface);
+  border:1px solid var(--border);
+  border-radius:4px;
+  font-size:12px; font-weight:700; color:var(--ink);
+}
+
+/* スキルタグ（小さめ・光らない） */
+.skills-wrap { display:flex; flex-wrap:wrap; gap:8px; }
+.skill-tag {
+  padding:5px 12px;
+  background:var(--surface);
+  border:1px solid var(--border);
+  border-radius:3px;
+  font-size:11px; font-weight:700; color:var(--muted);
+}
+
+/* CTA */
+.cta-section { padding:80px 40px; text-align:center; background:var(--ink); }
+.cta-section h2 { font-size:clamp(22px,3vw,34px); font-weight:900; color:white; margin-bottom:14px; }
+.cta-section p { color:rgba(255,255,255,0.5); margin-bottom:32px; font-size:14px; }
+.cta-buttons { display:flex; gap:16px; justify-content:center; flex-wrap:wrap; }
+.btn-primary { padding:16px 40px; background:var(--accent); color:white; border-radius:3px; font-size:15px; font-weight:700; text-decoration:none; transition:opacity 0.2s; }
+.btn-primary:hover { opacity:0.85; }
+.btn-ghost { padding:16px 40px; background:transparent; color:white; border:1px solid rgba(255,255,255,0.2); border-radius:3px; font-size:15px; font-weight:700; text-decoration:none; transition:border-color 0.2s; }
+.btn-ghost:hover { border-color:white; }
+
+footer { padding:28px 40px; border-top:1px solid var(--border); text-align:center; color:var(--muted); font-size:12px; }
+footer a { color:inherit; }
+
+@keyframes fadeUp { from{opacity:0;transform:translateY(20px)} to{opacity:1;transform:none} }
+.fade-up { animation:fadeUp 0.5s ease both; }
+
+@media(max-width:768px){
+  nav { padding:16px 20px; }
+  .nav-links { display:none; }
+  .hero { grid-template-columns:1fr; padding:120px 20px 60px; gap:36px; }
+  .section { padding-left:20px; padding-right:20px; }
+  .divider { margin:0 20px; }
+  .info-table th { width:110px; font-size:11px; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="mainNav">
+  <a href="/" class="nav-logo">
+    <img src="https://aidealize.com/wp-content/uploads/2026/03/スクリーンショット-2026-03-13-130038.png" alt="AIidealize">
+    <span class="nav-logo-text"><span>AI</span>dealize</span>
+  </a>
+
+  <!-- PCナビ -->
+  <ul class="nav-links">
+    <li><a href="#pain">課題</a></li>
+    <li><a href="https://aidealize.com/service/">サービス</a></li>
+    <li><a href="#results">実績</a></li>
+    <li><a href="https://aidealize.com/company/">会社概要</a></li>
+    <li><a href="https://aidealize.com/lp/ai-lp1" class="nav-cta">無料診断を受ける</a></li>
+  </ul>
+
+  <!-- ハンバーガーボタン -->
+  <button class="nav-hamburger" id="navHamburger" aria-label="メニュー">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- ドロワー -->
+<div class="nav-drawer" id="navDrawer">
+  <ul>
+    <li><a href="#pain" class="drawer-link">課題</a></li>
+    <li><a href="https://aidealize.com/service/" class="drawer-link">サービス</a></li>
+    <li><a href="#results" class="drawer-link">実績</a></li>
+    <li><a href="https://aidealize.com/company/" class="drawer-link">会社概要</a></li>
+    <li><a href="https://aidealize.com/lp/ai-lp1">無料診断を受ける</a></li>
+  </ul>
+</div>
+
+<script>
+(function(){
+  const btn = document.getElementById('navHamburger');
+  const drawer = document.getElementById('navDrawer');
+  const nav = document.getElementById('mainNav');
+
+  // ハンバーガー開閉
+  btn.addEventListener('click', function(){
+    btn.classList.toggle('open');
+    drawer.classList.toggle('open');
+  });
+
+  // ドロワー内リンクを押したら閉じる
+  drawer.querySelectorAll('.drawer-link').forEach(function(link){
+    link.addEventListener('click', function(){
+      btn.classList.remove('open');
+      drawer.classList.remove('open');
+    });
+  });
+
+  // スクロールでnavに影
+  window.addEventListener('scroll', function(){
+    nav.classList.toggle('scrolled', window.scrollY > 10);
+  });
+})();
+</script>
+
+<!-- ヒーロー -->
+<div class="hero">
+  <div class="fade-up">
+    <div class="hero-label">COMPANY</div>
+    <h1>「一緒に実施する」が、<br><em>　　私たちの仕事です。</em></h1>
+    <p class="hero-lead">
+      提案書を渡して終わりではなく、現場で一緒に手を動かす。消防士として命を守る仕事をし、コンサル・事業構築を経てAIを使った業務改善の専門家として起業しました。<br><br>
+      「AIを入れたいが何から始めればいいかわからない」という中小企業の声に、正直に、現実的に、ハンズオンで応えます。
+    </p>
+  </div>
+  <div class="fade-up">
+    <div class="ceo-card">
+      <div class="ceo-photo">👤</div>
+      <div class="ceo-name">眞貴田 正博</div>
+      <div class="ceo-name-en">MASAHIRO MAKITA</div>
+      <div class="ceo-title">代表取締役</div>
+      <div class="ceo-message">
+        消防士・コンサル・ベンチャー事業構築を経てAIdealize株式会社を創業。Salesforce・Kintone・RPA・BIツールを自ら実装できる実践型コンサルタントとして中小企業の現場に入り続けています。
+      </div>
+    </div>
+  </div>
+</div>
+
+<hr class="divider">
+
+<!-- 会社概要 -->
+<div class="section">
+  <div class="section-label">COMPANY INFO</div>
+  <div class="section-title">会社概要</div>
+  <table class="info-table">
+    <tr>
+      <th>会社名</th>
+      <td>AIdealize株式会社</td>
+    </tr>
+    <tr>
+      <th>代表取締役</th>
+      <td>眞貴田 正博（Masahiro Makita）</td>
+    </tr>
+    <tr>
+      <th>設立</th>
+      <td>2020年</td>
+    </tr>
+    <tr>
+      <th>資本金</th>
+      <td>200万円</td>
+    </tr>
+    <tr>
+      <th>所在地</th>
+      <td>東京都中央区日本橋3-4-15</td>
+    </tr>
+    <tr>
+      <th>メール</th>
+      <td>
+        <!-- メール画像をここに設置 -->
+        <img src="/wp-content/uploads/email.png" alt="メールアドレス" style="height:20px; vertical-align:middle;">
+      </td>
+    </tr>
+    <tr>
+      <th>事業内容</th>
+      <td>
+        BPR（業務プロセス再設計）コンサルティング／AI実装・導入支援<br>
+        業務マニュアル自動生成（はなしてマニュアルAI）<br>
+        BCP策定支援／RAGチャットボット構築・運用支援<br>
+        防災コンサルティング／人材育成・研修プログラム設計
+      </td>
+    </tr>
+    <tr>
+      <th>対応ツール</th>
+      <td>Salesforce / Kintone / RPA / BIツール / Dify / Claude</td>
+    </tr>
+    <tr>
+      <th>対応エリア</th>
+      <td>全国対応（オンライン可）</td>
+    </tr>
+  </table>
+</div>
+
+<hr class="divider">
+
+<!-- 代表経歴 -->
+<div class="section">
+  <div class="section-label">CEO PROFILE</div>
+  <div class="section-title">代表 眞貴田正博について</div>
+
+  <div class="timeline">
+    <div class="tl-item fade-up">
+      <div class="tl-org">消防士</div>
+      <div class="tl-title">消防局に勤務</div>
+      <div class="tl-desc">命を守る現場で、現場活動、緊急時判断・チームワーク・マニュアル運用・消防法、金地区基準法を学ぶ。</div>
+    </div>
+    <div class="tl-item fade-up">
+      <div class="tl-org">コンサルタント</div>
+      <div class="tl-title">経費削減・業務改善コンサルティング</div>
+      <div class="tl-desc">中小企業の現場に入り込み、課題発見から施策実行まで一貫して担当。現場ヒアリングとBPRのノウハウを蓄積。</div>
+    </div>
+    <div class="tl-item fade-up">
+      <div class="tl-org">ベンチャー創業</div>
+      <div class="tl-title">自動車売買プラットフォーム企業構築</div>
+      <div class="tl-desc">年商10億円・従業員90名体制を牽引。0から事業を立ち上げ、組織運営・業務設計・IT導入を実践。架電データのAI分析で成約率を13%→41%に改善。</div>
+    </div>
+    <div class="tl-item fade-up">
+      <div class="tl-org">2020年〜現在</div>
+      <div class="tl-title">AIdealize株式会社 創業</div>
+      <div class="tl-desc">「BPR × AI実装 ハンズオン型」をコンセプトに創業。大手企業から中小企業まで幅広くプロジェクトを推進中。</div>
+    </div>
+  </div>
+
+
+<!-- 受賞実績 -->
+<div style="margin-top:40px; margin-bottom:40px;">
+  <div class="section-label" style="margin-bottom:14px">AWARD</div>
+  <a href="https://prtimes.jp/main/html/rd/p/000000010.000063513.html"
+     target="_blank"
+     style="
+       display:flex; align-items:center; gap:20px;
+       background:#fafaf8; border:1px solid #e5e5e0;
+       border-left:4px solid #d42e42;
+       border-radius:6px; padding:20px 24px;
+       text-decoration:none; color:inherit;
+       transition:box-shadow 0.2s;
+     "
+     onmouseover="this.style.boxShadow='0 4px 16px rgba(212,46,66,0.1)'"
+     onmouseout="this.style.boxShadow='none'"
+  >
+    <div style="font-size:32px; flex-shrink:0;">🏆</div>
+    <div>
+      <div style="font-size:11px; font-weight:700; letter-spacing:2px; color:#d42e42; margin-bottom:4px;">
+        2021年 受賞
+      </div>
+      <div style="font-size:15px; font-weight:900; margin-bottom:4px;">
+        未来2021 最終審査会 選出
+      </div>
+      <div style="font-size:12px; color:#777788; line-height:1.7;">
+        三井住友銀行 × みらいワークス共同運営｜日本最大級のアクセラレーションプログラム<br>
+        200チーム以上の応募から最終30チームに選出
+      </div>
+    </div>
+    <div style="margin-left:auto; font-size:12px; color:#d42e42; font-weight:700; flex-shrink:0;">
+      詳細 →
+    </div>
+  </a>
+</div>
+
+
+
+
+
+  <!-- 主な取引・プロジェクト実績 -->
+  <div style="margin-top:40px">
+    <div class="section-label" style="margin-bottom:14px">PROJECT EXPERIENCE</div>
+    <p style="font-size:13px; color:var(--muted); margin-bottom:16px">主なプロジェクト実績（一部）</p>
+    <div class="clients-grid">
+      <div class="client-badge">リクルート</div>
+      <div class="client-badge">VAIO</div>
+      <div class="client-badge">EXEO</div>
+      <div class="client-badge">富士フイルム</div>
+      <div class="client-badge">その他多数</div>
+    </div>
+  </div>
+
+  <!-- スキルタグ -->
+  <div style="margin-top:40px">
+    <div class="section-label" style="margin-bottom:14px">SKILLS & TOOLS</div>
+    <div class="skills-wrap">
+      <span class="skill-tag">業務フロー設計</span>
+      <span class="skill-tag">BPRコンサル</span>
+      <span class="skill-tag">新規事業開発</span>
+      <span class="skill-tag">BCP策定支援</span>
+      <span class="skill-tag">Salesforce</span>
+      <span class="skill-tag">Kintone</span>
+      <span class="skill-tag">RPA</span>
+      <span class="skill-tag">BIツール</span>
+      <span class="skill-tag">Claude</span>
+      <span class="skill-tag">Dify / RAG構築</span>
+      <span class="skill-tag">Google広告</span>
+      <span class="skill-tag">GA4 / GTM</span>
+      <span class="skill-tag">WordPress</span>
+    </div><br><br>
+
+      <div class="company-badges">
+        <a href="https://match.future-city.go.jp/pages/platform/a110" target="_blank"
+   style="display:inline-block; border:1px solid #e2ddd8; padding:6px 12px; border-radius:3px;">
+  <img src="https://aidealize.com/wp-content/uploads/2026/03/名称未設定のデザイン.png" style="height:150px; display:block;" alt="SDGs官民連携PF">
+</a></div>
+
+
+  </div>
+</div>
+
+<!-- CTA -->
+<div class="cta-section">
+  <h2>まず30分、話してみてください。</h2>
+  <p>どのサービスが合うかわからない場合も、無料診断でお気軽にご相談ください。</p>
+  <div class="cta-buttons">
+    <a class="btn-primary" href="https://aidealize.com/lp/ai-lp1/">無料診断を受ける</a>
+    <a class="btn-ghost" href="/service/">サービス一覧を見る</a>
+  </div>
+</div>
+
+<footer>
+  © 2026 AIdealize株式会社　|　<a href="https://aidealize.com">TOP</a>　|　<a href="/service/">サービス</a>　|　<a href="https://aidealize.com/lp/ai-lp1/">無料診断</a>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,1332 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>はなまるAI 訪問看護</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: system-ui, -apple-system, sans-serif;
+    background: #F5F5F5;
+    display: flex;
+    justify-content: center;
+    min-height: 100vh;
+  }
+
+  #app {
+    width: 100%;
+    max-width: 390px;
+    min-height: 100vh;
+    background: #F5F5F5;
+    position: relative;
+    overflow-x: hidden;
+  }
+
+  /* ヘッダー */
+  .header {
+    background: #06C755;
+    color: #fff;
+    padding: 14px 16px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+  }
+  .header-title {
+    font-size: 18px;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+  }
+  .header-sub {
+    font-size: 13px;
+    opacity: 0.9;
+    margin-top: 1px;
+  }
+  .back-btn {
+    background: rgba(255,255,255,0.2);
+    border: none;
+    color: #fff;
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    transition: background 0.15s;
+  }
+  .back-btn:hover { background: rgba(255,255,255,0.3); }
+
+  /* 画面 */
+  .screen { display: none; }
+  .screen.active { display: block; }
+
+  /* ========== 患者一覧 ========== */
+  .patient-list {
+    padding: 14px 14px 80px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .date-label {
+    font-size: 12px;
+    color: #888;
+    padding: 4px 0 2px;
+    font-weight: 500;
+  }
+
+  .patient-card {
+    background: #fff;
+    border-radius: 12px;
+    padding: 14px 16px;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+    cursor: pointer;
+    transition: transform 0.1s, box-shadow 0.1s;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    border: 2px solid transparent;
+  }
+  .patient-card:active { transform: scale(0.98); box-shadow: 0 1px 2px rgba(0,0,0,0.1); }
+  .patient-card:hover { border-color: #06C755; }
+
+  .card-top {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+  }
+  .patient-name {
+    font-size: 17px;
+    font-weight: 700;
+    color: #1a1a1a;
+  }
+  .patient-kana {
+    font-size: 11px;
+    color: #888;
+    margin-top: 1px;
+  }
+
+  .badge {
+    font-size: 11px;
+    font-weight: 600;
+    padding: 3px 8px;
+    border-radius: 20px;
+    white-space: nowrap;
+  }
+  .badge-warning { background: #FFF0E6; color: #FF6B00; }
+  .badge-done    { background: #E8F9EE; color: #00A040; }
+  .badge-info    { background: #FFF3CD; color: #856404; }
+
+  .card-meta {
+    display: flex;
+    gap: 14px;
+    font-size: 12px;
+    color: #666;
+  }
+  .card-meta span { display: flex; align-items: center; gap: 4px; }
+
+  .card-tags {
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+  }
+  .tag {
+    font-size: 11px;
+    background: #F0F0F0;
+    color: #555;
+    padding: 2px 8px;
+    border-radius: 20px;
+  }
+
+  .progress-bar {
+    height: 4px;
+    background: #eee;
+    border-radius: 4px;
+    overflow: hidden;
+  }
+  .progress-fill {
+    height: 100%;
+    border-radius: 4px;
+    background: #06C755;
+    transition: width 0.3s;
+  }
+
+  /* ========== SOAP選択画面 ========== */
+  .tab-bar {
+    display: flex;
+    background: #fff;
+    border-bottom: 2px solid #eee;
+    position: sticky;
+    top: 60px;
+    z-index: 90;
+  }
+  .tab-btn {
+    flex: 1;
+    padding: 12px 4px;
+    background: none;
+    border: none;
+    font-size: 13px;
+    font-weight: 600;
+    color: #888;
+    cursor: pointer;
+    border-bottom: 2px solid transparent;
+    margin-bottom: -2px;
+    transition: color 0.15s, border-color 0.15s;
+  }
+  .tab-btn.active {
+    color: #06C755;
+    border-bottom-color: #06C755;
+  }
+
+  .tab-content { display: none; padding: 14px 14px 100px; }
+  .tab-content.active { display: block; }
+
+  /* AI警告バー */
+  .ai-warning-bar {
+    background: #FFF0E6;
+    border: 1px solid #FFD0A8;
+    border-radius: 10px;
+    padding: 10px 12px;
+    margin-bottom: 12px;
+  }
+  .ai-warning-title {
+    font-size: 12px;
+    font-weight: 700;
+    color: #FF6B00;
+    margin-bottom: 6px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+  .ai-warning-items {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+  }
+  .ai-chip {
+    font-size: 11px;
+    padding: 3px 9px;
+    border-radius: 20px;
+    font-weight: 600;
+  }
+  .ai-chip-warn { background: #FF6B00; color: #fff; }
+  .ai-chip-ok   { background: #E8F9EE; color: #00A040; }
+
+  /* SOAPカード */
+  .soap-card {
+    background: #fff;
+    border-radius: 10px;
+    padding: 12px 14px;
+    margin-bottom: 8px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.07);
+    display: flex;
+    gap: 10px;
+    cursor: pointer;
+    border: 2px solid transparent;
+    transition: border-color 0.15s, background 0.15s;
+  }
+  .soap-card:hover { border-color: #06C755; }
+  .soap-card.checked { border-color: #06C755; background: #F0FDF6; }
+  .soap-card.other-staff { border-left: 4px solid #F0A500; }
+  .soap-card.other-staff.checked { background: #FFFBF0; border-color: #F0A500; }
+
+  .soap-checkbox {
+    width: 20px;
+    height: 20px;
+    border-radius: 6px;
+    border: 2px solid #ccc;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    margin-top: 1px;
+    transition: all 0.15s;
+    background: #fff;
+  }
+  .soap-card.checked .soap-checkbox {
+    background: #06C755;
+    border-color: #06C755;
+    color: #fff;
+  }
+  .soap-card.other-staff.checked .soap-checkbox {
+    background: #F0A500;
+    border-color: #F0A500;
+  }
+
+  .soap-body { flex: 1; min-width: 0; }
+  .soap-meta {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin-bottom: 4px;
+    flex-wrap: wrap;
+  }
+  .soap-date { font-size: 11px; color: #888; }
+  .soap-staff { font-size: 11px; font-weight: 600; color: #555; }
+  .soap-type-badge {
+    font-size: 10px;
+    padding: 1px 6px;
+    border-radius: 10px;
+    background: #E8F9EE;
+    color: #06C755;
+    font-weight: 600;
+  }
+  .soap-type-badge.amber { background: #FFF3CD; color: #856404; }
+  .soap-text {
+    font-size: 13px;
+    color: #333;
+    line-height: 1.5;
+    white-space: pre-wrap;
+  }
+  .soap-text-preview {
+    font-size: 12px;
+    color: #666;
+    line-height: 1.5;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+  }
+
+  /* テキストエリア */
+  .label-text {
+    font-size: 12px;
+    font-weight: 600;
+    color: #444;
+    margin-bottom: 5px;
+    display: block;
+  }
+  textarea {
+    width: 100%;
+    border: 1.5px solid #ddd;
+    border-radius: 8px;
+    padding: 10px 12px;
+    font-size: 13px;
+    font-family: system-ui, sans-serif;
+    line-height: 1.6;
+    resize: vertical;
+    outline: none;
+    transition: border-color 0.15s;
+    color: #333;
+  }
+  textarea:focus { border-color: #06C755; }
+
+  /* サマリーボックス */
+  .summary-box {
+    background: #E8F9EE;
+    border: 1.5px solid #06C755;
+    border-radius: 10px;
+    padding: 12px 14px;
+    margin-bottom: 12px;
+  }
+  .summary-title {
+    font-size: 12px;
+    font-weight: 700;
+    color: #00A040;
+    margin-bottom: 6px;
+  }
+  .summary-row {
+    display: flex;
+    justify-content: space-between;
+    font-size: 13px;
+    color: #333;
+    padding: 3px 0;
+    border-bottom: 1px dashed #C8EFD7;
+  }
+  .summary-row:last-child { border-bottom: none; }
+  .summary-val { font-weight: 600; color: #06C755; }
+
+  /* 生成ボタン */
+  .generate-btn {
+    position: fixed;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    max-width: 390px;
+    background: #06C755;
+    color: #fff;
+    border: none;
+    padding: 16px;
+    font-size: 16px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background 0.15s;
+    z-index: 200;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    letter-spacing: 0.03em;
+  }
+  .generate-btn:hover { background: #00B900; }
+  .generate-btn:active { background: #009900; }
+  .generate-btn.hidden { display: none; }
+
+  /* ========== 報告書プレビュー ========== */
+  .report-tab-bar {
+    display: flex;
+    background: #fff;
+    border-bottom: 2px solid #eee;
+    position: sticky;
+    top: 60px;
+    z-index: 90;
+  }
+  .report-tab-btn {
+    flex: 1;
+    padding: 13px;
+    background: none;
+    border: none;
+    font-size: 14px;
+    font-weight: 600;
+    color: #888;
+    cursor: pointer;
+    border-bottom: 3px solid transparent;
+    margin-bottom: -2px;
+    transition: all 0.15s;
+  }
+  .report-tab-btn.active { color: #06C755; border-bottom-color: #06C755; }
+
+  .report-content { display: none; padding: 14px 14px 120px; }
+  .report-content.active { display: block; }
+
+  .report-card {
+    background: #fff;
+    border-radius: 12px;
+    padding: 16px;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+    margin-bottom: 12px;
+  }
+  .report-section-title {
+    font-size: 13px;
+    font-weight: 700;
+    color: #06C755;
+    margin-bottom: 8px;
+    padding-bottom: 6px;
+    border-bottom: 1.5px solid #E8F9EE;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+  .report-text {
+    font-size: 13px;
+    color: #333;
+    line-height: 1.8;
+    white-space: pre-wrap;
+  }
+  .report-header-info {
+    background: #F8FFF8;
+    border: 1px solid #C8EFD7;
+    border-radius: 8px;
+    padding: 10px 12px;
+    margin-bottom: 12px;
+    font-size: 12px;
+    color: #555;
+    line-height: 1.8;
+  }
+
+  .action-bar {
+    position: fixed;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    max-width: 390px;
+    background: #fff;
+    border-top: 1px solid #eee;
+    padding: 12px 14px;
+    display: flex;
+    gap: 10px;
+    z-index: 200;
+  }
+  .action-btn {
+    flex: 1;
+    padding: 13px;
+    border-radius: 10px;
+    border: none;
+    font-size: 14px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: opacity 0.15s, transform 0.1s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+  }
+  .action-btn:active { transform: scale(0.97); }
+  .btn-copy { background: #06C755; color: #fff; }
+  .btn-copy:hover { background: #00B900; }
+  .btn-pdf  { background: #F0F0F0; color: #444; }
+  .btn-pdf:hover  { background: #E4E4E4; }
+
+  /* トースト */
+  .toast {
+    position: fixed;
+    bottom: 90px;
+    left: 50%;
+    transform: translateX(-50%) translateY(20px);
+    background: rgba(0,0,0,0.75);
+    color: #fff;
+    padding: 9px 18px;
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: 600;
+    opacity: 0;
+    transition: all 0.25s;
+    z-index: 999;
+    white-space: nowrap;
+  }
+  .toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+
+  /* セパレーター */
+  .section-sep {
+    font-size: 12px;
+    font-weight: 700;
+    color: #888;
+    padding: 8px 2px 5px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .section-sep::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: #ddd;
+  }
+
+  .paste-area-wrap { margin-top: 10px; }
+
+  .info-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 11px;
+    padding: 3px 9px;
+    border-radius: 20px;
+    background: #F0F0F0;
+    color: #555;
+    margin: 2px 3px 2px 0;
+    font-weight: 500;
+  }
+</style>
+</head>
+<body>
+<div id="app">
+
+  <!-- ========== 画面① 患者一覧 ========== -->
+  <div id="screen-patients" class="screen active">
+    <div class="header">
+      <div>
+        <div class="header-title">🌸 はなまるAI 訪問看護</div>
+        <div class="header-sub">本日の担当患者</div>
+      </div>
+    </div>
+    <div class="patient-list">
+      <div class="date-label">2026年4月12日（日）・4名担当</div>
+
+      <div class="patient-card" onclick="openPatient(0)">
+        <div class="card-top">
+          <div>
+            <div class="patient-name">田中 花子</div>
+            <div class="patient-kana">たなか はなこ・80歳・女性</div>
+          </div>
+          <span class="badge badge-warning">未報告あり</span>
+        </div>
+        <div class="card-meta">
+          <span>📅 今月 <strong>6回</strong>訪問</span>
+          <span>🕐 最終：4月10日</span>
+        </div>
+        <div class="card-tags">
+          <span class="tag">糖尿病</span>
+          <span class="tag">高血圧</span>
+          <span class="tag">要介護3</span>
+        </div>
+        <div class="progress-bar"><div class="progress-fill" style="width:60%"></div></div>
+      </div>
+
+      <div class="patient-card" onclick="openPatient(1)">
+        <div class="card-top">
+          <div>
+            <div class="patient-name">山田 次郎</div>
+            <div class="patient-kana">やまだ じろう・72歳・男性</div>
+          </div>
+          <span class="badge badge-done">報告書作成済</span>
+        </div>
+        <div class="card-meta">
+          <span>📅 今月 <strong>8回</strong>訪問</span>
+          <span>🕐 最終：4月11日</span>
+        </div>
+        <div class="card-tags">
+          <span class="tag">慢性心不全</span>
+          <span class="tag">脳梗塞後遺症</span>
+          <span class="tag">要介護4</span>
+        </div>
+        <div class="progress-bar"><div class="progress-fill" style="width:90%"></div></div>
+      </div>
+
+      <div class="patient-card" onclick="openPatient(2)">
+        <div class="card-top">
+          <div>
+            <div class="patient-name">鈴木 美代子</div>
+            <div class="patient-kana">すずき みよこ・68歳・女性</div>
+          </div>
+          <span class="badge badge-info">情報不足</span>
+        </div>
+        <div class="card-meta">
+          <span>📅 今月 <strong>4回</strong>訪問</span>
+          <span>🕐 最終：4月9日</span>
+        </div>
+        <div class="card-tags">
+          <span class="tag">COPD</span>
+          <span class="tag">骨粗鬆症</span>
+          <span class="tag">要介護2</span>
+        </div>
+        <div class="progress-bar"><div class="progress-fill" style="width:35%"></div></div>
+      </div>
+
+      <div class="patient-card" onclick="openPatient(3)">
+        <div class="card-top">
+          <div>
+            <div class="patient-name">佐藤 幸雄</div>
+            <div class="patient-kana">さとう ゆきお・85歳・男性</div>
+          </div>
+          <span class="badge badge-warning">未報告あり</span>
+        </div>
+        <div class="card-meta">
+          <span>📅 今月 <strong>5回</strong>訪問</span>
+          <span>🕐 最終：4月10日</span>
+        </div>
+        <div class="card-tags">
+          <span class="tag">パーキンソン病</span>
+          <span class="tag">認知症</span>
+          <span class="tag">要介護5</span>
+        </div>
+        <div class="progress-bar"><div class="progress-fill" style="width:50%"></div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========== 画面② SOAP選択 ========== -->
+  <div id="screen-soap" class="screen">
+    <div class="header">
+      <button class="back-btn" onclick="goBack('screen-patients')">←</button>
+      <div>
+        <div class="header-title" id="soap-header-name">患者名</div>
+        <div class="header-sub">SOAP・資料を選択</div>
+      </div>
+    </div>
+
+    <div class="tab-bar">
+      <button class="tab-btn active" onclick="switchTab(this,'tab-own')">自分のSOAP</button>
+      <button class="tab-btn" onclick="switchTab(this,'tab-other')">他スタッフ</button>
+      <button class="tab-btn" onclick="switchTab(this,'tab-docs')">指示書</button>
+    </div>
+
+    <!-- タブ1：自分のSOAP -->
+    <div id="tab-own" class="tab-content active">
+      <div class="ai-warning-bar" id="ai-warning">
+        <div class="ai-warning-title">⚠️ AIチェック：不足が疑われる観察項目</div>
+        <div class="ai-warning-items" id="ai-chips"></div>
+      </div>
+      <div id="own-soaps"></div>
+    </div>
+
+    <!-- タブ2：他スタッフ -->
+    <div id="tab-other" class="tab-content">
+      <div class="section-sep">他スタッフの記録</div>
+      <div id="other-soaps"></div>
+      <div class="paste-area-wrap">
+        <div class="section-sep">テキストで追加</div>
+        <label class="label-text">SOAPのコピペ入力</label>
+        <textarea id="paste-soap" rows="5" placeholder="他の記録システムからコピーして貼り付けてください..."></textarea>
+      </div>
+    </div>
+
+    <!-- タブ3：指示書 -->
+    <div id="tab-docs" class="tab-content">
+      <div class="summary-box" id="selection-summary">
+        <div class="summary-title">📋 現在の選択状況</div>
+        <div class="summary-row"><span>自分のSOAP</span><span class="summary-val" id="sum-own">0件</span></div>
+        <div class="summary-row"><span>他スタッフのSOAP</span><span class="summary-val" id="sum-other">0件</span></div>
+        <div class="summary-row"><span>医師指示書</span><span class="summary-val" id="sum-doc">なし</span></div>
+        <div class="summary-row"><span>ケアマネ計画書</span><span class="summary-val" id="sum-care">なし</span></div>
+      </div>
+      <label class="label-text">📄 医師指示書</label>
+      <textarea id="doc-ishi" rows="7" style="margin-bottom:14px"></textarea>
+      <label class="label-text">📋 ケアプラン（ケアマネ計画書）</label>
+      <textarea id="doc-care" rows="6" placeholder="ケアプランをここに貼り付けてください..."></textarea>
+    </div>
+
+    <button class="generate-btn" onclick="generateReport()">✨ 報告書を生成する</button>
+  </div>
+
+  <!-- ========== 画面③ 報告書プレビュー ========== -->
+  <div id="screen-report" class="screen">
+    <div class="header">
+      <button class="back-btn" onclick="goBack('screen-soap')">←</button>
+      <div>
+        <div class="header-title" id="report-header-name">報告書プレビュー</div>
+        <div class="header-sub">AIが生成しました</div>
+      </div>
+    </div>
+
+    <div class="report-tab-bar">
+      <button class="report-tab-btn active" onclick="switchReportTab(this,'report-ishi')">🏥 医師向け</button>
+      <button class="report-tab-btn" onclick="switchReportTab(this,'report-care')">📋 ケアマネ向け</button>
+    </div>
+
+    <!-- 医師向け -->
+    <div id="report-ishi" class="report-content active">
+      <div class="report-header-info" id="report-header-ishi"></div>
+
+      <div class="report-card">
+        <div class="report-section-title">🩺 病状・身体状況</div>
+        <div class="report-text" id="rpt-s1"></div>
+      </div>
+      <div class="report-card">
+        <div class="report-section-title">👁 観察所見（O：客観的情報）</div>
+        <div class="report-text" id="rpt-o1"></div>
+      </div>
+      <div class="report-card">
+        <div class="report-section-title">💬 アセスメント</div>
+        <div class="report-text" id="rpt-a1"></div>
+      </div>
+      <div class="report-card">
+        <div class="report-section-title">📌 今後の方針・依頼事項</div>
+        <div class="report-text" id="rpt-p1"></div>
+      </div>
+    </div>
+
+    <!-- ケアマネ向け -->
+    <div id="report-care" class="report-content">
+      <div class="report-header-info" id="report-header-care"></div>
+
+      <div class="report-card">
+        <div class="report-section-title">🏠 生活状況・ADL</div>
+        <div class="report-text" id="rpt-adl"></div>
+      </div>
+      <div class="report-card">
+        <div class="report-section-title">💊 医療処置・服薬管理</div>
+        <div class="report-text" id="rpt-med"></div>
+      </div>
+      <div class="report-card">
+        <div class="report-section-title">👪 家族・介護状況</div>
+        <div class="report-text" id="rpt-fam"></div>
+      </div>
+      <div class="report-card">
+        <div class="report-section-title">📝 サービス調整の提案</div>
+        <div class="report-text" id="rpt-srv"></div>
+      </div>
+    </div>
+
+    <div class="action-bar">
+      <button class="action-btn btn-copy" id="copy-btn" onclick="copyReport()">📋 コピー</button>
+      <button class="action-btn btn-pdf" onclick="fakePdf()">🖨 PDFで保存</button>
+    </div>
+  </div>
+
+  <div class="toast" id="toast"></div>
+</div>
+
+<script>
+// ========== ダミーデータ ==========
+const patients = [
+  {
+    name: '田中 花子',
+    kana: 'たなか はなこ',
+    age: 80,
+    gender: '女性',
+    diseases: ['糖尿病', '高血圧', '慢性腎臓病'],
+    careLevel: '要介護3',
+    ownSoaps: [
+      {
+        date: '4/10',
+        staff: '佐藤 看護師（自分）',
+        type: '定期訪問',
+        text: `【S】「足がむくんで靴が履けない。昨日から少し息苦しい気がする」\n【O】BP 158/96mmHg、HR 82bpm、SpO2 96%、体重52.3kg（前回比+1.2kg）。両下腿浮腫(+)、左>右。肺呼吸音：左下葉で軽度の湿性ラ音聴取。\n【A】血圧高値継続。浮腫増悪と体重増加、湿性ラ音より心不全の合併・悪化を疑う。\n【P】主治医へ報告。塩分・水分制限の再指導。次回訪問時に体重・浮腫を優先チェック。`,
+      },
+      {
+        date: '4/7',
+        staff: '佐藤 看護師（自分）',
+        type: '定期訪問',
+        text: `【S】「血糖が高かった。甘いものを少し食べてしまった」\n【O】BP 148/90mmHg、血糖値194mg/dL（食後2h）。インスリン自己注射：手技良好。フットケア：右第2趾に発赤なし。\n【A】食事療法のアドヒアランス低下。フットケアは問題なし。\n【P】食事記録表の活用を再提案。糖尿病療養指導を継続。`,
+      },
+      {
+        date: '4/3',
+        staff: '佐藤 看護師（自分）',
+        type: '定期訪問',
+        text: `【S】「最近眠れなくて夜中に何度も目が覚める。不安で仕方ない」\n【O】BP 152/94mmHg、SpO2 97%。表情やや不安定。睡眠日誌：平均4〜5時間/日。\n【A】不眠と不安感の増強。精神的サポートが必要。\n【P】傾聴継続。必要時は主治医へ睡眠薬の相談を検討。`,
+      },
+      {
+        date: '3/28',
+        staff: '佐藤 看護師（自分）',
+        type: '緊急訪問',
+        text: `【S】「転んで腰が痛い」とヘルパーより連絡。\n【O】自宅廊下にて転倒。腰部に圧痛あり。体動時に疼痛増強。XR未撮影。下肢麻痺・排泄障害なし。\n【A】腰椎圧迫骨折の可能性を否定できない。\n【P】整形外科受診を手配。移動介助方法をヘルパーへ指導。`,
+      },
+      {
+        date: '3/24',
+        staff: '佐藤 看護師（自分）',
+        type: '定期訪問',
+        text: `【S】「体の調子は普通。でも一人でいると寂しい」\n【O】BP 144/88mmHg、血糖155mg/dL（空腹時）。全身状態安定。冷蔵庫の食品：偏り少なく良好。\n【A】バイタル比較的安定。社会的孤立感の訴えあり。\n【P】デイサービス利用再開の意向を確認。ケアマネへ連絡予定。`,
+      },
+    ],
+    aiWarnings: [
+      { label: '精神・心理面', ok: false },
+      { label: '社会的孤立', ok: false },
+      { label: '病状管理', ok: true },
+      { label: '介護負担', ok: true },
+    ],
+    otherSoaps: [
+      {
+        date: '4/9',
+        staff: '中村 看護師',
+        type: '夜間対応',
+        text: `【S】「夜中に血圧が上がった気がして眠れなかった」\n【O】BP 168/102mmHg（深夜2時）。指示通り降圧薬追加投与。30分後BP 148/90に低下。\n【A】夜間高血圧エピソードあり。降圧薬の効果は確認できた。\n【P】翌朝の訪問担当者へ申し送り。主治医報告要検討。`,
+      },
+      {
+        date: '4/6',
+        staff: '中村 看護師',
+        type: '定期訪問',
+        text: `【S】「昼間はそれほど辛くない。食欲は普通」\n【O】BP 150/92mmHg、体重51.1kg。浮腫(-）。昼食摂取良好。\n【A】日中は比較的安定。前回より浮腫改善。\n【P】水分・塩分管理継続指導。`,
+      },
+      {
+        date: '3/30',
+        staff: '田村 看護師',
+        type: '定期訪問',
+        text: `【S】「娘が来てくれて少し楽しかった」\n【O】表情明るい。BP 142/86mmHg。服薬確認：一包化で管理良好。\n【A】家族面会により精神的に安定。バイタル安定。\n【P】家族連携継続。服薬管理現状維持。`,
+      },
+    ],
+    docIshi: `処方箋指示書
+【患者】田中 花子　80歳　女性
+【主治医】内科 山本 太郎 医師
+【診断名】2型糖尿病、本態性高血圧、慢性腎臓病（G3a期）
+
+【看護指示】
+1. バイタルサイン測定（毎回）
+2. 血糖測定・インスリン自己注射の手技確認（週2回以上）
+3. 浮腫・体重測定（毎回）　※体重増加1kg/日以上で即報告
+4. フットケア（毎回）
+5. 服薬管理・残薬確認
+6. 塩分6g/日・水分1.5L/日制限の指導継続
+7. 転倒予防指導
+
+【緊急連絡基準】
+・BP ≥180/110 または ≤90/60
+・体重増加 ≥1kg/日
+・SpO2 ≤93%
+・意識障害・強い胸痛`,
+  },
+
+  {
+    name: '山田 次郎',
+    kana: 'やまだ じろう',
+    age: 72,
+    gender: '男性',
+    diseases: ['慢性心不全', '脳梗塞後遺症', '高血圧'],
+    careLevel: '要介護4',
+    ownSoaps: [
+      {
+        date: '4/11',
+        staff: '佐藤 看護師（自分）',
+        type: '定期訪問',
+        text: `【S】「今日は少し楽。でも歩くとすぐ息が切れる」\n【O】BP 136/82mmHg、HR 78bpm、SpO2 95%、体重61.2kg（前回比+0.3kg）。下腿浮腫(±)。嚥下機能：とろみ食で問題なし。\n【A】心不全は比較的安定。嚥下障害の管理継続中。\n【P】水分管理継続。嚥下訓練指導。`,
+      },
+      {
+        date: '4/8',
+        staff: '佐藤 看護師（自分）',
+        type: '定期訪問',
+        text: `【S】「左手が思うように動かない。リハビリ頑張ってる」\n【O】左上肢筋力3/5。ADL：食事・整容に一部介助要。右利き維持。\n【A】脳梗塞後遺症による左片麻痺。機能改善の意欲あり。\n【P】PT連携継続。自主訓練メニュー再確認。`,
+      },
+      {
+        date: '4/5',
+        staff: '佐藤 看護師（自分）',
+        type: '定期訪問',
+        text: `【S】「夜中にトイレが近くて転びそうになった」\n【O】夜間頻尿3〜4回。廊下の照明不十分。歩行：杖使用、ふらつきあり。\n【A】夜間転倒リスク高。環境整備が必要。\n【P】ケアマネへ環境整備の提案。手すり追加を家族へ説明。`,
+      },
+      {
+        date: '4/2',
+        staff: '佐藤 看護師（自分）',
+        type: '定期訪問',
+        text: `【S】「最近気分が落ち込む。回復しても以前みたいには戻れない気がして」\n【O】表情暗い。食欲やや低下（7割程度）。睡眠：入眠困難あり。\n【A】脳梗塞後のうつ状態の可能性。精神面のフォローが必要。\n【P】主治医へ精神科受診の相談提案。傾聴継続。`,
+      },
+      {
+        date: '3/29',
+        staff: '佐藤 看護師（自分）',
+        type: '定期訪問',
+        text: `【S】「妻が疲れているようだ。自分のせいで申し訳ない」\n【O】妻（67歳）：介護疲労の表情あり。表情硬い。患者のADL改善傾向なし。\n【A】介護者の負担感増大。レスパイトケアの検討が必要。\n【P】ケアマネへ介護者支援サービス追加を相談。`,
+      },
+    ],
+    aiWarnings: [
+      { label: '精神・心理面', ok: false },
+      { label: '介護者負担', ok: false },
+      { label: '病状管理', ok: true },
+      { label: '転倒リスク', ok: true },
+    ],
+    otherSoaps: [
+      {
+        date: '4/10',
+        staff: '木村 看護師',
+        type: '定期訪問',
+        text: `【S】「今日はリハビリができた。少し楽しかった」\n【O】BP 140/84mmHg。リハビリ20分実施。上肢ROM改善傾向。\n【A】リハビリ意欲あり。機能回復に期待。\n【P】リハビリ継続。PTへフィードバック。`,
+      },
+      {
+        date: '4/4',
+        staff: '田村 看護師',
+        type: '定期訪問',
+        text: `【S】「薬の種類が多くて混乱する」\n【O】服薬確認：一包化済み。残薬確認で2日分の飲み忘れあり。\n【A】服薬管理の支援が必要。\n【P】一包化の確認徹底。妻への服薬管理指導。`,
+      },
+    ],
+    docIshi: `処方箋指示書
+【患者】山田 次郎　72歳　男性
+【主治医】循環器内科 鈴木 一朗 医師
+【診断名】慢性心不全（NYHA Ⅱ度）、脳梗塞後遺症（左片麻痺）、高血圧
+
+【看護指示】
+1. バイタルサイン・SpO2・体重測定（毎回）
+2. 浮腫の程度確認（毎回）
+3. 嚥下機能評価・食事形態の確認
+4. 服薬管理（心不全薬・抗血小板薬の確認）
+5. 転倒予防：歩行時の安全確認
+6. 片麻痺に対するリハビリ支援・自主訓練指導
+
+【緊急連絡基準】
+・SpO2 ≤92%、急な息苦しさ
+・体重増加 ≥2kg/3日
+・新たな神経症状（言語障害、意識障害）`,
+  },
+
+  {
+    name: '鈴木 美代子',
+    kana: 'すずき みよこ',
+    age: 68,
+    gender: '女性',
+    diseases: ['COPD', '骨粗鬆症', '軽度認知症'],
+    careLevel: '要介護2',
+    ownSoaps: [
+      {
+        date: '4/9',
+        staff: '佐藤 看護師（自分）',
+        type: '定期訪問',
+        text: `【S】「最近息苦しくて、階段がつらい。吸入器を使うのを忘れることがある」\n【O】SpO2 93%（安静時）、HR 90bpm、呼吸数20回/分。呼吸音：全肺野に呼気延長。吸入手技：一部誤りあり。\n【A】COPD急性増悪の前兆の可能性。吸入手技の再指導が必要。\n【P】主治医へ報告。吸入手技の再指導実施。`,
+      },
+      {
+        date: '4/5',
+        staff: '佐藤 看護師（自分）',
+        type: '定期訪問',
+        text: `【S】「今日は覚えが悪くて、何をしようとしてたか忘れてしまう」\n【O】MMSE的評価：日付不明確。冷蔵庫内に期限切れ食品3点。服薬：自己管理困難な様子。\n【A】認知機能低下による日常生活への影響が顕著化。\n【P】服薬管理の見直し。ケアマネへ認知症対応サービス追加を提案。`,
+      },
+      {
+        date: '4/1',
+        staff: '佐藤 看護師（自分）',
+        type: '定期訪問',
+        text: `【S】「腰が痛くて曲がりにくい。先週また転びそうになった」\n【O】腰背部圧痛(+)。歩行：前傾姿勢。骨密度低下既往。転倒歴：今月1回。\n【A】骨粗鬆症による骨折リスク高。転倒予防の強化が必要。\n【P】骨粗鬆症薬の服薬確認。手すり設置のケアマネ相談。`,
+      },
+    ],
+    aiWarnings: [
+      { label: '社会的支援', ok: false },
+      { label: '認知症対応', ok: false },
+      { label: '呼吸管理', ok: true },
+      { label: '転倒リスク', ok: false },
+    ],
+    otherSoaps: [
+      {
+        date: '4/8',
+        staff: '中村 看護師',
+        type: '定期訪問',
+        text: `【S】「友達が遊びに来てくれてうれしかった」\n【O】表情明るい。SpO2 94%。食事：ほぼ全量摂取。\n【A】社会的交流があり精神的に安定。身体状態やや改善。\n【P】社会参加の機会確保を継続検討。`,
+      },
+    ],
+    docIshi: `処方箋指示書
+【患者】鈴木 美代子　68歳　女性
+【主治医】呼吸器内科 高橋 医師
+【診断名】COPD（中等症）、骨粗鬆症、軽度認知症
+
+【看護指示】
+1. SpO2・呼吸数・呼吸音の聴診（毎回）
+2. 吸入薬（LABA/LAMA）の手技確認・指導
+3. 服薬管理の支援
+4. 認知機能の観察・日常生活能力の評価
+5. 転倒予防・骨折リスクの評価
+
+【緊急連絡基準】
+・SpO2 ≤90%
+・急激な呼吸困難・チアノーゼ
+・意識変容`,
+  },
+
+  {
+    name: '佐藤 幸雄',
+    kana: 'さとう ゆきお',
+    age: 85,
+    gender: '男性',
+    diseases: ['パーキンソン病', '認知症（中等度）', '嚥下障害'],
+    careLevel: '要介護5',
+    ownSoaps: [
+      {
+        date: '4/10',
+        staff: '佐藤 看護師（自分）',
+        type: '定期訪問',
+        text: `【S】（発話困難。家族より）「最近むせが多くなった。食事に時間がかかる」\n【O】嚥下時のむせ頻回（食事中3回）。ゼリー食で試行：改善あり。体重58.4kg（前回比-0.8kg）。\n【A】嚥下機能低下進行。誤嚥性肺炎のリスク高。\n【P】食形態の見直しをST・主治医へ相談。食事介助方法を家族指導。`,
+      },
+      {
+        date: '4/7',
+        staff: '佐藤 看護師（自分）',
+        type: '定期訪問',
+        text: `【S】（家族より）「夜中に叫んでいることがある。眠れていないようだ」\n【O】レム睡眠行動障害の疑い。夜間の転倒リスク。ベッド柵：設置済み。\n【A】パーキンソン病に伴う睡眠障害。家族への精神的負担も大きい。\n【P】神経内科への報告。家族への睡眠対策指導。`,
+      },
+      {
+        date: '4/3',
+        staff: '佐藤 看護師（自分）',
+        type: '定期訪問',
+        text: `【S】（家族より）「薬を飲むのを嫌がる日がある」\n【O】L-ドパ：本日朝は拒否あり。OFF症状（振戦増強、動作緩慢）あり。\n【A】服薬拒否によるOFF症状悪化。服薬管理の工夫が必要。\n【P】服薬補助ゼリーの導入検討。主治医へ剤形変更相談。`,
+      },
+      {
+        date: '3/31',
+        staff: '佐藤 看護師（自分）',
+        type: '緊急訪問',
+        text: `【S】（家族より）「朝から動けなくて困っている」\n【O】OFF状態（重度）。BP 110/70mmHg、体温36.8℃。昨晩の服薬確認：飲み忘れあり。\n【A】服薬中断によるOFF症状の急激悪化。\n【P】L-ドパ追加投与後30分で改善。服薬管理の見直し。`,
+      },
+      {
+        date: '3/27',
+        staff: '佐藤 看護師（自分）',
+        type: '定期訪問',
+        text: `【S】（家族より）「息子が遠方で、妻一人での介護に限界を感じている」\n【O】妻（80歳）：介護疲労の表情。夜間対応を一人で担っている。\n【A】主介護者（高齢妻）への過大な負担。ショートステイ等のレスパイトが急務。\n【P】ケアマネへ緊急連絡。ショートステイの手配を依頼。`,
+      },
+    ],
+    aiWarnings: [
+      { label: '誤嚥・肺炎リスク', ok: false },
+      { label: '介護者支援', ok: false },
+      { label: '服薬管理', ok: true },
+      { label: '精神・行動症状', ok: false },
+    ],
+    otherSoaps: [
+      {
+        date: '4/9',
+        staff: '木村 看護師',
+        type: '定期訪問',
+        text: `【S】（家族より）「今日は少し元気そうだった」\n【O】BP 124/76mmHg。ON状態で歩行可能（歩行器使用）。食事摂取量：7割。\n【A】比較的ON時間が確保できている。\n【P】現状維持。服薬タイミング記録継続。`,
+      },
+      {
+        date: '4/5',
+        staff: '田村 看護師',
+        type: '定期訪問',
+        text: `【S】（家族より）「入浴介助が大変になってきた」\n【O】入浴：全介助。皮膚状態：骨突出部に発赤(±)。\n【A】褥瘡リスク出現。入浴介助負担の増大。\n【P】体位変換指導。介護用品の追加をケアマネへ提案。`,
+      },
+      {
+        date: '4/1',
+        staff: '中村 看護師',
+        type: '定期訪問',
+        text: `【S】（本人）「うん…（うなずく）」\n【O】意思疎通：簡単な返答のみ可。表情：穏やか。口腔ケア実施：歯垢多め。\n【A】認知症の進行により言語コミュニケーション困難化。口腔衛生要注意。\n【P】口腔ケア手技を家族指導。歯科訪問診療の依頼検討。`,
+      },
+    ],
+    docIshi: `処方箋指示書
+【患者】佐藤 幸雄　85歳　男性
+【主治医】神経内科 渡辺 医師
+【診断名】パーキンソン病（Hoehn-Yahr IV）、アルツハイマー型認知症（中等度）、嚥下障害
+
+【看護指示】
+1. バイタルサイン測定（毎回）
+2. 服薬確認（L-ドパ：1日3回、ON/OFFの観察記録）
+3. 嚥下機能の評価・食形態確認（誤嚥予防）
+4. 褥瘡予防：皮膚観察・体位変換指導
+5. 転倒予防・夜間安全確認
+6. 認知症の行動・心理症状（BPSD）の観察
+
+【緊急連絡基準】
+・OFF状態が2時間以上改善しない
+・発熱38℃以上・呼吸数増加（誤嚥性肺炎疑い）
+・転倒・骨折`,
+  },
+];
+
+// ========== 状態管理 ==========
+let currentPatientIdx = 0;
+let checkedOwn = new Set();
+let checkedOther = new Set();
+
+function openPatient(idx) {
+  currentPatientIdx = idx;
+  checkedOwn.clear();
+  checkedOther.clear();
+  const p = patients[idx];
+
+  // ヘッダー
+  document.getElementById('soap-header-name').textContent = p.name;
+
+  // AI警告
+  const chips = document.getElementById('ai-chips');
+  chips.innerHTML = '';
+  p.aiWarnings.forEach(w => {
+    const c = document.createElement('span');
+    c.className = 'ai-chip ' + (w.ok ? 'ai-chip-ok' : 'ai-chip-warn');
+    c.textContent = (w.ok ? '✓ ' : '! ') + w.label;
+    chips.appendChild(c);
+  });
+
+  // 自分のSOAP
+  const ownDiv = document.getElementById('own-soaps');
+  ownDiv.innerHTML = '';
+  p.ownSoaps.forEach((s, i) => {
+    ownDiv.appendChild(makeSoapCard(s, i, false));
+  });
+
+  // 他スタッフ
+  const otherDiv = document.getElementById('other-soaps');
+  otherDiv.innerHTML = '';
+  p.otherSoaps.forEach((s, i) => {
+    otherDiv.appendChild(makeSoapCard(s, i, true));
+  });
+
+  // 指示書
+  document.getElementById('doc-ishi').value = p.docIshi;
+  document.getElementById('doc-care').value = '';
+
+  updateSummary();
+
+  // タブをリセット
+  document.querySelectorAll('.tab-btn').forEach((b, i) => b.classList.toggle('active', i === 0));
+  document.querySelectorAll('.tab-content').forEach((c, i) => c.classList.toggle('active', i === 0));
+
+  showScreen('screen-soap');
+}
+
+function makeSoapCard(soap, idx, isOther) {
+  const card = document.createElement('div');
+  card.className = 'soap-card' + (isOther ? ' other-staff' : '');
+  card.dataset.idx = idx;
+  card.dataset.type = isOther ? 'other' : 'own';
+
+  const chk = document.createElement('div');
+  chk.className = 'soap-checkbox';
+  chk.innerHTML = '✓';
+
+  const body = document.createElement('div');
+  body.className = 'soap-body';
+
+  const meta = document.createElement('div');
+  meta.className = 'soap-meta';
+  meta.innerHTML = `<span class="soap-date">${soap.date}</span><span class="soap-staff">${soap.staff}</span><span class="soap-type-badge ${isOther ? 'amber' : ''}">${soap.type}</span>`;
+
+  const txt = document.createElement('div');
+  txt.className = 'soap-text-preview';
+  txt.textContent = soap.text;
+
+  body.appendChild(meta);
+  body.appendChild(txt);
+  card.appendChild(chk);
+  card.appendChild(body);
+
+  card.addEventListener('click', () => toggleSoap(card, idx, isOther));
+  return card;
+}
+
+function toggleSoap(card, idx, isOther) {
+  const set = isOther ? checkedOther : checkedOwn;
+  if (set.has(idx)) {
+    set.delete(idx);
+    card.classList.remove('checked');
+  } else {
+    set.add(idx);
+    card.classList.add('checked');
+  }
+  updateSummary();
+}
+
+function updateSummary() {
+  const p = patients[currentPatientIdx];
+  document.getElementById('sum-own').textContent = checkedOwn.size + '件';
+  document.getElementById('sum-other').textContent = checkedOther.size + '件';
+  const docVal = document.getElementById('doc-ishi').value.trim();
+  const careVal = document.getElementById('doc-care').value.trim();
+  document.getElementById('sum-doc').textContent = docVal ? 'あり' : 'なし';
+  document.getElementById('sum-care').textContent = careVal ? 'あり' : 'なし';
+}
+
+document.getElementById('doc-ishi').addEventListener('input', updateSummary);
+document.getElementById('doc-care').addEventListener('input', updateSummary);
+
+function switchTab(btn, tabId) {
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+  btn.classList.add('active');
+  document.getElementById(tabId).classList.add('active');
+  updateSummary();
+}
+
+// ========== 報告書生成 ==========
+function generateReport() {
+  const p = patients[currentPatientIdx];
+  const today = '2026年4月12日';
+
+  // 選択SOAPの収集
+  const selectedOwn = [...checkedOwn].map(i => p.ownSoaps[i]);
+  const selectedOther = [...checkedOther].map(i => p.otherSoaps[i]);
+  const pasteText = document.getElementById('paste-soap').value.trim();
+
+  // 医師向け報告書（ダミー生成）
+  const doctorReports = generateDoctorReport(p, selectedOwn, selectedOther, pasteText);
+  const careReports = generateCareReport(p, selectedOwn, selectedOther);
+
+  document.getElementById('report-header-name').textContent = p.name + ' 様 報告書';
+
+  document.getElementById('report-header-ishi').innerHTML =
+    `<strong>訪問看護報告書（医師向け）</strong><br>` +
+    `患者：${p.name}（${p.kana}）　${p.age}歳・${p.gender}<br>` +
+    `診断：${p.diseases.join('、')}<br>` +
+    `報告日：${today}　作成：佐藤 看護師<br>` +
+    `参照記録：自分${checkedOwn.size}件・他スタッフ${checkedOther.size}件`;
+
+  document.getElementById('report-header-care').innerHTML =
+    `<strong>訪問看護報告書（ケアマネジャー向け）</strong><br>` +
+    `患者：${p.name}（${p.kana}）　${p.age}歳・${p.gender}<br>` +
+    `介護度：${p.careLevel}<br>` +
+    `報告日：${today}　作成：佐藤 看護師`;
+
+  document.getElementById('rpt-s1').textContent = doctorReports.subjective;
+  document.getElementById('rpt-o1').textContent = doctorReports.objective;
+  document.getElementById('rpt-a1').textContent = doctorReports.assessment;
+  document.getElementById('rpt-p1').textContent = doctorReports.plan;
+
+  document.getElementById('rpt-adl').textContent = careReports.adl;
+  document.getElementById('rpt-med').textContent = careReports.med;
+  document.getElementById('rpt-fam').textContent = careReports.family;
+  document.getElementById('rpt-srv').textContent = careReports.service;
+
+  // タブリセット
+  document.querySelectorAll('.report-tab-btn').forEach((b, i) => b.classList.toggle('active', i === 0));
+  document.querySelectorAll('.report-content').forEach((c, i) => c.classList.toggle('active', i === 0));
+
+  showScreen('screen-report');
+}
+
+function generateDoctorReport(p, own, other, paste) {
+  const reports = {
+    0: { // 田中花子
+      subjective: `「足がむくんで靴が履けない。昨日から息苦しさがある」「血糖が高かった。甘いものを少し食べてしまった」との訴えあり。また「最近眠れなくて夜中に何度も目が覚める。不安で仕方ない」と精神的な不安感も継続して聴かれています。`,
+      objective: `【最新バイタル（4/10）】BP 158/96mmHg、HR 82bpm、SpO2 96%、体重52.3kg（前回比+1.2kg）\n【呼吸】左下葉に軽度湿性ラ音聴取\n【浮腫】両下腿浮腫(+)、左>右\n【血糖（4/7）】食後2時間値 194mg/dL\n【夜間（4/9）中村Ns】深夜にBP 168/102mmHg。指示薬投与後148/90に低下\n【精神】不眠継続（平均4〜5時間/日）、不安感増強\n【その他】3/28に自宅廊下にて転倒歴あり。腰部圧痛にて整形外科受診済み。`,
+      assessment: `今期の最大懸念は、体重増加・浮腫増悪・湿性ラ音の出現から、慢性心不全の急性増悪初期段階が疑われます。血圧コントロールも不良であり、特に夜間高血圧のエピソードは注目すべき所見です。\n血糖管理においては自己注射手技は維持されているものの、食事療法のアドヒアランスに課題があります。\n精神面では慢性的な不眠と不安感の増強が見られ、社会的孤立感との関連も示唆されます。転倒リスクも依然高い状態です。`,
+      plan: `【至急対応依頼】\n・浮腫増悪・体重増加・湿性ラ音について、心不全増悪の可能性につきご確認ください。利尿薬の用量調整をご検討いただけますでしょうか。\n\n【継続事項】\n・血圧管理：降圧薬の効果評価継続\n・血糖管理：食事指導継続・次回HbA1cの確認\n\n【新規相談】\n・不眠・不安感の増強について、精神科受診または睡眠薬処方のご検討をお願いできますでしょうか。\n\n次回訪問予定：4月14日（火）`,
+    },
+    1: { // 山田次郎
+      subjective: `「歩くとすぐ息が切れる」「左手が思うように動かない」「夜中にトイレが近くて転びそうになった」との訴えあり。また「最近気分が落ち込む。回復しても以前みたいには戻れない気がして」と抑うつ的な発言も聴かれています。`,
+      objective: `【最新バイタル（4/11）】BP 136/82mmHg、HR 78bpm、SpO2 95%、体重61.2kg（前回比+0.3kg）\n【浮腫】下腿浮腫(±)\n【嚥下】とろみ食にて問題なし\n【左上肢】筋力3/5。食事・整容に一部介助要\n【夜間頻尿】3〜4回/夜\n【服薬（4/4 田村Ns）】一包化使用も飲み忘れ2日分確認\n【精神（4/2）】表情暗い、食欲7割、入眠困難あり`,
+      assessment: `慢性心不全は比較的安定した状態を維持していますが、SpO2 95%と低めであり、引き続き厳重な体重・浮腫管理が必要です。脳梗塞後遺症については左片麻痺が残存しており、夜間頻尿を伴う転倒リスクが高い状態です。\n特に懸念されるのは、脳卒中後うつ（Post-stroke Depression）を示唆する症状が出現していることです。本人のリハビリ意欲の低下につながる可能性があり、早期介入が重要です。また、高齢の妻が単独で介護を担っており、介護者の疲弊が深刻な状態です。`,
+      plan: `【相談事項】\n・抑うつ症状について精神科または神経内科での評価をご検討ください。\n・夜間頻尿に対する薬剤調整の可否をご確認ください。\n\n【継続事項】\n・心不全管理：体重・浮腫・SpO2の厳重観察継続\n・リハビリ連携：PT・OTとの情報共有継続\n・服薬支援：一包化管理の徹底\n\n次回訪問予定：4月13日（月）`,
+    },
+    2: { // 鈴木美代子
+      subjective: `「最近息苦しくて、階段がつらい。吸入器を使うのを忘れることがある」「腰が痛くて曲がりにくい。先週また転びそうになった」との訴えあり。「今日は覚えが悪くて、何をしようとしてたか忘れてしまう」と認知機能の低下を自覚した発言も見られます。`,
+      objective: `【最新バイタル（4/9）】SpO2 93%（安静時）、HR 90bpm、呼吸数20回/分\n【呼吸音】全肺野に呼気延長\n【吸入手技（4/9）】一部誤り確認（デバイスの吸入角度、息止め不足）\n【認知機能（4/5）】日付不明確。冷蔵庫内に期限切れ食品3点。服薬の自己管理困難\n【転倒（4/1）】今月転倒1回。腰背部圧痛あり。前傾歩行姿勢\n【他スタッフ（4/8 中村Ns）】SpO2 94%。食事ほぼ全量摂取。`,
+      assessment: `COPD急性増悪の前駆段階が疑われます。安静時SpO2 93%は低値であり、吸入手技の誤りによる薬剤効果の不十分が一因である可能性があります。\n認知機能低下により服薬管理・食品管理・日常生活動作の全般に支障が出始めており、転倒リスクも高まっています。社会的サポートの強化が急務と判断します。`,
+      plan: `【至急相談】\n・SpO2低値継続（93%）について、吸入薬の強化または短時間作用型気管支拡張薬（SABA）のレスキュー処方をご検討ください。\n\n【相談事項】\n・認知機能低下の精査（専門医受診の可否）\n・骨粗鬆症治療薬の服薬状況確認・見直し\n\n次回訪問予定：4月14日（火）`,
+    },
+    3: { // 佐藤幸雄
+      subjective: `（家族より）「最近むせが多くなった。食事に時間がかかる」「夜中に叫んでいることがある」「薬を飲むのを嫌がる日がある」との情報提供あり。3/31の緊急訪問時はOFF状態重篤で、服薬中断が原因と判明しました。`,
+      objective: `【最新バイタル（4/10）】体重58.4kg（前回比-0.8kg）\n【嚥下（4/10）】食事中むせ3回。ゼリー食試行で改善確認\n【服薬（4/3）】L-ドパ朝分拒否。OFF症状（振戦増強・動作緩慢）あり\n【睡眠（4/7）】レム睡眠行動障害疑い（夜間叫声）\n【皮膚（4/5 田村Ns）】骨突出部に発赤(±)。全介助での入浴\n【口腔（4/1 中村Ns）】歯垢多め。言語的コミュニケーション困難化\n【介護者】妻（80歳）が単独で夜間対応担当。疲弊顕著。`,
+      assessment: `嚥下機能低下の進行が最重要課題です。体重減少（-0.8kg）と食事中のむせ増加から、誤嚥性肺炎発症リスクが切迫しています。STによる評価と食形態の見直しが急務です。\nパーキンソン病のON/OFF管理については、服薬拒否への対策（剤形変更・補助ゼリー）が課題です。レム睡眠行動障害の管理も必要です。\n高齢妻（80歳）による単独介護は限界に達しており、レスパイトケアの緊急手配が社会的に必要な状況です。`,
+      plan: `【緊急対応依頼】\n・嚥下機能評価のためSTへの訪問依頼をご指示ください。\n・誤嚥性肺炎予防として食形態変更（ゼリー食への移行）の処方指示をお願いします。\n\n【至急相談】\n・L-ドパの剤形変更（液剤・貼付剤）の検討\n・レム睡眠行動障害への薬剤対応\n\n次回訪問予定：4月13日（月）`,
+    },
+  };
+  return reports[currentPatientIdx];
+}
+
+function generateCareReport(p, own, other) {
+  const reports = {
+    0: {
+      adl: `【移動・歩行】室内は自立。ただし転倒歴あり（3/28）。廊下での転倒防止に手すりの活用を指導中。\n【食事】自立。ただし塩分・糖質制限の遵守に課題あり。インスリン自己注射は手技維持。\n【入浴】一部介助（浴室の滑り止めマット設置済み）\n【排泄】自立\n【睡眠】不眠継続（4〜5時間/日）。就寝前の過ごし方について指導中。`,
+      med: `【服薬管理】一包化により自己管理中。おおむね良好だが食事制限のアドヒアランスに課題あり。\n【インスリン】自己注射継続。手技は概ね良好。主治医（内科）が月1回外来でフォロー中。\n【降圧薬】服薬継続。夜間高血圧エピソードあり（4/9）。主治医への報告済み。\n【BP管理】最近高値が継続。利尿薬追加の検討状況を主治医確認中。`,
+      family: `【家族状況】独居。娘（市外在住）が月1〜2回来訪。日常的な介護サポートは限定的。\n【緊急連絡先】娘（同市内）への連絡体制は構築済み。\n【課題】社会的孤立感の訴えあり。地域の見守り体制の強化が望ましい。「一人でいると寂しい」との言葉が繰り返し聴かれています。`,
+      service: `【現在のサービス】訪問看護（週3回）、ヘルパー（週5回）\n\n【提案事項】\n①デイサービス利用の再開を本人も希望しており、社会参加の機会創出として優先度高く検討をお願いします。\n②不眠・不安感増強のため、精神的サポート（傾聴サービス等）の追加も選択肢として検討ください。\n③今後の心不全悪化進行に備え、緊急時対応体制の確認をお願いします。`,
+    },
+    1: {
+      adl: `【移動・歩行】杖使用で室内歩行可能。ただし夜間頻尿（3〜4回）による夜間転倒リスク高。廊下照明の改善・手すり追加が必要。\n【食事】とろみ食で一部介助。食欲はやや低下（7割程度）。\n【上肢機能】左片麻痺により食事・整容に一部介助要。右手機能は維持。\n【入浴・更衣】全介助（妻が担当）\n【リハビリ】PT訪問にて左上肢ROM訓練実施中。本人の意欲は変動あり。`,
+      med: `【服薬管理】一包化使用。飲み忘れ2日分を確認（4/4）。妻による確認強化を指導。\n【心不全薬】利尿薬・ACE阻害薬継続中。体重・浮腫の日常観察を妻へ指導済み。\n【抗血小板薬】再発予防のため継続中。出血傾向の観察実施中。\n【SpO2】最新95%。主治医への報告継続中。`,
+      family: `【主介護者】妻（67歳）。ほぼ全介助を一人で担う。夜間対応も一人で対応中。\n【介護疲労】妻の介護疲労が顕著で「自分のせいで申し訳ない」との本人発言もあり、精神的な影響も懸念されます。\n【息子】遠方在住のため日常的なサポートなし。\n【課題】介護者への緊急支援が必要な状況です。`,
+      service: `【現在のサービス】訪問看護（週3回）、PT訪問リハビリ（週2回）、ヘルパー（週5回）\n\n【緊急提案事項】\n①ショートステイの定期利用を早急に手配してください（妻の介護負担が限界）。\n②夜間の転倒防止のため、廊下・トイレへの手すり追加と足元センサーライトの設置を住環境整備として優先対応をお願いします。\n③抑うつ症状への対応として、デイケア（精神科リハビリ）への参加も今後の選択肢として検討ください。`,
+    },
+    2: {
+      adl: `【移動・歩行】独歩可能だが前傾姿勢でふらつきあり。今月転倒1回（骨折なし確認済み）。杖の導入を検討中。\n【食事】自立。食欲は概ね良好（4/8は全量摂取）。ただし冷蔵庫管理に課題あり（期限切れ食品確認）。\n【服薬管理】認知機能低下により自己管理が困難になっています。吸入薬の使い忘れ・手技誤りが確認されています。\n【入浴・更衣】概ね自立。`,
+      med: `【吸入薬（LABA/LAMA）】手技に誤り確認（4/9）。再指導実施。吸入忘れが服薬管理の主な課題。\n【骨粗鬆症薬】服薬確認が困難になりつつある。服薬カレンダーまたは一包化の導入検討が必要。\n【認知症対応】現時点では軽度の日常生活支障のみ。服薬・食品管理への支援が急務。`,
+      family: `【家族状況】独居。友人が時々訪問（本人の精神的安定に良い影響あり）。\n【緊急連絡先】娘（電話連絡可）。日常的なサポートは限定的。\n【課題】認知機能低下が進行した場合の生活支援体制の準備が急務です。現在の独居環境での安全確保が今後の焦点です。`,
+      service: `【現在のサービス】訪問看護（週2回）、ヘルパー（週3回）\n\n【提案事項】\n①服薬管理支援の強化：ヘルパーによる吸入薬使用確認（毎朝）の追加をお願いします。\n②転倒予防として玄関・浴室への手すり設置と、トイレの高さ調整をご検討ください。\n③認知機能低下への対応として、認知症デイサービスまたは地域包括支援センターとの連携強化をお願いします。\n④緊急時の連絡体制を強化するため、緊急通報システムの導入を提案します。`,
+    },
+    3: {
+      adl: `【移動】歩行器使用でON時は室内歩行可能。OFF時は全介助。昨今OFF時間が延長傾向にあります。\n【食事】全介助。嚥下困難があり食事に時間を要する（むせ頻回）。ゼリー食で軽減傾向。\n【入浴】全介助。骨突出部に発赤(±)のため褥瘡予防が必要。\n【排泄】一部介助。夜間のみポータブルトイレ使用。\n【口腔ケア】全介助。歯垢多め。訪問歯科の導入を検討中。\n【コミュニケーション】発話困難。うなずき・表情での意思疎通が主体。`,
+      med: `【L-ドパ（1日3回）】服薬拒否エピソードあり（4/3）。補助ゼリーの導入検討中。主治医へ剤形変更相談中。\n【ON/OFF管理】ON時間の確保が課題。3/31に服薬中断によるOFF重篤化の緊急対応あり。\n【睡眠】レム睡眠行動障害疑い。夜間の安全確保と薬剤調整を神経内科へ相談中。\n【誤嚥予防】食形態変更（ゼリー食への移行）の処方指示待ち。STによる評価依頼中。`,
+      family: `【主介護者】妻（80歳）。夜間対応を含む全介護を一人で担っている。介護疲労が顕著で限界を訴えており、緊急のレスパイト支援が必要です。\n【息子】遠方在住（連絡済み）。\n【課題】介護者（高齢妻）の疲弊が深刻です。妻自身の健康状態への影響も懸念されます。介護者支援の緊急対応をお願いします。`,
+      service: `【現在のサービス】訪問看護（週5回）、ヘルパー（週7回・入浴介助含む）\n\n【緊急提案事項】\n①ショートステイの緊急手配をお願いします（妻の介護限界・高齢・独自夜間対応）。月2〜4回程度の定期利用を検討ください。\n②訪問歯科診療の導入をお願いします（口腔ケア・嚥下機能評価）。\n③STによる訪問嚥下指導（週1回）の追加を早急に手配してください。\n④福祉用具の追加：ポジショニングクッション、電動リクライニングベッドの検討をお願いします。`,
+    },
+  };
+  return reports[currentPatientIdx];
+}
+
+// ========== レポートタブ ==========
+function switchReportTab(btn, contentId) {
+  document.querySelectorAll('.report-tab-btn').forEach(b => b.classList.remove('active'));
+  document.querySelectorAll('.report-content').forEach(c => c.classList.remove('active'));
+  btn.classList.add('active');
+  document.getElementById(contentId).classList.add('active');
+}
+
+// ========== コピー ==========
+function getReportText() {
+  const ishi = document.getElementById('report-ishi').classList.contains('active');
+  if (ishi) {
+    const h = document.getElementById('report-header-ishi').innerText;
+    const s = document.getElementById('rpt-s1').textContent;
+    const o = document.getElementById('rpt-o1').textContent;
+    const a = document.getElementById('rpt-a1').textContent;
+    const plan = document.getElementById('rpt-p1').textContent;
+    return `${h}\n\n■ 病状・身体状況\n${s}\n\n■ 観察所見（O：客観的情報）\n${o}\n\n■ アセスメント\n${a}\n\n■ 今後の方針・依頼事項\n${plan}`;
+  } else {
+    const h = document.getElementById('report-header-care').innerText;
+    const adl = document.getElementById('rpt-adl').textContent;
+    const med = document.getElementById('rpt-med').textContent;
+    const fam = document.getElementById('rpt-fam').textContent;
+    const srv = document.getElementById('rpt-srv').textContent;
+    return `${h}\n\n■ 生活状況・ADL\n${adl}\n\n■ 医療処置・服薬管理\n${med}\n\n■ 家族・介護状況\n${fam}\n\n■ サービス調整の提案\n${srv}`;
+  }
+}
+
+function copyReport() {
+  const text = getReportText();
+  navigator.clipboard.writeText(text).then(() => {
+    showToast('クリップボードにコピーしました ✓');
+  }).catch(() => {
+    showToast('コピーに失敗しました');
+  });
+}
+
+function fakePdf() {
+  showToast('PDF保存機能（実装予定）');
+}
+
+// ========== 画面遷移 ==========
+function showScreen(id) {
+  document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  window.scrollTo(0, 0);
+}
+
+function goBack(screenId) {
+  showScreen(screenId);
+}
+
+// ========== トースト ==========
+function showToast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 2200);
+}
+</script>
+</body>
+</html>

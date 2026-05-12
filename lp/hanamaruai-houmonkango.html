@@ -1,0 +1,1763 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>はなまるAI 看護版｜LINEで話すだけでSOAPノートが自動で完成する</title>
+<meta name="description" content="訪問看護の記録業務をAIで自動化。LINEで話すだけでSOAPノートが自動完成。記録時間を最大80%削減。1ヶ月無料トライアル実施中。訪問看護師・ケアマネジャーの業務負担を劇的に減らします。">
+
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-P6VNBWH3');</script>
+<!-- End Google Tag Manager -->
+
+<!-- OGP (Meta/Google広告用) -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="はなまるAI 看護版｜LINEで話すだけでSOAPノートが自動で完成する">
+<meta property="og:description" content="訪問看護の記録業務をAIで自動化。LINEで話すだけでSOAPノートが自動完成。記録時間を最大80%削減。1ヶ月無料トライアル実施中。">
+<meta property="og:image" content="https://aidealize.com/wp-content/uploads/2026/03/ogp-hanamaru-nursing.png">
+<meta property="og:url" content="https://aidealize.com/lp/hanamaruai-houmonkango/">
+<meta property="og:site_name" content="はなまるAI 看護版">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="はなまるAI 看護版｜LINEで話すだけでSOAPノートが自動で完成する">
+<meta name="twitter:description" content="訪問看護の記録業務をAIで自動化。LINEで話すだけでSOAPノートが自動完成。1ヶ月無料トライアル実施中。">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700;900&family=Zen+Kaku+Gothic+New:wght@400;700;900&display=swap" rel="stylesheet">
+
+<style>
+/* ====== VARIABLES ====== */
+:root {
+  --nursing: #0891b2;
+  --nursing-dark: #0e7490;
+  --nursing-bg: #f0f9ff;
+  --nursing-light: #e0f2fe;
+  --nursing-mid: #38bdf8;
+  --line: #06C755;
+  --line-dark: #05a847;
+  --line-bg: #f0fff6;
+  --gold: #b8902a;
+  --gold-light: #d4a83a;
+  --gold-pale: #fdf3d8;
+  --gold-bg: #faf6ec;
+  --ink: #1a1a1a;
+  --text: #333;
+  --text2: #555;
+  --gray: #888;
+  --light: #f7f9fc;
+  --light2: #eef2f7;
+  --white: #fff;
+  --border: #dde6ed;
+  --shadow: 0 4px 24px rgba(8,145,178,0.08);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  background: var(--white);
+  color: var(--text);
+  font-family: 'Noto Sans JP', sans-serif;
+  font-weight: 400;
+  line-height: 1.85;
+  overflow-x: hidden;
+}
+
+/* ====== UTILITIES ====== */
+.container { max-width: 1080px; margin: 0 auto; padding: 0 28px; }
+.section-label {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-size: 11px; font-weight: 700; letter-spacing: 0.14em;
+  color: var(--nursing); text-transform: uppercase;
+  margin-bottom: 14px;
+}
+.section-label::before {
+  content: ''; display: inline-block; width: 28px; height: 2px;
+  background: var(--nursing);
+}
+.section-title {
+  font-size: clamp(1.6rem, 4vw, 2.2rem);
+  font-weight: 900; line-height: 1.35;
+  color: var(--ink); margin-bottom: 16px;
+}
+.section-desc {
+  font-size: 1rem; color: var(--text2); line-height: 1.9;
+  margin-bottom: 40px; max-width: 640px;
+}
+.gold { color: var(--gold); }
+.nursing-color { color: var(--nursing); }
+.line-color { color: var(--line); }
+.btn-primary {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: var(--nursing); color: var(--white);
+  padding: 16px 36px; border-radius: 3px;
+  font-size: 1rem; font-weight: 700; letter-spacing: 0.04em;
+  text-decoration: none;
+  transition: background 0.2s, transform 0.1s;
+  white-space: nowrap;
+}
+.btn-primary:hover { background: var(--nursing-dark); transform: translateY(-1px); }
+.btn-line {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: var(--line); color: var(--white);
+  padding: 16px 36px; border-radius: 3px;
+  font-size: 1rem; font-weight: 700; letter-spacing: 0.04em;
+  text-decoration: none;
+  transition: background 0.2s, transform 0.1s;
+  white-space: nowrap;
+}
+.btn-line:hover { background: var(--line-dark); transform: translateY(-1px); }
+.btn-secondary {
+  display: inline-flex; align-items: center; gap: 6px;
+  background: var(--white); color: var(--nursing); border: 2px solid var(--nursing);
+  padding: 14px 28px; border-radius: 3px;
+  font-size: 0.95rem; font-weight: 700;
+  text-decoration: none;
+  transition: background 0.2s, color 0.2s;
+}
+.btn-secondary:hover { background: var(--nursing); color: var(--white); }
+
+/* reveal animation */
+.reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.6s ease, transform 0.6s ease; }
+.reveal.visible { opacity: 1; transform: none; }
+
+/* ====== NAV ====== */
+#mainNav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 48px; height: 68px;
+  background: rgba(255,255,255,0.97);
+  border-bottom: 1px solid var(--border);
+  backdrop-filter: blur(12px);
+  transition: box-shadow 0.3s;
+}
+#mainNav.scrolled { box-shadow: 0 4px 24px rgba(0,0,0,0.08); }
+.nav-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+.nav-logo img { height: 34px; width: auto; }
+.nav-logo-text { font-size: 15px; font-weight: 500; color: var(--ink); letter-spacing: 0.02em; }
+.nav-logo-text span { color: var(--nursing); }
+.nav-badge {
+  font-size: 10px; font-weight: 700; letter-spacing: 0.06em;
+  background: var(--nursing-light); color: var(--nursing-dark);
+  border-radius: 2px; padding: 2px 8px;
+}
+.nav-links { display: flex; align-items: center; gap: 32px; list-style: none; }
+.nav-links a {
+  font-size: 13px; font-weight: 500; color: var(--text2);
+  text-decoration: none; letter-spacing: 0.04em; transition: color 0.2s;
+}
+.nav-links a:hover { color: var(--ink); }
+.nav-cta {
+  background: var(--nursing) !important; color: var(--white) !important;
+  padding: 10px 20px; border-radius: 3px;
+  font-size: 12px !important; font-weight: 700 !important;
+}
+.nav-cta:hover { background: var(--nursing-dark) !important; }
+.nav-hamburger {
+  display: none; flex-direction: column; justify-content: center; gap: 5px;
+  width: 40px; height: 40px; background: none; border: none; cursor: pointer; padding: 4px;
+}
+.nav-hamburger span { display: block; width: 24px; height: 2px; background: var(--ink); transition: all 0.3s; transform-origin: center; }
+.nav-hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.nav-hamburger.open span:nth-child(2) { opacity: 0; }
+.nav-hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+.nav-drawer {
+  display: none; position: fixed; top: 68px; left: 0; right: 0;
+  background: rgba(255,255,255,0.98); border-bottom: 2px solid var(--nursing);
+  padding: 20px 28px 28px; z-index: 999;
+}
+.nav-drawer.open { display: block; }
+.nav-drawer ul { list-style: none; display: flex; flex-direction: column; gap: 0; }
+.nav-drawer ul li a {
+  display: block; padding: 14px 0; font-size: 15px; font-weight: 500;
+  color: var(--ink); text-decoration: none;
+  border-bottom: 1px solid var(--border); letter-spacing: 0.04em;
+}
+.nav-drawer ul li:last-child a {
+  margin-top: 16px; text-align: center;
+  background: var(--nursing); color: var(--white) !important;
+  padding: 14px; border-radius: 3px; font-weight: 700 !important; border-bottom: none;
+}
+
+@media (max-width: 900px) {
+  #mainNav { padding: 0 20px; }
+  .nav-links { display: none; }
+  .nav-hamburger { display: flex; }
+}
+
+/* ====== HERO ====== */
+.hero {
+  padding: 148px 28px 80px;
+  background: var(--white);
+  position: relative; overflow: hidden;
+}
+.hero::before {
+  content: '看護';
+  position: absolute; right: -40px; top: 60px;
+  font-size: 280px; font-weight: 900;
+  color: rgba(8,145,178,0.04); line-height: 1;
+  white-space: nowrap; pointer-events: none;
+  font-family: 'Zen Kaku Gothic New', sans-serif;
+}
+.hero-inner { max-width: 1080px; margin: 0 auto; }
+.hero-badge {
+  display: inline-flex; align-items: center; gap: 8px;
+  border: 1px solid var(--border); border-radius: 2px;
+  padding: 7px 16px; font-size: 12px; font-weight: 700;
+  color: var(--text2); letter-spacing: 0.06em;
+  margin-bottom: 24px;
+}
+.hero-badge-dot {
+  display: inline-block; width: 8px; height: 8px;
+  border-radius: 50%; background: var(--line); flex-shrink: 0;
+}
+.hero-eyebrow { font-size: 1rem; color: var(--nursing); font-weight: 700; margin-bottom: 16px; letter-spacing: 0.04em; }
+.hero-title {
+  font-size: clamp(2rem, 5.5vw, 3.4rem);
+  font-weight: 900; line-height: 1.25;
+  color: var(--ink); margin-bottom: 28px;
+  font-family: 'Zen Kaku Gothic New', sans-serif;
+}
+.hero-title .accent-line {
+  display: block;
+  background: linear-gradient(135deg, var(--nursing) 0%, var(--nursing-mid) 100%);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.hero-sub {
+  font-size: 1.05rem; color: var(--text2); line-height: 1.95;
+  max-width: 580px; margin-bottom: 36px;
+}
+.hero-cta-group { display: flex; align-items: center; gap: 16px; flex-wrap: wrap; margin-bottom: 56px; }
+.hero-stats {
+  display: flex; gap: 40px; padding: 28px 36px;
+  border: 1px solid var(--border); border-radius: 4px;
+  background: var(--light); max-width: 680px;
+}
+.hero-stats > div { text-align: center; }
+.stat-num {
+  display: block; font-size: 2rem; font-weight: 900;
+  color: var(--nursing); line-height: 1;
+  font-family: 'Zen Kaku Gothic New', sans-serif;
+}
+.stat-unit { font-size: 0.85rem; color: var(--text2); margin-top: 6px; }
+
+@media (max-width: 640px) {
+  .hero { padding: 100px 20px 60px; }
+  .hero-stats { flex-direction: column; gap: 20px; padding: 20px; }
+  .hero-stats > div { text-align: left; display: flex; align-items: center; gap: 16px; }
+  .stat-num { font-size: 1.6rem; }
+}
+
+/* ====== LINE HIGHLIGHT BAND ====== */
+.line-band {
+  background: var(--line);
+  padding: 20px 28px;
+  text-align: center;
+}
+.line-band-inner {
+  max-width: 800px; margin: 0 auto;
+  display: flex; align-items: center; justify-content: center; gap: 16px;
+  flex-wrap: wrap;
+}
+.line-band-text {
+  color: var(--white); font-size: 1rem; font-weight: 700; letter-spacing: 0.04em;
+}
+.line-band-icon { font-size: 1.5rem; }
+.line-band-cta {
+  background: var(--white); color: var(--line);
+  padding: 10px 24px; border-radius: 3px;
+  font-size: 0.9rem; font-weight: 700; text-decoration: none;
+  transition: opacity 0.2s; white-space: nowrap;
+}
+.line-band-cta:hover { opacity: 0.85; }
+
+/* ====== PROBLEM ====== */
+.problem {
+  padding: 100px 0;
+  background: #eef6fb;
+  color: var(--ink);
+}
+.problem .section-label { color: var(--nursing); }
+.problem .section-label::before { background: var(--nursing); }
+.problem-headline {
+  font-size: clamp(1.5rem, 4vw, 2.1rem);
+  font-weight: 900; line-height: 1.4; margin-bottom: 16px;
+  font-family: 'Zen Kaku Gothic New', sans-serif;
+}
+.danger { color: var(--nursing-dark); }
+.problem-body { font-size: 1rem; color: var(--text2); line-height: 1.95; margin-bottom: 48px; max-width: 680px; }
+.problem-grid {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 16px; margin-bottom: 48px;
+}
+.problem-item {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 4px; padding: 24px;
+  transition: box-shadow 0.2s;
+}
+.problem-item:hover { box-shadow: var(--shadow); }
+.problem-x { font-size: 1.2rem; color: var(--nursing); font-weight: 900; margin-bottom: 10px; }
+.problem-item-title { font-size: 0.97rem; font-weight: 700; color: var(--ink); margin-bottom: 8px; line-height: 1.5; }
+.problem-item-desc { font-size: 0.85rem; color: var(--text2); line-height: 1.75; }
+.problem-conclusion {
+  background: var(--white); border-left: 3px solid var(--nursing);
+  padding: 24px 28px; border-radius: 0 4px 4px 0;
+  font-size: 0.97rem; color: var(--text); line-height: 1.9;
+  margin-bottom: 40px; box-shadow: var(--shadow);
+}
+.problem-cta { display: flex; gap: 16px; flex-wrap: wrap; }
+
+/* ====== HOW IT WORKS ====== */
+.how {
+  padding: 100px 0;
+  background: var(--light);
+}
+.how-steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; margin-top: 48px; position: relative; }
+.how-steps::before {
+  content: ''; position: absolute;
+  top: 52px; left: calc(16.67% + 12px); right: calc(16.67% + 12px);
+  height: 2px; background: var(--border); z-index: 0;
+}
+.how-step {
+  text-align: center; padding: 0 16px;
+  position: relative; z-index: 1;
+}
+.how-step-num {
+  width: 64px; height: 64px; border-radius: 50%;
+  background: var(--nursing); color: var(--white);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.6rem; font-weight: 900; margin: 0 auto 20px;
+  font-family: 'Zen Kaku Gothic New', sans-serif;
+  box-shadow: 0 4px 16px rgba(8,145,178,0.35);
+}
+.how-step-num.line-step { background: var(--line); box-shadow: 0 4px 16px rgba(6,199,85,0.35); }
+.how-step-icon { font-size: 2rem; margin-bottom: 12px; }
+.how-step-title { font-size: 1rem; font-weight: 900; color: var(--ink); margin-bottom: 10px; }
+.how-step-desc { font-size: 0.87rem; color: var(--text2); line-height: 1.75; }
+.how-step-time {
+  display: inline-block; background: var(--nursing-light); color: var(--nursing-dark);
+  font-size: 0.78rem; font-weight: 700; border-radius: 2px;
+  padding: 3px 10px; margin-top: 10px; letter-spacing: 0.04em;
+}
+.how-note {
+  margin-top: 48px; padding: 24px 28px;
+  background: var(--white); border: 1px solid var(--border);
+  border-radius: 4px; display: flex; gap: 16px; align-items: flex-start;
+}
+.how-note-icon { font-size: 1.4rem; flex-shrink: 0; margin-top: 2px; }
+.how-note-text { font-size: 0.93rem; color: var(--text2); line-height: 1.85; }
+.how-note-text strong { color: var(--ink); }
+
+@media (max-width: 800px) {
+  .how-steps { grid-template-columns: repeat(2, 1fr); gap: 32px; }
+  .how-steps::before { display: none; }
+}
+@media (max-width: 480px) {
+  .how-steps { grid-template-columns: 1fr; }
+  .how-step { display: flex; gap: 20px; text-align: left; padding: 0; }
+  .how-step-num { flex-shrink: 0; margin: 0; width: 52px; height: 52px; font-size: 1.3rem; }
+}
+
+/* ====== LINE FEATURE SECTION ====== */
+.line-feature {
+  padding: 100px 0;
+  background: var(--white);
+}
+.line-feature-inner {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center;
+}
+.line-feature-text {}
+.line-feature-title {
+  font-size: clamp(1.5rem, 3.5vw, 2rem);
+  font-weight: 900; line-height: 1.4; color: var(--ink); margin-bottom: 20px;
+}
+.line-feature-desc { font-size: 0.97rem; color: var(--text2); line-height: 1.95; margin-bottom: 28px; }
+.line-points { display: flex; flex-direction: column; gap: 16px; margin-bottom: 32px; }
+.line-point {
+  display: flex; gap: 14px; align-items: flex-start;
+  background: var(--line-bg); border-radius: 4px; padding: 16px 18px;
+  border-left: 3px solid var(--line);
+}
+.line-point-icon { font-size: 1.4rem; flex-shrink: 0; }
+.line-point-body {}
+.line-point-title { font-size: 0.95rem; font-weight: 700; color: var(--ink); margin-bottom: 4px; }
+.line-point-desc { font-size: 0.85rem; color: var(--text2); line-height: 1.7; }
+.line-mockup {
+  background: var(--light); border-radius: 12px;
+  padding: 28px; border: 1px solid var(--border);
+  box-shadow: var(--shadow);
+}
+.line-mockup-header {
+  display: flex; align-items: center; gap: 10px;
+  padding-bottom: 16px; border-bottom: 1px solid var(--border); margin-bottom: 20px;
+}
+.line-mockup-avatar {
+  width: 40px; height: 40px; border-radius: 50%;
+  background: var(--nursing); display: flex; align-items: center; justify-content: center;
+  font-size: 1.2rem; color: var(--white);
+}
+.line-mockup-name { font-size: 0.9rem; font-weight: 700; color: var(--ink); }
+.line-mockup-sub { font-size: 0.75rem; color: var(--gray); }
+.line-bubble-wrap { display: flex; flex-direction: column; gap: 12px; }
+.line-bubble {
+  max-width: 80%; padding: 12px 16px; border-radius: 8px;
+  font-size: 0.85rem; line-height: 1.65;
+}
+.line-bubble.ai {
+  background: var(--white); border: 1px solid var(--border); color: var(--text);
+  border-radius: 4px 16px 16px 16px;
+}
+.line-bubble.user {
+  background: var(--line); color: var(--white);
+  align-self: flex-end;
+  border-radius: 16px 4px 16px 16px;
+}
+.line-bubble-label { font-size: 0.7rem; color: var(--gray); margin-bottom: 4px; }
+.line-bubble-label.right { text-align: right; }
+.line-result {
+  margin-top: 16px; padding: 14px 16px;
+  background: var(--nursing-light); border-radius: 6px;
+  border: 1px solid var(--nursing);
+}
+.line-result-label { font-size: 0.72rem; font-weight: 700; color: var(--nursing-dark); letter-spacing: 0.08em; margin-bottom: 8px; }
+.line-result-soap { font-size: 0.8rem; color: var(--ink); line-height: 1.7; }
+.line-result-soap strong { color: var(--nursing-dark); }
+
+@media (max-width: 800px) {
+  .line-feature-inner { grid-template-columns: 1fr; gap: 40px; }
+}
+
+/* ====== SOAP SECTION ====== */
+.soap-section {
+  padding: 100px 0;
+  background: var(--nursing-bg);
+}
+.soap-cards {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 20px; margin-top: 48px;
+}
+.soap-card {
+  background: var(--white); border-radius: 8px; padding: 28px;
+  box-shadow: var(--shadow); border-top: 3px solid var(--nursing);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.soap-card:hover { transform: translateY(-4px); box-shadow: 0 8px 32px rgba(8,145,178,0.15); }
+.soap-letter {
+  font-size: 2.4rem; font-weight: 900; color: var(--nursing);
+  line-height: 1; margin-bottom: 4px;
+  font-family: 'Zen Kaku Gothic New', sans-serif;
+}
+.soap-word { font-size: 0.75rem; font-weight: 700; color: var(--nursing-dark); letter-spacing: 0.08em; margin-bottom: 14px; }
+.soap-title { font-size: 1rem; font-weight: 700; color: var(--ink); margin-bottom: 10px; }
+.soap-desc { font-size: 0.87rem; color: var(--text2); line-height: 1.8; }
+.soap-example {
+  margin-top: 12px; padding: 10px 14px;
+  background: var(--nursing-bg); border-radius: 4px; border-left: 2px solid var(--nursing-mid);
+  font-size: 0.8rem; color: var(--text2); line-height: 1.65;
+  font-style: italic;
+}
+
+/* ====== DOCUMENTS ====== */
+.documents { padding: 100px 0; background: var(--white); }
+.doc-grid {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px; margin-top: 48px;
+}
+.doc-card {
+  border: 1px solid var(--border); border-radius: 6px; padding: 28px;
+  transition: box-shadow 0.2s;
+}
+.doc-card:hover { box-shadow: var(--shadow); }
+.doc-card.main {
+  border-color: var(--nursing); border-width: 2px;
+  background: linear-gradient(135deg, rgba(8,145,178,0.02) 0%, rgba(8,145,178,0.06) 100%);
+}
+.doc-status {
+  display: inline-flex; align-items: center; gap: 5px;
+  font-size: 11px; font-weight: 700; letter-spacing: 0.06em;
+  border-radius: 2px; padding: 3px 10px; margin-bottom: 14px;
+}
+.doc-status.ready { background: var(--nursing-light); color: var(--nursing-dark); }
+.doc-status.soon { background: var(--gold-pale); color: var(--gold); }
+.doc-status.future { background: var(--light2); color: var(--gray); }
+.doc-icon { font-size: 2rem; margin-bottom: 12px; }
+.doc-name { font-size: 1.05rem; font-weight: 900; color: var(--ink); margin-bottom: 6px; }
+.doc-yosiki { font-size: 0.8rem; color: var(--gray); margin-bottom: 10px; }
+.doc-desc { font-size: 0.87rem; color: var(--text2); line-height: 1.75; }
+.doc-main-badge {
+  display: inline-block; background: var(--nursing); color: var(--white);
+  font-size: 11px; font-weight: 700; letter-spacing: 0.06em;
+  padding: 3px 10px; border-radius: 2px; margin-bottom: 14px;
+}
+
+/* ====== BENEFITS ====== */
+.benefits { padding: 100px 0; background: var(--light); }
+.benefits-grid {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 24px; margin-top: 48px;
+}
+.benefit-card {
+  background: var(--white); border-radius: 6px;
+  padding: 32px 28px; box-shadow: var(--shadow);
+}
+.benefit-num {
+  font-size: 3rem; font-weight: 900; color: #b8d8e8;
+  line-height: 1; margin-bottom: 8px;
+  font-family: 'Zen Kaku Gothic New', sans-serif;
+}
+.benefit-icon { font-size: 1.8rem; margin-bottom: 14px; display: block; }
+.benefit-title { font-size: 1.05rem; font-weight: 900; color: var(--ink); margin-bottom: 10px; line-height: 1.4; }
+.benefit-desc { font-size: 0.87rem; color: var(--text2); line-height: 1.8; }
+.benefit-highlight {
+  display: inline-block; background: var(--nursing-light); color: var(--nursing-dark);
+  font-size: 0.85rem; font-weight: 700; padding: 4px 12px;
+  border-radius: 2px; margin-top: 12px;
+}
+
+/* ====== COMPARISON ====== */
+.comparison { padding: 100px 0; background: var(--white); }
+.comparison-wrap { overflow-x: auto; margin-top: 48px; }
+.comparison-table {
+  width: 100%; border-collapse: collapse; min-width: 600px;
+}
+.comparison-table th, .comparison-table td {
+  padding: 16px 20px; text-align: center;
+  font-size: 0.93rem; border-bottom: 1px solid var(--border);
+}
+.comparison-table th {
+  font-weight: 900; font-size: 0.9rem; letter-spacing: 0.04em;
+}
+.comparison-table thead tr:first-child th { border-bottom: 2px solid var(--border); }
+.th-before {
+  background: var(--light2); color: var(--text2); width: 33%;
+}
+.th-after {
+  background: var(--nursing); color: var(--white); width: 33%;
+}
+.th-item { text-align: left; width: 34%; font-weight: 700; color: var(--ink); }
+.td-item { text-align: left; font-weight: 700; color: var(--ink); }
+.td-before { color: var(--text2); }
+.td-after { color: var(--nursing-dark); font-weight: 700; }
+.td-after .check {
+  display: inline-block; width: 20px; height: 20px;
+  background: var(--nursing-light); color: var(--nursing-dark);
+  border-radius: 50%; font-size: 0.7rem; font-weight: 900;
+  line-height: 20px; margin-right: 4px;
+}
+.comparison-table tr:hover td { background: var(--light); }
+
+/* ====== BEFORE/AFTER ====== */
+.before-after { padding: 100px 0; background: var(--white); }
+.ba-wrap {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 0; margin-top: 48px;
+  border-radius: 8px; overflow: hidden; box-shadow: var(--shadow);
+}
+.ba-col { padding: 36px 32px; }
+.ba-col.before { background: #f5f5f5; border-right: 1px solid var(--border); }
+.ba-col.after { background: var(--nursing-light); }
+.ba-col-label {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-size: 11px; font-weight: 700; letter-spacing: 0.12em;
+  padding: 4px 14px; border-radius: 2px; margin-bottom: 20px;
+}
+.ba-col.before .ba-col-label { background: #e0e0e0; color: #666; }
+.ba-col.after .ba-col-label { background: var(--nursing); color: var(--white); }
+.ba-title {
+  font-size: 1.05rem; font-weight: 900; margin-bottom: 20px; line-height: 1.4;
+}
+.ba-col.before .ba-title { color: #666; }
+.ba-col.after .ba-title { color: var(--nursing-dark); }
+.ba-steps { display: flex; flex-direction: column; gap: 10px; }
+.ba-step {
+  display: flex; align-items: flex-start; gap: 12px;
+  padding: 12px 14px; border-radius: 4px; font-size: 0.87rem; line-height: 1.6;
+}
+.ba-col.before .ba-step { background: rgba(0,0,0,0.04); color: #555; }
+.ba-col.after .ba-step { background: rgba(255,255,255,0.7); color: var(--ink); }
+.ba-step-icon { font-size: 1.1rem; flex-shrink: 0; margin-top: 1px; }
+.ba-step-text {}
+.ba-step-time {
+  font-size: 0.75rem; font-weight: 700; margin-top: 2px;
+  display: block;
+}
+.ba-col.before .ba-step-time { color: #e05555; }
+.ba-col.after .ba-step-time { color: var(--nursing-dark); }
+.ba-total {
+  margin-top: 20px; padding: 14px 16px; border-radius: 4px;
+  font-weight: 900; font-size: 1rem; text-align: center;
+}
+.ba-col.before .ba-total { background: #ffe5e5; color: #c0392b; }
+.ba-col.after .ba-total { background: var(--nursing); color: var(--white); }
+.ba-arrow {
+  display: flex; align-items: center; justify-content: center;
+  position: relative;
+}
+.ba-arrow::before {
+  content: '▶';
+  position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%);
+  font-size: 1.6rem; color: var(--nursing);
+  background: var(--white); padding: 8px; border-radius: 50%;
+  box-shadow: 0 2px 12px rgba(8,145,178,0.2); z-index: 1;
+}
+@media (max-width: 640px) {
+  .ba-wrap { grid-template-columns: 1fr; }
+  .ba-col.before { border-right: none; border-bottom: 1px solid var(--border); }
+}
+
+/* ====== DEMO (Dify) ====== */
+.demo { padding: 100px 0; background: var(--nursing-bg); }
+.demo-inner { max-width: 900px; margin: 0 auto; }
+.demo-frame {
+  background: var(--white); border: 1px solid var(--border); border-radius: 12px;
+  overflow: hidden; box-shadow: 0 8px 40px rgba(8,145,178,0.12); margin-top: 40px;
+  position: relative;
+}
+.demo-frame-header {
+  background: linear-gradient(90deg, var(--nursing-dark) 0%, var(--nursing) 100%);
+  padding: 14px 24px;
+  display: flex; align-items: center; justify-content: space-between;
+}
+.demo-header-left { display: flex; align-items: center; gap: 10px; }
+.demo-header-icon {
+  width: 32px; height: 32px; border-radius: 8px;
+  background: rgba(255,255,255,0.2);
+  display: flex; align-items: center; justify-content: center; font-size: 1rem;
+}
+.demo-header-title { font-size: 0.9rem; font-weight: 700; color: var(--white); }
+.demo-header-sub { font-size: 0.72rem; color: rgba(255,255,255,0.7); }
+.demo-header-badge {
+  font-size: 10px; font-weight: 700; letter-spacing: 0.08em;
+  background: rgba(255,255,255,0.2); color: var(--white);
+  padding: 3px 10px; border-radius: 2px;
+}
+.demo-embed {
+  width: 100%; height: 620px; border: none; display: block;
+}
+.demo-note {
+  margin-top: 16px; padding: 16px 20px;
+  background: var(--white); border: 1px solid var(--border); border-radius: 4px;
+  font-size: 0.87rem; color: var(--text2); line-height: 1.85;
+  display: flex; gap: 10px; align-items: flex-start;
+}
+
+/* ====== PRICING ====== */
+.pricing { padding: 100px 0; background: #f0f6fb; color: var(--ink); }
+.pricing .section-label { color: var(--nursing); }
+.pricing .section-label::before { background: var(--nursing); }
+.pricing .section-title { color: var(--ink); }
+.pricing .section-desc { color: var(--text2); }
+.pricing-note {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: var(--nursing-light); border: 1px solid var(--nursing);
+  color: var(--nursing-dark); font-size: 0.9rem; font-weight: 700;
+  padding: 12px 20px; border-radius: 3px; margin-bottom: 40px;
+  letter-spacing: 0.02em;
+}
+.pricing-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px;
+}
+.price-card {
+  background: var(--white); border: 1px solid var(--border);
+  border-radius: 6px; padding: 32px 28px; position: relative;
+  transition: box-shadow 0.2s;
+}
+.price-card:hover { box-shadow: 0 8px 32px rgba(8,145,178,0.15); }
+.price-card.featured {
+  border-color: var(--nursing); border-width: 2px;
+  background: linear-gradient(135deg, #fff 0%, var(--nursing-light) 100%);
+}
+.price-badge {
+  position: absolute; top: -12px; left: 50%; transform: translateX(-50%);
+  background: var(--nursing); color: var(--white);
+  font-size: 10px; font-weight: 700; letter-spacing: 0.1em;
+  padding: 4px 14px; border-radius: 2px; white-space: nowrap;
+}
+.price-name { font-size: 0.85rem; font-weight: 700; color: var(--gray); letter-spacing: 0.06em; margin-bottom: 8px; }
+.price-target { font-size: 0.82rem; color: var(--text2); line-height: 1.6; margin-bottom: 20px; }
+.price-amount { margin-bottom: 24px; }
+.price-num { font-size: 2rem; font-weight: 900; color: var(--ink); line-height: 1.1; }
+.price-num .currency { font-size: 1.1rem; }
+.price-num .period { font-size: 0.85rem; font-weight: 400; color: var(--gray); }
+.price-initial { font-size: 0.82rem; color: var(--gray); margin-top: 6px; }
+.price-monitor {
+  font-size: 0.82rem; font-weight: 700; color: var(--nursing-dark);
+  margin-top: 4px;
+}
+.price-features { list-style: none; display: flex; flex-direction: column; gap: 10px; margin-bottom: 28px; }
+.price-features li {
+  font-size: 0.87rem; color: var(--text2);
+  display: flex; align-items: flex-start; gap: 8px; line-height: 1.5;
+}
+.price-features li::before { content: '✓'; color: var(--nursing); font-weight: 900; flex-shrink: 0; }
+.price-cta {
+  display: block; text-align: center;
+  background: transparent; border: 1px solid var(--nursing);
+  color: var(--nursing); padding: 12px; border-radius: 3px;
+  font-size: 0.87rem; font-weight: 700; text-decoration: none;
+  transition: background 0.2s, color 0.2s;
+  letter-spacing: 0.04em;
+}
+.price-cta:hover { background: var(--nursing); color: var(--white); }
+.price-card.featured .price-cta {
+  background: var(--nursing); border-color: var(--nursing); color: var(--white);
+}
+.price-card.featured .price-cta:hover { background: var(--nursing-dark); border-color: var(--nursing-dark); }
+.pricing-footer { text-align: center; margin-top: 28px; font-size: 0.87rem; color: var(--gray); }
+
+@media (max-width: 860px) {
+  .pricing-grid { grid-template-columns: 1fr; max-width: 440px; margin: 0 auto; }
+}
+
+/* ====== DOWNLOAD ====== */
+.download { padding: 80px 0; background: var(--nursing-bg); }
+.download-inner {
+  max-width: 780px; margin: 0 auto; text-align: center;
+  padding: 48px; background: var(--white);
+  border: 1px solid var(--border); border-radius: 6px; box-shadow: var(--shadow);
+}
+.download-label {
+  display: inline-block; background: var(--nursing-light); color: var(--nursing-dark);
+  font-size: 11px; font-weight: 700; letter-spacing: 0.12em;
+  padding: 4px 14px; border-radius: 2px; margin-bottom: 16px;
+}
+.download-heading { font-size: clamp(1.4rem, 3vw, 1.85rem); font-weight: 900; color: var(--ink); margin-bottom: 12px; }
+.download-lead { font-size: 0.93rem; color: var(--text2); line-height: 1.85; margin-bottom: 28px; }
+.download-docs {
+  display: flex; flex-direction: column; gap: 10px;
+  max-width: 520px; margin: 0 auto 32px; text-align: left;
+}
+.download-doc-item {
+  display: flex; align-items: flex-start; gap: 12px;
+  background: var(--light); border-radius: 3px; padding: 12px 16px;
+  font-size: 0.9rem; color: var(--text);
+}
+.download-form-wrap { text-align: left; }
+.download-note { font-size: 0.78rem; color: var(--gray); margin-top: 16px; line-height: 1.85; text-align: center; }
+
+/* ====== CONTACT ====== */
+.contact { padding: 100px 0; background: var(--white); }
+.contact-box {
+  max-width: 780px; margin: 0 auto;
+  border: 1px solid var(--border); border-radius: 6px;
+  padding: 56px 64px; box-shadow: var(--shadow);
+}
+.contact-title { font-size: clamp(1.4rem, 3.5vw, 2rem); font-weight: 900; color: var(--ink); margin-bottom: 16px; line-height: 1.4; }
+.contact-desc { font-size: 0.95rem; color: var(--text2); line-height: 1.95; margin-bottom: 32px; }
+.contact-perks { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 36px; }
+.contact-perk {
+  display: flex; align-items: center; gap: 6px;
+  background: var(--nursing-light); color: var(--nursing-dark);
+  font-size: 0.82rem; font-weight: 700;
+  padding: 6px 14px; border-radius: 2px;
+}
+.form-embed { margin-top: 8px; }
+.contact-note { font-size: 0.8rem; color: var(--gray); margin-top: 20px; line-height: 1.85; }
+
+@media (max-width: 680px) {
+  .contact-box { padding: 32px 24px; }
+}
+
+/* ====== COMPANY / FOOTER ====== */
+.company-bar {
+  padding: 56px 28px; background: var(--light);
+  border-top: 1px solid var(--border);
+  text-align: center;
+}
+.company-bar p { font-size: 0.87rem; color: var(--text2); line-height: 2; }
+.company-bar a { color: var(--text2); text-decoration: underline; }
+.site-footer {
+  background: var(--ink); color: rgba(255,255,255,0.55);
+  padding: 32px 28px; text-align: center;
+}
+.site-footer a { color: rgba(255,255,255,0.55); text-decoration: none; }
+.site-footer a:hover { color: var(--white); }
+.footer-links { display: flex; justify-content: center; gap: 24px; flex-wrap: wrap; margin-bottom: 14px; }
+.footer-links a { font-size: 12px; }
+.footer-copy { font-size: 11px; }
+
+/* ====== DEMO TABS ====== */
+.demo-tabs {
+  display: flex; gap: 0; border-bottom: 2px solid var(--border);
+  margin-bottom: 24px;
+}
+.demo-tab-btn {
+  padding: 12px 28px; font-size: 0.93rem; font-weight: 700;
+  background: none; border: none; cursor: pointer;
+  color: var(--text2); border-bottom: 3px solid transparent;
+  margin-bottom: -2px; transition: color 0.2s, border-color 0.2s;
+  letter-spacing: 0.02em;
+}
+.demo-tab-btn.active { color: var(--nursing); border-bottom-color: var(--nursing); }
+.demo-tab-btn:hover { color: var(--nursing); }
+.demo-panel { display: none; }
+.demo-panel.active { display: block; }
+
+/* ====== FLOATING CTA (SP) ====== */
+.float-cta {
+  display: none; position: fixed; bottom: 20px; left: 16px; right: 16px;
+  z-index: 800;
+  background: var(--line); color: var(--white);
+  text-align: center; padding: 16px; border-radius: 4px;
+  font-size: 0.97rem; font-weight: 700; text-decoration: none;
+  box-shadow: 0 4px 20px rgba(6,199,85,0.45);
+  letter-spacing: 0.04em;
+}
+@media (max-width: 640px) {
+  .float-cta { display: block; }
+  .contact { padding-bottom: 100px; }
+}
+</style>
+</head>
+<body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-P6VNBWH3"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+<!-- NAV -->
+<nav id="mainNav">
+  <a href="https://aidealize.com/" class="nav-logo">
+    <img src="https://aidealize.com/wp-content/uploads/2026/03/スクリーンショット-2026-03-13-130038.png" alt="AIdealize">
+    <span class="nav-logo-text"><span>AI</span>dealize</span>
+  </a>
+  <span class="nav-badge">訪問看護専用</span>
+
+  <ul class="nav-links">
+    <li><a href="#problem">課題</a></li>
+    <li><a href="#how">仕組み</a></li>
+    <li><a href="#line-feature">LINE連携</a></li>
+    <li><a href="#before-after">比較</a></li>
+    <li><a href="#pricing">料金</a></li>
+    <li><a href="https://aidealize.com/company/">会社概要</a></li>
+    <li><a href="#contact" class="nav-cta">🎁 無料トライアル</a></li>
+  </ul>
+
+  <button class="nav-hamburger" id="navHamburger" aria-label="メニュー">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<div class="nav-drawer" id="navDrawer">
+  <ul>
+    <li><a href="#problem" class="drawer-link">課題</a></li>
+    <li><a href="#how" class="drawer-link">仕組み</a></li>
+    <li><a href="#line-feature" class="drawer-link">LINE連携</a></li>
+    <li><a href="#pricing" class="drawer-link">料金</a></li>
+    <li><a href="https://aidealize.com/company/" class="drawer-link">会社概要</a></li>
+    <li><a href="#contact">🎁 1ヶ月無料トライアルに申し込む</a></li>
+  </ul>
+</div>
+
+<!-- HERO -->
+<section class="hero" id="top">
+  <div class="hero-inner">
+    <div class="hero-badge">
+      <span class="hero-badge-dot"></span>
+      🆕 Ver.2 リリース — LINE音声送信・その場録音・PC対応 — はなまるAI 看護版
+    </div>
+    <p class="hero-eyebrow">LINEで音声を送るだけ。SOAPノートが自動で完成します。</p>
+    <h1 class="hero-title">
+      書類のための毎日の残業を、<br>
+      <span class="accent-line">今月から終わらせる。</span>
+    </h1>
+    <p class="hero-sub">
+      訪問看護師の記録業務は、1件あたり平均30〜60分。<br>
+      <strong>はなまるAI 看護版</strong>は、LINEに音声を送るだけで、<br>
+      SOAP形式の看護記録を自動生成します。<br><br>
+      スマホでもPCでも使えます。<strong>IT知識ゼロでOK。</strong>
+    </p>
+    <div class="hero-cta-group">
+      <a href="#contact" class="btn-line" style="font-size:1.05rem;padding:18px 40px;">🎁 1ヶ月無料トライアルに申し込む</a>
+      <a href="#how" class="btn-secondary">仕組みを見る →</a>
+    </div>
+    <div class="hero-stats reveal">
+      <div>
+        <span class="stat-num">80<small style="font-size:1.1rem">%</small></span>
+        <div class="stat-unit">記録時間の削減目安</div>
+      </div>
+      <div>
+        <span class="stat-num">SOAP</span>
+        <div class="stat-unit">標準看護記録形式に対応</div>
+      </div>
+      <div>
+        <span class="stat-num">3</span>
+        <div class="stat-unit">入力方式（LINE音声・ファイル・その場録音）</div>
+      </div>
+      <div>
+        <span class="stat-num" style="font-size:1.4rem;">スマホ</span>
+        <div class="stat-unit">もPCも対応・LINEだけでOK</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- LINE BAND -->
+<div class="line-band">
+  <div class="line-band-inner">
+    <span class="line-band-icon">💬</span>
+    <span class="line-band-text">🆕 Ver.2 — LINEで音声送信・ファイル添付・その場録音の3方式に対応。PCでも使えます。</span>
+    <a href="#line-feature" class="line-band-cta">新機能を見る →</a>
+  </div>
+</div>
+
+<!-- PROBLEM -->
+<section class="problem" id="problem">
+  <div class="container">
+    <div class="section-label reveal">PROBLEM</div>
+    <h2 class="problem-headline reveal">
+      訪問看護の現場で、<span class="danger">記録業務が限界</span>に<br>
+      なっていませんか？
+    </h2>
+    <p class="problem-body reveal">
+      訪問が終わるたびに、SOAP記録を一から書き起こす。夜間・休日対応後も書類が残る。<br>
+      <strong>看護師の本来の仕事は、患者さんのそばにいることのはずです。</strong><br><br>
+      現場からは、こんな声が届いています。
+    </p>
+    <div class="problem-grid reveal">
+      <div class="problem-item">
+        <div class="problem-x">✗</div>
+        <div class="problem-item-title">訪問後のSOAP記録に30〜60分かかっている</div>
+        <div class="problem-item-desc">患者さんの状態をアセスメントして文章に起こす作業は、熟練した看護師でも時間がかかります。件数が多い日は深夜まで記録が続きます。</div>
+      </div>
+      <div class="problem-item">
+        <div class="problem-x">✗</div>
+        <div class="problem-item-title">メモから清書するまでの転記作業が二度手間</div>
+        <div class="problem-item-desc">訪問中に取ったメモをもとに、帰宅後に清書。この「ダブル作業」が毎回発生し、看護師の疲弊につながっています。</div>
+      </div>
+      <div class="problem-item">
+        <div class="problem-x">✗</div>
+        <div class="problem-item-title">記録の書き方にばらつきが出て、質の均一化が難しい</div>
+        <div class="problem-item-desc">SOAP形式の書き方はスタッフごとに差があります。経験が浅いスタッフの記録チェックにベテランの時間が割かれています。</div>
+      </div>
+      <div class="problem-item">
+        <div class="problem-x">✗</div>
+        <div class="problem-item-title">指示書・計画書・報告書と書類が多すぎる</div>
+        <div class="problem-item-desc">訪問看護指示書、看護計画書、主治医への報告書、リハビリとの連携記録——管理すべき書類が多く、書き漏れが不安です。</div>
+      </div>
+      <div class="problem-item">
+        <div class="problem-x">✗</div>
+        <div class="problem-item-title">夜間・休日対応後も記録業務が残り、休めない</div>
+        <div class="problem-item-desc">オンコール対応後、疲れているのに記録しなければならない。翌朝のカンファレンスに間に合わせるためにサービス残業が発生しています。</div>
+      </div>
+      <div class="problem-item">
+        <div class="problem-x">✗</div>
+        <div class="problem-item-title">多職種連携の申し送りが口頭頼みで記録に残らない</div>
+        <div class="problem-item-desc">ケアマネ・医師・リハビリとの情報共有が口頭・メモ中心で、正確な記録が残りにくい。トラブル時の証跡としても不安です。</div>
+      </div>
+      <div class="problem-item">
+        <div class="problem-x">✗</div>
+        <div class="problem-item-title">スタッフ採用が難しく、業務効率化が急務</div>
+        <div class="problem-item-desc">訪問看護の人手不足は深刻です。新しい人材を採用するより、今いるスタッフの業務負担を減らすことが先決になっています。</div>
+      </div>
+      <div class="problem-item">
+        <div class="problem-x">✗</div>
+        <div class="problem-item-title">ICT加算やDX化を進めたいが、何から手をつければいいかわからない</div>
+        <div class="problem-item-desc">介護報酬改定でICT活用が評価される流れになっているが、費用や手間を考えると導入に踏み出せない管理者が多くいます。</div>
+      </div>
+    </div>
+    <div class="problem-conclusion reveal">
+      これは特定のステーションだけの問題ではありません。<br>
+      <strong>訪問看護師の離職理由の上位は「記録・書類業務の多さ」です。</strong>今いる看護師を守るためにも、記録業務をAIに任せる仕組みが必要です。<br>
+      LINEから音声ファイルを送るだけでSOAPノートが完成する——その仕組みを、今すぐ導入できます。
+    </div>
+    <div class="problem-cta reveal">
+      <a href="#contact" class="btn-line">💬 LINEで無料デモを体験する</a>
+      <a href="#how" class="btn-secondary">仕組みを見る →</a>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="how" id="how">
+  <div class="container">
+    <div class="section-label reveal">HOW IT WORKS</div>
+    <h2 class="section-title reveal">たった3ステップ。<br>操作は<span class="nursing-color">LINEに音声を送るだけ</span>です。</h2>
+    <p class="section-desc reveal">
+      専用アプリ不要。LINEさえあれば今日から使えます。<br>
+      AIが訪問内容を整理して、SOAP形式の看護記録を自動でLINEに返信します。
+    </p>
+    <div class="how-steps reveal">
+      <div class="how-step">
+        <div class="how-step-num line-step">1</div>
+        <div class="how-step-icon">🎙</div>
+        <div class="how-step-title">LINEで音声を送る</div>
+        <div class="how-step-desc">
+          LINEのトーク画面で音声メッセージを録音して送信するか、録音ファイルを添付して送信。またはLINEメニューからLIFF画面を開いてその場で録音することも可能です（スマホ・PC対応）。
+        </div>
+        <span class="how-step-time">⏱ 1〜2分</span>
+      </div>
+      <div class="how-step">
+        <div class="how-step-num">2</div>
+        <div class="how-step-icon">🤖</div>
+        <div class="how-step-title">AIが自動でSOAPに整理</div>
+        <div class="how-step-desc">
+          音声をAIが文字起こしし、S・O・A・Pの4項目に自動で振り分けて記録を生成します。言い淀みや重複も整理されます。
+        </div>
+        <span class="how-step-time">⚡ 数分で処理</span>
+      </div>
+      <div class="how-step">
+        <div class="how-step-num line-step">3</div>
+        <div class="how-step-icon">✅</div>
+        <div class="how-step-title">LINEにSOAPノートが届く</div>
+        <div class="how-step-desc">
+          処理が完了すると、LINEにSOAP形式の看護記録が届きます。内容を確認して、電子カルテや記録システムにコピー＆ペーストするだけです。
+        </div>
+        <span class="how-step-time">✅ トータル5〜10分</span>
+      </div>
+    </div>
+    <div class="how-note reveal">
+      <span class="how-note-icon">🔒</span>
+      <span class="how-note-text">
+        <strong>セキュリティについて：</strong>
+        音声データは記録生成後に削除されます。患者情報は貴ステーションのシステムに保存され、第三者への提供は行いません。個人情報の取り扱いについては<a href="https://aidealize.com/privacy-policy/" style="color:var(--nursing)">プライバシーポリシー</a>をご確認ください。
+      </span>
+    </div>
+  </div>
+</section>
+
+<!-- LINE FEATURE -->
+<section class="line-feature" id="line-feature">
+  <div class="container">
+    <div style="text-align:center;margin-bottom:16px;">
+      <span style="display:inline-flex;align-items:center;gap:8px;background:var(--line);color:white;font-size:11px;font-weight:700;letter-spacing:0.1em;padding:5px 16px;border-radius:2px;">🆕 Ver.2 NEW</span>
+    </div>
+    <div class="line-feature-inner">
+      <div class="line-feature-text">
+        <div class="section-label">LINE INTEGRATION</div>
+        <h2 class="line-feature-title">
+          <span class="line-color">3つの入力方法</span>に対応。<br>スマホでもPCでも、<br>その場で記録完結。
+        </h2>
+        <p class="line-feature-desc">
+          新しいアプリのインストール不要。LINEさえあれば今日から使えます。<br>
+          訪問の直後に、現場でそのまま音声を送るだけ。SOAPノートがLINEに届きます。
+        </p>
+        <div class="line-points">
+          <div class="line-point">
+            <div class="line-point-icon">🎙</div>
+            <div class="line-point-body">
+              <div class="line-point-title">① LINEに音声メッセージをそのまま送信</div>
+              <div class="line-point-desc">LINEトーク内の録音ボタンを長押しして話すだけ。別アプリ不要で最も手軽な方法です。</div>
+            </div>
+          </div>
+          <div class="line-point">
+            <div class="line-point-icon">📁</div>
+            <div class="line-point-body">
+              <div class="line-point-title">② 録音ファイルをLINEに添付して送信</div>
+              <div class="line-point-desc">スマホの録音アプリで撮ったmp3・m4a・wavファイルをLINEに送るだけ。文字入力ゼロです。</div>
+            </div>
+          </div>
+          <div class="line-point">
+            <div class="line-point-icon">💻</div>
+            <div class="line-point-body">
+              <div class="line-point-title">③ LIFF画面でその場録音（スマホ・PC両対応）</div>
+              <div class="line-point-desc">LINEメニューをタップすると専用ページが開き、その場でマイク録音して送信。PCブラウザからも利用できます。</div>
+            </div>
+          </div>
+          <div class="line-point">
+            <div class="line-point-icon">📋</div>
+            <div class="line-point-body">
+              <div class="line-point-title">SOAPノートが届いたら電子カルテにコピペするだけ</div>
+              <div class="line-point-desc">届いたSOAPノートをコピーして、使い慣れた電子カルテや記録システムに貼るだけ。システム移行は不要です。</div>
+            </div>
+          </div>
+        </div>
+        <a href="#contact" class="btn-line">🎁 1ヶ月無料トライアルに申し込む</a>
+      </div>
+      <div class="line-mockup">
+        <div style="font-size:0.75rem;font-weight:700;color:var(--gray);letter-spacing:0.08em;margin-bottom:14px;">3通りの入力方法</div>
+
+        <div style="display:flex;flex-direction:column;gap:8px;">
+
+          <!-- Method 1 -->
+          <div style="background:var(--line-bg);border:1px solid #b2e6c8;border-radius:8px;padding:12px 14px;display:flex;align-items:center;gap:12px;">
+            <div style="width:34px;height:34px;background:var(--line);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:1rem;flex-shrink:0;">🎙</div>
+            <div>
+              <div style="font-size:0.8rem;font-weight:700;color:var(--ink);">① LINEで音声メッセージを送信</div>
+              <div style="font-size:0.72rem;color:var(--text2);margin-top:2px;">録音ボタンを押して話すだけ</div>
+            </div>
+          </div>
+
+          <!-- Method 2 -->
+          <div style="background:var(--line-bg);border:1px solid #b2e6c8;border-radius:8px;padding:12px 14px;display:flex;align-items:center;gap:12px;">
+            <div style="width:34px;height:34px;background:var(--line);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:1rem;flex-shrink:0;">📁</div>
+            <div>
+              <div style="font-size:0.8rem;font-weight:700;color:var(--ink);">② 音声ファイルをLINEに添付送信</div>
+              <div style="font-size:0.72rem;color:var(--text2);margin-top:2px;">mp3 / m4a / wav 対応</div>
+            </div>
+          </div>
+
+          <!-- Method 3: LIFF -->
+          <div style="background:var(--white);border:1px solid var(--border);border-radius:8px;overflow:hidden;">
+            <div style="background:var(--line);padding:7px 14px;color:white;font-size:0.72rem;font-weight:700;letter-spacing:0.04em;">HANAMARU AI / 看護記録 — スマホ・PC対応</div>
+            <div style="padding:12px 14px;">
+              <div style="font-size:0.8rem;font-weight:700;color:var(--ink);margin-bottom:7px;">③ LIFF画面でその場録音</div>
+              <div style="border:2px dashed var(--border);border-radius:8px;padding:12px;text-align:center;background:var(--light);">
+                <div style="font-size:1.3rem;">🎙</div>
+                <div style="font-size:0.72rem;color:var(--text2);margin-top:3px;">タップして録音スタート</div>
+                <div style="font-size:0.68rem;color:var(--gray);">訪問直後・その場で完結</div>
+              </div>
+            </div>
+          </div>
+
+          <div style="text-align:center;color:var(--line);font-size:1rem;font-weight:700;">↓ AIが処理（数分）</div>
+
+          <!-- Result -->
+          <div style="background:var(--white);border:1px solid var(--border);border-radius:8px;overflow:hidden;">
+            <div style="background:#f0f0f0;padding:7px 14px;font-size:0.72rem;font-weight:700;color:var(--text2);">LINEにSOAPノートが返信される</div>
+            <div style="padding:12px 14px;">
+              <div style="background:var(--white);border:1px solid var(--border);border-radius:4px 12px 12px 12px;padding:10px 12px;font-size:0.76rem;line-height:1.7;color:var(--ink);max-width:92%;">
+                ✅ SOAPノートを作成しました<br>
+                <span style="color:var(--nursing-dark);font-weight:700;">S：</span>「足のむくみが気になる」<br>
+                <span style="color:var(--nursing-dark);font-weight:700;">O：</span>BP 138/82、浮腫（+）<br>
+                <span style="color:var(--nursing-dark);font-weight:700;">A：</span>増悪なし、継続観察<br>
+                <span style="color:var(--nursing-dark);font-weight:700;">P：</span>次回再評価・主治医報告検討
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SOAP NOTES -->
+<section class="soap-section" id="soap">
+  <div class="container">
+    <div class="section-label reveal">SOAP NOTES</div>
+    <h2 class="section-title reveal">SOAPノートとは？<br><span class="nursing-color">S・O・A・Pの4つの視点</span>で記録する方法です。</h2>
+    <p class="section-desc reveal">
+      患者の主訴・客観所見・アセスメント・計画を構造的に整理する看護記録の形式です。<br>
+      はなまるAIは、話した内容を自動でこの4項目に分類・整理します。
+    </p>
+    <div class="soap-cards reveal">
+      <div class="soap-card">
+        <div class="soap-letter">S</div>
+        <div class="soap-word">SUBJECTIVE — 主観的情報</div>
+        <div class="soap-title">患者さんが語った言葉</div>
+        <div class="soap-desc">患者本人や家族から得た訴え・感想・気持ち。「痛い」「眠れない」などの本人の言葉をそのまま記録します。</div>
+        <div class="soap-example">例：「昨日から右足が重くて歩きにくい」「食欲はある」</div>
+      </div>
+      <div class="soap-card">
+        <div class="soap-letter">O</div>
+        <div class="soap-word">OBJECTIVE — 客観的情報</div>
+        <div class="soap-title">看護師が観察・測定した情報</div>
+        <div class="soap-desc">バイタルサイン・身体所見・検査値など、客観的に確認できる事実を記録します。</div>
+        <div class="soap-example">例：BP 138/82 mmHg、SpO2 97%、右下腿に浮腫（+）</div>
+      </div>
+      <div class="soap-card">
+        <div class="soap-letter">A</div>
+        <div class="soap-word">ASSESSMENT — アセスメント</div>
+        <div class="soap-title">看護師の臨床判断・評価</div>
+        <div class="soap-desc">SとOをもとにした看護師の判断・問題の評価・課題の分析を記録します。AIが補助的なアセスメントを提案します。</div>
+        <div class="soap-example">例：血圧は許容範囲内だが、浮腫の増悪に注意が必要な状態。</div>
+      </div>
+      <div class="soap-card">
+        <div class="soap-letter">P</div>
+        <div class="soap-word">PLAN — 計画・対応方針</div>
+        <div class="soap-title">今後の看護計画・アクション</div>
+        <div class="soap-desc">次回訪問時の観察ポイント・処置計画・多職種への申し送り事項などを記録します。</div>
+        <div class="soap-example">例：次回訪問で浮腫の変化を評価。状態悪化時は主治医へ報告。</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DOCUMENTS -->
+<section class="documents" id="documents">
+  <div class="container">
+    <div class="section-label reveal">DOCUMENTS</div>
+    <h2 class="section-title reveal">対応書類 — <span class="nursing-color">SOAPノートから、順次拡張</span></h2>
+    <p class="section-desc reveal">
+      第一弾として、訪問看護で最も負担の大きい<strong>SOAPノート（看護記録）</strong>から対応開始。<br>
+      今後、訪問看護に必要な書類を幅広く追加していく予定です。
+    </p>
+    <div class="doc-grid reveal">
+
+      <!-- メイン：SOAPノート -->
+      <div class="doc-card main">
+        <span class="doc-main-badge">★ 第一弾 対応書類</span>
+        <div class="doc-status ready">✅ 対応済み</div>
+        <div class="doc-icon">📋</div>
+        <div class="doc-name">SOAPノート（看護記録）</div>
+        <div class="doc-yosiki">訪問看護 日々の看護記録</div>
+        <div class="doc-desc">
+          訪問ごとの患者状態・アセスメント・看護計画をSOAP形式で記録。毎訪問後に作成が必要で、看護師の大きな業務負担になっています。LINEに話すだけでAIが自動生成します。
+        </div>
+      </div>
+
+      <!-- 訪問看護報告書 -->
+      <div class="doc-card">
+        <div class="doc-status soon">🔜 近日対応予定</div>
+        <div class="doc-icon">📝</div>
+        <div class="doc-name">訪問看護報告書</div>
+        <div class="doc-yosiki">主治医への月次報告書</div>
+        <div class="doc-desc">
+          月1回、主治医へ提出する患者の状態変化・実施した看護内容の報告書。SOAPデータをもとに自動でドラフト作成する機能を開発中です。
+        </div>
+      </div>
+
+      <!-- アセスメントシート -->
+      <div class="doc-card">
+        <div class="doc-status soon">🔜 近日対応予定</div>
+        <div class="doc-icon">🔍</div>
+        <div class="doc-name">初回訪問アセスメントシート</div>
+        <div class="doc-yosiki">新規利用者 初回評価記録</div>
+        <div class="doc-desc">
+          新規患者の初回訪問時の情報収集・アセスメント記録。話した内容からADL・IADL・既往歴・看護ニーズを自動で整理します。
+        </div>
+      </div>
+
+      <!-- 看護計画書 -->
+      <div class="doc-card">
+        <div class="doc-status future">📅 対応予定</div>
+        <div class="doc-icon">📊</div>
+        <div class="doc-name">訪問看護計画書</div>
+        <div class="doc-yosiki">看護計画・目標管理</div>
+        <div class="doc-desc">
+          患者ごとの看護目標・ケア計画を記載する書類。定期的な見直しが必要で、SOAPデータをもとにした更新支援を予定しています。
+        </div>
+      </div>
+
+      <!-- ヒヤリハット -->
+      <div class="doc-card">
+        <div class="doc-status future">📅 対応予定</div>
+        <div class="doc-icon">⚠️</div>
+        <div class="doc-name">ヒヤリハット・事故報告書</div>
+        <div class="doc-yosiki">リスクマネジメント書類</div>
+        <div class="doc-desc">
+          ヒヤリハット事例の報告。発生状況・原因・再発防止策を話すだけで記録が完成。緊急対応後の記録業務を大幅に軽減します。
+        </div>
+      </div>
+
+      <!-- 多職種連携 -->
+      <div class="doc-card">
+        <div class="doc-status future">📅 対応予定</div>
+        <div class="doc-icon">🤝</div>
+        <div class="doc-name">多職種連携・申し送りメモ</div>
+        <div class="doc-yosiki">ケアマネ・主治医・リハビリ連携</div>
+        <div class="doc-desc">
+          ケアマネジャー・主治医・リハビリスタッフへの申し送り記録。会議中の発言を録音するだけで、申し送り記録を自動生成します。
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- BENEFITS -->
+<section class="benefits" id="benefits">
+  <div class="container">
+    <div class="section-label reveal">MERIT</div>
+    <h2 class="section-title reveal">導入で変わる、<span class="gold">6つのこと</span></h2>
+    <p class="section-desc reveal">
+      記録時間の削減だけではありません。残業代などのコスト削減から、看護師の働きやすさ・ステーション経営まで、現場全体が変わります。
+    </p>
+    <div class="benefits-grid reveal">
+
+      <div class="benefit-card">
+        <div class="benefit-num">01</div>
+        <span class="benefit-icon">⏰</span>
+        <div class="benefit-title">記録時間を最大80%削減</div>
+        <div class="benefit-desc">
+          1件30〜60分かかっていた看護記録が、5〜10分に短縮。1日5〜10件の訪問をこなす看護師の場合、毎日2〜4時間の業務削減になります。
+        </div>
+        <span class="benefit-highlight">月40時間以上の削減も可能</span>
+      </div>
+
+      <div class="benefit-card">
+        <div class="benefit-num">02</div>
+        <span class="benefit-icon">💚</span>
+        <div class="benefit-title">看護師の離職防止・働きやすさの向上</div>
+        <div class="benefit-desc">
+          残業削減・書類ストレスの解消により、スタッフの満足度が向上。採用難の時代に、今いる看護師を守ることが最大の経営課題です。
+        </div>
+        <span class="benefit-highlight">残業ゼロを目指せる仕組み</span>
+      </div>
+
+      <div class="benefit-card">
+        <div class="benefit-num">03</div>
+        <span class="benefit-icon">📜</span>
+        <div class="benefit-title">SOAP形式を標準化・記録品質の均一化</div>
+        <div class="benefit-desc">
+          AIが常にSOAP形式で記録を生成するため、スタッフの経験差による記録品質のばらつきを防止。新人看護師の早期戦力化にも役立ちます。
+        </div>
+        <span class="benefit-highlight">記録品質の標準化</span>
+      </div>
+
+      <div class="benefit-card">
+        <div class="benefit-num">04</div>
+        <span class="benefit-icon">🏥</span>
+        <div class="benefit-title">患者ケアに集中できる時間が増える</div>
+        <div class="benefit-desc">
+          記録から解放された時間を、患者さんとのコミュニケーションや観察に使えます。「もっと患者さんのそばにいたい」その思いを実現します。
+        </div>
+        <span class="benefit-highlight">ケアの質が向上する</span>
+      </div>
+
+      <div class="benefit-card">
+        <div class="benefit-num">05</div>
+        <span class="benefit-icon">📱</span>
+        <div class="benefit-title">LINEだけで完結。ITが苦手でも使える</div>
+        <div class="benefit-desc">
+          新しいシステムの導入教育が不要。LINEの使い方を知っていれば、今日から使えます。50代・60代のスタッフにも好評です。
+        </div>
+        <span class="benefit-highlight">導入研修ほぼ不要</span>
+      </div>
+
+      <div class="benefit-card">
+        <div class="benefit-num">06</div>
+        <span class="benefit-icon">💰</span>
+        <div class="benefit-title">残業代・人件費コストを直接削減</div>
+        <div class="benefit-desc">
+          看護師1人あたり月40時間超の記録時間が削減されれば、残業代換算で月数万円規模のコスト削減に直結します。月額料金と残業代の比較で、導入コストの回収が早い点も経営判断のポイントです。
+        </div>
+        <span class="benefit-highlight">残業代削減でROIが明確</span>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- COMPARISON -->
+<section class="comparison" id="comparison">
+  <div class="container">
+    <div class="section-label reveal">COMPARISON</div>
+    <h2 class="section-title reveal">従来の記録方法との<span class="gold">違い</span></h2>
+    <p class="section-desc reveal">現場のリアルな数字で比較します。</p>
+    <div class="comparison-wrap reveal">
+      <table class="comparison-table">
+        <thead>
+          <tr>
+            <th class="th-item">比較項目</th>
+            <th class="th-before">手書き・手入力（従来）</th>
+            <th class="th-after">はなまるAI 看護版</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="td-item">📋 SOAPノート作成時間</td>
+            <td class="td-before">30〜60分 / 1件</td>
+            <td class="td-after"><span class="check">✓</span>5〜10分 / 1件</td>
+          </tr>
+          <tr>
+            <td class="td-item">📱 必要なデバイス・アプリ</td>
+            <td class="td-before">PC・専用システム</td>
+            <td class="td-after"><span class="check">✓</span>スマホのLINEだけ</td>
+          </tr>
+          <tr>
+            <td class="td-item">✏️ 操作スキル</td>
+            <td class="td-before">PC・タイピングスキルが必要</td>
+            <td class="td-after"><span class="check">✓</span>話すだけ・スキル不要</td>
+          </tr>
+          <tr>
+            <td class="td-item">📜 記録品質のばらつき</td>
+            <td class="td-before">スタッフ間で差がある</td>
+            <td class="td-after"><span class="check">✓</span>AI標準化で均一な品質</td>
+          </tr>
+          <tr>
+            <td class="td-item">🌙 残業・サービス残業</td>
+            <td class="td-before">毎日発生・慢性化</td>
+            <td class="td-after"><span class="check">✓</span>月30〜40時間以上削減</td>
+          </tr>
+          <tr>
+            <td class="td-item">🔄 転記ミス・記入漏れ</td>
+            <td class="td-before">発生しやすい</td>
+            <td class="td-after"><span class="check">✓</span>AI確認ループで防止</td>
+          </tr>
+          <tr>
+            <td class="td-item">🤝 多職種への申し送り</td>
+            <td class="td-before">口頭・メモ頼み</td>
+            <td class="td-after"><span class="check">✓</span>記録から自動で申し送り</td>
+          </tr>
+          <tr>
+            <td class="td-item">💰 月額費用</td>
+            <td class="td-before">人件費のみ（見えないコスト大）</td>
+            <td class="td-after"><span class="check">✓</span>¥14,800〜 / 月</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- BEFORE / AFTER -->
+<section class="before-after" id="before-after">
+  <div class="container">
+    <div class="section-label reveal">BEFORE / AFTER</div>
+    <h2 class="section-title reveal">ある日の訪問後、<span class="nursing-color">業務の流れがこう変わります</span></h2>
+    <p class="section-desc reveal">
+      訪問件数5件の日。はなまるAI導入前後で、記録業務の時間がどう変わるか比較してみます。
+    </p>
+    <div class="ba-wrap reveal">
+      <div class="ba-col before">
+        <span class="ba-col-label">BEFORE — 従来の記録業務</span>
+        <div class="ba-title">訪問5件 ＋ 記録業務 の1日</div>
+        <div class="ba-steps">
+          <div class="ba-step">
+            <span class="ba-step-icon">🚗</span>
+            <div class="ba-step-text">
+              訪問終了、車の中でメモ書き
+              <span class="ba-step-time">⏱ 5〜10分 × 5件</span>
+            </div>
+          </div>
+          <div class="ba-step">
+            <span class="ba-step-icon">🖥️</span>
+            <div class="ba-step-text">
+              事務所に戻ってPC起動・システムログイン
+              <span class="ba-step-time">⏱ 5分</span>
+            </div>
+          </div>
+          <div class="ba-step">
+            <span class="ba-step-icon">✍️</span>
+            <div class="ba-step-text">
+              メモを見ながらSOAPノートを手入力（1件30〜60分）
+              <span class="ba-step-time">⏱ 30〜60分 × 5件</span>
+            </div>
+          </div>
+          <div class="ba-step">
+            <span class="ba-step-icon">🔍</span>
+            <div class="ba-step-text">
+              記入漏れチェック・修正・上長確認
+              <span class="ba-step-time">⏱ 20〜30分</span>
+            </div>
+          </div>
+          <div class="ba-step">
+            <span class="ba-step-icon">😮‍💨</span>
+            <div class="ba-step-text">
+              やっと退勤……残業 or 翌朝に持ち越し
+              <span class="ba-step-time">⏱ サービス残業多発</span>
+            </div>
+          </div>
+        </div>
+        <div class="ba-total">合計：記録だけで 約3〜5時間</div>
+      </div>
+
+      <div class="ba-col after">
+        <span class="ba-col-label">AFTER — はなまるAI 看護版</span>
+        <div class="ba-title">訪問5件 ＋ LINEで話すだけ の1日</div>
+        <div class="ba-steps">
+          <div class="ba-step">
+            <span class="ba-step-icon">💬</span>
+            <div class="ba-step-text">
+              訪問直後、LINEを開いて音声で話す
+              <span class="ba-step-time">⏱ 1〜3分 × 5件</span>
+            </div>
+          </div>
+          <div class="ba-step">
+            <span class="ba-step-icon">🤖</span>
+            <div class="ba-step-text">
+              AIが自動でSOAPノートを生成・返信
+              <span class="ba-step-time">⚡ 数十秒</span>
+            </div>
+          </div>
+          <div class="ba-step">
+            <span class="ba-step-icon">✅</span>
+            <div class="ba-step-text">
+              LINEに届いたSOAPノートを確認
+              <span class="ba-step-time">⏱ 1〜2分</span>
+            </div>
+          </div>
+          <div class="ba-step">
+            <span class="ba-step-icon">📋</span>
+            <div class="ba-step-text">
+              電子カルテ等にコピー＆ペーストして完了
+              <span class="ba-step-time">⏱ 1分</span>
+            </div>
+          </div>
+          <div class="ba-step">
+            <span class="ba-step-icon">🏠</span>
+            <div class="ba-step-text">
+              定時に退勤。記録は訪問の合間に完結
+              <span class="ba-step-time">⏱ 残業ゼロ</span>
+            </div>
+          </div>
+        </div>
+        <div class="ba-total">合計：記録業務が 約30〜50分に短縮</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DEMO (Dify埋め込み) -->
+<section class="demo" id="demo">
+  <div class="container">
+    <div class="demo-inner">
+      <div class="section-label reveal">AI DEMO</div>
+      <h2 class="section-title reveal">AIデモ体験<br><span class="nursing-color">今すぐSOAPノートを試してみる</span></h2>
+      <p class="section-desc reveal">
+        テキスト入力でも、PC版の音声録音でも試せます。<br>
+        実際の訪問内容に近い言葉で送ると、よりリアルなSOAPノートが生成されます。
+      </p>
+
+      <div class="demo-frame reveal">
+        <div class="demo-frame-header">
+          <div class="demo-header-left">
+            <div class="demo-header-icon">🎙</div>
+            <div>
+              <div class="demo-header-title">はなまるAI 看護記録 — PC音声デモ</div>
+              <div class="demo-header-sub">ファイル選択 または マイク録音 → SOAPノートを自動生成</div>
+            </div>
+          </div>
+          <span class="demo-header-badge">PC DEMO</span>
+        </div>
+        <iframe
+          src="https://aidealize.com/liff/nursing/pc/index.html"
+          width="100%"
+          height="620"
+          frameborder="0"
+          class="demo-embed"
+          allow="microphone">
+        </iframe>
+      </div>
+      <div class="demo-note reveal" style="margin-top:16px;">
+        <span>💡</span>
+        <span>
+          <strong>試し方：</strong>📂 ファイル選択（録音済みの音声ファイルを選ぶ）か、🔴 マイク録音（その場で話す）のどちらかで送信してください。<br>
+          <span style="font-size:0.85rem;color:var(--gray);">※ マイク録音はブラウザのアクセス許可が必要です。スマホからはLINEでご利用ください。</span>
+        </span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section class="pricing" id="pricing">
+  <div class="container">
+    <div class="section-label reveal">PRICING</div>
+    <h2 class="section-title reveal">料金プラン</h2>
+    <p class="section-desc reveal">
+      ステーションの規模に合わせてお選びいただけます。<br>
+      現在、モニター3社限定で<strong style="color:var(--nursing-mid)">初期費用が半額</strong>になるキャンペーンを実施中です。
+    </p>
+    <div class="pricing-note reveal">
+      🎯 モニター3社限定キャンペーン ——「初期費用が通常の半額」でご導入いただけます
+    </div>
+    <div class="pricing-grid reveal">
+
+      <!-- ライト -->
+      <div class="price-card">
+        <div class="price-name">LIGHT PLAN ／ ライトプラン</div>
+        <div class="price-target">小規模ステーション・まず試してみたい方に<br>看護師5名以下の目安</div>
+        <div class="price-amount">
+          <div class="price-num"><span class="currency">¥</span>14,800<span class="period"> / 月</span></div>
+          <div class="price-initial">初期費用：¥100,000</div>
+          <div class="price-monitor">🎯 モニター価格：初期¥50,000</div>
+        </div>
+        <ul class="price-features">
+          <li>SOAPノート自動生成</li>
+          <li>LINE連携</li>
+          <li>月50件まで</li>
+          <li>メールサポート</li>
+          <li>オンライン導入サポート1回</li>
+        </ul>
+        <a href="#contact" class="price-cta">お問い合わせ・ご相談はこちら</a>
+      </div>
+
+      <!-- スタンダード -->
+      <div class="price-card featured">
+        <div class="price-badge">★ MOST POPULAR</div>
+        <div class="price-name">STANDARD PLAN ／ スタンダードプラン</div>
+        <div class="price-target">中規模ステーション・チームで使いたい方に<br>看護師10名以下の目安</div>
+        <div class="price-amount">
+          <div class="price-num"><span class="currency">¥</span>29,800<span class="period"> / 月</span></div>
+          <div class="price-initial">初期費用：¥150,000</div>
+          <div class="price-monitor">🎯 モニター価格：初期¥75,000</div>
+        </div>
+        <ul class="price-features">
+          <li>SOAPノート自動生成</li>
+          <li>LINE連携</li>
+          <li>月200件まで</li>
+          <li>訪問看護報告書（近日対応）</li>
+          <li>メール＋チャットサポート</li>
+          <li>月1回オンライン相談</li>
+          <li>ICT加算算定サポート資料提供</li>
+        </ul>
+        <a href="#contact" class="price-cta">お問い合わせ・ご相談はこちら</a>
+      </div>
+
+      <!-- プロ -->
+      <div class="price-card">
+        <div class="price-name">PRO PLAN ／ プロプラン</div>
+        <div class="price-target">大規模・複数拠点のステーションに<br>看護師20名以上の目安</div>
+        <div class="price-amount">
+          <div class="price-num"><span class="currency">¥</span>59,800<span class="period"> / 月</span></div>
+          <div class="price-initial">初期費用：¥200,000</div>
+          <div class="price-monitor">🎯 モニター価格：初期¥100,000</div>
+        </div>
+        <ul class="price-features">
+          <li>全対応書類（順次追加）</li>
+          <li>月件数無制限</li>
+          <li>複数拠点・スタッフ管理</li>
+          <li>専任サポート担当者付き</li>
+          <li>月3回オンライン相談</li>
+          <li>カスタマイズ対応</li>
+          <li>ICT加算算定・申請サポート</li>
+        </ul>
+        <a href="#contact" class="price-cta">お問い合わせ・ご相談はこちら</a>
+      </div>
+
+    </div>
+    <p class="pricing-footer">看護師20名以上・複数拠点はお気軽にご相談ください ／ すべて税別表示</p>
+  </div>
+</section>
+
+<!-- DOWNLOAD -->
+<section class="download" id="download">
+  <div class="container">
+    <div class="download-inner reveal">
+      <span class="download-label">FREE DOWNLOAD</span>
+      <h2 class="download-heading">2点の無料資料を<br>今すぐダウンロード</h2>
+      <p class="download-lead">
+        ステーション名とメールアドレスを入力するだけで、すぐにダウンロードページに進めます。
+      </p>
+      <div class="download-docs">
+        <div class="download-doc-item">
+          <span>📋</span>
+          AI看護記録 活用ガイド（SOAPノート自動生成 ビフォーアフター図解・全5枚）
+        </div>
+        <div class="download-doc-item">
+          <span>🛡</span>
+          AI安心・安全チェックシート（医療情報セキュリティ確認10項目・全7枚）
+        </div>
+      </div>
+      <div class="download-form-wrap">
+        [contact-form-7 id="94a629d" title="はなまる看護ダウンロード"]
+      </div>
+      <p class="download-note">
+        ※ 送信後、すぐにダウンロードページに移動します。<br>
+        ※ 個人情報は第三者に提供しません。営業メールは送りません。
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div class="container">
+    <div class="contact-box reveal">
+      <div class="section-label" style="margin-bottom:18px;">CONTACT</div>
+      <h2 class="contact-title">
+        申し込んだら、<span class="nursing-color">1ヶ月無料</span>で<br>
+        実際に使い始められます。
+      </h2>
+      <p class="contact-desc">
+        フォームでお申し込みいただいたあと、担当者からLINEへの招待をお送りします。<br>
+        <strong>1ヶ月間、制限なく本番環境をご利用いただけます。</strong><br><br>
+        「本当にLINEで話すだけで完成するの？」——説明より、実際に使って確かめてください。<br>
+        現在、<strong style="color:var(--nursing)">モニター3社限定</strong>で初期費用半額の特別価格でご導入いただけます。
+      </p>
+      <div class="contact-perks">
+        <span class="contact-perk">🎁 1ヶ月無料トライアル</span>
+        <span class="contact-perk">✅ 申込後すぐLINE招待を送付</span>
+        <span class="contact-perk">✅ モニター3社限定・初期半額</span>
+        <span class="contact-perk">✅ 完全オンライン対応</span>
+        <span class="contact-perk">✅ スマホ・PC両対応</span>
+      </div>
+      <div class="form-embed">
+        [contact-form-7 id="00e33f2" title="はなまる看護申込フォーム"]
+      </div>
+      <p class="contact-note">
+        ※ オンライン対応（Zoom / Google Meet / LINE）<br>
+        ※ 所要時間の目安：30〜60分<br>
+        ※ 営業電話・強引なクロージングは一切行いません
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- COMPANY -->
+<div class="company-bar">
+  <div class="container">
+    <p>
+      運営：<strong>株式会社AIdealize</strong>（AIdealize Inc.）<br>
+      〒 ／ <a href="https://aidealize.com/company/">会社概要</a> ／
+      <a href="https://aidealize.com/privacy-policy/">プライバシーポリシー</a> ／
+      <a href="https://aidealize.com/lp/hanamaruai/">一般版（はなまるAI）を見る</a> ／
+      <a href="hanamaruai-houmonkaigo.html">訪問介護版を見る</a>
+    </p>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer class="site-footer">
+  <div class="footer-links">
+    <a href="https://aidealize.com/">TOP</a>
+    <a href="https://aidealize.com/service/">サービス</a>
+    <a href="https://aidealize.com/company/">会社概要</a>
+    <a href="https://aidealize.com/privacy-policy/">プライバシーポリシー</a>
+    <a href="#contact">お問い合わせ</a>
+  </div>
+  <p class="footer-copy">© 2026 AIdealize Inc. All rights reserved.</p>
+</footer>
+
+<!-- FLOATING CTA (SP) -->
+<a href="#contact" class="float-cta">🎁 1ヶ月無料トライアルに申し込む</a>
+
+<script>
+(function(){
+  // ハンバーガー
+  const btn = document.getElementById('navHamburger');
+  const drawer = document.getElementById('navDrawer');
+  const nav = document.getElementById('mainNav');
+
+  btn.addEventListener('click', function(){
+    btn.classList.toggle('open');
+    drawer.classList.toggle('open');
+  });
+  drawer.querySelectorAll('.drawer-link').forEach(function(link){
+    link.addEventListener('click', function(){
+      btn.classList.remove('open');
+      drawer.classList.remove('open');
+    });
+  });
+
+  // スクロールで影
+  window.addEventListener('scroll', function(){
+    nav.classList.toggle('scrolled', window.scrollY > 10);
+  });
+
+  // Demo tabs
+  document.querySelectorAll('.demo-tab-btn').forEach(function(tab) {
+    tab.addEventListener('click', function() {
+      document.querySelectorAll('.demo-tab-btn').forEach(function(t){ t.classList.remove('active'); });
+      document.querySelectorAll('.demo-panel').forEach(function(p){ p.classList.remove('active'); });
+      tab.classList.add('active');
+      document.getElementById('tab-' + tab.dataset.tab).classList.add('active');
+    });
+  });
+
+  // reveal animation
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver(function(entries){
+    entries.forEach(function(entry){
+      if(entry.isIntersecting){
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12 });
+  reveals.forEach(function(el){ observer.observe(el); });
+})();
+
+
+  // iframeをコンテンツの高さに自動リサイズ
+  var demoIframe = document.querySelector('.demo-embed');
+  if (demoIframe) {
+    demoIframe.addEventListener('load', function () {
+      try {
+        var h = this.contentDocument.body.scrollHeight;
+        this.style.height = h + 'px';
+      } catch (e) { }
+    });
+  }
+
+
+</script>
+
+</body>
+</html>

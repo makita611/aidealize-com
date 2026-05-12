@@ -1,0 +1,1677 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI業務改革コンサルティング | 話すだけで仕事が変わる | AIdealize</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Noto+Sans+JP:wght@300;400;500;700&family=Courier+Prime:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --ink: #0a0a0a;
+  --cream: #f4f1ea;
+  --warm: #e8e2d5;
+  --gold: #b8873c;
+  --gold-light: #d4a45a;
+  --navy: #1c2d45;
+  --navy-mid: #2a3f5f;
+  --sage: #4a6741;
+  --rust: #8b3a2e;
+  --mid: #5a5248;
+  --light-mid: #9a9088;
+  --white: #ffffff;
+  --red: #c0272d;
+  --red-dark: #a01f24;
+  --ink: #1a1a1a;
+  --mid: #555;
+  --white: #fff;
+  --border: #e8e8e8;
+}
+
+* { margin:0; padding:0; box-sizing:border-box; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'Noto Sans JP', sans-serif;
+  background: var(--cream);
+  color: var(--ink);
+  overflow-x: hidden;
+}
+
+/* ===================== NAV =====================  */
+#mainNav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 60px; height: 68px;
+  background: rgba(255,255,255,0.97);
+  border-bottom: 1px solid var(--border);
+  backdrop-filter: blur(12px);
+  transition: box-shadow 0.3s;
+}
+#mainNav.scrolled { box-shadow: 0 4px 24px rgba(0,0,0,0.08); }
+
+/* ── ロゴ ── */
+.nav-logo {
+  display: flex; align-items: center; gap: 12px;
+  text-decoration: none;
+}
+.nav-logo img {
+  height: 36px; width: auto;
+}
+
+.nav-logo-text {
+  font-family: 'DM Mono', monospace;
+  font-size: 16px; font-weight: 500;
+  color: var(--ink); letter-spacing: 0.02em;
+}
+.nav-logo-text span { color: var(--red); }
+
+.nav-logo img {
+  height: 36px; width: auto;
+}
+
+
+/* ── PCナビ ── */
+.nav-links {
+  display: flex; align-items: center; gap: 36px;
+  list-style: none; margin: 0; padding: 0;
+}
+.nav-links a {
+  font-size: 13px; font-weight: 500;
+  color: var(--mid); text-decoration: none;
+  letter-spacing: 0.04em;
+  transition: color 0.2s;
+}
+.nav-links a:hover { color: var(--ink); }
+.nav-cta {
+  background: var(--red); color: var(--white) !important;
+  padding: 10px 22px; border-radius: 3px;
+  font-size: 12px !important; font-weight: 700 !important;
+  letter-spacing: 0.06em !important;
+  transition: background 0.2s !important;
+}
+.nav-cta:hover { background: var(--red-dark) !important; color: var(--white) !important; }
+
+/* ── ハンバーガーボタン（タブレット・スマホ） ── */
+.nav-hamburger {
+  display: none;
+  flex-direction: column; justify-content: center; gap: 5px;
+  width: 40px; height: 40px;
+  background: none; border: none; cursor: pointer; padding: 4px;
+}
+.nav-hamburger span {
+  display: block; width: 24px; height: 2px;
+  background: var(--ink);
+  transition: all 0.3s;
+  transform-origin: center;
+}
+/* × に変わるアニメーション */
+.nav-hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.nav-hamburger.open span:nth-child(2) { opacity: 0; }
+.nav-hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+/* ── ドロワーメニュー ── */
+.nav-drawer {
+  display: none;
+  position: fixed; top: 68px; left: 0; right: 0;
+  background: rgba(255,255,255,0.98);
+  border-bottom: 2px solid var(--red);
+  padding: 24px 32px 32px;
+  z-index: 999;
+  backdrop-filter: blur(12px);
+}
+.nav-drawer.open { display: block; }
+.nav-drawer ul {
+  list-style: none; margin: 0; padding: 0;
+  display: flex; flex-direction: column; gap: 0;
+}
+.nav-drawer ul li a {
+  display: block;
+  padding: 14px 0;
+  font-size: 15px; font-weight: 500;
+  color: var(--ink); text-decoration: none;
+  border-bottom: 1px solid var(--border);
+  letter-spacing: 0.04em;
+}
+.nav-drawer ul li:last-child a {
+  margin-top: 20px;
+  display: block; text-align: center;
+  background: var(--red); color: var(--white) !important;
+  padding: 14px 22px; border-radius: 3px;
+  font-weight: 700 !important; border-bottom: none;
+  letter-spacing: 0.06em;
+}
+
+/* ── タブレット（1024px以下） ── */
+@media (max-width: 1024px) {
+  #mainNav { padding: 0 32px; }
+  .nav-links { display: none; }
+  .nav-hamburger { display: flex; }
+}
+
+/* ── スマホ（480px以下） ── */
+@media (max-width: 480px) {
+  #mainNav { padding: 0 20px; height: 60px; }
+  .nav-drawer { top: 60px; padding: 20px 20px 28px; }
+  .nav-logo img { height: 30px; }
+}
+
+/* ===================== HERO ===================== */
+.hero {
+  min-height: 100vh;
+  display: grid; grid-template-columns: 1fr 1fr;
+  padding: 64px 0 0;
+}
+.hero-left {
+  padding: 80px 48px 80px 64px;
+  display: flex; flex-direction:column; justify-content:center;
+  border-right: 1px solid rgba(184,135,60,0.15);
+}
+.hero-eyebrow {
+  display: inline-flex; align-items:center; gap:12px;
+  margin-bottom: 32px;
+}
+.eyebrow-line {
+  width: 40px; height: 1px; background: var(--gold);
+}
+.eyebrow-text {
+  font-family: 'Courier Prime', monospace;
+  font-size: 11px; font-weight:700; letter-spacing:0.2em;
+  text-transform: uppercase; color: var(--gold);
+}
+.hero-h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(36px, 4.5vw, 58px);
+  font-weight: 900; line-height: 1.2;
+  color: var(--ink); margin-bottom: 12px;
+}
+.hero-h1 em {
+  font-style: italic; color: var(--gold);
+}
+.hero-sub-headline {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(16px, 2vw, 22px);
+  font-weight: 700; color: var(--navy);
+  line-height: 1.5; margin-bottom: 28px;
+  padding-bottom: 28px;
+  border-bottom: 1px solid var(--warm);
+}
+.hero-body {
+  font-size: 14px; color: var(--mid); line-height: 2;
+  margin-bottom: 40px; max-width: 480px;
+}
+.hero-body strong { color: var(--ink); font-weight: 700; }
+.hero-ctas { display:flex; gap:16px; flex-wrap:wrap; }
+.btn-gold {
+  background: var(--gold); color: var(--white);
+  padding: 16px 36px; font-size: 14px; font-weight:700;
+  letter-spacing:0.08em; text-decoration:none;
+  border-radius: 1px; display:inline-block;
+  transition: all 0.2s; border:none; cursor:pointer;
+  font-family: 'Noto Sans JP', sans-serif;
+}
+.btn-gold:hover { background: var(--gold-light); transform:translateY(-1px); box-shadow: 0 8px 24px rgba(184,135,60,0.3); }
+.btn-outline {
+  background: transparent; color: var(--navy);
+  padding: 15px 36px; font-size: 14px; font-weight:700;
+  letter-spacing:0.08em; text-decoration:none;
+  border-radius: 1px; display:inline-block;
+  border: 1.5px solid var(--navy);
+  transition: all 0.2s; font-family: 'Noto Sans JP', sans-serif;
+}
+.btn-outline:hover { background: var(--navy); color: var(--white); }
+
+.hero-stats {
+  display:flex; gap:32px; margin-top:48px;
+  padding-top: 32px;
+  border-top: 1px solid var(--warm);
+}
+.stat { flex:1; }
+.stat-num {
+  font-family: 'Playfair Display', serif;
+  font-size: 32px; font-weight:900; color: var(--navy);
+  line-height:1; display:block;
+}
+.stat-label { font-size: 11px; color: var(--light-mid); margin-top: 6px; line-height:1.5; }
+
+/* HERO RIGHT — INTERACTIVE DEMO */
+.hero-right {
+  background: var(--navy);
+  display: flex; flex-direction:column;
+  padding: 80px 48px;
+  position: relative; overflow:hidden;
+}
+.hero-right::before {
+  content:'';
+  position:absolute; top:-100px; right:-100px;
+  width:400px; height:400px;
+  background: radial-gradient(circle, rgba(184,135,60,0.12) 0%, transparent 70%);
+  pointer-events:none;
+}
+.demo-label {
+  font-family: 'Courier Prime', monospace;
+  font-size: 10px; font-weight:700; letter-spacing:0.2em;
+  text-transform: uppercase; color: var(--gold);
+  margin-bottom: 20px;
+}
+.demo-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 22px; font-weight:700; color: var(--white);
+  line-height: 1.4; margin-bottom: 32px;
+}
+.demo-ui {
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 4px; overflow:hidden; flex:1;
+}
+.demo-header {
+  background: rgba(0,0,0,0.3);
+  padding: 12px 20px; display:flex; align-items:center; gap:8px;
+}
+.demo-dot { width:8px; height:8px; border-radius:50%; }
+.demo-dot.r { background:#e25f52; }
+.demo-dot.y { background:#f5a623; }
+.demo-dot.g { background:#5acb5c; }
+.demo-title-bar {
+  flex:1; text-align:center;
+  font-family: 'Courier Prime', monospace;
+  font-size: 11px; color:rgba(255,255,255,0.4);
+  letter-spacing:0.08em;
+}
+.chat-area {
+  padding: 20px; display:flex; flex-direction:column; gap:12px;
+  min-height: 280px;
+}
+.msg {
+  display:flex; flex-direction:column; gap:4px;
+  animation: msgIn 0.4s ease forwards;
+  opacity: 0;
+}
+@keyframes msgIn {
+  from { opacity:0; transform:translateY(8px); }
+  to { opacity:1; transform:translateY(0); }
+}
+.msg.user { align-items: flex-end; }
+.msg.ai { align-items: flex-start; }
+.msg-bubble {
+  max-width: 85%; padding: 10px 14px;
+  border-radius: 3px; font-size: 12px; line-height:1.7;
+}
+.msg.user .msg-bubble {
+  background: var(--gold);
+  color: white; font-weight:500;
+}
+.msg.ai .msg-bubble {
+  background: rgba(255,255,255,0.08);
+  color: rgba(255,255,255,0.85);
+  border: 1px solid rgba(255,255,255,0.08);
+}
+.msg-meta { font-size:10px; color:rgba(255,255,255,0.3); }
+.demo-input-area {
+  padding: 12px 16px;
+  border-top: 1px solid rgba(255,255,255,0.08);
+  display:flex; gap:8px; align-items:center;
+}
+.demo-input {
+  flex:1; background:rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 2px; padding:10px 14px;
+  color: white; font-size: 12px;
+  font-family: 'Noto Sans JP', sans-serif;
+  outline:none;
+}
+.demo-input::placeholder { color:rgba(255,255,255,0.3); }
+.demo-send {
+  background: var(--gold); border:none; color:white;
+  width:36px; height:36px; border-radius:2px;
+  cursor:pointer; font-size:16px; display:flex;
+  align-items:center; justify-content:center;
+  transition: background 0.2s; flex-shrink:0;
+}
+.demo-send:hover { background: var(--gold-light); }
+.mic-wrap { position:relative; flex-shrink:0; width:36px; height:36px; }
+.mic-ring {
+  position:absolute; top:50%; left:50%;
+  width:36px; height:36px;
+  border-radius:50%;
+  transform:translate(-50%,-50%) scale(1);
+  border: 2px solid var(--rust);
+  opacity:0; pointer-events:none;
+}
+.mic-wrap.recording .mic-ring:nth-child(1) { animation: sonar 1.4s ease-out infinite; }
+.mic-wrap.recording .mic-ring:nth-child(2) { animation: sonar 1.4s ease-out 0.45s infinite; }
+.mic-wrap.recording .mic-ring:nth-child(3) { animation: sonar 1.4s ease-out 0.9s infinite; }
+@keyframes sonar {
+  0%   { transform:translate(-50%,-50%) scale(1); opacity:0.9; }
+  100% { transform:translate(-50%,-50%) scale(2.8); opacity:0; }
+}
+.mic-btn {
+  position:relative; z-index:1;
+  background: rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.15);
+  color: rgba(255,255,255,0.6); width:36px; height:36px;
+  border-radius:50%; cursor:pointer; font-size:15px;
+  display:flex; align-items:center; justify-content:center;
+  transition: all 0.25s;
+}
+.mic-btn:hover { background:rgba(255,255,255,0.15); color:white; }
+.mic-wrap.recording .mic-btn {
+  background: var(--rust); border-color: var(--rust); color:white;
+  box-shadow: 0 0 16px rgba(139,58,46,0.7);
+}
+.crm-badge {
+  margin-top: 16px; background: rgba(90,103,65,0.3);
+  border: 1px solid rgba(90,199,65,0.2);
+  border-radius: 3px; padding:10px 14px;
+  display:flex; align-items:center; gap:10px;
+}
+.crm-badge-icon { font-size:16px; }
+.crm-badge-text { font-size:11px; color:rgba(255,255,255,0.7); line-height:1.5; }
+.crm-badge-text strong { color:#7dd67d; }
+
+/* ===== PHONE FRAME ===== */
+.phone-frame-wrap { display:flex; justify-content:center; }
+.phone-frame {
+  width:340px; background:#111; border-radius:38px;
+  border:2.5px solid rgba(255,255,255,0.12); overflow:hidden;
+  box-shadow:inset 0 0 0 1px rgba(255,255,255,0.05), 0 0 0 5px #0a0a0a, 0 32px 60px rgba(0,0,0,0.7);
+}
+.phone-notch {
+  height:24px; background:#111;
+  display:flex; align-items:center; justify-content:center;
+}
+.phone-notch-inner {
+  width:90px; height:18px; background:#0a0a0a;
+  border-radius:0 0 12px 12px;
+  display:flex; align-items:center; justify-content:center; gap:6px;
+}
+.notch-cam { width:6px; height:6px; border-radius:50%; background:#1a1a1a; border:1px solid #333; }
+.notch-speaker { width:28px; height:3.5px; border-radius:2px; background:#1a1a1a; }
+.phone-statusbar {
+  background:#141428; padding:3px 18px;
+  display:flex; justify-content:space-between; align-items:center;
+}
+.phone-statusbar span { font-size:9px; color:rgba(255,255,255,0.45); font-family:'Courier Prime',monospace; }
+.phone-app-bar {
+  background:#141428; padding:8px 14px 8px;
+  display:flex; align-items:center; gap:8px;
+  border-bottom:1px solid rgba(255,255,255,0.07);
+}
+.phone-avatar {
+  width:26px; height:26px; border-radius:50%;
+  background:linear-gradient(135deg,var(--gold),var(--gold-light));
+  display:flex; align-items:center; justify-content:center;
+  font-size:12px; flex-shrink:0;
+}
+.phone-app-info h5 { font-size:11px; font-weight:700; color:white; margin:0; }
+.phone-app-info span { font-size:9px; color:#5cb85c; }
+.phone-chat {
+  background:#1c1c2e; padding:12px 10px;
+  display:flex; flex-direction:column; gap:10px;
+  height:520px; overflow-y:auto; scroll-behavior:smooth;
+}
+.phone-chat::-webkit-scrollbar { width:2px; }
+.phone-chat::-webkit-scrollbar-thumb { background:rgba(255,255,255,0.1); border-radius:1px; }
+.pmsg { display:flex; flex-direction:column; gap:3px; }
+.pmsg.user { align-items:flex-end; }
+.pmsg.ai  { align-items:flex-start; }
+.pmsg-bubble {
+  max-width:88%; padding:10px 13px; font-size:12.5px; line-height:1.7;
+  border-radius:14px; animation:msgIn 0.35s ease forwards; opacity:0;
+}
+
+/* 入力エリア（テキストエリア）を広げる */
+.phone-input-bar textarea {
+    height: 80px !important; /* 現在より高さを出す */
+    padding: 10px;          /* 内側の余白を増やして文字を打ちやすくする */
+    line-height: 1.5;       /* 行間を広げて視認性を上げる */
+    resize: none;           /* ユーザーによる手動リサイズを無効化（枠を壊さないため） */
+}
+
+/* 入力バー自体の高さも自動で追従させる */
+.phone-input-bar {
+    height: auto !important;
+    padding: 10px 15px;
+}
+
+
+
+
+.pmsg.user .pmsg-bubble {
+  background:linear-gradient(135deg,var(--gold),#c8973a);
+  color:white; font-weight:500; border-bottom-right-radius:4px;
+}
+.pmsg.ai .pmsg-bubble {
+  background:#2a2a42; color:rgba(255,255,255,0.9);
+  border:1px solid rgba(255,255,255,0.07); border-bottom-left-radius:4px;
+}
+.pmsg-meta { font-size:10px; color:rgba(255,255,255,0.25); padding:0 4px; }
+.phone-input-row {
+  background:#141428; padding:10px 12px;
+  display:flex; gap:7px; align-items:center;
+  border-top:1px solid rgba(255,255,255,0.06);
+  display: flex;
+    margin-top: 20px;
+    height: 120px !important; 
+    width: 100% !important;   /* ★横幅を親要素に合わせる */
+    box-sizing: border-box;   /* ★余白を含めて計算する */
+    padding: 10px !important; /* ★左右に少し隙間を作る */
+    align-items: flex-start;  /* ★中身を上揃えにする（複数行対応） */
+}
+
+.phone-text-input {
+  flex:1; background:rgba(255,255,255,0.08);
+  border:1px solid rgba(255,255,255,0.12);
+  border-radius:50px; padding:9px 14px;
+  color:white; font-size:12.5px;
+  font-family:'Noto Sans JP',sans-serif; outline:none;
+  flex: 1;
+    width: 100% !important;   /* ★親の幅いっぱいに使う */
+    height: 100px !important; 
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    line-height: 1.5;       /* 行間を広げて読みやすく */
+
+    /* ★文字を折り返すための魔法の3行 */
+    white-space: pre-wrap;    
+    word-wrap: break-word;
+    overflow-y: auto;         /* ★縦に長くなったらスクロールさせる */
+}
+.phone-text-input::placeholder { color:rgba(255,255,255,0.32); font-size:12px; }
+.phone-send-btn {
+  width:28px; height:28px; border-radius:50%;
+  background:var(--gold); border:none; color:white;
+  font-size:12px; cursor:pointer; display:flex;
+  align-items:center; justify-content:center;
+  transition:background 0.2s; flex-shrink:0;
+}
+.phone-send-btn:hover { background:var(--gold-light); }
+.phone-home-bar {
+  background:#111; padding:7px;
+  display:flex; justify-content:center;
+}
+.phone-home-indicator { width:72px; height:3px; background:rgba(255,255,255,0.18); border-radius:2px; }
+.phone-mic-wrap { position:relative; flex-shrink:0; width:28px; height:28px; }
+.phone-mic-ring {
+  position:absolute; top:50%; left:50%;
+  width:28px; height:28px; border-radius:50%;
+  transform:translate(-50%,-50%) scale(1);
+  border:2px solid var(--rust); opacity:0; pointer-events:none;
+}
+.phone-mic-wrap.recording .phone-mic-ring:nth-child(1) { animation:sonar 1.4s ease-out infinite; }
+.phone-mic-wrap.recording .phone-mic-ring:nth-child(2) { animation:sonar 1.4s ease-out 0.45s infinite; }
+.phone-mic-wrap.recording .phone-mic-ring:nth-child(3) { animation:sonar 1.4s ease-out 0.9s infinite; }
+.phone-mic-btn {
+  position:relative; z-index:1;
+  width:28px; height:28px; border-radius:50%;
+  background:rgba(255,255,255,0.1); border:1px solid rgba(255,255,255,0.15);
+  color:rgba(255,255,255,0.65); font-size:12px;
+  cursor:pointer; display:flex; align-items:center; justify-content:center;
+  transition:all 0.25s;
+}
+.phone-mic-wrap.recording .phone-mic-btn { background:var(--rust); border-color:var(--rust); color:white; box-shadow:0 0 12px rgba(139,58,46,0.7); }
+
+/* Idle attention pulse for mic — plays 3 times then stops */
+@keyframes micAttention {
+  0%   { box-shadow:0 0 0 0 rgba(184,135,60,0.8), 0 0 0 0 rgba(184,135,60,0.4); background:rgba(255,255,255,0.1); }
+  40%  { box-shadow:0 0 0 8px rgba(184,135,60,0.3), 0 0 0 16px rgba(184,135,60,0.1); background:rgba(184,135,60,0.35); }
+  80%  { box-shadow:0 0 0 14px rgba(184,135,60,0), 0 0 0 28px rgba(184,135,60,0); background:rgba(255,255,255,0.1); }
+  100% { box-shadow:0 0 0 0 rgba(184,135,60,0); }
+}
+.phone-mic-btn.attract {
+  animation: micAttention 0.9s ease-out 3;
+  border-color: var(--gold);
+  color: var(--gold);
+}
+.mic-hint {
+  font-size:10px; color:var(--gold);
+  font-weight:700; letter-spacing:0.06em;
+  animation: hintBlink 1.2s ease-in-out 4;
+  white-space:nowrap;
+}
+@keyframes hintBlink {
+  0%,100%{ opacity:1; } 50%{ opacity:0.2; }
+}
+.crm-badge-phone {
+  margin-top:12px; background:rgba(30,80,30,0.4);
+  border:1px solid rgba(80,200,80,0.2);
+  border-radius:8px; padding:9px 12px;
+  display:none; align-items:center; gap:8px;
+}
+.crm-badge-phone .crm-badge-text { font-size:10px; color:rgba(255,255,255,0.7); line-height:1.5; }
+.crm-badge-phone .crm-badge-text strong { color:#7dd67d; }
+
+/* ===================== TICKER ===================== */
+.ticker {
+  background: var(--gold); color: var(--white);
+  padding: 12px 0; overflow:hidden; white-space:nowrap;
+}
+.ticker-inner {
+  display:inline-flex; gap:0; animation: ticker 30s linear infinite;
+}
+.ticker-item {
+  font-family: 'Courier Prime', monospace;
+  font-size: 12px; font-weight:700; letter-spacing:0.12em;
+  padding: 0 40px; text-transform:uppercase;
+}
+.ticker-sep { opacity:0.5; }
+@keyframes ticker {
+  from { transform:translateX(0); }
+  to { transform:translateX(-50%); }
+}
+
+/* ===================== PAIN SECTION ===================== */
+.pain-section {
+  background: var(--ink);
+  padding: 100px 64px;
+}
+.section-tag {
+  font-family: 'Courier Prime', monospace;
+  font-size:11px; font-weight:700; letter-spacing:0.2em;
+  text-transform:uppercase; color:var(--gold);
+  display:flex; align-items:center; gap:12px; margin-bottom:24px;
+}
+.section-tag::before { content:''; width:32px; height:1px; background:var(--gold); }
+.pain-title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(28px, 3.5vw, 44px);
+  font-weight:900; color:var(--white);
+  line-height:1.3; margin-bottom:60px; max-width:700px;
+}
+.pain-title em { color:var(--gold); font-style:italic; }
+.pain-grid {
+  display:grid; grid-template-columns: repeat(3, 1fr);
+  border: 1px solid rgba(255,255,255,0.08);
+}
+.pain-item {
+  padding: 36px 32px;
+  border-right: 1px solid rgba(255,255,255,0.06);
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+  transition: background 0.3s;
+  cursor:default;
+}
+.pain-item:hover { background: rgba(184,135,60,0.08); }
+.pain-item:nth-child(3n) { border-right:none; }
+.pain-num {
+  font-family: 'Playfair Display', serif;
+  font-size: 48px; color: var(--gold-light);
+  opacity: 0.85;
+  line-height:1; margin-bottom:16px; display:block;
+}
+.pain-item h3 {
+  font-size:15px; font-weight:700; color:var(--white);
+  margin-bottom:10px; line-height:1.4;
+}
+.pain-item p { font-size:13px; color:rgba(255,255,255,0.5); line-height:1.9; }
+
+/* ===================== HOW IT WORKS ===================== */
+.how-section { padding: 100px 64px; background: var(--cream); }
+.how-grid { display:grid; grid-template-columns: 1fr 1fr; gap:80px; align-items:start; }
+.how-left .section-tag { margin-bottom:24px; }
+.how-h2 {
+  font-family: 'Playfair Display', serif;
+  font-size:clamp(26px,3vw,38px); font-weight:900;
+  color:var(--ink); line-height:1.3; margin-bottom:20px;
+}
+.how-body { font-size:14px; color:var(--mid); line-height:2; margin-bottom:32px; }
+.flow-steps { display:flex; flex-direction:column; gap:0; }
+.flow-step {
+  display:flex; gap:24px; padding:24px 0;
+  border-bottom: 1px solid var(--warm);
+  position:relative;
+}
+.flow-step:last-child { border-bottom:none; }
+.flow-step-num {
+  font-family: 'Playfair Display', serif;
+  font-size:36px; color:var(--gold); font-weight:900;
+  line-height:1; flex-shrink:0; width:48px;
+  opacity:0.4;
+}
+.flow-step-content h4 {
+  font-size:15px; font-weight:700; color:var(--ink);
+  margin-bottom:6px;
+}
+.flow-step-content p { font-size:13px; color:var(--mid); line-height:1.8; }
+.how-right {
+  background: var(--navy); border-radius:2px; overflow:hidden;
+  box-shadow: 16px 16px 0 var(--gold);
+}
+.how-right-header {
+  background: rgba(0,0,0,0.3); padding:16px 24px;
+  font-family:'Courier Prime',monospace; font-size:11px;
+  color:rgba(255,255,255,0.4); letter-spacing:0.1em;
+}
+.how-right-body { padding:28px 24px; }
+.kpi-row {
+  display:flex; gap:12px; margin-bottom:20px;
+}
+.kpi-card {
+  flex:1; background:rgba(255,255,255,0.06);
+  border:1px solid rgba(255,255,255,0.08);
+  border-radius:2px; padding:16px 12px; text-align:center;
+}
+.kpi-val {
+  font-family:'Playfair Display',serif;
+  font-size:28px; color:var(--gold); font-weight:900; display:block;
+}
+.kpi-label { font-size:10px; color:rgba(255,255,255,0.4); margin-top:4px; }
+.funnel-visual { margin-top:4px; }
+.fv-row {
+  display:flex; align-items:center; gap:10px; margin-bottom:8px;
+}
+.fv-label { font-size:11px; color:rgba(255,255,255,0.5); width:60px; text-align:right; flex-shrink:0; }
+.fv-bar { flex:1; height:6px; background:rgba(255,255,255,0.08); border-radius:3px; overflow:hidden; }
+.fv-fill { height:100%; background: linear-gradient(90deg, var(--gold), var(--gold-light)); border-radius:3px; }
+.fv-pct { font-size:11px; color:var(--gold); font-weight:700; width:36px; }
+
+/* ===================== SERVICES ===================== */
+.services-section { padding:100px 64px; background:var(--warm); }
+.services-header { max-width:600px; margin-bottom:60px; }
+.services-grid { display:grid; grid-template-columns: repeat(3,1fr); gap:0; }
+.svc-card {
+  background:var(--cream); border:1px solid rgba(0,0,0,0.08);
+  padding:44px 32px; position:relative;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.svc-card:hover { transform:translateY(-4px); box-shadow: 0 20px 48px rgba(0,0,0,0.12); z-index:1; }
+.svc-card.featured {
+  background:var(--navy); margin:-8px 0;
+  box-shadow: 0 24px 60px rgba(28,45,69,0.4);
+  z-index:2;
+}
+.featured-badge {
+  position:absolute; top:20px; right:20px;
+  background:var(--gold); color:white;
+  font-family:'Courier Prime',monospace;
+  font-size:10px; font-weight:700; letter-spacing:0.1em;
+  padding:4px 12px; text-transform:uppercase;
+}
+.svc-icon { font-size:32px; margin-bottom:20px; display:block; }
+.svc-step {
+  font-family:'Courier Prime',monospace;
+  font-size:10px; font-weight:700; letter-spacing:0.15em;
+  text-transform:uppercase; color:var(--gold); margin-bottom:8px; display:block;
+}
+.svc-card h3 {
+  font-family:'Playfair Display',serif;
+  font-size:20px; font-weight:700; line-height:1.3; margin-bottom:8px;
+  color:var(--ink);
+}
+.svc-card.featured h3 { color:var(--white); }
+.svc-price {
+  font-family:'Playfair Display',serif;
+  font-size:30px; color:var(--gold); font-weight:900; margin:16px 0 4px;
+}
+.svc-price-note { font-size:12px; color:var(--light-mid); margin-bottom:24px; }
+.svc-card.featured .svc-price-note { color:rgba(255,255,255,0.4); }
+.svc-list { list-style:none; }
+.svc-list li {
+  font-size:13px; padding:8px 0;
+  border-bottom:1px solid rgba(0,0,0,0.07);
+  color:var(--mid); display:flex; gap:8px; align-items:flex-start;
+}
+.svc-card.featured .svc-list li { color:rgba(255,255,255,0.65); border-bottom-color:rgba(255,255,255,0.08); }
+.svc-list li::before { content:'→'; color:var(--gold); flex-shrink:0; font-weight:700; }
+
+/* ===================== RESULTS ===================== */
+.results-section { padding:100px 64px; background:var(--ink); }
+.results-header { margin-bottom:60px; max-width:600px; }
+.results-header .section-tag { color:var(--gold); }
+.results-h2 {
+  font-family:'Playfair Display',serif;
+  font-size:clamp(26px,3vw,38px); font-weight:900;
+  color:var(--white); line-height:1.3;
+}
+.results-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:rgba(255,255,255,0.06); }
+.result-card { background:var(--ink); padding:40px 32px; }
+.result-industry {
+  font-family:'Courier Prime',monospace;
+  font-size:10px; font-weight:700; letter-spacing:0.15em;
+  text-transform:uppercase; color:var(--gold); margin-bottom:20px;
+}
+.result-change {
+  display:flex; align-items:center; gap:16px; margin-bottom:20px;
+}
+.result-before { text-align:center; }
+.result-after { text-align:center; }
+.r-val-before {
+  font-family:'Playfair Display',serif;
+  font-size:28px; color:rgba(255,255,255,0.3); font-weight:900;
+  display:block;
+}
+.r-val-after {
+  font-family:'Playfair Display',serif;
+  font-size:36px; color:var(--gold); font-weight:900;
+  display:block;
+}
+.r-sublabel { font-size:10px; color:rgba(255,255,255,0.35); margin-top:4px; }
+.r-arrow { font-size:20px; color:var(--gold); opacity:0.6; }
+.result-desc { font-size:13px; color:rgba(255,255,255,0.5); line-height:1.9; }
+.result-keyword {
+  margin-top:16px; display:inline-block;
+  font-family:'Courier Prime',monospace;
+  font-size:10px; letter-spacing:0.1em; text-transform:uppercase;
+  color:var(--gold); border:1px solid rgba(184,135,60,0.3); padding:4px 10px;
+}
+
+/* ===================== WHY ===================== */
+.why-section { padding:100px 64px; background:var(--cream); }
+.why-inner { display:grid; grid-template-columns:1fr 1fr; gap:80px; align-items:center; }
+.why-right h2 {
+  font-family:'Playfair Display',serif;
+  font-size:clamp(24px,2.8vw,36px); font-weight:900;
+  color:var(--ink); line-height:1.4; margin-bottom:24px;
+}
+.why-right p { font-size:14px; color:var(--mid); line-height:2; margin-bottom:16px; }
+.diff-list { margin-top:32px; }
+.diff-item {
+  display:flex; gap:16px; padding:16px 0;
+  border-bottom:1px solid var(--warm);
+}
+.diff-item:last-child { border-bottom:none; }
+.diff-icon { font-size:20px; flex-shrink:0; width:32px; margin-top:2px; }
+.diff-text h4 { font-size:14px; font-weight:700; color:var(--ink); margin-bottom:4px; }
+.diff-text p { font-size:12px; color:var(--mid); line-height:1.8; }
+.why-left {
+  display:flex; flex-direction:column; gap:16px;
+}
+.profile-card {
+  background:var(--navy); padding:32px; border-radius:2px;
+  box-shadow: 8px 8px 0 var(--gold);
+}
+.profile-name {
+  font-family:'Playfair Display',serif;
+  font-size:22px; font-weight:900; color:var(--white); margin-bottom:4px;
+}
+.profile-title { font-size:12px; color:var(--gold); font-weight:700; letter-spacing:0.08em; margin-bottom:20px; }
+.profile-items { display:flex; flex-direction:column; gap:8px; }
+.profile-item {
+  display:flex; align-items:center; gap:10px;
+  font-size:12px; color:rgba(255,255,255,0.65);
+}
+.profile-item::before { content:'▪'; color:var(--gold); flex-shrink:0; }
+.exp-nums { display:grid; grid-template-columns:1fr 1fr; gap:12px; }
+.exp-num-card {
+  background:var(--warm); padding:20px 16px; text-align:center; border-radius:1px;
+}
+.en-val {
+  font-family:'Playfair Display',serif;
+  font-size:28px; color:var(--navy); font-weight:900; display:block;
+}
+.en-label { font-size:11px; color:var(--mid); margin-top:4px; line-height:1.4; }
+
+/* ===================== FAQ ===================== */
+.faq-section { padding:100px 64px; background:var(--warm); }
+.faq-inner { max-width:780px; }
+.faq-item { border-bottom:1px solid rgba(0,0,0,0.1); }
+.faq-q {
+  width:100%; background:none; border:none; cursor:pointer;
+  text-align:left; padding:24px 0; display:flex;
+  justify-content:space-between; align-items:center; gap:16px;
+  font-family:'Noto Sans JP',sans-serif; font-size:15px; font-weight:700;
+  color:var(--ink);
+}
+.faq-q::after {
+  content:'+'; font-size:20px; color:var(--gold); flex-shrink:0;
+  transition: transform 0.2s;
+}
+.faq-q.open::after { transform:rotate(45deg); }
+.faq-a {
+  font-size:14px; color:var(--mid); line-height:2;
+  max-height:0; overflow:hidden; transition:max-height 0.3s ease;
+  padding-bottom:0;
+}
+.faq-a.open { max-height:300px; padding-bottom:24px; }
+
+/* ===================== CTA ===================== */
+.cta-section {
+  padding:120px 64px; background:var(--navy);
+  text-align:center; position:relative; overflow:hidden;
+}
+.cta-section::before {
+  content:'';
+  position:absolute; top:50%; left:50%; transform:translate(-50%,-50%);
+  width:800px; height:800px;
+  background:radial-gradient(circle, rgba(184,135,60,0.08) 0%, transparent 70%);
+  pointer-events:none;
+}
+.cta-eyebrow {
+  font-family:'Courier Prime',monospace;
+  font-size:11px; font-weight:700; letter-spacing:0.2em;
+  text-transform:uppercase; color:var(--gold); margin-bottom:24px;
+}
+.cta-h2 {
+  font-family:'Playfair Display',serif;
+  font-size:clamp(28px,4vw,52px); font-weight:900;
+  color:var(--white); line-height:1.2; margin-bottom:20px;
+}
+.cta-h2 em { color:var(--gold); font-style:italic; }
+.cta-sub { font-size:15px; color:rgba(255,255,255,0.6); margin-bottom:60px; line-height:1.8; }
+.cta-form-wrap {
+  max-width:560px; margin:0 auto;
+  background:rgba(255,255,255,0.04);
+  border:1px solid rgba(255,255,255,0.1);
+  border-radius:2px; padding:48px;
+}
+.form-row { margin-bottom:20px; }
+.form-row label {
+  display:block; font-size:11px; font-weight:700;
+  letter-spacing:0.1em; text-transform:uppercase;
+  color:rgba(255,255,255,0.5); margin-bottom:8px;
+}
+.form-row input, .form-row select, .form-row textarea {
+  width:100%; padding:14px 16px;
+  background:rgba(255,255,255,0.06);
+  border:1px solid rgba(255,255,255,0.12);
+  border-radius:1px; color:var(--white);
+  font-family:'Noto Sans JP',sans-serif; font-size:14px;
+  outline:none; transition:border-color 0.2s;
+}
+.form-row input::placeholder, .form-row textarea::placeholder { color:rgba(255,255,255,0.25); }
+.form-row input:focus, .form-row select:focus, .form-row textarea:focus { border-color:var(--gold); }
+.form-row select { color:rgba(255,255,255,0.7); }
+.form-row select option { background:var(--navy); color:var(--white); }
+.form-row textarea { height:80px; resize:vertical; }
+.form-submit {
+  width:100%; padding:18px; background:var(--gold); color:var(--white);
+  border:none; cursor:pointer; font-size:16px; font-weight:700;
+  letter-spacing:0.08em; font-family:'Noto Sans JP',sans-serif;
+  border-radius:1px; transition:all 0.2s; margin-top:8px;
+}
+.form-submit:hover { background:var(--gold-light); transform:translateY(-1px); box-shadow:0 8px 24px rgba(184,135,60,0.4); }
+.form-note { font-size:11px; color:rgba(255,255,255,0.3); text-align:center; margin-top:16px; line-height:1.7; }
+
+/* ===================== TESTIMONIALS ===================== */
+.testimonials-section { padding:100px 64px; background:var(--cream); }
+.testi-header { max-width:600px; margin-bottom:56px; }
+.testi-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:24px; }
+.testi-card {
+  background:var(--white);
+  border:1px solid var(--warm);
+  border-radius:3px; padding:36px 28px;
+  position:relative;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.testi-card:hover { transform:translateY(-4px); box-shadow:0 16px 40px rgba(0,0,0,0.1); }
+.testi-quote-mark {
+  font-family:'Playfair Display',serif;
+  font-size:64px; line-height:0.8;
+  color:var(--gold); opacity:0.25;
+  position:absolute; top:20px; left:24px;
+  pointer-events:none; user-select:none;
+}
+.testi-stars { color:var(--gold); font-size:13px; margin-bottom:14px; letter-spacing:2px; }
+.testi-text {
+  font-size:13.5px; color:var(--mid); line-height:2;
+  margin-bottom:24px; position:relative; z-index:1;
+  padding-top:8px;
+}
+.testi-text strong { color:var(--ink); }
+.testi-divider { height:1px; background:var(--warm); margin-bottom:20px; }
+.testi-person { display:flex; align-items:center; gap:14px; }
+.testi-avatar {
+  width:42px; height:42px; border-radius:50%;
+  display:flex; align-items:center; justify-content:center;
+  font-size:18px; flex-shrink:0;
+}
+.testi-info h5 { font-size:13px; font-weight:700; color:var(--ink); margin-bottom:3px; }
+.testi-info span { font-size:11px; color:var(--light-mid); }
+.testi-badge {
+  display:inline-block; margin-top:16px;
+  font-family:'Courier Prime',monospace;
+  font-size:10px; font-weight:700; letter-spacing:0.1em;
+  text-transform:uppercase; color:var(--gold);
+  border:1px solid rgba(184,135,60,0.3); padding:3px 10px; border-radius:2px;
+}
+
+/* ===================== FOOTER ===================== */
+footer {
+  background:var(--ink); padding:40px 64px;
+  display:flex; align-items:center; justify-content:space-between;
+  border-top:1px solid rgba(255,255,255,0.05);
+}
+.footer-logo {
+  font-family:'Courier Prime',monospace;
+  font-size:13px; font-weight:700; color:rgba(255,255,255,0.5);
+  letter-spacing:0.15em;
+}
+.footer-logo span { color:var(--gold); }
+.footer-copy { font-size:11px; color:rgba(255,255,255,0.25); }
+
+/* ===================== ANIMATIONS ===================== */
+.reveal { opacity:0; transform:translateY(24px); transition: opacity 0.7s ease, transform 0.7s ease; }
+.reveal.visible { opacity:1; transform:translateY(0); }
+.reveal-delay-1 { transition-delay: 0.1s; }
+.reveal-delay-2 { transition-delay: 0.2s; }
+.reveal-delay-3 { transition-delay: 0.3s; }
+
+/* ===================== RESPONSIVE ===================== */
+@media (max-width:960px) {
+  .hero { grid-template-columns:1fr; min-height:auto; }
+  .hero-right { padding:60px 32px; }
+  .hero-left { padding:80px 32px 60px; border-right:none; }
+  .pain-grid { grid-template-columns:1fr 1fr; }
+  .pain-item:nth-child(3n) { border-right:1px solid rgba(255,255,255,0.06); }
+  .pain-item:nth-child(2n) { border-right:none; }
+  .how-grid, .why-inner { grid-template-columns:1fr; }
+  .services-grid { grid-template-columns:1fr; }
+  .svc-card.featured { margin:0; }
+  .results-grid { grid-template-columns:1fr; }
+  .testi-grid { grid-template-columns:1fr; }
+  nav { padding:0 24px; }
+  .pain-section, .how-section, .services-section, .results-section, .why-section, .faq-section, .cta-section { padding:80px 32px; }
+  footer { flex-direction:column; gap:12px; text-align:center; padding:32px; }
+}
+</style>
+</head>
+<body>
+
+<!-- ===================== nav =====================-->
+<nav id="mainNav">
+  <a href="/" class="nav-logo">
+    <img src="https://aidealize.com/wp-content/uploads/2026/03/スクリーンショット-2026-03-13-130038.png" alt="AIidealize">
+       <span class="nav-logo-text"><span>AI</span>dealize</span>
+  </a>
+
+  <!-- PCナビ -->
+  <ul class="nav-links">
+    <li><a href="#pain">課題</a></li>
+    <li><a href="https://aidealize.com/service/">サービス</a></li>
+    <li><a href="#results">実績</a></li>
+    <li><a href="https://aidealize.com/company/">会社概要</a></li>
+    <li><a href="https://aidealize.com/lp/ai-lp1" class="nav-cta">無料診断を受ける</a></li>
+  </ul>
+
+  <!-- ハンバーガーボタン -->
+  <button class="nav-hamburger" id="navHamburger" aria-label="メニュー">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- ドロワー -->
+<div class="nav-drawer" id="navDrawer">
+  <ul>
+    <li><a href="#pain" class="drawer-link">課題</a></li>
+    <li><a href="https://aidealize.com/service/" class="drawer-link">サービス</a></li>
+    <li><a href="#results" class="drawer-link">実績</a></li>
+    <li><a href="https://aidealize.com/company/" class="drawer-link">会社概要</a></li>
+    <li><a href="https://aidealize.com/lp/ai-lp1">無料診断を受ける</a></li>
+  </ul>
+</div>
+
+<script>
+(function(){
+  const btn = document.getElementById('navHamburger');
+  const drawer = document.getElementById('navDrawer');
+  const nav = document.getElementById('mainNav');
+
+  // ハンバーガー開閉
+  btn.addEventListener('click', function(){
+    btn.classList.toggle('open');
+    drawer.classList.toggle('open');
+  });
+
+  // ドロワー内リンクを押したら閉じる
+  drawer.querySelectorAll('.drawer-link').forEach(function(link){
+    link.addEventListener('click', function(){
+      btn.classList.remove('open');
+      drawer.classList.remove('open');
+    });
+  });
+
+  // スクロールでnavに影
+  window.addEventListener('scroll', function(){
+    nav.classList.toggle('scrolled', window.scrollY > 10);
+  });
+})();
+</script>
+
+<!-- ===================== HERO ===================== -->
+<section class="hero">
+  <div class="hero-left">
+    <div class="hero-eyebrow">
+      <div class="eyebrow-line"></div>
+      <span class="eyebrow-text">AI × BPR ハンズオン型コンサルティング</span>
+    </div>
+    <h1 class="hero-h1">
+      「入力が面倒」<br>
+      <em>それが、</em><br>
+      御社の損失です。
+    </h1>
+    <p class="hero-sub-headline">
+      Kintone・Salesforceに「しゃべるだけ」で<br>
+      自動入力。業務フローを根本から変えます。
+    </p>
+    <p class="hero-body">
+      大手コンサルは高すぎる。SIerは実装するだけ。<br>
+      私たちは<strong>元BPRコンサルタント＋AI実装者</strong>として、<br>
+      業務フローを再設計してから、AIを実装します。<br>
+      「研修」ではなく、<strong>一緒にやる「ハンズオン型」</strong>です。
+    </p>
+    <div class="hero-ctas">
+      <a href="#contact" class="btn-gold">無料業務診断を申し込む →</a>
+      <a href="#service" class="btn-outline">サービス詳細を見る</a>
+    </div>
+    <div class="hero-stats">
+      <div class="stat">
+        <span class="stat-num">10億+</span>
+        <span class="stat-label">牽引した事業の<br>年商規模</span>
+      </div>
+      <div class="stat">
+        <span class="stat-num">300+</span>
+        <span class="stat-label">導入・定着を<br>支援した企業数</span>
+      </div>
+      <div class="stat">
+        <span class="stat-num">−80%</span>
+        <span class="stat-label">業務エラー削減<br>実績（DX支援）</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- SMARTPHONE DEMO -->
+  <div class="hero-right">
+    <div class="demo-label">▶ LIVE DEMO — 音声入力→CRM自動登録</div>
+    <div class="demo-title">営業がスマホで<br>「しゃべるだけ」でKintone登録</div>
+
+    <div class="phone-frame-wrap">
+      <div class="phone-frame">
+        <div class="phone-notch">
+          <div class="phone-notch-inner">
+            <div class="notch-cam"></div>
+            <div class="notch-speaker"></div>
+          </div>
+        </div>
+        <div class="phone-statusbar">
+          <span>9:41</span>
+          <span>📶 🔋</span>
+        </div>
+        <div class="phone-app-bar">
+          <div class="phone-avatar">🤖</div>
+          <div class="phone-app-info">
+            <h5>AI業務アシスタント</h5>
+            <span>● オンライン</span>
+          </div>
+        </div>
+        <div class="phone-chat" id="phoneChatArea">
+          <div class="pmsg ai">
+            <div class="pmsg-bubble" style="animation-delay:0.3s">こんにちは！今日の商談内容を話してください。会社名・担当者・商談内容・次のアクションをKintoneに自動登録します。</div>
+            <div class="pmsg-meta">AI業務アシスタント</div>
+          </div>
+        </div>
+        <div class="phone-input-row">
+          <div class="phone-mic-wrap" id="phoneMicWrap">
+            <div class="phone-mic-ring"></div>
+            <div class="phone-mic-ring"></div>
+            <div class="phone-mic-ring"></div>
+            <button class="phone-mic-btn attract" id="phoneMicBtn" onclick="togglePhoneMic()" title="タップして話す">🎤</button>
+          </div>
+          <span class="mic-hint" id="micHint">← タップして話す</span>
+          <input class="phone-text-input" id="phoneInput" placeholder="または文字で入力..." />
+          <button class="phone-send-btn" onclick="sendPhone()">→</button>
+        </div>
+        <div class="phone-home-bar"><div class="phone-home-indicator"></div></div>
+      </div>
+    </div>
+
+    <div class="crm-badge-phone" id="crmBadgePhone">
+      <div style="font-size:16px;">✅</div>
+      <div class="crm-badge-text"><strong>Kintoneに自動登録完了</strong><br>商談・発注・リマインダーが自動で記録されました</div>
+    </div>
+    <div style="margin-top:16px; font-size:10px; color:rgba(255,255,255,0.3); text-align:center;">
+      ※ デモです。実際はSalesforce・Kintone・HubSpotなど任意のCRMに対応します。
+    </div>
+  </div>
+</section>
+
+<!-- TICKER -->
+<div class="ticker">
+  <div class="ticker-inner">
+    <span class="ticker-item">Kintone 自動入力</span><span class="ticker-item ticker-sep">◆</span>
+    <span class="ticker-item">Salesforce AI連携</span><span class="ticker-item ticker-sep">◆</span>
+    <span class="ticker-item">発注書 自動生成</span><span class="ticker-item ticker-sep">◆</span>
+    <span class="ticker-item">不動産審査 自動スクリーニング</span><span class="ticker-item ticker-sep">◆</span>
+    <span class="ticker-item">社内マニュアル AI検索</span><span class="ticker-item ticker-sep">◆</span>
+    <span class="ticker-item">KPIダッシュボード構築</span><span class="ticker-item ticker-sep">◆</span>
+    <span class="ticker-item">業務棚卸し 可視化</span><span class="ticker-item ticker-sep">◆</span>
+    <span class="ticker-item">BPR × AI実装</span><span class="ticker-item ticker-sep">◆</span>
+    <!-- repeat for seamless loop -->
+    <span class="ticker-item">Kintone 自動入力</span><span class="ticker-item ticker-sep">◆</span>
+    <span class="ticker-item">Salesforce AI連携</span><span class="ticker-item ticker-sep">◆</span>
+    <span class="ticker-item">発注書 自動生成</span><span class="ticker-item ticker-sep">◆</span>
+    <span class="ticker-item">不動産審査 自動スクリーニング</span><span class="ticker-item ticker-sep">◆</span>
+    <span class="ticker-item">社内マニュアル AI検索</span><span class="ticker-item ticker-sep">◆</span>
+    <span class="ticker-item">KPIダッシュボード構築</span><span class="ticker-item ticker-sep">◆</span>
+    <span class="ticker-item">業務棚卸し 可視化</span><span class="ticker-item ticker-sep">◆</span>
+    <span class="ticker-item">BPR × AI実装</span><span class="ticker-item ticker-sep">◆</span>
+  </div>
+</div>
+
+<!-- ===================== PAIN ===================== -->
+<section class="pain-section">
+  <div class="section-tag">こんな課題、ありませんか</div>
+  <h2 class="pain-title reveal">「AIを入れたけど、<em>誰も使わなかった</em>」<br>その本当の理由</h2>
+  <div class="pain-grid">
+    <div class="pain-item reveal">
+      <span class="pain-num">01</span>
+      <h3>Kintone・Salesforceの入力が面倒で定着しない</h3>
+      <p>項目が多すぎて営業が入力をサボる。データが溜まらないから分析もできない。</p>
+    </div>
+    <div class="pain-item reveal reveal-delay-1">
+      <span class="pain-num">02</span>
+      <h3>毎回同じ発注書・申請書を一から作っている</h3>
+      <p>受注のたびに同じ書類を作成。過去のコピペでミスが発生。誰かに依存している。</p>
+    </div>
+    <div class="pain-item reveal reveal-delay-2">
+      <span class="pain-num">03</span>
+      <h3>「あの人しかわからない」業務が組織を止める</h3>
+      <p>退職リスクが常につきまとう。マニュアルはあっても質問対応が属人化している。</p>
+    </div>
+    <div class="pain-item reveal">
+      <span class="pain-num">04</span>
+      <h3>採用しても育成が追いつかない人手不足</h3>
+      <p>求人を出しても来ない。来ても定着しない。採用コストだけが膨らんでいく。</p>
+    </div>
+    <div class="pain-item reveal reveal-delay-1">
+      <span class="pain-num">05</span>
+      <h3>売上・進捗が「感覚」で管理されている</h3>
+      <p>ExcelとLINEとメールが混在。KPIが月次集計でしか見えない。意思決定が遅い。</p>
+    </div>
+    <div class="pain-item reveal reveal-delay-2">
+      <span class="pain-num">06</span>
+      <h3>不動産審査・審査判断が手作業で時間がかかる</h3>
+      <p>申込書を目視でチェック。NG理由の判断が担当者の経験頼り。処理が追いつかない。</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== HOW IT WORKS ===================== -->
+<section class="how-section" id="how">
+  <div class="how-grid">
+    <div class="how-left">
+      <div class="section-tag">解決の流れ</div>
+      <h2 class="how-h2 reveal">ツールを入れるのではなく、<br>「業務ごと変える」</h2>
+      <p class="how-body reveal">AIを入れる前に業務フローを整理しなければ、何を入れても定着しません。元BPRコンサルタントとして、まず業務の「なぜ」を解明してから実装に入ります。</p>
+      <div class="flow-steps">
+        <div class="flow-step reveal">
+          <div class="flow-step-num">01</div>
+          <div class="flow-step-content">
+            <h4>業務棚卸し・AI診断（一番大変な部分だけでOK）</h4>
+            <p>全業務を棚卸しする必要はありません。「これが一番大変」という部分をAIで録音・文字起こし・課題構造化。2週間でボトルネックが可視化されます。</p>
+          </div>
+        </div>
+        <div class="flow-step reveal">
+          <div class="flow-step-num">02</div>
+          <div class="flow-step-content">
+            <h4>業務フロー再設計（BPR）</h4>
+            <p>現状フローの問題点を整理し、「あるべきフロー」を設計。AIを入れる前の土台を作ります。</p>
+          </div>
+        </div>
+        <div class="flow-step reveal">
+          <div class="flow-step-num">03</div>
+          <div class="flow-step-content">
+            <h4>AIエージェント・自動化を実装</h4>
+            <p>音声入力→CRM自動登録・発注書自動生成・審査スクリーニング・マニュアルAIなど、現場に合わせて実装。一緒にやります。</p>
+          </div>
+        </div>
+        <div class="flow-step reveal">
+          <div class="flow-step-num">04</div>
+          <div class="flow-step-content">
+            <h4>月次モニタリング・継続改善</h4>
+            <p>KPIで効果を測定しながら改善を積み重ねます。「作って終わり」ではありません。</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="how-right reveal">
+      <div class="how-right-header">📊 KPIダッシュボード サンプル</div>
+      <div class="how-right-body">
+        <div class="kpi-row">
+          <div class="kpi-card"><span class="kpi-val">−68%</span><div class="kpi-label">入力工数削減</div></div>
+          <div class="kpi-card"><span class="kpi-val">+41%</span><div class="kpi-label">成約率改善</div></div>
+          <div class="kpi-card"><span class="kpi-val">3.2×</span><div class="kpi-label">処理速度向上</div></div>
+        </div>
+        <div style="font-size:11px;color:rgba(255,255,255,0.4);margin-bottom:12px;font-family:'Courier Prime',monospace;letter-spacing:0.08em;text-transform:uppercase;">業務改善ファネル</div>
+        <div class="funnel-visual">
+          <div class="fv-row"><span class="fv-label">棚卸し</span><div class="fv-bar"><div class="fv-fill" style="width:100%"></div></div><span class="fv-pct">完了</span></div>
+          <div class="fv-row"><span class="fv-label">BPR設計</span><div class="fv-bar"><div class="fv-fill" style="width:85%"></div></div><span class="fv-pct">2W</span></div>
+          <div class="fv-row"><span class="fv-label">AI実装</span><div class="fv-bar"><div class="fv-fill" style="width:70%"></div></div><span class="fv-pct">1M</span></div>
+          <div class="fv-row"><span class="fv-label">定着支援</span><div class="fv-bar"><div class="fv-fill" style="width:55%"></div></div><span class="fv-pct">継続</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<iframe src="https://aidealize.com/wp-content/uploads/2026/03/roi-calculator-1.html" 
+  width="100%" height="1100px" 
+  frameborder="0" scrolling="auto">
+</iframe>
+
+
+<!-- ===================== SERVICES ===================== -->
+<section class="services-section" id="service">
+  <div class="services-header">
+    <div class="section-tag">サービスメニュー</div>
+    <h2 class="how-h2 reveal" style="color:var(--ink);">小さく始めて、<br>ストック収益が積み上がる設計</h2>
+  </div>
+  <div class="services-grid">
+    <div class="svc-card reveal">
+      <span class="svc-icon">🔍</span>
+      <span class="svc-step">Step 01 — 診断</span>
+      <h3>業務棚卸し・AI<br>フィット診断</h3>
+      <div class="svc-price">¥15万〜</div>
+      <div class="svc-price-note">スポット（期間：約2週間）</div>
+      <ul class="svc-list">
+        <li>業務ヒアリング→AIで課題マップ自動生成</li>
+        <li>ボトルネック・属人化ポイントの特定</li>
+        <li>AI活用余地スコアリング</li>
+        <li>改善ROIシミュレーション付きレポート</li>
+      </ul>
+    </div>
+    <div class="svc-card featured reveal reveal-delay-1">
+      <div class="featured-badge">人気</div>
+      <span class="svc-icon">⚙️</span>
+      <span class="svc-step" style="color:var(--gold);">Step 02 — 実装</span>
+      <h3 style="color:white;">BPR再設計＋<br>AI実装パック</h3>
+      <div class="svc-price">¥50万〜</div>
+      <div class="svc-price-note">プロジェクト型（1〜2ヶ月）</div>
+      <ul class="svc-list">
+        <li>業務フロー再設計（BPR）</li>
+        <li>音声入力→CRM自動登録システム</li>
+        <li>発注書・申請書の自動生成</li>
+        <li>審査スクリーニング自動化</li>
+        <li>KPIダッシュボード構築</li>
+        <li>現場スタッフへの運用トレーニング込み</li>
+      </ul>
+    </div>
+    <div class="svc-card reveal reveal-delay-2">
+      <span class="svc-icon">📈</span>
+      <span class="svc-step">Step 03 — 継続</span>
+      <h3>月次伴走・<br>AIモニタリング</h3>
+      <div class="svc-price">¥10万〜</div>
+      <div class="svc-price-note">/月（継続契約・週1レビュー込み）</div>
+      <ul class="svc-list">
+        <li>月次KPIレビュー・改善提案</li>
+        <li>AIモデルの精度改善・更新</li>
+        <li>追加自動化・機能拡張</li>
+        <li>社内AIチャットbot（マニュアルQA）運用</li>
+        <li>チャット・メールサポート込み</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== RESULTS ===================== -->
+<section class="results-section" id="results">
+  <div class="results-header">
+    <div class="section-tag">支援実績</div>
+    <h2 class="results-h2 reveal">自動車買取から不動産まで。<br>同じ「型」で業種を問わず成果が出る。</h2>
+  </div>
+  <div class="results-grid">
+    <div class="result-card reveal">
+      <div class="result-industry">🚗 自動車買取・コールセンター</div>
+      <div class="result-change">
+        <div class="result-before"><span class="r-val-before">13%</span><div class="r-sublabel">成約率（改善前）</div></div>
+        <span class="r-arrow">→</span>
+        <div class="result-after"><span class="r-val-after">41%</span><div class="r-sublabel">成約率（改善後）</div></div>
+      </div>
+      <p class="result-desc">架電データをAI分析し「担当者×時間帯×媒体」の勝ちパターンを特定。架電数を増やさずに成約率が3倍超に改善。年商10億円規模の事業を牽引。</p>
+      <span class="result-keyword">ファネル可視化 × AI分析</span>
+    </div>
+    <div class="result-card reveal reveal-delay-1">
+      <div class="result-industry">🏠 不動産賃貸・管理会社</div>
+      <div class="result-change">
+        <div class="result-before"><span class="r-val-before">FAX</span><div class="r-sublabel">紙・郵送の申込（改善前）</div></div>
+        <span class="r-arrow">→</span>
+        <div class="result-after"><span class="r-val-after">100%</span><div class="r-sublabel">オンライン化（改善後）</div></div>
+      </div>
+      <p class="result-desc">リクルート社との3〜4年の伴走支援。数百社規模のオンライン化を主導。人的工数を大幅削減し、データ駆動型の店舗マネジメント体制を実現。</p>
+      <span class="result-keyword">BPR × 定着支援</span>
+    </div>
+    <div class="result-card reveal reveal-delay-2">
+      <div class="result-industry">📡 通信インフラ設計・建設業</div>
+      <div class="result-change">
+        <div class="result-before"><span class="r-val-before">手作業</span><div class="r-sublabel">設計工程（改善前）</div></div>
+        <span class="r-arrow">→</span>
+        <div class="result-after"><span class="r-val-after">−30%</span><div class="r-sublabel">工数削減（改善後）</div></div>
+      </div>
+      <p class="result-desc">大手通信企業の設計業務をDX化。年間数千件の設計工程をAIで自動判定。熟練者依存の属人的フローを脱却し、スループット向上を実現。</p>
+      <span class="result-keyword">AI自動判定 × フロー再設計</span>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== WHY ===================== -->
+<section class="why-section">
+  <div class="why-inner">
+    <div class="why-left">
+      <div class="profile-card reveal">
+        <div style="font-size:11px;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:var(--gold);margin-bottom:16px;">コンサルタント プロフィール</div>
+        <div class="profile-title" style="font-size:15px;color:white;font-weight:700;margin-bottom:4px;">BPR × AI実装 ハンズオン型コンサルタント</div>
+        <div style="font-size:12px;color:rgba(255,255,255,0.4);margin-bottom:20px;">AIdealize株式会社</div>
+        <div class="profile-items">
+          <div class="profile-item">法規制対応の現場経験（消防法・建築基準法・行政手続き）</div>
+          <div class="profile-item">BPRコンサルとして1年で<strong style="color:var(--gold);">1億円以上のコスト削減</strong>を実現</div>
+          <div class="profile-item">0→1の事業構築で<strong style="color:var(--gold);">年商10億円・90名体制</strong>を牽引</div>
+          <div class="profile-item">大手企業の不動産DXプロジェクトで数百社に導入定着</div>
+          <div class="profile-item">AI-OCR・自動化・APIで業務効率を最大<strong style="color:var(--gold);">80%削減</strong>した実績</div>
+          <div class="profile-item">Salesforce・Kintone・RPA(5種)・BIツールを自分で実装</div>
+        </div>
+      </div>
+
+      <!-- BPR FLOW MINI VISUAL -->
+      <div class="reveal" style="background:var(--white);border-radius:2px;padding:24px;border:1px solid var(--warm);box-shadow:4px 4px 0 var(--gold);">
+        <div style="font-size:11px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--gold);margin-bottom:14px;">📋 業務フロー可視化イメージ</div>
+        <div style="font-size:12px;color:var(--mid);margin-bottom:16px;line-height:1.7;">「全部を聞く必要はありません。<br>まず一番大変な業務だけを可視化します。」</div>
+        <div style="display:flex;flex-direction:column;gap:0;font-size:11px;">
+          <!-- mini flowchart -->
+          <div style="background:var(--navy);color:white;padding:8px 14px;border-radius:3px;text-align:center;font-weight:700;">ヒアリング（30分）</div>
+          <div style="text-align:center;color:var(--gold);font-size:18px;margin:2px 0;">↓</div>
+          <div style="background:var(--warm);color:var(--ink);padding:8px 14px;border-radius:3px;text-align:center;">課題ポイントを絞り込む</div>
+          <div style="text-align:center;color:var(--gold);font-size:18px;margin:2px 0;">↓</div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:6px;">
+            <div style="background:#fff3e0;padding:7px 10px;border-radius:3px;border-left:3px solid var(--gold);font-size:10px;color:var(--ink);">🤖 AIで自動化<br><span style="color:var(--mid);">発注書・入力・判定</span></div>
+            <div style="background:#e8f5e9;padding:7px 10px;border-radius:3px;border-left:3px solid #4caf50;font-size:10px;color:var(--ink);">📊 見える化<br><span style="color:var(--mid);">KPI・進捗・ファネル</span></div>
+          </div>
+          <div style="text-align:center;color:var(--gold);font-size:18px;margin:2px 0;">↓</div>
+          <div style="background:var(--navy);color:white;padding:8px 14px;border-radius:3px;text-align:center;font-weight:700;font-size:12px;">✅ 工数削減・売上向上</div>
+        </div>
+        <div style="font-size:10px;color:var(--light-mid);margin-top:12px;text-align:center;">※全業務の棚卸しは不要。最も痛い部分から始めます。</div>
+      </div>
+
+      <div class="exp-nums reveal">
+        <div class="exp-num-card">
+          <span class="en-val">15年+</span>
+          <div class="en-label">BPR×DX×<br>AI実装の経験年数</div>
+        </div>
+        <div class="exp-num-card">
+          <span class="en-val">300+</span>
+          <div class="en-label">導入・定着を<br>支援した企業数</div>
+        </div>
+        <div class="exp-num-card">
+          <span class="en-val">1億円+</span>
+          <div class="en-label">クライアントの<br>年間コスト削減実績</div>
+        </div>
+        <div class="exp-num-card">
+          <span class="en-val">−80%</span>
+          <div class="en-label">業務エラー削減<br>最大実績</div>
+        </div>
+      </div>
+    </div>
+    <div class="why-right">
+      <div class="section-tag">なぜ私たちか</div>
+      <h2 class="reveal">「ツールを売る人」ではなく<br>「現場を変えられる人」です</h2>
+      <p class="reveal">大手コンサルは費用が高すぎる。SIerはシステムを作るだけ。AIベンダーはツールを売るだけ。その間にいる「現場を変えられるハンズオン型コンサル」が、この市場に今はほぼいません。</p>
+      <div class="diff-list">
+        <div class="diff-item reveal">
+          <div class="diff-icon">🎯</div>
+          <div class="diff-text">
+            <h4>業務フローから設計して実装まで一気通貫</h4>
+            <p>「なぜ」を整理しないままAIを入れても定着しません。BPRで業務を再設計してから実装します。</p>
+          </div>
+        </div>
+        <div class="diff-item reveal">
+          <div class="diff-icon">🔧</div>
+          <div class="diff-text">
+            <h4>自分で実装できる「ハンズオン型」</h4>
+            <p>Kintone・Salesforce・RPA・API連携を自分で設計・実装。「一緒にやります」が本当の強みです。</p>
+          </div>
+        </div>
+        <div class="diff-item reveal">
+          <div class="diff-icon">⚖️</div>
+          <div class="diff-text">
+            <h4>法的知識×事業経験×現場目線</h4>
+            <p>消防法・不動産法・建設業の知識。年商10億円事業の構築経験。現場が「使える」システムの感覚。</p>
+          </div>
+        </div>
+        <div class="diff-item reveal">
+          <div class="diff-icon">📊</div>
+          <div class="diff-text">
+            <h4>ROIで語る、成果にコミット</h4>
+            <p>初回診断でROIシミュレーションを提示。「月5万円の投資で月30万円の工数削減」を数字で示します。</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== FAQ ===================== -->
+<section class="faq-section">
+  <div class="faq-inner">
+    <div class="section-tag" style="margin-bottom:16px;">よくある質問</div>
+    <h2 class="how-h2 reveal" style="margin-bottom:40px;">導入前の疑問に<br>お答えします</h2>
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">社内にIT担当がいなくても大丈夫ですか？</button>
+      <div class="faq-a">はい、問題ありません。現状のExcel・スプレッドシートから始めることができます。IT環境の整備段階から一緒に設計します。難しい専門知識は必要ありません。「しゃべるだけ」でシステムに記録できる仕組みを目指します。</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">Kintoneは入れているのに活用できていません。改善できますか？</button>
+      <div class="faq-a">それがまさに最もよくあるご相談です。「入力が面倒で定着しない」原因の多くは、業務フローに合わせてKintoneを設計していないことにあります。音声入力でCRMに自動登録できるようにするなど、「入力の手間を取り除く」設計に作り直します。</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">どんな業種でも対応できますか？</button>
+      <div class="faq-a">はい。不動産・自動車・コールセンター・冠婚葬祭・通信インフラ・製造・行政など、多業種の支援実績があります。共通するのは「繰り返し業務が多い」「データが溜まっているのに使えていない」「特定の人がいないと回らない」という課題です。</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">費用対効果はどのくらいですか？</button>
+      <div class="faq-a">初回診断時にROIシミュレーションをご提示します。例：月10万円の運用費に対し、担当者3名×月10時間の工数削減（時給3,000円換算で月90万円）が実現できれば投資対効果は9倍です。採用1名のコスト（200〜300万円）と比較しても明確に優位です。</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">月額継続契約は必須ですか？</button>
+      <div class="faq-a">いいえ。診断のみ、実装のみのスポット契約でも始められます。ただし、AIは継続的な改善でより効果が出るため、月次伴走プランをおすすめしています。まず診断で成果を確認してからご判断ください。</div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== CTA ===================== -->
+<section class="cta-section" id="contact">
+  <div class="cta-eyebrow">無料診断 — 費用・契約なし</div>
+  <h2 class="cta-h2 reveal">まず、御社の業務を<br><em>無料で診断します</em></h2>
+  <p class="cta-sub reveal">現状の業務フローをヒアリングし、「どこが問題で、AIで何が解決できるか」を<br>明確にします。費用・契約は一切不要です。</p>
+  <div class="cta-form-wrap reveal">
+    <div style="font-size:16px;font-weight:700;color:white;margin-bottom:8px;font-family:'Playfair Display',serif;">無料相談フォーム</div>
+    <div style="font-size:12px;color:rgba(255,255,255,0.45);margin-bottom:24px;">所要時間：約1分 / 費用・契約一切不要</div>
+
+<iframe src="https://docs.google.com/forms/d/e/1FAIpQLScyHSaPwh2jWrRSZ6r853F0DNQlpJMqmK2KpZ8o6ZxxMT3VzA/viewform?embedded=true" width="480" height="1050" frameborder="0" marginheight="0" marginwidth="0">読み込んでいます…</iframe>
+ 
+    <p class="form-note" style="margin-top:20px;">2営業日以内にご連絡します。しつこい営業・勧誘は一切行いません。<br>まず「話を聞いてもらう」だけで大丈夫です。</p>
+  </div>
+</section>
+
+<!-- ===================== TESTIMONIALS ===================== -->
+<section class="testimonials-section">
+  <div class="testi-header">
+    <div class="section-tag" style="margin-bottom:16px;">お客様の声</div>
+    <h2 class="how-h2 reveal">「やっと、一緒にやってくれる人が<br>見つかった」</h2>
+  </div>
+  <div class="testi-grid">
+
+    <div class="testi-card reveal">
+      <div class="testi-quote-mark">"</div>
+      <div class="testi-stars">★★★★★</div>
+      <p class="testi-text">Kintoneを入れて2年、<strong>誰も使っていない状態</strong>が続いていました。「入力が面倒」という声は聞いていたけど、何が問題かわからず放置。音声で話すだけでKintoneに登録できる仕組みを作ってもらって、<strong>営業の入力率が翌月から92%</strong>に上がりました。データが溜まり始めてやっと分析ができるようになった。</p>
+      <div class="testi-divider"></div>
+      <div class="testi-person">
+        <div class="testi-avatar" style="background:#e8f4fd;">🏢</div>
+        <div class="testi-info">
+          <h5>M.K. 様</h5>
+          <span>不動産仲介会社 / 営業部長 / 従業員45名</span>
+        </div>
+      </div>
+      <span class="testi-badge">Kintone × 音声入力</span>
+    </div>
+
+    <div class="testi-card reveal reveal-delay-1">
+      <div class="testi-quote-mark">"</div>
+      <div class="testi-stars">★★★★★</div>
+      <p class="testi-text">毎月の受注処理が本当に大変で、<strong>担当者が毎回発注書を一から作成</strong>していました。ミスも多く、確認作業だけで月20時間以上かかっていた。「一番辛いところだけ」と言ってもらえたので気軽に相談できました。今は<strong>発注書の作成が5分で終わります</strong>。担当者が「別人みたいに楽になった」と言っています。</p>
+      <div class="testi-divider"></div>
+      <div class="testi-person">
+        <div class="testi-avatar" style="background:#fdf6e8;">🌸</div>
+        <div class="testi-info">
+          <h5>T.Y. 様</h5>
+          <span>冠婚葬祭会社 / 業務責任者 / 従業員80名</span>
+        </div>
+      </div>
+      <span class="testi-badge">発注書 × 受注自動化</span>
+    </div>
+
+    <div class="testi-card reveal reveal-delay-2">
+      <div class="testi-quote-mark">"</div>
+      <div class="testi-stars">★★★★★</div>
+      <p class="testi-text">賃貸審査を手作業でチェックしていて、<strong>担当者によって判断がバラバラ</strong>なのが課題でした。NG理由をリスト化してもらい、AIが自動でスクリーニングする仕組みを構築。審査のスピードが<strong>平均3日→当日対応</strong>になり、入居率も改善しました。「大手に頼むより全然話が早い」と感じています。</p>
+      <div class="testi-divider"></div>
+      <div class="testi-person">
+        <div class="testi-avatar" style="background:#f0fdf0;">🏠</div>
+        <div class="testi-info">
+          <h5>S.N. 様</h5>
+          <span>不動産管理会社 / 代表取締役 / 従業員22名</span>
+        </div>
+      </div>
+      <span class="testi-badge">審査 × 自動スクリーニング</span>
+    </div>
+
+    <div class="testi-card reveal">
+      <div class="testi-quote-mark">"</div>
+      <div class="testi-stars">★★★★★</div>
+      <p class="testi-text">コールセンターの成約率が低いのはわかっていたけど、<strong>どこで落ちているかが見えなかった</strong>。架電データをAIで分析してもらったら「この担当者×この時間帯×このリスト」の組み合わせが圧倒的に高いとわかった。ルール化したら<strong>成約率が2ヶ月で2倍</strong>になりました。研修より効果が出た。</p>
+      <div class="testi-divider"></div>
+      <div class="testi-person">
+        <div class="testi-avatar" style="background:#fdf0f0;">📞</div>
+        <div class="testi-info">
+          <h5>H.O. 様</h5>
+          <span>買取専門会社 / コールセンター長 / 従業員60名</span>
+        </div>
+      </div>
+      <span class="testi-badge">架電分析 × CVR改善</span>
+    </div>
+
+    <div class="testi-card reveal reveal-delay-1">
+      <div class="testi-quote-mark">"</div>
+      <div class="testi-stars">★★★★★</div>
+      <p class="testi-text">社内マニュアルがWordとPDFに散らばっていて、<strong>新人が毎回先輩に聞く</strong>状態が続いていた。ドキュメントをAIに読み込ませてチャットbotを作ってもらったら、<strong>新人研修の質問対応が週30件→3件</strong>に激減。先輩社員の「答える時間」が浮いて、本業に集中できるようになりました。</p>
+      <div class="testi-divider"></div>
+      <div class="testi-person">
+        <div class="testi-avatar" style="background:#f0f0ff;">🏭</div>
+        <div class="testi-info">
+          <h5>R.T. 様</h5>
+          <span>製造業 / 人事教育担当 / 従業員130名</span>
+        </div>
+      </div>
+      <span class="testi-badge">RAG × 社内AIチャット</span>
+    </div>
+
+    <div class="testi-card reveal reveal-delay-2">
+      <div class="testi-quote-mark">"</div>
+      <div class="testi-stars">★★★★★</div>
+      <p class="testi-text">売上データはあるのに<strong>毎月のレポートを手作業で作っていた</strong>。数字をコピペして、グラフを直して、3時間かかっていた作業が自動化されました。経営者として「今月どこが伸びていて何が落ちているか」が<strong>リアルタイムで見えるようになった</strong>ことが一番の価値です。意思決定のスピードが変わりました。</p>
+      <div class="testi-divider"></div>
+      <div class="testi-person">
+        <div class="testi-avatar" style="background:#fffde8;">📊</div>
+        <div class="testi-info">
+          <h5>Y.M. 様</h5>
+          <span>物流・運送会社 / 代表取締役 / 従業員55名</span>
+        </div>
+      </div>
+      <span class="testi-badge">KPI × BI自動レポート</span>
+    </div>
+
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">AI<span>dealize</span> — AI × BPR ハンズオン型コンサルティング</div>
+  <div class="footer-copy">© 2026 AIdealize株式会社 All Rights Reserved.</div>
+</footer>
+
+<script>
+// ===== PHONE DEMO CHAT =====
+const phoneScenarios = [
+  {
+    trigger: ['商談','株式会社ABC','田中','面談','今日','見積','発注','meeting'],
+    response: `📋 内容を確認しました。\n\n**会社名：** 株式会社ABC\n**担当者：** 田中部長\n**商談内容：** 商材A見積もり依頼。商材B・C即日発注受注。\n**ネクストアクション：** 3日以内に商材A見積書送付\n\nKintoneに登録しますか？`,
+    showCrm: false
+  },
+  {
+    trigger: ['はい','ok','OK','登録','yes','お願い'],
+    response: `✅ Kintone登録完了！\n\n• 商談レコード（ABC / 田中部長）作成\n• 見積書タスクを3日後の期限でセット\n• 商材B・C 発注レコード作成\n• 御礼メール下書きを自動生成\n\n次の商談もいつでもどうぞ！`,
+    showCrm: true
+  }
+];
+const phoneDefaults = [
+  'ありがとうございます！会社名・担当者・商談内容・次のアクションを教えてください。',
+  '🎤ボタンでも話しかけられます。自動でテキスト変換します。',
+];
+let phoneDefaultIdx = 0;
+
+function addPhoneMsg(text, type, delay=0) {
+  const area = document.getElementById('phoneChatArea');
+  const msg = document.createElement('div');
+  msg.className = `pmsg ${type}`;
+  msg.innerHTML = `<div class="pmsg-bubble" style="animation-delay:${delay}s">${text.replace(/\n/g,'<br>').replace(/\*\*(.*?)\*\*/g,'<strong>$1</strong>')}</div><div class="pmsg-meta">${type==='user'?'あなた':'AI業務アシスタント'}</div>`;
+  area.appendChild(msg);
+  area.scrollTop = area.scrollHeight;
+}
+
+function sendPhone() {
+  const input = document.getElementById('phoneInput');
+  const text = input.value.trim(); if (!text) return;
+  input.value = '';
+  addPhoneMsg(text, 'user');
+  setTimeout(() => {
+    let matched = null;
+    for (const s of phoneScenarios) {
+      if (s.trigger.some(t => text.includes(t))) { matched = s; break; }
+    }
+    if (matched) {
+      addPhoneMsg(matched.response, 'ai');
+      if (matched.showCrm) {
+        setTimeout(() => { const b = document.getElementById('crmBadgePhone'); b.style.display='flex'; }, 600);
+      }
+    } else {
+      addPhoneMsg(phoneDefaults[phoneDefaultIdx++ % phoneDefaults.length], 'ai');
+    }
+  }, 700);
+}
+document.getElementById('phoneInput').addEventListener('keydown', e => { if(e.key==='Enter') sendPhone(); });
+
+let phoneMicActive = false;
+function togglePhoneMic() {
+  const wrap = document.getElementById('phoneMicWrap');
+  const btn  = document.getElementById('phoneMicBtn');
+  const hint = document.getElementById('micHint');
+  // remove attract animation permanently once tapped
+  btn.classList.remove('attract');
+  if (hint) hint.style.display = 'none';
+
+  phoneMicActive = !phoneMicActive;
+  wrap.classList.toggle('recording', phoneMicActive);
+  btn.textContent = phoneMicActive ? '⏹' : '🎤';
+  if (phoneMicActive) {
+    setTimeout(() => {
+      phoneMicActive = false; wrap.classList.remove('recording'); btn.textContent = '🎤';
+      const input = document.getElementById('phoneInput');
+      input.value = '今日、株式会社ABC 田中部長\nと商談しました。\n商材Aの見積もり依頼を\nもらいました。\nあと商材BとCは今日\nその場で発注をもらいました。\n次のアクションは\n3日以内に商材Aの\n見積書を送ることです。';
+      input.focus();
+    }, 2800);
+  }
+}
+
+// ===== FAQ =====
+function toggleFaq(btn) {
+  const ans = btn.nextElementSibling;
+  btn.classList.toggle('open');
+  ans.classList.toggle('open');
+}
+
+// ===== SCROLL REVEAL =====
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('visible'); });
+}, { threshold: 0.1 });
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>

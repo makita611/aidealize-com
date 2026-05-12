@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>はなまるAI｜話すだけで業務マニュアルが完成する</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700;900&family=Playfair+Display:wght@700;900&family=Zen+Kaku+Gothic+New:wght@300;400;700;900&display=swap" rel="stylesheet">
+<style>
+
+/* ================================================
+   DX推進戦略ページ — AIdealize株式会社
+   WordPress カスタムCSS（追加CSSに貼り付け）
+   ================================================ */
+
+/* ── ヒーローバナー ── */
+.dx-hero {
+  background: #111111;
+  color: #ffffff;
+  padding: 72px 40px 64px;
+  position: relative;
+  overflow: hidden;
+  margin-bottom: 0;
+}
+.dx-hero::before {
+  content: 'DX';
+  position: absolute;
+  right: -20px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: clamp(140px, 20vw, 280px);
+  font-weight: 700;
+  color: rgba(255,255,255,0.04);
+  line-height: 1;
+  pointer-events: none;
+  user-select: none;
+}
+.dx-hero-label {
+  font-size: 0.75rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: #888888;
+  margin-bottom: 20px;
+}
+.dx-hero h1 {
+  font-size: clamp(1.6rem, 4vw, 2.6rem) !important;
+  font-weight: 300 !important;
+  line-height: 1.55 !important;
+  color: #ffffff !important;
+  border: none !important;
+  padding: 0 !important;
+  margin-bottom: 20px !important;
+}
+.dx-hero-sub {
+  font-size: 0.88rem;
+  color: rgba(255,255,255,0.5);
+  line-height: 1.9;
+  max-width: 560px;
+}
+.dx-pub-bar {
+  margin-top: 36px;
+  padding-top: 20px;
+  border-top: 1px solid rgba(255,255,255,0.12);
+  font-size: 0.75rem;
+  color: rgba(255,255,255,0.35);
+  letter-spacing: 0.08em;
+}
+
+/* ── セクション共通 ── */
+.dx-section {
+  padding: 64px 40px;
+  max-width: 900px;
+  margin: 0 auto;
+}
+.dx-section-alt {
+  background: #f8f8f6;
+  padding: 64px 40px;
+}
+.dx-section-alt .dx-inner {
+  max-width: 900px;
+  margin: 0 auto;
+}
+.dx-section-dark {
+  background: #1a3a5c;
+  color: #ffffff;
+  padding: 64px 40px;
+}
+.dx-section-dark .dx-inner {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.dx-label {
+  font-size: 0.72rem;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: #aaaaaa;
+  margin-bottom: 10px;
+}
+.dx-section-dark .dx-label {
+  color: rgba(255,255,255,0.45);
+}
+
+.dx-section h2,
+.dx-section-alt h2,
+.dx-section-dark h2 {
+  font-size: clamp(1.2rem, 2.2vw, 1.7rem) !important;
+  font-weight: 300 !important;
+  line-height: 1.6 !important;
+  margin-bottom: 8px !important;
+  border: none !important;
+  padding: 0 !important;
+}
+.dx-section-dark h2 { color: #ffffff !important; }
+
+.dx-divider {
+  width: 40px;
+  height: 2px;
+  background: #1a3a5c;
+  margin: 14px 0 36px;
+}
+.dx-section-dark .dx-divider {
+  background: rgba(255,255,255,0.3);
+}
+
+/* ── 代表メッセージ（引用ブロック） ── */
+.dx-quote {
+  border-left: 3px solid #1a3a5c;
+  padding-left: 28px;
+  font-size: 0.95rem;
+  line-height: 2.1;
+  color: #1a1a1a;
+  margin-bottom: 32px;
+}
+.dx-quote p { margin-bottom: 1em; }
+.dx-quote p:last-child { margin-bottom: 0; }
+
+.dx-sig {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-top: 28px;
+}
+.dx-sig-line {
+  flex: 1;
+  height: 1px;
+  background: #e0e0e0;
+}
+.dx-sig-name {
+  font-size: 0.85rem;
+  letter-spacing: 0.1em;
+  color: #777777;
+  white-space: nowrap;
+}
+
+/* ── 戦略カード ── */
+.dx-card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 2px;
+  background: #e0e0e0;
+  border: 1px solid #e0e0e0;
+  margin-top: 36px;
+}
+.dx-card {
+  background: #ffffff;
+  padding: 32px 28px;
+}
+.dx-card .dx-num {
+  font-family: Georgia, serif;
+  font-size: 2.4rem;
+  font-weight: 400;
+  color: #e8eef4;
+  line-height: 1;
+  margin-bottom: 14px;
+}
+.dx-card h3 {
+  font-size: 0.95rem !important;
+  font-weight: 600 !important;
+  margin-bottom: 10px !important;
+  color: #111111 !important;
+  border: none !important;
+  padding: 0 !important;
+}
+.dx-card p {
+  font-size: 0.83rem;
+  color: #555555;
+  line-height: 1.85;
+}
+
+/* ── KPI ── */
+.dx-kpi-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 28px;
+}
+.dx-kpi-item {
+  border-top: 1px solid rgba(255,255,255,0.2);
+  padding-top: 20px;
+}
+.dx-kpi-num {
+  font-family: Georgia, serif;
+  font-size: 2.8rem;
+  font-weight: 400;
+  line-height: 1;
+  color: #ffffff;
+  margin-bottom: 8px;
+}
+.dx-kpi-label {
+  font-size: 0.82rem;
+  color: rgba(255,255,255,0.7);
+  line-height: 1.75;
+}
+
+/* ── テーブル（会社情報・体制） ── */
+.dx-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.87rem;
+  margin-top: 8px;
+}
+.dx-table tr {
+  border-bottom: 1px solid #e0e0e0;
+}
+.dx-table th {
+  width: 180px;
+  text-align: left;
+  padding: 16px 0;
+  color: #aaaaaa;
+  font-weight: 400;
+  vertical-align: top;
+  font-size: 0.77rem;
+  letter-spacing: 0.06em;
+}
+.dx-table td {
+  padding: 16px 0 16px 20px;
+  color: #1a1a1a;
+  line-height: 1.8;
+  vertical-align: top;
+}
+
+/* ── セキュリティボックス ── */
+.dx-security-box {
+  display: flex;
+  gap: 32px;
+  align-items: flex-start;
+  border: 1px solid #e0e0e0;
+  padding: 36px;
+  margin-top: 8px;
+}
+.dx-security-badge {
+  flex-shrink: 0;
+  width: 64px;
+  height: 64px;
+  background: #1a3a5c;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.6rem;
+  color: #ffffff;
+}
+.dx-security-content h3 {
+  font-size: 0.95rem !important;
+  font-weight: 600 !important;
+  margin-bottom: 10px !important;
+  border: none !important;
+  padding: 0 !important;
+}
+.dx-security-content p {
+  font-size: 0.85rem;
+  color: #555555;
+  line-height: 1.85;
+}
+
+/* ── CTA ── */
+.dx-cta {
+  text-align: center;
+  padding: 72px 40px;
+  background: #111111;
+  color: #ffffff;
+}
+.dx-cta h2 {
+  font-size: clamp(1.2rem, 2.5vw, 1.8rem) !important;
+  font-weight: 300 !important;
+  color: #ffffff !important;
+  margin-bottom: 12px !important;
+  border: none !important;
+}
+.dx-cta p {
+  font-size: 0.87rem;
+  color: rgba(255,255,255,0.5);
+  margin-bottom: 32px;
+}
+.dx-btn {
+  display: inline-block;
+  padding: 14px 40px;
+  background: #ffffff;
+  color: #111111;
+  font-size: 0.85rem;
+  letter-spacing: 0.1em;
+  text-decoration: none;
+  transition: background 0.2s, color 0.2s;
+  margin: 6px;
+}
+.dx-btn:hover {
+  background: #e8eef4;
+  color: #1a3a5c;
+  text-decoration: none;
+}
+.dx-btn-outline {
+  background: transparent;
+  color: rgba(255,255,255,0.7);
+  border: 1px solid rgba(255,255,255,0.3);
+}
+.dx-btn-outline:hover {
+  background: rgba(255,255,255,0.08);
+  color: #ffffff;
+}
+
+/* ── レスポンシブ ── */
+@media (max-width: 640px) {
+  .dx-hero, .dx-section, .dx-section-alt, .dx-section-dark, .dx-cta {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+  .dx-security-box {
+    flex-direction: column;
+    gap: 20px;
+    padding: 24px;
+  }
+  .dx-table th { width: 120px; }
+}
+
+</style>
+</head>
+<body>
+
+
+<!-- ▼ ヒーローバナー -->
+<div class="dx-hero">
+  <p class="dx-hero-label">DX Strategy &amp; Policy</p>
+  <h1>AIdealize株式会社<br>DX推進方針</h1>
+  <p class="dx-hero-sub">AIと現場が融合し、すべての働く人が創造的な仕事に集中できる社会へ。<br>当社はその先駆者として、自らDXを実装し、知見をお客様へ還元し続けます。</p>
+  <p class="dx-pub-bar">策定日：2026年3月24日　｜　AIdealize株式会社　代表取締役　眞貴田 正博</p>
+</div>
+
+<!-- ▼ 1. 経営ビジョンと情報処理技術活用の方向性 -->
+<div class="dx-section-alt">
+  <div class="dx-inner">
+    <p class="dx-label">01 — Vision</p>
+    <h2>経営ビジョンと<br>情報処理技術活用の方向性</h2>
+    <div class="dx-divider"></div>
+    <div class="dx-quote">
+      <p>わが国の中小企業および福祉・現場業務における労働力不足は、深刻な社会課題となっています。AIdealize株式会社は、最新のAI（生成AI・RAG技術）とデジタル技術を駆使し、非効率な業務プロセスを根本から再構築（BPR）することで、人がより創造的な業務に専念できる社会を目指します。</p>
+      <p>当社は、自社がDXの先駆者として高度な情報処理技術を実装し、その知見をクライアントへ還元することで、地域経済の持続的な発展に貢献することを経営の基本方針といたします。</p>
+      <p>この方向性は、代表取締役による経営判断のもと決定されたものであり、AI実装・業務改善サービス「はなまるAI」をはじめとする自社プロダクト開発・BPOサービスの両軸に反映されています。</p>
+    </div>
+    <div class="dx-sig">
+      <div class="dx-sig-line"></div>
+      <span class="dx-sig-name">代表取締役　眞貴田 正博 — Masahiro Makita</span>
+    </div>
+  </div>
+</div>
+
+<!-- ▼ 2. DX推進戦略 -->
+<div class="dx-section">
+  <p class="dx-label">02 — Strategy</p>
+  <h2>DX推進戦略</h2>
+  <div class="dx-divider"></div>
+  <p style="font-size:0.9rem;color:#555;line-height:1.9;margin-bottom:0;">当社は、ビジョンの実現に向け、以下の2軸で戦略を展開します。戦略の方向性は代表取締役を中心とした経営判断にもとづき決定され、IT投資計画・人材配置・製品開発ロードマップに反映されています。</p>
+
+  <div class="dx-card-grid">
+    <div class="dx-card">
+      <div class="dx-num">01</div>
+      <h3>自社プロダクトによる変革</h3>
+      <p>音声入力型AIマニュアル作成ツール「はなまるAI」および自動応答チャットボットの開発・提供を通じ、現場のナレッジ共有と顧客対応の自動化を推進します。介護・医療・建設・中小企業を主要ターゲットに、SaaSとして全国展開します。</p>
+    </div>
+    <div class="dx-card">
+      <div class="dx-num">02</div>
+      <h3>伴走型DXコンサルティング</h3>
+      <p>Salesforce・Kintone等のCRM基盤と生成AIツールの統合支援を行い、データの可視化と意思決定の迅速化を図る「次世代型ビジネスフロー」を構築します。提案で終わらず、現場に入り込む「ハンズオン型」を標榜します。</p>
+    </div>
+    <div class="dx-card">
+      <div class="dx-num">03</div>
+      <h3>SaaS × BPOの2軸展開</h3>
+      <p>「はなまるAI（SaaS）」と「業務代行（BPO）」を組み合わせ、ツール導入だけでなく業務ごと引き受ける包括支援モデルを提供します。中小企業・公共機関の人手不足解消に特化した収益構造を構築します。</p>
+    </div>
+  </div>
+</div>
+
+<!-- ▼ 3. 推進体制 -->
+<div class="dx-section-alt">
+  <div class="dx-inner">
+    <p class="dx-label">03 — Governance</p>
+    <h2>戦略を推進するための体制</h2>
+    <div class="dx-divider"></div>
+
+    <table class="dx-table">
+      <tr>
+        <th>最高デジタル責任者</th>
+        <td>代表取締役　眞貴田 正博（CDO兼務）<br>経営直下のプロジェクト統括責任者として全施策を主導</td>
+      </tr>
+      <tr>
+        <th>推進体制</th>
+        <td>代表取締役を中心に、AI開発チームおよび外部パートナー（BPO裏受け含む）と連携する機動的な組織体制を構築。Salesforce・Kintone・RPA・DifyをはじめとするITツールの実装力を社内に保持する。</td>
+      </tr>
+      <tr>
+        <th>意思決定</th>
+        <td>DX投資・技術選定・KPI評価は、代表取締役による経営会議において決定する。四半期ごとに進捗をレビューし、戦略を柔軟に修正する。</td>
+      </tr>
+      <tr>
+        <th>外部連携</th>
+        <td>社会福祉協議会・IT導入支援機関・商工会議所等とのパートナーシップを活用し、補助金申請支援を含むエコシステムを形成する。</td>
+      </tr>
+    </table>
+  </div>
+</div>
+
+<!-- ▼ 4. IT環境整備 -->
+<div class="dx-section">
+  <p class="dx-label">04 — Environment</p>
+  <h2>最新技術を活用するための環境整備</h2>
+  <div class="dx-divider"></div>
+
+  <div class="dx-card-grid">
+    <div class="dx-card">
+      <div class="dx-num">①</div>
+      <h3>クラウドネイティブ開発環境</h3>
+      <p>DifyおよびLLM（大規模言語モデル）を活用したローコード開発環境を整備。RAGパイプライン（承認済み書類→DB→自動登録）を実装し、プロトタイピングの高速化と差別化を図ります。APIコスト管理はOpenAI・Anthropicダッシュボードで一元管理します。</p>
+    </div>
+    <div class="dx-card">
+      <div class="dx-num">②</div>
+      <h3>全社デジタル化の推進</h3>
+      <p>全社員が最新AIツールを実務で活用できるライセンス環境を整備し、社内業務の定型業務自動化を継続的に推進します。GTM・GA4・Google広告等のデジタルマーケティング基盤も自社内で運用・改善します。</p>
+    </div>
+    <div class="dx-card">
+      <div class="dx-num">③</div>
+      <h3>IT導入支援事業者としての基盤整備</h3>
+      <p>IT導入補助金の対象ITツールとして「はなまるAI」を登録し、補助金制度を活用したクライアントへの普及を図ります。DX認定取得により、公的支援機関との連携基盤を強化します。</p>
+    </div>
+  </div>
+</div>
+
+<!-- ▼ 5. KPI -->
+<div class="dx-section-dark">
+  <div class="dx-inner">
+    <p class="dx-label">05 — KPI</p>
+    <h2>DX推進の指標</h2>
+    <div class="dx-divider"></div>
+    <p style="font-size:0.87rem;color:rgba(255,255,255,0.6);line-height:1.9;margin-bottom:36px;">戦略の達成状況を評価するため、以下の指標を定期的（年1回以上）に測定・評価します。</p>
+
+    <div class="dx-kpi-grid">
+      <div class="dx-kpi-item">
+        <div class="dx-kpi-num">①</div>
+        <div class="dx-kpi-label">自社開発AIツール（はなまるAI）の<br>導入事業所数</div>
+      </div>
+      <div class="dx-kpi-item">
+        <div class="dx-kpi-num">②</div>
+        <div class="dx-kpi-label">支援先企業における<br>業務削減時間の合計（時間/月）</div>
+      </div>
+      <div class="dx-kpi-item">
+        <div class="dx-kpi-num">③</div>
+        <div class="dx-kpi-label">自社内ペーパーレス化および<br>定型業務の自動化率（%）</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ▼ 6. サイバーセキュリティ -->
+<div class="dx-section-alt">
+  <div class="dx-inner">
+    <p class="dx-label">06 — Security</p>
+    <h2>サイバーセキュリティ対策</h2>
+    <div class="dx-divider"></div>
+
+    <div class="dx-security-box">
+      <div class="dx-security-badge">🔒</div>
+      <div class="dx-security-content">
+        <h3>SECURITY ACTION 一つ星 宣言</h3>
+        <p>独立行政法人情報処理推進機構（IPA）が実施する「SECURITY ACTION」の一つ星を宣言し、情報セキュリティ基本方針を策定します。クライアントの重要なデータを守るため、最新のセキュリティパッチの適用・多要素認証の徹底・AIモデルへの入力データ保護方針の整備等、安全かつ適切なIT運用に継続的に取り組みます。</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ▼ 会社情報 -->
+<div class="dx-section">
+  <p class="dx-label">Company</p>
+  <h2>会社情報</h2>
+  <div class="dx-divider"></div>
+
+  <table class="dx-table">
+    <tr>
+      <th>会社名</th>
+      <td>AIdealize株式会社</td>
+    </tr>
+    <tr>
+      <th>代表取締役</th>
+      <td>眞貴田 正博（Masahiro Makita）</td>
+    </tr>
+    <tr>
+      <th>所在地</th>
+      <td>東京都中央区日本橋3-4-15</td>
+    </tr>
+    <tr>
+      <th>設立</th>
+      <td>2020年</td>
+    </tr>
+    <tr>
+      <th>事業内容</th>
+      <td>AI実装・業務改善サービス（はなまるAI）／BPRコンサルティング／BPO業務代行／IT導入支援事業</td>
+    </tr>
+    <tr>
+      <th>公表日</th>
+      <td>2026年3月24日</td>
+    </tr>
+  </table>
+</div>
+
+<!-- ▼ CTA -->
+<div class="dx-cta">
+  <h2>まず30分、話してみてください。</h2>
+  <p>DX推進・AI導入について、現状課題のヒアリングから始めます。</p>
+  <a class="dx-btn" href="/lp/ai-lp1/">無料診断を受ける</a>
+  <a class="dx-btn dx-btn-outline" href="/company/">会社概要を見る</a>
+</div>
+
+
+
+</body>
+</html>

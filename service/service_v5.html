@@ -1,0 +1,643 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>サービス一覧 | AIdealize株式会社</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;700;900&family=Bebas+Neue&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #ffffff;
+  --surface: #f7f7f5;
+  --border: #e5e5e0;
+  --accent: #d42e42;
+  --accent2: #e8960e;
+  --ink: #111118;
+  --muted: #777788;
+  --card: #fafaf8;
+  --red: #c0272d;
+  --red-dark: #a01f24;
+  --ink: #1a1a1a;
+  --mid: #555;
+  --white: #fff;
+  --border: #e8e8e8;
+}
+*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+html { scroll-behavior:smooth; }
+body {
+  font-family:'Noto Sans JP', sans-serif;
+  background: var(--bg);
+  color: var(--ink);
+  line-height:1.7;
+  overflow-x:hidden;
+}
+
+/* ナビ */
+/* ── NAV ── */
+#mainNav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 60px; height: 68px;
+  background: rgba(255,255,255,0.97);
+  border-bottom: 1px solid var(--border);
+  backdrop-filter: blur(12px);
+  transition: box-shadow 0.3s;
+}
+#mainNav.scrolled { box-shadow: 0 4px 24px rgba(0,0,0,0.08); }
+
+/* ── ロゴ ── */
+.nav-logo {
+  display: flex; align-items: center; gap: 12px;
+  text-decoration: none;
+}
+.nav-logo img {
+  height: 36px; width: auto;
+}
+.nav-logo-text {
+  font-family: 'DM Mono', monospace;
+  font-size: 16px; font-weight: 500;
+  color: var(--ink); letter-spacing: 0.02em;
+}
+.nav-logo-text span { color: var(--red); }
+
+
+/* ── PCナビ ── */
+.nav-links {
+  display: flex; align-items: center; gap: 36px;
+  list-style: none; margin: 0; padding: 0;
+}
+.nav-links a {
+  font-size: 13px; font-weight: 500;
+  color: var(--mid); text-decoration: none;
+  letter-spacing: 0.04em;
+  transition: color 0.2s;
+}
+.nav-links a:hover { color: var(--ink); }
+.nav-cta {
+  background: var(--red); color: var(--white) !important;
+  padding: 10px 22px; border-radius: 3px;
+  font-size: 12px !important; font-weight: 700 !important;
+  letter-spacing: 0.06em !important;
+  transition: background 0.2s !important;
+}
+.nav-cta:hover { background: var(--red-dark) !important; color: var(--white) !important; }
+
+/* ── ハンバーガーボタン（タブレット・スマホ） ── */
+.nav-hamburger {
+  display: none;
+  flex-direction: column; justify-content: center; gap: 5px;
+  width: 40px; height: 40px;
+  background: none; border: none; cursor: pointer; padding: 4px;
+}
+.nav-hamburger span {
+  display: block; width: 24px; height: 2px;
+  background: var(--ink);
+  transition: all 0.3s;
+  transform-origin: center;
+}
+/* × に変わるアニメーション */
+.nav-hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.nav-hamburger.open span:nth-child(2) { opacity: 0; }
+.nav-hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+/* ── ドロワーメニュー ── */
+.nav-drawer {
+  display: none;
+  position: fixed; top: 68px; left: 0; right: 0;
+  background: rgba(255,255,255,0.98);
+  border-bottom: 2px solid var(--red);
+  padding: 24px 32px 32px;
+  z-index: 999;
+  backdrop-filter: blur(12px);
+}
+.nav-drawer.open { display: block; }
+.nav-drawer ul {
+  list-style: none; margin: 0; padding: 0;
+  display: flex; flex-direction: column; gap: 0;
+}
+.nav-drawer ul li a {
+  display: block;
+  padding: 14px 0;
+  font-size: 15px; font-weight: 500;
+  color: var(--ink); text-decoration: none;
+  border-bottom: 1px solid var(--border);
+  letter-spacing: 0.04em;
+}
+.nav-drawer ul li:last-child a {
+  margin-top: 20px;
+  display: block; text-align: center;
+  background: var(--red); color: var(--white) !important;
+  padding: 14px 22px; border-radius: 3px;
+  font-weight: 700 !important; border-bottom: none;
+  letter-spacing: 0.06em;
+}
+
+/* ── タブレット（1024px以下） ── */
+@media (max-width: 1024px) {
+  #mainNav { padding: 0 32px; }
+  .nav-links { display: none; }
+  .nav-hamburger { display: flex; }
+}
+
+/* ── スマホ（480px以下） ── */
+@media (max-width: 480px) {
+  #mainNav { padding: 0 20px; height: 60px; }
+  .nav-drawer { top: 60px; padding: 20px 20px 28px; }
+  .nav-logo img { height: 30px; }
+}
+
+/* ヒーロー */
+.hero {
+  padding:140px 40px 70px;
+  max-width:1100px;
+  margin:0 auto;
+}
+.hero-label {
+  display:inline-block;
+  font-size:11px; font-weight:700; letter-spacing:3px;
+  color:var(--accent);
+  border:1px solid var(--accent);
+  padding:4px 14px; border-radius:2px;
+  margin-bottom:20px;
+}
+.hero h1 {
+  font-size:clamp(28px,4vw,48px);
+  font-weight:900; line-height:1.3;
+  margin-bottom:16px;
+}
+.hero p { font-size:15px; color:var(--muted); max-width:560px; line-height:1.9; }
+
+/* セクション */
+.section { padding:60px 40px; max-width:1100px; margin:0 auto; }
+.section-label { font-size:11px; font-weight:700; letter-spacing:3px; color:var(--accent); margin-bottom:10px; }
+.section-title { font-size:clamp(20px,2.5vw,28px); font-weight:900; margin-bottom:40px; }
+
+/* ── サービス01〜03：横並び3列 */
+.main-service {
+  background:var(--surface);
+  border:1px solid var(--border);
+  border-radius:8px;
+  padding:40px;
+  margin-bottom:40px;
+}
+.main-service-header {
+  display:flex; align-items:flex-start; gap:16px;
+  margin-bottom:28px;
+  padding-bottom:24px;
+  border-bottom:1px solid var(--border);
+}
+.main-service-icon { font-size:32px; flex-shrink:0; }
+.main-service-tag {
+  display:inline-block;
+  font-size:10px; font-weight:700; letter-spacing:2px;
+  color:var(--accent2);
+  border:1px solid rgba(232,150,14,0.4);
+  padding:3px 10px; border-radius:2px;
+  margin-bottom:8px;
+}
+.main-service-name { font-size:20px; font-weight:900; margin-bottom:6px; }
+.main-service-desc { font-size:13px; color:var(--muted); line-height:1.8; }
+
+.plans-grid {
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:16px;
+}
+.plan-card {
+  background:white;
+  border:1px solid var(--border);
+  border-radius:6px;
+  padding:24px 20px;
+}
+.plan-num {
+  font-family:'Bebas Neue',sans-serif;
+  font-size:32px; color:rgba(0,0,0,0.06);
+  line-height:1; margin-bottom:12px;
+}
+.plan-name { font-size:14px; font-weight:900; margin-bottom:8px; color:var(--ink); }
+.plan-desc { font-size:12px; color:var(--muted); line-height:1.8; }
+.plan-period {
+  display:inline-block;
+  margin-top:12px;
+  font-size:11px; color:var(--accent);
+  font-weight:700;
+}
+
+/* ── はなしてマニュアルAI：目立つカード */
+.hanamaru-card {
+  background:var(--ink);
+  color:white;
+  border-radius:8px;
+  padding:40px;
+  margin-bottom:24px;
+  position:relative;
+  overflow:hidden;
+}
+.hanamaru-card::before {
+  content:'';
+  position:absolute; top:-60px; right:-60px;
+  width:240px; height:240px;
+  border-radius:50%;
+  background:rgba(212,46,66,0.12);
+  pointer-events:none;
+}
+.hanamaru-new {
+  display:inline-block;
+  background:var(--accent);
+  color:white;
+  font-size:10px; font-weight:700; letter-spacing:2px;
+  padding:3px 10px; border-radius:2px;
+  margin-bottom:16px;
+}
+.hanamaru-title {
+  font-size:clamp(22px,3vw,32px);
+  font-weight:900; margin-bottom:14px; line-height:1.3;
+}
+.hanamaru-title span { color:#f5c842; }
+.hanamaru-desc {
+  font-size:14px; color:rgba(255,255,255,0.7);
+  line-height:1.9; max-width:640px;
+  margin-bottom:28px;
+}
+.hanamaru-flow {
+  display:flex; gap:0; align-items:stretch;
+  background:rgba(255,255,255,0.05);
+  border-radius:6px;
+  overflow:hidden;
+}
+.hf-step {
+  flex:1; padding:16px 12px; text-align:center;
+  border-right:1px solid rgba(255,255,255,0.08);
+  font-size:12px;
+}
+.hf-step:last-child { border-right:none; }
+.hf-icon { font-size:20px; margin-bottom:6px; }
+.hf-name { font-weight:700; font-size:12px; margin-bottom:4px; color:white; }
+.hf-sub { font-size:11px; color:rgba(255,255,255,0.45); line-height:1.5; }
+.hf-arrow {
+  display:flex; align-items:center; justify-content:center;
+  padding:0 4px;
+  color:rgba(255,255,255,0.2);
+  font-size:16px;
+  flex-shrink:0;
+}
+
+/* ── その他サービスカード（BCP・RAG・防災・人材）*/
+.other-grid {
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+  gap:16px;
+}
+.other-card {
+  background:var(--card);
+  border:1px solid var(--border);
+  border-radius:6px;
+  padding:28px 24px;
+  text-decoration:none;
+  color:inherit;
+  display:block;
+  transition:border-color 0.2s, box-shadow 0.2s;
+}
+.other-card:hover { border-color:var(--accent); box-shadow:0 4px 16px rgba(212,46,66,0.08); }
+.other-icon { font-size:26px; margin-bottom:12px; }
+.other-tag {
+  display:inline-block;
+  font-size:10px; font-weight:700; letter-spacing:2px;
+  color:var(--accent2); border:1px solid rgba(232,150,14,0.3);
+  padding:2px 8px; border-radius:2px; margin-bottom:10px;
+}
+.other-new {
+  display:inline-block;
+  font-size:10px; font-weight:700; letter-spacing:2px;
+  color:var(--accent); border:1px solid rgba(212,46,66,0.3);
+  padding:2px 8px; border-radius:2px; margin-bottom:10px;
+  margin-left:4px;
+}
+.other-name { font-size:15px; font-weight:900; margin-bottom:8px; }
+.other-desc { font-size:12px; color:var(--muted); line-height:1.8; }
+
+/* 区切り線 */
+.divider { border:none; border-top:1px solid var(--border); margin:0 40px; }
+
+/* CTA */
+.cta-section {
+  padding:80px 40px; text-align:center;
+  background:var(--ink);
+  margin-top:80px;
+}
+.cta-section h2 { font-size:clamp(22px,3vw,34px); font-weight:900; color:white; margin-bottom:14px; }
+.cta-section p { color:rgba(255,255,255,0.55); margin-bottom:32px; font-size:14px; }
+.cta-buttons { display:flex; gap:16px; justify-content:center; flex-wrap:wrap; }
+.btn-primary { padding:16px 40px; background:var(--accent); color:white; border-radius:3px; font-size:15px; font-weight:700; text-decoration:none; transition:opacity 0.2s; }
+.btn-primary:hover { opacity:0.85; }
+.btn-ghost { padding:16px 40px; background:transparent; color:white; border:1px solid rgba(255,255,255,0.2); border-radius:3px; font-size:15px; font-weight:700; text-decoration:none; transition:border-color 0.2s; }
+.btn-ghost:hover { border-color:white; }
+
+footer { padding:28px 40px; border-top:1px solid var(--border); text-align:center; color:var(--muted); font-size:12px; background:var(--bg); }
+footer a { color:inherit; }
+
+@keyframes fadeUp { from{opacity:0;transform:translateY(20px)} to{opacity:1;transform:none} }
+.fade-up { animation:fadeUp 0.5s ease both; }
+
+@media(max-width:768px){
+  nav { padding:16px 20px; }
+  .nav-links { display:none; }
+  .section, .hero { padding-left:20px; padding-right:20px; }
+  .plans-grid { grid-template-columns:1fr; }
+  .hanamaru-flow { flex-direction:column; }
+  .hf-arrow { display:none; }
+}
+</style>
+</head>
+<body>
+
+<!-- ◎NAV -->
+<nav id="mainNav">
+  <a href="/" class="nav-logo">
+    <img src="https://aidealize.com/wp-content/uploads/2026/03/スクリーンショット-2026-03-13-130038.png" alt="AIidealize">
+        <span class="nav-logo-text"><span>AI</span>dealize</span>     
+  </a>
+
+  <!-- PCナビ -->
+  <ul class="nav-links">
+    <li><a href="#pain">課題</a></li>
+    <li><a href="https://aidealize.com/service/">サービス</a></li>
+    <li><a href="#results">実績</a></li>
+    <li><a href="https://aidealize.com/company/">会社概要</a></li>
+    <li><a href="https://aidealize.com/lp/ai-lp1" class="nav-cta">無料診断を受ける</a></li>
+  </ul>
+
+  <!-- ハンバーガーボタン -->
+  <button class="nav-hamburger" id="navHamburger" aria-label="メニュー">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- ドロワー -->
+<div class="nav-drawer" id="navDrawer">
+  <ul>
+    <li><a href="#pain" class="drawer-link">課題</a></li>
+    <li><a href="https://aidealize.com/service/" class="drawer-link">サービス</a></li>
+    <li><a href="#results" class="drawer-link">実績</a></li>
+    <li><a href="https://aidealize.com/company/" class="drawer-link">会社概要</a></li>
+    <li><a href="https://aidealize.com/lp/ai-lp1">無料診断を受ける</a></li>
+  </ul>
+</div>
+
+<script>
+(function(){
+  const btn = document.getElementById('navHamburger');
+  const drawer = document.getElementById('navDrawer');
+  const nav = document.getElementById('mainNav');
+
+  // ハンバーガー開閉
+  btn.addEventListener('click', function(){
+    btn.classList.toggle('open');
+    drawer.classList.toggle('open');
+  });
+
+  // ドロワー内リンクを押したら閉じる
+  drawer.querySelectorAll('.drawer-link').forEach(function(link){
+    link.addEventListener('click', function(){
+      btn.classList.remove('open');
+      drawer.classList.remove('open');
+    });
+  });
+
+  // スクロールでnavに影
+  window.addEventListener('scroll', function(){
+    nav.classList.toggle('scrolled', window.scrollY > 10);
+  });
+})();
+</script>
+
+<!-- ヒーロー -->
+<div class="hero fade-up">
+  <div class="hero-label">ALL SERVICES</div>
+  <h1>AIdealize の<br>全サービス一覧</h1>
+  <p>業務改善・マニュアル自動生成・BCP策定・防災・人材育成まで。<br>中小企業の「困った」を、AIと経験で解決します。</p>
+</div>
+
+<hr class="divider">
+
+<!-- AI業務改善（01〜03をまとめる） -->
+<style>
+.main-service--link {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+  transition: border 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+.main-service--link:hover {
+  border: 2px solid #e53e3e !important;
+  box-shadow: 0 4px 24px rgba(229, 62, 62, 0.15);
+  transform: translateY(-2px);
+  cursor: pointer;
+}
+
+.plan-num {
+  color: #c0392b !important;
+  font-weight: 700 !important;
+  opacity: 1 !important;
+}
+</style>
+
+<div class="section">
+  <div class="section-label">CORE SERVICE</div>
+  <div class="section-title">AI業務改善サービス</div>
+
+  <a href="https://aidealize.com/lp/ai-lp1/" class="main-service fade-up main-service--link">
+    <div class="main-service-header">
+      <div class="main-service-icon">⚙️</div>
+      <div>
+        <div class="main-service-tag">BPR × AI IMPLEMENTATION</div>
+        <div class="main-service-name">業務フロー再設計 × AI実装</div>
+        <div class="main-service-desc">「今一番大変な業務」のヒアリングから、フロー再設計・ツール実装・現場定着まで一気通貫で支援します。課題の大きさに合わせて3つのプランから選べます。</div>
+      </div>
+    </div>
+
+    <div class="plans-grid">
+      <div class="plan-card">
+        <div class="plan-num">01</div>
+        <div class="plan-name">AI業務診断サポート</div>
+        <div class="plan-desc">30分ヒアリングで課題を可視化。どこにAIを使えるか、どこから始めるべきかを整理し、改善の道筋をレポートにまとめます。</div>
+        <div class="plan-period">スポット / 2週間</div>
+      </div>
+      <div class="plan-card">
+        <div class="plan-num">02</div>
+        <div class="plan-name">BPR再設計 ＋ AI実装パック</div>
+        <div class="plan-desc">業務フローの見直しから、ツール選定・設定・現場への定着まで。「入れて終わり」にならないよう、使われる仕組みになるまで伴走します。</div>
+        <div class="plan-period">プロジェクト型 / 1〜2ヶ月</div>
+      </div>
+      <div class="plan-card">
+        <div class="plan-num">03</div>
+        <div class="plan-name">月次伴走・AIモニタリング</div>
+        <div class="plan-desc">導入後も継続して改善を進めます。週1回のレビューで現場の変化をキャッチし、必要に応じて仕組みを調整していきます。</div>
+        <div class="plan-period">継続型 / 週1レビュー込み</div>
+      </div>
+    </div>
+  </a>
+</div>
+
+<style>
+.plan-card--link {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+  transition: border 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+.plan-card--link:hover {
+  border: 2px solid #e53e3e !important;
+  box-shadow: 0 4px 20px rgba(229, 62, 62, 0.15);
+  transform: translateY(-2px);
+  cursor: pointer;
+}
+</style>
+
+<hr class="divider">
+
+<!-- はなしてマニュアルAI -->
+<div class="section">
+  <div class="hanamaru-card fade-up" style="
+    background: #f9f5eb;
+    border: 1px solid #d4a853;
+    border-radius: 8px;
+    padding: 40px;
+    position: relative;
+    overflow: hidden;
+  ">
+    <!-- NEW バッジ -->
+    <div style="
+      display: inline-block;
+      background: #b8892a;
+      color: white;
+      font-size: 10px; font-weight: 700; letter-spacing: 2px;
+      padding: 3px 10px; border-radius: 2px;
+      margin-bottom: 16px;
+    ">NEW SERVICE</div>
+
+    <!-- タイトル -->
+    <div style="
+      font-size: clamp(22px, 3vw, 32px);
+      font-weight: 900; margin-bottom: 14px; line-height: 1.3;
+      color: #1a1a1a;
+    ">
+      はなして<span style="color: #b8892a;">マニュアル</span>AI
+    </div>
+
+    <!-- 説明文 -->
+    <div style="
+      font-size: 14px; color: #5a4a2a;
+      line-height: 1.9; max-width: 640px;
+      margin-bottom: 28px;
+    ">
+      AIが担当者に1問1答でインタビューし、業務マニュアルを自動生成。マニュアルがゼロでも、書ける人がいなくても大丈夫。生成したマニュアルはそのまま社内RAGチャットボットに連携します。
+    </div>
+
+    <!-- 詳細ページへのリンク -->
+    <a href="https://aidealize.com/lp/hanamaruai/" style="
+      display: inline-block;
+      margin-bottom: 28px;
+      padding: 12px 28px;
+      background: #b8892a;
+      color: white;
+      border-radius: 3px;
+      font-size: 14px; font-weight: 700;
+      text-decoration: none;
+      transition: opacity 0.2s;
+    " onmouseover="this.style.opacity='0.85'" onmouseout="this.style.opacity='1'">
+      詳細・無料体験を見る →
+    </a>
+
+    <!-- フロー -->
+    <div style="
+      display: flex; gap: 0; align-items: stretch;
+      background: rgba(184,137,42,0.08);
+      border: 1px solid rgba(184,137,42,0.2);
+      border-radius: 6px;
+      overflow: hidden;
+    ">
+      <div style="flex:1; padding:16px 12px; text-align:center; border-right:1px solid rgba(184,137,42,0.15);">
+        <div style="font-size:20px; margin-bottom:6px;">🎤</div>
+        <div style="font-weight:700; font-size:12px; margin-bottom:4px; color:#1a1a1a;">AIインタビュー</div>
+        <div style="font-size:11px; color:#7a6040; line-height:1.5;">答えるだけでOK</div>
+      </div>
+      <div style="display:flex;align-items:center;padding:0 4px;color:#b8892a;font-size:16px;">›</div>
+      <div style="flex:1; padding:16px 12px; text-align:center; border-right:1px solid rgba(184,137,42,0.15);">
+        <div style="font-size:20px; margin-bottom:6px;">📋</div>
+        <div style="font-weight:700; font-size:12px; margin-bottom:4px; color:#1a1a1a;">マニュアル自動生成</div>
+        <div style="font-size:11px; color:#7a6040; line-height:1.5;">即時に構造化</div>
+      </div>
+      <div style="display:flex;align-items:center;padding:0 4px;color:#b8892a;font-size:16px;">›</div>
+      <div style="flex:1; padding:16px 12px; text-align:center; border-right:1px solid rgba(184,137,42,0.15);">
+        <div style="font-size:20px; margin-bottom:6px;">🧠</div>
+        <div style="font-weight:700; font-size:12px; margin-bottom:4px; color:#1a1a1a;">RAG構築</div>
+        <div style="font-size:11px; color:#7a6040; line-height:1.5;">ナレッジ化</div>
+      </div>
+      <div style="display:flex;align-items:center;padding:0 4px;color:#b8892a;font-size:16px;">›</div>
+      <div style="flex:1; padding:16px 12px; text-align:center;">
+        <div style="font-size:20px; margin-bottom:6px;">💬</div>
+        <div style="font-weight:700; font-size:12px; margin-bottom:4px; color:#1a1a1a;">チャットボット完成</div>
+        <div style="font-size:11px; color:#7a6040; line-height:1.5;">社内AIが即答</div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<hr class="divider">
+
+<!-- その他サービス -->
+<div class="section">
+  <div class="section-label">SERVICES</div>
+  <div class="section-title">その他のサービス</div>
+
+  <div class="other-grid">
+    <div class="other-card fade-up">
+      <div class="other-icon">🤖</div>
+      <div class="other-tag">RAG</div><span class="other-new">NEW</span>
+      <div class="other-name">社内RAGチャットボット構築</div>
+      <div class="other-desc">業務マニュアル・社内規程・FAQをナレッジ化し、社員が自然言語で検索・回答できるチャットボットを構築します。</div>
+    </div>
+
+    <a class="other-card fade-up" href="https://aidealize.com/service/bcp/">
+      <div class="other-icon">🛡️</div>
+      <div class="other-tag">BCP</div><span class="other-new">NEW</span>
+      <div class="other-name">BCP自動作成AI支援</div>
+      <div class="other-desc">2025年4月に義務化が完全施行されたBCP策定を、AIインタビューで効率的に支援。介護・医療・建設など法令対応が急務の業種に対応します。</div>
+    </a>
+
+    <a class="other-card fade-up" href="https://aidealize.com/bousai/">
+      <div class="other-icon">🏢</div>
+      <div class="other-tag">DISASTER</div>
+      <div class="other-name">防災・連携支援</div>
+      <div class="other-desc">企業・自治体向けに、事業継続計画の策定から防災訓練・緊急時対応マニュアルの整備まで支援します。</div>
+    </a>
+
+    <a class="other-card fade-up" href="https://aidealize.com/jinzai/">
+      <div class="other-icon">👥</div>
+      <div class="other-tag">HR</div>
+      <div class="other-name">人材育成・研修支援</div>
+      <div class="other-desc">AIを活用した人材育成プログラムの設計から、OJT効率化・研修コンテンツ自動生成まで。育てる仕組みをAIで構築します。</div>
+    </a>
+  </div>
+</div>
+
+<!-- CTA -->
+<div class="cta-section">
+  <h2>まず30分、話してみてください。</h2>
+  <p>どのサービスが合うかわからない場合も、無料診断でお気軽にご相談ください。</p>
+  <div class="cta-buttons">
+    <a class="btn-primary" href="https://aidealize.com/lp/ai-lp1/">無料診断を受ける</a>
+    <a class="btn-ghost" href="/company/">会社概要を見る</a>
+  </div>
+</div>
+
+<footer>
+  © 2026 AIdealize株式会社　|　<a href="https://aidealize.com">TOP</a>　|　<a href="/company/">会社概要</a>　|　<a href="https://aidealize.com/lp/ai-lp1/">無料診断</a>
+</footer>
+
+</body>
+</html>

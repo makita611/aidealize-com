@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>特定商取引法に基づく表記 | AIdealize株式会社</title>
+  <style>
+    :root {
+      --primary: #0f2b5b;
+      --accent: #2563eb;
+      --bg: #f8fafc;
+      --text: #1e293b;
+      --muted: #64748b;
+      --border: #e2e8f0;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: "Noto Sans JP", "Hiragino Kaku Gothic ProN", sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.8;
+    }
+    header {
+      background: var(--primary);
+      padding: 20px 40px;
+    }
+    header a {
+      color: #fff;
+      text-decoration: none;
+      font-size: 1.2rem;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+    }
+    .hero {
+      background: linear-gradient(135deg, var(--primary) 0%, #1d4ed8 100%);
+      color: #fff;
+      text-align: center;
+      padding: 60px 20px 50px;
+    }
+    .hero h1 {
+      font-size: 2rem;
+      font-weight: 800;
+      letter-spacing: 0.05em;
+    }
+    .hero p {
+      margin-top: 10px;
+      color: #bfdbfe;
+      font-size: 0.9rem;
+    }
+    main {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 60px 24px 100px;
+    }
+    .intro-box {
+      background: #fff;
+      border-left: 4px solid var(--accent);
+      padding: 20px 24px;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 40px;
+      font-size: 0.95rem;
+      color: var(--muted);
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      background: #fff;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+      margin-bottom: 40px;
+    }
+    table th, table td {
+      border: 1px solid var(--border);
+      padding: 16px 20px;
+      font-size: 0.95rem;
+      vertical-align: top;
+    }
+    table th {
+      background: #eff6ff;
+      color: var(--primary);
+      font-weight: 700;
+      width: 28%;
+      white-space: nowrap;
+    }
+    table td {
+      line-height: 1.8;
+    }
+    table td ul {
+      padding-left: 1.4em;
+    }
+    table td ul li {
+      margin-bottom: 4px;
+    }
+    .note {
+      background: #fefce8;
+      border: 1px solid #fde68a;
+      border-radius: 8px;
+      padding: 16px 20px;
+      font-size: 0.88rem;
+      color: #92400e;
+      margin-bottom: 40px;
+    }
+    .note strong { color: #78350f; }
+    footer {
+      background: var(--primary);
+      color: #94a3b8;
+      text-align: center;
+      padding: 30px 20px;
+      font-size: 0.85rem;
+    }
+    footer a { color: #93c5fd; text-decoration: none; }
+
+    @media (max-width: 600px) {
+      .hero h1 { font-size: 1.5rem; }
+      main { padding: 40px 16px 80px; }
+      table th { width: 35%; white-space: normal; font-size: 0.88rem; }
+      table td { font-size: 0.88rem; }
+      header { padding: 16px 20px; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <a href="https://aidealize.com/">AIdealize株式会社</a>
+</header>
+
+<div class="hero">
+  <h1>特定商取引法に基づく表記</h1>
+  <p>Specified Commercial Transactions Act</p>
+</div>
+
+<main>
+
+  <div class="intro-box">
+    特定商取引に関する法律第11条（通信販売）に基づき、以下のとおり表示します。
+  </div>
+
+  <table>
+    <tr>
+      <th>販売業者</th>
+      <td>AIdealize株式会社</td>
+    </tr>
+    <tr>
+      <th>代表者名</th>
+      <td>【代表者氏名を記入】</td>
+    </tr>
+    <tr>
+      <th>所在地</th>
+      <td>
+        〒【郵便番号】<br>
+        東京都中央区【番地・建物名を記入】<br>
+        ※請求があった場合、遅滞なく開示します。
+      </td>
+    </tr>
+    <tr>
+      <th>電話番号</th>
+      <td>
+        公開を控えております。お問い合わせフォームよりご連絡ください。請求があった場合は遅滞なく開示します。<br>
+        <span style="font-size:0.88rem; color:#64748b;">受付時間：平日 10:00〜18:00（土日祝・年末年始を除く）</span>
+      </td>
+    </tr>
+    <tr>
+      <th>メールアドレス</th>
+      <td><span id="contact-email"></span>
+        <script>
+          (function() {
+            var u = 'info';
+            var d = 'aidealize.com';
+            var el = document.getElementById('contact-email');
+            var a = document.createElement('a');
+            a.href = 'mailto:' + u + '@' + d;
+            a.textContent = u + '@' + d;
+            el.appendChild(a);
+          })();
+        </script>
+        <noscript>info[at]aidealize.com（[at]を@に変えてください）</noscript>
+      </td>
+    </tr>
+    <tr>
+      <th>サービスURL</th>
+      <td><a href="https://aidealize.com/">https://aidealize.com/</a></td>
+    </tr>
+    <tr>
+      <th>販売するサービス</th>
+      <td>
+        <ul>
+          <li>AI業務診断サポート（スポット型コンサルティング）</li>
+          <li>BPR再設計＋AI実装パック（プロジェクト型コンサルティング）</li>
+          <li>月次伴走・AIモニタリング（継続型支援）</li>
+          <li>防災コンサルティング（計画策定・防災連携・シェアドサービス）</li>
+          <li>人材支援サービス</li>
+        </ul>
+      </td>
+    </tr>
+    <tr>
+      <th>販売価格</th>
+      <td>
+        <ul>
+          <li>AI業務診断サポート：150,000円〜（税別）</li>
+          <li>BPR再設計＋AI実装パック：500,000円〜（税別）</li>
+          <li>月次伴走・AIモニタリング：100,000円〜/月（税別）</li>
+          <li>防災・人材サービス：お見積もりによる</li>
+        </ul>
+        <span style="font-size:0.88rem; color:#64748b;">
+          ※別途、消費税（10%）が加算されます。<br>
+          ※詳細はお見積もり後に個別にご案内します。
+        </span>
+      </td>
+    </tr>
+    <tr>
+      <th>支払方法</th>
+      <td>
+        <ul>
+          <li>銀行振込</li>
+          <li>【その他の支払い方法があれば追記】</li>
+        </ul>
+      </td>
+    </tr>
+    <tr>
+      <th>支払時期</th>
+      <td>
+        契約締結後、請求書発行から【30日】以内にお支払いください。<br>
+        継続型サービスについては、毎月【月末】締め翌月末払いとなります。
+      </td>
+    </tr>
+    <tr>
+      <th>サービス提供時期</th>
+      <td>
+        契約締結・お支払い確認後、原則として【5営業日】以内にサービスを開始します。<br>
+        詳細スケジュールは契約時に個別に合意します。
+      </td>
+    </tr>
+    <tr>
+      <th>契約期間</th>
+      <td>
+        <ul>
+          <li>スポット型：プロジェクト完了まで（目安：2週間〜2ヶ月）</li>
+          <li>継続型：最低契約期間3ヶ月、以後1ヶ月単位で自動更新</li>
+        </ul>
+      </td>
+    </tr>
+    <tr>
+      <th>キャンセル・<br>返金について</th>
+      <td>
+        <strong>スポット型（AI業務診断・BPR実装パック）</strong><br>
+        契約締結後のキャンセルについては、以下のとおりキャンセル料が発生します。
+        <ul style="margin-top:8px;">
+          <li>サービス開始前のキャンセル：契約金額の30%</li>
+          <li>サービス開始後のキャンセル：契約金額の100%（返金不可）</li>
+        </ul>
+        <br>
+        <strong>継続型（月次伴走）</strong><br>
+        解約希望月の前月末日までに書面またはメールにてご連絡ください。<br>
+        当月以降の解約は、翌月末での解約となります。<br>
+        <br>
+        <span style="font-size:0.88rem; color:#64748b;">
+          ※デジタルコンテンツ・完了済み役務については、電磁的記録の性質上、返金対応を行いません。<br>
+          ※当社の責めに帰すべき事由による場合はこの限りではありません。
+        </span>
+      </td>
+    </tr>
+    <tr>
+      <th>動作環境</th>
+      <td>
+        オンラインミーティング（Zoom / Google Meet 等）を利用する場合は、
+        安定したインターネット接続環境をご用意ください。<br>
+        導入するシステム・ツールの動作環境は、各ツールの公式要件に準じます。
+      </td>
+    </tr>
+    <tr>
+      <th>個人情報の<br>取り扱い</th>
+      <td>
+        <a href="https://aidealize.com/privacy-policy/">プライバシーポリシー</a>をご参照ください。
+      </td>
+    </tr>
+  </table>
+
+  <div class="note">
+    <strong>【要確認・記入事項】</strong>サイト公開前に以下をご確認・記入の上、差し替えてください。<br>
+    ・代表者氏名　・正確な住所（番地・建物名・郵便番号）　・電話番号　・支払い方法の全種類　・支払い期日（日数）　・サービス開始までの営業日数
+  </div>
+
+  <p style="text-align:right; color:#64748b; font-size:0.85rem;">
+    AIdealize株式会社<br>
+    制定：2025年4月15日
+  </p>
+
+</main>
+
+<footer>
+  <p>
+    <a href="https://aidealize.com/">ホーム</a> ／
+    <a href="https://aidealize.com/privacy-policy/">プライバシーポリシー</a> ／
+    <a href="https://aidealize.com/tokushoho/">特定商取引法に基づく表記</a>
+  </p>
+  <p style="margin-top:12px;">&copy; 2024 AIdealize株式会社. All Rights Reserved.</p>
+</footer>
+
+</body>
+</html>
