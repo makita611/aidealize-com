@@ -1130,7 +1130,25 @@
   <div class="final-cta-inner" id="contact">
     <h2>まずは<em>無料相談</em>から。<br>今日から動き出しましょう。</h2>
     <p>Googleフォームに施設名とご連絡先を記入するだけ。2分で完了します。確認事項リストを折り返しお送りします。</p>
-<iframe src="https://docs.google.com/forms/d/e/1FAIpQLScyHSaPwh2jWrRSZ6r853F0DNQlpJMqmK2KpZ8o6ZxxMT3VzA/viewform?embedded=true" width="480" height="1050" frameborder="0" marginheight="0" marginwidth="0">読み込んでいます…</iframe>
+<form class="gas-form" data-page="BCP自動作成AI" data-formtype="無料相談">
+  <div class="gas-form-group"><input type="text" name="name" placeholder="お名前" required></div>
+  <div class="gas-form-group"><input type="text" name="company" placeholder="会社名・事業所名"></div>
+  <div class="gas-form-group"><input type="email" name="email" placeholder="メールアドレス" required></div>
+  <div class="gas-form-group"><input type="tel" name="phone" placeholder="電話番号"></div>
+  <div class="gas-form-group">
+    <div class="gas-radio-group">
+      <label><input type="radio" name="request" value="資料請求" required> 資料請求</label>
+      <label><input type="radio" name="request" value="オンライン相談（30分）"> オンライン相談（30分）</label>
+      <label><input type="radio" name="request" value="導入検討中・詳しく聞きたい"> 導入検討中・詳しく聞きたい</label>
+      <label><input type="radio" name="request" value="まずデモを見たい"> まずデモを見たい</label>
+      <label><input type="radio" name="request" value="料金・プランを知りたい"> 料金・プランを知りたい</label>
+    </div>
+  </div>
+  <button type="submit" class="gas-form-btn" style="background:#7a1a1a;color:#fff;">送信する</button>
+</form>
+<div class="gas-form-thanks" style="display:none">
+  <p>✅ お問い合わせありがとうございます。<br>担当者より1〜2営業日以内にご連絡いたします。</p>
+</div>
  
     <p class="form-note" style="margin-top:20px;">2営業日以内にご連絡します。しつこい営業・勧誘は一切行いません。<br>まず「話を聞いてもらう」だけで大丈夫です。</p>
   </div>
@@ -1149,5 +1167,7 @@
   <span style="font-size:11px;color:rgba(255,255,255,0.3);margin-top:6px;display:inline-block;">代表出身地：群馬県伊勢崎市</span>
 </footer>
 
+<script src="../js/gas-forms.js"></script>
 </body>
 </html>
+

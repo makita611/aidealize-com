@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="ja">
 
 <head>
@@ -1895,7 +1895,25 @@
         <div class="hana-contact-wrap">
           <h2>お問い合わせ・無料デモ予約</h2>
           <div style="text-align:left;">
-            [contact-form-7 id="480d099" title="はなまるフォーム１"]
+            <form class="gas-form" data-page="はなまるAI介護（訪問）" data-formtype="無料相談">
+  <div class="gas-form-group"><input type="text" name="name" placeholder="お名前" required></div>
+  <div class="gas-form-group"><input type="text" name="company" placeholder="会社名・事業所名"></div>
+  <div class="gas-form-group"><input type="email" name="email" placeholder="メールアドレス" required></div>
+  <div class="gas-form-group"><input type="tel" name="phone" placeholder="電話番号"></div>
+  <div class="gas-form-group">
+    <div class="gas-radio-group">
+      <label><input type="radio" name="request" value="資料請求" required> 資料請求</label>
+      <label><input type="radio" name="request" value="オンライン相談（30分）"> オンライン相談（30分）</label>
+      <label><input type="radio" name="request" value="導入検討中・詳しく聞きたい"> 導入検討中・詳しく聞きたい</label>
+      <label><input type="radio" name="request" value="まずデモを見たい"> まずデモを見たい</label>
+      <label><input type="radio" name="request" value="料金・プランを知りたい"> 料金・プランを知りたい</label>
+    </div>
+  </div>
+  <button type="submit" class="gas-form-btn" style="background:#0891b2;color:#fff;">送信する</button>
+</form>
+<div class="gas-form-thanks" style="display:none">
+  <p>✅ お問い合わせありがとうございます。<br>担当者より1〜2営業日以内にご連絡いたします。</p>
+</div>
             <p style="font-size:0.8rem; color:var(--gray); text-align:center; margin-top:20px;">※ 24時間以内に担当者より返信いたします
             </p>
           </div>
@@ -1941,7 +1959,8 @@
   <footer>
     <div class="footer-logo">はなまるAI</div>
     <p>© 2026 AIdealize Inc. All rights reserved.</p>
-  </footer>
+  <script src="../js/gas-forms.js"></script>
+</footer>
 
   <script>
     const reveals = document.querySelectorAll('.reveal');
