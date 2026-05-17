@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AIdealize株式会社 | AI画像解析エンジン — 製造・医療・教育のDXを加速する</title>
+<meta name="description" content="AIdealize株式会社の画像解析AIエンジン。MediaPipe・OpenCV搭載の高精度計測・非破壊検査・顔面バランス分析を製造・医療・教育現場へ。">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --navy:#0F2D4A;--navy-lt:#1A4A72;--navy-xs:#EEF4FA;
+  --accent:#1976D2;--accent-lt:#E3F0FC;
+  --gold:#B8922A;--gold-lt:#FDF3DC;
+  --text:#111827;--sub:#4B5563;--line:#E5E7EB;
+  --white:#fff;--bg:#F9FAFB;
+}
+html{scroll-behavior:smooth}
+body{font-family:"Hiragino Kaku Gothic ProN","Yu Gothic",Meiryo,sans-serif;background:var(--white);color:var(--text);font-size:16px;line-height:1.8}
+
+/* NAV */
+nav{position:sticky;top:0;z-index:100;background:rgba(255,255,255,.97);backdrop-filter:blur(8px);border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;padding:0 6%;height:64px}
+.logo{font-size:1.05rem;font-weight:900;color:var(--navy);letter-spacing:.02em}.logo span{color:var(--accent)}
+.nav-r{display:flex;align-items:center;gap:24px}
+.nav-link{font-size:.85rem;color:var(--sub);text-decoration:none}.nav-link:hover{color:var(--navy)}
+.nav-btn{background:var(--navy);color:#fff;padding:9px 22px;border-radius:6px;font-size:.85rem;font-weight:700;text-decoration:none;transition:background .2s}.nav-btn:hover{background:var(--navy-lt)}
+
+/* HERO */
+#hero{background:linear-gradient(150deg,#F0F6FF 0%,var(--white) 55%,#FDF8EE 100%);padding:100px 6% 80px;display:flex;align-items:center;gap:60px;min-height:88vh}
+.hero-text{flex:1;max-width:580px}
+.hero-eyebrow{display:flex;align-items:center;gap:10px;margin-bottom:22px}
+.eyebrow-badge{background:var(--accent-lt);color:var(--accent);font-size:.72rem;font-weight:700;padding:4px 12px;border-radius:4px;letter-spacing:.08em}
+.eyebrow-line{flex:1;height:1px;background:var(--line)}
+h1{font-size:clamp(2rem,3.8vw,3rem);font-weight:900;line-height:1.3;color:var(--navy);margin-bottom:20px}
+h1 em{font-style:normal;border-bottom:3px solid var(--accent)}
+.hero-sub{font-size:1rem;color:var(--sub);line-height:1.95;margin-bottom:36px}
+.hero-btns{display:flex;gap:12px;flex-wrap:wrap}
+.btn-p{background:var(--navy);color:#fff;padding:14px 30px;border-radius:7px;font-weight:700;font-size:.95rem;text-decoration:none;transition:background .2s}.btn-p:hover{background:var(--navy-lt)}
+.btn-o{border:2px solid var(--navy);color:var(--navy);padding:12px 26px;border-radius:7px;font-weight:700;font-size:.95rem;text-decoration:none;transition:all .2s}.btn-o:hover{background:var(--navy-xs)}
+.hero-vis{flex:1;max-width:500px}
+
+/* TECH DEMO CARD */
+.tech-card{background:var(--white);border:1px solid var(--line);border-radius:16px;box-shadow:0 16px 48px rgba(15,45,74,.1);overflow:hidden}
+.tech-header{background:var(--navy);padding:14px 20px;display:flex;align-items:center;gap:8px}
+.tech-dots span{width:10px;height:10px;border-radius:50%;background:rgba(255,255,255,.3);display:inline-block;margin-right:4px}
+.tech-title{color:rgba(255,255,255,.8);font-size:.78rem;font-family:monospace;margin-left:8px}
+.tech-body{padding:20px}
+.tech-row{display:flex;align-items:center;justify-content:space-between;padding:9px 12px;border-radius:6px;margin-bottom:6px;font-size:.83rem}
+.tech-row:nth-child(odd){background:var(--bg)}
+.tech-key{color:var(--sub);font-family:monospace}.tech-val{font-weight:700;color:var(--navy)}
+.tech-badge{font-size:.7rem;padding:2px 8px;border-radius:10px;font-weight:700}
+.ok{background:#DCFCE7;color:#166534}.warn{background:#FEF9C3;color:#854D0E}.info{background:var(--accent-lt);color:var(--accent)}
+.tech-score{margin-top:14px;background:var(--navy-xs);border-radius:8px;padding:14px}
+.score-label{font-size:.78rem;color:var(--sub);margin-bottom:6px}
+.score-bar-wrap{height:8px;background:#E5E7EB;border-radius:4px;overflow:hidden}
+.score-bar{height:100%;border-radius:4px;background:linear-gradient(90deg,var(--accent),#0EA5E9);transition:width .8s}
+.score-num{font-size:.82rem;font-weight:700;color:var(--navy);text-align:right;margin-top:4px}
+
+/* SECTION common */
+section{padding:80px 6%}
+.inner{max-width:1040px;margin:0 auto}
+.sec-label{font-size:.73rem;font-weight:700;color:var(--accent);letter-spacing:.15em;display:block;margin-bottom:8px}
+h2{font-size:clamp(1.5rem,2.8vw,2.1rem);font-weight:900;color:var(--navy);line-height:1.4;margin-bottom:12px}
+h2 em{font-style:normal;color:var(--accent)}
+.sec-sub{font-size:.97rem;color:var(--sub);max-width:620px;line-height:1.9;margin-bottom:44px}
+.bar{width:36px;height:3px;background:linear-gradient(90deg,var(--navy),var(--accent));border-radius:2px;margin:0 0 28px}
+
+/* SERVICES HUB */
+#services{background:var(--bg)}
+.service-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:24px}
+.service-card{background:var(--white);border:1px solid var(--line);border-radius:14px;padding:32px;position:relative;transition:box-shadow .2s}.service-card:hover{box-shadow:0 10px 36px rgba(15,45,74,.1)}
+.service-card.featured{border:2px solid var(--accent)}
+.sc-icon{width:48px;height:48px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:1.5rem;margin-bottom:18px}
+.sc-icon.blue{background:var(--accent-lt)}.sc-icon.gold{background:var(--gold-lt)}
+.sc-label{font-size:.72rem;font-weight:700;letter-spacing:.1em;margin-bottom:8px}
+.sc-label.blue{color:var(--accent)}.sc-label.gold{color:var(--gold)}
+.service-card h3{font-size:1.1rem;font-weight:800;color:var(--navy);margin-bottom:10px}
+.service-card p{font-size:.88rem;color:var(--sub);line-height:1.8;margin-bottom:18px}
+.sc-tags{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:20px}
+.sc-tag{font-size:.72rem;background:var(--bg);border:1px solid var(--line);border-radius:12px;padding:3px 10px;color:var(--sub)}
+.sc-link{display:inline-flex;align-items:center;gap:6px;font-size:.85rem;font-weight:700;text-decoration:none;color:var(--accent)}.sc-link:hover{text-decoration:underline}
+
+/* ENGINE */
+#engine{background:var(--white)}
+.engine-grid{display:grid;grid-template-columns:1fr 1fr;gap:32px}
+@media(max-width:700px){.engine-grid{grid-template-columns:1fr}}
+.engine-item{background:var(--bg);border-radius:12px;padding:26px}
+.engine-item h4{font-size:.95rem;font-weight:800;color:var(--navy);margin-bottom:8px;display:flex;align-items:center;gap:8px}
+.engine-item p{font-size:.87rem;color:var(--sub);line-height:1.8}
+.engine-num{background:var(--navy);color:#fff;width:24px;height:24px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.72rem;font-weight:700;flex-shrink:0}
+
+/* USE CASES */
+#usecases{background:var(--bg)}
+.case-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:20px}
+.case-card{background:var(--white);border:1px solid var(--line);border-top:3px solid var(--accent);border-radius:10px;padding:24px}
+.case-industry{font-size:.72rem;font-weight:700;color:var(--accent);letter-spacing:.1em;margin-bottom:8px}
+.case-card h4{font-size:.97rem;font-weight:800;color:var(--navy);margin-bottom:8px}
+.case-card p{font-size:.86rem;color:var(--sub);line-height:1.75}
+
+/* TRUST */
+#trust{background:var(--white)}
+.trust-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:20px}
+.trust-card{text-align:center;padding:24px 16px;border:1px solid var(--line);border-radius:10px}
+.trust-num{font-size:2rem;font-weight:900;color:var(--navy)}.trust-unit{font-size:.9rem;color:var(--accent)}
+.trust-label{font-size:.82rem;color:var(--sub);margin-top:6px}
+
+/* CTA */
+#cta{background:linear-gradient(135deg,var(--navy) 0%,var(--navy-lt) 100%);text-align:center;padding:80px 6%}
+#cta h2{color:#fff;margin-bottom:14px}
+#cta p{color:rgba(255,255,255,.75);max-width:560px;margin:0 auto 36px;line-height:1.9}
+.cta-btns{display:flex;justify-content:center;gap:16px;flex-wrap:wrap}
+.cta-primary{background:var(--white);color:var(--navy);font-weight:800;padding:16px 36px;border-radius:8px;text-decoration:none;font-size:1rem;transition:opacity .2s}.cta-primary:hover{opacity:.9}
+.cta-secondary{border:1.5px solid rgba(255,255,255,.5);color:#fff;font-weight:700;padding:14px 30px;border-radius:8px;text-decoration:none;font-size:.95rem;transition:all .2s}.cta-secondary:hover{background:rgba(255,255,255,.1)}
+
+/* FOOTER */
+footer{background:#F3F4F6;border-top:1px solid var(--line);padding:32px 6%;text-align:center}
+.foot-logo{font-size:.95rem;font-weight:800;color:var(--navy);margin-bottom:8px}.foot-logo span{color:var(--accent)}
+.foot-note{font-size:.75rem;color:#9CA3AF;line-height:1.8}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="logo">AI<span>dealize</span> 株式会社</div>
+  <div class="nav-r">
+    <a href="#services" class="nav-link">サービス</a>
+    <a href="#engine" class="nav-link">技術</a>
+    <a href="#usecases" class="nav-link">導入事例</a>
+    <a href="#cta" class="nav-btn">お問い合わせ</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-text">
+    <div class="hero-eyebrow">
+      <span class="eyebrow-badge">AI IMAGE ANALYSIS</span>
+      <span class="eyebrow-line"></span>
+    </div>
+    <h1>「見る」を、<br><em>数値にする。</em></h1>
+    <p class="hero-sub">
+      AIdealize株式会社は、MediaPipe・OpenCVを核とした<strong>AI画像解析エンジン</strong>を開発・提供します。<br>
+      医療アートメイクの左右差計測から、製造ラインの非破壊検査まで——<br>
+      ミリ単位の精度で「目視」を「データ」に変換し、あらゆる現場のDXを加速します。
+    </p>
+    <div class="hero-btns">
+      <a href="#services" class="btn-p">サービスを見る</a>
+      <a href="#cta" class="btn-o">デモを依頼する</a>
+    </div>
+  </div>
+  <div class="hero-vis">
+    <div class="tech-card">
+      <div class="tech-header">
+        <div class="tech-dots"><span></span><span></span><span></span></div>
+        <span class="tech-title">aidealize_engine.py — analyzing...</span>
+      </div>
+      <div class="tech-body">
+        <div class="tech-row"><span class="tech-key">engine</span><span class="tech-val">MediaPipe Face Mesh v0.10 <span class="tech-badge info">Active</span></span></div>
+        <div class="tech-row"><span class="tech-key">landmarks</span><span class="tech-val">468 points <span class="tech-badge ok">Detected</span></span></div>
+        <div class="tech-row"><span class="tech-key">calibration</span><span class="tech-val">iris_ref: 12.0mm <span class="tech-badge ok">OK</span></span></div>
+        <div class="tech-row"><span class="tech-key">axis_mode</span><span class="tech-val">pupil_based</span></div>
+        <div class="tech-row"><span class="tech-key">tilt_correction</span><span class="tech-val">−1.8° <span class="tech-badge ok">Corrected</span></span></div>
+        <div class="tech-row"><span class="tech-key">brow_delta_L</span><span class="tech-val">+0.4mm <span class="tech-badge warn">Warn</span></span></div>
+        <div class="tech-row"><span class="tech-key">brow_angle_diff</span><span class="tech-val">2.1° <span class="tech-badge warn">Warn</span></span></div>
+        <div class="tech-score">
+          <div class="score-label">Symmetry Score</div>
+          <div class="score-bar-wrap"><div class="score-bar" style="width:88%"></div></div>
+          <div class="score-num">88 / 100 — Good</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES HUB -->
+<section id="services">
+  <div class="inner">
+    <span class="sec-label">SERVICES</span>
+    <h2>AIdealize の<em>2つのサービス領域</em></h2>
+    <div class="bar"></div>
+    <p class="sec-sub">共通の画像解析エンジンをベースに、業界ごとの課題に特化したソリューションを提供します。</p>
+    <div class="service-grid">
+
+      <!-- Card A -->
+      <div class="service-card">
+        <div class="sc-icon blue">🔬</div>
+        <div class="sc-label blue">SERVICE A — INDUSTRIAL</div>
+        <h3>画像解析・非破壊検査エンジン</h3>
+        <p>製造ライン・品質管理・教育現場向けの汎用画像解析API。スマートフォンのカメラだけで、ミリ単位の計測・比較・異常検知を実現します。既存システムへのAPI連携も対応。</p>
+        <div class="sc-tags">
+          <span class="sc-tag">製造・品質管理</span>
+          <span class="sc-tag">非破壊検査</span>
+          <span class="sc-tag">教育・スポーツ</span>
+          <span class="sc-tag">API提供</span>
+        </div>
+        <a href="#usecases" class="sc-link">導入事例を見る →</a>
+      </div>
+
+      <!-- Card B -->
+      <div class="service-card featured">
+        <div class="sc-icon gold">💄</div>
+        <div class="sc-label gold">SERVICE B — MEDTECH SAAS</div>
+        <h3>FaceBalance AI<br>医療アートメイク DX</h3>
+        <p>アートメイク専用の顔面バランス解析SaaS。術前・デザイン・術後の3フェーズ管理に加え、顧客カルテCRM・アーティスト評価ダッシュボードで、クリニック経営を丸ごとDX化します。</p>
+        <div class="sc-tags">
+          <span class="sc-tag">顔面バランス解析</span>
+          <span class="sc-tag">CRM・カルテ管理</span>
+          <span class="sc-tag">アーティスト評価</span>
+          <span class="sc-tag">月額SaaS</span>
+        </div>
+        <a href="../artmake-dx-lp/index.html" class="sc-link">詳細LPを見る →</a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ENGINE -->
+<section id="engine">
+  <div class="inner">
+    <span class="sec-label">TECHNOLOGY</span>
+    <h2>信頼の根拠——<em>コア技術スタック</em></h2>
+    <div class="bar"></div>
+    <p class="sec-sub">AIdealize のエンジンは、Google MediaPipe と OpenCV を核に、独自のキャリブレーション・補正アルゴリズムを実装しています。</p>
+    <div class="engine-grid">
+      <div class="engine-item">
+        <h4><span class="engine-num">1</span>MediaPipe Face Mesh</h4>
+        <p>Googleが開発した468点の顔面ランドマーク検出モデルを採用。リアルタイム処理が可能で、静止画・動画の両方に対応。LLM不使用のローカル処理でプライバシーを完全保護します。</p>
+      </div>
+      <div class="engine-item">
+        <h4><span class="engine-num">2</span>虹彩キャリブレーション</h4>
+        <p>虹彩径（男女・コンタクト別）を基準値として設定し、ピクセル座標を実寸ミリメートルに変換。環境・カメラの違いに依らない絶対計測を実現します。</p>
+      </div>
+      <div class="engine-item">
+        <h4><span class="engine-num">3</span>3軸傾き補正</h4>
+        <p>瞳孔基準・骨格基準（鼻根-顎先）・中顔面基準の3モードで画像の傾きを自動補正。撮影時の姿勢差を排除し、フェーズ間の比較精度を担保します。</p>
+      </div>
+      <div class="engine-item">
+        <h4><span class="engine-num">4</span>7指標スコアリング</h4>
+        <p>眉頭高さ・眉山高さ・眉尻高さ・長さ・角度・頭間距離・面積差の7指標を重み付きスコアに統合。100点満点のシンメトリースコアで直感的な評価を提供します。</p>
+      </div>
+      <div class="engine-item">
+        <h4><span class="engine-num">5</span>OpenCV 画像処理</h4>
+        <p>アフィン変換による回転・平行移動補正、輪郭面積計算、差分抽出など、医療品質の画像処理パイプラインを構築。高速かつ再現性の高い解析を実現します。</p>
+      </div>
+      <div class="engine-item">
+        <h4><span class="engine-num">6</span>ローカル処理 / API対応</h4>
+        <p>機微な医療・顔画像データは外部送信せずデバイス上で完結処理。一方、製造・検査用途ではFastAPI経由のRESTful APIとして既存システムに組み込み可能です。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- USE CASES -->
+<section id="usecases">
+  <div class="inner">
+    <span class="sec-label">USE CASES</span>
+    <h2>「見る」を変える、<em>多様な活用シーン</em></h2>
+    <div class="bar"></div>
+    <p class="sec-sub">同一エンジンをベースに、業界の文脈に合わせてカスタマイズ提供します。</p>
+    <div class="case-row">
+      <div class="case-card">
+        <div class="case-industry">MEDICAL AESTHETICS</div>
+        <h4>アートメイク・美容クリニック</h4>
+        <p>眉・アイライン・リップの左右差をAIが数値化。施術前後の変化を客観的エビデンスとして患者に提示し、成約率と満足度を同時に向上させます。</p>
+      </div>
+      <div class="case-card">
+        <div class="case-industry">MANUFACTURING</div>
+        <h4>製造・品質管理ライン</h4>
+        <p>部品の寸法計測・キズ検出・位置ずれ確認をカメラ1台で自動化。ベテランの「目視検査」ノウハウをAIに学習させ、検査の属人化を解消します。</p>
+      </div>
+      <div class="case-card">
+        <div class="case-industry">EDUCATION / SPORTS</div>
+        <h4>教育・スポーツフォーム分析</h4>
+        <p>骨格・関節の左右バランスをフレーム単位で計測。スポーツのフォーム改善や、理学療法・整体でのリハビリ進捗を数値で可視化します。</p>
+      </div>
+      <div class="case-card">
+        <div class="case-industry">DERMATOLOGY / SKINCARE</div>
+        <h4>皮膚科・スキンケア</h4>
+        <p>肌状態の経時変化を定量比較。治療前後の効果を数値と画像で記録し、患者への説明力と治療計画の精度を高めます。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TRUST -->
+<section id="trust">
+  <div class="inner">
+    <span class="sec-label">CREDIBILITY</span>
+    <h2>数字が語る、<em>技術の信頼性</em></h2>
+    <div class="bar"></div>
+    <div class="trust-row">
+      <div class="trust-card">
+        <div class="trust-num">468<span class="trust-unit">点</span></div>
+        <div class="trust-label">顔面ランドマーク検出数<br>（MediaPipe Face Mesh）</div>
+      </div>
+      <div class="trust-card">
+        <div class="trust-num">0.1<span class="trust-unit">mm</span></div>
+        <div class="trust-label">虹彩キャリブレーション<br>換算精度</div>
+      </div>
+      <div class="trust-card">
+        <div class="trust-num">3<span class="trust-unit">軸</span></div>
+        <div class="trust-label">傾き補正モード<br>（瞳孔・骨格・中顔面）</div>
+      </div>
+      <div class="trust-card">
+        <div class="trust-num">0<span class="trust-unit">送信</span></div>
+        <div class="trust-label">顔画像の外部送信ゼロ<br>完全ローカル処理</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section id="cta">
+  <div class="inner">
+    <span class="sec-label" style="color:rgba(255,255,255,.6)">CONTACT</span>
+    <h2>まずは、<em style="color:#93C5FD">デモをご覧ください</em></h2>
+    <p>業種・課題に合わせたカスタムデモをご用意します。API連携・OEM・共同開発のご相談もお気軽にどうぞ。</p>
+    <div class="cta-btns">
+      <a href="mailto:info@aidealize.co.jp" class="cta-primary">デモ・お問い合わせ</a>
+      <a href="#services" class="cta-secondary">サービス一覧へ戻る</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="foot-logo">AI<span>dealize</span> 株式会社</div>
+  <p class="foot-note">
+    &copy; 2026 AIdealize Inc. All rights reserved.<br>
+    本サービスの画像解析はすべてデバイス上でローカル処理されます。個人情報・顔画像データの外部送信は行いません。
+  </p>
+</footer>
+
+</body>
+</html>
