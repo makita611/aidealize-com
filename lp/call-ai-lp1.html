@@ -210,9 +210,10 @@ footer strong{color:#fff}
 .data-example ul li{font-size:.84rem;color:var(--sub);padding:4px 0 4px 14px}
 .data-example ul li::before{content:"・";position:absolute;left:0;color:var(--navy)}
 #form > div{background:transparent !important;border:none !important;padding:0 !important}
-.section-final .gas-form{text-align:left;max-width:520px;margin:0 auto}
-.section-final .gas-form-thanks{max-width:520px;margin:0 auto}
-.final-inner .btn-note{color:var(--sub)}
+.section-final .gas-form{text-align:left;width:100% !important;max-width:100% !important}
+.section-final .gas-form-thanks{margin:0 auto;text-align:center}
+.final-inner{text-align:center}
+.final-inner .btn-note{color:var(--sub);text-align:center}
 
 /* FUNNEL: アポ率を強調 */
 .frate.up{color:#FFD700;font-weight:900;font-size:1rem;background:rgba(255,215,0,0.15);padding:2px 8px;border-radius:10px}
@@ -923,9 +924,9 @@ footer strong{color:#fff}
       <!-- ↓ ここをContact Form 7などのショートコードに差し替え -->
       <!-- 例：[contact-form-7 id="123" title="LP診断フォーム"] -->
 
-        <div id="form" style="background:rgba(255,255,255,0.04); border:1px dashed rgba(255,255,255,0.15); border-radius:10px; padding:32px; margin-bottom:24px; text-align:center; color:#64748b; font-size:13px;">
-    
-        <form class="gas-form" data-page="コールAI" data-formtype="無料相談">
+        <div style="text-align:center; margin-bottom:24px;">
+
+        <form class="gas-form" data-page="コールAI" data-formtype="無料相談" style="max-width:100%;width:100%;text-align:left;">
   <div class="gas-form-group"><input type="text" name="name" placeholder="お名前" required></div>
   <div class="gas-form-group"><input type="text" name="company" placeholder="会社名・事業所名"></div>
   <div class="gas-form-group"><input type="email" name="email" placeholder="メールアドレス" required></div>
