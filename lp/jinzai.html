@@ -294,8 +294,58 @@
 }
 
 /* contact */
-.jinzai-wrap .contact { padding: 60px 20px; }
+.jinzai-wrap .contact { padding: 60px 20px; text-align: center; }
 .jinzai-wrap .contact h2 { text-align: center; margin-bottom: 30px; }
+.jinzai-wrap .contact .gas-form { max-width: 560px; margin: 0 auto; text-align: left; }
+.jinzai-wrap .contact .gas-form-thanks { max-width: 560px; margin: 0 auto; }
+
+/* introduction fix */
+.jinzai-wrap .introduction { padding: 60px 20px; text-align: center; background: #f9f9f9; }
+.jinzai-wrap .introduction p { font-size: 18px; line-height: 2.4; }
+.jinzai-wrap .text--strong { display: inline-block; background: #415268; color: #fff; padding: 4px 16px; border-radius: 4px; margin: 4px 0; font-weight: 700; }
+
+/* AI sections */
+.jinzai-wrap .ai-section { padding: 72px 20px; background: #fff; }
+.jinzai-wrap .ai-section--dark { padding: 72px 20px; background: #415268; color: #fff; }
+.jinzai-wrap .section-inner { max-width: 900px; margin: 0 auto; }
+.jinzai-wrap .section-tag { display: inline-block; background: #FDE543; color: #415268; font-size: 12px; font-weight: 700; padding: 4px 16px; border-radius: 20px; margin-bottom: 16px; letter-spacing: .05em; }
+.jinzai-wrap .section-tag--white { background: rgba(255,255,255,.15); color: #fff; }
+.jinzai-wrap .ai-h2 { font-size: clamp(22px,3vw,34px); font-weight: 900; line-height: 1.4; margin-bottom: 16px; }
+.jinzai-wrap .ai-lead { font-size: 16px; line-height: 1.9; color: #555; margin-bottom: 40px; }
+.jinzai-wrap .ai-lead--white { color: rgba(255,255,255,.8); }
+
+/* cards */
+.jinzai-wrap .card-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px,1fr)); gap: 20px; margin-top: 32px; }
+.jinzai-wrap .ai-card { background: #f4f6fa; border-radius: 12px; padding: 28px; border-top: 4px solid #415268; }
+.jinzai-wrap .ai-card--light { background: rgba(255,255,255,.1); border-top-color: #FDE543; }
+.jinzai-wrap .ai-card-icon { font-size: 2.2rem; margin-bottom: 12px; }
+.jinzai-wrap .ai-card h3 { font-size: 17px; font-weight: 700; margin-bottom: 10px; color: #415268; }
+.jinzai-wrap .ai-card--light h3 { color: #FDE543; }
+.jinzai-wrap .ai-card p { font-size: 14px; line-height: 1.85; color: #555; }
+.jinzai-wrap .ai-card--light p { color: rgba(255,255,255,.8); }
+
+/* benefits */
+.jinzai-wrap .benefit-row { display: grid; grid-template-columns: repeat(auto-fit,minmax(220px,1fr)); gap: 20px; margin-top: 32px; }
+.jinzai-wrap .benefit-card { text-align: center; padding: 32px 20px; background: #fff; border-radius: 12px; box-shadow: 0 2px 16px rgba(0,0,0,.07); }
+.jinzai-wrap .benefit-num { font-size: 42px; font-weight: 900; color: #415268; line-height: 1; margin-bottom: 8px; }
+.jinzai-wrap .benefit-card h3 { font-size: 16px; font-weight: 700; color: #415268; margin-bottom: 10px; }
+.jinzai-wrap .benefit-card p { font-size: 14px; color: #777; line-height: 1.8; }
+
+/* FAQ */
+.jinzai-wrap .faq-list { margin-top: 24px; max-width: 800px; margin-left: auto; margin-right: auto; }
+.jinzai-wrap .faq-list details { background: #fff; border: 1px solid #e0e0e0; border-radius: 8px; margin-bottom: 10px; }
+.jinzai-wrap .faq-list summary { padding: 16px 20px; font-size: 15px; font-weight: 700; color: #415268; cursor: pointer; list-style: none; display: flex; justify-content: space-between; }
+.jinzai-wrap .faq-list summary::-webkit-details-marker { display: none; }
+.jinzai-wrap .faq-list summary::after { content: "▼"; color: #FDE543; font-size: 12px; }
+.jinzai-wrap .faq-list details[open] summary::after { content: "▲"; }
+.jinzai-wrap .faq-answer { padding: 0 20px 16px; font-size: 14px; color: #555; line-height: 1.9; }
+
+/* about新 */
+.jinzai-wrap .about h2 { font-size: clamp(22px,3vw,36px); }
+.jinzai-wrap .eval-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 16px; margin-top: 28px; max-width: 600px; margin-left: auto; margin-right: auto; }
+.jinzai-wrap .eval-item { background: rgba(255,255,255,.12); border-radius: 8px; padding: 20px; text-align: center; }
+.jinzai-wrap .eval-item span { font-size: 2rem; display: block; margin-bottom: 8px; }
+.jinzai-wrap .eval-item p { font-size: 14px; color: rgba(255,255,255,.85); }
 
 </style>
 
@@ -365,28 +415,30 @@
 
 <div class="jinzai-wrap">
 
+<!-- HERO -->
 <section id="mainvisual">
   <strong class="head">
-    <p class="small">離職率をさげる</p>
+    <p class="small">AI×専門家で離職率をさげる</p>
     人材定着サービス
   </strong>
   <img src="../images/jinzaitop.jpg" alt="人材定着サービス">
 </section>
 
+<!-- INTRODUCTION -->
 <section class="introduction">
-  <div style="max-width:900px;margin:0 auto;padding:0 20px;">
+  <div style="max-width:800px;margin:0 auto;padding:0 20px;">
     <p>
       人材定着サービスでは、<br>
+      <span class="text--strong">AIによる早期離職リスクの予兆検知</span><br>
       <span class="text--strong">アンケートによる従業員満足度調査</span><br>
-      <span class="text--strong">個別のヒアリング調査</span><br>
-      により、従業員の声をうかがい<br>
-      <span class="text--strong">必要時メンタルケア</span><br>
-      <span class="text--strong">人事評価制度 <img src="https://aidealize.com/wp-content/uploads/jinzai/logo_stepupcloud.svg" alt="Step Up Cloud" style="height:1.2em;vertical-align:middle;"> ※後述</span><br>
-      など、状況に応じた対策をご提案し、離職率改善を目指します。
+      <span class="text--strong">専門家による個別ヒアリング・メンタルケア</span><br>
+      <span class="text--strong">人材定着AI（人事評価制度支援）</span><br>
+      を組み合わせ、従業員の声を拾い、離職率改善を目指します。
     </p>
   </div>
 </section>
 
+<!-- TROUBLE -->
 <section class="trouble">
   <div style="max-width:1140px;margin:0 auto;">
     <h2>こんな悩みはありませんか</h2>
@@ -397,61 +449,184 @@
       <li>従業員の本音がわからない</li>
       <li>従業員一人あたりの労働負担が過多</li>
       <li>人事施策を打ってはいるが、不満不平が減らない</li>
-      <li>人事施策を打ってはいるが、従業員のニーズと合っているだろうか？</li>
+      <li>評価制度が属人化・不公平と言われる</li>
     </ul>
   </div>
 </section>
 
+<!-- SOLUTION -->
 <section class="solution">
   <strong class="solution--head">
     そのお悩み<br>
-    人材定着サービスで解決できます！
+    AI×専門家のハイブリッドで解決します
   </strong>
-  <p style="font-weight:700;">看護師、保健師、心理カウンセラー、メンタルヘルスケア経験者が従業員ヒアリングを行いフォローします。</p>
+  <p style="font-weight:700;max-width:700px;margin:0 auto 20px;">AIが24時間データを監視して離職リスクを早期発見。看護師・心理カウンセラー・メンタルヘルスケア専門家がピンポイントでフォローします。</p>
   <img src="../images/solution.png" alt="解決策" style="max-width:300px;display:block;margin:20px auto;">
 </section>
 
-<section class="about">
-  <h2>Step Up Cloudとは？</h2>
-  <p>人材コンサルタントが、人事評価制度の設計、導入をサポートします。</p>
-  <div class="about-icons">
-    <div><img src="https://aidealize.com/wp-content/uploads/jinzai/about_01.svg" alt="利益評価">利益評価</div>
-    <div><img src="https://aidealize.com/wp-content/uploads/jinzai/about_02.svg" alt="自己他者評価">自己他者評価</div>
-    <div><img src="https://aidealize.com/wp-content/uploads/jinzai/about_03.svg" alt="目標評価">目標評価</div>
-    <div><img src="https://aidealize.com/wp-content/uploads/jinzai/about_04.svg" alt="顧客評価">顧客評価</div>
-  </div>
-</section>
-
-<section class="voice">
-  <h2>お客様の声</h2>
-  <p>お使いいただいた企業様では、売上が単月で倍以上にUPしたケースや、従業員の離職率が下がったとお声をいただいています。</p>
-  <img src="https://aidealize.com/wp-content/uploads/jinzai/voice_02.png" alt="お客様の声" style="max-width:500px;display:block;margin:20px auto;">
-</section>
-
-<section class="contact" id="contact">
-  <h2>お問い合わせはこちら</h2>
-  <form class="gas-form" data-page="人材定着" data-formtype="無料相談">
-  <div class="gas-form-group"><input type="text" name="name" placeholder="お名前" required></div>
-  <div class="gas-form-group"><input type="text" name="company" placeholder="会社名・事業所名"></div>
-  <div class="gas-form-group"><input type="email" name="email" placeholder="メールアドレス" required></div>
-  <div class="gas-form-group"><input type="tel" name="phone" placeholder="電話番号"></div>
-  <div class="gas-form-group">
-    <div class="gas-radio-group">
-      <label><input type="radio" name="request" value="資料請求" required> 資料請求</label>
-      <label><input type="radio" name="request" value="オンライン相談"> オンライン相談</label>
-      <label><input type="radio" name="request" value="導入を検討中"> 導入を検討中</label>
+<!-- AI × 専門家 ハイブリッド -->
+<section class="ai-section">
+  <div class="section-inner">
+    <div style="text-align:center;margin-bottom:40px;">
+      <span class="section-tag">AI × HUMAN HYBRID</span>
+      <h2 class="ai-h2">「手遅れになる前に」気づける仕組み</h2>
+      <p class="ai-lead">従来の人事施策は、従業員が不満を抱えても表に出てくるまで気づけませんでした。AIがデータを常時分析し、離職リスクが高まった従業員を自動でアラート。専門家がタイムリーにアプローチします。</p>
+    </div>
+    <div class="card-grid">
+      <div class="ai-card">
+        <div class="ai-card-icon">🤖</div>
+        <h3>AIによる予兆検知</h3>
+        <p>アンケート回答・勤怠データ（残業時間の急増・遅刻増加など）をAIが分析。離職リスクスコアが高まった従業員を自動で検出します。</p>
+      </div>
+      <div class="ai-card">
+        <div class="ai-card-icon">👩‍⚕️</div>
+        <h3>専門家によるフォロー</h3>
+        <p>AIがリスクを検知した従業員に対し、心理カウンセラー・保健師がピンポイントでヒアリング。本音を引き出し、適切なケアを提供します。</p>
+      </div>
+      <div class="ai-card">
+        <div class="ai-card-icon">📊</div>
+        <h3>組織の健康状態を可視化</h3>
+        <p>部門別・年代別のエンゲージメント（愛着・満足度）スコアをダッシュボードで可視化。経営層が組織課題を一目で把握できます。</p>
+      </div>
     </div>
   </div>
-  <button type="submit" class="gas-form-btn" style="background:#1a3f6f;color:#fff;">送信する</button>
-</form>
-<div class="gas-form-thanks" style="display:none">
-  <p>✅ お問い合わせありがとうございます。<br>担当者より1〜2営業日以内にご連絡いたします。</p>
-</div>
 </section>
 
+<!-- AI機能紹介 -->
+<section class="ai-section--dark">
+  <div class="section-inner" style="text-align:center;">
+    <span class="section-tag section-tag--white">AI FEATURES</span>
+    <h2 class="ai-h2" style="color:#fff;">AIが「声なきSOS」を拾う</h2>
+    <p class="ai-lead ai-lead--white">人には言いにくい不満や悩みも、AIなら24時間・匿名で受け止めます。心理的安全性を確保しながら、組織の課題を早期に把握します。</p>
+    <div class="card-grid">
+      <div class="ai-card ai-card--light">
+        <div class="ai-card-icon">💬</div>
+        <h3>AIメンター（チャットボット）</h3>
+        <p>「上司には言えない…」そんな不満や悩みを、AIが壁打ち相手として24時間受け止めます。匿名性と心理的安全性を確保した設計です。</p>
+      </div>
+      <div class="ai-card ai-card--light">
+        <div class="ai-card-icon">📈</div>
+        <h3>エンゲージメントダッシュボード</h3>
+        <p>AIが従業員の満足度・モチベーションを数値化・グラフ化。部門別・時系列での変化をリアルタイムで把握できます。</p>
+      </div>
+      <div class="ai-card ai-card--light">
+        <div class="ai-card-icon">🔔</div>
+        <h3>自動アラート通知</h3>
+        <p>離職リスクスコアが閾値を超えた従業員を自動検出し、担当者にアラートを送信。初動対応を最速化します。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 人材定着AI（評価制度） -->
+<section class="about">
+  <h2>人材定着AIとは？</h2>
+  <p>AIが目標設定・評価の文章作成をサポートし、上司による評価のばらつき（属人化）を補正。「評価が不公平」という不満を解消し、定着率を高めます。</p>
+  <div class="eval-grid">
+    <div class="eval-item"><span>💰</span><p>利益・成果評価</p></div>
+    <div class="eval-item"><span>🤝</span><p>自己・他者評価</p></div>
+    <div class="eval-item"><span>🎯</span><p>目標評価（AI補正）</p></div>
+    <div class="eval-item"><span>⭐</span><p>顧客・360度評価</p></div>
+  </div>
+</section>
+
+<!-- 3つのメリット -->
+<section class="ai-section">
+  <div class="section-inner">
+    <div style="text-align:center;margin-bottom:32px;">
+      <span class="section-tag">3 BENEFITS</span>
+      <h2 class="ai-h2">導入で得られる3つの変化</h2>
+    </div>
+    <div class="benefit-row">
+      <div class="benefit-card">
+        <div class="benefit-num">01</div>
+        <h3>人事の負担ゼロで<br>24時間見守り</h3>
+        <p>AIが自動でコンディションをチェック。担当者が全員のフォローを手作業で行う必要がなくなります。</p>
+      </div>
+      <div class="benefit-card">
+        <div class="benefit-num">02</div>
+        <h3>データに基づく<br>的確な早期発見</h3>
+        <p>経験や勘に頼らず、データで離職リスクを検知。手遅れになる前に専門家が介入できます。</p>
+      </div>
+      <div class="benefit-card">
+        <div class="benefit-num">03</div>
+        <h3>エンゲージメント向上で<br>根本的な定着へ</h3>
+        <p>表面的な福利厚生ではなく、「本音の課題」を解決することで、採用コスト削減と生産性向上を実現します。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- お客様の声 -->
+<section class="voice" style="text-align:center;">
+  <div class="section-inner">
+    <h2>導入企業の声</h2>
+    <p>ご利用いただいた企業様では、売上が単月で倍以上にUPしたケースや、従業員の離職率が大幅に低下したとお声をいただいています。</p>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="ai-section" style="background:#f9f9f9;">
+  <div class="section-inner">
+    <div style="text-align:center;margin-bottom:32px;">
+      <span class="section-tag">FAQ</span>
+      <h2 class="ai-h2">よくあるご質問</h2>
+    </div>
+    <div class="faq-list">
+      <details>
+        <summary>AIを使うと従業員が「監視されている」と感じませんか？</summary>
+        <div class="faq-answer">監視ではなく、「声なきSOSを拾うためのサポートツール」です。データは個人を特定せず匿名・集計形式で扱います。導入時に従業員への丁寧な説明資料もご提供します。</div>
+      </details>
+      <details>
+        <summary>データはどのように管理・保護されますか？</summary>
+        <div class="faq-answer">従業員データは暗号化して管理し、第三者への提供は一切行いません。必要に応じてNDA（秘密保持契約）を締結のうえで進めることも可能です。</div>
+      </details>
+      <details>
+        <summary>小規模（従業員10名以下）でも効果がありますか？</summary>
+        <div class="faq-answer">はい、規模を問わず対応しています。むしろ小規模の方が「誰がリスク状態か」が明確になりやすく、専門家の介入効果も出やすい傾向があります。</div>
+      </details>
+      <details>
+        <summary>導入からどれくらいで効果が出始めますか？</summary>
+        <div class="faq-answer">アラート機能やAIメンターは導入直後から稼働します。エンゲージメントスコアの改善は、施策を実行してから1〜3ヶ月が目安です。</div>
+      </details>
+      <details>
+        <summary>既存の人事システムとの連携はできますか？</summary>
+        <div class="faq-answer">主要な勤怠管理システムやHRISとのCSV連携に対応しています。API連携については個別にご相談ください。</div>
+      </details>
+      <details>
+        <summary>費用はどれくらいかかりますか？</summary>
+        <div class="faq-answer">企業規模・サービス内容によって異なります。まずは無料相談でヒアリングの上、最適なプランをご提案します。費用・契約の強引な勧誘は一切行いません。</div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <h2>お問い合わせはこちら</h2>
+  <p style="color:#666;margin-bottom:28px;">費用・契約は不要です。まずはお気軽にご相談ください。</p>
+  <form class="gas-form" data-page="人材定着" data-formtype="無料相談">
+    <div class="gas-form-group"><input type="text" name="name" placeholder="お名前" required></div>
+    <div class="gas-form-group"><input type="text" name="company" placeholder="会社名・事業所名"></div>
+    <div class="gas-form-group"><input type="email" name="email" placeholder="メールアドレス" required></div>
+    <div class="gas-form-group"><input type="tel" name="phone" placeholder="電話番号"></div>
+    <div class="gas-form-group">
+      <div class="gas-radio-group">
+        <label><input type="radio" name="request" value="資料請求" required> 資料請求</label>
+        <label><input type="radio" name="request" value="オンライン相談"> オンライン相談</label>
+        <label><input type="radio" name="request" value="導入を検討中"> 導入を検討中</label>
+      </div>
+    </div>
+    <button type="submit" class="gas-form-btn" style="background:#415268;color:#fff;">送信する</button>
+  </form>
+  <div class="gas-form-thanks" style="display:none">
+    <p>✅ お問い合わせありがとうございます。<br>担当者より1〜2営業日以内にご連絡いたします。</p>
+  </div>
+</section>
+
+<!-- COMPANY -->
 <section class="company">
-  <img src="https://aidealize.com/wp-content/uploads/jinzai/logo_company.svg" alt="AIdealize株式会社"><br>
-  <b>AIdealize株式会社</b><br>
+  <b style="font-size:18px;">AIdealize株式会社</b><br>
   東京都中央区日本橋3-4-15<br>
   TEL：03-6870-3486<br><br>
   <a href="#contact" class="btn--01">CONTACT US</a>
