@@ -32,36 +32,50 @@
       font-size: 16px;
     }
 
-    /* ── NAV ── */
-    nav {
-      position: sticky; top: 0; z-index: 100;
-      background: rgba(0,33,71,0.96);
-      backdrop-filter: blur(8px);
-      border-bottom: 1px solid var(--border);
+    /* ── NAV (AIdealize標準) ── */
+    #mainNav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
       display: flex; align-items: center; justify-content: space-between;
-      padding: 0 5%;
-      height: 64px;
+      padding: 0 5%; height: 64px;
+      background: rgba(255,255,255,0.97);
+      border-bottom: 1px solid #e8e8e8;
+      backdrop-filter: blur(12px);
+      transition: box-shadow 0.3s;
     }
-    .nav-logo {
-      font-size: 1rem; font-weight: 700;
-      color: var(--white); letter-spacing: 0.05em;
-    }
-    .nav-logo span { color: var(--gold); }
-    .nav-cta {
-      background: var(--enji); color: var(--white);
-      border: none; padding: 10px 22px; border-radius: 4px;
-      font-size: 0.85rem; font-weight: 700; cursor: pointer;
-      transition: background 0.2s;
-      text-decoration: none; display: inline-block;
-    }
-    .nav-cta:hover { background: var(--enji-lt); }
+    #mainNav.scrolled { box-shadow: 0 4px 24px rgba(0,0,0,0.08); }
+    .nav-logo-text { font-size: 1rem; font-weight: 800; color: #1a1a1a; text-decoration: none; }
+    .nav-logo-text span { color: #c0272d; }
+    .nav-links-pc { display: flex; align-items: center; gap: 28px; list-style: none; }
+    .nav-links-pc a { font-size: 13px; font-weight: 500; color: #555; text-decoration: none; transition: color .2s; }
+    .nav-links-pc a:hover { color: #1a1a1a; }
+    .nav-cta-pc { background: #c0272d; color: #fff !important; padding: 9px 20px; border-radius: 3px; font-size: 12px !important; font-weight: 700 !important; }
+    .nav-cta-pc:hover { background: #a01f24 !important; }
+    .nav-hamburger { display: none; flex-direction: column; justify-content: center; gap: 5px; width: 40px; height: 40px; background: none; border: none; cursor: pointer; padding: 4px; }
+    .nav-hamburger span { display: block; width: 24px; height: 2px; background: #1a1a1a; transition: all .3s; transform-origin: center; }
+    .nav-hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .nav-hamburger.open span:nth-child(2) { opacity: 0; }
+    .nav-hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+    .nav-drawer-panel { display: none; position: fixed; top: 64px; left: 0; right: 0; background: rgba(255,255,255,.98); border-bottom: 2px solid #c0272d; padding: 20px 24px 28px; z-index: 999; }
+    .nav-drawer-panel.open { display: block; }
+    .nav-drawer-panel ul { list-style: none; }
+    .nav-drawer-panel ul li a { display: block; padding: 13px 0; font-size: 15px; color: #1a1a1a; text-decoration: none; border-bottom: 1px solid #e8e8e8; }
+    .nav-drawer-panel ul li:last-child a { margin-top: 16px; text-align: center; background: #c0272d; color: #fff !important; padding: 13px; border-radius: 3px; border-bottom: none; font-weight: 700 !important; }
+    @media(max-width:1024px){ .nav-links-pc { display: none; } .nav-hamburger { display: flex; } }
+
+    /* ── CONTACT FORM ── */
+    #contact { background: #f7f7f5; padding: 80px 5%; }
+    .contact-inner { max-width: 640px; margin: 0 auto; }
+    .contact-label { font-size: 11px; font-weight: 700; letter-spacing: 3px; color: var(--enji-lt); margin-bottom: 10px; display: block; }
+    .contact-title { font-size: clamp(1.4rem, 3vw, 2rem); font-weight: 900; color: #1a1a1a; margin-bottom: 14px; line-height: 1.4; }
+    .contact-desc { font-size: 14px; color: #555; line-height: 1.9; margin-bottom: 32px; }
+    .contact-form-wrap { background: #fff; border-radius: 10px; padding: 32px; border: 1px solid #e8e8e8; }
 
     /* ── HERO ── */
     #hero {
       min-height: 92vh;
       display: flex; align-items: center; justify-content: center;
       text-align: center;
-      padding: 80px 5% 60px;
+      padding: 128px 5% 60px;
       position: relative;
       overflow: hidden;
     }
@@ -402,10 +416,22 @@
 <body>
 
 <!-- NAV -->
-<nav>
-  <div class="nav-logo">AI査察 <span>Prevention</span></div>
-  <a href="#final-cta" class="nav-cta">無料点検を受ける</a>
+<nav id="mainNav">
+  <a href="/service/" class="nav-logo-text"><span>AI</span>dealize</a>
+  <ul class="nav-links-pc">
+    <li><a href="/service/">サービス</a></li>
+    <li><a href="/company/">会社概要</a></li>
+    <li><a href="#contact" class="nav-cta-pc">無料点検を受ける</a></li>
+  </ul>
+  <button class="nav-hamburger" id="navHamburger" aria-label="メニュー"><span></span><span></span><span></span></button>
 </nav>
+<div class="nav-drawer-panel" id="navDrawer">
+  <ul>
+    <li><a href="/service/" class="drawer-link">サービス</a></li>
+    <li><a href="/company/" class="drawer-link">会社概要</a></li>
+    <li><a href="#contact">無料点検を受ける</a></li>
+  </ul>
+</div>
 
 <!-- HERO -->
 <section id="hero">
@@ -696,6 +722,41 @@
 </section>
 
 <!-- FOOTER -->
+<!-- お問い合わせフォーム -->
+<section id="contact">
+  <div class="contact-inner">
+    <span class="contact-label">CONTACT</span>
+    <div class="contact-title">無料の外周目視点検を受ける</div>
+    <p class="contact-desc">
+      ドメインを入力するだけの無料点検（Lv.1）、またはサービスに関するご相談をお気軽にどうぞ。<br>
+      担当者より1〜2営業日以内にご連絡します。
+    </p>
+    <div class="contact-form-wrap">
+      <form class="gas-form" data-page="Prevention" data-formtype="無料点検・相談" novalidate>
+        <div class="gas-form-group"><input type="text" name="name" placeholder="お名前" required style="color:#1a1a1a"></div>
+        <div class="gas-form-group"><input type="text" name="company" placeholder="施設名・会社名" style="color:#1a1a1a"></div>
+        <div class="gas-form-group"><input type="email" name="email" placeholder="メールアドレス" required style="color:#1a1a1a"></div>
+        <div class="gas-form-group"><input type="tel" name="phone" placeholder="電話番号" style="color:#1a1a1a"></div>
+        <div class="gas-form-group">
+          <div class="gas-radio-group">
+            <label><input type="radio" name="request" value="無料点検を受けたい"> 無料点検を受けたい</label>
+            <label><input type="radio" name="request" value="オンライン相談"> オンライン相談</label>
+            <label><input type="radio" name="request" value="料金を知りたい"> 料金を知りたい</label>
+          </div>
+        </div>
+        <button type="submit" class="gas-form-btn" style="background:#7a1a1a;color:#fff;">送信する</button>
+      </form>
+      <div class="gas-form-thanks" style="display:none">
+        <p>✅ お問い合わせありがとうございます。<br>担当者より1〜2営業日以内にご連絡いたします。</p>
+      </div>
+      <p style="font-size:12px;color:#888;margin-top:14px;line-height:1.8">
+        本調査は公開情報の範囲内で行い、不正アクセス禁止法を完全に遵守します。<br>
+        厚生労働省「医療情報システム安全管理ガイドライン第6.0版」準拠。
+      </p>
+    </div>
+  </div>
+</section>
+
 <footer>
   <div class="footer-logo">AIデジタル査察 <span>Prevention</span></div>
   <p class="footer-legal">
@@ -755,7 +816,16 @@
   document.getElementById('urlInput').addEventListener('keydown', (e) => {
     if (e.key === 'Enter') runScan();
   });
-</script>
 
+  // AIdealize nav
+  (function(){
+    var btn=document.getElementById('navHamburger'),drawer=document.getElementById('navDrawer'),nav=document.getElementById('mainNav');
+    if(!btn) return;
+    btn.addEventListener('click',function(){btn.classList.toggle('open');drawer.classList.toggle('open')});
+    drawer.querySelectorAll('.drawer-link').forEach(function(l){l.addEventListener('click',function(){btn.classList.remove('open');drawer.classList.remove('open')})});
+    window.addEventListener('scroll',function(){nav.classList.toggle('scrolled',window.scrollY>10)});
+  })();
+</script>
+<script src="../../js/gas-forms.js"></script>
 </body>
 </html>

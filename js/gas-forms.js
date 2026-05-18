@@ -22,9 +22,12 @@
   ].join('');
   document.head.appendChild(s);
 
-  /* ── フォーム送信処理 ── */
-  document.addEventListener('DOMContentLoaded', function () {
+  /* ── フォームへのイベントバインド ── */
+  function bindForms() {
     document.querySelectorAll('.gas-form').forEach(function (form) {
+      if (form.dataset.gasBound) return; // 二重バインド防止
+      form.dataset.gasBound = '1';
+
       form.addEventListener('submit', function (e) {
         e.preventDefault();
 
@@ -33,10 +36,10 @@
         btn.textContent = '送信中...';
 
         var fd = new FormData(form);
-        fd.append('page', form.dataset.page || '');
+        fd.append('page', form.dataset.page || document.title);
         fd.append('form_type', form.dataset.formtype || '');
 
-        /* ラジオ未選択の場合 data-formtype を ご希望 に使う */
+        /* ラジオ未選択の場合 data-formtype をフォールバック */
         if (!fd.get('request')) {
           fd.append('request', form.dataset.formtype || '');
         }
@@ -61,5 +64,12 @@
           });
       });
     });
-  });
+  }
+
+  /* DOM ready チェック（スクリプト位置問わず確実に動作） */
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', bindForms);
+  } else {
+    bindForms();
+  }
 })();
