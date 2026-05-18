@@ -44,24 +44,29 @@
           fd.append('request', form.dataset.formtype || '');
         }
 
+        /* 2秒でタイムアウト → 長い「送信中」を防止 */
+        var done = false;
+        function showThanks() {
+          if (done) return;
+          done = true;
+          window.dataLayer = window.dataLayer || [];
+          window.dataLayer.push({
+            event: 'form_submit',
+            form_type: form.dataset.formtype || 'unknown',
+            page_name: form.dataset.page || ''
+          });
+          form.style.display = 'none';
+          var thanks = form.nextElementSibling;
+          if (thanks && thanks.classList.contains('gas-form-thanks')) {
+            thanks.style.display = 'block';
+          }
+        }
+
+        setTimeout(showThanks, 2000); /* 2秒後に強制表示 */
+
         fetch(GAS_URL, { method: 'POST', mode: 'no-cors', body: fd })
           .catch(function () {})
-          .finally(function () {
-            /* GTM / GA4 イベント発火 */
-            window.dataLayer = window.dataLayer || [];
-            window.dataLayer.push({
-              event: 'form_submit',
-              form_type: form.dataset.formtype || 'unknown',
-              page_name: form.dataset.page || ''
-            });
-
-            /* フォームを非表示にして Thanks を表示 */
-            form.style.display = 'none';
-            var thanks = form.nextElementSibling;
-            if (thanks && thanks.classList.contains('gas-form-thanks')) {
-              thanks.style.display = 'block';
-            }
-          });
+          .finally(showThanks);
       });
     });
   }
