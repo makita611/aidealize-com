@@ -234,20 +234,47 @@ footer{background:#F0F4F8;border-top:1px solid var(--line);padding:36px 6%;text-
 @media(max-width:480px){
   .trends-grid,.roadmap-timeline,.ba-stats{grid-template-columns:1fr}
 }
-</style>
+
+    #mainNav{position:fixed;top:0;left:0;right:0;z-index:1000;display:flex;align-items:center;justify-content:space-between;padding:0 5%;height:64px;background:rgba(255,255,255,.97);border-bottom:1px solid #e8e8e8;backdrop-filter:blur(12px);transition:box-shadow .3s}
+    #mainNav.scrolled{box-shadow:0 4px 24px rgba(0,0,0,.08)}
+    .nav-logo-text{font-size:1rem;font-weight:800;color:#1a1a1a;text-decoration:none}
+    .nav-logo-text span{color:#c0272d}
+    .nav-links-pc{display:flex;align-items:center;gap:28px;list-style:none}
+    .nav-links-pc a{font-size:13px;font-weight:500;color:#555;text-decoration:none;transition:color .2s}
+    .nav-links-pc a:hover{color:#1a1a1a}
+    .nav-cta-pc{background:#c0272d;color:#fff!important;padding:9px 20px;border-radius:3px;font-size:12px!important;font-weight:700!important}
+    .nav-hamburger{display:none;flex-direction:column;justify-content:center;gap:5px;width:40px;height:40px;background:none;border:none;cursor:pointer;padding:4px}
+    .nav-hamburger span{display:block;width:24px;height:2px;background:#1a1a1a;transition:all .3s;transform-origin:center}
+    .nav-hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+    .nav-hamburger.open span:nth-child(2){opacity:0}
+    .nav-hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+    .nav-drawer-panel{display:none;position:fixed;top:64px;left:0;right:0;background:rgba(255,255,255,.98);border-bottom:2px solid #c0272d;padding:20px 24px 28px;z-index:999}
+    .nav-drawer-panel.open{display:block}
+    .nav-drawer-panel ul{list-style:none}
+    .nav-drawer-panel ul li a{display:block;padding:13px 0;font-size:15px;color:#1a1a1a;text-decoration:none;border-bottom:1px solid #e8e8e8}
+    .nav-drawer-panel ul li:last-child a{margin-top:16px;text-align:center;background:#c0272d;color:#fff!important;padding:13px;border-radius:3px;border-bottom:none;font-weight:700!important}
+    @media(max-width:1024px){.nav-links-pc{display:none}.nav-hamburger{display:flex}}
+    </style>
 </head>
 <body>
 
 <!-- NAV -->
-<nav>
-  <div class="logo">FaceBalance <span>AI</span></div>
-  <div class="nav-r">
-    <a href="#solution" class="nav-link">機能</a>
-    <a href="#plans" class="nav-link">料金</a>
-    <a href="#partner" class="nav-link">提携</a>
-    <a href="#plans" class="nav-btn">デモを試す</a>
-  </div>
+<nav id="mainNav">
+  <a href="/" class="nav-logo-text"><span>AI</span>dealize</a>
+  <ul class="nav-links-pc">
+    <li><a href="/service/">サービス</a></li>
+    <li><a href="/company.html">会社概要</a></li>
+    <li><a href="#contact" class="nav-cta-pc">お問い合わせ</a></li>
+  </ul>
+  <button class="nav-hamburger" id="navHamburger" aria-label="メニュー"><span></span><span></span><span></span></button>
 </nav>
+<div class="nav-drawer-panel" id="navDrawer">
+  <ul>
+    <li><a href="/service/" class="drawer-link">サービス</a></li>
+    <li><a href="/company.html" class="drawer-link">会社概要</a></li>
+    <li><a href="#contact">お問い合わせ</a></li>
+  </ul>
+</div>
 
 <!-- HERO -->
 <section id="hero">
@@ -260,7 +287,7 @@ footer{background:#F0F4F8;border-top:1px solid var(--line);padding:36px 6%;text-
       「感覚のデザイン」を「数値のエビデンス」に変える<br>アートメイク専用SaaSです。
     </p>
     <div class="hero-btns">
-      <a href="#plans" class="btn-primary">無料デモを試す</a>
+      <a href="#contact" class="btn-primary">無料デモを試す</a>
       <a href="#partner" class="btn-outline">共同開発に参加する</a>
     </div>
   </div>
@@ -788,6 +815,42 @@ footer{background:#F0F4F8;border-top:1px solid var(--line);padding:36px 6%;text-
 </section>
 
 <!-- FOOTER -->
+<section id="contact" style="padding:80px 5%;background:#f7f7f5">
+  <div style="max-width:640px;margin:0 auto">
+    <div style="font-size:11px;font-weight:700;letter-spacing:3px;color:#c0272d;margin-bottom:10px">CONTACT</div>
+    <h2 style="font-size:clamp(1.4rem,3vw,2rem);font-weight:900;color:#1a1a1a;margin-bottom:14px;line-height:1.4">お問い合わせ・デモのご依頼</h2>
+    <p style="font-size:14px;color:#555;line-height:1.9;margin-bottom:28px">デモのご依頼、提携・共同開発のご相談、オンライン相談はこちらから。<br>担当者より1〜2営業日以内にご連絡します。</p>
+    <div style="background:#fff;border-radius:10px;padding:32px;border:1px solid #e8e8e8">
+      <form class="gas-form" data-page="FaceBalance AI" data-formtype="お問い合わせ" novalidate>
+        <div class="gas-form-group"><input type="text" name="name" placeholder="お名前" required></div>
+        <div class="gas-form-group"><input type="text" name="company" placeholder="会社名・クリニック名"></div>
+        <div class="gas-form-group"><input type="email" name="email" placeholder="メールアドレス" required></div>
+        <div class="gas-form-group"><input type="tel" name="phone" placeholder="電話番号"></div>
+        <div class="gas-form-group">
+          <div class="gas-radio-group">
+            <label><input type="radio" name="request" value="デモを依頼したい"> デモを依頼したい</label>
+            <label><input type="radio" name="request" value="提携・共同開発の相談"> 提携・共同開発の相談</label>
+            <label><input type="radio" name="request" value="オンライン相談"> オンライン相談</label>
+          </div>
+        </div>
+        <button type="submit" class="gas-form-btn" style="background:#1E3A5F;color:#fff">送信する</button>
+      </form>
+      <div class="gas-form-thanks" style="display:none">
+        <p>✅ お問い合わせありがとうございます。<br>担当者より1〜2営業日以内にご連絡いたします。</p>
+      </div>
+    </div>
+  </div>
+</section>
+<script src="/js/gas-forms.js"></script>
+<script>
+(function(){
+  var btn=document.getElementById('navHamburger'),drawer=document.getElementById('navDrawer'),nav=document.getElementById('mainNav');
+  if(!btn)return;
+  btn.addEventListener('click',function(){btn.classList.toggle('open');drawer.classList.toggle('open')});
+  drawer.querySelectorAll('.drawer-link').forEach(function(l){l.addEventListener('click',function(){btn.classList.remove('open');drawer.classList.remove('open')})});
+  window.addEventListener('scroll',function(){nav.classList.toggle('scrolled',window.scrollY>10)});
+})();
+</script>
 <footer>
   <div class="foot-logo">FaceBalance <span>AI</span></div>
   <p class="foot-note">

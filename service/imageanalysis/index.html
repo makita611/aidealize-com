@@ -310,15 +310,29 @@ footer{background:#F3F4F6;border-top:1px solid var(--line);padding:32px 6%;text-
   </div>
 </section>
 
-<!-- CTA -->
-<section id="cta">
-  <div class="inner">
-    <span class="sec-label" style="color:rgba(255,255,255,.6)">CONTACT</span>
-    <h2>まずは、<em style="color:#93C5FD">デモをご覧ください</em></h2>
-    <p>業種・課題に合わせたカスタムデモをご用意します。API連携・OEM・共同開発のご相談もお気軽にどうぞ。</p>
-    <div class="cta-btns">
-      <a href="mailto:info@aidealize.co.jp" class="cta-primary">デモ・お問い合わせ</a>
-      <a href="#services" class="cta-secondary">サービス一覧へ戻る</a>
+<section id="contact" style="padding:80px 5%;background:#f7f7f5">
+  <div style="max-width:640px;margin:0 auto">
+    <div style="font-size:11px;font-weight:700;letter-spacing:3px;color:#c0272d;margin-bottom:10px">CONTACT</div>
+    <h2 style="font-size:clamp(1.4rem,3vw,2rem);font-weight:900;color:#1a1a1a;margin-bottom:14px;line-height:1.4">お問い合わせ・デモのご依頼</h2>
+    <p style="font-size:14px;color:#555;line-height:1.9;margin-bottom:28px">デモのご依頼、提携・共同開発のご相談、オンライン相談はこちらから。<br>担当者より1〜2営業日以内にご連絡します。</p>
+    <div style="background:#fff;border-radius:10px;padding:32px;border:1px solid #e8e8e8">
+      <form class="gas-form" data-page="AI画像解析エンジン" data-formtype="お問い合わせ" novalidate>
+        <div class="gas-form-group"><input type="text" name="name" placeholder="お名前" required></div>
+        <div class="gas-form-group"><input type="text" name="company" placeholder="会社名・クリニック名"></div>
+        <div class="gas-form-group"><input type="email" name="email" placeholder="メールアドレス" required></div>
+        <div class="gas-form-group"><input type="tel" name="phone" placeholder="電話番号"></div>
+        <div class="gas-form-group">
+          <div class="gas-radio-group">
+            <label><input type="radio" name="request" value="デモを依頼したい"> デモを依頼したい</label>
+            <label><input type="radio" name="request" value="提携・共同開発の相談"> 提携・共同開発の相談</label>
+            <label><input type="radio" name="request" value="オンライン相談"> オンライン相談</label>
+          </div>
+        </div>
+        <button type="submit" class="gas-form-btn" style="background:#1565C0;color:#fff">送信する</button>
+      </form>
+      <div class="gas-form-thanks" style="display:none">
+        <p>✅ お問い合わせありがとうございます。<br>担当者より1〜2営業日以内にご連絡いたします。</p>
+      </div>
     </div>
   </div>
 </section>
@@ -332,5 +346,15 @@ footer{background:#F3F4F6;border-top:1px solid var(--line);padding:32px 6%;text-
   </p>
 </footer>
 
+<script src="/js/gas-forms.js"></script>
+<script>
+(function(){
+  var btn=document.getElementById('navHamburger'),drawer=document.getElementById('navDrawer'),nav=document.getElementById('mainNav');
+  if(!btn)return;
+  btn.addEventListener('click',function(){btn.classList.toggle('open');drawer.classList.toggle('open')});
+  drawer.querySelectorAll('.drawer-link').forEach(function(l){l.addEventListener('click',function(){btn.classList.remove('open');drawer.classList.remove('open')})});
+  window.addEventListener('scroll',function(){nav.classList.toggle('scrolled',window.scrollY>10)});
+})();
+</script>
 </body>
 </html>

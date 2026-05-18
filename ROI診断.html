@@ -983,5 +983,13 @@ function submitLead() {
   document.getElementById('step3-ind').classList.add('active');
 }
 </script>
-</body>
+<script>
+function notifyHeight() {
+  var h = Math.max(document.body.scrollHeight, document.documentElement.scrollHeight);
+  window.parent.postMessage({type:'roiHeight', height: h}, '*');
+}
+window.addEventListener('load', function(){ setTimeout(notifyHeight, 200); });
+window.addEventListener('input', function(){ setTimeout(notifyHeight, 100); });
+window.addEventListener('change', function(){ setTimeout(notifyHeight, 100); });
+</script></body>
 </html>
