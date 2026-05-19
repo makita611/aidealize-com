@@ -138,15 +138,52 @@ footer{background:#010d1f;border-top:1px solid rgba(255,215,0,0.1);padding:32px 
   .contact-btns{flex-direction:column;align-items:center}
   .contact-btn{width:100%;max-width:320px;justify-content:center}
 }
+
+/* AIdealize標準ナビ */
+#mainNav{position:fixed;top:0;left:0;right:0;z-index:1000;display:flex;align-items:center;justify-content:space-between;padding:0 5%;height:64px;background:rgba(255,255,255,.97);border-bottom:1px solid #e8e8e8;backdrop-filter:blur(12px);transition:box-shadow .3s}
+#mainNav.scrolled{box-shadow:0 4px 24px rgba(0,0,0,.08)}
+.nav-logo-ai{font-size:1rem;font-weight:800;color:#1a1a1a;text-decoration:none}
+.nav-logo-ai span{color:#c0272d}
+.nav-links-pc{display:flex;align-items:center;gap:28px;list-style:none}
+.nav-links-pc a{font-size:13px;font-weight:500;color:#555;text-decoration:none;transition:color .2s}
+.nav-links-pc a:hover{color:#1a1a1a}
+.nav-cta-ai{background:#1e3c72;color:#fff!important;padding:9px 20px;border-radius:3px;font-size:12px!important;font-weight:700!important}
+.nav-cta-ai:hover{background:#2a5298!important}
+.nav-hamburger{display:none;flex-direction:column;justify-content:center;gap:5px;width:40px;height:40px;background:none;border:none;cursor:pointer;padding:4px}
+.nav-hamburger span{display:block;width:24px;height:2px;background:#1a1a1a;transition:all .3s;transform-origin:center}
+.nav-hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.nav-hamburger.open span:nth-child(2){opacity:0}
+.nav-hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+.nav-drawer-p{display:none;position:fixed;top:64px;left:0;right:0;background:rgba(255,255,255,.98);border-bottom:2px solid #1e3c72;padding:20px 24px 28px;z-index:999}
+.nav-drawer-p.open{display:block}
+.nav-drawer-p ul{list-style:none}
+.nav-drawer-p ul li a{display:block;padding:13px 0;font-size:15px;color:#1a1a1a;text-decoration:none;border-bottom:1px solid #e8e8e8}
+.nav-drawer-p ul li:last-child a{margin-top:16px;text-align:center;background:#1e3c72;color:#fff!important;padding:13px;border-radius:3px;border-bottom:none;font-weight:700!important}
+@media(max-width:1024px){.nav-links-pc{display:none}.nav-hamburger{display:flex}}
+/* hero のpadding top調整（fixed navの高さ分） */
+#hero{padding-top:144px!important}
+
 </style>
 </head>
 <body>
 
 <!-- NAV -->
-<nav>
-  <a href="index.html" class="nav-logo">AI査察 <span>Prevention</span></a>
-  <a href="#footer-cta" class="nav-cta-btn">無料チェックリストを申し込む</a>
+<nav id="mainNav">
+  <a href="/" class="nav-logo-ai"><span>AI</span>dealize</a>
+  <ul class="nav-links-pc">
+    <li><a href="/service/">サービス</a></li>
+    <li><a href="/company.html">会社概要</a></li>
+    <li><a href="#footer-cta" class="nav-cta-ai">無料相談を申し込む</a></li>
+  </ul>
+  <button class="nav-hamburger" id="navHamburger" aria-label="メニュー"><span></span><span></span><span></span></button>
 </nav>
+<div class="nav-drawer-p" id="navDrawer">
+  <ul>
+    <li><a href="/service/" class="drawer-link">サービス</a></li>
+    <li><a href="/company.html" class="drawer-link">会社概要</a></li>
+    <li><a href="#footer-cta">無料相談を申し込む</a></li>
+  </ul>
+</div>
 
 <!-- HERO -->
 <section id="hero">
@@ -321,27 +358,37 @@ footer{background:#010d1f;border-top:1px solid rgba(255,215,0,0.1);padding:32px 
 </section>
 
 <!-- FOOTER CTA -->
-<section id="footer-cta">
-  <div class="footer-cta-box">
-    <h3>🎯 2025年4月対応の<br>第一歩を踏み出しましょう</h3>
-    <p>
-      まずは無料チェックリストで現状を把握するだけでOKです。<br>
-      義務化対応が完了すれば、報酬減算リスクはゼロになります。
+<section id="footer-cta" style="background:#f0f4f9;padding:80px 5%">
+  <div style="max-width:640px;margin:0 auto">
+    <div style="font-size:11px;font-weight:700;letter-spacing:3px;color:#1e3c72;margin-bottom:10px">CONTACT</div>
+    <h2 style="font-size:clamp(1.4rem,3vw,2rem);font-weight:900;color:#1a1a1a;margin-bottom:12px;line-height:1.4">
+      🎯 まず無料相談から<br>はじめてみませんか？
+    </h2>
+    <p style="font-size:14px;color:#555;line-height:1.9;margin-bottom:28px">
+      BCP義務化への対応方法、減算リスクの確認、査察の費用感など、<br>
+      お気軽にご相談ください。担当者より1〜2営業日以内にご連絡します。
     </p>
-    <div class="contact-btns">
-      <a href="https://lin.ee/" class="contact-btn btn-line" target="_blank">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="white"><path d="M12 2C6.477 2 2 6.138 2 11.2c0 3.174 1.793 5.978 4.5 7.688V22l3.285-1.807A11.87 11.87 0 0012 20.4c5.523 0 10-4.138 10-9.2C22 6.138 17.523 2 12 2z"/></svg>
-        💬 LINE 相談（無料）
-      </a>
-      <a href="mailto:info@prevention-security.jp" class="contact-btn btn-mail">
-        📧 メール相談
-      </a>
-      <a href="tel:080-XXXX-XXXX" class="contact-btn btn-tel">
-        📞 電話（080-XXXX-XXXX）
-      </a>
-      <a href="#footer-cta" class="contact-btn btn-zoom" onclick="alert('Zoom予約フォームに遷移します')">
-        🖥 Zoom 30分無料相談
-      </a>
+    <div style="background:#fff;border-radius:10px;padding:32px;border:1px solid #d0d8e8">
+      <form class="gas-form" data-page="介護BCP Prevention" data-formtype="無料相談" novalidate>
+        <div class="gas-form-group"><input type="text" name="name" placeholder="お名前" required></div>
+        <div class="gas-form-group"><input type="text" name="company" placeholder="施設名・法人名"></div>
+        <div class="gas-form-group"><input type="email" name="email" placeholder="メールアドレス" required></div>
+        <div class="gas-form-group"><input type="tel" name="phone" placeholder="電話番号"></div>
+        <div class="gas-form-group">
+          <div class="gas-radio-group">
+            <label><input type="radio" name="request" value="無料チェックリストを受けたい"> 無料チェックリスト</label>
+            <label><input type="radio" name="request" value="BCP策定の相談をしたい"> BCP策定の相談</label>
+            <label><input type="radio" name="request" value="オンライン相談（30分）"> オンライン相談</label>
+          </div>
+        </div>
+        <button type="submit" class="gas-form-btn" style="background:#1e3c72;color:#fff">送信する</button>
+      </form>
+      <div class="gas-form-thanks" style="display:none">
+        <p>✅ お問い合わせありがとうございます。<br>担当者より1〜2営業日以内にご連絡いたします。</p>
+      </div>
+      <p style="font-size:12px;color:#888;margin-top:14px;line-height:1.8">
+        ※ 営業目的のご連絡や強引なクロージングは一切行いません。
+      </p>
     </div>
   </div>
 </section>
@@ -377,5 +424,15 @@ document.getElementById('kaigo-input').addEventListener('keydown', function(e) {
 });
 </script>
 
+<script src="/js/gas-forms.js"></script>
+<script>
+(function(){
+  var btn=document.getElementById('navHamburger'),drawer=document.getElementById('navDrawer'),nav=document.getElementById('mainNav');
+  if(!btn)return;
+  btn.addEventListener('click',function(){btn.classList.toggle('open');drawer.classList.toggle('open')});
+  drawer.querySelectorAll('.drawer-link').forEach(function(l){l.addEventListener('click',function(){btn.classList.remove('open');drawer.classList.remove('open')})});
+  window.addEventListener('scroll',function(){nav.classList.toggle('scrolled',window.scrollY>10)});
+})();
+</script>
 </body>
 </html>
