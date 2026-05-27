@@ -606,6 +606,75 @@ footer a { color:inherit; }
 }
 </style>
 
+<!-- BPR事例ティッカー -->
+<div class="bpr-ticker-wrap">
+  <div class="bpr-ticker-label">📊 導入事例</div>
+  <div class="bpr-ticker-outer">
+    <div class="bpr-ticker-track">
+      <span class="bpr-tick-item"><span class="bpr-tick-ind">訪問看護</span>AI音声入力で記録時間を1人あたり5〜7分に短縮</span>
+      <span class="bpr-tick-item"><span class="bpr-tick-ind">居宅介護支援</span>ICT活用で担当件数 45件 → 60件に増加</span>
+      <span class="bpr-tick-item"><span class="bpr-tick-ind">クリニック</span>AIチャットボットで24時間365日の予約・問い合わせ対応を自動化</span>
+      <span class="bpr-tick-item"><span class="bpr-tick-ind">不動産仲介</span>AI紙情報読取でデータ化・一括管理。営業時間外の問い合わせを自動対応</span>
+      <span class="bpr-tick-item"><span class="bpr-tick-ind">介護施設</span>シフト作成・利用者記録・転倒検知をAIで支援。43.7%がシフト管理の改善実感</span>
+      <span class="bpr-tick-item"><span class="bpr-tick-ind">電話対応</span>IVR導入で24時間自動応答。受電通知・留守電対応も一括管理</span>
+      <!-- ループ用に複製 -->
+      <span class="bpr-tick-item"><span class="bpr-tick-ind">訪問看護</span>AI音声入力で記録時間を1人あたり5〜7分に短縮</span>
+      <span class="bpr-tick-item"><span class="bpr-tick-ind">居宅介護支援</span>ICT活用で担当件数 45件 → 60件に増加</span>
+      <span class="bpr-tick-item"><span class="bpr-tick-ind">クリニック</span>AIチャットボットで24時間365日の予約・問い合わせ対応を自動化</span>
+      <span class="bpr-tick-item"><span class="bpr-tick-ind">不動産仲介</span>AI紙情報読取でデータ化・一括管理。営業時間外の問い合わせを自動対応</span>
+      <span class="bpr-tick-item"><span class="bpr-tick-ind">介護施設</span>シフト作成・利用者記録・転倒検知をAIで支援。43.7%がシフト管理の改善実感</span>
+      <span class="bpr-tick-item"><span class="bpr-tick-ind">電話対応</span>IVR導入で24時間自動応答。受電通知・留守電対応も一括管理</span>
+    </div>
+  </div>
+  <a href="https://aidealize.com/bpr/" class="bpr-ticker-btn">656件の事例を見る →</a>
+</div>
+<style>
+.bpr-ticker-wrap {
+  display: flex; align-items: center; gap: 16px;
+  background: #f0f4ff; border-top: 2px solid #2563eb; border-bottom: 1px solid #dbe4ff;
+  padding: 12px 24px; overflow: hidden; margin-bottom: 0;
+}
+.bpr-ticker-label {
+  font-size: 0.75rem; font-weight: 700; color: #2563eb;
+  white-space: nowrap; flex-shrink: 0;
+}
+.bpr-ticker-outer { flex: 1; overflow: hidden; position: relative; }
+.bpr-ticker-outer::before, .bpr-ticker-outer::after {
+  content: ''; position: absolute; top: 0; bottom: 0; width: 40px; z-index: 1;
+}
+.bpr-ticker-outer::before { left: 0; background: linear-gradient(to right, #f0f4ff, transparent); }
+.bpr-ticker-outer::after  { right: 0; background: linear-gradient(to left,  #f0f4ff, transparent); }
+.bpr-ticker-track {
+  display: flex; gap: 0; white-space: nowrap;
+  animation: bpr-scroll 30s linear infinite;
+}
+.bpr-ticker-track:hover { animation-play-state: paused; }
+@keyframes bpr-scroll {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+.bpr-tick-item {
+  display: inline-block; font-size: 0.82rem; color: #374151;
+  padding: 0 32px; border-right: 1px solid #c7d2fe;
+}
+.bpr-tick-ind {
+  display: inline-block; background: #2563eb; color: #fff;
+  font-size: 0.7rem; font-weight: 700; padding: 2px 8px; border-radius: 3px;
+  margin-right: 8px;
+}
+.bpr-ticker-btn {
+  flex-shrink: 0; background: #2563eb; color: #fff;
+  font-size: 0.78rem; font-weight: 700; padding: 7px 16px;
+  border-radius: 6px; text-decoration: none; white-space: nowrap;
+  transition: background 0.2s;
+}
+.bpr-ticker-btn:hover { background: #1d4ed8; }
+@media (max-width: 640px) {
+  .bpr-ticker-wrap { padding: 10px 16px; gap: 10px; }
+  .bpr-ticker-btn { display: none; }
+}
+</style>
+
 <div class="section">
   <div class="section-label">CORE SERVICE</div>
   <div class="section-title">AI業務改善サービス</div>
