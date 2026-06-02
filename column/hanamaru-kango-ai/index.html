@@ -126,12 +126,35 @@ body { font-family: 'Noto Sans JP', sans-serif; background: var(--white); color:
   font-size: clamp(16px, 2vw, 21px); font-weight: 700;
   color: var(--ink); line-height: 1.6; margin-bottom: 20px;
 }
+/* 縦長動画：PCはスマホサイズに縮小、中央寄せ */
+.video-outer {
+  display: flex; justify-content: center;
+}
 .video-wrap {
-  border-radius: 10px; overflow: hidden;
+  position: relative;
+  border-radius: 20px; overflow: hidden;
   background: #000; border: 1px solid var(--border);
-  box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.14);
+  width: 100%; max-width: 320px; /* PCでスマホ幅に制限 */
+  cursor: pointer;
 }
 .video-wrap video { display: block; width: 100%; height: auto; }
+
+/* タップで全画面ボタン（スマホ） */
+.video-play-overlay {
+  position: absolute; inset: 0;
+  display: flex; align-items: center; justify-content: center;
+  background: rgba(0,0,0,0.35);
+  transition: opacity 0.2s;
+}
+.video-play-overlay.hidden { opacity: 0; pointer-events: none; }
+.video-play-btn {
+  width: 64px; height: 64px; border-radius: 50%;
+  background: rgba(255,255,255,0.9);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 26px; padding-left: 4px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+}
 .video-caption { margin-top: 10px; font-size: 12px; color: var(--light); text-align: center; }
 
 /* ARTICLE BODY */
@@ -380,12 +403,17 @@ footer {
   <div class="video-inner">
     <div class="video-label">▶ デモ動画</div>
     <p class="video-title">LINEに話しかけて、30秒でSOAP記録が完成。<br>実際の操作を見てください。</p>
-    <div class="video-wrap">
-      <video id="columnv1" controls preload="metadata" playsinline>
-        <source src="columnv1.mp4" type="video/mp4">
-      </video>
+    <div class="video-outer">
+      <div class="video-wrap" id="videoWrap">
+        <video id="columnv1" preload="metadata" playsinline loop>
+          <source src="columnv1.mp4" type="video/mp4">
+        </video>
+        <div class="video-play-overlay" id="videoOverlay">
+          <div class="video-play-btn">▶</div>
+        </div>
+      </div>
     </div>
-    <p class="video-caption">▲ iPhoneのLINEアプリから音声入力 → AIがSOAP形式に自動変換する実際の画面</p>
+    <p class="video-caption">▲ タップで再生 / もう一度タップで停止　｜　LINEに話しかけてSOAP記録が自動完成する実際の画面</p>
   </div>
 </section>
 
@@ -598,6 +626,60 @@ document.querySelectorAll('.reveal').forEach(function(el){ obs.observe(el); });
 document.querySelectorAll('.faq-q').forEach(function(q){
   q.addEventListener('click', function(){ q.closest('.faq-item').classList.toggle('open'); });
 });
+
+// ── 動画：タップで再生/全画面、もう一度タップで停止 ──
+(function(){
+  const video   = document.getElementById('columnv1');
+  const wrap    = document.getElementById('videoWrap');
+  const overlay = document.getElementById('videoOverlay');
+  if (!video) return;
+
+  var playing = false;
+
+  function enterFS() {
+    if (video.requestFullscreen)            video.requestFullscreen();
+    else if (video.webkitEnterFullscreen)   video.webkitEnterFullscreen(); // iOS Safari
+    else if (video.webkitRequestFullscreen) video.webkitRequestFullscreen();
+    else if (video.mozRequestFullScreen)    video.mozRequestFullScreen();
+  }
+
+  function exitFS() {
+    if (document.exitFullscreen)            document.exitFullscreen();
+    else if (document.webkitExitFullscreen) document.webkitExitFullscreen();
+    else if (document.mozCancelFullScreen)  document.mozCancelFullScreen();
+  }
+
+  wrap.addEventListener('click', function(){
+    if (!playing) {
+      // 初回タップ → 再生 & 全画面
+      video.play();
+      enterFS();
+      overlay.classList.add('hidden');
+      playing = true;
+    } else {
+      // 再生中タップ → 停止 & 全画面解除
+      video.pause();
+      video.currentTime = 0;
+      exitFS();
+      overlay.classList.remove('hidden');
+      playing = false;
+    }
+  });
+
+  // 全画面が外部操作で解除されたとき（ブラウザの×ボタン等）も停止状態に戻す
+  document.addEventListener('fullscreenchange',       onFsChange);
+  document.addEventListener('webkitfullscreenchange', onFsChange);
+  document.addEventListener('mozfullscreenchange',    onFsChange);
+  function onFsChange() {
+    var fs = document.fullscreenElement || document.webkitFullscreenElement || document.mozFullScreenElement;
+    if (!fs) {
+      video.pause();
+      video.currentTime = 0;
+      overlay.classList.remove('hidden');
+      playing = false;
+    }
+  }
+})();
 </script>
 </body>
 </html>
