@@ -1,0 +1,852 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>訪問看護のSOAP記録をAIが自動作成｜LINEで話すだけで完成【はなまる看護AI】</title>
+<meta name="description" content="訪問看護・居宅介護の記録業務を最大90%削減。LINEに向かって話すだけでSOAP形式の記録が自動完成。現場スタッフがゼロから始められる医療・介護特化型AI「はなまる看護AI」の実力を解説します。">
+<link rel="canonical" href="https://aidealize.com/column/hanamaru-kango-ai/">
+<meta property="og:title" content="訪問看護のSOAP記録をAIが自動作成｜LINEで話すだけで完成【はなまる看護AI】">
+<meta property="og:description" content="訪問看護・居宅介護の記録業務を最大90%削減。LINEに向かって話すだけでSOAP形式の記録が自動完成する医療・介護特化型AIの実力を解説します。">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://aidealize.com/column/hanamaru-kango-ai/">
+<meta property="og:site_name" content="AIdealize株式会社">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700;900&family=Shippori+Mincho:wght@400;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-P6VNBWH3');</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "訪問看護のSOAP記録をAIが自動作成｜LINEで話すだけで完成",
+  "description": "訪問看護・居宅介護の記録業務を最大90%削減。LINEに向かって話すだけでSOAP形式の記録が自動完成する医療・介護特化型AI「はなまる看護AI」の実力を解説。",
+  "datePublished": "2026-06-03",
+  "author": {"@type": "Organization", "name": "AIdealize株式会社"},
+  "publisher": {
+    "@type": "Organization",
+    "name": "AIdealize株式会社",
+    "url": "https://aidealize.com"
+  }
+}
+</script>
+<style>
+:root {
+  --red: #C8102E;
+  --red-dark: #9B0C22;
+  --red-light: #E8314F;
+  --ink: #111111;
+  --ink2: #1e1e1e;
+  --white: #FFFFFF;
+  --cream: #FAF9F7;
+  --warm: #F0EDE8;
+  --mid: #555555;
+  --light: #888888;
+  --border: #E2DDD8;
+  --gold: #B5892E;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; font-size: 16px; }
+body {
+  font-family: 'Noto Sans JP', sans-serif;
+  background: var(--white);
+  color: var(--ink);
+  overflow-x: hidden;
+}
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: var(--cream); }
+::-webkit-scrollbar-thumb { background: var(--red); border-radius: 2px; }
+
+/* ── NAV ── */
+#mainNav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 60px; height: 68px;
+  background: rgba(255,255,255,0.97);
+  border-bottom: 1px solid var(--border);
+  backdrop-filter: blur(12px);
+  transition: box-shadow 0.3s;
+}
+#mainNav.scrolled { box-shadow: 0 4px 24px rgba(0,0,0,0.08); }
+.nav-logo { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+.nav-logo-text { font-family: 'DM Mono', monospace; font-size: 16px; font-weight: 500; color: var(--ink); letter-spacing: 0.02em; }
+.nav-logo-text span { color: var(--red); }
+.nav-logo img { height: 36px; width: auto; }
+.nav-links { display: flex; align-items: center; gap: 36px; list-style: none; }
+.nav-links a { font-size: 13px; font-weight: 500; color: var(--mid); text-decoration: none; letter-spacing: 0.04em; transition: color 0.2s; }
+.nav-links a:hover { color: var(--ink); }
+.nav-cta { background: var(--red); color: var(--white) !important; padding: 10px 22px; border-radius: 3px; font-size: 12px !important; font-weight: 700 !important; letter-spacing: 0.06em !important; transition: background 0.2s !important; }
+.nav-cta:hover { background: var(--red-dark) !important; }
+.nav-hamburger { display: none; flex-direction: column; justify-content: center; gap: 5px; width: 40px; height: 40px; background: none; border: none; cursor: pointer; padding: 4px; }
+.nav-hamburger span { display: block; width: 24px; height: 2px; background: var(--ink); transition: all 0.3s; transform-origin: center; }
+.nav-hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.nav-hamburger.open span:nth-child(2) { opacity: 0; }
+.nav-hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+.nav-drawer { display: none; position: fixed; top: 68px; left: 0; right: 0; background: rgba(255,255,255,0.98); border-bottom: 2px solid var(--red); padding: 24px 32px 32px; z-index: 999; backdrop-filter: blur(12px); }
+.nav-drawer.open { display: block; }
+.nav-drawer ul { list-style: none; display: flex; flex-direction: column; gap: 0; }
+.nav-drawer ul li a { display: block; padding: 14px 0; font-size: 15px; font-weight: 500; color: var(--ink); text-decoration: none; border-bottom: 1px solid var(--border); letter-spacing: 0.04em; }
+.nav-drawer ul li:last-child a { margin-top: 20px; text-align: center; background: var(--red); color: var(--white) !important; padding: 14px 22px; border-radius: 3px; font-weight: 700 !important; border-bottom: none; }
+@media (max-width: 1024px) {
+  #mainNav { padding: 0 32px; }
+  .nav-links { display: none; }
+  .nav-hamburger { display: flex; }
+}
+@media (max-width: 480px) {
+  #mainNav { padding: 0 20px; height: 60px; }
+  .nav-drawer { top: 60px; }
+  .nav-logo img { height: 30px; }
+}
+
+/* ── ARTICLE HERO ── */
+.article-hero {
+  padding: 120px 60px 60px;
+  background: var(--cream);
+  border-bottom: 1px solid var(--border);
+}
+.article-hero-inner { max-width: 800px; margin: 0 auto; }
+.article-breadcrumb {
+  display: flex; align-items: center; gap: 8px;
+  font-family: 'DM Mono', monospace;
+  font-size: 11px; color: var(--light);
+  letter-spacing: 0.1em; text-transform: uppercase;
+  margin-bottom: 24px;
+}
+.article-breadcrumb a { color: var(--light); text-decoration: none; transition: color 0.2s; }
+.article-breadcrumb a:hover { color: var(--red); }
+.article-breadcrumb span { color: var(--border); }
+.article-tag {
+  display: inline-flex; align-items: center; gap: 6px;
+  background: rgba(200,16,46,0.08);
+  border: 1px solid rgba(200,16,46,0.2);
+  padding: 5px 14px; border-radius: 100px;
+  font-size: 11px; color: var(--red);
+  font-weight: 700; letter-spacing: 0.06em;
+  margin-bottom: 20px;
+}
+.article-h1 {
+  font-family: 'Shippori Mincho', serif;
+  font-size: clamp(22px, 3vw, 38px);
+  font-weight: 700; line-height: 1.65;
+  color: var(--ink); margin-bottom: 24px;
+}
+.article-meta {
+  display: flex; align-items: center; gap: 24px;
+  font-family: 'DM Mono', monospace;
+  font-size: 11px; color: var(--light);
+  letter-spacing: 0.08em;
+}
+.article-meta-item { display: flex; align-items: center; gap: 6px; }
+
+/* ── VIDEO SECTION ── */
+.video-section {
+  padding: 60px;
+  background: var(--ink2);
+}
+.video-inner { max-width: 800px; margin: 0 auto; }
+.video-label {
+  font-family: 'DM Mono', monospace;
+  font-size: 11px; color: var(--red-light);
+  letter-spacing: 0.18em; text-transform: uppercase;
+  margin-bottom: 16px;
+}
+.video-title {
+  font-family: 'Shippori Mincho', serif;
+  font-size: clamp(18px, 2vw, 24px);
+  font-weight: 700; color: var(--white);
+  margin-bottom: 24px; line-height: 1.6;
+}
+.video-wrap {
+  position: relative;
+  background: #000;
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px solid rgba(255,255,255,0.1);
+  aspect-ratio: 16/9;
+  display: flex; align-items: center; justify-content: center;
+}
+.video-wrap video {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.video-placeholder {
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  gap: 12px; padding: 60px 24px;
+  color: rgba(255,255,255,0.3);
+  font-size: 13px; text-align: center;
+  width: 100%;
+}
+.video-placeholder-icon { font-size: 48px; opacity: 0.4; }
+.video-caption {
+  margin-top: 14px;
+  font-size: 13px; color: rgba(255,255,255,0.4);
+  line-height: 1.8; text-align: center;
+}
+
+/* ── ARTICLE BODY ── */
+.article-body {
+  padding: 80px 60px;
+  background: var(--white);
+}
+.article-body-inner {
+  max-width: 800px; margin: 0 auto;
+}
+
+/* ── SUMMARY BOX ── */
+.summary-box {
+  background: var(--cream);
+  border: 1px solid var(--border);
+  border-left: 4px solid var(--red);
+  padding: 28px 32px;
+  border-radius: 0 4px 4px 0;
+  margin-bottom: 56px;
+}
+.summary-box-title {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px; font-weight: 700;
+  letter-spacing: 0.18em; text-transform: uppercase;
+  color: var(--red); margin-bottom: 14px;
+}
+.summary-box ul {
+  list-style: none; display: flex; flex-direction: column; gap: 10px;
+}
+.summary-box ul li {
+  display: flex; align-items: flex-start; gap: 10px;
+  font-size: 14px; line-height: 1.8; color: var(--ink2);
+}
+.summary-box ul li::before {
+  content: '✓';
+  color: var(--red); font-weight: 700; font-size: 13px;
+  flex-shrink: 0; margin-top: 2px;
+}
+
+/* ── ARTICLE TYPOGRAPHY ── */
+.article-body-inner h2 {
+  font-family: 'Shippori Mincho', serif;
+  font-size: clamp(18px, 2.2vw, 26px);
+  font-weight: 700; color: var(--ink);
+  line-height: 1.65; margin: 56px 0 24px;
+  padding-bottom: 12px;
+  border-bottom: 2px solid var(--border);
+  position: relative;
+}
+.article-body-inner h2::after {
+  content: '';
+  position: absolute; bottom: -2px; left: 0;
+  width: 60px; height: 2px; background: var(--red);
+}
+.article-body-inner h3 {
+  font-family: 'Shippori Mincho', serif;
+  font-size: clamp(16px, 1.8vw, 20px);
+  font-weight: 700; color: var(--ink);
+  line-height: 1.7; margin: 36px 0 16px;
+  padding-left: 16px;
+  border-left: 3px solid var(--red);
+}
+.article-body-inner p {
+  font-size: 15px; line-height: 2.1;
+  color: var(--mid); margin-bottom: 24px;
+}
+.article-body-inner strong { color: var(--ink); font-weight: 700; }
+.article-body-inner ul, .article-body-inner ol {
+  padding-left: 0; margin-bottom: 24px;
+  display: flex; flex-direction: column; gap: 10px;
+  list-style: none;
+}
+.article-body-inner ul li, .article-body-inner ol li {
+  font-size: 14px; line-height: 1.9; color: var(--mid);
+  display: flex; align-items: flex-start; gap: 10px;
+}
+.article-body-inner ul li::before {
+  content: '─';
+  color: var(--red); flex-shrink: 0; margin-top: 4px;
+  font-size: 12px;
+}
+.article-body-inner ol { counter-reset: ol-counter; }
+.article-body-inner ol li { counter-increment: ol-counter; }
+.article-body-inner ol li::before {
+  content: counter(ol-counter);
+  background: var(--red); color: var(--white);
+  width: 22px; height: 22px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 11px; font-weight: 700; flex-shrink: 0; margin-top: 2px;
+  font-family: 'DM Mono', monospace;
+}
+
+/* ── SOAP EXAMPLE ── */
+.soap-example {
+  background: var(--ink);
+  border-radius: 8px;
+  padding: 32px;
+  margin: 32px 0;
+}
+.soap-example-label {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px; color: rgba(200,16,46,0.8);
+  letter-spacing: 0.18em; text-transform: uppercase;
+  margin-bottom: 16px;
+}
+.soap-voice {
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 6px; padding: 16px 20px;
+  margin-bottom: 20px;
+}
+.soap-voice-label {
+  font-size: 10px; color: rgba(255,255,255,0.3);
+  font-family: 'DM Mono', monospace;
+  letter-spacing: 0.1em; margin-bottom: 8px;
+}
+.soap-voice p {
+  font-size: 13.5px; line-height: 2;
+  color: rgba(255,255,255,0.7); margin: 0 !important;
+}
+.soap-arrow {
+  text-align: center; color: var(--red-light);
+  font-size: 22px; margin: 12px 0;
+}
+.soap-result { display: flex; flex-direction: column; gap: 10px; }
+.soap-item {
+  display: flex; align-items: flex-start; gap: 12px;
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.06);
+  border-radius: 6px; padding: 14px 18px;
+}
+.soap-badge {
+  background: var(--red); color: var(--white);
+  font-family: 'DM Mono', monospace;
+  font-size: 11px; font-weight: 700;
+  width: 28px; height: 28px; border-radius: 4px;
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0; margin-top: 1px;
+}
+.soap-text {
+  font-size: 13.5px; line-height: 1.9;
+  color: rgba(255,255,255,0.75); margin: 0 !important;
+}
+
+/* ── COMPARISON TABLE ── */
+.compare-table {
+  width: 100%; border-collapse: collapse;
+  margin: 28px 0 32px; font-size: 13.5px;
+}
+.compare-table th {
+  background: var(--ink); color: var(--white);
+  padding: 14px 20px; text-align: center;
+  font-size: 12px; font-weight: 700; letter-spacing: 0.06em;
+}
+.compare-table th:first-child { text-align: left; background: var(--ink2); }
+.compare-table th.highlight { background: var(--red); }
+.compare-table td {
+  padding: 14px 20px; border-bottom: 1px solid var(--border);
+  vertical-align: middle; line-height: 1.7; color: var(--mid);
+  text-align: center;
+}
+.compare-table td:first-child { text-align: left; font-weight: 600; color: var(--ink); }
+.compare-table td.highlight {
+  background: rgba(200,16,46,0.04);
+  color: var(--ink); font-weight: 600;
+}
+.check { color: var(--red); font-weight: 700; font-size: 16px; }
+.cross { color: var(--light); font-size: 16px; }
+
+/* ── EFFECT CARDS ── */
+.effect-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  gap: 2px; margin: 28px 0;
+}
+.effect-card {
+  background: var(--cream);
+  border: 1px solid var(--border);
+  border-top: 3px solid var(--red);
+  padding: 28px 24px;
+}
+.effect-num {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px; color: var(--red);
+  letter-spacing: 0.14em; margin-bottom: 10px;
+}
+.effect-title {
+  font-family: 'Shippori Mincho', serif;
+  font-size: 16px; font-weight: 700;
+  color: var(--ink); line-height: 1.6; margin-bottom: 12px;
+}
+.effect-body { font-size: 13px; line-height: 1.9; color: var(--mid); }
+
+/* ── FAQ ── */
+.faq-section { margin: 56px 0; }
+.faq-item {
+  border: 1px solid var(--border);
+  border-radius: 4px; margin-bottom: 12px;
+  overflow: hidden;
+}
+.faq-q {
+  display: flex; align-items: flex-start; gap: 14px;
+  padding: 20px 24px; cursor: pointer;
+  background: var(--cream);
+  transition: background 0.2s;
+}
+.faq-q:hover { background: var(--warm); }
+.faq-q-badge {
+  background: var(--red); color: var(--white);
+  font-family: 'DM Mono', monospace;
+  font-size: 12px; font-weight: 700;
+  width: 26px; height: 26px; border-radius: 4px;
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0; margin-top: 1px;
+}
+.faq-q-text { font-size: 15px; font-weight: 600; color: var(--ink); line-height: 1.6; flex: 1; }
+.faq-q-arrow { color: var(--light); font-size: 14px; flex-shrink: 0; margin-top: 3px; transition: transform 0.2s; }
+.faq-item.open .faq-q-arrow { transform: rotate(180deg); }
+.faq-a {
+  display: none; padding: 20px 24px 20px 64px;
+  background: var(--white); border-top: 1px solid var(--border);
+}
+.faq-item.open .faq-a { display: block; }
+.faq-a p { font-size: 14px; line-height: 2; color: var(--mid); margin: 0; }
+
+/* ── INLINE CTA ── */
+.inline-cta {
+  background: var(--ink);
+  border-radius: 8px;
+  padding: 44px 48px;
+  margin: 56px 0;
+  text-align: center;
+  position: relative; overflow: hidden;
+}
+.inline-cta::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: radial-gradient(ellipse at 30% 50%, rgba(200,16,46,0.2) 0%, transparent 60%);
+}
+.inline-cta-inner { position: relative; z-index: 1; }
+.inline-cta-tag {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase;
+  color: var(--red-light); margin-bottom: 16px;
+}
+.inline-cta h3 {
+  font-family: 'Shippori Mincho', serif;
+  font-size: clamp(18px, 2.4vw, 26px);
+  font-weight: 700; color: var(--white);
+  line-height: 1.65; margin-bottom: 16px;
+}
+.inline-cta p {
+  font-size: 14px; color: rgba(255,255,255,0.6);
+  line-height: 2; margin-bottom: 28px;
+}
+.btn-cta-red {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: var(--red); color: var(--white);
+  padding: 16px 40px; border-radius: 3px;
+  font-size: 15px; font-weight: 700;
+  text-decoration: none; letter-spacing: 0.04em;
+  transition: background 0.2s, transform 0.2s;
+  border: 2px solid var(--red);
+}
+.btn-cta-red:hover { background: var(--red-dark); border-color: var(--red-dark); transform: translateY(-2px); }
+.btn-cta-sub {
+  display: block; margin-top: 14px;
+  font-size: 12px; color: rgba(255,255,255,0.35);
+  letter-spacing: 0.06em;
+  font-family: 'DM Mono', monospace;
+}
+
+/* ── COLUMN BACK LINK ── */
+.back-link-section {
+  padding: 32px 60px;
+  background: var(--cream);
+  border-top: 1px solid var(--border);
+}
+.back-link {
+  max-width: 800px; margin: 0 auto;
+  display: flex; align-items: center; gap: 8px;
+  font-size: 13px; color: var(--mid);
+  text-decoration: none; transition: color 0.2s;
+}
+.back-link:hover { color: var(--red); }
+
+/* ── FOOTER ── */
+footer {
+  background: var(--ink2);
+  border-top: 1px solid rgba(255,255,255,0.06);
+  padding: 44px 60px;
+  display: flex; align-items: center;
+  justify-content: space-between;
+}
+.footer-logo { display: flex; align-items: center; gap: 10px; }
+.footer-logo-mark { width: 22px; height: 22px; background: var(--red); clip-path: polygon(50% 0%, 0% 100%, 18% 100%, 50% 38%, 82% 100%, 100% 100%); }
+.footer-logo-text { font-family: 'DM Mono', monospace; font-size: 14px; font-weight: 500; color: rgba(255,255,255,0.6); }
+.footer-logo-text span { color: var(--red); }
+.footer-copy { font-size: 11px; color: rgba(255,255,255,0.25); font-family: 'DM Mono', monospace; letter-spacing: 0.06em; }
+
+/* ── REVEAL ── */
+.reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.6s ease, transform 0.6s ease; }
+.reveal.visible { opacity: 1; transform: translateY(0); }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 1024px) {
+  .article-hero, .video-section, .article-body, .back-link-section { padding-left: 32px; padding-right: 32px; }
+}
+@media (max-width: 768px) {
+  .article-hero, .video-section, .article-body, .back-link-section { padding-left: 20px; padding-right: 20px; }
+  .article-hero { padding-top: 96px; }
+  .effect-grid { grid-template-columns: 1fr; }
+  .inline-cta { padding: 32px 24px; }
+  .faq-a { padding-left: 24px; }
+  .compare-table { font-size: 12px; }
+  .compare-table th, .compare-table td { padding: 10px 12px; }
+  footer { flex-direction: column; gap: 16px; text-align: center; padding: 32px 24px; }
+}
+</style>
+</head>
+<body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-P6VNBWH3" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
+<!-- NAV -->
+<nav id="mainNav">
+  <a href="/" class="nav-logo">
+    <img src="/images/logo.png" alt="AIdealize">
+    <span class="nav-logo-text"><span>AI</span>dealize</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="/column/">コラム</a></li>
+    <li><a href="/service/">サービス</a></li>
+    <li><a href="/company.html">会社概要</a></li>
+    <li><a href="/lp/hanamaru-kango/" class="nav-cta">無料トライアル</a></li>
+  </ul>
+  <button class="nav-hamburger" id="navHamburger" aria-label="メニュー">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+<div class="nav-drawer" id="navDrawer">
+  <ul>
+    <li><a href="/column/" class="drawer-link">コラム</a></li>
+    <li><a href="/service/" class="drawer-link">サービス</a></li>
+    <li><a href="/company.html" class="drawer-link">会社概要</a></li>
+    <li><a href="/lp/hanamaru-kango/">無料トライアルを試す</a></li>
+  </ul>
+</div>
+
+<!-- ARTICLE HERO -->
+<section class="article-hero">
+  <div class="article-hero-inner">
+    <nav class="article-breadcrumb" aria-label="パンくずリスト">
+      <a href="/">ホーム</a>
+      <span>/</span>
+      <a href="/column/">コラム</a>
+      <span>/</span>
+      <span>訪問看護 SOAP記録 AI</span>
+    </nav>
+    <div class="article-tag">介護DX / 記録業務効率化</div>
+    <h1 class="article-h1">
+      訪問看護の「SOAP記録」、<br>
+      LINEで話すだけでAIが自動作成する時代へ。
+    </h1>
+    <div class="article-meta">
+      <div class="article-meta-item">
+        <span>📅</span>
+        <span>2026.06.03</span>
+      </div>
+      <div class="article-meta-item">
+        <span>⏱</span>
+        <span>読了 約8分</span>
+      </div>
+      <div class="article-meta-item">
+        <span>✍</span>
+        <span>AIdealize編集部</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- VIDEO -->
+<section class="video-section">
+  <div class="video-inner">
+    <div class="video-label">Demo Video — columnv1</div>
+    <p class="video-title">実際の操作を見てください。<br>LINEに話しかけて、30秒でSOAP記録が完成します。</p>
+    <div class="video-wrap">
+      <!-- 動画ファイルを /column/hanamaru-kango-ai/columnv1.mp4 として配置してください -->
+      <video id="columnv1" controls preload="metadata" poster="">
+        <source src="columnv1.mp4" type="video/mp4">
+        <div class="video-placeholder">
+          <div class="video-placeholder-icon">▶</div>
+          <p>動画を準備中です</p>
+        </div>
+      </video>
+    </div>
+    <p class="video-caption">▲ iPhoneのLINEアプリから音声入力 → AIがSOAP形式に自動変換する実際の画面</p>
+  </div>
+</section>
+
+<!-- ARTICLE BODY -->
+<article class="article-body">
+<div class="article-body-inner">
+
+  <!-- まとめBOX -->
+  <div class="summary-box reveal">
+    <div class="summary-box-title">この記事でわかること</div>
+    <ul>
+      <li>訪問看護・居宅介護の記録業務がなぜ現場を疲弊させているのか</li>
+      <li>SOAP形式の記録を「書けない」「時間がかかる」根本的な理由</li>
+      <li>LINEへの音声入力だけでSOAP記録が完成する具体的な仕組み</li>
+      <li>ChatGPTなど汎用AIとの決定的な違い（3つの比較ポイント）</li>
+      <li>導入した事業所が実感した残業削減・離職防止の効果</li>
+    </ul>
+  </div>
+
+  <h2>訪問看護・居宅介護を悩ませる「記録業務」という重圧</h2>
+
+  <p>医療・介護業界が深刻な人手不足に直面している今、現場スタッフの体力と精神を削り続けている課題が一つあります。それが<strong>「記録業務」</strong>です。</p>
+
+  <p>利用者の自宅を何件も訪問し、ケアに全力を注いだ後、疲れ切った体で事務所のPCに向かい、1件あたり15〜20分かけて記録を入力する。この光景は、訪問看護・訪問介護の現場で今日も繰り返されています。</p>
+
+  <p>「記録が終わらないための残業」「持ち帰り仕事」が常態化し、それが離職の引き金になっているケースは枚挙にいとまがありません。採用コストが膨れ上がり、残った職員への負担がさらに増す。この悪循環を断ち切れずにいる経営者・管理者は、今まさに限界を感じているはずです。</p>
+
+  <h2>なぜ「SOAP形式」の壁はこれほど高いのか</h2>
+
+  <p>記録業務の中でも特に負担が大きいのが、<strong>SOAP形式での記録</strong>です。SOAPとは、質の高いケア記録に求められる4要素の頭文字を指します。</p>
+
+  <div class="soap-example">
+    <div class="soap-example-label">SOAP の構成</div>
+    <div class="soap-result">
+      <div class="soap-item">
+        <div class="soap-badge">S</div>
+        <p class="soap-text"><strong style="color:#fff">Subjective（主観）</strong>：利用者・家族の言葉や訴え<br>例）「昨日はあまり眠れなかった」</p>
+      </div>
+      <div class="soap-item">
+        <div class="soap-badge">O</div>
+        <p class="soap-text"><strong style="color:#fff">Objective（客観）</strong>：バイタル・食事量など観察した事実<br>例）BP 135/82、昼食5割摂取</p>
+      </div>
+      <div class="soap-item">
+        <div class="soap-badge">A</div>
+        <p class="soap-text"><strong style="color:#fff">Assessment（評価）</strong>：SとOを踏まえた専門職としての見立て<br>例）不眠の影響で活気低下・食欲不振の可能性</p>
+      </div>
+      <div class="soap-item">
+        <div class="soap-badge">P</div>
+        <p class="soap-text"><strong style="color:#fff">Plan（計画）</strong>：今後のケアの方針と対応策<br>例）次回も睡眠状況を観察、改善なければケアマネへ報告</p>
+      </div>
+    </div>
+  </div>
+
+  <p>現場からは「SとOの切り分けがわからない」「Aに何を書けばいいかわからない」「文章を書くこと自体が苦手」という声が後を絶ちません。<strong>優秀なケアスタッフであることと、文章が書けることは全くの別能力</strong>です。PCの前でフリーズしたまま30分が過ぎていく。そんな現実が日常になっています。</p>
+
+  <h2>LINEに話すだけ。「はなまる看護AI」がもたらす変化</h2>
+
+  <p>こうした現場の課題を、最新の生成AI技術で解決するのが<strong>「はなまる看護AI」</strong>です。操作はひとつだけ──訪問ケア終了後、移動中の車内でLINEのトーク画面に向かって、その日あったことを普段通りの言葉で話しかけるだけです。</p>
+
+  <div class="soap-example">
+    <div class="soap-example-label">実際の変換イメージ</div>
+    <div class="soap-voice">
+      <div class="soap-voice-label">▼ スタッフが話した音声（そのままの言葉でOK）</div>
+      <p>「今日、佐藤さんの訪問でした。部屋に入るといつもより元気がなくて表情も暗かったです。昨日あまり眠れなかったとおっしゃっていました。バイタルは血圧が135の82、体温36.4度で普段通り。水分はコップ2杯飲んでもらいました。昼食は半分くらい残されていました。明日も様子を見て、睡眠の状況はケアマネにも報告したほうがよいかもしれません」</p>
+    </div>
+    <div class="soap-arrow">↓ AIが数分で変換</div>
+    <div class="soap-result">
+      <div class="soap-item"><div class="soap-badge">S</div><p class="soap-text">利用者より「昨日はあまり眠れなかった」との訴えあり。</p></div>
+      <div class="soap-item"><div class="soap-badge">O</div><p class="soap-text">活気不良、表情に暗さが見られる。BP 135/82 mmHg、KT 36.4℃。昼食5割摂取、水分コップ2杯促し実施。</p></div>
+      <div class="soap-item"><div class="soap-badge">A</div><p class="soap-text">バイタルに異常はないが、不眠の影響からか活気が低下しており食欲不振に繋がっている可能性あり。一時的なものか継続的な変化かを要観察。</p></div>
+      <div class="soap-item"><div class="soap-badge">P</div><p class="soap-text">次回訪問時も活気・睡眠状況・食事摂取量を継続観察。改善がみられない場合は担当ケアマネジャーへ詳細を報告し、プランの見直しを検討する。</p></div>
+    </div>
+  </div>
+
+  <p>あとはこの文章をコピーして、自社の介護記録システムに貼り付けるだけ。<strong>特別なITスキルは一切不要。記録作業が「話す1分」だけに変わります。</strong></p>
+
+  <!-- 中間CTA -->
+  <div class="inline-cta reveal">
+    <div class="inline-cta-inner">
+      <div class="inline-cta-tag">Free Trial — 今すぐ試せます</div>
+      <h3>まず1件、試してみてください。<br>変わる実感は、使ってみれば一瞬でわかります。</h3>
+      <p>クレジットカード不要・導入費用ゼロ・LINE登録のみで即日スタート可能です。</p>
+      <a href="/lp/hanamaru-kango/" class="btn-cta-red">
+        無料でトライアルを始める →
+      </a>
+      <span class="btn-cta-sub">月額 ¥14,800〜 / 初期費用半額キャンペーン中</span>
+    </div>
+  </div>
+
+  <h2>ChatGPTなど汎用AIとの3つの決定的な違い</h2>
+
+  <p>「ChatGPTに指示を出せば同じことができるのでは？」という疑問はもっともです。実際、汎用AIで試してみた事業所も多いはずです。しかし現場で実用化しようとすると、必ず3つの壁にぶつかります。</p>
+
+  <table class="compare-table">
+    <thead>
+      <tr>
+        <th>比較項目</th>
+        <th>汎用AI（ChatGPT等）</th>
+        <th class="highlight">はなまる看護AI</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>出力品質の安定性</td>
+        <td>毎回フォーマットが変わる</td>
+        <td class="highlight"><span class="check">✓</span> 常に一定のSOAP形式</td>
+      </tr>
+      <tr>
+        <td>医療・介護用語への対応</td>
+        <td>誤変換・一般語への置換が多発</td>
+        <td class="highlight"><span class="check">✓</span> 専門ドメイン特化でチューニング済み</td>
+      </tr>
+      <tr>
+        <td>スタッフの操作ハードル</td>
+        <td>プロンプト入力の知識が必要</td>
+        <td class="highlight"><span class="check">✓</span> LINEに話すだけ。教育コストほぼゼロ</td>
+      </tr>
+      <tr>
+        <td>情報セキュリティ</td>
+        <td>個人情報の入力リスクあり</td>
+        <td class="highlight"><span class="check">✓</span> 匿名化処理の仕組みを整備</td>
+      </tr>
+      <tr>
+        <td>導入・定着サポート</td>
+        <td><span class="cross">×</span> なし</td>
+        <td class="highlight"><span class="check">✓</span> 専任チームによる伴走支援</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h2>導入した現場が実感した「3つの劇的変化」</h2>
+
+  <div class="effect-grid reveal">
+    <div class="effect-card">
+      <div class="effect-num">EFFECT 01</div>
+      <div class="effect-title">記録時間が最大90%削減、残業ゼロへ</div>
+      <div class="effect-body">1件15〜20分かかっていた記録作成が、LINEへの音声入力（約1分）だけで完了。移動中にすべての記録が終わり、そのまま直帰できるようになります。</div>
+    </div>
+    <div class="effect-card">
+      <div class="effect-num">EFFECT 02</div>
+      <div class="effect-title">記録の質が均一化し、他職種連携がスムーズに</div>
+      <div class="effect-body">文章力に関わらず、誰でも高品質なSOAP記録を作成できます。ケアマネジャーや主治医への報告書作成も劇的に効率化します。</div>
+    </div>
+    <div class="effect-card">
+      <div class="effect-num">EFFECT 03</div>
+      <div class="effect-title">「書類が苦痛」から解放され、離職率が低下</div>
+      <div class="effect-body">「ケアは好きだが書類が辛い」というスタッフの最大のストレス源を除去。仕事満足度が向上し、人材定着への強力な武器になります。</div>
+    </div>
+  </div>
+
+  <h2>よくあるご質問</h2>
+
+  <div class="faq-section">
+    <div class="faq-item">
+      <div class="faq-q">
+        <div class="faq-q-badge">Q</div>
+        <div class="faq-q-text">IT機器が苦手なスタッフでも使えますか？</div>
+        <div class="faq-q-arrow">▾</div>
+      </div>
+      <div class="faq-a"><p>はい。操作はLINEのトーク画面に音声メッセージを送るだけです。スマートフォンで普段LINEを使っている方なら、追加の操作学習は一切不要です。70代のスタッフが即日使い始めた事業所もあります。</p></div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">
+        <div class="faq-q-badge">Q</div>
+        <div class="faq-q-text">既存の介護記録システムと連携できますか？</div>
+        <div class="faq-q-arrow">▾</div>
+      </div>
+      <div class="faq-a"><p>現在はAIが生成したSOAP文章をコピー＆ペーストして既存システムに入力する方式です。カスタマイズによるシステム連携については、お気軽にご相談ください。</p></div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">
+        <div class="faq-q-badge">Q</div>
+        <div class="faq-q-text">利用者の個人情報はどう扱われますか？</div>
+        <div class="faq-q-arrow">▾</div>
+      </div>
+      <div class="faq-a"><p>音声入力の際は利用者の実名ではなく「Aさん」などの仮名、または利用者番号をご利用ください。入力されたデータは外部には提供せず、モデルのトレーニングにも使用しません。</p></div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">
+        <div class="faq-q-badge">Q</div>
+        <div class="faq-q-text">訪問看護以外（訪問介護・居宅介護支援）でも使えますか？</div>
+        <div class="faq-q-arrow">▾</div>
+      </div>
+      <div class="faq-a"><p>はい。訪問看護・訪問介護・居宅介護支援・障害者支援など、記録が必要なすべての在宅ケア現場でご利用いただけます。業種に応じた記録フォーマットのカスタマイズも対応しています。</p></div>
+    </div>
+  </div>
+
+  <h2>まとめ：AIに事務を任せ、「心を通わせるケア」に集中する時代へ</h2>
+
+  <p>介護・看護の本質である「人と人との触れ合い」は、どれほどAIが進化しても代替できません。「はなまる看護AI」が目指すのは、現場スタッフを過酷な事務作業から解放し、<strong>本来集中すべき「利用者と向き合う時間」を取り戻すこと</strong>です。</p>
+
+  <p>「記録業務に時間がかかっている」「スタッフにSOAP記録を定着させたい」「書類作業が原因で離職者が出ている」とお悩みの経営者・管理者の方は、まず無料トライアルで実際の変化を体感してみてください。</p>
+
+  <!-- 最終CTA -->
+  <div class="inline-cta reveal">
+    <div class="inline-cta-inner">
+      <div class="inline-cta-tag">無料トライアル実施中</div>
+      <h3>今日から記録業務が変わります。<br>まずLINEで1件、試してみてください。</h3>
+      <p>クレジットカード不要 ・ 初期設定サポートあり ・ 最短即日スタート</p>
+      <a href="/lp/hanamaru-kango/" class="btn-cta-red">
+        はなまる看護AI — 無料で試す →
+      </a>
+      <span class="btn-cta-sub">月額 ¥14,800〜 / 初期費用半額キャンペーン中 / いつでも解約可</span>
+    </div>
+  </div>
+
+</div>
+</article>
+
+<!-- BACK LINK -->
+<div class="back-link-section">
+  <a href="/column/" class="back-link">← コラム一覧に戻る</a>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">
+    <div class="footer-logo-mark"></div>
+    <span class="footer-logo-text"><span>A</span>idealize株式会社</span>
+  </div>
+  <span class="footer-copy">© 2020 AIdealize Inc. All rights reserved.</span>
+</footer>
+
+<script>
+// ── NAV ──
+(function(){
+  const btn = document.getElementById('navHamburger');
+  const drawer = document.getElementById('navDrawer');
+  const nav = document.getElementById('mainNav');
+  btn.addEventListener('click', function(){
+    btn.classList.toggle('open');
+    drawer.classList.toggle('open');
+  });
+  drawer.querySelectorAll('.drawer-link').forEach(function(link){
+    link.addEventListener('click', function(){
+      btn.classList.remove('open');
+      drawer.classList.remove('open');
+    });
+  });
+  window.addEventListener('scroll', function(){
+    nav.classList.toggle('scrolled', window.scrollY > 10);
+  });
+})();
+
+// ── REVEAL ──
+const revealObs = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+}, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+document.querySelectorAll('.reveal').forEach(el => revealObs.observe(el));
+
+// ── FAQ ──
+document.querySelectorAll('.faq-q').forEach(function(q){
+  q.addEventListener('click', function(){
+    q.closest('.faq-item').classList.toggle('open');
+  });
+});
+
+// ── VIDEO FALLBACK ──
+(function(){
+  const video = document.getElementById('columnv1');
+  if (!video) return;
+  video.addEventListener('error', function(){
+    const wrap = video.closest('.video-wrap');
+    if (wrap) {
+      wrap.innerHTML = '<div class="video-placeholder"><div class="video-placeholder-icon">▶</div><p>動画を準備中です</p></div>';
+    }
+  });
+})();
+</script>
+</body>
+</html>

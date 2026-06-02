@@ -693,6 +693,57 @@ footer {
 /* ── NUMBER COUNTER ── */
 .count-num { display: inline; }
 
+/* ── COLUMN SECTION ── */
+.column-section {
+  padding: 100px 60px;
+  background: var(--white);
+}
+.column-grid {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 24px; margin-top: 60px;
+}
+.column-card {
+  border: 1px solid var(--border);
+  border-top: 3px solid var(--red);
+  padding: 36px 32px;
+  text-decoration: none; color: inherit;
+  display: flex; flex-direction: column; gap: 14px;
+  opacity: 0; transform: translateY(20px);
+  transition: opacity 0.6s ease, transform 0.6s ease, box-shadow 0.2s;
+}
+.column-card.visible { opacity: 1; transform: translateY(0); }
+.column-card:hover { box-shadow: 0 8px 32px rgba(0,0,0,0.08); transform: translateY(-2px); }
+.column-card-tag {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px; color: var(--red);
+  letter-spacing: 0.14em; text-transform: uppercase;
+}
+.column-card-title {
+  font-family: 'Shippori Mincho', serif;
+  font-size: 18px; font-weight: 700;
+  color: var(--ink); line-height: 1.65;
+}
+.column-card-body {
+  font-size: 13.5px; line-height: 1.9; color: var(--mid); flex: 1;
+}
+.column-card-footer {
+  display: flex; align-items: center; justify-content: space-between;
+  margin-top: 8px;
+  font-family: 'DM Mono', monospace;
+  font-size: 11px; color: var(--light); letter-spacing: 0.06em;
+}
+.column-more {
+  text-align: center; margin-top: 36px;
+}
+.column-more a {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-size: 13px; font-weight: 600; color: var(--red);
+  text-decoration: none; letter-spacing: 0.04em;
+  padding: 12px 24px; border: 2px solid var(--red); border-radius: 3px;
+  transition: background 0.2s, color 0.2s;
+}
+.column-more a:hover { background: var(--red); color: var(--white); }
+
 /* ── RESPONSIVE ── */
 @media (max-width: 1024px) {
   nav { padding: 0 24px; }
@@ -702,9 +753,9 @@ footer {
   .hero-right { min-height: 360px; }
   .pain-section, .reasons-section, .services-section,
   .results-section, .industries-section, .company-section,
-  .cta-section { padding: 72px 24px; }
+  .column-section, .cta-section { padding: 72px 24px; }
   .pain-grid, .reasons-grid, .services-grid,
-  .results-grid { grid-template-columns: 1fr; }
+  .results-grid, .column-grid { grid-template-columns: 1fr; }
   .industry-list { grid-template-columns: 1fr 1fr; }
   .company-inner { grid-template-columns: 1fr; gap: 40px; }
   footer { flex-direction: column; gap: 16px; text-align: center; padding: 32px 24px; }
@@ -722,7 +773,8 @@ footer {
 
   <!-- PCナビ -->
   <ul class="nav-links">
-        <li><a href="service/">サービス</a></li>
+        <li><a href="column/">コラム</a></li>
+    <li><a href="service/">サービス</a></li>
     <li><a href="company.html">会社概要</a></li>
     <li><a href="/lp/ai-lp1#contact" class="nav-cta">無料相談</a></li>
   </ul>
@@ -736,7 +788,8 @@ footer {
 <!-- ドロワー -->
 <div class="nav-drawer" id="navDrawer">
   <ul>
-        <li><a href="service/" class="drawer-link">サービス</a></li>
+        <li><a href="column/" class="drawer-link">コラム</a></li>
+    <li><a href="service/" class="drawer-link">サービス</a></li>
     <li><a href="company.html" class="drawer-link">会社概要</a></li>
     <li><a href="/lp/ai-lp1#contact">無料相談</a></li>
   </ul>
@@ -1049,6 +1102,34 @@ window.addEventListener("message",function(e){if(e.data&&e.data.type==="roiHeigh
     <a href="https://aidealize.com/bpr/" style="display:inline-block;background:#2563eb;color:#fff;padding:14px 40px;border-radius:8px;font-weight:700;font-size:0.95rem;text-decoration:none;">
       すべての業種の事例を見る →
     </a>
+  </div>
+</section>
+
+<!-- COLUMN -->
+<section class="column-section" id="column">
+  <div class="section-header reveal">
+    <div class="section-tag">コラム</div>
+    <h2 class="section-h2">介護DX・AI活用の<br>最前線を読む。</h2>
+  </div>
+  <div class="column-grid">
+    <a href="/column/hanamaru-kango-ai/" class="column-card reveal reveal-d1">
+      <div class="column-card-tag">介護DX / 記録業務効率化</div>
+      <div class="column-card-title">訪問看護の「SOAP記録」、LINEで話すだけでAIが自動作成する時代へ。</div>
+      <div class="column-card-body">記録業務が現場を疲弊させる根本原因と、はなまる看護AIが実現する最大90%の時間削減。ChatGPTとの決定的な3つの違いも解説します。</div>
+      <div class="column-card-footer">
+        <span>2026.06.03 · 読了8分</span>
+        <span style="color:var(--red)">続きを読む →</span>
+      </div>
+    </a>
+    <div class="column-card reveal reveal-d2" style="background:var(--cream);border-top-color:var(--border);cursor:default;">
+      <div class="column-card-tag" style="color:var(--light)">Coming Soon</div>
+      <div class="column-card-title" style="color:var(--light)">次回コラムを準備中です</div>
+      <div class="column-card-body">BPR×AI活用の最新事例や、中小企業が今すぐ取り組めるDXの実践ノウハウを随時公開していきます。</div>
+      <div class="column-card-footer"><span>近日公開</span></div>
+    </div>
+  </div>
+  <div class="column-more">
+    <a href="/column/">コラム一覧を見る →</a>
   </div>
 </section>
 
