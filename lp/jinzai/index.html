@@ -63,7 +63,7 @@ body{font-family:'Noto Sans JP',sans-serif;color:var(--ink);background:var(--whi
 .hero-arr{font-size:24px;color:rgba(255,255,255,0.25);}
 .hero-h1{font-family:'Shippori Mincho',serif;font-size:clamp(22px,3.5vw,44px);font-weight:700;color:#fff;line-height:1.5;margin-bottom:16px;}
 .hero-h1 .ac{color:#93c5fd;}
-.hero-sub{font-size:15px;color:rgba(255,255,255,0.6);line-height:1.9;margin-bottom:36px;}
+.hero-sub{font-size:16px;color:rgba(255,255,255,0.85);line-height:2;margin-bottom:36px;}
 .hero-ctas{display:flex;gap:12px;flex-wrap:wrap;}
 .btn-primary{display:inline-flex;align-items:center;gap:8px;background:var(--red);color:#fff;padding:15px 32px;border-radius:4px;font-size:14px;font-weight:700;text-decoration:none;transition:background 0.2s,transform 0.2s;}
 .btn-primary:hover{background:var(--red-dark);transform:translateY(-2px);}
@@ -73,15 +73,16 @@ body{font-family:'Noto Sans JP',sans-serif;color:var(--ink);background:var(--whi
 
 /* ヒーロー右側ビジュアル */
 .hero-right{position:relative;z-index:1;display:flex;flex-direction:column;align-items:center;gap:16px;}
-.hero-img-wrap{position:relative;width:100%;max-width:400px;}
-.hero-img-wrap img{width:100%;border-radius:16px;object-fit:cover;max-height:360px;display:block;filter:brightness(0.9);}
-.hero-stat-float{position:absolute;background:#fff;border-radius:10px;padding:12px 16px;box-shadow:0 8px 28px rgba(0,0,0,0.25);min-width:160px;}
-.hero-stat-float.f1{bottom:-16px;left:-20px;}
-.hero-stat-float.f2{top:-16px;right:-20px;}
+.hero-img-wrap{position:relative;width:100%;max-width:480px;margin:40px 0;}
+.hero-img-wrap img{width:100%;border-radius:16px;object-fit:cover;display:block;filter:brightness(0.95);aspect-ratio:4/3;}
+/* カードを上下に逃がして画像を50%覆う */
+.hero-stat-float{position:absolute;background:#fff;border-radius:10px;padding:14px 20px;box-shadow:0 8px 28px rgba(0,0,0,0.3);min-width:170px;}
+.hero-stat-float.f1{bottom:-44px;left:-16px;}
+.hero-stat-float.f2{top:-44px;right:-16px;}
 .float-label{font-size:10px;color:var(--light);letter-spacing:0.06em;margin-bottom:4px;}
-.float-num{font-family:'DM Mono',monospace;font-size:22px;font-weight:700;color:var(--green);}
-.float-desc{font-size:10px;color:var(--body);}
-.hero-img-caption{font-size:11px;color:rgba(255,255,255,0.35);text-align:center;margin-top:24px;}
+.float-num{font-family:'DM Mono',monospace;font-size:26px;font-weight:700;color:var(--green);}
+.float-desc{font-size:11px;color:var(--body);}
+.hero-img-caption{font-size:11px;color:rgba(255,255,255,0.45);text-align:center;margin-top:52px;}
 
 /* ── TICKER ── */
 .ticker{background:var(--red);padding:10px 0;overflow:hidden;white-space:nowrap;}
@@ -110,7 +111,7 @@ body{font-family:'Noto Sans JP',sans-serif;color:var(--ink);background:var(--whi
 .cost-card-label{font-size:11px;color:rgba(255,255,255,0.4);letter-spacing:0.1em;font-family:'DM Mono',monospace;margin-bottom:12px;}
 .cost-card-num{font-family:'DM Mono',monospace;font-size:40px;font-weight:500;color:var(--red-light);line-height:1;margin-bottom:8px;}
 .cost-card-unit{font-size:12px;color:rgba(255,255,255,0.4);}
-.cost-card-desc{font-size:13px;color:rgba(255,255,255,0.6);line-height:1.8;margin-top:12px;}
+.cost-card-desc{font-size:13px;color:rgba(255,255,255,0.82);line-height:1.8;margin-top:12px;}
 .cost-total{background:rgba(200,16,46,0.12);border:1px solid rgba(200,16,46,0.3);padding:24px 32px;margin-top:2px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px;}
 .cost-total-text{font-size:15px;color:rgba(255,255,255,0.75);line-height:1.7;}
 .cost-total-text strong{color:#fff;}
@@ -167,13 +168,13 @@ body{font-family:'Noto Sans JP',sans-serif;color:var(--ink);background:var(--whi
 .double-inner .s-label{color:rgba(147,197,253,0.8);}
 .double-inner .s-label::before{background:rgba(147,197,253,0.8);}
 .double-inner .s-h2{color:#fff;}
-.double-inner .s-sub{color:rgba(255,255,255,0.6);}
+.double-inner .s-sub{color:rgba(255,255,255,0.85);font-size:15px;}
 .double-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:48px;}
 .double-card{background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);border-radius:12px;padding:32px;}
 .double-card-who{font-size:12px;color:rgba(255,255,255,0.45);letter-spacing:0.08em;font-family:'DM Mono',monospace;margin-bottom:12px;}
 .double-card-title{font-family:'Shippori Mincho',serif;font-size:18px;font-weight:700;color:#fff;line-height:1.55;margin-bottom:16px;}
 .double-card-list{display:flex;flex-direction:column;gap:8px;}
-.double-card-item{display:flex;align-items:flex-start;gap:8px;font-size:13px;color:rgba(255,255,255,0.7);line-height:1.7;}
+.double-card-item{display:flex;align-items:flex-start;gap:8px;font-size:14px;color:rgba(255,255,255,0.88);line-height:1.8;}
 .double-card-item::before{content:'→';color:#93c5fd;flex-shrink:0;}
 .double-result{grid-column:1/-1;background:rgba(5,150,105,0.15);border:1px solid rgba(5,150,105,0.4);border-radius:12px;padding:28px 32px;text-align:center;}
 .double-result-text{font-family:'Shippori Mincho',serif;font-size:clamp(16px,2.2vw,22px);font-weight:700;color:#fff;line-height:1.6;margin-bottom:8px;}
@@ -536,7 +537,7 @@ footer{background:#1a1a2e;padding:36px 24px;display:flex;align-items:center;just
           </div>
         </div>
         <div class="sol-visual" style="background:#f0fdf4;">
-          <img src="/images/solution.png" alt="AIオンボーディング" class="sol-visual-img" style="max-width:240px;">
+          <img src="/images/jinzai-sol.jpg" alt="AIオンボーディング" class="sol-visual-img" style="max-width:260px;border-radius:12px;object-fit:cover;aspect-ratio:3/4;">
           <div style="font-size:12px;color:var(--body);text-align:center;line-height:1.7;margin-top:8px;">AIが新人の学習進捗を管理し<br>最適なタイミングで次のステップを提示</div>
         </div>
       </div>
