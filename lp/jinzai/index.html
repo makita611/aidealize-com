@@ -31,9 +31,23 @@ body{font-family:'Noto Sans JP',sans-serif;color:var(--ink);background:var(--whi
 .nav-logo img{height:32px;width:auto;}
 .nav-logo-text{font-family:'DM Mono',monospace;font-size:15px;font-weight:500;color:var(--ink);}
 .nav-logo-text span{color:var(--red);}
-.nav-cta{background:var(--red);color:#fff;padding:9px 20px;border-radius:4px;font-size:12px;font-weight:700;text-decoration:none;transition:background 0.2s;}
-.nav-cta:hover{background:var(--red-dark);}
-@media(max-width:640px){#mainNav{padding:0 16px;height:58px;}.nav-logo-text{display:none;}}
+.nav-links{display:flex;align-items:center;gap:32px;list-style:none;}
+.nav-links a{font-size:13px;font-weight:500;color:var(--body);text-decoration:none;letter-spacing:0.03em;transition:color 0.2s;}
+.nav-links a:hover{color:var(--ink);}
+.nav-cta{background:var(--red) !important;color:#fff !important;padding:9px 20px;border-radius:4px;font-size:12px !important;font-weight:700 !important;text-decoration:none;transition:background 0.2s;}
+.nav-cta:hover{background:var(--red-dark) !important;}
+.nav-hamburger{display:none;flex-direction:column;justify-content:center;gap:5px;width:40px;height:40px;background:none;border:none;cursor:pointer;}
+.nav-hamburger span{display:block;width:22px;height:2px;background:var(--ink);transition:all 0.3s;transform-origin:center;}
+.nav-hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg);}
+.nav-hamburger.open span:nth-child(2){opacity:0;}
+.nav-hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
+.nav-drawer{display:none;position:fixed;top:64px;left:0;right:0;background:#fff;border-bottom:2px solid var(--red);padding:20px 28px 28px;z-index:999;}
+.nav-drawer.open{display:block;}
+.nav-drawer ul{list-style:none;display:flex;flex-direction:column;}
+.nav-drawer ul li a{display:block;padding:13px 0;font-size:15px;font-weight:500;color:var(--ink);text-decoration:none;border-bottom:1px solid var(--border);}
+.nav-drawer ul li:last-child a{margin-top:16px;text-align:center;background:var(--red);color:#fff !important;padding:13px;border-radius:4px;font-weight:700 !important;border-bottom:none;}
+@media(max-width:1024px){#mainNav{padding:0 28px;}.nav-links{display:none;}.nav-hamburger{display:flex;}}
+@media(max-width:480px){#mainNav{padding:0 16px;height:58px;}.nav-drawer{top:58px;}.nav-logo-text{font-size:13px;}}
 
 /* ── HERO ── */
 .hero{min-height:100vh;background:linear-gradient(145deg,var(--navy) 0%,#1a2d5a 55%,#0f1f3d 100%);display:grid;grid-template-columns:1fr 1fr;align-items:center;padding:100px 60px 80px;gap:48px;position:relative;overflow:hidden;}
@@ -290,8 +304,24 @@ footer{background:#1a1a2e;padding:36px 24px;display:flex;align-items:center;just
     <img src="/images/logo.png" alt="AIdealize">
     <span class="nav-logo-text"><span>AI</span>dealize</span>
   </a>
-  <a href="#contact" class="nav-cta">無料診断を受ける</a>
+  <ul class="nav-links">
+    <li><a href="/column/">コラム</a></li>
+    <li><a href="/service/">サービス</a></li>
+    <li><a href="/company.html">会社概要</a></li>
+    <li><a href="#contact" class="nav-cta">無料診断を受ける</a></li>
+  </ul>
+  <button class="nav-hamburger" id="navHamburger" aria-label="メニュー">
+    <span></span><span></span><span></span>
+  </button>
 </nav>
+<div class="nav-drawer" id="navDrawer">
+  <ul>
+    <li><a href="/column/" class="drawer-link">コラム</a></li>
+    <li><a href="/service/" class="drawer-link">サービス</a></li>
+    <li><a href="/company.html" class="drawer-link">会社概要</a></li>
+    <li><a href="#contact">無料診断を受ける</a></li>
+  </ul>
+</div>
 
 <!-- ═══ HERO ═══ -->
 <section class="hero">
@@ -332,7 +362,7 @@ footer{background:#1a1a2e;padding:36px 24px;display:flex;align-items:center;just
   <!-- 右側ビジュアル -->
   <div class="hero-right">
     <div class="hero-img-wrap">
-      <img src="/images/men02.png" alt="AI人材定着支援" loading="eager">
+      <img src="/images/jinzaitop.jpg" alt="AI人材定着支援" loading="eager">
       <div class="hero-stat-float f1">
         <div class="float-label">EDUCATION COST</div>
         <div class="float-num">50%↓</div>
@@ -703,6 +733,10 @@ footer{background:#1a1a2e;padding:36px 24px;display:flex;align-items:center;just
 // NAV
 (function(){
   const nav=document.getElementById('mainNav');
+  const btn=document.getElementById('navHamburger');
+  const drawer=document.getElementById('navDrawer');
+  btn&&btn.addEventListener('click',function(){btn.classList.toggle('open');drawer.classList.toggle('open');});
+  drawer&&drawer.querySelectorAll('.drawer-link').forEach(function(l){l.addEventListener('click',function(){btn.classList.remove('open');drawer.classList.remove('open');});});
   window.addEventListener('scroll',function(){nav.classList.toggle('scrolled',window.scrollY>10);});
 })();
 
