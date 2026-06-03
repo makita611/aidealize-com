@@ -1,3 +1,7 @@
+# bousai → service/bcp（meta refreshではなく301で）
+/bousai/            /service/bcp/    301
+/bousai             /service/bcp/    301
+
 # jinzai → LP
 /service/jinzai/    /lp/jinzai/    301
 /service/jinzai     /lp/jinzai/    301
