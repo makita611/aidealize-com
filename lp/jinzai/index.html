@@ -4,311 +4,245 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>AI×人材定着支援｜離職率42%→18%の実績｜AIdealize株式会社</title>
-<meta name="description" content="採用してもすぐ辞める、教育コストが重い、評価への不満——AIによる業務効率化×ナレッジ共有×適正評価で人材定着を実現。離職率42%→18%の改善実績。">
+<meta name="description" content="採用してもすぐ辞める、教育コストが重い、評価への不満——AIによるナレッジ共有×公正評価×オンボーディング自動化で人材定着を実現。離職率42%→18%の改善実績。">
 <link rel="canonical" href="https://aidealize.com/lp/jinzai/">
 <meta property="og:title" content="AI×人材定着支援｜離職率42%→18%の実績">
-<meta property="og:description" content="AIによる業務効率化×ナレッジ共有×適正評価で「人が辞めない組織」をつくる。">
+<meta property="og:description" content="AIで「教育コスト削減」「公正評価」「属人化解消」を同時に実現。人が辞めない組織をつくる。">
 <meta property="og:type" content="website">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&family=Shippori+Mincho:wght@400;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
 <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-P6VNBWH3');</script>
 <style>
-:root {
-  --red: #C8102E;
-  --red-dark: #9B0C22;
-  --navy: #0f1f3d;
-  --navy2: #172540;
-  --ink: #1a1a2e;
-  --body: #444;
-  --light: #888;
-  --border: #e8e8e8;
-  --bg: #f7f8fc;
-  --white: #fff;
-  --gold: #d4a017;
-  --green: #0e7c3a;
+:root{
+  --red:#C8102E;--red-dark:#9B0C22;--red-light:#f87171;
+  --navy:#0f1f3d;--navy2:#172540;--blue:#2563eb;--blue-dark:#1d4ed8;
+  --ink:#1a1a2e;--body:#444;--light:#888;
+  --border:#e8e8e8;--bg:#f7f8fc;--bg2:#eef2ff;--white:#fff;
+  --gold:#d4a017;--green:#059669;--green-bg:#ecfdf5;
 }
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
 html{scroll-behavior:smooth;}
-body{font-family:'Noto Sans JP',sans-serif;color:var(--ink);background:var(--white);overflow-x:hidden;}
+body{font-family:'Noto Sans JP',sans-serif;color:var(--ink);background:var(--white);overflow-x:hidden;line-height:1.7;}
 
 /* ── NAV ── */
-#mainNav{
-  position:fixed;top:0;left:0;right:0;z-index:1000;
-  display:flex;align-items:center;justify-content:space-between;
-  padding:0 48px;height:64px;
-  background:rgba(255,255,255,0.97);border-bottom:1px solid var(--border);
-  backdrop-filter:blur(12px);transition:box-shadow 0.3s;
-}
+#mainNav{position:fixed;top:0;left:0;right:0;z-index:1000;display:flex;align-items:center;justify-content:space-between;padding:0 48px;height:64px;background:rgba(255,255,255,0.97);border-bottom:1px solid var(--border);backdrop-filter:blur(12px);transition:box-shadow 0.3s;}
 #mainNav.scrolled{box-shadow:0 2px 16px rgba(0,0,0,0.08);}
 .nav-logo{display:flex;align-items:center;gap:10px;text-decoration:none;}
 .nav-logo img{height:32px;width:auto;}
 .nav-logo-text{font-family:'DM Mono',monospace;font-size:15px;font-weight:500;color:var(--ink);}
 .nav-logo-text span{color:var(--red);}
-.nav-cta-wrap{display:flex;align-items:center;gap:12px;}
-.nav-cta{background:var(--red);color:#fff;padding:9px 20px;border-radius:4px;font-size:12px;font-weight:700;text-decoration:none;white-space:nowrap;transition:background 0.2s;}
+.nav-cta{background:var(--red);color:#fff;padding:9px 20px;border-radius:4px;font-size:12px;font-weight:700;text-decoration:none;transition:background 0.2s;}
 .nav-cta:hover{background:var(--red-dark);}
 @media(max-width:640px){#mainNav{padding:0 16px;height:58px;}.nav-logo-text{display:none;}}
 
 /* ── HERO ── */
-.hero{
-  min-height:100vh;
-  background:linear-gradient(145deg, var(--navy) 0%, #1a2d5a 50%, #0f1f3d 100%);
-  display:flex;align-items:center;justify-content:center;
-  padding:100px 24px 80px;
-  position:relative;overflow:hidden;
-}
-.hero::before{
-  content:'';position:absolute;inset:0;
-  background:radial-gradient(ellipse at 20% 50%, rgba(200,16,46,0.15) 0%, transparent 55%),
-             radial-gradient(ellipse at 80% 20%, rgba(100,150,255,0.08) 0%, transparent 50%);
-}
-.hero-inner{max-width:900px;width:100%;margin:0 auto;position:relative;z-index:1;text-align:center;}
-
-.hero-badge{
-  display:inline-flex;align-items:center;gap:8px;
-  background:rgba(200,16,46,0.2);border:1px solid rgba(200,16,46,0.4);
-  padding:6px 16px;border-radius:100px;
-  font-size:11px;font-weight:700;color:rgba(255,255,255,0.9);
-  letter-spacing:0.08em;margin-bottom:28px;
-}
-
-.hero-result{
-  display:flex;align-items:center;justify-content:center;gap:16px;
-  margin-bottom:32px;flex-wrap:wrap;
-}
-.hero-result-box{
-  background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);
-  border-radius:12px;padding:20px 28px;text-align:center;min-width:160px;
-}
-.hero-result-label{font-size:10px;color:rgba(255,255,255,0.5);letter-spacing:0.1em;margin-bottom:8px;font-family:'DM Mono',monospace;}
-.hero-result-num{font-family:'DM Mono',monospace;font-size:42px;font-weight:500;line-height:1;}
-.hero-result-num.before{color:rgba(255,255,255,0.35);text-decoration:line-through;font-size:32px;}
-.hero-result-num.after{color:#ff6b6b;}
-.hero-result-arrow{font-size:28px;color:rgba(255,255,255,0.3);}
-.hero-result-unit{font-size:13px;color:rgba(255,255,255,0.5);margin-top:4px;}
-
-.hero-h1{
-  font-family:'Shippori Mincho',serif;
-  font-size:clamp(26px,4vw,52px);font-weight:700;
-  color:#fff;line-height:1.5;margin-bottom:20px;
-}
-.hero-h1 .accent{color:#ff8f8f;}
-
-.hero-sub{
-  font-size:clamp(14px,1.8vw,18px);color:rgba(255,255,255,0.65);
-  line-height:1.9;margin-bottom:44px;max-width:640px;margin-left:auto;margin-right:auto;
-}
-
-.hero-ctas{display:flex;align-items:center;justify-content:center;gap:14px;flex-wrap:wrap;}
-.btn-primary{
-  display:inline-flex;align-items:center;gap:8px;
-  background:var(--red);color:#fff;
-  padding:16px 36px;border-radius:4px;
-  font-size:15px;font-weight:700;text-decoration:none;
-  transition:background 0.2s,transform 0.2s;
-}
+.hero{min-height:100vh;background:linear-gradient(145deg,var(--navy) 0%,#1a2d5a 55%,#0f1f3d 100%);display:grid;grid-template-columns:1fr 1fr;align-items:center;padding:100px 60px 80px;gap:48px;position:relative;overflow:hidden;}
+.hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 20% 50%,rgba(200,16,46,0.12) 0%,transparent 55%),radial-gradient(ellipse at 80% 20%,rgba(37,99,235,0.1) 0%,transparent 50%);}
+.hero-left{position:relative;z-index:1;}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(200,16,46,0.2);border:1px solid rgba(200,16,46,0.4);padding:5px 14px;border-radius:100px;font-size:11px;font-weight:700;color:rgba(255,255,255,0.9);letter-spacing:0.08em;margin-bottom:24px;}
+.hero-result-row{display:flex;align-items:center;gap:12px;margin-bottom:28px;flex-wrap:wrap;}
+.hero-num-box{background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.12);border-radius:10px;padding:14px 20px;text-align:center;}
+.hero-num-label{font-size:9px;color:rgba(255,255,255,0.45);letter-spacing:0.1em;font-family:'DM Mono',monospace;margin-bottom:6px;}
+.hero-num{font-family:'DM Mono',monospace;font-size:36px;font-weight:500;line-height:1;}
+.hero-num.b{color:rgba(255,255,255,0.3);text-decoration:line-through;font-size:26px;}
+.hero-num.a{color:var(--red-light);}
+.hero-arr{font-size:24px;color:rgba(255,255,255,0.25);}
+.hero-h1{font-family:'Shippori Mincho',serif;font-size:clamp(22px,3.5vw,44px);font-weight:700;color:#fff;line-height:1.5;margin-bottom:16px;}
+.hero-h1 .ac{color:#93c5fd;}
+.hero-sub{font-size:15px;color:rgba(255,255,255,0.6);line-height:1.9;margin-bottom:36px;}
+.hero-ctas{display:flex;gap:12px;flex-wrap:wrap;}
+.btn-primary{display:inline-flex;align-items:center;gap:8px;background:var(--red);color:#fff;padding:15px 32px;border-radius:4px;font-size:14px;font-weight:700;text-decoration:none;transition:background 0.2s,transform 0.2s;}
 .btn-primary:hover{background:var(--red-dark);transform:translateY(-2px);}
-.btn-secondary{
-  display:inline-flex;align-items:center;gap:8px;
-  background:rgba(255,255,255,0.08);color:rgba(255,255,255,0.85);
-  padding:16px 28px;border-radius:4px;
-  font-size:14px;font-weight:600;text-decoration:none;
-  border:1px solid rgba(255,255,255,0.2);
-  transition:background 0.2s;
-}
-.btn-secondary:hover{background:rgba(255,255,255,0.14);}
-.hero-note{margin-top:18px;font-size:12px;color:rgba(255,255,255,0.3);}
+.btn-ghost{display:inline-flex;align-items:center;gap:6px;background:rgba(255,255,255,0.08);color:rgba(255,255,255,0.75);border:1px solid rgba(255,255,255,0.2);padding:15px 24px;border-radius:4px;font-size:13px;font-weight:600;text-decoration:none;transition:background 0.2s;}
+.btn-ghost:hover{background:rgba(255,255,255,0.15);}
+.hero-note{margin-top:14px;font-size:11px;color:rgba(255,255,255,0.25);}
+
+/* ヒーロー右側ビジュアル */
+.hero-right{position:relative;z-index:1;display:flex;flex-direction:column;align-items:center;gap:16px;}
+.hero-img-wrap{position:relative;width:100%;max-width:400px;}
+.hero-img-wrap img{width:100%;border-radius:16px;object-fit:cover;max-height:360px;display:block;filter:brightness(0.9);}
+.hero-stat-float{position:absolute;background:#fff;border-radius:10px;padding:12px 16px;box-shadow:0 8px 28px rgba(0,0,0,0.25);min-width:160px;}
+.hero-stat-float.f1{bottom:-16px;left:-20px;}
+.hero-stat-float.f2{top:-16px;right:-20px;}
+.float-label{font-size:10px;color:var(--light);letter-spacing:0.06em;margin-bottom:4px;}
+.float-num{font-family:'DM Mono',monospace;font-size:22px;font-weight:700;color:var(--green);}
+.float-desc{font-size:10px;color:var(--body);}
+.hero-img-caption{font-size:11px;color:rgba(255,255,255,0.35);text-align:center;margin-top:24px;}
 
 /* ── TICKER ── */
-.ticker{background:var(--red);padding:11px 0;overflow:hidden;white-space:nowrap;}
+.ticker{background:var(--red);padding:10px 0;overflow:hidden;white-space:nowrap;}
 .ticker-inner{display:inline-flex;animation:ticker 22s linear infinite;}
-.ticker-item{font-family:'DM Mono',monospace;font-size:11px;font-weight:500;letter-spacing:0.14em;padding:0 36px;color:rgba(255,255,255,0.9);}
-.ticker-sep{color:rgba(255,255,255,0.4);padding:0 4px;}
+.ticker-item{font-family:'DM Mono',monospace;font-size:11px;font-weight:500;letter-spacing:0.14em;padding:0 32px;color:rgba(255,255,255,0.9);}
+.ticker-sep{color:rgba(255,255,255,0.4);}
 @keyframes ticker{from{transform:translateX(0);}to{transform:translateX(-50%);}}
 
 /* ── SECTION BASE ── */
 .section{padding:96px 24px;}
-.section-inner{max-width:960px;margin:0 auto;}
-.section-label{font-family:'DM Mono',monospace;font-size:11px;font-weight:500;letter-spacing:0.18em;text-transform:uppercase;color:var(--red);display:flex;align-items:center;gap:10px;margin-bottom:16px;}
-.section-label::before{content:'';width:18px;height:2px;background:var(--red);}
-.section-h2{font-family:'Shippori Mincho',serif;font-size:clamp(22px,3vw,36px);font-weight:700;color:var(--ink);line-height:1.6;margin-bottom:16px;}
-.section-sub{font-size:15px;color:var(--body);line-height:2;max-width:640px;}
+.section-inner{max-width:1000px;margin:0 auto;}
+.s-label{font-family:'DM Mono',monospace;font-size:11px;font-weight:500;letter-spacing:0.18em;text-transform:uppercase;color:var(--red);display:flex;align-items:center;gap:10px;margin-bottom:14px;}
+.s-label::before{content:'';width:18px;height:2px;background:var(--red);}
+.s-h2{font-family:'Shippori Mincho',serif;font-size:clamp(20px,2.8vw,34px);font-weight:700;color:var(--ink);line-height:1.6;margin-bottom:12px;}
+.s-sub{font-size:14px;color:var(--body);line-height:1.9;max-width:640px;}
+
+/* ── COST IMPACT ── */
+.cost-section{background:var(--navy);padding:80px 24px;}
+.cost-inner{max-width:1000px;margin:0 auto;}
+.cost-inner .s-label{color:rgba(200,16,46,0.8);}
+.cost-inner .s-label::before{background:rgba(200,16,46,0.8);}
+.cost-inner .s-h2{color:#fff;}
+.cost-inner .s-sub{color:rgba(255,255,255,0.6);}
+.cost-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;margin-top:48px;}
+.cost-card{background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.07);padding:32px 28px;}
+.cost-card-label{font-size:11px;color:rgba(255,255,255,0.4);letter-spacing:0.1em;font-family:'DM Mono',monospace;margin-bottom:12px;}
+.cost-card-num{font-family:'DM Mono',monospace;font-size:40px;font-weight:500;color:var(--red-light);line-height:1;margin-bottom:8px;}
+.cost-card-unit{font-size:12px;color:rgba(255,255,255,0.4);}
+.cost-card-desc{font-size:13px;color:rgba(255,255,255,0.6);line-height:1.8;margin-top:12px;}
+.cost-total{background:rgba(200,16,46,0.12);border:1px solid rgba(200,16,46,0.3);padding:24px 32px;margin-top:2px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px;}
+.cost-total-text{font-size:15px;color:rgba(255,255,255,0.75);line-height:1.7;}
+.cost-total-text strong{color:#fff;}
+.cost-total-num{font-family:'DM Mono',monospace;font-size:48px;font-weight:500;color:var(--red-light);}
+.cost-total-note{font-size:11px;color:rgba(255,255,255,0.3);margin-top:4px;text-align:right;}
 
 /* ── PAIN ── */
 .pain-section{background:var(--bg);}
-.pain-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-top:52px;}
-.pain-card{
-  background:#fff;border-left:4px solid var(--red);
-  padding:22px 24px;border-radius:0 8px 8px 0;
-  display:flex;align-items:flex-start;gap:14px;
-  opacity:0;transform:translateY(16px);
-  transition:opacity 0.5s ease,transform 0.5s ease;
-}
+.pain-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-top:48px;}
+.pain-card{background:#fff;border-left:4px solid var(--red);padding:20px 22px;border-radius:0 8px 8px 0;display:flex;align-items:flex-start;gap:14px;opacity:0;transform:translateY(16px);transition:opacity 0.5s ease,transform 0.5s ease;}
 .pain-card.visible{opacity:1;transform:translateY(0);}
-.pain-icon{font-size:24px;flex-shrink:0;margin-top:2px;}
-.pain-text{font-size:14px;line-height:1.85;color:var(--body);}
+.pain-icon{font-size:22px;flex-shrink:0;margin-top:2px;}
+.pain-text{font-size:14px;line-height:1.8;color:var(--body);}
 .pain-text strong{color:var(--ink);}
-.pain-result{
-  margin-top:44px;
-  background:var(--ink);color:#fff;
-  padding:32px 40px;border-radius:8px;
-  border-left:4px solid var(--red);
-}
+.pain-result{background:var(--ink);color:#fff;padding:28px 36px;border-radius:8px;border-left:4px solid var(--red);margin-top:36px;}
 .pain-result p{font-size:15px;line-height:2;color:rgba(255,255,255,0.75);}
 .pain-result strong{color:#fff;}
 
-/* ── SOLUTION ── */
-.solution-section{background:#fff;}
-.solution-header{
-  display:grid;grid-template-columns:1fr 1fr;gap:2px;
-  margin-top:56px;
-}
-.solution-tab{
-  padding:20px 28px;text-align:center;cursor:pointer;
-  background:var(--bg);border-bottom:3px solid transparent;
-  transition:all 0.2s;
-}
-.solution-tab.active{background:#fff;border-bottom-color:var(--red);}
-.solution-tab-num{font-family:'DM Mono',monospace;font-size:10px;color:var(--light);letter-spacing:0.12em;margin-bottom:6px;}
-.solution-tab-title{font-size:14px;font-weight:700;color:var(--ink);line-height:1.5;}
-.solution-tab.active .solution-tab-title{color:var(--red);}
+/* ── SOLUTION CARDS (縦並び) ── */
+.sol-section{background:#fff;}
+.sol-list{display:flex;flex-direction:column;gap:0;margin-top:56px;}
 
-.solution-body{margin-top:0;}
-.solution-panel{display:none;padding:52px 0;}
-.solution-panel.active{display:block;}
+.sol-item{display:grid;grid-template-columns:1fr 1fr;gap:0;border:1px solid var(--border);border-radius:16px;overflow:hidden;margin-bottom:32px;opacity:0;transform:translateY(24px);transition:opacity 0.6s ease,transform 0.6s ease;}
+.sol-item.visible{opacity:1;transform:translateY(0);}
+.sol-item.reverse .sol-content{order:2;}
+.sol-item.reverse .sol-visual{order:1;}
 
-.solution-panel-header{margin-bottom:40px;}
-.solution-panel-h3{font-family:'Shippori Mincho',serif;font-size:clamp(18px,2.4vw,26px);font-weight:700;color:var(--ink);line-height:1.6;margin-bottom:12px;}
-.solution-panel-sub{font-size:14px;color:var(--body);line-height:1.9;}
+.sol-content{padding:48px 44px;display:flex;flex-direction:column;justify-content:center;gap:0;}
+.sol-num{font-family:'DM Mono',monospace;font-size:11px;color:var(--red);letter-spacing:0.16em;text-transform:uppercase;margin-bottom:16px;}
+.sol-title{font-family:'Shippori Mincho',serif;font-size:clamp(17px,2vw,24px);font-weight:700;color:var(--ink);line-height:1.55;margin-bottom:16px;}
+.sol-desc{font-size:14px;color:var(--body);line-height:2;margin-bottom:24px;}
 
-.solution-features{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:36px;}
-.feature-card{
-  background:var(--bg);border-radius:8px;padding:24px 20px;
-  border-top:3px solid var(--red);
-  opacity:0;transform:translateY(16px);
-  transition:opacity 0.5s ease,transform 0.5s ease;
-}
-.feature-card.visible{opacity:1;transform:translateY(0);}
-.feature-icon{font-size:28px;margin-bottom:12px;}
-.feature-title{font-size:14px;font-weight:700;color:var(--ink);margin-bottom:8px;line-height:1.5;}
-.feature-body{font-size:12.5px;line-height:1.85;color:var(--body);}
+.sol-features{display:flex;flex-direction:column;gap:10px;margin-bottom:24px;}
+.sol-feature{display:flex;align-items:flex-start;gap:10px;font-size:13px;color:var(--body);line-height:1.7;}
+.sol-feature::before{content:'✓';color:var(--green);font-weight:700;flex-shrink:0;margin-top:1px;font-size:14px;}
 
-.effect-bar{
-  display:flex;align-items:center;gap:16px;
-  background:linear-gradient(90deg,var(--navy),#1a3a7a);
-  border-radius:8px;padding:20px 28px;margin-top:28px;
-  flex-wrap:wrap;
-}
-.effect-bar-label{font-size:11px;color:rgba(255,255,255,0.5);font-family:'DM Mono',monospace;letter-spacing:0.1em;white-space:nowrap;}
-.effect-bar-items{display:flex;gap:24px;flex-wrap:wrap;}
-.effect-bar-item{display:flex;align-items:center;gap:8px;}
-.effect-bar-num{font-family:'DM Mono',monospace;font-size:22px;font-weight:500;color:#ff8f8f;}
-.effect-bar-desc{font-size:12px;color:rgba(255,255,255,0.65);line-height:1.5;}
+.sol-effect{display:flex;gap:16px;flex-wrap:wrap;}
+.sol-effect-item{background:var(--green-bg);border-radius:8px;padding:12px 16px;text-align:center;}
+.sol-effect-num{font-family:'DM Mono',monospace;font-size:22px;font-weight:700;color:var(--green);line-height:1;}
+.sol-effect-desc{font-size:11px;color:#065f46;margin-top:4px;}
+
+.sol-visual{background:var(--bg);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:48px 32px;gap:20px;position:relative;overflow:hidden;}
+.sol-visual::before{content:'';position:absolute;inset:0;opacity:0.03;}
+.sol-visual-img{width:100%;max-width:280px;border-radius:12px;object-fit:cover;}
+.sol-visual-cards{display:flex;flex-direction:column;gap:10px;width:100%;max-width:300px;}
+.mini-card{background:#fff;border-radius:8px;padding:14px 16px;border:1px solid var(--border);display:flex;align-items:center;gap:10px;box-shadow:0 2px 8px rgba(0,0,0,0.05);}
+.mini-card-icon{font-size:20px;flex-shrink:0;}
+.mini-card-text{font-size:12px;line-height:1.5;color:var(--body);}
+.mini-card-text strong{color:var(--ink);display:block;font-size:13px;}
+
+/* ── 2倍おいしいセクション ── */
+.double-section{background:linear-gradient(135deg,#0f1f3d 0%,#1a3a7a 100%);padding:96px 24px;}
+.double-inner{max-width:1000px;margin:0 auto;}
+.double-inner .s-label{color:rgba(147,197,253,0.8);}
+.double-inner .s-label::before{background:rgba(147,197,253,0.8);}
+.double-inner .s-h2{color:#fff;}
+.double-inner .s-sub{color:rgba(255,255,255,0.6);}
+.double-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:48px;}
+.double-card{background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);border-radius:12px;padding:32px;}
+.double-card-who{font-size:12px;color:rgba(255,255,255,0.45);letter-spacing:0.08em;font-family:'DM Mono',monospace;margin-bottom:12px;}
+.double-card-title{font-family:'Shippori Mincho',serif;font-size:18px;font-weight:700;color:#fff;line-height:1.55;margin-bottom:16px;}
+.double-card-list{display:flex;flex-direction:column;gap:8px;}
+.double-card-item{display:flex;align-items:flex-start;gap:8px;font-size:13px;color:rgba(255,255,255,0.7);line-height:1.7;}
+.double-card-item::before{content:'→';color:#93c5fd;flex-shrink:0;}
+.double-result{grid-column:1/-1;background:rgba(5,150,105,0.15);border:1px solid rgba(5,150,105,0.4);border-radius:12px;padding:28px 32px;text-align:center;}
+.double-result-text{font-family:'Shippori Mincho',serif;font-size:clamp(16px,2.2vw,22px);font-weight:700;color:#fff;line-height:1.6;margin-bottom:8px;}
+.double-result-sub{font-size:13px;color:rgba(255,255,255,0.55);line-height:1.8;}
 
 /* ── SIMULATION ── */
 .sim-section{background:var(--bg);}
-.sim-table-wrap{overflow-x:auto;margin-top:52px;}
-.sim-table{width:100%;border-collapse:collapse;font-size:14px;min-width:600px;}
-.sim-table th{padding:14px 20px;text-align:center;font-size:12px;font-weight:700;letter-spacing:0.05em;}
-.sim-table th:first-child{text-align:left;background:var(--ink);color:#fff;width:200px;}
-.sim-table th.before{background:#555;color:#fff;}
-.sim-table th.after{background:var(--red);color:#fff;}
-.sim-table td{padding:16px 20px;border-bottom:1px solid var(--border);vertical-align:top;line-height:1.7;text-align:center;}
+.sim-wrap{overflow-x:auto;margin-top:48px;}
+.sim-table{width:100%;border-collapse:collapse;font-size:14px;min-width:560px;}
+.sim-table th{padding:13px 20px;text-align:center;font-size:11px;font-weight:700;letter-spacing:0.05em;}
+.sim-table th:first-child{text-align:left;background:var(--ink);color:#fff;width:180px;}
+.sim-table th.b{background:#555;color:#fff;}
+.sim-table th.a{background:var(--blue);color:#fff;}
+.sim-table td{padding:14px 20px;border-bottom:1px solid var(--border);vertical-align:top;line-height:1.7;text-align:center;}
 .sim-table td:first-child{text-align:left;font-weight:600;color:var(--ink);background:#fafafa;}
-.sim-table td.before{color:var(--light);}
-.sim-table td.after{color:var(--green);font-weight:700;background:rgba(14,124,58,0.04);}
-.sim-note{margin-top:12px;font-size:12px;color:var(--light);text-align:right;}
+.sim-table td.b{color:var(--light);}
+.sim-table td.a{color:var(--green);font-weight:700;background:rgba(5,150,105,0.04);}
+.sim-note{margin-top:12px;font-size:11px;color:var(--light);text-align:right;}
 
 /* ── STORY ── */
 .story-section{background:#fff;}
-.story-flow{display:flex;flex-direction:column;gap:0;margin-top:52px;position:relative;}
-.story-flow::before{content:'';position:absolute;left:28px;top:0;bottom:0;width:2px;background:var(--border);}
-.story-item{
-  display:flex;gap:24px;align-items:flex-start;padding:24px 0;
-  opacity:0;transform:translateX(-16px);
-  transition:opacity 0.5s ease,transform 0.5s ease;
-}
+.story-flow{display:flex;flex-direction:column;gap:0;margin-top:48px;position:relative;}
+.story-flow::before{content:'';position:absolute;left:27px;top:0;bottom:0;width:2px;background:var(--border);}
+.story-item{display:flex;gap:22px;align-items:flex-start;padding:20px 0;opacity:0;transform:translateX(-14px);transition:opacity 0.5s ease,transform 0.5s ease;}
 .story-item.visible{opacity:1;transform:translateX(0);}
-.story-dot{
-  width:56px;height:56px;border-radius:50%;
-  background:var(--navy);border:3px solid var(--red);
-  display:flex;align-items:center;justify-content:center;
-  flex-shrink:0;font-size:20px;position:relative;z-index:1;
-}
+.story-dot{width:54px;height:54px;border-radius:50%;background:var(--navy);border:3px solid var(--red);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:18px;position:relative;z-index:1;}
 .story-body{padding-top:8px;}
-.story-title{font-family:'Shippori Mincho',serif;font-size:17px;font-weight:700;color:var(--ink);margin-bottom:8px;line-height:1.5;}
-.story-text{font-size:13.5px;line-height:1.9;color:var(--body);}
-.story-arrow{text-align:center;font-size:24px;color:var(--red);margin:4px 0 4px 28px;}
+.story-title{font-family:'Shippori Mincho',serif;font-size:16px;font-weight:700;color:var(--ink);margin-bottom:6px;line-height:1.5;}
+.story-text{font-size:13px;line-height:1.9;color:var(--body);}
+.story-arr{text-align:center;font-size:20px;color:var(--red);padding:2px 0 2px 27px;}
+
+/* ── ROI比較 ── */
+.roi-section{background:var(--bg2);}
+.roi-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:48px;}
+.roi-card{background:#fff;border-radius:12px;padding:32px;border:1px solid var(--border);}
+.roi-card.bad{border-top:4px solid #ef4444;}
+.roi-card.good{border-top:4px solid var(--green);}
+.roi-card-label{font-size:11px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;margin-bottom:14px;font-family:'DM Mono',monospace;}
+.roi-card.bad .roi-card-label{color:#ef4444;}
+.roi-card.good .roi-card-label{color:var(--green);}
+.roi-card-title{font-family:'Shippori Mincho',serif;font-size:17px;font-weight:700;color:var(--ink);line-height:1.5;margin-bottom:14px;}
+.roi-list{display:flex;flex-direction:column;gap:8px;}
+.roi-item{display:flex;align-items:flex-start;gap:8px;font-size:13px;color:var(--body);line-height:1.6;}
+.roi-item.bad::before{content:'×';color:#ef4444;font-weight:700;flex-shrink:0;}
+.roi-item.good::before{content:'○';color:var(--green);font-weight:700;flex-shrink:0;}
+.roi-num{font-family:'DM Mono',monospace;font-size:28px;font-weight:700;margin-top:16px;}
+.roi-num.bad{color:#ef4444;}
+.roi-num.good{color:var(--green);}
+.roi-num-unit{font-size:12px;color:var(--light);font-family:inherit;font-weight:400;}
 
 /* ── CTA ── */
-.cta-section{
-  background:linear-gradient(145deg,var(--navy),#1a2d5a);
-  padding:100px 24px;text-align:center;position:relative;overflow:hidden;
-}
-.cta-section::before{
-  content:'';position:absolute;inset:0;
-  background:radial-gradient(ellipse at 30% 50%,rgba(200,16,46,0.2) 0%,transparent 55%);
-}
-.cta-inner{max-width:720px;margin:0 auto;position:relative;z-index:1;}
-.cta-badge{
-  display:inline-flex;align-items:center;gap:8px;
-  background:rgba(200,16,46,0.2);border:1px solid rgba(200,16,46,0.4);
-  padding:6px 18px;border-radius:100px;
-  font-size:11px;font-weight:700;color:rgba(255,255,255,0.9);
-  letter-spacing:0.08em;margin-bottom:24px;
-}
-.cta-h2{font-family:'Shippori Mincho',serif;font-size:clamp(22px,3vw,36px);font-weight:700;color:#fff;line-height:1.6;margin-bottom:16px;}
-.cta-sub{font-size:14px;color:rgba(255,255,255,0.6);line-height:2;margin-bottom:44px;}
-.cta-cards{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:44px;}
-.cta-card{
-  background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.12);
-  border-radius:10px;padding:24px;text-align:left;
-}
-.cta-card-icon{font-size:28px;margin-bottom:12px;}
+.cta-section{background:linear-gradient(145deg,var(--navy),#1a2d5a);padding:100px 24px;text-align:center;}
+.cta-inner{max-width:720px;margin:0 auto;}
+.cta-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(200,16,46,0.2);border:1px solid rgba(200,16,46,0.4);padding:5px 16px;border-radius:100px;font-size:11px;font-weight:700;color:rgba(255,255,255,0.9);letter-spacing:0.08em;margin-bottom:20px;}
+.cta-h2{font-family:'Shippori Mincho',serif;font-size:clamp(20px,3vw,34px);font-weight:700;color:#fff;line-height:1.6;margin-bottom:14px;}
+.cta-sub{font-size:14px;color:rgba(255,255,255,0.55);line-height:2;margin-bottom:40px;}
+.cta-cards{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:40px;text-align:left;}
+.cta-card{background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);border-radius:10px;padding:22px;}
+.cta-card-icon{font-size:26px;margin-bottom:10px;}
 .cta-card-title{font-size:14px;font-weight:700;color:#fff;margin-bottom:6px;}
-.cta-card-sub{font-size:12px;color:rgba(255,255,255,0.5);line-height:1.7;}
-.cta-note{margin-top:16px;font-size:12px;color:rgba(255,255,255,0.3);}
+.cta-card-sub{font-size:12px;color:rgba(255,255,255,0.45);line-height:1.7;}
+.cta-btn-wrap{display:flex;justify-content:center;}
+.cta-note{margin-top:14px;font-size:11px;color:rgba(255,255,255,0.25);}
 
 /* ── FORM ── */
 .form-section{background:var(--bg);padding:96px 24px;}
 .form-inner{max-width:640px;margin:0 auto;}
-.gas-form{display:flex;flex-direction:column;gap:12px;margin-top:40px;}
-.form-row{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
-.form-input{
-  width:100%;padding:14px 16px;
-  border:1.5px solid var(--border);border-radius:6px;
-  font-size:14px;font-family:inherit;
-  transition:border-color 0.2s;background:#fff;color:var(--ink);
-}
-.form-input:focus{outline:none;border-color:var(--red);}
+.gas-form{display:flex;flex-direction:column;gap:14px;margin-top:40px;}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+.form-label{font-size:12px;font-weight:700;color:var(--body);margin-bottom:5px;display:block;}
+.form-req{color:var(--red);}
+.form-input{width:100%;padding:13px 16px;border:1.5px solid var(--border);border-radius:6px;font-size:14px;font-family:inherit;transition:border-color 0.2s;background:#fff;color:var(--ink);}
+.form-input:focus{outline:none;border-color:var(--blue);}
 .form-input::placeholder{color:#bbb;}
-.form-select{
-  width:100%;padding:14px 16px;
-  border:1.5px solid var(--border);border-radius:6px;
-  font-size:14px;font-family:inherit;background:#fff;color:var(--ink);
-  appearance:none;cursor:pointer;
-}
-.form-label-text{font-size:13px;color:var(--body);font-weight:600;margin-bottom:6px;display:block;}
-.radio-group{display:flex;flex-wrap:wrap;gap:10px;}
-.radio-group label{
-  display:inline-flex;align-items:center;gap:6px;
-  padding:8px 16px;border:1.5px solid var(--border);border-radius:100px;
-  font-size:13px;color:var(--body);cursor:pointer;transition:all 0.15s;background:#fff;
-}
-.radio-group label:hover{border-color:var(--red);color:var(--red);}
-.form-btn{
-  background:var(--red);color:#fff;border:none;
-  padding:16px;border-radius:6px;
-  font-size:15px;font-weight:700;font-family:inherit;cursor:pointer;
-  transition:background 0.2s,transform 0.2s;margin-top:8px;
-}
+.form-select{width:100%;padding:13px 16px;border:1.5px solid var(--border);border-radius:6px;font-size:14px;font-family:inherit;background:#fff;color:var(--ink);cursor:pointer;}
+.radio-label-text{font-size:12px;font-weight:700;color:var(--body);margin-bottom:8px;display:block;}
+.radio-group{display:flex;flex-wrap:wrap;gap:8px;}
+.radio-group label{display:inline-flex;align-items:center;gap:6px;padding:7px 14px;border:1.5px solid var(--border);border-radius:100px;font-size:12px;color:var(--body);cursor:pointer;transition:all 0.15s;background:#fff;}
+.radio-group label:hover{border-color:var(--blue);color:var(--blue);}
+.form-btn{background:var(--red);color:#fff;border:none;padding:16px;border-radius:6px;font-size:15px;font-weight:700;font-family:inherit;cursor:pointer;transition:background 0.2s,transform 0.2s;margin-top:4px;}
 .form-btn:hover{background:var(--red-dark);transform:translateY(-2px);}
 .form-btn:disabled{opacity:0.6;cursor:not-allowed;transform:none;}
-.form-thanks{
-  background:#fff;border:1.5px solid var(--border);border-radius:10px;
-  padding:32px;text-align:center;font-size:15px;color:var(--body);
-  line-height:2;display:none;
-}
+.form-thanks{background:#fff;border:1.5px solid var(--border);border-radius:10px;padding:32px;text-align:center;font-size:15px;color:var(--body);line-height:2;display:none;}
 
 /* ── FOOTER ── */
 footer{background:#1a1a2e;padding:36px 24px;display:flex;align-items:center;justify-content:space-between;border-top:1px solid rgba(255,255,255,0.06);}
@@ -324,14 +258,25 @@ footer{background:#1a1a2e;padding:36px 24px;display:flex;align-items:center;just
 .d1{transition-delay:0.1s;}.d2{transition-delay:0.2s;}.d3{transition-delay:0.3s;}
 
 /* ── RESPONSIVE ── */
-@media(max-width:768px){
-  .section{padding:64px 16px;}
-  .pain-grid{grid-template-columns:1fr;}
-  .solution-header{grid-template-columns:1fr;}
-  .solution-features{grid-template-columns:1fr;}
-  .sim-table{font-size:12px;}
+@media(max-width:1024px){
+  .hero{grid-template-columns:1fr;padding:100px 24px 60px;text-align:center;}
+  .hero-ctas{justify-content:center;}
+  .hero-result-row{justify-content:center;}
+  .hero-right{display:none;}
+  .sol-item{grid-template-columns:1fr;}
+  .sol-item.reverse .sol-content,.sol-item.reverse .sol-visual{order:unset;}
+  .sol-visual{display:none;}
+  .double-grid{grid-template-columns:1fr;}
+  .cost-grid{grid-template-columns:1fr;}
+  .roi-grid{grid-template-columns:1fr;}
   .cta-cards{grid-template-columns:1fr;}
+}
+@media(max-width:640px){
+  .section{padding:64px 16px;}
+  .cost-section,.double-section,.cta-section,.form-section{padding:64px 16px;}
+  .pain-grid{grid-template-columns:1fr;}
   .form-row{grid-template-columns:1fr;}
+  .sol-content{padding:32px 24px;}
   footer{flex-direction:column;gap:12px;text-align:center;}
 }
 </style>
@@ -345,195 +290,224 @@ footer{background:#1a1a2e;padding:36px 24px;display:flex;align-items:center;just
     <img src="/images/logo.png" alt="AIdealize">
     <span class="nav-logo-text"><span>AI</span>dealize</span>
   </a>
-  <div class="nav-cta-wrap">
-    <a href="#contact" class="nav-cta">無料診断を受ける</a>
-  </div>
+  <a href="#contact" class="nav-cta">無料診断を受ける</a>
 </nav>
 
-<!-- HERO -->
+<!-- ═══ HERO ═══ -->
 <section class="hero">
-  <div class="hero-inner">
+  <div class="hero-left">
     <div class="hero-badge">🏆 AI × 人材定着支援 ── 実績あり</div>
 
-    <div class="hero-result reveal">
-      <div class="hero-result-box">
-        <div class="hero-result-label">BEFORE</div>
-        <div class="hero-result-num before">42%</div>
-        <div class="hero-result-unit">離職率</div>
+    <div class="hero-result-row reveal">
+      <div class="hero-num-box">
+        <div class="hero-num-label">BEFORE</div>
+        <div class="hero-num b">42%</div>
+        <div style="font-size:10px;color:rgba(255,255,255,0.3);margin-top:3px;">離職率</div>
       </div>
-      <div class="hero-result-arrow">→</div>
-      <div class="hero-result-box">
-        <div class="hero-result-label">AFTER</div>
-        <div class="hero-result-num after">18%</div>
-        <div class="hero-result-unit">離職率</div>
+      <div class="hero-arr">→</div>
+      <div class="hero-num-box">
+        <div class="hero-num-label">AFTER</div>
+        <div class="hero-num a">18%</div>
+        <div style="font-size:10px;color:rgba(255,255,255,0.3);margin-top:3px;">離職率</div>
       </div>
     </div>
 
     <h1 class="hero-h1 reveal">
       「人が辞めない組織」を、<br>
-      <span class="accent">AIとつくる。</span>
+      <span class="ac">AIとつくる。</span>
     </h1>
     <p class="hero-sub reveal">
-      属人化をなくし、負担を減らし、成果を正しく評価する。<br>
-      AIによる業務効率化×ナレッジ共有×適正評価が、<br>採用・教育の自転車操業から組織を解放します。
+      属人化をなくし、教育コストを下げ、成果を正しく評価する。<br>
+      AIナレッジ共有 × AI公正評価 × AIオンボーディングの<br>
+      3つの仕組みが、採用・教育の自転車操業から組織を解放します。
     </p>
 
     <div class="hero-ctas reveal">
-      <a href="#contact" class="btn-primary">
-        自社の「人材定着AI度」を無料診断する →
-      </a>
-      <a href="#solution" class="btn-secondary">解決策を見る</a>
+      <a href="#contact" class="btn-primary">自社の「人材定着AI度」を無料診断 →</a>
+      <a href="#solutions" class="btn-ghost">解決策を見る</a>
     </div>
-    <p class="hero-note">無料・30分・オンライン対応</p>
+    <p class="hero-note">無料・30分・オンライン対応 / 押し売りなし</p>
+  </div>
+
+  <!-- 右側ビジュアル -->
+  <div class="hero-right">
+    <div class="hero-img-wrap">
+      <img src="/images/men02.png" alt="AI人材定着支援" loading="eager">
+      <div class="hero-stat-float f1">
+        <div class="float-label">EDUCATION COST</div>
+        <div class="float-num">50%↓</div>
+        <div class="float-desc">教育コスト削減</div>
+      </div>
+      <div class="hero-stat-float f2">
+        <div class="float-label">RETENTION RATE</div>
+        <div class="float-num">+24pt</div>
+        <div class="float-desc">定着率の改善</div>
+      </div>
+    </div>
+    <p class="hero-img-caption">AIが「教える側」と「学ぶ側」両方の負担を同時に解消します</p>
   </div>
 </section>
 
 <!-- TICKER -->
 <div class="ticker">
   <div class="ticker-inner">
-    <span class="ticker-item">離職率42%→18%</span><span class="ticker-sep">●</span>
-    <span class="ticker-item">AI×ナレッジ共有</span><span class="ticker-sep">●</span>
-    <span class="ticker-item">属人化の解消</span><span class="ticker-sep">●</span>
-    <span class="ticker-item">適正評価の仕組み化</span><span class="ticker-sep">●</span>
-    <span class="ticker-item">教育コスト50%削減</span><span class="ticker-sep">●</span>
-    <span class="ticker-item">無料診断受付中</span><span class="ticker-sep">●</span>
-    <span class="ticker-item">離職率42%→18%</span><span class="ticker-sep">●</span>
-    <span class="ticker-item">AI×ナレッジ共有</span><span class="ticker-sep">●</span>
-    <span class="ticker-item">属人化の解消</span><span class="ticker-sep">●</span>
-    <span class="ticker-item">適正評価の仕組み化</span><span class="ticker-sep">●</span>
-    <span class="ticker-item">教育コスト50%削減</span><span class="ticker-sep">●</span>
-    <span class="ticker-item">無料診断受付中</span><span class="ticker-sep">●</span>
+    <span class="ticker-item">離職率42%→18%</span><span class="ticker-sep"> ● </span>
+    <span class="ticker-item">教育コスト50%削減</span><span class="ticker-sep"> ● </span>
+    <span class="ticker-item">AIナレッジ共有</span><span class="ticker-sep"> ● </span>
+    <span class="ticker-item">AI公正評価システム</span><span class="ticker-sep"> ● </span>
+    <span class="ticker-item">AIオンボーディング</span><span class="ticker-sep"> ● </span>
+    <span class="ticker-item">属人化の解消</span><span class="ticker-sep"> ● </span>
+    <span class="ticker-item">無料診断受付中</span><span class="ticker-sep"> ● </span>
+    <span class="ticker-item">離職率42%→18%</span><span class="ticker-sep"> ● </span>
+    <span class="ticker-item">教育コスト50%削減</span><span class="ticker-sep"> ● </span>
+    <span class="ticker-item">AIナレッジ共有</span><span class="ticker-sep"> ● </span>
+    <span class="ticker-item">AI公正評価システム</span><span class="ticker-sep"> ● </span>
+    <span class="ticker-item">AIオンボーディング</span><span class="ticker-sep"> ● </span>
+    <span class="ticker-item">属人化の解消</span><span class="ticker-sep"> ● </span>
+    <span class="ticker-item">無料診断受付中</span><span class="ticker-sep"> ● </span>
   </div>
 </div>
 
-<!-- PAIN -->
+<!-- ═══ 離職コスト可視化 ═══ -->
+<section class="cost-section">
+  <div class="cost-inner">
+    <div class="reveal">
+      <div class="s-label">離職の本当のコスト</div>
+      <h2 class="s-h2">「また辞めた」の一言が、<br>実は○百万円の損失です。</h2>
+      <p class="s-sub" style="color:rgba(255,255,255,0.6)">多くの経営者が「採用費だけ」と思っていますが、実際のコストはその3〜5倍。社員1人の離職が組織に与えるダメージを可視化します。</p>
+    </div>
+    <div class="cost-grid reveal">
+      <div class="cost-card">
+        <div class="cost-card-label">採用コスト</div>
+        <div class="cost-card-num">30<span style="font-size:20px">万〜</span></div>
+        <div class="cost-card-unit">求人広告・エージェント費用</div>
+        <div class="cost-card-desc">求人媒体への掲載料、人材紹介の成功報酬（年収の20〜35%）など。採用ができないまま数ヶ月が経過するケースも多い。</div>
+      </div>
+      <div class="cost-card">
+        <div class="cost-card-label">教育コスト（失われる）</div>
+        <div class="cost-card-num">50<span style="font-size:20px">万〜</span></div>
+        <div class="cost-card-unit">研修・OJT・ベテランの時間</div>
+        <div class="cost-card-desc">新人1人を一人前にするまでに先輩が費やす時間。月80時間×6ヶ月、時給換算すると膨大な金額が消える。</div>
+      </div>
+      <div class="cost-card">
+        <div class="cost-card-label">生産性の損失</div>
+        <div class="cost-card-num">80<span style="font-size:20px">万〜</span></div>
+        <div class="cost-card-unit">空席期間＋引き継ぎ対応</div>
+        <div class="cost-card-desc">退職者の業務が止まる期間、残ったメンバーへの負荷集中、ノウハウ流出による品質低下。これが最も大きいコスト。</div>
+      </div>
+    </div>
+    <div class="cost-total reveal">
+      <div class="cost-total-text">社員<strong>1人が辞めるたびに</strong>、<br>企業が失うトータルコスト</div>
+      <div>
+        <div class="cost-total-num">150<span style="font-size:20px;color:rgba(255,255,255,0.4)">万円〜</span></div>
+        <div class="cost-total-note">※業種・職種・年収により変動</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ PAIN ═══ -->
 <section class="section pain-section">
   <div class="section-inner">
     <div class="reveal">
-      <div class="section-label">こんな課題ありませんか？</div>
-      <h2 class="section-h2">採用しても辞める。<br>教える時間もない。評価に納得されない。</h2>
-      <p class="section-sub">中小・ベンチャー企業の経営者・人事責任者が抱える「人材の課題」は、ほぼこの4つに集約されます。</p>
+      <div class="s-label">こんな課題ありませんか？</div>
+      <h2 class="s-h2">採用しても辞める。教える時間もない。<br>評価に納得されない。</h2>
     </div>
-
     <div class="pain-grid">
-      <div class="pain-card reveal d1">
-        <div class="pain-icon">😰</div>
-        <div class="pain-text"><strong>ベテランに質問が集中</strong>し、自分の業務が進まない。ノウハウが一人に偏っていて、その人が辞めたら終わり。</div>
-      </div>
-      <div class="pain-card reveal d2">
-        <div class="pain-icon">📚</div>
-        <div class="pain-text">マニュアルが機能しておらず、<strong>新人が育つ前に辞めてしまう。</strong>教育にかけたコストが全部消える。</div>
-      </div>
-      <div class="pain-card reveal d1">
-        <div class="pain-icon">😤</div>
-        <div class="pain-text">「<strong>正当に評価されていない</strong>」という不満が燻っている。声が大きい人・上司の好みで評価が変わる。</div>
-      </div>
-      <div class="pain-card reveal d2">
-        <div class="pain-icon">🔍</div>
-        <div class="pain-text">業務が<strong>ブラックボックス化</strong>していて、誰がどれだけ貢献しているかが見えない。頑張りが報われない組織になっている。</div>
-      </div>
+      <div class="pain-card reveal d1"><div class="pain-icon">😰</div><div class="pain-text"><strong>ベテランに質問が集中</strong>し、自分の業務が進まない。ノウハウが一人に偏り、その人が辞めたら終わり。</div></div>
+      <div class="pain-card reveal d2"><div class="pain-icon">📚</div><div class="pain-text">マニュアルが機能しておらず、<strong>新人が育つ前に辞める。</strong>教育にかけたコストが全部消える自転車操業。</div></div>
+      <div class="pain-card reveal d1"><div class="pain-icon">😤</div><div class="pain-text">「<strong>正当に評価されていない</strong>」という不満が燻っている。声が大きい人・上司の好みで評価が変わる。</div></div>
+      <div class="pain-card reveal d2"><div class="pain-icon">🔍</div><div class="pain-text">業務が<strong>ブラックボックス化</strong>し、誰がどれだけ貢献しているか見えない。頑張りが報われない組織。</div></div>
     </div>
-
     <div class="pain-result reveal">
-      <p>これらの課題はすべて根が繋がっています。<strong>「情報が属人化している」</strong>こと、そして<strong>「貢献が可視化されていない」</strong>こと——この2つを同時に解決することが、離職率を下げる唯一の本質的アプローチです。</p>
+      <p>これらは全て「<strong>情報の属人化</strong>」と「<strong>貢献の非可視化</strong>」という2つの根本問題から生まれています。この2つをAIで同時に解決することが、离職率を劇的に下げる唯一の本質的アプローチです。</p>
     </div>
   </div>
 </section>
 
-<!-- SOLUTION -->
-<section class="section solution-section" id="solution">
+<!-- ═══ SOLUTIONS (縦並び) ═══ -->
+<section class="section sol-section" id="solutions">
   <div class="section-inner">
     <div class="reveal">
-      <div class="section-label">解決策</div>
-      <h2 class="section-h2">2つのアプローチで<br>「辞めない組織」の仕組みをつくる。</h2>
+      <div class="s-label">3つのアプローチ</div>
+      <h2 class="s-h2">「辞めない組織」を作る、<br>AIの3本柱。</h2>
+      <p class="s-sub">ナレッジ共有・公正評価・教育自動化を一体で実装します。どれか1つでも劇的に変わりますが、3つ揃えると効果は掛け算になります。</p>
     </div>
 
-    <div class="solution-header">
-      <div class="solution-tab active" id="tab1" onclick="switchTab(1)">
-        <div class="solution-tab-num">SOLUTION 01</div>
-        <div class="solution-tab-title">AIナレッジ蓄積<br>＆社内チャット</div>
-      </div>
-      <div class="solution-tab" id="tab2" onclick="switchTab(2)">
-        <div class="solution-tab-num">SOLUTION 02</div>
-        <div class="solution-tab-title">AIデータ連携による<br>適正評価システム</div>
-      </div>
-    </div>
+    <div class="sol-list">
 
-    <div class="solution-body">
-
-      <!-- PANEL 1 -->
-      <div class="solution-panel active" id="panel1">
-        <div class="solution-panel-header">
-          <h3 class="solution-panel-h3">もう新人を迷わせない。<br>社内の全知識をAI化する、ナレッジ蓄積＆社内チャット。</h3>
-          <p class="solution-panel-sub">過去の商談データ・マニュアル・ベテランのノウハウをAIに学習させ、「先輩に聞きづらい」「誰に聞けばいいかわからない」を根本から解消します。</p>
-        </div>
-        <div class="solution-features">
-          <div class="feature-card d1">
-            <div class="feature-icon">🤖</div>
-            <div class="feature-title">質問対応の自動化</div>
-            <div class="feature-body">社内チャットに質問するだけでAIが即回答。「先輩に聞きづらい」という孤独感による早期離職を防ぎます。</div>
+      <!-- SOL 1 -->
+      <div class="sol-item reveal">
+        <div class="sol-content">
+          <div class="sol-num">SOLUTION 01 ── ナレッジ共有</div>
+          <h3 class="sol-title">AIが「24時間答えてくれる先輩」になる。<br>社内ナレッジ蓄積＆チャットボット。</h3>
+          <p class="sol-desc">過去の商談データ・マニュアル・ベテランのノウハウをAIに学習させ、社内チャットで質問すれば即回答。「先輩に聞きづらい」「誰に聞けばいいか分からない」が完全になくなります。</p>
+          <div class="sol-features">
+            <div class="sol-feature">質問対応を自動化。ベテランが「同じことを何度も教える」時間がゼロになる</div>
+            <div class="sol-feature">新人の「孤立感」を解消。最も多い早期離職の原因を根本から取り除く</div>
+            <div class="sol-feature">報告書作成・ルーティン業務をAIがアシスト。残業を構造的に削減</div>
+            <div class="sol-feature">誰が辞めてもノウハウが組織に残る。引き継ぎコストがほぼゼロに</div>
           </div>
-          <div class="feature-card d2">
-            <div class="feature-icon">📖</div>
-            <div class="feature-title">ノウハウの標準化</div>
-            <div class="feature-body">ベテランの頭の中にあった暗黙知をAIが整理・構造化。誰でも同じ品質でアウトプットできる組織になります。</div>
-          </div>
-          <div class="feature-card d3">
-            <div class="feature-icon">⚡</div>
-            <div class="feature-title">業務負荷の軽減</div>
-            <div class="feature-body">報告書作成・ルーティン対応をAIがアシスト。残業を減らし、精神的・肉体的な消耗を抑えて定着率を向上させます。</div>
+          <div class="sol-effect">
+            <div class="sol-effect-item"><div class="sol-effect-num">50%↓</div><div class="sol-effect-desc">教育コスト削減</div></div>
+            <div class="sol-effect-item"><div class="sol-effect-num">42→18%</div><div class="sol-effect-desc">離職率改善</div></div>
           </div>
         </div>
-        <div class="effect-bar">
-          <div class="effect-bar-label">EFFECT</div>
-          <div class="effect-bar-items">
-            <div class="effect-bar-item">
-              <div class="effect-bar-num">50%</div>
-              <div class="effect-bar-desc">教育コスト<br>削減</div>
-            </div>
-            <div class="effect-bar-item">
-              <div class="effect-bar-num">42→18%</div>
-              <div class="effect-bar-desc">離職率改善の<br>核となった施策</div>
-            </div>
+        <div class="sol-visual">
+          <div class="sol-visual-cards">
+            <div class="mini-card"><div class="mini-card-icon">💬</div><div class="mini-card-text"><strong>新人スタッフ</strong>「このケースの対応方法は？」</div></div>
+            <div class="mini-card" style="border-color:#2563eb;"><div class="mini-card-icon">🤖</div><div class="mini-card-text"><strong>AI社内チャット</strong>「過去の類似案件では…【3件の参考事例を表示】」</div></div>
+            <div class="mini-card"><div class="mini-card-icon">✅</div><div class="mini-card-text"><strong>解決！</strong>先輩の手を借りずに即解決。ベテランの時間も守られる。</div></div>
           </div>
         </div>
       </div>
 
-      <!-- PANEL 2 -->
-      <div class="solution-panel" id="panel2">
-        <div class="solution-panel-header">
-          <h3 class="solution-panel-h3">「感情」ではなく「事実」で評価する。<br>AIが可視化する、適正な評価システム。</h3>
-          <p class="solution-panel-sub">「頑張っているのに評価されない」という最大の離職理由を、AIのデータログを活用して定量的に解消します。</p>
-        </div>
-        <div class="solution-features">
-          <div class="feature-card d1">
-            <div class="feature-icon">📊</div>
-            <div class="feature-title">貢献度の見える化</div>
-            <div class="feature-body">誰がナレッジに貢献したか、誰の業務をどれだけサポートしたかをデータとして蓄積。客観的な評価の根拠になります。</div>
+      <!-- SOL 2 -->
+      <div class="sol-item reverse reveal">
+        <div class="sol-content">
+          <div class="sol-num">SOLUTION 02 ── AI公正評価</div>
+          <h3 class="sol-title">「感情」ではなく「データ」で評価する。<br>AIが可視化する、納得感のある評価。</h3>
+          <p class="sol-desc">離職の隠れた最大原因は「評価への不満」です。AIが業務ログ・ナレッジ貢献度・サポート実績を自動集計し、定量的な評価の根拠を生成します。上司の好き嫌いに左右されない公正な評価が実現します。</p>
+          <div class="sol-features">
+            <div class="sol-feature">誰がどれだけナレッジに貢献したか、誰をどれだけサポートしたかを数値化</div>
+            <div class="sol-feature">AIが評価シートのドラフトを自動生成。管理職の評価工数を大幅削減</div>
+            <div class="sol-feature">「見てもらえている」という実感がエンゲージメントを向上させ定着率を強化</div>
+            <div class="sol-feature">公正評価は「採用ブランディング」にも直結。口コミで優秀な人材が集まるように</div>
           </div>
-          <div class="feature-card d2">
-            <div class="feature-icon">⚖️</div>
-            <div class="feature-title">評価のブラックボックス解消</div>
-            <div class="feature-body">上司の好き嫌いや声の大きさで決まる評価を排除。定量・定性データをAIが整理し、評価シートのベースを自動生成します。</div>
-          </div>
-          <div class="feature-card d3">
-            <div class="feature-icon">🌱</div>
-            <div class="feature-title">エンゲージメント向上</div>
-            <div class="feature-body">「自分の頑張りを見てくれている」という実感がエンゲージメントを高め、自発的な定着につながります。</div>
+          <div class="sol-effect">
+            <div class="sol-effect-item"><div class="sol-effect-num">60%↓</div><div class="sol-effect-desc">評価不満起因の離職</div></div>
+            <div class="sol-effect-item"><div class="sol-effect-num">+40pt</div><div class="sol-effect-desc">エンゲージメント</div></div>
           </div>
         </div>
-        <div class="effect-bar">
-          <div class="effect-bar-label">EFFECT</div>
-          <div class="effect-bar-items">
-            <div class="effect-bar-item">
-              <div class="effect-bar-num">↓60%</div>
-              <div class="effect-bar-desc">「評価不満」起因の<br>離職が激減</div>
-            </div>
-            <div class="effect-bar-item">
-              <div class="effect-bar-num">+40pt</div>
-              <div class="effect-bar-desc">社員エンゲージ<br>メントスコア</div>
-            </div>
+        <div class="sol-visual" style="background:var(--bg2);">
+          <div class="sol-visual-cards">
+            <div class="mini-card"><div class="mini-card-icon">📊</div><div class="mini-card-text"><strong>AIが自動集計</strong>ナレッジ投稿数・サポート件数・業務貢献スコア</div></div>
+            <div class="mini-card" style="border-color:#059669;"><div class="mini-card-icon">⚖️</div><div class="mini-card-text"><strong>客観的評価シート</strong>データに基づく評価のドラフトを自動生成</div></div>
+            <div class="mini-card"><div class="mini-card-icon">😊</div><div class="mini-card-text"><strong>納得感が生まれる</strong>「ちゃんと見てくれている」→ 離職意向が激減</div></div>
           </div>
+        </div>
+      </div>
+
+      <!-- SOL 3 -->
+      <div class="sol-item reveal">
+        <div class="sol-content">
+          <div class="sol-num">SOLUTION 03 ── AIオンボーディング</div>
+          <h3 class="sol-title">入社初日から戦力化。<br>AIが教育プロセス全体を自動化する。</h3>
+          <p class="sol-desc">入社後3ヶ月が「最も離職リスクが高い時期」です。AIによる自動化されたオンボーディングプログラムが、新人を孤立させずに確実に戦力へと育てます。教える側も教わる側も、両方の負担を同時に削減します。</p>
+          <div class="sol-features">
+            <div class="sol-feature">入社後の学習ステップをAIが自動提示。「何をすればいいか分からない」が消える</div>
+            <div class="sol-feature">習熟度をAIが自動チェック。「なんとなくわかった」で進む危険なOJTを排除</div>
+            <div class="sol-feature">ロールプレイや業務シミュレーションをAIが代行。先輩の手間ゼロで実践的教育</div>
+            <div class="sol-feature">育成状況を管理職がダッシュボードで把握。早期フォローが可能に</div>
+          </div>
+          <div class="sol-effect">
+            <div class="sol-effect-item"><div class="sol-effect-num">3ヶ月→1ヶ月</div><div class="sol-effect-desc">一人前になる期間</div></div>
+            <div class="sol-effect-item"><div class="sol-effect-num">80%↓</div><div class="sol-effect-desc">早期離職リスク</div></div>
+          </div>
+        </div>
+        <div class="sol-visual" style="background:#f0fdf4;">
+          <img src="/images/solution.png" alt="AIオンボーディング" class="sol-visual-img" style="max-width:240px;">
+          <div style="font-size:12px;color:var(--body);text-align:center;line-height:1.7;margin-top:8px;">AIが新人の学習進捗を管理し<br>最適なタイミングで次のステップを提示</div>
         </div>
       </div>
 
@@ -541,48 +515,97 @@ footer{background:#1a1a2e;padding:36px 24px;display:flex;align-items:center;just
   </div>
 </section>
 
-<!-- SIMULATION -->
+<!-- ═══ 2倍おいしいセクション ═══ -->
+<section class="double-section">
+  <div class="double-inner">
+    <div class="reveal">
+      <div class="s-label">教える側も、学ぶ側も</div>
+      <h2 class="s-h2" style="color:#fff">AIマニュアル＆ボットは、<br>「2倍おいしい」施策です。</h2>
+      <p class="s-sub">通常の人材施策は「どちらか一方」しか助けません。AI社内チャットは珍しく、教える側・学ぶ側の両方の負担を同時に解消するため、定着率への効果が掛け算になります。</p>
+    </div>
+    <div class="double-grid reveal">
+      <div class="double-card">
+        <div class="double-card-who">👨‍💼 教える側（ベテラン・管理職）</div>
+        <div class="double-card-title">「また同じ質問か…」から解放される</div>
+        <div class="double-card-list">
+          <div class="double-card-item">同じ質問に何度も答える時間がゼロになる</div>
+          <div class="double-card-item">本業に集中できるのでストレスが激減</div>
+          <div class="double-card-item">自分のノウハウがAIに引き継がれる安心感</div>
+          <div class="double-card-item">後輩育成の達成感はそのままに、負担だけ減る</div>
+        </div>
+      </div>
+      <div class="double-card">
+        <div class="double-card-who">👩‍💻 学ぶ側（新人・中途）</div>
+        <div class="double-card-title">「聞きづらい…」という孤独から解放される</div>
+        <div class="double-card-list">
+          <div class="double-card-item">何でも気軽に聞けるAIがいるので孤立感がない</div>
+          <div class="double-card-item">「忙しそう」と遠慮して業務が止まらない</div>
+          <div class="double-card-item">自分のペースで学べるので心理的安全性が高まる</div>
+          <div class="double-card-item">早く成長できる実感が仕事のやりがいに繋がる</div>
+        </div>
+      </div>
+      <div class="double-result">
+        <div class="double-result-text">「教える負担が減る」「学ぶストレスが減る」——<br>両方が同時に改善されることで、<span style="color:#6ee7b7">定着率への効果は相乗効果になります。</span></div>
+        <div class="double-result-sub">一般的な人材施策の倍の速度で組織が安定します。これが「2倍おいしい」と言われる理由です。</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ ROI比較 ═══ -->
+<section class="section roi-section">
+  <div class="section-inner">
+    <div class="reveal">
+      <div class="s-label">採用強化 vs 定着強化</div>
+      <h2 class="s-h2">「採用に投資し続ける」か、<br>「定着に投資して採用を減らす」か。</h2>
+      <p class="s-sub">多くの会社が採用コストを増やし続けます。しかし本当に投資すべきは、「離職率を下げる」ことです。</p>
+    </div>
+    <div class="roi-grid reveal">
+      <div class="roi-card bad">
+        <div class="roi-card-label">現状維持（採用強化）</div>
+        <h3 class="roi-card-title">採用し続けても、根本は変わらない</h3>
+        <div class="roi-list">
+          <div class="roi-item bad">毎年採用コストが膨らみ続ける</div>
+          <div class="roi-item bad">育てても辞めるので教育コストが無駄になる</div>
+          <div class="roi-item bad">残ったメンバーの負担が増し、さらに離職が加速</div>
+          <div class="roi-item bad">組織力が育たない「採用依存」の体質になる</div>
+        </div>
+        <div class="roi-num bad">年間 <span style="font-size:36px">150万円〜</span><span class="roi-num-unit"> ×離職人数　を損し続ける</span></div>
+      </div>
+      <div class="roi-card good">
+        <div class="roi-card-label">AI定着強化</div>
+        <h3 class="roi-card-title">離職率が下がれば、採用コストも自然に減る</h3>
+        <div class="roi-list">
+          <div class="roi-item good">離職が減れば採用コストが毎年下がっていく</div>
+          <div class="roi-item good">教育コストが50%下がり、育てた人が辞めない</div>
+          <div class="roi-item good">組織のノウハウが蓄積され、強くなり続ける</div>
+          <div class="roi-item good">「評価が公正」という口コミで採用力も上がる</div>
+        </div>
+        <div class="roi-num good">初年度で <span style="font-size:36px">投資回収</span><span class="roi-num-unit"> できるケースが大半</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ SIMULATION ═══ -->
 <section class="section sim-section">
   <div class="section-inner">
     <div class="reveal">
-      <div class="section-label">導入効果シミュレーション</div>
-      <h2 class="section-h2">導入前と導入後、<br>組織はここまで変わる。</h2>
+      <div class="s-label">導入効果シミュレーション</div>
+      <h2 class="s-h2">導入前と導入後、<br>組織はここまで変わります。</h2>
     </div>
-    <div class="sim-table-wrap reveal">
+    <div class="sim-wrap reveal">
       <table class="sim-table">
         <thead>
-          <tr>
-            <th></th>
-            <th class="before">導入前（課題状態）</th>
-            <th class="after">導入後（定着組織）</th>
-          </tr>
+          <tr><th></th><th class="b">導入前（現状）</th><th class="a">導入後（6ヶ月〜）</th></tr>
         </thead>
         <tbody>
-          <tr>
-            <td>離職率</td>
-            <td class="before">42%（業界平均超え）</td>
-            <td class="after">約18%（半分以下に改善）</td>
-          </tr>
-          <tr>
-            <td>採用・教育コスト</td>
-            <td class="before">毎年数百万円の採用費と<br>教育工数がドブ捨て状態</td>
-            <td class="after">教育時間50%削減<br>採用コストが大幅圧縮</td>
-          </tr>
-          <tr>
-            <td>ノウハウ継承</td>
-            <td class="before">退職のたびにノウハウ流出<br>一からやり直し</td>
-            <td class="after">AIが組織の記憶を保持<br>誰が辞めても引き継ぎゼロ</td>
-          </tr>
-          <tr>
-            <td>評価への納得感</td>
-            <td class="before">「感情で評価されている」<br>不満が蔓延</td>
-            <td class="after">データで証明できる評価<br>不満の声が激減</td>
-          </tr>
-          <tr>
-            <td>組織の状態</td>
-            <td class="before">常に採用・教育の<br>自転車操業。疲弊</td>
-            <td class="after">強固な組織基盤。<br>本業に集中できる</td>
-          </tr>
+          <tr><td>離職率</td><td class="b">42%（業界平均超え）</td><td class="a">約18%（半分以下に改善）</td></tr>
+          <tr><td>採用・教育コスト</td><td class="b">毎年数百万円の損失</td><td class="a">教育時間50%削減・採用費圧縮</td></tr>
+          <tr><td>ベテランの負担</td><td class="b">同じ質問に繰り返し対応</td><td class="a">AIが代行。本業に集中できる</td></tr>
+          <tr><td>新人の定着</td><td class="b">3ヶ月以内の早期離職が頻発</td><td class="a">AIが孤独を解消し早期離職が激減</td></tr>
+          <tr><td>評価への満足度</td><td class="b">「不公平」という不満が蔓延</td><td class="a">データ根拠の評価で納得感が生まれる</td></tr>
+          <tr><td>組織の知的資産</td><td class="b">退職のたびにノウハウが流出</td><td class="a">AIが組織の記憶を保持し続ける</td></tr>
         </tbody>
       </table>
       <p class="sim-note">※実績値は導入企業の事例をもとにした参考値です</p>
@@ -590,108 +613,76 @@ footer{background:#1a1a2e;padding:36px 24px;display:flex;align-items:center;just
   </div>
 </section>
 
-<!-- STORY -->
+<!-- ═══ STORY ═══ -->
 <section class="section story-section">
   <div class="section-inner">
     <div class="reveal">
-      <div class="section-label">なぜここまで効果が出るのか？</div>
-      <h2 class="section-h2">離職率42%→18%の<br>メカニズム。</h2>
+      <div class="s-label">なぜここまで効果が出るのか？</div>
+      <h2 class="s-h2">離職率42%→18%の<br>メカニズム。</h2>
     </div>
     <div class="story-flow">
-      <div class="story-item reveal">
-        <div class="story-dot">🔴</div>
-        <div class="story-body">
-          <div class="story-title">「聞けない・わからない」が離職の火種になる</div>
-          <div class="story-text">新人が困ったとき、気軽に聞ける先輩がいない。マニュアルを探しても見つからない。この「孤立感」が入社3ヶ月以内の早期離職の最大要因です。</div>
-        </div>
-      </div>
-      <div class="story-arrow">↓</div>
-      <div class="story-item reveal">
-        <div class="story-dot">🤖</div>
-        <div class="story-body">
-          <div class="story-title">AIが「24時間答えてくれる先輩」になる</div>
-          <div class="story-text">社内チャットにどんな質問をしても、AIが即座に答えを返します。「誰に聞けばいいかわからない」という不安を根本から取り除き、新人の孤独感を解消します。</div>
-        </div>
-      </div>
-      <div class="story-arrow">↓</div>
-      <div class="story-item reveal">
-        <div class="story-dot">📊</div>
-        <div class="story-body">
-          <div class="story-title">頑張りが「見える化」されることで、評価への納得感が生まれる</div>
-          <div class="story-text">AIが蓄積するログによって、誰がどれだけ組織に貢献したかが数値化されます。「見てもらえている」という実感が、長期定着のモチベーションになります。</div>
-        </div>
-      </div>
-      <div class="story-arrow">↓</div>
-      <div class="story-item reveal">
-        <div class="story-dot">🌟</div>
-        <div class="story-body">
-          <div class="story-title">「辞めない組織」が完成する</div>
-          <div class="story-text">属人化が解消され、評価に納得感があり、業務の負担が減った組織は自然と定着率が上がります。採用・教育の自転車操業から解放され、本業に集中できる組織基盤ができあがります。</div>
-        </div>
-      </div>
+      <div class="story-item reveal"><div class="story-dot">🔴</div><div class="story-body"><div class="story-title">「聞けない・わからない」が離職の火種</div><div class="story-text">新人が困ったとき、気軽に聞ける先輩がいない。マニュアルを探しても見つからない。この「孤立感」が入社3ヶ月以内の早期離職の最大要因です。</div></div></div>
+      <div class="story-arr">↓</div>
+      <div class="story-item reveal"><div class="story-dot">🤖</div><div class="story-body"><div class="story-title">AIが「24時間いる先輩」になり、孤独感を根本から解消</div><div class="story-text">社内チャットにどんな質問をしても即回答。「誰に聞けばいいか分からない」不安が消え、新人が安心して仕事を続けられる環境になります。</div></div></div>
+      <div class="story-arr">↓</div>
+      <div class="story-item reveal"><div class="story-dot">📊</div><div class="story-body"><div class="story-title">頑張りが「見える化」されることで評価への納得感が生まれる</div><div class="story-text">AIが蓄積するログで、誰がどれだけ組織に貢献したかが数値化されます。「見てもらえている」という実感が、長期定着のモチベーションになります。</div></div></div>
+      <div class="story-arr">↓</div>
+      <div class="story-item reveal"><div class="story-dot">📚</div><div class="story-body"><div class="story-title">教育が自動化されることでベテランの負担も減り、組織全体が安定</div><div class="story-text">AIオンボーディングにより、ベテランが「教えること」に費やす時間が大幅減少。ベテラン自身の離職リスクも下がり、組織の知的資産が確実に蓄積されます。</div></div></div>
+      <div class="story-arr">↓</div>
+      <div class="story-item reveal"><div class="story-dot">🌟</div><div class="story-body"><div class="story-title">「辞めない組織」が完成し、採用依存から脱却できる</div><div class="story-text">属人化が解消され、評価に納得感があり、教育が回る組織は自然と定着率が上がります。採用・教育の自転車操業から解放され、本業に集中できる強い組織基盤ができあがります。</div></div></div>
     </div>
   </div>
 </section>
 
-<!-- CTA -->
+<!-- ═══ CTA ═══ -->
 <section class="cta-section">
   <div class="cta-inner">
     <div class="cta-badge reveal">✓ 無料 · 30分 · オンライン</div>
     <h2 class="cta-h2 reveal">まず、自社の「人材定着AI度」を<br>無料で診断してみてください。</h2>
-    <p class="cta-sub reveal">現状の離職率・属人化の度合い・評価への不満状況を30分でヒアリングし、どこから手をつければ最も効果が出るかをお伝えします。</p>
+    <p class="cta-sub reveal">現在の離職率・属人化の度合い・評価への不満状況を30分でヒアリングし、3つのAIソリューションのうちどこから始めれば最も効果が出るかをお伝えします。</p>
     <div class="cta-cards reveal">
-      <div class="cta-card">
-        <div class="cta-card-icon">🔍</div>
-        <div class="cta-card-title">人材定着AI度 無料診断</div>
-        <div class="cta-card-sub">離職の根本原因と、AI活用で改善できるポイントをその場でフィードバック</div>
-      </div>
-      <div class="cta-card">
-        <div class="cta-card-icon">📋</div>
-        <div class="cta-card-title">AI活用ロードマップの提示</div>
-        <div class="cta-card-sub">自社規模・予算・課題に合わせた具体的な導入ステップをご提案</div>
-      </div>
+      <div class="cta-card"><div class="cta-card-icon">🔍</div><div class="cta-card-title">人材定着AI度 無料診断</div><div class="cta-card-sub">離職の根本原因とAIで改善できるポイントをその場でフィードバック</div></div>
+      <div class="cta-card"><div class="cta-card-icon">📋</div><div class="cta-card-title">AI活用ロードマップの提示</div><div class="cta-card-sub">自社の規模・予算・課題に合わせた具体的な導入ステップをご提案</div></div>
     </div>
-    <a href="#contact" class="btn-primary reveal">無料診断を申し込む →</a>
-    <p class="cta-note">押し売りは一切しません。まず課題を整理するだけで構いません。</p>
+    <div class="cta-btn-wrap reveal">
+      <a href="#contact" class="btn-primary" style="font-size:16px;padding:18px 44px;">無料診断を申し込む →</a>
+    </div>
+    <p class="cta-note">押し売りは一切しません。まず悩みを整理するだけで構いません。</p>
   </div>
 </section>
 
-<!-- FORM -->
-<section class="section form-section" id="contact">
+<!-- ═══ FORM ═══ -->
+<section class="form-section" id="contact">
   <div class="form-inner">
     <div class="reveal">
-      <div class="section-label">無料診断・お問い合わせ</div>
-      <h2 class="section-h2">まず30分、<br>話を聞かせてください。</h2>
-      <p class="section-sub" style="margin-top:12px;">「まだ具体的に決まっていない」で構いません。現状をお聞きし、改善の糸口を一緒に整理します。</p>
+      <div class="s-label">無料診断・お問い合わせ</div>
+      <h2 class="s-h2">まず30分、<br>話を聞かせてください。</h2>
+      <p class="s-sub" style="margin-top:10px;">「まだ具体的に決まっていない」で構いません。現状をお聞きし、AIで改善できる部分を一緒に整理します。</p>
     </div>
-
-    <form class="gas-form" data-page="jinzai-LP" data-formtype="人材定着AI無料診断">
+    <form class="gas-form" data-page="jinzai-LP-v2" data-formtype="人材定着AI無料診断">
       <div class="form-row">
-        <div><label class="form-label-text">お名前 <span style="color:var(--red)">*</span></label><input type="text" name="name" class="form-input" placeholder="山田 太郎" required></div>
-        <div><label class="form-label-text">会社名 <span style="color:var(--red)">*</span></label><input type="text" name="company" class="form-input" placeholder="株式会社〇〇" required></div>
+        <div><label class="form-label">お名前 <span class="form-req">*</span></label><input type="text" name="name" class="form-input" placeholder="山田 太郎" required></div>
+        <div><label class="form-label">会社名 <span class="form-req">*</span></label><input type="text" name="company" class="form-input" placeholder="株式会社〇〇" required></div>
       </div>
       <div class="form-row">
-        <div><label class="form-label-text">メールアドレス <span style="color:var(--red)">*</span></label><input type="email" name="email" class="form-input" placeholder="mail@example.com" required></div>
-        <div><label class="form-label-text">電話番号</label><input type="tel" name="tel" class="form-input" placeholder="03-0000-0000"></div>
+        <div><label class="form-label">メールアドレス <span class="form-req">*</span></label><input type="email" name="email" class="form-input" placeholder="mail@example.com" required></div>
+        <div><label class="form-label">電話番号</label><input type="tel" name="tel" class="form-input" placeholder="03-0000-0000"></div>
       </div>
       <div>
-        <label class="form-label-text">現在の従業員数</label>
+        <label class="form-label">現在の従業員数</label>
         <select name="size" class="form-select form-input">
           <option value="">選択してください</option>
-          <option>〜10名</option>
-          <option>11〜30名</option>
-          <option>31〜100名</option>
-          <option>101名以上</option>
+          <option>〜10名</option><option>11〜30名</option><option>31〜100名</option><option>101名以上</option>
         </select>
       </div>
       <div>
-        <label class="form-label-text">最も気になっている課題</label>
+        <span class="radio-label-text">最も気になっている課題（複数可）</span>
         <div class="radio-group">
-          <label><input type="radio" name="issue" value="離職率が高い"> 離職率が高い</label>
-          <label><input type="radio" name="issue" value="属人化"> 業務の属人化</label>
-          <label><input type="radio" name="issue" value="教育コスト"> 教育コストが重い</label>
-          <label><input type="radio" name="issue" value="評価制度"> 評価制度への不満</label>
-          <label><input type="radio" name="issue" value="その他"> その他</label>
+          <label><input type="checkbox" name="issue" value="離職率が高い"> 離職率が高い</label>
+          <label><input type="checkbox" name="issue" value="属人化"> 業務の属人化</label>
+          <label><input type="checkbox" name="issue" value="教育コスト"> 教育コストが重い</label>
+          <label><input type="checkbox" name="issue" value="評価制度"> 評価制度への不満</label>
+          <label><input type="checkbox" name="issue" value="オンボーディング"> 新人の早期離職</label>
         </div>
       </div>
       <button type="submit" class="form-btn">無料診断を申し込む →</button>
@@ -704,66 +695,55 @@ footer{background:#1a1a2e;padding:36px 24px;display:flex;align-items:center;just
 
 <!-- FOOTER -->
 <footer>
-  <div class="footer-logo">
-    <div class="footer-logo-mark"></div>
-    <span class="footer-logo-text"><span>A</span>idealize株式会社</span>
-  </div>
+  <div class="footer-logo"><div class="footer-logo-mark"></div><span class="footer-logo-text"><span>A</span>idealize株式会社</span></div>
   <span class="footer-copy">© 2020 AIdealize Inc. All rights reserved.</span>
 </footer>
 
 <script>
 // NAV
 (function(){
-  const nav = document.getElementById('mainNav');
-  window.addEventListener('scroll', function(){ nav.classList.toggle('scrolled', window.scrollY > 10); });
+  const nav=document.getElementById('mainNav');
+  window.addEventListener('scroll',function(){nav.classList.toggle('scrolled',window.scrollY>10);});
 })();
 
 // REVEAL
-const obs = new IntersectionObserver(function(entries){
-  entries.forEach(function(e){ if(e.isIntersecting) e.target.classList.add('visible'); });
-}, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
-document.querySelectorAll('.reveal, .pain-card, .feature-card, .story-item').forEach(function(el){ obs.observe(el); });
+const obs=new IntersectionObserver(function(entries){
+  entries.forEach(function(e){if(e.isIntersecting)e.target.classList.add('visible');});
+},{threshold:0.1,rootMargin:'0px 0px -40px 0px'});
+document.querySelectorAll('.reveal,.pain-card,.sol-item,.story-item').forEach(function(el){obs.observe(el);});
 
 // SMOOTH SCROLL
 document.querySelectorAll('a[href^="#"]').forEach(function(a){
-  a.addEventListener('click', function(e){
-    const id = a.getAttribute('href').slice(1);
-    const t = document.getElementById(id);
-    if(t){ e.preventDefault(); window.scrollTo({ top: t.offsetTop - 72, behavior: 'smooth' }); }
+  a.addEventListener('click',function(e){
+    const id=a.getAttribute('href').slice(1);
+    const t=document.getElementById(id);
+    if(t){e.preventDefault();window.scrollTo({top:t.offsetTop-68,behavior:'smooth'});}
   });
 });
 
-// SOLUTION TAB
-function switchTab(n) {
-  [1,2].forEach(function(i){
-    document.getElementById('tab'+i).classList.toggle('active', i===n);
-    document.getElementById('panel'+i).classList.toggle('active', i===n);
-  });
-  // reveal feature cards in active panel
-  document.querySelectorAll('#panel'+n+' .feature-card').forEach(function(el){ obs.observe(el); });
-}
-window.switchTab = switchTab;
-
 // GAS FORM
-const GAS_URL = 'https://script.google.com/macros/s/AKfycbweIGAPeJwD-U8D4Cks6fjGmp5hR2kpuwCx_9janRnGq3qdUFR4DDpYGgl33-bkFr3v/exec';
+const GAS_URL='https://script.google.com/macros/s/AKfycbweIGAPeJwD-U8D4Cks6fjGmp5hR2kpuwCx_9janRnGq3qdUFR4DDpYGgl33-bkFr3v/exec';
 document.querySelectorAll('.gas-form').forEach(function(form){
-  form.addEventListener('submit', function(e){
+  form.addEventListener('submit',function(e){
     e.preventDefault();
-    const btn = form.querySelector('.form-btn');
-    btn.disabled = true; btn.textContent = '送信中...';
-    const fd = new FormData(form);
-    fd.append('page', form.dataset.page || document.title);
-    fd.append('form_type', form.dataset.formtype || '');
-    let done = false;
-    const showThanks = function(){
-      if(done) return; done = true;
-      window.dataLayer = window.dataLayer || [];
-      window.dataLayer.push({ event: 'form_submit', form_type: '人材定着AI無料診断' });
-      form.style.display = 'none';
-      document.querySelector('.form-thanks').style.display = 'block';
+    const btn=form.querySelector('.form-btn');
+    btn.disabled=true;btn.textContent='送信中...';
+    const fd=new FormData(form);
+    fd.append('page',form.dataset.page||document.title);
+    fd.append('form_type',form.dataset.formtype||'');
+    // チェックボックス集約
+    const issues=Array.from(form.querySelectorAll('input[name="issue"]:checked')).map(function(c){return c.value;}).join('、');
+    fd.set('issue',issues);
+    let done=false;
+    const showThanks=function(){
+      if(done)return;done=true;
+      window.dataLayer=window.dataLayer||[];
+      window.dataLayer.push({event:'form_submit',form_type:'人材定着AI無料診断'});
+      form.style.display='none';
+      document.querySelector('.form-thanks').style.display='block';
     };
-    setTimeout(showThanks, 2000);
-    fetch(GAS_URL, { method:'POST', mode:'no-cors', body:fd }).catch(function(){}).finally(showThanks);
+    setTimeout(showThanks,2000);
+    fetch(GAS_URL,{method:'POST',mode:'no-cors',body:fd}).catch(function(){}).finally(showThanks);
   });
 });
 </script>
