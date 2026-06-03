@@ -1,8 +1,8 @@
 # jinzai（削除済み） → service
 /service/jinzai/    /service/    301
 /service/jinzai     /service/    301
-/jinzai/            /service/    301
-/jinzai             /service/    301
+/jinzai/            /lp/jinzai/    301
+/jinzai             /lp/jinzai/    301
 
 # news → トップ
 /news/              /            301
