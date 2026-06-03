@@ -1,6 +1,6 @@
-# jinzai（削除済み） → service
-/service/jinzai/    /service/    301
-/service/jinzai     /service/    301
+# jinzai → LP
+/service/jinzai/    /lp/jinzai/    301
+/service/jinzai     /lp/jinzai/    301
 /jinzai/            /lp/jinzai/    301
 /jinzai             /lp/jinzai/    301
 
@@ -8,7 +8,11 @@
 /news/              /            301
 /news               /            301
 
-# 旧WordPressパス
+# ダブルスラッシュ修正
+/lp/hanamaru-kango//    /lp/hanamaru-kango/    301
+
+# 旧WordPressパス（bousaiサブドメイン含む）
 /wp-admin/          /            301
 /wp-login.php       /            301
 /wp-json/           /            301
+/wp-json/*          /            301
