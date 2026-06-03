@@ -322,9 +322,13 @@
     }
     .profile-avatar {
       width: 120px; height: 120px; border-radius: 50%;
-      background: linear-gradient(135deg, #1a3f70, #7a1a1a);
-      display: flex; align-items: center; justify-content: center;
-      font-size: 3rem; margin: 0 auto 16px;
+      overflow: hidden;
+      margin: 0 auto 16px;
+      border: 3px solid rgba(255,255,255,0.15);
+    }
+    .profile-avatar img {
+      width: 100%; height: 100%; object-fit: cover; object-position: center top;
+      display: block;
     }
     .profile-name { font-size: 1.1rem; font-weight: 700; color: var(--white); }
     .profile-title { font-size: 0.82rem; color: var(--gold); margin-top: 4px; }
@@ -676,7 +680,7 @@
     <div class="divider"></div>
     <div class="profile-grid">
       <div class="profile-img-wrap">
-        <div class="profile-avatar">🧑‍🚒</div>
+        <div class="profile-avatar"><img src="/images/bousai1.jpg" alt="眞貴田正博"></div>
         <div class="profile-name">Prevention 代表</div>
         <div class="profile-title">元消防士 × AIエンジニア</div>
       </div>

@@ -175,10 +175,12 @@ body {
 }
 .ceo-photo {
   width:88px; height:88px; border-radius:50%;
-  background:linear-gradient(135deg, var(--accent), var(--accent2));
-  display:flex; align-items:center; justify-content:center;
-  font-size:32px; margin:0 auto 18px;
-  border:3px solid rgba(255,255,255,0.1);
+  overflow:hidden;
+  margin:0 auto 18px;
+  border:3px solid rgba(255,255,255,0.15);
+}
+.ceo-photo img {
+  width:100%; height:100%; object-fit:cover; object-position:center top; display:block;
 }
 .ceo-name { text-align:center; font-size:19px; font-weight:900; margin-bottom:3px; }
 .ceo-name-en { text-align:center; font-size:11px; color:rgba(255,255,255,0.4); letter-spacing:2px; margin-bottom:12px; font-family:'Bebas Neue',sans-serif; }
@@ -326,7 +328,7 @@ footer a { color:inherit; }
   </div>
   <div class="fade-up">
     <div class="ceo-card">
-      <div class="ceo-photo">👤</div>
+      <div class="ceo-photo"><img src="images/bousai1.jpg" alt="眞貴田正博"></div>
       <div class="ceo-name">眞貴田 正博</div>
       <div class="ceo-name-en">MASAHIRO MAKITA</div>
       <div class="ceo-title">代表取締役</div>
