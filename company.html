@@ -171,12 +171,14 @@ body {
 .ceo-photo {
   width:100%;
   aspect-ratio:3/4;
-  overflow:hidden;
   position:relative;
+  overflow:hidden;
 }
 .ceo-photo img {
-  width:100%; height:100%; object-fit:cover; object-position:center top; display:block;
+  width:100%; height:100%; object-fit:cover; object-position:center top; display:block; border-radius:12px 12px 0 0;
 }
+/* バッジはoverflow:hiddenの外に出すためceo-cardからの絶対配置 */
+.ceo-card { position:relative; }
 .ceo-photo-caption {
   position:absolute; bottom:0; left:0; right:0;
   background:linear-gradient(transparent, rgba(0,0,0,0.7));
@@ -335,6 +337,10 @@ footer a { color:inherit; }
       <div class="ceo-photo">
         <img src="images/bousai1.jpg" alt="眞貴田正博 能登半島地震 物資支援">
         <div class="ceo-photo-caption">2024年1月29日　能登半島地震 物資支援活動にて</div>
+      </div>
+      <div style="position:absolute;top:12px;right:12px;background:linear-gradient(135deg,#e85d04,#c8102e);border-radius:8px;padding:10px 14px;box-shadow:0 4px 20px rgba(0,0,0,0.45);max-width:155px;z-index:10;">
+        <div style="font-size:9px;color:rgba(255,255,255,0.75);letter-spacing:0.1em;margin-bottom:4px;">🏆 AWARD</div>
+        <div style="font-size:11px;font-weight:700;color:#fff;line-height:1.5;">三井住友銀行×みらいワークス<br>「未来2021」<br>GAPグラント賞</div>
       </div>
       <div class="ceo-body">
         <div class="ceo-name">眞貴田 正博</div>
