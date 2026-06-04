@@ -97,13 +97,11 @@ body { font-family: 'Noto Sans JP', sans-serif; background: var(--white); color:
 .article-card:hover { box-shadow: 0 6px 28px rgba(0,0,0,0.07); transform: translateY(-2px); }
 
 .article-card-side {
-  width: 80px; flex-shrink: 0;
-  background: var(--red);
-  display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 3px;
-  padding: 0 10px;
+  width: 8px; flex-shrink: 0;
+  border-radius: 0;
 }
-.article-card-day { font-family: 'DM Mono', monospace; font-size: 26px; font-weight: 500; color: #fff; line-height: 1; }
-.article-card-ym { font-family: 'DM Mono', monospace; font-size: 9px; color: rgba(255,255,255,0.7); letter-spacing: 0.08em; }
+.article-card-side.cat-kaigo  { background: var(--red); }
+.article-card-side.cat-jinzai { background: #2563eb; }
 
 .article-card-body { flex: 1; padding: 24px 28px; display: flex; flex-direction: column; justify-content: center; gap: 8px; background: #fff; }
 .article-card-tag {
@@ -187,13 +185,29 @@ footer {
 <section class="list-section">
   <div class="list-inner">
 
-    <a href="/column/hanamaru-kango-ai/" class="article-card">
-      <div class="article-card-side">
-        <div class="article-card-day">03</div>
-        <div class="article-card-ym">2026.06</div>
-      </div>
+    <!-- 新しい順（上が最新） -->
+    <a href="/column/kaigo-jinzai-teichaku/" class="article-card">
+      <div class="article-card-side cat-jinzai"></div>
       <div class="article-card-body">
-        <div class="article-card-tag">介護DX・記録効率化</div>
+        <div style="display:flex;align-items:center;gap:10px;margin-bottom:4px;">
+          <div class="article-card-tag">人材定着・介護DX</div>
+          <span style="font-size:11px;color:var(--light);">2026.06.05</span>
+        </div>
+        <div class="article-card-title">介護・医療の「採用してもすぐ辞める」を終わらせる。AIで実現する人材定着の3ステップ。</div>
+        <div class="article-card-desc">離職コスト150万円〜の実態から、記録効率化・AIナレッジ共有・公正評価まで。離職率42%→18%を実現した具体的な方法を解説。</div>
+      </div>
+      <div class="article-card-arrow-col">
+        <span class="article-card-arrow">→</span>
+      </div>
+    </a>
+
+    <a href="/column/hanamaru-kango-ai/" class="article-card">
+      <div class="article-card-side cat-kaigo"></div>
+      <div class="article-card-body">
+        <div style="display:flex;align-items:center;gap:10px;margin-bottom:4px;">
+          <div class="article-card-tag">介護DX・記録効率化</div>
+          <span style="font-size:11px;color:var(--light);">2026.06.03</span>
+        </div>
         <div class="article-card-title">訪問看護の「SOAP記録」、LINEで話すだけでAIが自動作成する時代へ。</div>
         <div class="article-card-desc">記録業務が現場を疲弊させる根本原因と、はなまる看護AIが実現する最大90%の時間削減。ChatGPTとの決定的な違いも解説。</div>
       </div>
@@ -201,21 +215,6 @@ footer {
         <span class="article-card-arrow">→</span>
       </div>
     </a>
-
-      <a href="/column/kaigo-jinzai-teichaku/" class="article-card">
-        <div class="article-card-side">
-          <div class="article-card-day">05</div>
-          <div class="article-card-ym">2026.06</div>
-        </div>
-        <div class="article-card-body">
-          <div class="article-card-tag">人材定着・介護DX</div>
-          <div class="article-card-title">介護・医療の「採用してもすぐ辞める」を終わらせる。AIで実現する人材定着の3ステップ。</div>
-          <div class="article-card-desc">離職コスト150万円〜の実態から、記録効率化・AIナレッジ共有・公正評価まで。離職率42%→18%を実現した具体的な方法を解説。</div>
-        </div>
-        <div class="article-card-arrow-col">
-          <span class="article-card-arrow">→</span>
-        </div>
-      </a>
 
     <div class="coming-soon">
       <p>次回のコラムを準備中です。<br>BPR・AI活用の実践ノウハウを随時公開していきます。</p>
