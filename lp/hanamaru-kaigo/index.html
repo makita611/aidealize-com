@@ -1,0 +1,991 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>はなまるAI 介護版｜しゃべるだけで経過記録が完成するAIツール</title>
+<meta name="description" content="ケアマネジャー・訪問介護員の記録業務をAIで自動化。音声を送るだけでSOAP経過記録が自動完成。S・O・A・Pの切り分けも自動。記録時間を最大80%削減。">
+
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-P6VNBWH3');</script>
+
+<meta property="og:type" content="website">
+<meta property="og:title" content="はなまるAI 介護版｜しゃべるだけで経過記録が完成するAIツール">
+<meta property="og:description" content="ケアマネジャーの三大苦悩をAIが解決。S・O・A・P自動分類。1ヶ月無料トライアル実施中。">
+<meta property="og:image" content="https://aidealize.com/images/ogp-hanamaru-kaigo.png">
+<meta property="og:url" content="https://aidealize.com/lp/hanamaru-kaigo/">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700;900&family=Zen+Kaku+Gothic+New:wght@400;700;900&display=swap" rel="stylesheet">
+
+<style>
+/* ====== VARIABLES ====== */
+:root {
+  --care: #059669;
+  --care-dark: #047857;
+  --care-bg: #f0fdf4;
+  --care-light: #d1fae5;
+  --care-mid: #34d399;
+  --line: #06C755;
+  --line-dark: #05a847;
+  --line-bg: #f0fff6;
+  --gold: #b8902a;
+  --gold-pale: #fdf3d8;
+  --ink: #1a1a1a;
+  --text: #333;
+  --text2: #555;
+  --gray: #888;
+  --light: #f7f9fc;
+  --light2: #eef2f7;
+  --white: #fff;
+  --border: #dde6ed;
+  --shadow: 0 4px 24px rgba(5,150,105,0.08);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  background: var(--white);
+  color: var(--text);
+  font-family: 'Noto Sans JP', sans-serif;
+  font-weight: 400;
+  line-height: 1.85;
+  overflow-x: hidden;
+}
+
+.container { max-width: 1080px; margin: 0 auto; padding: 0 28px; }
+.section-label {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-size: 11px; font-weight: 700; letter-spacing: 0.14em;
+  color: var(--care); text-transform: uppercase; margin-bottom: 14px;
+}
+.section-label::before {
+  content: ''; display: inline-block; width: 28px; height: 2px; background: var(--care);
+}
+.section-title {
+  font-size: clamp(1.6rem, 4vw, 2.2rem);
+  font-weight: 900; line-height: 1.35; color: var(--ink); margin-bottom: 16px;
+}
+.section-desc {
+  font-size: 1rem; color: var(--text2); line-height: 1.9; margin-bottom: 40px; max-width: 640px;
+}
+.care-color { color: var(--care); }
+.line-color { color: var(--line); }
+.gold { color: var(--gold); }
+.btn-primary {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: var(--care); color: var(--white);
+  padding: 16px 36px; border-radius: 3px;
+  font-size: 1rem; font-weight: 700; letter-spacing: 0.04em;
+  text-decoration: none; transition: background 0.2s, transform 0.1s; white-space: nowrap;
+}
+.btn-primary:hover { background: var(--care-dark); transform: translateY(-1px); }
+.btn-line {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: var(--line); color: var(--white);
+  padding: 16px 36px; border-radius: 3px;
+  font-size: 1rem; font-weight: 700; letter-spacing: 0.04em;
+  text-decoration: none; transition: background 0.2s, transform 0.1s; white-space: nowrap;
+}
+.btn-line:hover { background: var(--line-dark); transform: translateY(-1px); }
+.btn-secondary {
+  display: inline-flex; align-items: center; gap: 6px;
+  background: var(--white); color: var(--care); border: 2px solid var(--care);
+  padding: 14px 28px; border-radius: 3px; font-size: 0.95rem; font-weight: 700;
+  text-decoration: none; transition: background 0.2s, color 0.2s;
+}
+.btn-secondary:hover { background: var(--care); color: var(--white); }
+
+.reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.6s ease, transform 0.6s ease; }
+.reveal.visible { opacity: 1; transform: none; }
+
+/* ====== NAV ====== */
+#mainNav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 48px; height: 68px;
+  background: rgba(255,255,255,0.97); border-bottom: 1px solid var(--border);
+  backdrop-filter: blur(12px); transition: box-shadow 0.3s;
+}
+#mainNav.scrolled { box-shadow: 0 4px 24px rgba(0,0,0,0.08); }
+.nav-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+.nav-logo img { height: 34px; width: auto; }
+.nav-logo-text { font-size: 15px; font-weight: 500; color: var(--ink); letter-spacing: 0.02em; }
+.nav-logo-text span { color: var(--care); }
+.nav-badge {
+  font-size: 10px; font-weight: 700; letter-spacing: 0.06em;
+  background: var(--care-light); color: var(--care-dark);
+  border-radius: 2px; padding: 2px 8px;
+}
+.nav-links { display: flex; align-items: center; gap: 32px; list-style: none; }
+.nav-links a {
+  font-size: 13px; font-weight: 500; color: var(--text2);
+  text-decoration: none; letter-spacing: 0.04em; transition: color 0.2s;
+}
+.nav-links a:hover { color: var(--ink); }
+.nav-cta {
+  background: var(--care) !important; color: var(--white) !important;
+  padding: 10px 20px; border-radius: 3px; font-size: 12px !important; font-weight: 700 !important;
+}
+.nav-cta:hover { background: var(--care-dark) !important; }
+.nav-hamburger {
+  display: none; flex-direction: column; justify-content: center; gap: 5px;
+  width: 40px; height: 40px; background: none; border: none; cursor: pointer; padding: 4px;
+}
+.nav-hamburger span { display: block; width: 24px; height: 2px; background: var(--ink); transition: all 0.3s; transform-origin: center; }
+.nav-hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.nav-hamburger.open span:nth-child(2) { opacity: 0; }
+.nav-hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+.nav-drawer {
+  display: none; position: fixed; top: 68px; left: 0; right: 0;
+  background: rgba(255,255,255,0.98); border-bottom: 2px solid var(--care);
+  padding: 20px 28px 28px; z-index: 999;
+}
+.nav-drawer.open { display: block; }
+.nav-drawer ul { list-style: none; display: flex; flex-direction: column; gap: 0; }
+.nav-drawer ul li a {
+  display: block; padding: 14px 0; font-size: 15px; font-weight: 500;
+  color: var(--ink); text-decoration: none;
+  border-bottom: 1px solid var(--border); letter-spacing: 0.04em;
+}
+.nav-drawer ul li:last-child a {
+  margin-top: 16px; text-align: center;
+  background: var(--line); color: var(--white) !important;
+  padding: 14px; border-radius: 3px; font-weight: 700 !important; border-bottom: none;
+}
+@media (max-width: 900px) {
+  #mainNav { padding: 0 20px; }
+  .nav-links { display: none; }
+  .nav-hamburger { display: flex; }
+}
+
+/* ====== HERO ====== */
+.hero {
+  padding: 148px 28px 80px;
+  background: var(--white); position: relative; overflow: hidden;
+}
+.hero::before {
+  content: '介護';
+  position: absolute; right: -40px; top: 60px;
+  font-size: 280px; font-weight: 900;
+  color: rgba(5,150,105,0.04); line-height: 1;
+  white-space: nowrap; pointer-events: none;
+  font-family: 'Zen Kaku Gothic New', sans-serif;
+}
+.hero-inner { max-width: 1080px; margin: 0 auto; }
+.hero-badge {
+  display: inline-flex; align-items: center; gap: 8px;
+  border: 1px solid var(--border); border-radius: 2px;
+  padding: 7px 16px; font-size: 12px; font-weight: 700;
+  color: var(--text2); letter-spacing: 0.06em; margin-bottom: 24px;
+}
+.hero-badge-dot { display: inline-block; width: 8px; height: 8px; border-radius: 50%; background: var(--line); flex-shrink: 0; }
+.hero-eyebrow { font-size: 1rem; color: var(--care); font-weight: 700; margin-bottom: 16px; letter-spacing: 0.04em; }
+.hero-title {
+  font-size: clamp(2rem, 5.5vw, 3.4rem);
+  font-weight: 900; line-height: 1.25; color: var(--ink); margin-bottom: 28px;
+  font-family: 'Zen Kaku Gothic New', sans-serif;
+}
+.hero-title .accent-line {
+  display: block;
+  background: linear-gradient(135deg, var(--care) 0%, var(--care-mid) 100%);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+}
+.hero-sub { font-size: 1.05rem; color: var(--text2); line-height: 1.95; max-width: 580px; margin-bottom: 36px; }
+.hero-cta-group { display: flex; align-items: center; gap: 16px; flex-wrap: wrap; margin-bottom: 56px; }
+.hero-stats {
+  display: flex; gap: 40px; padding: 28px 36px;
+  border: 1px solid var(--border); border-radius: 4px;
+  background: var(--light); max-width: 700px;
+}
+.hero-stats > div { text-align: center; }
+.stat-num {
+  display: block; font-size: 2rem; font-weight: 900;
+  color: var(--care); line-height: 1; font-family: 'Zen Kaku Gothic New', sans-serif;
+}
+.stat-unit { font-size: 0.85rem; color: var(--text2); margin-top: 6px; }
+@media (max-width: 640px) {
+  .hero { padding: 100px 20px 60px; }
+  .hero-stats { flex-direction: column; gap: 20px; padding: 20px; }
+  .hero-stats > div { text-align: left; display: flex; align-items: center; gap: 16px; }
+  .stat-num { font-size: 1.6rem; }
+}
+
+/* ====== LINE BAND ====== */
+.line-band { background: var(--line); padding: 20px 28px; text-align: center; }
+.line-band-inner { max-width: 800px; margin: 0 auto; display: flex; align-items: center; justify-content: center; gap: 16px; flex-wrap: wrap; }
+.line-band-text { color: var(--white); font-size: 1rem; font-weight: 700; letter-spacing: 0.04em; }
+.line-band-cta {
+  background: var(--white); color: var(--line);
+  padding: 10px 24px; border-radius: 3px; font-size: 0.9rem; font-weight: 700;
+  text-decoration: none; transition: opacity 0.2s; white-space: nowrap;
+}
+.line-band-cta:hover { opacity: 0.85; }
+
+/* ====== PROBLEM ====== */
+.problem { padding: 100px 0; background: #ecfdf5; }
+.problem-headline {
+  font-size: clamp(1.5rem, 4vw, 2.1rem);
+  font-weight: 900; line-height: 1.4; margin-bottom: 16px;
+  font-family: 'Zen Kaku Gothic New', sans-serif;
+}
+.danger { color: var(--care-dark); }
+.problem-body { font-size: 1rem; color: var(--text2); line-height: 1.95; margin-bottom: 48px; max-width: 680px; }
+
+/* 3大苦悩カード */
+.pain-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px; margin-bottom: 48px; }
+.pain-card {
+  background: var(--white); border-radius: 8px; padding: 32px 28px;
+  box-shadow: var(--shadow); border-top: 4px solid var(--care);
+}
+.pain-num { font-size: 0.75rem; font-weight: 700; letter-spacing: 0.12em; color: var(--care); margin-bottom: 12px; }
+.pain-title { font-size: 1.05rem; font-weight: 900; color: var(--ink); margin-bottom: 14px; line-height: 1.45; }
+.pain-desc { font-size: 0.87rem; color: var(--text2); line-height: 1.8; margin-bottom: 16px; }
+.pain-arrow { text-align: center; font-size: 1.2rem; color: var(--care); font-weight: 700; margin: 12px 0; }
+.pain-ai {
+  background: var(--care-bg); border-radius: 6px; padding: 14px 16px;
+  font-size: 0.87rem; color: var(--care-dark); line-height: 1.75;
+  border-left: 3px solid var(--care);
+}
+.pain-ai strong { color: var(--care-dark); }
+
+.problem-conclusion {
+  background: var(--white); border-left: 3px solid var(--care);
+  padding: 24px 28px; border-radius: 0 4px 4px 0;
+  font-size: 0.97rem; color: var(--text); line-height: 1.9;
+  margin-bottom: 40px; box-shadow: var(--shadow);
+}
+.problem-cta { display: flex; gap: 16px; flex-wrap: wrap; }
+
+/* ====== HOW IT WORKS ====== */
+.how { padding: 100px 0; background: var(--light); }
+.how-steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; margin-top: 48px; position: relative; }
+.how-steps::before {
+  content: ''; position: absolute;
+  top: 52px; left: calc(16.67% + 12px); right: calc(16.67% + 12px);
+  height: 2px; background: var(--border); z-index: 0;
+}
+.how-step { text-align: center; padding: 0 16px; position: relative; z-index: 1; }
+.how-step-num {
+  width: 64px; height: 64px; border-radius: 50%;
+  background: var(--care); color: var(--white);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.6rem; font-weight: 900; margin: 0 auto 20px;
+  font-family: 'Zen Kaku Gothic New', sans-serif;
+  box-shadow: 0 4px 16px rgba(5,150,105,0.35);
+}
+.how-step-num.line-step { background: var(--line); box-shadow: 0 4px 16px rgba(6,199,85,0.35); }
+.how-step-icon { font-size: 2rem; margin-bottom: 12px; }
+.how-step-title { font-size: 1rem; font-weight: 900; color: var(--ink); margin-bottom: 10px; }
+.how-step-desc { font-size: 0.87rem; color: var(--text2); line-height: 1.75; }
+.how-step-time {
+  display: inline-block; background: var(--care-light); color: var(--care-dark);
+  font-size: 0.78rem; font-weight: 700; border-radius: 2px;
+  padding: 3px 10px; margin-top: 10px; letter-spacing: 0.04em;
+}
+@media (max-width: 800px) {
+  .how-steps { grid-template-columns: repeat(2, 1fr); gap: 32px; }
+  .how-steps::before { display: none; }
+}
+@media (max-width: 480px) {
+  .how-steps { grid-template-columns: 1fr; }
+  .how-step { display: flex; gap: 20px; text-align: left; padding: 0; }
+  .how-step-num { flex-shrink: 0; margin: 0; width: 52px; height: 52px; font-size: 1.3rem; }
+}
+
+/* ====== SOAP SECTION ====== */
+.soap-section-block { padding: 100px 0; background: var(--care-bg); }
+.soap-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 20px; margin-top: 48px; }
+.soap-card {
+  background: var(--white); border-radius: 8px; padding: 28px;
+  box-shadow: var(--shadow); border-top: 3px solid var(--care);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.soap-card:hover { transform: translateY(-4px); box-shadow: 0 8px 32px rgba(5,150,105,0.15); }
+.soap-letter { font-size: 2.4rem; font-weight: 900; color: var(--care); line-height: 1; margin-bottom: 4px; font-family: 'Zen Kaku Gothic New', sans-serif; }
+.soap-word { font-size: 0.75rem; font-weight: 700; color: var(--care-dark); letter-spacing: 0.08em; margin-bottom: 14px; }
+.soap-title { font-size: 1rem; font-weight: 700; color: var(--ink); margin-bottom: 10px; }
+.soap-desc { font-size: 0.87rem; color: var(--text2); line-height: 1.8; }
+.soap-example {
+  margin-top: 12px; padding: 10px 14px;
+  background: var(--care-bg); border-radius: 4px; border-left: 2px solid var(--care-mid);
+  font-size: 0.8rem; color: var(--text2); line-height: 1.65; font-style: italic;
+}
+
+/* ====== BEFORE/AFTER ====== */
+.before-after { padding: 100px 0; background: var(--white); }
+.ba-wrap {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 0; margin-top: 48px;
+  border-radius: 8px; overflow: hidden; box-shadow: var(--shadow);
+}
+.ba-col { padding: 36px 32px; }
+.ba-col.before { background: #f5f5f5; border-right: 1px solid var(--border); }
+.ba-col.after { background: var(--care-light); }
+.ba-col-label {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-size: 11px; font-weight: 700; letter-spacing: 0.12em;
+  padding: 4px 14px; border-radius: 2px; margin-bottom: 20px;
+}
+.ba-col.before .ba-col-label { background: #e0e0e0; color: #666; }
+.ba-col.after .ba-col-label { background: var(--care); color: var(--white); }
+.ba-title { font-size: 1.05rem; font-weight: 900; margin-bottom: 20px; line-height: 1.4; }
+.ba-col.before .ba-title { color: #666; }
+.ba-col.after .ba-title { color: var(--care-dark); }
+.ba-steps { display: flex; flex-direction: column; gap: 10px; }
+.ba-step {
+  display: flex; align-items: flex-start; gap: 12px;
+  padding: 12px 14px; border-radius: 4px; font-size: 0.87rem; line-height: 1.6;
+}
+.ba-col.before .ba-step { background: rgba(0,0,0,0.04); color: #555; }
+.ba-col.after .ba-step { background: rgba(255,255,255,0.7); color: var(--ink); }
+.ba-step-icon { font-size: 1.1rem; flex-shrink: 0; margin-top: 1px; }
+.ba-step-time { font-size: 0.75rem; font-weight: 700; margin-top: 2px; display: block; }
+.ba-col.before .ba-step-time { color: #e05555; }
+.ba-col.after .ba-step-time { color: var(--care-dark); }
+.ba-total {
+  margin-top: 20px; padding: 14px 16px; border-radius: 4px;
+  font-weight: 900; font-size: 1rem; text-align: center;
+}
+.ba-col.before .ba-total { background: #ffe5e5; color: #c0392b; }
+.ba-col.after .ba-total { background: var(--care); color: var(--white); }
+@media (max-width: 640px) {
+  .ba-wrap { grid-template-columns: 1fr; }
+  .ba-col.before { border-right: none; border-bottom: 1px solid var(--border); }
+}
+
+/* ====== BENEFITS ====== */
+.benefits { padding: 100px 0; background: var(--light); }
+.benefits-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; margin-top: 48px; }
+.benefit-card { background: var(--white); border-radius: 6px; padding: 32px 28px; box-shadow: var(--shadow); }
+.benefit-num { font-size: 3rem; font-weight: 900; color: #b2d8c8; line-height: 1; margin-bottom: 8px; font-family: 'Zen Kaku Gothic New', sans-serif; }
+.benefit-icon { font-size: 1.8rem; margin-bottom: 14px; display: block; }
+.benefit-title { font-size: 1.05rem; font-weight: 900; color: var(--ink); margin-bottom: 10px; line-height: 1.4; }
+.benefit-desc { font-size: 0.87rem; color: var(--text2); line-height: 1.8; }
+.benefit-highlight {
+  display: inline-block; background: var(--care-light); color: var(--care-dark);
+  font-size: 0.85rem; font-weight: 700; padding: 4px 12px; border-radius: 2px; margin-top: 12px;
+}
+
+/* ====== PRICING ====== */
+.pricing { padding: 100px 0; background: #f0fdf4; }
+.pricing-note {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: var(--care-light); border: 1px solid var(--care);
+  color: var(--care-dark); font-size: 0.9rem; font-weight: 700;
+  padding: 12px 20px; border-radius: 3px; margin-bottom: 40px;
+}
+.pricing-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+.price-card {
+  background: var(--white); border: 1px solid var(--border);
+  border-radius: 6px; padding: 32px 28px; position: relative; transition: box-shadow 0.2s;
+}
+.price-card:hover { box-shadow: 0 8px 32px rgba(5,150,105,0.15); }
+.price-card.featured {
+  border-color: var(--care); border-width: 2px;
+  background: linear-gradient(135deg, #fff 0%, var(--care-light) 100%);
+}
+.price-badge {
+  position: absolute; top: -12px; left: 50%; transform: translateX(-50%);
+  background: var(--care); color: var(--white);
+  font-size: 10px; font-weight: 700; letter-spacing: 0.1em;
+  padding: 4px 14px; border-radius: 2px; white-space: nowrap;
+}
+.price-name { font-size: 0.85rem; font-weight: 700; color: var(--gray); letter-spacing: 0.06em; margin-bottom: 8px; }
+.price-target { font-size: 0.82rem; color: var(--text2); line-height: 1.6; margin-bottom: 20px; }
+.price-num { font-size: 2rem; font-weight: 900; color: var(--ink); line-height: 1.1; margin-bottom: 6px; }
+.price-num .currency { font-size: 1.1rem; }
+.price-num .period { font-size: 0.85rem; font-weight: 400; color: var(--gray); }
+.price-initial { font-size: 0.82rem; color: var(--gray); margin-top: 6px; }
+.price-monitor { font-size: 0.82rem; font-weight: 700; color: var(--care-dark); margin-top: 4px; }
+.price-features { list-style: none; display: flex; flex-direction: column; gap: 10px; margin: 20px 0 28px; }
+.price-features li {
+  font-size: 0.87rem; color: var(--text2);
+  display: flex; align-items: flex-start; gap: 8px; line-height: 1.5;
+}
+.price-features li::before { content: '✓'; color: var(--care); font-weight: 900; flex-shrink: 0; }
+.price-cta {
+  display: block; text-align: center;
+  background: transparent; border: 1px solid var(--care);
+  color: var(--care); padding: 12px; border-radius: 3px;
+  font-size: 0.87rem; font-weight: 700; text-decoration: none;
+  transition: background 0.2s, color 0.2s; letter-spacing: 0.04em;
+}
+.price-cta:hover { background: var(--care); color: var(--white); }
+.price-card.featured .price-cta { background: var(--care); border-color: var(--care); color: var(--white); }
+.price-card.featured .price-cta:hover { background: var(--care-dark); }
+.pricing-footer { text-align: center; margin-top: 28px; font-size: 0.87rem; color: var(--gray); }
+@media (max-width: 860px) { .pricing-grid { grid-template-columns: 1fr; max-width: 440px; margin: 0 auto; } }
+
+/* ====== CONTACT ====== */
+.contact { padding: 100px 0; background: var(--white); }
+.contact-box {
+  max-width: 780px; margin: 0 auto;
+  border: 1px solid var(--border); border-radius: 6px;
+  padding: 56px 64px; box-shadow: var(--shadow);
+}
+.contact-title { font-size: clamp(1.4rem, 3.5vw, 2rem); font-weight: 900; color: var(--ink); margin-bottom: 16px; line-height: 1.4; }
+.contact-desc { font-size: 0.95rem; color: var(--text2); line-height: 1.95; margin-bottom: 32px; }
+.contact-perks { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 36px; }
+.contact-perk {
+  display: flex; align-items: center; gap: 6px;
+  background: var(--care-light); color: var(--care-dark);
+  font-size: 0.82rem; font-weight: 700; padding: 6px 14px; border-radius: 2px;
+}
+.contact-note { font-size: 0.8rem; color: var(--gray); margin-top: 20px; line-height: 1.85; }
+@media (max-width: 680px) { .contact-box { padding: 32px 24px; } }
+
+/* ====== FOOTER ====== */
+.company-bar { padding: 56px 28px; background: var(--light); border-top: 1px solid var(--border); text-align: center; }
+.company-bar p { font-size: 0.87rem; color: var(--text2); line-height: 2; }
+.company-bar a { color: var(--text2); text-decoration: underline; }
+.site-footer { background: var(--ink); color: rgba(255,255,255,0.55); padding: 32px 28px; text-align: center; }
+.site-footer a { color: rgba(255,255,255,0.55); text-decoration: none; }
+.site-footer a:hover { color: var(--white); }
+.footer-links { display: flex; justify-content: center; gap: 24px; flex-wrap: wrap; margin-bottom: 14px; }
+.footer-links a { font-size: 12px; }
+.footer-copy { font-size: 11px; }
+
+/* ====== FLOATING CTA ====== */
+.float-cta {
+  display: none; position: fixed; bottom: 20px; left: 16px; right: 16px; z-index: 800;
+  background: var(--line); color: var(--white);
+  text-align: center; padding: 16px; border-radius: 4px;
+  font-size: 0.97rem; font-weight: 700; text-decoration: none;
+  box-shadow: 0 4px 20px rgba(6,199,85,0.45); letter-spacing: 0.04em;
+}
+@media (max-width: 640px) { .float-cta { display: block; } .contact { padding-bottom: 100px; } }
+</style>
+</head>
+<body>
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-P6VNBWH3" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
+<!-- NAV -->
+<nav id="mainNav">
+  <a href="/" class="nav-logo">
+    <img src="/images/logo.png" alt="AIdealize">
+    <span class="nav-logo-text"><span>AI</span>dealize</span>
+  </a>
+  <span class="nav-badge">介護・ケアマネ専用</span>
+  <ul class="nav-links">
+    <li><a href="#problem">3つの苦悩</a></li>
+    <li><a href="#how">仕組み</a></li>
+    <li><a href="#before-after">比較</a></li>
+    <li><a href="#pricing">料金</a></li>
+    <li><a href="/service/">サービス</a></li>
+    <li><a href="/company.html">会社概要</a></li>
+    <li><a href="#contact" class="nav-cta">🎁 無料トライアル</a></li>
+  </ul>
+  <button class="nav-hamburger" id="navHamburger" aria-label="メニュー">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<div class="nav-drawer" id="navDrawer">
+  <ul>
+    <li><a href="#problem" class="drawer-link">3つの苦悩</a></li>
+    <li><a href="#how" class="drawer-link">仕組み</a></li>
+    <li><a href="#before-after" class="drawer-link">比較</a></li>
+    <li><a href="#pricing" class="drawer-link">料金</a></li>
+    <li><a href="/service/" class="drawer-link">サービス</a></li>
+    <li><a href="/company.html" class="drawer-link">会社概要</a></li>
+    <li><a href="#contact">🎁 1ヶ月無料トライアルに申し込む</a></li>
+  </ul>
+</div>
+
+<!-- HERO -->
+<section class="hero" id="top">
+  <div class="hero-inner">
+    <div class="hero-badge">
+      <span class="hero-badge-dot"></span>
+      ケアマネジャー・訪問介護員の記録業務をAIが解決 — はなまるAI 介護版
+    </div>
+    <p class="hero-eyebrow">しゃべるだけ。S・O・A・Pは自動で分けてくれます。</p>
+    <h1 class="hero-title">
+      「記録、どう書けばいいんだろう」<br>
+      <span class="accent-line">その悩みを、今日終わらせる。</span>
+    </h1>
+    <p class="hero-sub">
+      訪問が終わるたびに、S（主観）とO（客観）をどう書き分けるか悩んでいませんか？<br>
+      専門用語が出てこない、誤字が気になって何度も読み返してしまう——<br><br>
+      <strong>はなまるAI 介護版</strong>は、思いついた順に話しかけるだけで、<br>
+      AIが監査に通るレベルの介護記録・経過記録を自動で生成します。<br>
+      LINEだけでOK。アプリ追加不要。<strong>IT知識ゼロでも使えます。</strong>
+    </p>
+    <div class="hero-cta-group">
+      <a href="#contact" class="btn-line" style="font-size:1.05rem;padding:18px 40px;">🎁 1ヶ月無料トライアルに申し込む</a>
+      <a href="#how" class="btn-secondary">仕組みを見る →</a>
+    </div>
+    <div class="hero-stats reveal">
+      <div>
+        <span class="stat-num">80<small style="font-size:1.1rem">%</small></span>
+        <div class="stat-unit">記録時間の削減目安</div>
+      </div>
+      <div>
+        <span class="stat-num">SOAP</span>
+        <div class="stat-unit">S・O・A・Pを自動分類</div>
+      </div>
+      <div>
+        <span class="stat-num">1〜2</span>
+        <div class="stat-unit">分話すだけで記録完成</div>
+      </div>
+      <div>
+        <span class="stat-num" style="font-size:1.4rem;">LINE</span>
+        <div class="stat-unit">だけで完結・アプリ不要</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- LINE BAND -->
+<div class="line-band">
+  <div class="line-band-inner">
+    <span style="font-size:1.5rem;">💬</span>
+    <span class="line-band-text">LINEで音声を送るだけ。S・O・A・Pの振り分けから文章化まで、AIが全部やります。</span>
+    <a href="#problem" class="line-band-cta">ケアマネの3大苦悩を見る →</a>
+  </div>
+</div>
+
+<!-- PROBLEM：3大苦悩 -->
+<section class="problem" id="problem">
+  <div class="container">
+    <div class="section-label reveal">PROBLEM</div>
+    <h2 class="problem-headline reveal">
+      ケアマネジャーの<span class="danger">三大苦悩</span>、<br>全部、AIが解決します。
+    </h2>
+    <p class="problem-body reveal">
+      「記録が苦手」「時間がかかりすぎる」——それは能力の問題ではありません。<br>
+      ケアマネジャーの記録業務には、<strong>構造的な難しさ</strong>があります。<br>
+      その3つを、はなまるAIはまとめて解決します。
+    </p>
+    <div class="pain-cards reveal">
+
+      <div class="pain-card">
+        <div class="pain-num">PROBLEM 01</div>
+        <div class="pain-title">S（主観）とO（客観）の<br>切り分けで手が止まる</div>
+        <div class="pain-desc">
+          利用者が言ったこと（S）と、自分が見た事実（O）——どちらに書けばいいか迷い、
+          文章を組み立てるだけで時間が過ぎていく。SOAPは「わかっているのに書けない」のが一番つらい。
+        </div>
+        <div class="pain-arrow">↓ AIが解決</div>
+        <div class="pain-ai">
+          「〇〇さんが〜と言っていて、部屋を見たらこうだった」と思いついた順に話すだけで、
+          <strong>AIが自動でSとOにカチッと分類</strong>します。分け方を考えなくてOK。
+        </div>
+      </div>
+
+      <div class="pain-card">
+        <div class="pain-num">PROBLEM 02</div>
+        <div class="pain-title">誤字・専門用語・文章の<br>心理的ハードルが高い</div>
+        <div class="pain-desc">
+          PCのタイピングが苦手、適切な介護専門用語がパッと出てこない、
+          「この文章、変じゃないかな」と何度も読み返してしまう。
+          書き始めるまでが一番しんどい。
+        </div>
+        <div class="pain-arrow">↓ AIが解決</div>
+        <div class="pain-ai">
+          しゃべり言葉や多少のミスでも、AIが文脈を汲み取って
+          <strong>実地指導に通るレベルの正しい介護専門職の文章</strong>に変換します。
+        </div>
+      </div>
+
+      <div class="pain-card">
+        <div class="pain-num">PROBLEM 03</div>
+        <div class="pain-title">チリツモで夕方以降に<br>記録が爆発する</div>
+        <div class="pain-desc">
+          1日3〜4件のモニタリング訪問や電話対応の記録を後でまとめて書くため、
+          夕方以降に事務作業が集中して残業になる。「今日も書き終わらなかった」が毎日続く。
+        </div>
+        <div class="pain-arrow">↓ AIが解決</div>
+        <div class="pain-ai">
+          訪問が1件終わるごとに、<strong>車の中や移動中にスマホで1〜2分話すだけ</strong>で記録がほぼ完成。
+          夕方に山積みの記録が残ることがなくなります。
+        </div>
+      </div>
+
+    </div>
+    <div class="problem-conclusion reveal">
+      これはあなたの文章力の問題ではありません。<strong>介護記録の構造そのものが、人間には難しすぎる</strong>のです。<br>
+      だからこそ、AIに任せる。ケアマネジャーの本来の仕事は、利用者さんとの信頼関係を築くことのはずです。
+    </div>
+    <div class="problem-cta reveal">
+      <a href="#contact" class="btn-line">💬 LINEで無料デモを体験する</a>
+      <a href="#how" class="btn-secondary">仕組みを見る →</a>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="how" id="how">
+  <div class="container">
+    <div class="section-label reveal">HOW IT WORKS</div>
+    <h2 class="section-title reveal">たった3ステップ。<br>操作は<span class="care-color">LINEに音声を送るだけ</span>です。</h2>
+    <p class="section-desc reveal">
+      専用アプリ不要。LINEさえあれば今日から使えます。<br>
+      AIが話した内容を整理して、SOAPまたは経過記録形式の介護記録を自動でLINEに返信します。
+    </p>
+    <div class="how-steps reveal">
+      <div class="how-step">
+        <div class="how-step-num line-step">1</div>
+        <div class="how-step-icon">🎙</div>
+        <div class="how-step-title">訪問直後にLINEで話す</div>
+        <div class="how-step-desc">
+          LINEのトーク画面で音声メッセージを録音して送信。移動中の車の中でも、玄関を出てすぐでもOK。
+          思いついた順に、しゃべり言葉で話すだけです。
+        </div>
+        <span class="how-step-time">⏱ 1〜2分</span>
+      </div>
+      <div class="how-step">
+        <div class="how-step-num">2</div>
+        <div class="how-step-icon">🤖</div>
+        <div class="how-step-title">AIがSOAP形式に自動整理</div>
+        <div class="how-step-desc">
+          音声をAIが文字起こしし、S（主観）・O（客観）・A（アセスメント）・P（計画）に自動で振り分け。
+          言い淀みや重複も整理されます。
+        </div>
+        <span class="how-step-time">⚡ 数分で処理</span>
+      </div>
+      <div class="how-step">
+        <div class="how-step-num line-step">3</div>
+        <div class="how-step-icon">✅</div>
+        <div class="how-step-title">LINEに完成した記録が届く</div>
+        <div class="how-step-desc">
+          SOAP形式の介護記録がLINEに届きます。確認してシステムにコピペするだけ。
+          電子カルテや記録システムの移行は一切不要です。
+        </div>
+        <span class="how-step-time">✅ トータル5〜10分</span>
+      </div>
+    </div>
+    <div style="margin-top:48px;padding:24px 28px;background:var(--white);border:1px solid var(--border);border-radius:4px;display:flex;gap:16px;align-items:flex-start;" class="reveal">
+      <span style="font-size:1.4rem;flex-shrink:0;margin-top:2px;">🔒</span>
+      <span style="font-size:0.93rem;color:var(--text2);line-height:1.85;">
+        <strong style="color:var(--ink);">セキュリティについて：</strong>
+        音声データは記録生成後に削除されます。個人情報の取り扱いについては<a href="https://aidealize.com/privacy-policy/" style="color:var(--care)">プライバシーポリシー</a>をご確認ください。
+      </span>
+    </div>
+  </div>
+</section>
+
+<!-- SOAP SECTION -->
+<section class="soap-section-block" id="soap">
+  <div class="container">
+    <div class="section-label reveal">SOAP NOTES</div>
+    <h2 class="section-title reveal">AIが自動で振り分ける、<br><span class="care-color">S・O・A・P の4つの視点</span></h2>
+    <p class="section-desc reveal">
+      話した内容を、AIが自動でこの4項目に分類・整理します。<br>
+      「どっちに書けばいい？」と悩む必要はもうありません。
+    </p>
+    <div class="soap-cards reveal">
+      <div class="soap-card">
+        <div class="soap-letter">S</div>
+        <div class="soap-word">SUBJECTIVE — 主観的情報</div>
+        <div class="soap-title">利用者・家族が語った言葉</div>
+        <div class="soap-desc">本人や家族から聞いた訴え・気持ち・要望。「足が重い」「眠れない日が続く」などの本人の言葉をそのまま記録。</div>
+        <div class="soap-example">例：「最近、買い物に行くと足がすごくむくんで困る」と本人より聴取。</div>
+      </div>
+      <div class="soap-card">
+        <div class="soap-letter">O</div>
+        <div class="soap-word">OBJECTIVE — 客観的情報</div>
+        <div class="soap-title">ケアマネが観察した事実</div>
+        <div class="soap-desc">自分が目で見た部屋の状況・身体の様子・サービス利用状況など、客観的に確認できる事実を記録。</div>
+        <div class="soap-example">例：居室に食料品の買い置きあり。歩行時の下肢浮腫（両側）を視認。</div>
+      </div>
+      <div class="soap-card">
+        <div class="soap-letter">A</div>
+        <div class="soap-word">ASSESSMENT — アセスメント</div>
+        <div class="soap-title">ケアマネの専門的判断</div>
+        <div class="soap-desc">SとOをもとにした課題の分析・リスク評価・現状の判断。AIが補助的なアセスメント文を提案します。</div>
+        <div class="soap-example">例：浮腫の増悪傾向あり。独居のため、日常的な観察体制の強化が必要と判断。</div>
+      </div>
+      <div class="soap-card">
+        <div class="soap-letter">P</div>
+        <div class="soap-word">PLAN — 計画・対応方針</div>
+        <div class="soap-title">今後の支援方針・アクション</div>
+        <div class="soap-desc">次回モニタリング時の確認事項・サービス調整方針・他職種への連絡事項などを記録。</div>
+        <div class="soap-example">例：次回モニタリング時に浮腫の変化を確認。訪問看護との連携を検討。</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BEFORE / AFTER -->
+<section class="before-after" id="before-after">
+  <div class="container">
+    <div class="section-label reveal">BEFORE / AFTER</div>
+    <h2 class="section-title reveal">1件のモニタリング記録、<br><span class="care-color">所要時間はどう変わる？</span></h2>
+    <div class="ba-wrap reveal">
+      <div class="ba-col before">
+        <span class="ba-col-label">BEFORE ／ 今まで</span>
+        <div class="ba-title">モニタリング後の記録作業</div>
+        <div class="ba-steps">
+          <div class="ba-step">
+            <span class="ba-step-icon">📝</span>
+            <div>
+              <div>訪問中にメモを取る（走り書き）</div>
+              <span class="ba-step-time">⏱ 5〜10分</span>
+            </div>
+          </div>
+          <div class="ba-step">
+            <span class="ba-step-icon">🤔</span>
+            <div>
+              <div>帰宅後にSとOをどう分けるか考える</div>
+              <span class="ba-step-time">⏱ 10〜20分</span>
+            </div>
+          </div>
+          <div class="ba-step">
+            <span class="ba-step-icon">⌨️</span>
+            <div>
+              <div>専門用語を確認しながら清書</div>
+              <span class="ba-step-time">⏱ 20〜30分</span>
+            </div>
+          </div>
+          <div class="ba-step">
+            <span class="ba-step-icon">🔍</span>
+            <div>
+              <div>誤字・表現の確認で読み返す</div>
+              <span class="ba-step-time">⏱ 5〜10分</span>
+            </div>
+          </div>
+        </div>
+        <div class="ba-total">1件あたり 40〜70分の記録時間</div>
+      </div>
+      <div class="ba-col after">
+        <span class="ba-col-label">AFTER ／ はなまるAI導入後</span>
+        <div class="ba-title">訪問直後に移動しながら完結</div>
+        <div class="ba-steps">
+          <div class="ba-step">
+            <span class="ba-step-icon">🎙</span>
+            <div>
+              <div>訪問後、車の中でLINEに音声送信</div>
+              <span class="ba-step-time">⏱ 1〜2分</span>
+            </div>
+          </div>
+          <div class="ba-step">
+            <span class="ba-step-icon">🤖</span>
+            <div>
+              <div>AIがSOAP形式に自動で整理・生成</div>
+              <span class="ba-step-time">⚡ 数分（自動）</span>
+            </div>
+          </div>
+          <div class="ba-step">
+            <span class="ba-step-icon">✅</span>
+            <div>
+              <div>届いた記録を確認してシステムにペースト</div>
+              <span class="ba-step-time">⏱ 2〜3分</span>
+            </div>
+          </div>
+        </div>
+        <div class="ba-total">1件あたり 5〜10分で記録完了</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BENEFITS -->
+<section class="benefits" id="benefits">
+  <div class="container">
+    <div class="section-label reveal">MERIT</div>
+    <h2 class="section-title reveal">導入で変わる、<span class="gold">5つのこと</span></h2>
+    <div class="benefits-grid reveal">
+      <div class="benefit-card">
+        <div class="benefit-num">01</div>
+        <span class="benefit-icon">⏰</span>
+        <div class="benefit-title">残業が減る。夕方を自分の時間に取り戻せる</div>
+        <div class="benefit-desc">夕方以降に記録が山積みになる「積み残し」がなくなります。訪問のたびに現場でサクッと完了するので、事務所に戻ってから記録で残業、がなくなります。</div>
+        <span class="benefit-highlight">記録残業ゼロへ</span>
+      </div>
+      <div class="benefit-card">
+        <div class="benefit-num">02</div>
+        <span class="benefit-icon">📋</span>
+        <div class="benefit-title">実地指導に通る記録が、自然に書けるようになる</div>
+        <div class="benefit-desc">AIが生成する文章は、介護の専門的な表現を使った適切な記録です。「これで大丈夫かな」という不安がなくなり、記録の質が安定します。</div>
+        <span class="benefit-highlight">監査対応力アップ</span>
+      </div>
+      <div class="benefit-card">
+        <div class="benefit-num">03</div>
+        <span class="benefit-icon">🧠</span>
+        <div class="benefit-title">「記録どう書こう」の認知負荷がゼロになる</div>
+        <div class="benefit-desc">SとOの切り分け、専門用語の選択、文章の組み立て——これらをすべてAIに任せることで、頭のリソースを利用者さんとの関わりに集中できます。</div>
+        <span class="benefit-highlight">本来の仕事に集中</span>
+      </div>
+      <div class="benefit-card">
+        <div class="benefit-num">04</div>
+        <span class="benefit-icon">📱</span>
+        <div class="benefit-title">ITが苦手でも使える。LINEだけでOK</div>
+        <div class="benefit-desc">新しいアプリのインストールも、難しい操作も一切なし。今すぐ使い始められます。スマホが苦手なスタッフでも、LINEの音声送信さえできれば大丈夫です。</div>
+        <span class="benefit-highlight">導入コストほぼゼロ</span>
+      </div>
+      <div class="benefit-card">
+        <div class="benefit-num">05</div>
+        <span class="benefit-icon">🏢</span>
+        <div class="benefit-title">スタッフ間の記録品質が均一になる</div>
+        <div class="benefit-desc">経験年数や文章力に関わらず、誰が書いても一定レベルの記録が出来上がります。ベテランが新人の記録を添削する手間も大幅に減ります。</div>
+        <span class="benefit-highlight">組織全体の品質向上</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section class="pricing" id="pricing">
+  <div class="container">
+    <div class="section-label reveal">PRICING</div>
+    <h2 class="section-title reveal">料金プラン</h2>
+    <p class="section-desc reveal">
+      事業所の規模に合わせてお選びいただけます。<br>
+      現在、モニター3社限定で<strong style="color:var(--care-mid)">初期費用が半額</strong>になるキャンペーンを実施中です。
+    </p>
+    <div class="pricing-note reveal">
+      🎯 モニター3社限定 ——「初期費用が通常の半額」でご導入いただけます
+    </div>
+    <div class="pricing-grid reveal">
+
+      <div class="price-card">
+        <div class="price-name">LIGHT PLAN ／ ライトプラン</div>
+        <div class="price-target">小規模事業所・まず試してみたい方に<br>スタッフ5名以下の目安</div>
+        <div class="price-num"><span class="currency">¥</span>14,800<span class="period"> / 月</span></div>
+        <div class="price-initial">初期費用：¥100,000</div>
+        <div class="price-monitor">🎯 モニター価格：初期¥50,000</div>
+        <ul class="price-features">
+          <li>SOAP経過記録 自動生成</li>
+          <li>LINE連携</li>
+          <li>月50件まで</li>
+          <li>メールサポート</li>
+          <li>オンライン導入サポート1回</li>
+        </ul>
+        <a href="#contact" class="price-cta">お問い合わせ・ご相談はこちら</a>
+      </div>
+
+      <div class="price-card featured">
+        <div class="price-badge">★ MOST POPULAR</div>
+        <div class="price-name">STANDARD PLAN ／ スタンダードプラン</div>
+        <div class="price-target">中規模事業所・チームで使いたい方に<br>スタッフ10名以下の目安</div>
+        <div class="price-num"><span class="currency">¥</span>29,800<span class="period"> / 月</span></div>
+        <div class="price-initial">初期費用：¥150,000</div>
+        <div class="price-monitor">🎯 モニター価格：初期¥75,000</div>
+        <ul class="price-features">
+          <li>SOAP経過記録 自動生成</li>
+          <li>LINE連携</li>
+          <li>月件数無制限</li>
+          <li>電話・メールサポート</li>
+          <li>オンライン導入サポート3回</li>
+          <li>記録フォーマット カスタマイズ1回</li>
+        </ul>
+        <a href="#contact" class="price-cta">お問い合わせ・ご相談はこちら</a>
+      </div>
+
+      <div class="price-card">
+        <div class="price-name">ENTERPRISE ／ 法人・多拠点プラン</div>
+        <div class="price-target">複数拠点・法人での一括導入に<br>スタッフ11名以上・多拠点展開</div>
+        <div class="price-num" style="font-size:1.4rem;margin-top:8px;">要相談</div>
+        <div class="price-initial" style="margin-top:8px;">法人割引あり</div>
+        <ul class="price-features">
+          <li>スタッフ人数・拠点数に応じた料金</li>
+          <li>専任担当者によるサポート</li>
+          <li>記録フォーマット 複数カスタマイズ</li>
+          <li>電子カルテ連携サポート（別途）</li>
+          <li>導入研修・マニュアル作成</li>
+        </ul>
+        <a href="#contact" class="price-cta">法人プランを相談する</a>
+      </div>
+
+    </div>
+    <p class="pricing-footer">※ 料金はすべて税抜表示です。月払い・年払いどちらにも対応。解約はいつでも可能です。</p>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div class="container">
+    <div class="contact-box">
+      <div class="section-label">FREE TRIAL</div>
+      <h2 class="contact-title">1ヶ月無料トライアル<br>今すぐ申し込む</h2>
+      <p class="contact-desc">
+        難しい手続きはありません。フォームから送信していただくと、担当者より<strong>1営業日以内</strong>にご連絡します。<br>
+        トライアル期間中は全機能をお使いいただけます。費用は一切かかりません。
+      </p>
+      <div class="contact-perks">
+        <div class="contact-perk">✅ 1ヶ月完全無料</div>
+        <div class="contact-perk">✅ 契約不要・いつでも解約</div>
+        <div class="contact-perk">✅ 導入サポートあり</div>
+        <div class="contact-perk">✅ IT知識ゼロでOK</div>
+      </div>
+      <div class="form-embed">
+        <form class="gas-form" data-page="はなまるAI介護版" data-formtype="無料相談">
+  <div class="gas-form-group"><input type="text" name="name" placeholder="お名前" required></div>
+  <div class="gas-form-group"><input type="text" name="company" placeholder="会社名・事業所名"></div>
+  <div class="gas-form-group"><input type="email" name="email" placeholder="メールアドレス" required></div>
+  <div class="gas-form-group"><input type="tel" name="phone" placeholder="電話番号"></div>
+  <div class="gas-form-group">
+    <div class="gas-radio-group">
+      <label><input type="radio" name="request" value="資料請求" required> 資料請求</label>
+      <label><input type="radio" name="request" value="無料トライアル"> 無料トライアル</label>
+      <label><input type="radio" name="request" value="オンライン相談"> オンライン相談</label>
+    </div>
+  </div>
+  <button type="submit" class="gas-form-btn" style="background:#059669;color:#fff;">送信する</button>
+</form>
+<div class="gas-form-thanks" style="display:none">
+  <p>✅ お問い合わせありがとうございます。<br>担当者より1〜2営業日以内にご連絡いたします。</p>
+</div>
+      </div>
+      <p class="contact-note">※ ご記入いただいた情報は、サービスご案内以外の目的には使用いたしません。<br>※ 個人情報の取り扱いについては<a href="https://aidealize.com/privacy-policy/" style="color:var(--care)">プライバシーポリシー</a>をご覧ください。</p>
+    </div>
+  </div>
+</section>
+
+<!-- COMPANY -->
+<div class="company-bar">
+  <p>
+    <strong>運営：AIdealize株式会社</strong><br>
+    〒000-0000 愛知県｜<a href="/company.html">会社概要</a>｜<a href="/privacy-policy.html">プライバシーポリシー</a>｜<a href="/tokushoho.html">特定商取引法に基づく表記</a>
+  </p>
+</div>
+<footer class="site-footer">
+  <div class="footer-links">
+    <a href="/">トップ</a>
+    <a href="/service/">サービス一覧</a>
+    <a href="/company.html">会社概要</a>
+    <a href="/privacy-policy.html">プライバシーポリシー</a>
+  </div>
+  <p class="footer-copy">© 2024 AIdealize Inc. All rights reserved.</p>
+</footer>
+
+<a href="#contact" class="float-cta">🎁 1ヶ月無料トライアルに申し込む</a>
+
+<script src="/js/gas-forms.js"></script>
+<script>
+// NAV scroll
+window.addEventListener('scroll', function() {
+  document.getElementById('mainNav').classList.toggle('scrolled', window.scrollY > 20);
+});
+
+// Hamburger
+document.getElementById('navHamburger').addEventListener('click', function() {
+  this.classList.toggle('open');
+  document.getElementById('navDrawer').classList.toggle('open');
+});
+document.querySelectorAll('.drawer-link').forEach(function(a) {
+  a.addEventListener('click', function() {
+    document.getElementById('navHamburger').classList.remove('open');
+    document.getElementById('navDrawer').classList.remove('open');
+  });
+});
+
+// Reveal
+(function() {
+  var reveals = document.querySelectorAll('.reveal');
+  var observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) { entry.target.classList.add('visible'); observer.unobserve(entry.target); }
+    });
+  }, { threshold: 0.12 });
+  reveals.forEach(function(el) { observer.observe(el); });
+})();
+</script>
+</body>
+</html>
