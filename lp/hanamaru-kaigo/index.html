@@ -203,7 +203,15 @@ body {
 
 /* ====== DEMO ====== */
 .demo { padding: 100px 0; background: var(--care-bg); }
-.demo-inner { max-width: 900px; margin: 0 auto; }
+.demo-inner { max-width: 1080px; margin: 0 auto; }
+.demo-layout {
+  display: grid; grid-template-columns: 1fr 340px; gap: 48px; align-items: start; margin-top: 40px;
+}
+@media (max-width: 860px) {
+  .demo-layout { grid-template-columns: 1fr; }
+  .demo-right { order: -1; }
+}
+@media (max-width: 640px) { .demo { display: none; } }
 .demo-frame {
   background: var(--white); border: 1px solid var(--border); border-radius: 12px;
   overflow: hidden; box-shadow: 0 8px 40px rgba(5,150,105,0.12); margin-top: 40px;
@@ -895,32 +903,52 @@ body {
     <div class="demo-inner">
       <div class="section-label reveal">AI DEMO</div>
       <h2 class="section-title reveal">AIデモ体験<br><span class="care-color">今すぐSOAP経過記録を試してみる</span></h2>
-      <p class="section-desc reveal">
-        音声ファイルを選ぶか、マイクで話すだけ。実際のケアマネ業務に近い内容で試すと、よりリアルな経過記録が生成されます。
-      </p>
-      <div class="demo-frame reveal">
-        <div class="demo-frame-header">
-          <div class="demo-header-left">
-            <div class="demo-header-icon">🎙</div>
-            <div>
-              <div class="demo-header-title">はなまるAI 介護記録 — PC音声デモ</div>
-              <div class="demo-header-sub">ファイル選択 または マイク録音 → SOAP経過記録を自動生成</div>
+      <div class="demo-layout">
+
+        <!-- 左：iframe -->
+        <div class="demo-left">
+          <div class="demo-frame reveal">
+            <div class="demo-frame-header">
+              <div class="demo-header-left">
+                <div class="demo-header-icon">🎙</div>
+                <div>
+                  <div class="demo-header-title">はなまるAI 介護記録 — PC音声デモ</div>
+                  <div class="demo-header-sub">ファイル選択 または マイク録音 → SOAP経過記録を自動生成</div>
+                </div>
+              </div>
+              <span class="demo-header-badge">PC DEMO</span>
+            </div>
+            <iframe
+              src="https://dify.aidealize.com/liff/nursing/pc/"
+              width="100%"
+              height="910"
+              frameborder="0"
+              style="border:none;display:block;">
+            </iframe>
+          </div>
+        </div>
+
+        <!-- 右：説明 -->
+        <div class="demo-right reveal">
+          <p style="font-size:1rem;color:var(--text2);line-height:1.95;margin-bottom:28px;">
+            実際のケアマネ業務に近い内容で試すと、よりリアルな経過記録が生成されます。
+          </p>
+          <div style="display:flex;flex-direction:column;gap:16px;margin-bottom:32px;">
+            <div style="background:var(--white);border:1px solid var(--border);border-radius:6px;padding:16px 18px;">
+              <div style="font-size:0.82rem;font-weight:700;color:var(--care);margin-bottom:6px;">📂 ファイル選択</div>
+              <div style="font-size:0.85rem;color:var(--text2);line-height:1.7;">録音済みの音声ファイル（mp3・m4a・wav）を選んで送信</div>
+            </div>
+            <div style="background:var(--white);border:1px solid var(--border);border-radius:6px;padding:16px 18px;">
+              <div style="font-size:0.82rem;font-weight:700;color:var(--care);margin-bottom:6px;">🔴 マイク録音</div>
+              <div style="font-size:0.85rem;color:var(--text2);line-height:1.7;">その場でマイクに話しかけて送信（ブラウザの許可が必要）</div>
             </div>
           </div>
-          <span class="demo-header-badge">PC DEMO</span>
+          <div style="background:var(--care-light);border-radius:6px;padding:16px 18px;font-size:0.85rem;color:var(--care-dark);line-height:1.8;">
+            💡 <strong>スマホからはLINEでご利用ください。</strong><br>PCブラウザでの体験はこのデモから。
+          </div>
+          <a href="#contact" class="btn-line" style="margin-top:28px;display:inline-flex;">🎁 無料トライアルに申し込む</a>
         </div>
-        <iframe
-          src="https://dify.aidealize.com/liff/nursing/pc/"
-          width="100%"
-          height="700"
-          frameborder="0"
-          style="border-radius:0 0 12px 12px;border:none;display:block;">
-        </iframe>
-      </div>
-      <div class="reveal" style="margin-top:16px;padding:16px 20px;background:var(--white);border:1px solid var(--border);border-radius:4px;font-size:0.87rem;color:var(--text2);line-height:1.85;display:flex;gap:10px;align-items:flex-start;">
-        <span>💡</span>
-        <span><strong>試し方：</strong>📂 ファイル選択（録音済みの音声ファイルを選ぶ）か、🔴 マイク録音（その場で話す）のどちらかで送信してください。<br>
-        <span style="font-size:0.85rem;color:var(--gray);">※ マイク録音はブラウザのアクセス許可が必要です。スマホからはLINEでご利用ください。</span></span>
+
       </div>
     </div>
   </div>
