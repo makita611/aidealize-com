@@ -15,6 +15,10 @@
 # ダブルスラッシュ修正
 /lp/hanamaru-kango//    /lp/hanamaru-kango/    301
 
+# 旧URL call-ai → 実ファイルへ
+/lp/call-ai/        /lp/call-ai-lp1.html    301
+/lp/call-ai         /lp/call-ai-lp1.html    301
+
 # 旧WordPressパス（bousaiサブドメイン含む）
 /wp-admin/          /            301
 /wp-login.php       /            301
