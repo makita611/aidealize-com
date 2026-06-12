@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Disallow: /liff/
+Disallow: /js/
+
+Sitemap: https://aidealize.com/sitemap.xml
