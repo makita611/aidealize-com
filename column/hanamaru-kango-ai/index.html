@@ -321,6 +321,17 @@ body { font-family: 'Noto Sans JP', sans-serif; background: var(--white); color:
 .btn-cta:hover { background: var(--red-dark); transform: translateY(-2px); }
 .btn-cta-note { display: block; margin-top: 12px; font-size: 12px; color: var(--light); }
 
+/* RELATED */
+.related-section { padding: 60px 24px; background: var(--white); border-top: 1px solid var(--border); }
+.related-inner { max-width: 760px; margin: 0 auto; }
+.related-label { font-family: 'DM Mono', monospace; font-size: 11px; color: var(--red); letter-spacing: 0.14em; text-transform: uppercase; margin-bottom: 20px; }
+.related-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; }
+.related-card { border: 1px solid var(--border); border-top: 3px solid var(--red); padding: 20px; text-decoration: none; color: inherit; border-radius: 0 0 6px 6px; transition: box-shadow 0.2s, transform 0.2s; }
+.related-card:hover { box-shadow: 0 4px 16px rgba(0,0,0,0.07); transform: translateY(-2px); }
+.related-card-tag { font-size: 10px; font-family: 'DM Mono', monospace; color: var(--red); letter-spacing: 0.1em; margin-bottom: 8px; }
+.related-card-title { font-family: 'Shippori Mincho', serif; font-size: 14px; font-weight: 700; color: var(--ink); line-height: 1.6; }
+@media (max-width: 768px) { .related-section { padding-left: 16px; padding-right: 16px; } .related-grid { grid-template-columns: 1fr !important; } }
+
 /* BACK */
 .back-section { padding: 28px 24px; background: var(--bg); border-top: 1px solid var(--border); }
 .back-section-inner { max-width: 760px; margin: 0 auto; }
@@ -595,6 +606,27 @@ footer {
 
 </div>
 </article>
+
+<!-- 関連記事 -->
+<section class="related-section">
+  <div class="related-inner">
+    <div class="related-label">Related Articles</div>
+    <div class="related-grid">
+      <a href="/column/soap-ninchisho-bpsd/" class="related-card">
+        <div class="related-card-tag">SOAP記録 / 認知症 BPSD</div>
+        <div class="related-card-title">認知症の施設拒否・BPSD、訪問看護SOAP記録の書き方。介護抵抗と家族の限界を客観的に記録する例文。</div>
+      </a>
+      <a href="/column/houkan-ict-kasan/" class="related-card">
+        <div class="related-card-tag">介護報酬 / ICT加算</div>
+        <div class="related-card-title">訪問看護のICT加算とは？算定要件・対象事業所・申請の流れをわかりやすく解説。</div>
+      </a>
+      <a href="/column/houkan-jinzai-busoku/" class="related-card">
+        <div class="related-card-tag">人材定着 / 経営課題</div>
+        <div class="related-card-title">訪問看護の人材不足、なぜ深刻化するのか。採用だけに頼らない、AI活用という対策。</div>
+      </a>
+    </div>
+  </div>
+</section>
 
 <div class="back-section">
   <div class="back-section-inner">
