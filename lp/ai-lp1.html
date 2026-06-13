@@ -1703,6 +1703,14 @@ const observer = new IntersectionObserver(entries => {
 }, { threshold: 0.1 });
 document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 </script>
+<script>
+(function(){
+  if (location.search.indexOf('cta=doc') !== -1) {
+    var radio = document.querySelector('input[name="request"][value="資料請求"]');
+    if (radio) radio.checked = true;
+  }
+})();
+</script>
 <script src="/js/gas-forms.js"></script>
 </body>
 </html>
