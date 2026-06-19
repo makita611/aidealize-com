@@ -15,7 +15,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
 <meta property="og:type" content="website">
 <meta property="og:title" content="はなまるAI 介護版｜しゃべるだけで経過記録が完成するAIツール">
-<meta property="og:description" content="ケアマネジャーの三大苦悩をAIが解決。S・O・A・P自動分類。1ヶ月無料トライアル実施中。">
+<meta property="og:description" content="ケアマネジャーの三大苦悩をAIが解決。S・O・A・P自動分類。3ヶ月無料トライアル実施中。">
 <meta property="og:image" content="https://aidealize.com/images/ogp-hanamaru-kaigo.png">
 <meta property="og:url" content="https://aidealize.com/lp/hanamaru-kaigo/">
 <meta name="twitter:card" content="summary_large_image">
@@ -515,6 +515,50 @@ body {
   box-shadow: 0 4px 20px rgba(6,199,85,0.45); letter-spacing: 0.04em;
 }
 @media (max-width: 640px) { .float-cta { display: block; } .contact { padding-bottom: 100px; } }
+
+/* ====== LINE 友だち追加セクション ====== */
+.line-add { padding: 80px 0; background: var(--line-bg); }
+.line-add-box {
+  display: grid; grid-template-columns: 1fr 320px; gap: 48px; align-items: center;
+  background: var(--white); border: 2px solid var(--line);
+  border-radius: 16px; padding: 48px;
+  box-shadow: 0 8px 40px rgba(6,199,85,0.15);
+}
+.line-add-badge {
+  display: inline-block; background: var(--line); color: var(--white);
+  font-size: 0.85rem; font-weight: 700; letter-spacing: 0.04em;
+  padding: 7px 18px; border-radius: 999px; margin-bottom: 16px;
+}
+.line-add-title {
+  font-size: clamp(1.4rem, 3vw, 2rem); font-weight: 900; line-height: 1.45;
+  color: var(--ink); margin-bottom: 16px;
+}
+.line-add-desc { font-size: 0.95rem; color: var(--text2); line-height: 1.95; margin-bottom: 20px; }
+.line-add-points { list-style: none; display: flex; flex-direction: column; gap: 9px; margin-bottom: 28px; }
+.line-add-points li { font-size: 0.93rem; color: var(--text); font-weight: 500; }
+.line-add-btn {
+  display: inline-flex; align-items: center; gap: 10px; justify-content: center;
+  background: var(--line); color: var(--white);
+  padding: 18px 44px; border-radius: 8px;
+  font-size: 1.1rem; font-weight: 700; text-decoration: none;
+  box-shadow: 0 4px 16px rgba(6,199,85,0.35);
+  transition: background 0.2s, transform 0.1s;
+}
+.line-add-btn::before { content: '💬'; font-size: 1.2rem; }
+.line-add-btn:hover { background: var(--line-dark); transform: translateY(-2px); }
+.line-add-note { font-size: 0.8rem; color: var(--gray); margin-top: 14px; line-height: 1.7; }
+.line-add-right { display: flex; justify-content: center; }
+.line-add-qr-card {
+  background: var(--white); border: 1px solid var(--border); border-radius: 12px;
+  padding: 20px; text-align: center; box-shadow: var(--shadow);
+}
+.line-add-qr { width: 220px; height: 220px; display: block; margin: 0 auto 12px; }
+.line-add-qr-label { font-size: 0.82rem; color: var(--text2); font-weight: 700; line-height: 1.6; }
+@media (max-width: 760px) {
+  .line-add-box { grid-template-columns: 1fr; padding: 32px 24px; gap: 28px; }
+  .line-add-right { order: -1; }
+  .line-add-btn { width: 100%; }
+}
 </style>
 </head>
 <body>
@@ -534,7 +578,7 @@ body {
     <li><a href="#pricing">料金</a></li>
     <li><a href="/service/">サービス</a></li>
     <li><a href="/company.html">会社概要</a></li>
-    <li><a href="#contact" class="nav-cta">🎁 無料トライアル</a></li>
+    <li><a href="https://lin.ee/QDOd6Rs" target="_blank" rel="noopener" class="nav-cta" style="background:var(--line) !important;">💬 LINE登録（3ヶ月無料）</a></li>
   </ul>
   <button class="nav-hamburger" id="navHamburger" aria-label="メニュー">
     <span></span><span></span><span></span>
@@ -549,7 +593,7 @@ body {
     <li><a href="#pricing" class="drawer-link">料金</a></li>
     <li><a href="/service/" class="drawer-link">サービス</a></li>
     <li><a href="/company.html" class="drawer-link">会社概要</a></li>
-    <li><a href="#contact">🎁 1ヶ月無料トライアルに申し込む</a></li>
+    <li><a href="https://lin.ee/QDOd6Rs" target="_blank" rel="noopener" style="background:var(--line) !important;">💬 LINEで友だち追加（利用料3ヶ月無料）</a></li>
   </ul>
 </div>
 
@@ -574,10 +618,11 @@ body {
       AIが監査に通るレベルの介護記録・経過記録を自動で生成します。<br>
       LINEだけでOK。アプリ追加不要。<strong>IT知識ゼロでも使えます。</strong>
     </p>
-    <div class="hero-cta-group">
-      <a href="#contact" class="btn-line" style="font-size:1.05rem;padding:18px 40px;">🎁 1ヶ月無料トライアルに申し込む</a>
-      <a href="#how" class="btn-secondary">仕組みを見る →</a>
+    <div class="hero-cta-group" style="margin-bottom:14px;">
+      <a href="https://lin.ee/QDOd6Rs" target="_blank" rel="noopener" class="btn-line" style="font-size:1.05rem;padding:18px 40px;">💬 LINEで友だち追加（利用料3ヶ月無料）</a>
+      <a href="#contact" class="btn-secondary">資料請求・相談はこちら →</a>
     </div>
+    <p style="font-size:0.85rem;color:var(--gray);margin-bottom:48px;">※ 友だち追加だけ・登録1分／いまだけ利用料3ヶ月無料・営業電話なし</p>
     <div class="hero-stats reveal">
       <div>
         <span class="stat-num">80<small style="font-size:1.1rem">%</small></span>
@@ -611,9 +656,9 @@ body {
 <!-- LINE BAND -->
 <div class="line-band">
   <div class="line-band-inner">
-    <span style="font-size:1.5rem;">💬</span>
-    <span class="line-band-text">LINEで音声を送るだけ。S・O・A・Pの振り分けから文章化まで、AIが全部やります。</span>
-    <a href="#problem" class="line-band-cta">ケアマネの3大苦悩を見る →</a>
+    <span style="font-size:1.5rem;">🎁</span>
+    <span class="line-band-text">いまLINEで友だち追加すると、利用料が3ヶ月無料。登録1分・営業電話なし。</span>
+    <a href="https://lin.ee/QDOd6Rs" target="_blank" rel="noopener" class="line-band-cta">💬 LINEで友だち追加</a>
   </div>
 </div>
 
@@ -680,7 +725,7 @@ body {
       だからこそ、AIに任せる。ケアマネジャーの本来の仕事は、利用者さんとの信頼関係を築くことのはずです。
     </div>
     <div class="problem-cta reveal">
-      <a href="#contact" class="btn-line">💬 LINEで無料デモを体験する</a>
+      <a href="https://lin.ee/QDOd6Rs" target="_blank" rel="noopener" class="btn-line">💬 LINEで友だち追加して試す（3ヶ月無料）</a>
       <a href="#how" class="btn-secondary">仕組みを見る →</a>
     </div>
   </div>
@@ -946,7 +991,7 @@ body {
           <div style="background:var(--care-light);border-radius:6px;padding:16px 18px;font-size:0.85rem;color:var(--care-dark);line-height:1.8;">
             💡 <strong>スマホからはLINEでご利用ください。</strong><br>PCブラウザでの体験はこのデモから。
           </div>
-          <a href="#contact" class="btn-line" style="margin-top:28px;display:inline-flex;">🎁 無料トライアルに申し込む</a>
+          <a href="https://lin.ee/QDOd6Rs" target="_blank" rel="noopener" class="btn-line" style="margin-top:28px;display:inline-flex;">💬 LINEで友だち追加（3ヶ月無料）</a>
         </div>
 
       </div>
@@ -1022,18 +1067,48 @@ body {
   </div>
 </section>
 
+<!-- LINE 友だち追加 -->
+<section class="line-add" id="line-add">
+  <div class="container">
+    <div class="line-add-box reveal">
+      <div class="line-add-left">
+        <span class="line-add-badge">🎁 いまだけ・利用料3ヶ月無料</span>
+        <h2 class="line-add-title">まずは<span class="line-color">LINEで友だち追加</span>。<br>その場で「しゃべるだけで記録」を体験できます。</h2>
+        <p class="line-add-desc">
+          むずかしい手続きはありません。LINEで友だち追加するだけで、すぐにAIに経過記録を作ってもらえます。
+          いまLINEから登録された方は、<strong>利用料が3ヶ月無料</strong>になるキャンペーン中です。
+        </p>
+        <ul class="line-add-points">
+          <li>✅ 利用料3ヶ月無料（いまだけ）</li>
+          <li>✅ 友だち追加だけ・登録は1分</li>
+          <li>✅ その場で音声→SOAP経過記録を体験</li>
+          <li>✅ 営業電話なし・いつでもブロックOK</li>
+        </ul>
+        <a href="https://lin.ee/QDOd6Rs" target="_blank" rel="noopener" class="line-add-btn">LINEで友だち追加する（無料）</a>
+        <p class="line-add-note">ボタンが押せない場合は、右のQRコードをスマホで読み取ってください。</p>
+      </div>
+      <div class="line-add-right">
+        <div class="line-add-qr-card">
+          <img src="/images/hanamarulineqr.png" alt="はなまるAI 介護版 LINE友だち追加QRコード" class="line-add-qr">
+          <p class="line-add-qr-label">スマホのカメラ／LINEで<br>QRコードを読み取り</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- CONTACT -->
 <section class="contact" id="contact">
   <div class="container">
     <div class="contact-box">
       <div class="section-label">FREE TRIAL</div>
-      <h2 class="contact-title">1ヶ月無料トライアル<br>今すぐ申し込む</h2>
+      <h2 class="contact-title">3ヶ月無料トライアル<br>今すぐ申し込む</h2>
       <p class="contact-desc">
         難しい手続きはありません。フォームから送信していただくと、担当者より<strong>1営業日以内</strong>にご連絡します。<br>
         トライアル期間中は全機能をお使いいただけます。費用は一切かかりません。
       </p>
       <div class="contact-perks">
-        <div class="contact-perk">✅ 1ヶ月完全無料</div>
+        <div class="contact-perk">✅ 利用料3ヶ月無料</div>
         <div class="contact-perk">✅ 契約不要・いつでも解約</div>
         <div class="contact-perk">✅ 導入サポートあり</div>
         <div class="contact-perk">✅ IT知識ゼロでOK</div>
@@ -1080,7 +1155,7 @@ body {
   <p class="footer-copy">© 2024 AIdealize Inc. All rights reserved.</p>
 </footer>
 
-<a href="#contact" class="float-cta">🎁 1ヶ月無料トライアルに申し込む</a>
+<a href="https://lin.ee/QDOd6Rs" target="_blank" rel="noopener" class="float-cta">💬 LINEで友だち追加（利用料3ヶ月無料）</a>
 
 <script src="/js/gas-forms.js"></script>
 <script>
