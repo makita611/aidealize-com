@@ -6,8 +6,9 @@
   s.textContent = [
     '.gas-form{max-width:480px}',
     '.gas-form-group{margin-bottom:12px}',
-    '.gas-form-group input,.gas-form-group select{width:100%;padding:12px 14px;border:1px solid #ddd;border-radius:6px;font-size:14px;font-family:inherit;box-sizing:border-box}',
-    '.gas-form-group input:focus,.gas-form-group select:focus{outline:none;border-color:#1a3f6f}',
+    '.gas-form-group input,.gas-form-group select,.gas-form-group textarea{width:100%;padding:12px 14px;border:1px solid #ddd;border-radius:6px;font-size:14px;font-family:inherit;box-sizing:border-box}',
+    '.gas-form-group textarea{min-height:84px;resize:vertical;line-height:1.6}',
+    '.gas-form-group input:focus,.gas-form-group select:focus,.gas-form-group textarea:focus{outline:none;border-color:#1a3f6f}',
     '.gas-radio-group{display:flex;flex-wrap:wrap;gap:8px;padding:4px 0}',
     '.gas-radio-group label{display:inline-flex;align-items:center;padding:7px 16px;border:1.5px solid #ddd;border-radius:20px;font-size:13px;cursor:pointer;transition:all .15s;user-select:none}',
     '.gas-radio-group label:hover{border-color:#999}',
