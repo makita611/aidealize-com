@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>「優秀な人ほど突然辞める」の防ぎ方｜AIが察知する声なきSOSとマネジメントの進化【AIdealize】</title>
+<meta name="description" content="エース級の社員から突然の退職届——その予兆は日々のわずかな変化に隠れています。社内チャットのトーン分析など、AIが「声なきSOS」を拾い上げ、手遅れになる前のケアにつなげる人材定着のアプローチを解説します。">
+<link rel="canonical" href="https://aidealize.com/column/ai-quiet-quitting-teichaku/">
+<meta property="og:title" content="「優秀な人ほど突然辞める」の防ぎ方。AIが察知する声なきSOSとマネジメントの進化">
+<meta property="og:description" content="AIが日常データから退職の予兆を察知し、手遅れになる前のケアにつなげる人材定着のアプローチを解説。">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://aidealize.com/column/ai-quiet-quitting-teichaku/">
+<meta property="og:site_name" content="AIdealize株式会社">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700;900&family=Shippori+Mincho:wght@400;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-P6VNBWH3');</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "「優秀な人ほど突然辞める」の防ぎ方。AIが察知する声なきSOSとマネジメントの進化",
+  "description": "AIが日常データから退職の予兆を察知し、手遅れになる前のケアにつなげる人材定着のアプローチを解説。",
+  "datePublished": "2026-06-17",
+  "author": {"@type": "Organization", "name": "AIdealize株式会社"},
+  "publisher": {"@type": "Organization", "name": "AIdealize株式会社", "url": "https://aidealize.com"}
+}
+</script>
+<style>
+:root{
+  --red:#0891b2;--red-dark:#0e7490;
+  --ink:#1e293b;--body:#4b5563;--light:#94a3b8;
+  --border:#e2e8f0;--bg:#f8fafc;--bg2:#f1f5f9;--white:#fff;
+  --tag-bg:#ecfeff;--green:#059669;--green-bg:#ecfdf5;
+  --demo-bg:#0f172a;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{font-family:'Noto Sans JP',sans-serif;background:var(--white);color:var(--ink);overflow-x:hidden;line-height:1.7;}
+
+/* NAV */
+#mainNav{position:fixed;top:0;left:0;right:0;z-index:1000;display:flex;align-items:center;justify-content:space-between;padding:0 60px;height:68px;background:rgba(255,255,255,0.97);border-bottom:1px solid var(--border);backdrop-filter:blur(12px);transition:box-shadow 0.3s;}
+#mainNav.scrolled{box-shadow:0 2px 16px rgba(0,0,0,0.06);}
+.nav-logo{display:flex;align-items:center;gap:10px;text-decoration:none;}
+.nav-logo img{height:34px;width:auto;}
+.nav-logo-text{font-family:'DM Mono',monospace;font-size:15px;font-weight:500;color:var(--ink);letter-spacing:0.02em;}
+.nav-logo-text span{color:var(--red);}
+.nav-links{display:flex;align-items:center;gap:32px;list-style:none;}
+.nav-links a{font-size:13px;font-weight:500;color:var(--body);text-decoration:none;transition:color 0.2s;}
+.nav-links a:hover{color:var(--ink);}
+.nav-cta{background:var(--red) !important;color:#fff !important;padding:9px 20px;border-radius:4px;font-size:12px !important;font-weight:700 !important;}
+.nav-cta:hover{background:var(--red-dark) !important;}
+.nav-hamburger{display:none;flex-direction:column;justify-content:center;gap:5px;width:40px;height:40px;background:none;border:none;cursor:pointer;}
+.nav-hamburger span{display:block;width:22px;height:2px;background:var(--ink);transition:all 0.3s;transform-origin:center;}
+.nav-hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg);}
+.nav-hamburger.open span:nth-child(2){opacity:0;}
+.nav-hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
+.nav-drawer{display:none;position:fixed;top:68px;left:0;right:0;background:#fff;border-bottom:2px solid var(--red);padding:20px 28px 28px;z-index:999;}
+.nav-drawer.open{display:block;}
+.nav-drawer ul{list-style:none;display:flex;flex-direction:column;}
+.nav-drawer ul li a{display:block;padding:13px 0;font-size:15px;font-weight:500;color:var(--ink);text-decoration:none;border-bottom:1px solid var(--border);}
+.nav-drawer ul li:last-child a{margin-top:16px;text-align:center;background:var(--red);color:#fff !important;padding:13px;border-radius:4px;font-weight:700 !important;border-bottom:none;}
+@media(max-width:1024px){#mainNav{padding:0 28px;}.nav-links{display:none;}.nav-hamburger{display:flex;}}
+@media(max-width:480px){#mainNav{padding:0 16px;height:60px;}.nav-drawer{top:60px;}.nav-logo-text{font-size:13px;}}
+
+/* ARTICLE HEADER */
+.article-header{padding:116px 24px 52px;background:var(--bg);border-bottom:1px solid var(--border);}
+.article-header-inner{max-width:760px;margin:0 auto;}
+.breadcrumb{display:flex;align-items:center;gap:6px;font-size:12px;color:var(--light);margin-bottom:20px;}
+.breadcrumb a{color:var(--light);text-decoration:none;}
+.breadcrumb a:hover{color:var(--red);}
+.breadcrumb span{color:var(--border);}
+.article-tag{display:inline-flex;align-items:center;background:var(--tag-bg);color:var(--red);font-size:11px;font-weight:700;letter-spacing:0.06em;padding:4px 12px;border-radius:100px;margin-bottom:18px;}
+.article-h1{font-family:'Shippori Mincho',serif;font-size:clamp(20px,3vw,34px);font-weight:700;color:var(--ink);line-height:1.65;margin-bottom:20px;}
+.article-meta{display:flex;align-items:center;gap:20px;flex-wrap:wrap;font-size:12px;color:var(--light);}
+
+/* ARTICLE BODY */
+.article-body{padding:72px 24px 100px;}
+.article-body-inner{max-width:760px;margin:0 auto;}
+
+/* SUMMARY BOX */
+.summary-box{background:var(--bg);border-left:4px solid var(--red);padding:24px 28px;border-radius:0 6px 6px 0;margin-bottom:52px;}
+.summary-box-title{font-size:11px;font-weight:700;color:var(--red);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:12px;}
+.summary-box ul{list-style:none;display:flex;flex-direction:column;gap:8px;}
+.summary-box ul li{display:flex;align-items:flex-start;gap:8px;font-size:14px;line-height:1.8;color:var(--ink);}
+.summary-box ul li::before{content:'✓';color:var(--red);font-weight:700;flex-shrink:0;margin-top:1px;}
+
+/* HEADINGS */
+.article-body-inner h2{font-family:'Shippori Mincho',serif;font-size:clamp(17px,2.2vw,24px);font-weight:700;color:var(--ink);line-height:1.65;margin:56px 0 20px;padding-bottom:10px;border-bottom:1px solid var(--border);position:relative;}
+.article-body-inner h2::after{content:'';position:absolute;bottom:-1px;left:0;width:48px;height:2px;background:var(--red);}
+.article-body-inner h3{font-family:'Shippori Mincho',serif;font-size:clamp(15px,1.8vw,19px);font-weight:700;color:var(--ink);line-height:1.7;margin:36px 0 14px;padding-left:14px;border-left:3px solid var(--red);}
+.article-body-inner p{font-size:15px;line-height:2;color:var(--body);margin-bottom:22px;}
+.article-body-inner strong{color:var(--ink);font-weight:700;}
+.article-body-inner ul,.article-body-inner ol{list-style:none;margin-bottom:22px;display:flex;flex-direction:column;gap:8px;}
+.article-body-inner ul li,.article-body-inner ol li{font-size:14px;line-height:1.9;color:var(--body);display:flex;align-items:flex-start;gap:10px;}
+.article-body-inner ul li::before{content:'─';color:var(--red);flex-shrink:0;margin-top:4px;font-size:12px;}
+.article-body-inner ol{counter-reset:ol;}
+.article-body-inner ol li{counter-increment:ol;}
+.article-body-inner ol li::before{content:counter(ol);background:var(--red);color:#fff;width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0;margin-top:2px;font-family:'DM Mono',monospace;}
+
+/* PAIN CARDS */
+.pain-cards{display:flex;flex-direction:column;gap:12px;margin:24px 0;}
+.pain-card{background:var(--bg);border-left:4px solid var(--red);border-radius:0 8px 8px 0;padding:18px 20px;display:flex;align-items:flex-start;gap:12px;}
+.pain-card-icon{font-size:22px;flex-shrink:0;margin-top:2px;}
+.pain-card-body{font-size:14px;line-height:1.85;color:var(--body);}
+.pain-card-body strong{color:var(--ink);}
+
+/* COMPARE TABLE */
+.compare-wrap{overflow-x:auto;margin:24px 0 32px;}
+.compare-table{width:100%;border-collapse:collapse;font-size:13.5px;min-width:480px;}
+.compare-table th{padding:12px 18px;text-align:center;font-size:12px;font-weight:700;letter-spacing:0.05em;background:var(--bg2);color:var(--ink);border-bottom:2px solid var(--border);}
+.compare-table th:first-child{text-align:left;}
+.compare-table th.hl{background:var(--red);color:#fff;}
+.compare-table td{padding:12px 18px;border-bottom:1px solid var(--border);vertical-align:middle;line-height:1.7;color:var(--body);text-align:center;}
+.compare-table td:first-child{text-align:left;font-weight:600;color:var(--ink);}
+.compare-table td.hl{background:var(--tag-bg);color:var(--ink);font-weight:600;}
+.check{color:var(--red);font-weight:700;}
+.cross{color:#bbb;}
+
+/* POINT BOX */
+.point-box{background:var(--bg2);border-radius:8px;padding:20px 24px;margin:20px 0;}
+.point-box-label{font-size:10px;font-family:'DM Mono',monospace;color:var(--red);letter-spacing:0.12em;text-transform:uppercase;margin-bottom:10px;}
+.point-box p{font-size:14px;line-height:1.9;color:var(--body);margin-bottom:0;}
+
+/* INLINE CTA */
+.inline-cta{background:var(--bg);border:1px solid var(--border);border-top:4px solid var(--red);border-radius:10px;padding:36px;margin:52px 0;text-align:center;}
+.inline-cta-tag{font-size:11px;color:var(--red);font-weight:700;letter-spacing:0.08em;margin-bottom:12px;}
+.inline-cta h3{font-family:'Shippori Mincho',serif;font-size:clamp(16px,2vw,22px);font-weight:700;color:var(--ink);line-height:1.65;margin-bottom:12px;}
+.inline-cta p{font-size:14px;color:var(--body);line-height:1.9;margin-bottom:22px;}
+.cta-btns-pair{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;}
+.btn-cta-red{display:inline-flex;align-items:center;gap:6px;background:var(--red);color:#fff;padding:13px 28px;border-radius:4px;font-size:14px;font-weight:700;text-decoration:none;transition:background 0.2s,transform 0.2s;}
+.btn-cta-red:hover{background:var(--red-dark);transform:translateY(-2px);}
+.btn-cta-note{display:block;margin-top:12px;font-size:11px;color:var(--light);}
+
+/* EFFECT GRID */
+.effect-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:24px 0;}
+.effect-card{background:var(--bg);border-top:3px solid var(--red);border-radius:6px;padding:20px 16px;}
+.effect-num{font-family:'DM Mono',monospace;font-size:10px;color:var(--red);letter-spacing:0.12em;margin-bottom:8px;}
+.effect-title{font-family:'Shippori Mincho',serif;font-size:15px;font-weight:700;color:var(--ink);line-height:1.6;margin-bottom:8px;}
+.effect-body{font-size:12px;line-height:1.85;color:var(--body);}
+
+/* BACK */
+.back-section{padding:28px 24px;background:var(--bg);border-top:1px solid var(--border);}
+.back-section-inner{max-width:760px;margin:0 auto;}
+.back-link{display:inline-flex;align-items:center;gap:6px;font-size:13px;color:var(--body);text-decoration:none;transition:color 0.2s;}
+.back-link:hover{color:var(--red);}
+
+/* RELATED */
+.related-section{padding:60px 24px;background:var(--white);border-top:1px solid var(--border);}
+.related-inner{max-width:760px;margin:0 auto;}
+.related-label{font-family:'DM Mono',monospace;font-size:11px;color:var(--red);letter-spacing:0.14em;text-transform:uppercase;margin-bottom:20px;}
+.related-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+.related-card{border:1px solid var(--border);border-top:3px solid var(--red);padding:20px;text-decoration:none;color:inherit;border-radius:0 0 6px 6px;transition:box-shadow 0.2s,transform 0.2s;}
+.related-card:hover{box-shadow:0 4px 16px rgba(0,0,0,0.07);transform:translateY(-2px);}
+.related-card-tag{font-size:10px;font-family:'DM Mono',monospace;color:var(--red);letter-spacing:0.1em;margin-bottom:8px;}
+.related-card-title{font-family:'Shippori Mincho',serif;font-size:14px;font-weight:700;color:var(--ink);line-height:1.6;}
+
+/* FOOTER */
+footer{background:#1f1f1f;border-top:1px solid rgba(255,255,255,0.06);padding:40px 60px;display:flex;align-items:center;justify-content:space-between;}
+.footer-logo{display:flex;align-items:center;gap:10px;}
+.footer-logo-mark{width:20px;height:20px;background:var(--red);clip-path:polygon(50% 0%,0% 100%,18% 100%,50% 38%,82% 100%,100% 100%);}
+.footer-logo-text{font-family:'DM Mono',monospace;font-size:13px;color:rgba(255,255,255,0.55);}
+.footer-logo-text span{color:var(--red);}
+.footer-copy{font-size:11px;color:rgba(255,255,255,0.25);font-family:'DM Mono',monospace;}
+
+.reveal{opacity:0;transform:translateY(18px);transition:opacity 0.55s ease,transform 0.55s ease;}
+.reveal.visible{opacity:1;transform:translateY(0);}
+
+@media(max-width:768px){
+  .article-header,.article-body,.back-section,.related-section{padding-left:16px;padding-right:16px;}
+  .article-header{padding-top:88px;}
+  .effect-grid{grid-template-columns:1fr;}
+  .related-grid{grid-template-columns:1fr;}
+  .cta-btns-pair{flex-direction:column;align-items:center;}
+  .inline-cta{padding:24px 18px;}
+  footer{flex-direction:column;gap:14px;text-align:center;padding:28px 16px;}
+}
+</style>
+</head>
+<body>
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-P6VNBWH3" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
+<!-- NAV -->
+<nav id="mainNav">
+  <a href="/" class="nav-logo">
+    <img src="/images/logo.png" alt="AIdealize">
+    <span class="nav-logo-text"><span>AI</span>dealize</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="/column/">コラム</a></li>
+    <li><a href="/service/">サービス</a></li>
+    <li><a href="/company.html">会社概要</a></li>
+    <li><a href="/lp/ai-lp1#contact" class="nav-cta">無料相談</a></li>
+  </ul>
+  <button class="nav-hamburger" id="navHamburger" aria-label="メニュー">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+<div class="nav-drawer" id="navDrawer">
+  <ul>
+    <li><a href="/column/" class="drawer-link">コラム</a></li>
+    <li><a href="/service/" class="drawer-link">サービス</a></li>
+    <li><a href="/company.html" class="drawer-link">会社概要</a></li>
+    <li><a href="/lp/ai-lp1#contact">無料相談</a></li>
+  </ul>
+</div>
+
+<!-- ARTICLE HEADER -->
+<header class="article-header">
+  <div class="article-header-inner">
+    <nav class="breadcrumb" aria-label="パンくず">
+      <a href="/">ホーム</a><span>/</span>
+      <a href="/column/">コラム</a><span>/</span>
+      <span>AI 離職防止 エンゲージメント</span>
+    </nav>
+    <div class="article-tag">エンゲージメント・人材定着</div>
+    <h1 class="article-h1">
+      「優秀な人ほど突然辞める」の防ぎ方。<br>AIが察知する“声なきSOS”とマネジメントの進化
+    </h1>
+    <div class="article-meta">
+      <div class="article-meta-item">📅 2026年6月17日</div>
+      <div class="article-meta-item">⏱ 読了約7分</div>
+      <div class="article-meta-item">✍ AIdealize編集部</div>
+    </div>
+  </div>
+</header>
+
+<!-- BODY -->
+<article class="article-body">
+<div class="article-body-inner">
+
+  <div class="summary-box reveal">
+    <div class="summary-box-title">この記事でわかること</div>
+    <ul>
+      <li>エース級の社員が「突然」辞めるように見える本当の理由</li>
+      <li>「静かな退職（Quiet Quitting）」が見えにくい背景</li>
+      <li>AIによる日常データのトーン分析で予兆を察知する仕組み</li>
+      <li>アラートを「監視」ではなく「ケア」に変える運用の考え方</li>
+      <li>手遅れになる前のフォローが、エンゲージメントを高める理由</li>
+    </ul>
+  </div>
+
+  <p><strong>「特に不満もなさそうだったのに、なぜ？」</strong>——エース級の社員から突然退職届を出され、頭を抱えるマネージャーは後を絶ちません。実は、退職の予兆は<strong>「日々のわずかな変化」</strong>に隠されています。</p>
+
+  <p>AIは、人間が見落としがちなこの「小さなSOS」を拾い上げる強力なパートナーになります。この記事では、優秀な人材の離職を「突然」で終わらせないための、AIを活用した新しいマネジメントのかたちを解説します。</p>
+
+  <h2>「突然の退職」は、実は突然ではない</h2>
+
+  <p>近年、<strong>「静かな退職（Quiet Quitting）」</strong>という言葉が話題になっています。業務は無難にこなすものの、心はすでに組織から離れてしまっている状態です。彼らはあからさまに不満を口にしないため、アンケートや月1回の面談だけでは本音を引き出せません。</p>
+
+  <div class="pain-cards">
+    <div class="pain-card reveal">
+      <div class="pain-card-icon">🤐</div>
+      <div class="pain-card-body">
+        <strong>優秀な人ほど不満を言わない</strong><br>
+        自走できる人材ほど周囲に弱音を見せず、淡々と業務をこなします。だからこそ管理者は変化に気づけません。
+      </div>
+    </div>
+    <div class="pain-card reveal">
+      <div class="pain-card-icon">📅</div>
+      <div class="pain-card-body">
+        <strong>面談・アンケートでは間に合わない</strong><br>
+        月1回の1on1や年数回のサーベイでは、本音が出るころには退職の意思が固まっていることも少なくありません。
+      </div>
+    </div>
+    <div class="pain-card reveal">
+      <div class="pain-card-icon">💸</div>
+      <div class="pain-card-body">
+        <strong>1人の離職が組織に与える損失は大きい</strong><br>
+        採用・育成コストに加え、ノウハウの喪失や周囲のモチベーション低下まで含めると、損失は給与の何倍にもなります。
+      </div>
+    </div>
+  </div>
+
+  <h2>AIが拾い上げる「声なきSOS」</h2>
+
+  <p>そこで導入が進んでいるのが、<strong>AIによる日常データのトーン分析</strong>です。例えば次のような「メタデータ」の微細な変化を、AIがキャッチしてマネージャーにそっとアラートを出します。</p>
+
+  <ul>
+    <li>社内チャットでの<strong>返信スピードの低下</strong></li>
+    <li>使用する<strong>単語のネガティブ化</strong>・語調の変化</li>
+    <li>他のメンバーとの<strong>コミュニケーション量の減少</strong></li>
+  </ul>
+
+  <p>これらは人間が一人ひとり見て気づくのは困難ですが、AIにとっては得意領域です。<strong>「いつもと違う」</strong>を定量的に捉え、見えなかったサインを可視化します。</p>
+
+  <div class="compare-wrap">
+    <table class="compare-table">
+      <thead>
+        <tr>
+          <th>観点</th>
+          <th>従来のマネジメント</th>
+          <th class="hl">AIトーン分析の活用</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>気づくタイミング</td><td>退職の意思が固まった後</td><td class="hl"><span class="check">✓</span> 変化が始まった初期段階で察知</td></tr>
+        <tr><td>対象範囲</td><td>声の大きい人・目立つ人に偏りがち</td><td class="hl"><span class="check">✓</span> 全メンバーを公平にモニタリング</td></tr>
+        <tr><td>判断材料</td><td>管理者の主観・印象</td><td class="hl"><span class="check">✓</span> 日常データに基づく客観的サイン</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- 中間CTA -->
+  <div class="inline-cta reveal">
+    <div class="inline-cta-tag">無料相談実施中</div>
+    <h3>「辞めてから気づく」を、<br>「気づいて、辞めさせない」へ。</h3>
+    <p>自社のデータで何が見えるのか、どう運用すれば現場に受け入れられるのか——AI活用の設計からご相談いただけます。</p>
+    <div class="cta-btns-pair">
+      <a href="/lp/ai-lp1#contact" class="btn-cta-red">AI活用について無料で相談する →</a>
+    </div>
+    <span class="btn-cta-note">オンライン相談可 / 無理な営業はいたしません</span>
+  </div>
+
+  <h2>重要なのは「監視」ではなく「ケア」</h2>
+
+  <p>ここで絶対に外してはいけない視点があります。それは、これを<strong>「社員の監視」ではなく「ケア」</strong>に使うこと、という一点です。</p>
+
+  <div class="point-box">
+    <div class="point-box-label">運用の鉄則</div>
+    <p>アラートが出た段階で、マネージャーが<strong>「最近どう？ 無理してない？」</strong>と声をかける。この「手遅れになる前の適切なフォロー」こそが、社員に<strong>「自分のことをちゃんと見てくれている」</strong>という安心感を与え、エンゲージメントの決定打となるのです。</p>
+  </div>
+
+  <p>AIはあくまで「気づくきっかけ」を提供する存在です。最後に心を動かすのは、人間同士の対話。AIと人の役割分担こそが、これからのマネジメントの核になります。</p>
+
+  <div class="effect-grid reveal">
+    <div class="effect-card">
+      <div class="effect-num">EFFECT 01</div>
+      <div class="effect-title">早期フォローで離職を防ぐ</div>
+      <div class="effect-body">予兆の段階で対話できるため、退職の意思が固まる前に手を打てます。</div>
+    </div>
+    <div class="effect-card">
+      <div class="effect-num">EFFECT 02</div>
+      <div class="effect-title">「見てくれている」安心感</div>
+      <div class="effect-body">タイムリーな声かけが信頼を生み、組織への帰属意識を高めます。</div>
+    </div>
+    <div class="effect-card">
+      <div class="effect-num">EFFECT 03</div>
+      <div class="effect-title">公平なマネジメント</div>
+      <div class="effect-body">印象や声の大きさに左右されず、全員に目が届く体制をつくれます。</div>
+    </div>
+  </div>
+
+  <h2>まとめ：AIは「察知」、人は「ケア」</h2>
+
+  <p>優秀な人材の離職は、ある日突然起こるものではありません。<strong>小さなSOSを見逃さず、手遅れになる前に手を差し伸べられるか</strong>。その差が定着率を分けます。AIに「察知」を任せ、人が「ケア」に集中する。この役割分担を、AIdealizeが一緒に設計します。</p>
+
+  <!-- 末尾CTA -->
+  <div class="inline-cta reveal">
+    <div class="inline-cta-tag">CONTACT</div>
+    <h3>大切な人材を、<br>「突然」で失わないために。</h3>
+    <p>自社の状況に合わせて、AI活用の最初の一歩をご提案します。</p>
+    <div class="cta-btns-pair">
+      <a href="/lp/ai-lp1#contact" class="btn-cta-red">無料相談を申し込む →</a>
+    </div>
+    <span class="btn-cta-note">オンライン相談可 / しつこい勧誘はありません</span>
+  </div>
+
+</div>
+</article>
+
+<!-- 関連記事 -->
+<section class="related-section">
+  <div class="related-inner">
+    <div class="related-label">Related Articles</div>
+    <div class="related-grid">
+      <a href="/column/ai-kanjo-rodo/" class="related-card">
+        <div class="related-card-tag">心理的安全性 / 一次対応</div>
+        <div class="related-card-title">AIに「社内の嫌われ役」を任せる？ 感情労働から解放されて生まれる究極の心理的安全性。</div>
+      </a>
+      <a href="/column/ai-anmokuchi-honyaku/" class="related-card">
+        <div class="related-card-tag">人材育成 / 属人化解消</div>
+        <div class="related-card-title">「背中を見て育て」はもう古い。AIがベテランの“暗黙知”を翻訳する新・人材育成法。</div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<div class="back-section">
+  <div class="back-section-inner">
+    <a href="/column/" class="back-link">← コラム一覧に戻る</a>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-logo">
+    <div class="footer-logo-mark"></div>
+    <span class="footer-logo-text"><span>A</span>idealize株式会社</span>
+  </div>
+  <span class="footer-copy">© 2020 AIdealize Inc. All rights reserved.</span>
+</footer>
+
+<script>
+(function(){
+  const btn=document.getElementById('navHamburger');
+  const drawer=document.getElementById('navDrawer');
+  const nav=document.getElementById('mainNav');
+  btn.addEventListener('click',function(){btn.classList.toggle('open');drawer.classList.toggle('open');});
+  drawer.querySelectorAll('.drawer-link').forEach(function(l){l.addEventListener('click',function(){btn.classList.remove('open');drawer.classList.remove('open');});});
+  window.addEventListener('scroll',function(){nav.classList.toggle('scrolled',window.scrollY>10);});
+})();
+const obs=new IntersectionObserver(function(e){e.forEach(function(x){if(x.isIntersecting)x.target.classList.add('visible');});},{threshold:0.08,rootMargin:'0px 0px -30px 0px'});
+document.querySelectorAll('.reveal').forEach(function(el){obs.observe(el);});
+</script>
+</body>
+</html>
