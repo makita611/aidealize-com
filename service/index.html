@@ -440,17 +440,21 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   </div>
 </div>
 
-<!-- 無料セルフ診断ツールへの導線 -->
-<div class="section" style="padding-top:24px;padding-bottom:0;">
-  <a href="/jidoka-shindan.html" style="display:flex;align-items:center;gap:24px;flex-wrap:wrap;text-decoration:none;color:#fff;background:linear-gradient(135deg,#0E8C7F,#1F3864);border-radius:14px;padding:28px 32px;box-shadow:0 10px 30px rgba(14,140,127,0.18);transition:transform .2s,box-shadow .2s;" onmouseover="this.style.transform='translateY(-2px)';this.style.boxShadow='0 14px 38px rgba(14,140,127,0.28)'" onmouseout="this.style.transform='';this.style.boxShadow='0 10px 30px rgba(14,140,127,0.18)'">
-    <div style="flex:1 1 320px;min-width:260px;">
-      <div style="display:inline-block;font-size:11px;font-weight:700;letter-spacing:2px;background:rgba(255,255,255,0.18);padding:4px 12px;border-radius:20px;margin-bottom:12px;">⏱ 無料セルフ診断・30秒</div>
-      <div style="font-size:clamp(18px,2.4vw,24px);font-weight:900;line-height:1.4;margin-bottom:8px;">その事務、毎月<span style="color:#f5c842;">何時間</span>を本業に戻せる？</div>
-      <div style="font-size:13px;line-height:1.8;opacity:0.9;">業界と人数を選ぶだけ。記録・事務に奪われている時間を、診療・ケア・接客に取り戻せる量を即時試算します。</div>
-    </div>
-    <div style="flex-shrink:0;background:#fff;color:#0E8C7F;font-weight:700;font-size:14px;padding:14px 28px;border-radius:8px;">診断してみる →</div>
-  </a>
+<!-- 無料セルフ診断ツール（インライン埋め込み） -->
+<div class="section" id="jidoka" style="padding-top:32px;padding-bottom:0;">
+  <div class="section-label">無料セルフ診断・30秒</div>
+  <div class="section-title" style="margin-bottom:14px;">その事務、毎月「何時間」を本業に戻せる？</div>
+  <p style="font-size:14px;color:var(--muted);max-width:640px;line-height:1.9;margin-bottom:24px;">業界と人数を選ぶだけ。記録・事務に奪われている時間を、診療・ケア・接客といった「本来の仕事」にどれだけ取り戻せるか、その場で試算できます。</p>
+  <iframe id="jidokaFrame" src="/jidoka-shindan.html" title="AI業務自動化 時間とりもどし診断" width="100%" height="1400" frameborder="0" scrolling="no" loading="lazy" style="display:block;border:1px solid var(--border);border-radius:14px;overflow:hidden;background:#F4F6FA;"></iframe>
 </div>
+<script>
+window.addEventListener('message', function(e){
+  if (e.data && e.data.type === 'roiHeight') {
+    var f = document.getElementById('jidokaFrame');
+    if (f && e.data.height) f.style.height = e.data.height + 'px';
+  }
+});
+</script>
 
 <hr class="divider">
 
