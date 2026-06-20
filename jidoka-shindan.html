@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI業務自動化 時間とりもどし診断 | AIdealize株式会社</title>
+<meta name="description" content="人数を入れるだけで、記録・事務に奪われている時間を本業（診療・ケア・接客）にどれだけ戻せるかを即時試算。病院・クリニック・介護・訪問看護・不動産に対応。無料アセスメントへ。">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700;900&family=Rajdhani:wght@600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --red: #1F3864;
+  --red-dark: #162a50;
+  --navy: #1F3864;
+  --navy-light: #2E5090;
+  --teal: #0E8C7F;
+  --bg: #F4F6FA;
+  --bg2: #FFFFFF;
+  --bg3: #EEF3F9;
+  --line: #D0D8E8;
+  --text: #1A1A2E;
+  --muted: #5A6A80;
+  --gold: #C9A25A;
+}
+* { margin:0; padding:0; box-sizing:border-box; }
+body {
+  font-family: 'Noto Sans JP', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  min-height: 100vh;
+  overflow-x: hidden;
+  font-size: 16px;
+  font-weight: 500;
+}
+body::before {
+  content:''; position:fixed; inset:0;
+  background-image:
+    linear-gradient(rgba(30,58,95,0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(30,58,95,0.04) 1px, transparent 1px);
+  background-size: 60px 60px; pointer-events:none; z-index:0;
+}
+.container { max-width: 780px; margin: 0 auto; padding: 0 20px 80px; position: relative; z-index: 1; }
+.header { text-align: center; padding: 56px 0 44px; }
+.header-badge {
+  display: inline-block; font-family: 'Rajdhani', sans-serif; font-size: 15px;
+  letter-spacing: 3px; color: #fff; background: var(--teal); border: 1px solid var(--teal);
+  padding: 8px 20px; margin-bottom: 24px; text-transform: uppercase; border-radius: 2px;
+}
+.header h1 { font-size: clamp(25px, 5vw, 38px); font-weight: 900; line-height: 1.25; letter-spacing: -0.5px; margin-bottom: 16px; }
+.header h1 span { color: var(--teal); }
+.header p { font-size: 15px; color: var(--muted); line-height: 1.85; font-weight: 500; }
+.steps { display: flex; align-items: center; justify-content: center; gap: 0; margin-bottom: 44px; }
+.step-item { display: flex; align-items: center; gap: 8px; font-size: 11px; color: var(--muted); letter-spacing: 1px; }
+.step-item.active { color: var(--text); }
+.step-item.active .step-num { background: var(--teal); border-color: var(--teal); color: #fff; }
+.step-item.done .step-num { background: var(--navy); border-color: var(--navy); color: #fff; }
+.step-num {
+  width: 26px; height: 26px; border-radius: 50%; border: 1px solid var(--muted);
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'Rajdhani', sans-serif; font-size: 13px; font-weight: 700;
+}
+.step-line { width: 40px; height: 1px; background: var(--line); margin: 0 6px; }
+.card { background: var(--bg2); border: 1px solid var(--line); border-radius: 4px; padding: 36px; margin-bottom: 16px; position: relative; overflow: hidden; }
+.card::before { content:''; position:absolute; top:0; left:0; right:0; height:2px; background: linear-gradient(90deg, var(--teal), var(--navy-light)); }
+.card-title { font-size: 13px; font-weight: 700; letter-spacing: 2px; color: var(--muted); text-transform: uppercase; margin-bottom: 24px; display: flex; align-items: center; gap: 10px; }
+.card-title::after { content:''; flex:1; height:1px; background: var(--line); }
+.field { margin-bottom: 26px; }
+.field label { display: block; font-size: 14px; font-weight: 500; margin-bottom: 12px; color: var(--text); }
+.field label .required { color: var(--teal); font-size: 11px; margin-left: 6px; font-weight: 400; }
+.field label .optional { color: var(--muted); font-size: 11px; margin-left: 6px; font-weight: 400; }
+.slider-wrap { display: flex; align-items: center; gap: 16px; }
+.slider-wrap input[type=range] { flex: 1; -webkit-appearance: none; height: 3px; background: var(--bg3); border-radius: 2px; outline: none; cursor: pointer; }
+.slider-wrap input[type=range]::-webkit-slider-thumb { -webkit-appearance: none; width: 18px; height: 18px; border-radius: 50%; background: var(--teal); border: 2px solid #fff; cursor: pointer; box-shadow: 0 0 10px rgba(14,140,127,0.5); }
+.slider-val { font-family: 'Rajdhani', sans-serif; font-size: 22px; font-weight: 700; color: var(--text); min-width: 84px; text-align: right; }
+.slider-val span { font-size: 13px; color: var(--muted); font-weight: 400; font-family: 'Noto Sans JP', sans-serif; }
+.check-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+@media(max-width:500px){ .check-grid { grid-template-columns: 1fr; } }
+.check-item { display: flex; align-items: flex-start; gap: 10px; padding: 12px 14px; background: var(--bg3); border: 1px solid var(--line); border-radius: 3px; cursor: pointer; transition: all .2s; user-select: none; }
+.check-item:hover { border-color: rgba(14,140,127,0.4); background: rgba(14,140,127,0.05); }
+.check-item.checked { border-color: var(--teal); background: rgba(14,140,127,0.08); }
+.check-box { width: 16px; height: 16px; border: 1px solid var(--muted); border-radius: 2px; flex-shrink: 0; margin-top: 1px; display: flex; align-items: center; justify-content: center; transition: all .2s; }
+.check-item.checked .check-box { background: var(--teal); border-color: var(--teal); }
+.check-box::after { content: '✓'; color: #fff; font-size: 10px; display: none; }
+.check-item.checked .check-box::after { display: block; }
+.check-text { font-size: 13px; line-height: 1.5; }
+.check-text strong { display: block; font-size: 13px; font-weight: 500; }
+.check-text small { color: var(--muted); font-size: 11px; }
+.advanced-toggle { display: flex; align-items: center; gap: 10px; font-size: 13px; color: var(--muted); cursor: pointer; padding: 12px 0; border-top: 1px solid var(--line); margin-top: 8px; transition: color .2s; user-select: none; }
+.advanced-toggle:hover { color: var(--text); }
+.toggle-icon { width: 20px; height: 20px; border: 1px solid var(--muted); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 14px; transition: all .3s; flex-shrink: 0; }
+.advanced-toggle.open .toggle-icon { transform: rotate(45deg); border-color: var(--teal); color: var(--teal); }
+.advanced-fields { display: none; padding-top: 24px; border-top: 1px solid var(--line); margin-top: 0; }
+.advanced-fields.open { display: block; }
+.radio-group { display: flex; flex-wrap: wrap; gap: 8px; }
+.radio-btn { padding: 8px 15px; border: 1px solid var(--line); border-radius: 2px; font-size: 12.5px; cursor: pointer; background: var(--bg3); color: var(--muted); transition: all .2s; user-select: none; }
+.radio-btn:hover { border-color: var(--navy-light); color: var(--text); }
+.radio-btn.selected { border-color: var(--teal); background: rgba(14,140,127,0.12); color: var(--text); font-weight: 700; }
+.calc-btn { width: 100%; padding: 18px; background: var(--teal); color: #fff; border: none; border-radius: 3px; font-family: 'Noto Sans JP', sans-serif; font-size: 15px; font-weight: 700; letter-spacing: 1px; cursor: pointer; position: relative; overflow: hidden; transition: all .2s; margin-top: 8px; }
+.calc-btn:hover { background: #0a766b; transform: translateY(-1px); box-shadow: 0 8px 30px rgba(14,140,127,0.35); }
+.calc-btn:active { transform: translateY(0); }
+#result-section { display: none; animation: fadeUp .5s ease forwards; }
+@keyframes fadeUp { from { opacity:0; transform: translateY(20px); } to { opacity:1; transform: translateY(0); } }
+.result-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; margin-bottom: 20px; }
+@media(max-width:600px){ .result-grid { grid-template-columns: 1fr; } }
+.result-card { background: var(--bg3); border: 1px solid var(--line); border-radius: 3px; padding: 22px 16px; text-align: center; position: relative; overflow: hidden; }
+.result-card.highlight { border-color: var(--teal); background: rgba(14,140,127,0.07); }
+.result-card .r-label { font-size: 10px; letter-spacing: 1.5px; color: var(--muted); text-transform: uppercase; margin-bottom: 10px; }
+.result-card .r-value { font-family: 'Rajdhani', sans-serif; font-size: 38px; font-weight: 700; color: var(--text); line-height: 1; margin-bottom: 4px; }
+.result-card.highlight .r-value { color: var(--teal); }
+.result-card .r-unit { font-size: 12px; color: var(--muted); }
+.reframe-box { background: rgba(14,140,127,0.08); border: 1px solid rgba(14,140,127,0.3); border-left: 3px solid var(--teal); padding: 16px 20px; border-radius: 2px; font-size: 13px; line-height: 1.85; color: var(--text); margin-bottom: 16px; }
+.reframe-box strong { color: var(--teal); }
+.comment-box { background: rgba(31,56,100,0.08); border: 1px solid rgba(46,80,144,0.3); border-left: 3px solid var(--navy-light); padding: 16px 20px; border-radius: 2px; font-size: 13px; line-height: 1.8; color: var(--text); margin-bottom: 20px; }
+.lead-card { background: linear-gradient(135deg, rgba(31,56,100,0.12), rgba(14,140,127,0.1)); border: 1px solid rgba(14,140,127,0.25); border-radius: 4px; padding: 32px 36px; }
+.lead-card h3 { font-size: 17px; font-weight: 700; margin-bottom: 8px; }
+.lead-card h3 span { color: var(--teal); }
+.lead-card p { font-size: 13px; color: var(--muted); margin-bottom: 24px; line-height: 1.7; }
+.input-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 12px; }
+@media(max-width:500px){ .input-row { grid-template-columns: 1fr; } }
+.text-input { width: 100%; padding: 12px 14px; background: var(--bg); border: 1px solid var(--line); border-radius: 2px; color: var(--text); font-family: 'Noto Sans JP', sans-serif; font-size: 13px; outline: none; transition: border-color .2s; }
+.text-input:focus { border-color: var(--teal); }
+.text-input::placeholder { color: var(--muted); }
+.submit-btn { width: 100%; padding: 16px; background: linear-gradient(135deg, var(--navy), var(--teal)); color: #fff; border: none; border-radius: 3px; font-family: 'Noto Sans JP', sans-serif; font-size: 14px; font-weight: 700; cursor: pointer; margin-top: 12px; transition: all .2s; letter-spacing: 0.5px; }
+.submit-btn:hover { opacity: .92; transform: translateY(-1px); box-shadow: 0 6px 20px rgba(14,140,127,0.3); }
+.privacy-note { font-size: 11px; color: var(--muted); text-align: center; margin-top: 12px; }
+#complete-msg { display: none; text-align: center; padding: 40px; }
+#complete-msg .big-check { font-size: 48px; margin-bottom: 16px; }
+#complete-msg h3 { font-size: 20px; margin-bottom: 10px; }
+#complete-msg p { font-size: 13px; color: var(--muted); line-height: 1.8; }
+.footer-link { text-align: center; margin-top: 40px; font-size: 12px; color: var(--muted); }
+.footer-link a { color: var(--muted); text-decoration: none; }
+.footer-link a:hover { color: var(--text); }
+.error-msg { font-size: 12px; color: #E0524D; margin-top: 6px; display: none; }
+</style>
+</head>
+<body>
+
+<div class="container">
+
+  <div class="header">
+    <div class="header-badge">AI業務自動化 時間とりもどし診断</div>
+    <h1>その事務、毎月<span>何時間</span>を<br>本業に戻せますか？</h1>
+    <p>業界と人数を選ぶだけ。記録・事務に奪われている時間を、<br>診療・ケア・接客といった「本来の仕事」にどれだけ戻せるか即時試算します。</p>
+  </div>
+
+  <div class="steps">
+    <div class="step-item active" id="step1-ind"><div class="step-num">1</div><span>入力</span></div>
+    <div class="step-line"></div>
+    <div class="step-item" id="step2-ind"><div class="step-num">2</div><span>診断結果</span></div>
+    <div class="step-line"></div>
+    <div class="step-item" id="step3-ind"><div class="step-num">3</div><span>無料アセスメント</span></div>
+  </div>
+
+  <div id="input-section">
+
+    <div class="card">
+      <div class="card-title">基本情報（必須）</div>
+
+      <div class="field">
+        <label>業界を選択 <span class="required">必須</span></label>
+        <div class="radio-group" id="industry-group">
+          <div class="radio-btn selected" data-ind="クリニック・診療所" onclick="selectIndustry(this)">クリニック・診療所</div>
+          <div class="radio-btn" data-ind="病院" onclick="selectIndustry(this)">病院</div>
+          <div class="radio-btn" data-ind="介護施設" onclick="selectIndustry(this)">介護施設</div>
+          <div class="radio-btn" data-ind="訪問看護" onclick="selectIndustry(this)">訪問看護</div>
+          <div class="radio-btn" data-ind="居宅介護支援" onclick="selectIndustry(this)">居宅介護支援</div>
+          <div class="radio-btn" data-ind="訪問介護" onclick="selectIndustry(this)">訪問介護</div>
+          <div class="radio-btn" data-ind="不動産" onclick="selectIndustry(this)">不動産</div>
+          <div class="radio-btn" data-ind="その他" onclick="selectIndustry(this)">その他</div>
+        </div>
+      </div>
+
+      <div class="field">
+        <label>対象スタッフ人数 <span class="required">必須</span></label>
+        <div class="slider-wrap">
+          <input type="range" id="emp" min="1" max="100" value="8" step="1" oninput="updateSlider('emp','emp-val',v=>v+'名')">
+          <div class="slider-val" id="emp-val">8<span>名</span></div>
+        </div>
+      </div>
+
+      <div class="field">
+        <label id="task-label">時間が奪われている事務 <span class="required">必須・複数選択可</span></label>
+        <div class="check-grid" id="task-grid"></div>
+        <div class="error-msg" id="task-error">事務を1つ以上選択してください</div>
+      </div>
+
+      <div class="advanced-toggle" id="adv-toggle" onclick="toggleAdvanced()">
+        <div class="toggle-icon">+</div>
+        時給を入れて「時間の価値（金額）」も試算する（任意）
+      </div>
+      <div class="advanced-fields" id="adv-fields">
+        <div class="field" style="margin-top:24px">
+          <label>スタッフの平均時給の目安 <span class="optional">任意</span></label>
+          <div class="slider-wrap">
+            <input type="range" id="wage" min="1500" max="5000" value="2500" step="100" oninput="updateSlider('wage','wage-val',v=>v.toLocaleString()+'円')">
+            <div class="slider-val" id="wage-val">2,500<span>円</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <button class="calc-btn" onclick="calculate()">▶ 無料で「戻せる時間」を診断する</button>
+
+  </div><!-- /input-section -->
+
+  <div id="result-section">
+
+    <div class="card">
+      <div class="card-title">診断結果</div>
+
+      <div class="result-grid">
+        <div class="result-card">
+          <div class="r-label">月間 戻せる時間</div>
+          <div class="r-value" id="r-month">—</div>
+          <div class="r-unit">時間 / 月（事業所合計）</div>
+        </div>
+        <div class="result-card highlight">
+          <div class="r-label">1人あたり 年間</div>
+          <div class="r-value" id="r-person">—</div>
+          <div class="r-unit">時間 / 年</div>
+        </div>
+        <div class="result-card">
+          <div class="r-label">増員せず確保できる</div>
+          <div class="r-value" id="r-fte">—</div>
+          <div class="r-unit" id="r-fte-unit">人分 / 年の余力</div>
+        </div>
+      </div>
+
+      <div class="reframe-box" id="r-reframe"></div>
+      <div class="comment-box" id="r-comment"></div>
+
+      <div style="font-size:11px; color:var(--muted); line-height:1.8; padding:12px 0; border-top:1px solid var(--line);">
+        ※本試算は、業務ごとの一般的な所要時間とAI・ICT導入による削減率の目安に基づく参考値です。実際の効果は業務内容・導入範囲により異なります。<br>
+        「削減」は人員を減らすことではなく、事務に奪われていた時間を本業に戻すための試算です。
+      </div>
+    </div>
+
+    <div class="lead-card" id="lead-form-wrap">
+      <h3>📩 結果をふまえた<span>30分の無料アセスメント</span>をご案内します</h3>
+      <p>あなたの事業所で「どの事務から、どれくらい時間を戻せるか」を、優先順位レポート（1枚）にまとめてご提案します。まずはお気軽に。</p>
+      <div class="input-row">
+        <input class="text-input" id="lead-name" type="text" placeholder="お名前（例：山田 太郎）">
+        <input class="text-input" id="lead-company" type="text" placeholder="医院名・事業所名">
+      </div>
+      <input class="text-input" id="lead-email" type="email" placeholder="メールアドレス（例：info@example.com）" style="margin-bottom:0">
+      <div class="error-msg" id="lead-error">メールアドレスを正しく入力してください</div>
+      <button class="submit-btn" onclick="submitLead()">無料アセスメントを申し込む（無料）→</button>
+      <div class="privacy-note">入力情報はAIdealize株式会社のご連絡・資料送付のみに使用します。</div>
+    </div>
+
+    <div id="complete-msg">
+      <div class="big-check">✅</div>
+      <h3>ありがとうございます！</h3>
+      <p>担当者より1〜2営業日以内にご連絡し、<br>無料アセスメントの日程を調整いたします。<br><br>
+      サービスの詳細は<br>
+      <a href="https://aidealize.com/service/" style="color:#0E8C7F;">こちらからご覧いただけます →</a></p>
+    </div>
+
+  </div><!-- /result-section -->
+
+  <div class="footer-link">
+    <a href="https://aidealize.com">AIdealize株式会社</a>
+    &nbsp;|&nbsp;
+    <a href="https://aidealize.com/service/">サービス一覧</a>
+  </div>
+
+</div><!-- /container -->
+
+<script>
+// ── 業界別プロファイル ──
+// min: 1人が1日その事務にかける目安(分)、rate: AI/ICT導入での削減率の目安
+const INDUSTRIES = {
+  "クリニック・診療所": {
+    honne: "診療・患者対応",
+    tip: "外来の電話・予約対応のAI自動応答と、カルテ入力の音声化から着手すると、少人数でも早く効果が出ます。",
+    tasks: [
+      { v:"tel",    icon:"📞", name:"電話・予約対応",         desc:"AI一次対応・自動予約", min:40, rate:0.50 },
+      { v:"monshin",icon:"📝", name:"問診・受付の転記",       desc:"デジタル問診で転記削減", min:25, rate:0.55 },
+      { v:"karte",  icon:"💻", name:"カルテ入力",             desc:"音声入力・テンプレ化", min:35, rate:0.50 },
+      { v:"rece",   icon:"🧾", name:"レセプト・会計事務",     desc:"点検の自動化", min:30, rate:0.45 },
+      { v:"faq",    icon:"🤖", name:"院内の問い合わせ・確認", desc:"マニュアルRAGボット", min:15, rate:0.55 },
+    ],
+  },
+  "病院": {
+    honne: "患者ケア",
+    tip: "看護記録の音声化と、最も転記の多い部門間データ連携から着手すると効果を見極めやすくなります。",
+    tasks: [
+      { v:"kango",  icon:"🩺", name:"看護記録・観察記録",   desc:"音声→SOAP自動生成", min:45, rate:0.55 },
+      { v:"okuri",  icon:"🔄", name:"申し送り・情報共有",   desc:"記録から共有を標準化", min:20, rate:0.45 },
+      { v:"karte",  icon:"💻", name:"電子カルテ入力・転記", desc:"入力の起点を見直す", min:40, rate:0.50 },
+      { v:"renkei", icon:"🔗", name:"部門間のデータ転記・突合", desc:"システム連携で二重入力解消", min:25, rate:0.60 },
+      { v:"gairai", icon:"📞", name:"外来の電話・予約対応", desc:"AI一次対応", min:30, rate:0.45 },
+    ],
+  },
+  "介護施設": {
+    honne: "利用者ケア",
+    tip: "フロアで音声記録できる仕組みと、口頭依存の申し送りの構造化から着手するのがおすすめです。",
+    tasks: [
+      { v:"kiroku", icon:"📝", name:"介護記録",         desc:"フロアで音声入力", min:40, rate:0.55 },
+      { v:"okuri",  icon:"🔄", name:"申し送り",         desc:"記録から共有を標準化", min:20, rate:0.45 },
+      { v:"yakin",  icon:"🌙", name:"夜勤帯の記録",     desc:"後回しの記録を即時化", min:25, rate:0.55 },
+      { v:"share",  icon:"📋", name:"多職種への共有書類", desc:"看護・リハ・栄養連携", min:20, rate:0.50 },
+      { v:"shift",  icon:"📅", name:"シフト・勤怠",     desc:"集計・申請の自動化", min:15, rate:0.55 },
+    ],
+  },
+  "訪問看護": {
+    honne: "訪問・看護ケア",
+    tip: "訪問直後にLINEで話すだけのSOAP記録から始めると、移動の合間に記録を片付けられます。",
+    tasks: [
+      { v:"soap",   icon:"🎤", name:"SOAP記録",            desc:"音声→自動生成", min:50, rate:0.60 },
+      { v:"report", icon:"📄", name:"主治医・ケアマネ報告書", desc:"一度の入力から展開", min:25, rate:0.50 },
+      { v:"sched",  icon:"📅", name:"訪問スケジュール調整", desc:"調整の自動化", min:15, rate:0.45 },
+      { v:"rece",   icon:"🧾", name:"実績・請求事務",       desc:"転記・集計の削減", min:20, rate:0.50 },
+    ],
+  },
+  "居宅介護支援": {
+    honne: "利用者支援",
+    tip: "モニタリング訪問直後の音声記録から着手すると、担当件数の多いケアマネほど効果が出ます。",
+    tasks: [
+      { v:"moni",   icon:"📝", name:"モニタリング・支援経過記録", desc:"音声→自動生成", min:45, rate:0.55 },
+      { v:"plan",   icon:"📋", name:"ケアプラン作成事務",   desc:"周辺事務を効率化", min:30, rate:0.40 },
+      { v:"kaigi",  icon:"👥", name:"担当者会議の準備・議事", desc:"議事の自動まとめ", min:20, rate:0.50 },
+      { v:"renraku",icon:"🔄", name:"事業所との連絡調整",   desc:"定型連絡の標準化", min:20, rate:0.45 },
+    ],
+  },
+  "訪問介護": {
+    honne: "訪問・介護ケア",
+    tip: "サービス実施記録を訪問先で音声入力できるようにすると、帰所後の転記がなくなります。",
+    tasks: [
+      { v:"kiroku", icon:"📝", name:"サービス実施記録", desc:"訪問先で音声入力", min:35, rate:0.55 },
+      { v:"report", icon:"📄", name:"報告・連絡",       desc:"定型連絡の標準化", min:20, rate:0.45 },
+      { v:"shift",  icon:"📅", name:"シフト調整",       desc:"サ責の業務を分散", min:20, rate:0.45 },
+    ],
+  },
+  "不動産": {
+    honne: "商談・接客",
+    tip: "問い合わせの一次対応AIと、物件・顧客情報の自動入力から着手すると追客に時間を回せます。",
+    tasks: [
+      { v:"data",   icon:"📊", name:"物件・顧客情報入力", desc:"紙→自動データ化", min:30, rate:0.55 },
+      { v:"tel",    icon:"📞", name:"問い合わせ・追客対応", desc:"AI一次対応・自動追客", min:30, rate:0.45 },
+      { v:"doc",    icon:"📄", name:"契約書・書類作成",   desc:"テンプレ自動生成", min:30, rate:0.55 },
+      { v:"portal", icon:"🌐", name:"ポータル更新",       desc:"出稿・更新の効率化", min:20, rate:0.50 },
+    ],
+  },
+  "その他": {
+    honne: "コア業務",
+    tip: "まず最も時間を奪っている事務を一つ選び、小さく試して効果を確認してから広げるのが安全です。",
+    tasks: [
+      { v:"report", icon:"📝", name:"報告書・日報作成", desc:"音声入力・自動生成", min:30, rate:0.60 },
+      { v:"data",   icon:"📊", name:"データ集計・転記", desc:"手作業→自動集計", min:25, rate:0.65 },
+      { v:"inquiry",icon:"📞", name:"問い合わせ対応",   desc:"AI一次対応・FAQ", min:25, rate:0.45 },
+      { v:"expense",icon:"💳", name:"請求・経費事務",   desc:"読取・自動仕訳", min:20, rate:0.55 },
+    ],
+  },
+};
+
+const WORKDAYS_PER_MONTH = 20;
+const FTE_HOURS_PER_YEAR = 1800; // フルタイム1人=年1800時間の目安
+let currentIndustry = "クリニック・診療所";
+
+function renderTasks(ind) {
+  const grid = document.getElementById('task-grid');
+  grid.innerHTML = INDUSTRIES[ind].tasks.map(t =>
+    '<div class="check-item" data-value="'+t.v+'" onclick="toggleCheck(this)">' +
+      '<div class="check-box"></div>' +
+      '<div class="check-text"><strong>'+t.icon+' '+t.name+'</strong><small>'+t.desc+'</small></div>' +
+    '</div>'
+  ).join('');
+}
+
+function selectIndustry(el) {
+  document.querySelectorAll('#industry-group .radio-btn').forEach(b => b.classList.remove('selected'));
+  el.classList.add('selected');
+  currentIndustry = el.dataset.ind;
+  renderTasks(currentIndustry);
+  notifyHeight();
+}
+
+function updateSlider(id, valId, fmt) {
+  const v = document.getElementById(id).value;
+  const el = document.getElementById(valId);
+  const text = fmt(parseInt(v));
+  const unit = el.querySelector('span');
+  if (unit) {
+    const m = text.match(/^([\d,]+)(.+)$/);
+    if (m) { el.childNodes[0].textContent = m[1]; unit.textContent = m[2]; }
+  } else { el.textContent = text; }
+}
+
+function toggleCheck(el) {
+  el.classList.toggle('checked');
+  document.getElementById('task-error').style.display = 'none';
+  notifyHeight();
+}
+
+function toggleAdvanced() {
+  document.getElementById('adv-toggle').classList.toggle('open');
+  document.getElementById('adv-fields').classList.toggle('open');
+  notifyHeight();
+}
+
+function calculate() {
+  const checked = [...document.querySelectorAll('#task-grid .check-item.checked')];
+  if (checked.length === 0) { document.getElementById('task-error').style.display = 'block'; return; }
+
+  const emp = parseInt(document.getElementById('emp').value);
+  const advOpen = document.getElementById('adv-fields').classList.contains('open');
+  const wage = advOpen ? parseInt(document.getElementById('wage').value) : 0;
+
+  const tasks = INDUSTRIES[currentIndustry].tasks;
+  const map = {}; tasks.forEach(t => map[t.v] = t);
+
+  // 1人あたり1日に戻せる分
+  let savedMinPerPersonDay = 0;
+  checked.forEach(el => { const t = map[el.dataset.value]; if (t) savedMinPerPersonDay += t.min * t.rate; });
+
+  const monthHoursTotal = Math.round(savedMinPerPersonDay * WORKDAYS_PER_MONTH * emp / 60);
+  const yearHoursPerPerson = Math.round(savedMinPerPersonDay * WORKDAYS_PER_MONTH * 12 / 60);
+  const yearHoursTotal = monthHoursTotal * 12;
+  const fte = (yearHoursTotal / FTE_HOURS_PER_YEAR);
+  const fteDisp = fte >= 1 ? fte.toFixed(1) : fte.toFixed(2);
+  const valueManYen = wage > 0 ? Math.round(yearHoursTotal * wage / 10000) : 0;
+
+  const honne = INDUSTRIES[currentIndustry].honne;
+  const topTask = checked.map(el => map[el.dataset.value]).filter(Boolean).sort((a,b)=> (b.min*b.rate)-(a.min*a.rate))[0];
+
+  // 結果表示
+  document.getElementById('input-section').style.display = 'none';
+  document.getElementById('result-section').style.display = 'block';
+  document.getElementById('step1-ind').classList.replace('active','done');
+  document.getElementById('step2-ind').classList.add('active');
+
+  animateCount('r-month', monthHoursTotal);
+  animateCount('r-person', yearHoursPerPerson);
+  document.getElementById('r-fte').textContent = fteDisp;
+
+  document.getElementById('r-reframe').innerHTML =
+    'これは「人を減らせる」数字ではありません。<strong>毎月 約' + monthHoursTotal + '時間</strong>を、' +
+    '事務作業から<strong>' + honne + '</strong>に取り戻せる、という試算です。' +
+    '増員せずに<strong>約' + fteDisp + '人分</strong>の時間を確保でき、人手不足のなかでも一人ひとりが本来の仕事に集中できます。' +
+    (valueManYen > 0 ? 'この時間を人件費で換算すると<strong>年 約' + valueManYen.toLocaleString() + '万円相当</strong>です。' : '');
+
+  document.getElementById('r-comment').innerHTML =
+    '<strong>' + currentIndustry + '・' + emp + '名</strong>の体制では、まず<strong>' + (topTask ? topTask.name : '記録業務') + '</strong>の自動化が最も効きます。' +
+    INDUSTRIES[currentIndustry].tip +
+    'いきなり全体ではなく、効果の大きい業務から小さく始めるのが成功の近道です。';
+
+  sendToGAS({
+    type: 'jidoka_calc',
+    timestamp: new Date().toISOString(),
+    industry: currentIndustry, emp,
+    tasks: checked.map(el => el.dataset.value).join(','),
+    monthHoursTotal, yearHoursPerPerson, fte: fteDisp, valueManYen, advUsed: advOpen
+  });
+
+  document.getElementById('result-section').scrollIntoView({behavior:'smooth', block:'start'});
+  setTimeout(notifyHeight, 200);
+}
+
+function animateCount(id, target) {
+  const el = document.getElementById(id);
+  el.textContent = target; // 値を即確定（rAFが抑制される環境でも必ず表示）
+  const start = Date.now();
+  const tick = () => {
+    const p = Math.min((Date.now()-start)/800, 1);
+    const ease = 1 - Math.pow(1-p, 3);
+    el.textContent = Math.round(target * ease);
+    if (p < 1) requestAnimationFrame(tick);
+  };
+  requestAnimationFrame(tick);
+}
+
+// ── GAS送信（ROI診断と同じスプレッドシートに記録）──
+const GAS_URL = 'https://script.google.com/macros/s/AKfycbznmcKuNRRfPrwP1Ev_alYlLIb5Z-b2fPBmNlnk-r923HibXl3OTc-tGJVP7750RgvQ/exec';
+function sendToGAS(data) {
+  fetch(GAS_URL, { method:'POST', mode:'no-cors', headers:{'Content-Type':'application/json'}, body: JSON.stringify(data) }).catch(()=>{});
+}
+
+function submitLead() {
+  const name = document.getElementById('lead-name').value.trim();
+  const company = document.getElementById('lead-company').value.trim();
+  const email = document.getElementById('lead-email').value.trim();
+  if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { document.getElementById('lead-error').style.display = 'block'; return; }
+  sendToGAS({ type: 'jidoka_lead', timestamp: new Date().toISOString(), name, company, email, industry: currentIndustry });
+  document.getElementById('lead-form-wrap').style.display = 'none';
+  document.getElementById('complete-msg').style.display = 'block';
+  document.getElementById('step2-ind').classList.replace('active','done');
+  document.getElementById('step3-ind').classList.add('active');
+  setTimeout(notifyHeight, 100);
+}
+
+// ── iframe埋め込み用：高さ通知 ──
+function notifyHeight() {
+  var h = Math.max(document.body.scrollHeight, document.documentElement.scrollHeight);
+  window.parent.postMessage({type:'roiHeight', height: h}, '*');
+}
+window.addEventListener('load', function(){
+  // ?ind=病院 などで業界をプリセット（bpr hubからの遷移用）
+  const p = new URLSearchParams(location.search).get('ind');
+  if (p && INDUSTRIES[p]) {
+    const btn = [...document.querySelectorAll('#industry-group .radio-btn')].find(b=>b.dataset.ind===p);
+    if (btn) {
+      document.querySelectorAll('#industry-group .radio-btn').forEach(b=>b.classList.remove('selected'));
+      btn.classList.add('selected');
+      currentIndustry = p;
+    }
+  }
+  renderTasks(currentIndustry);
+  setTimeout(notifyHeight, 200);
+});
+</script>
+</body>
+</html>
