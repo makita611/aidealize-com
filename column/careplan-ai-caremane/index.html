@@ -3,13 +3,13 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ケアマネのモニタリング記録、訪問後に話すだけでAIが作成｜効率化の具体策【AIdealize】</title>
-<meta name="description" content="居宅介護支援専門員（ケアマネジャー）のモニタリング記録・訪問記録の作成負担を、AI音声入力でどう減らせるか解説。モニタリングシートの書き方の基本から、記録時間を削減する具体的な方法まで紹介します。">
-<link rel="canonical" href="https://aidealize.com/column/caremane-monitoring-kiroku/">
-<meta property="og:title" content="ケアマネのモニタリング記録、訪問後に話すだけでAIが作成｜効率化の具体策">
-<meta property="og:description" content="ケアマネジャーのモニタリング記録の作成負担をAI音声入力で削減する具体的な方法を解説。">
+<title>ケアプランAIはどこまで使える？ケアマネのアセスメント・原案作成をAIで効率化する方法【AIdealize】</title>
+<meta name="description" content="「ケアプランAI」でケアマネの業務はどこまで効率化できるのか。AIが支援できる領域（アセスメント情報の整理・ケアプラン原案のドラフト・モニタリング記録）と、AIには代替できない専門判断の境界を解説。ケアマネ業務効率化ツールの選び方も紹介します。">
+<link rel="canonical" href="https://aidealize.com/column/careplan-ai-caremane/">
+<meta property="og:title" content="ケアプランAIはどこまで使える？ケアマネのアセスメント・原案作成をAIで効率化する方法">
+<meta property="og:description" content="ケアプランAIが支援できる領域とできない専門判断の境界、ケアマネ業務効率化ツールの選び方を解説。">
 <meta property="og:type" content="article">
-<meta property="og:url" content="https://aidealize.com/column/caremane-monitoring-kiroku/">
+<meta property="og:url" content="https://aidealize.com/column/careplan-ai-caremane/">
 <meta property="og:site_name" content="AIdealize株式会社">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -19,9 +19,9 @@
 {
   "@context": "https://schema.org",
   "@type": "Article",
-  "headline": "ケアマネのモニタリング記録、訪問後に話すだけでAIが作成｜効率化の具体策",
-  "description": "居宅介護支援専門員のモニタリング記録の作成負担をAI音声入力で削減する具体的な方法を解説。",
-  "datePublished": "2026-06-10",
+  "headline": "ケアプランAIはどこまで使える？ケアマネのアセスメント・原案作成をAIで効率化する方法",
+  "description": "ケアプランAIが支援できる領域とできない専門判断の境界、ケアマネ業務効率化ツールの選び方を解説。",
+  "datePublished": "2026-06-22",
   "author": {"@type": "Organization", "name": "AIdealize株式会社"},
   "publisher": {"@type": "Organization", "name": "AIdealize株式会社", "url": "https://aidealize.com"}
 }
@@ -105,17 +105,17 @@ body{font-family:'Noto Sans JP',sans-serif;background:var(--white);color:var(--i
 .pain-card-body{font-size:14px;line-height:1.85;color:var(--body);}
 .pain-card-body strong{color:var(--ink);}
 
-/* DEMO BLOCK */
-.demo-block{background:var(--demo-bg);border-radius:10px;padding:24px;margin:24px 0;}
-.demo-label{font-size:10px;color:rgba(200,16,46,0.8);font-family:'DM Mono',monospace;letter-spacing:0.16em;text-transform:uppercase;margin-bottom:14px;}
-.demo-result{display:flex;flex-direction:column;gap:8px;}
-.demo-item{display:flex;align-items:flex-start;gap:10px;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.06);border-radius:6px;padding:12px 14px;}
-.demo-badge{background:var(--red);color:#fff;font-family:'DM Mono',monospace;font-size:11px;font-weight:700;width:24px;height:24px;border-radius:4px;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px;}
-.demo-text{font-size:13px;line-height:1.85;color:rgba(255,255,255,0.78);}
-.demo-voice{background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.08);border-radius:6px;padding:14px 18px;margin-bottom:14px;}
-.demo-voice-label{font-size:10px;color:rgba(255,255,255,0.35);font-family:'DM Mono',monospace;letter-spacing:0.1em;margin-bottom:8px;}
-.demo-voice p{font-size:13px;line-height:1.9;color:rgba(255,255,255,0.7);margin:0;}
-.demo-arrow{text-align:center;font-size:20px;color:rgba(200,16,46,0.7);padding:10px 0 14px;}
+/* COMPARE TABLE */
+.compare-wrap{overflow-x:auto;margin:24px 0 32px;}
+.compare-table{width:100%;border-collapse:collapse;font-size:13.5px;min-width:480px;}
+.compare-table th{padding:12px 18px;text-align:center;font-size:12px;font-weight:700;letter-spacing:0.05em;background:var(--bg2);color:var(--ink);border-bottom:2px solid var(--border);}
+.compare-table th:first-child{text-align:left;}
+.compare-table th.hl{background:var(--red);color:#fff;}
+.compare-table td{padding:12px 18px;border-bottom:1px solid var(--border);vertical-align:middle;line-height:1.7;color:var(--body);text-align:center;}
+.compare-table td:first-child{text-align:left;font-weight:600;color:var(--ink);}
+.compare-table td.hl{background:var(--tag-bg);color:var(--ink);font-weight:600;}
+.check{color:var(--red);font-weight:700;}
+.cross{color:#bbb;}
 
 /* POINT BOX */
 .point-box{background:var(--bg2);border-radius:8px;padding:20px 24px;margin:20px 0;}
@@ -213,14 +213,14 @@ footer{background:#1f1f1f;border-top:1px solid rgba(255,255,255,0.06);padding:40
     <nav class="breadcrumb" aria-label="パンくず">
       <a href="/">ホーム</a><span>/</span>
       <a href="/column/">コラム</a><span>/</span>
-      <span>ケアマネ モニタリング記録</span>
+      <span>ケアプランAI・ケアマネ業務</span>
     </nav>
-    <div class="article-tag">居宅介護支援・記録効率化</div>
+    <div class="article-tag">居宅介護支援・ケアマネ業務</div>
     <h1 class="article-h1">
-      ケアマネのモニタリング記録、訪問後にLINEで話すだけで<br>AIが作成する時代へ。
+      ケアプランAIはどこまで使える？ ケアマネの<br>アセスメント・原案作成をAIで効率化する。
     </h1>
     <div class="article-meta">
-      <div class="article-meta-item">📅 2026年6月10日</div>
+      <div class="article-meta-item">📅 2026年6月22日</div>
       <div class="article-meta-item">⏱ 読了約8分</div>
       <div class="article-meta-item">✍ AIdealize編集部</div>
     </div>
@@ -234,137 +234,135 @@ footer{background:#1f1f1f;border-top:1px solid rgba(255,255,255,0.06);padding:40
   <div class="summary-box reveal">
     <div class="summary-box-title">この記事でわかること</div>
     <ul>
-      <li>ケアマネジャーのモニタリング記録がなぜ大きな負担になっているのか</li>
-      <li>モニタリングシートに最低限記載すべき項目の基本</li>
-      <li>訪問後の音声入力でモニタリング記録を効率化する具体的な仕組み</li>
-      <li>担当件数が多いケアマネほど効果が出やすい理由</li>
-      <li>記録効率化が利用者対応の質向上につながる理由</li>
+      <li>「ケアプランAI」で実際にできること・まだ難しいこと</li>
+      <li>AIが支援できる3領域（アセスメント整理・原案ドラフト・モニタリング記録）</li>
+      <li>「AIがケアプランを作る」という誤解と、ケアマネの専門判断の重要性</li>
+      <li>手作業とAI支援で、業務がどう変わるのか</li>
+      <li>失敗しないケアマネ業務効率化ツールの選び方</li>
     </ul>
   </div>
 
-  <p>居宅介護支援専門員（ケアマネジャー）の業務の中でも、<strong>モニタリング記録の作成</strong>は毎月発生する定型業務であり、担当件数が多いケアマネジャーほど大きな時間的負担になっています。</p>
+  <p>居宅介護支援に携わるケアマネジャーの業務は、アセスメント、ケアプラン（居宅サービス計画書）の作成、サービス担当者会議、モニタリング、給付管理と多岐にわたります。とくにケアプランや各種記録の作成は、利用者一人ひとりに対して継続的に発生し、<strong>「対人援助よりも書類に追われている」</strong>という声が後を絶ちません。</p>
 
-  <p>「訪問はできても、記録が後回しになって溜まってしまう」「毎月同じような文章を書き続けるのが苦痛」「他の利用者の記録と内容が混ざってしまう」——こうした悩みは、利用者数を多く担当するケアマネジャーであれば共通のものではないでしょうか。</p>
+  <p>そこで関心が高まっているのが「ケアプランAI」です。ただし、期待と現実にはギャップもあります。この記事では、<strong>AIがケアマネ業務のどこを支援でき、どこは支援できないのか</strong>を整理し、現実的な効率化の進め方を解説します。</p>
 
-  <p>この記事では、モニタリング記録の基本的な考え方を確認しつつ、<strong>AIによる音声入力でモニタリング記録の作成時間を大きく削減する方法</strong>を紹介します。</p>
+  <h2>「ケアプランAI」で実際にできることは何か</h2>
 
-  <h2>モニタリング記録、なぜ負担が大きいのか</h2>
+  <p>「ケアプランAI」と一口に言っても、その実態はさまざまです。まず押さえたいのは、<strong>AIは「考える材料を整える」「文章にする」ことが得意</strong>で、ケアマネの代わりに最終判断をするものではない、という点です。</p>
 
   <div class="pain-cards">
     <div class="pain-card reveal">
-      <div class="pain-card-icon">📅</div>
+      <div class="pain-card-icon">🗂️</div>
       <div class="pain-card-body">
-        <strong>毎月・全利用者分、確実に発生する業務</strong><br>
-        モニタリングは利用者ごとに毎月の実施が基本です。担当件数が増えるほど、月末にまとめて記録を作成する作業量も比例して増えていきます。
-      </div>
-    </div>
-    <div class="pain-card reveal">
-      <div class="pain-card-icon">🌀</div>
-      <div class="pain-card-body">
-        <strong>訪問の記憶が薄れてから記録することになる</strong><br>
-        訪問当日に記録できず後日まとめて作成すると、利用者ごとの細かなニュアンスや変化の記憶が薄れ、記録の質が下がりがちです。
+        <strong>アセスメント情報の整理</strong><br>
+        面談で聞き取った内容や各種記録を、課題ごとに整理・要約。情報を探して書き写す手間を減らします。
       </div>
     </div>
     <div class="pain-card reveal">
       <div class="pain-card-icon">📝</div>
       <div class="pain-card-body">
-        <strong>「変化なし」が続くと記録が形式的になりやすい</strong><br>
-        大きな変化がない月でも記録は必要ですが、表現がワンパターンになり、本当に重要な変化に気づきにくくなるリスクがあります。
+        <strong>ケアプラン原案・文章のドラフト</strong><br>
+        ニーズや目標の文章表現を下書き。ゼロから書く負担を下げ、ケアマネは内容の検討・修正に集中できます。
+      </div>
+    </div>
+    <div class="pain-card reveal">
+      <div class="pain-card-icon">🔁</div>
+      <div class="pain-card-body">
+        <strong>モニタリング記録の作成</strong><br>
+        訪問後に話した内容から記録を自動で整え、毎月のモニタリング記録の作成時間を短縮します。
       </div>
     </div>
   </div>
 
-  <h2>モニタリング記録に記載すべき基本項目</h2>
+  <h2>「AIがケアプランを作る」という誤解と現実</h2>
 
-  <p>モニタリング記録（モニタリングシート）には、事業所や使用している様式によって違いはありますが、一般的に以下のような視点での記載が求められます。</p>
+  <p>ここで重要な前提を共有します。ケアプランは、利用者の意向・心身の状況・家族や地域の状況を踏まえ、<strong>ケアマネジャーが専門職として総合的に判断して作成するもの</strong>です。これは運営基準でも求められる、対人援助の中核です。</p>
 
-  <ul>
-    <li>サービス提供状況（ケアプランに沿ったサービスが提供されているか）</li>
-    <li>利用者・家族の心身状況、生活状況の変化</li>
-    <li>本人・家族の意向や満足度、不安・要望の有無</li>
-    <li>ケアプランの目標達成度、今後の方針に関する所見</li>
-    <li>各サービス事業所との連携状況・他職種からの情報</li>
-  </ul>
+  <p>AIは、その判断に必要な情報を整え、文章化を助けることはできますが、<strong>「利用者にとって何が最善か」という価値判断そのものを代替することはできません</strong>。AIが出した原案を鵜呑みにするのではなく、ケアマネが内容を吟味し、責任を持って仕上げる——この役割分担が大前提です。</p>
 
-  <p>これらを訪問のたびに、ケアマネジャー自身の言葉で文章として整理する必要があります。<strong>「何を書くべきか」はわかっていても、「文章としてまとめる時間」が確保できない</strong>というのが、多くのケアマネジャーが抱える本当の課題です。</p>
-
-  <h2>訪問後、移動中に話すだけでモニタリング記録の下書きが完成</h2>
-
-  <p>「はなまる看護AI」は訪問看護向けのSOAP記録AIとして開発されたサービスですが、その仕組みは<strong>「現場で話した内容を、決まったフォーマットの文章に整理する」</strong>という点で、ケアマネジャーのモニタリング記録にも応用が可能です。</p>
-
-  <div class="demo-block reveal">
-    <div class="demo-label">モニタリング記録への活用イメージ</div>
-    <div class="demo-voice">
-      <div class="demo-voice-label">▼ ケアマネが話した音声（整理しなくてOK）</div>
-      <p>「今日、田中さんのモニタリングに行きました。最近少し物忘れが増えてきたとご家族が心配されていました。デイサービスは週2回通っていて、楽しんで参加できているとのことです。本人は今のサービス内容に満足していて、特に変更の希望はないそうです。ただ、ご家族からは将来的にデイの利用回数を増やしたいという話もありました。次回プラン更新のタイミングで検討したいと思います」</p>
-    </div>
-    <div class="demo-arrow">↓ AIが整理</div>
-    <div class="demo-result">
-      <div class="demo-item">
-        <div class="demo-badge">状況</div>
-        <div class="demo-text">デイサービス（週2回）を継続利用中。本人は活動への参加を楽しんでおり、現状のサービス内容に対する満足度は高い。</div>
-      </div>
-      <div class="demo-item">
-        <div class="demo-badge">変化</div>
-        <div class="demo-text">ご家族より、本人の物忘れがやや増えてきたとの所見あり。今後の心身状況の変化について継続的な観察が必要。</div>
-      </div>
-      <div class="demo-item">
-        <div class="demo-badge">意向</div>
-        <div class="demo-text">本人は現状維持を希望。ご家族からはデイサービスの利用回数増加を希望する意向が示された。</div>
-      </div>
-      <div class="demo-item">
-        <div class="demo-badge">方針</div>
-        <div class="demo-text">次回のケアプラン更新時に、デイサービス利用回数の見直しについて検討する。本人の認知機能の変化について継続観察。</div>
-      </div>
-    </div>
+  <div class="point-box">
+    <div class="point-box-label">押さえておくこと</div>
+    <p>AIの出力は「下書き」であり「完成品」ではありません。利用者本位の視点、根拠の確認、説明責任は、引き続きケアマネジャーが担います。AIは<strong>その専門性を発揮するための"時間"を生み出す道具</strong>と位置づけるのが健全です。</p>
   </div>
 
-  <p>このように、訪問先からの移動中に話した内容を、AIが項目別に整理した文章として出力します。あとはこの文章をベースに、自社のモニタリングシートへ反映するだけです。<strong>「訪問の記憶が新鮮なうちに、その場で記録の骨子が完成する」</strong>ことが最大のメリットです。</p>
+  <h2>手作業とAI支援で、業務はどう変わるか</h2>
+
+  <div class="compare-wrap">
+    <table class="compare-table">
+      <thead>
+        <tr>
+          <th>業務</th>
+          <th>従来の手作業</th>
+          <th class="hl">AI支援を併用</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>アセスメント整理</td><td>記録を探して書き写す</td><td class="hl"><span class="check">✓</span> 課題ごとに自動で要約・整理</td></tr>
+        <tr><td>ケアプラン原案</td><td>毎回ゼロから文章化</td><td class="hl"><span class="check">✓</span> 下書きを修正して仕上げる</td></tr>
+        <tr><td>モニタリング記録</td><td>帰所後にまとめて入力</td><td class="hl"><span class="check">✓</span> 話した内容から自動で整う</td></tr>
+        <tr><td>専門的な判断</td><td>ケアマネが担う</td><td class="hl">ケアマネが担う（変わらない）</td></tr>
+        <tr><td>利用者と向き合う時間</td><td><span class="cross">×</span> 書類に圧迫される</td><td class="hl"><span class="check">✓</span> 事務が減り対人援助に回せる</td></tr>
+      </tbody>
+    </table>
+  </div>
 
   <!-- 中間CTA -->
   <div class="inline-cta reveal">
-    <div class="inline-cta-tag">FREE TRIAL</div>
-    <h3>毎月の記録に追われる毎日を、<br>「話すだけ」で変えてみませんか。</h3>
-    <p>訪問の合間、移動中のスキマ時間に話すだけで記録の下書きが完成。月末にまとめて記録作成に追われる働き方から卒業できます。</p>
+    <div class="inline-cta-tag">無料セルフ診断・30秒</div>
+    <h3>記録・書類に、毎月どれだけ<br>時間を奪われている？</h3>
+    <p>「時間とりもどし診断」なら、人数を選ぶだけで、記録・事務に奪われている時間と改善余地を即座に試算。効率化の第一歩にどうぞ。</p>
     <div class="cta-btns-pair">
-      <a href="/lp/hanamaru-kango/" class="btn-cta-red">はなまる看護AI — 無料で試す →</a>
+      <a href="/jidoka-shindan.html" class="btn-cta-red">無料で診断してみる →</a>
     </div>
-    <span class="btn-cta-note">月額 ¥14,800〜 / 初期費用半額キャンペーン中</span>
+    <span class="btn-cta-note">登録不要・その場で結果が出ます</span>
   </div>
 
-  <h2>担当件数が多いケアマネジャーほど効果が大きい理由</h2>
+  <h2>AIが効く3つの領域（時間を生む順）</h2>
 
   <div class="effect-grid reveal">
     <div class="effect-card">
-      <div class="effect-num">EFFECT 01</div>
-      <div class="effect-title">記録の「持ち帰り作業」が減る</div>
-      <div class="effect-body">訪問後すぐに記録の骨子が完成するため、事務所に戻ってからの作業時間、残業や持ち帰り業務が削減されます。</div>
+      <div class="effect-num">領域 01</div>
+      <div class="effect-title">モニタリング記録</div>
+      <div class="effect-body">毎月必ず発生し、定型化しやすい記録業務。話すだけで整う仕組みは、最も早く効果を実感できます。</div>
     </div>
     <div class="effect-card">
-      <div class="effect-num">EFFECT 02</div>
-      <div class="effect-title">利用者ごとの「個別性」が記録に残る</div>
-      <div class="effect-body">訪問直後の生の言葉をベースにするため、利用者ごとの細かな変化やニュアンスが記録に反映されやすくなります。</div>
+      <div class="effect-num">領域 02</div>
+      <div class="effect-title">アセスメント整理</div>
+      <div class="effect-body">散らばった情報を課題ごとに集約。原案検討の前段が整い、考える時間を確保できます。</div>
     </div>
     <div class="effect-card">
-      <div class="effect-num">EFFECT 03</div>
-      <div class="effect-title">本来の対人援助業務に時間を使える</div>
-      <div class="effect-body">記録作成の時間が減ることで、利用者・家族との面談や多職種連携など、ケアマネジャー本来の専門業務に時間を割けます。</div>
+      <div class="effect-num">領域 03</div>
+      <div class="effect-title">原案のドラフト</div>
+      <div class="effect-body">文章表現の下書きを任せ、ケアマネは内容の妥当性チェックに集中。質を保ちつつ時短します。</div>
     </div>
   </div>
 
-  <h2>まとめ：記録の効率化は、利用者対応の質向上につながる</h2>
+  <h2>ケアマネ業務効率化ツールの選び方</h2>
 
-  <p>モニタリング記録は、ケアマネジャーにとって避けられない定型業務である一方、<strong>「時間をかけたからといって、必ずしも質が上がるわけではない」</strong>という側面もあります。重要なのは、訪問で得た情報を新鮮なうちに、漏れなく整理できる仕組みを持つことです。</p>
+  <p>「ケアプランAI」「ケアマネ業務効率化ツール」を検討する際は、機能の華やかさより<strong>「現場が無理なく続けられるか」</strong>を基準にしてください。チェックしたいポイントは次の通りです。</p>
 
-  <p>「毎月の記録作成に追われている」「もっと利用者・家族との時間を増やしたい」とお考えのケアマネジャーの方は、訪問看護向けに開発されたAI音声記録ツール「はなまる看護AI」の仕組みを、ぜひ一度体感してみてください。</p>
+  <ol>
+    <li><strong>入力が簡単か</strong>——話す・スマホで完結するなど、ITが苦手でも使えるか。</li>
+    <li><strong>既存の記録・システムと共存できるか</strong>——今の運用を大きく壊さずに導入できるか。</li>
+    <li><strong>「下書き」として使える設計か</strong>——AI任せにせず、ケアマネが必ず確認・修正できるか。</li>
+    <li><strong>導入支援・サポートがあるか</strong>——使い始めの定着まで伴走してくれるか。</li>
+  </ol>
+
+  <p>まずは負担が大きく定型化しやすい<strong>モニタリング記録</strong>から試し、効果を見ながらアセスメント整理・原案ドラフトへ広げるのが、失敗の少ない進め方です。</p>
+
+  <h2>まとめ：AIは「ケアマネの時間」を取り戻す道具</h2>
+
+  <p>ケアプランAIは、ケアマネジャーの専門性を置き換えるものではありません。<strong>書類と記録に奪われている時間を取り戻し、利用者と向き合う本来の業務に集中するための道具</strong>です。最終的な判断と責任はケアマネが担う——その前提さえ守れば、AIは強力な味方になります。</p>
+
+  <p>「はなまる看護AI」は、LINEに話すだけで記録が自動で整う医療・介護特化型AIです。ケアマネのモニタリング記録の効率化にも活用できます。まずは無料で、その使いやすさを体感してみてください。</p>
 
   <!-- 末尾CTA -->
   <div class="inline-cta reveal">
     <div class="inline-cta-tag">無料トライアル実施中</div>
-    <h3>訪問後の記録、LINEに話しかけるだけで終わります。</h3>
-    <p>クレジットカード不要・初期設定サポートあり・最短即日スタート。</p>
+    <h3>モニタリング記録、まずLINEで1件試してみてください。</h3>
+    <p>クレジットカード不要・LINE登録のみで即日スタート可能です。</p>
     <div class="cta-btns-pair">
-      <a href="/lp/hanamaru-kango/" class="btn-cta-red">はなまる看護AIを無料で試す →</a>
+      <a href="/lp/hanamaru-kango/" class="btn-cta-red">はなまる看護AI — 無料で試す →</a>
     </div>
     <span class="btn-cta-note">月額 ¥14,800〜 / 初期費用半額キャンペーン中 / いつでも解約可</span>
   </div>
@@ -377,17 +375,13 @@ footer{background:#1f1f1f;border-top:1px solid rgba(255,255,255,0.06);padding:40
   <div class="related-inner">
     <div class="related-label">Related Articles</div>
     <div class="related-grid">
-      <a href="/column/hanamaru-kango-ai/" class="related-card">
-        <div class="related-card-tag">SOAP記録 / AI自動生成</div>
-        <div class="related-card-title">訪問看護の「SOAP記録」、LINEで話すだけでAIが自動作成する時代へ。</div>
+      <a href="/column/caremane-monitoring-kiroku/" class="related-card">
+        <div class="related-card-tag">居宅介護支援 / 記録効率化</div>
+        <div class="related-card-title">ケアマネのモニタリング記録、訪問後にLINEで話すだけでAIが作成する時代へ。</div>
       </a>
-      <a href="/column/houkan-ict-kasan/" class="related-card">
-        <div class="related-card-tag">介護報酬 / ICT加算</div>
-        <div class="related-card-title">訪問看護のICT加算とは？算定要件・対象事業所・申請の流れをわかりやすく解説。</div>
-      </a>
-      <a href="/column/careplan-ai-caremane/" class="related-card">
-        <div class="related-card-tag">ケアプランAI / ケアマネ業務</div>
-        <div class="related-card-title">ケアプランAIはどこまで使える？ ケアマネのアセスメント・原案作成をAIで効率化する。</div>
+      <a href="/column/rpa-vs-ai-iryokaigo/" class="related-card">
+        <div class="related-card-tag">業務自動化 / RPA・AI</div>
+        <div class="related-card-title">RPAよりAIがいい？ 医療・介護現場でRPAが「続かない」理由とAIとの正しい使い分け。</div>
       </a>
     </div>
   </div>
