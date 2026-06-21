@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>クリニックの集客をAIで強化｜MEO・口コミ対策×商圏データ分析マーケティング支援【AIdealize】</title>
+<meta name="description" content="集客に悩むクリニック向けのAIマーケティング支援。Googleマップ(MEO)・口コミ対策・HP改善で来院を増やし、商圏分析・広告効果測定・リピート/リファラル分析で「次の一手」を可視化。医療現場183事例の知見をもとに、業務効率化から集客まで一気通貫で支援します。">
+<link rel="canonical" href="https://aidealize.com/service/clinic-marketing/">
+<meta property="og:title" content="クリニックの集客をAIで強化｜MEO・口コミ対策×商圏データ分析マーケティング支援">
+<meta property="og:description" content="集客に悩むクリニック向けのAIマーケ支援。MEO・口コミ・HP改善で来院増、商圏/広告効果/リピート分析で次の一手を可視化。">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://aidealize.com/service/clinic-marketing/">
+<meta property="og:site_name" content="AIdealize株式会社">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700;900&family=Shippori+Mincho:wght@400;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-P6VNBWH3');</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "name": "クリニック集客・AIマーケティング支援",
+  "serviceType": "クリニック向けマーケティング支援（MEO・口コミ・商圏データ分析）",
+  "provider": {"@type": "Organization", "name": "AIdealize株式会社", "url": "https://aidealize.com"},
+  "areaServed": "JP",
+  "description": "クリニック向けに、MEO・口コミ対策・HP改善によるWeb集客と、商圏分析・広告効果測定・リピート/リファラル分析を組み合わせたAIマーケティング支援を提供。"
+}
+</script>
+<style>
+:root{
+  --red:#0891b2;--red-dark:#0e7490;
+  --ink:#1e293b;--body:#4b5563;--light:#94a3b8;
+  --border:#e2e8f0;--bg:#f8fafc;--bg2:#f1f5f9;--white:#fff;
+  --tag-bg:#ecfeff;--green:#059669;--green-bg:#ecfdf5;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{font-family:'Noto Sans JP',sans-serif;background:var(--white);color:var(--ink);overflow-x:hidden;line-height:1.7;}
+
+/* NAV */
+#mainNav{position:fixed;top:0;left:0;right:0;z-index:1000;display:flex;align-items:center;justify-content:space-between;padding:0 60px;height:68px;background:rgba(255,255,255,0.97);border-bottom:1px solid var(--border);backdrop-filter:blur(12px);transition:box-shadow 0.3s;}
+#mainNav.scrolled{box-shadow:0 2px 16px rgba(0,0,0,0.06);}
+.nav-logo{display:flex;align-items:center;gap:10px;text-decoration:none;}
+.nav-logo img{height:34px;width:auto;}
+.nav-logo-text{font-family:'DM Mono',monospace;font-size:15px;font-weight:500;color:var(--ink);letter-spacing:0.02em;}
+.nav-logo-text span{color:var(--red);}
+.nav-links{display:flex;align-items:center;gap:32px;list-style:none;}
+.nav-links a{font-size:13px;font-weight:500;color:var(--body);text-decoration:none;transition:color 0.2s;}
+.nav-links a:hover{color:var(--ink);}
+.nav-cta{background:var(--red) !important;color:#fff !important;padding:9px 20px;border-radius:4px;font-size:12px !important;font-weight:700 !important;}
+.nav-cta:hover{background:var(--red-dark) !important;}
+.nav-hamburger{display:none;flex-direction:column;justify-content:center;gap:5px;width:40px;height:40px;background:none;border:none;cursor:pointer;}
+.nav-hamburger span{display:block;width:22px;height:2px;background:var(--ink);transition:all 0.3s;transform-origin:center;}
+.nav-hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg);}
+.nav-hamburger.open span:nth-child(2){opacity:0;}
+.nav-hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
+.nav-drawer{display:none;position:fixed;top:68px;left:0;right:0;background:#fff;border-bottom:2px solid var(--red);padding:20px 28px 28px;z-index:999;}
+.nav-drawer.open{display:block;}
+.nav-drawer ul{list-style:none;display:flex;flex-direction:column;}
+.nav-drawer ul li a{display:block;padding:13px 0;font-size:15px;font-weight:500;color:var(--ink);text-decoration:none;border-bottom:1px solid var(--border);}
+.nav-drawer ul li:last-child a{margin-top:16px;text-align:center;background:var(--red);color:#fff !important;padding:13px;border-radius:4px;font-weight:700 !important;border-bottom:none;}
+@media(max-width:1024px){#mainNav{padding:0 28px;}.nav-links{display:none;}.nav-hamburger{display:flex;}}
+@media(max-width:480px){#mainNav{padding:0 16px;height:60px;}.nav-drawer{top:60px;}.nav-logo-text{font-size:13px;}}
+
+/* HERO */
+.hero{padding:128px 24px 64px;background:linear-gradient(160deg,#ecfeff 0%,var(--white) 55%,#f8fafc 100%);border-bottom:1px solid var(--border);}
+.hero-inner{max-width:860px;margin:0 auto;text-align:center;}
+.hero-eyebrow{display:inline-flex;align-items:center;background:var(--tag-bg);color:var(--red);font-size:11px;font-weight:700;letter-spacing:0.08em;padding:5px 14px;border-radius:100px;margin-bottom:22px;}
+.hero h1{font-family:'Shippori Mincho',serif;font-size:clamp(24px,4vw,40px);font-weight:700;line-height:1.55;color:var(--ink);margin-bottom:22px;}
+.hero h1 em{font-style:normal;border-bottom:3px solid var(--red);}
+.hero-sub{font-size:15px;line-height:2;color:var(--body);max-width:680px;margin:0 auto 32px;}
+.hero-btns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;}
+.btn-p{display:inline-flex;align-items:center;gap:6px;background:var(--red);color:#fff;padding:14px 30px;border-radius:6px;font-size:14px;font-weight:700;text-decoration:none;transition:background 0.2s,transform 0.2s;}
+.btn-p:hover{background:var(--red-dark);transform:translateY(-2px);}
+.btn-o{display:inline-flex;align-items:center;gap:6px;border:2px solid var(--red);color:var(--red);padding:12px 26px;border-radius:6px;font-size:14px;font-weight:700;text-decoration:none;transition:all 0.2s;}
+.btn-o:hover{background:var(--tag-bg);}
+
+/* SECTION */
+.section{padding:72px 24px;}
+.section-inner{max-width:860px;margin:0 auto;}
+.section.alt{background:var(--bg);}
+.section-label{font-family:'DM Mono',monospace;font-size:11px;color:var(--red);letter-spacing:0.14em;text-transform:uppercase;text-align:center;margin-bottom:12px;}
+.section-title{font-family:'Shippori Mincho',serif;font-size:clamp(20px,2.6vw,28px);font-weight:700;color:var(--ink);line-height:1.55;text-align:center;margin-bottom:14px;}
+.section-lead{font-size:15px;line-height:2;color:var(--body);text-align:center;max-width:680px;margin:0 auto 40px;}
+
+/* PILLAR */
+.pillar{background:#fff;border:1px solid var(--border);border-top:4px solid var(--red);border-radius:12px;padding:32px 30px;margin-bottom:24px;}
+.pillar-tag{display:inline-block;background:var(--red);color:#fff;font-size:11px;font-weight:700;letter-spacing:0.06em;padding:4px 12px;border-radius:100px;margin-bottom:14px;}
+.pillar h3{font-family:'Shippori Mincho',serif;font-size:clamp(18px,2.2vw,22px);font-weight:700;color:var(--ink);line-height:1.5;margin-bottom:12px;}
+.pillar > p{font-size:14px;line-height:1.95;color:var(--body);margin-bottom:18px;}
+.pillar ul{list-style:none;display:flex;flex-direction:column;gap:10px;}
+.pillar ul li{display:flex;align-items:flex-start;gap:10px;font-size:14px;line-height:1.85;color:var(--body);}
+.pillar ul li::before{content:'✓';color:var(--red);font-weight:700;flex-shrink:0;}
+.pillar ul li strong{color:var(--ink);}
+
+/* NOTE (compliance) */
+.note{background:#fffbeb;border:1px solid #fde68a;border-left:4px solid #d97706;border-radius:0 8px 8px 0;padding:18px 22px;margin-top:20px;}
+.note-label{font-size:11px;font-weight:700;color:#b45309;letter-spacing:0.06em;margin-bottom:8px;}
+.note p{font-size:13px;line-height:1.9;color:#7c5e1e;margin:0;}
+
+/* STEPS */
+.steps{display:flex;flex-direction:column;gap:14px;margin-top:8px;}
+.step{display:flex;gap:16px;align-items:flex-start;background:#fff;border:1px solid var(--border);border-radius:10px;padding:20px 22px;}
+.step-num{flex-shrink:0;width:30px;height:30px;border-radius:50%;background:var(--red);color:#fff;display:flex;align-items:center;justify-content:center;font-family:'DM Mono',monospace;font-weight:700;font-size:13px;}
+.step-body h4{font-family:'Shippori Mincho',serif;font-size:16px;font-weight:700;color:var(--ink);margin-bottom:6px;}
+.step-body p{font-size:13.5px;line-height:1.85;color:var(--body);}
+
+/* CASE LINK */
+.case-link{display:flex;align-items:center;justify-content:space-between;gap:16px;background:linear-gradient(135deg,#ecfeff,#f0fdf4);border:1px solid #cffafe;border-radius:12px;padding:24px 28px;margin-top:24px;text-decoration:none;flex-wrap:wrap;}
+.case-link-text strong{display:block;font-family:'Shippori Mincho',serif;font-size:16px;color:var(--ink);margin-bottom:6px;}
+.case-link-text span{font-size:13px;color:var(--body);}
+.case-link-btn{flex-shrink:0;background:var(--red);color:#fff;padding:11px 22px;border-radius:6px;font-size:13px;font-weight:700;}
+
+/* CTA */
+.cta{padding:72px 24px;background:var(--ink);text-align:center;}
+.cta h2{font-family:'Shippori Mincho',serif;font-size:clamp(20px,2.6vw,28px);font-weight:700;color:#fff;line-height:1.55;margin-bottom:14px;}
+.cta p{font-size:14px;color:rgba(255,255,255,0.75);line-height:1.9;max-width:560px;margin:0 auto 28px;}
+.cta .btn-p{background:var(--red);}
+.cta .btn-o{border-color:rgba(255,255,255,0.4);color:#fff;}
+.cta .btn-o:hover{background:rgba(255,255,255,0.08);}
+
+/* FOOTER */
+footer{background:#1f1f1f;border-top:1px solid rgba(255,255,255,0.06);padding:40px 60px;display:flex;align-items:center;justify-content:space-between;}
+.footer-logo{display:flex;align-items:center;gap:10px;}
+.footer-logo-mark{width:20px;height:20px;background:var(--red);clip-path:polygon(50% 0%,0% 100%,18% 100%,50% 38%,82% 100%,100% 100%);}
+.footer-logo-text{font-family:'DM Mono',monospace;font-size:13px;color:rgba(255,255,255,0.55);}
+.footer-logo-text span{color:var(--red);}
+.footer-copy{font-size:11px;color:rgba(255,255,255,0.25);font-family:'DM Mono',monospace;}
+
+.reveal{opacity:0;transform:translateY(18px);transition:opacity 0.55s ease,transform 0.55s ease;}
+.reveal.visible{opacity:1;transform:translateY(0);}
+
+@media(max-width:768px){
+  .hero{padding-top:100px;}
+  .section,.cta{padding-left:16px;padding-right:16px;}
+  footer{flex-direction:column;gap:14px;text-align:center;padding:28px 16px;}
+}
+</style>
+</head>
+<body>
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-P6VNBWH3" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
+<!-- NAV -->
+<nav id="mainNav">
+  <a href="/" class="nav-logo">
+    <img src="/images/logo.png" alt="AIdealize">
+    <span class="nav-logo-text"><span>AI</span>dealize</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="/column/">コラム</a></li>
+    <li><a href="/service/">サービス</a></li>
+    <li><a href="https://aidealize.com/bpr/">DX事例</a></li>
+    <li><a href="/company.html">会社概要</a></li>
+    <li><a href="#contact" class="nav-cta">無料相談</a></li>
+  </ul>
+  <button class="nav-hamburger" id="navHamburger" aria-label="メニュー">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+<div class="nav-drawer" id="navDrawer">
+  <ul>
+    <li><a href="/column/" class="drawer-link">コラム</a></li>
+    <li><a href="/service/" class="drawer-link">サービス</a></li>
+    <li><a href="https://aidealize.com/bpr/" class="drawer-link">DX事例</a></li>
+    <li><a href="/company.html" class="drawer-link">会社概要</a></li>
+    <li><a href="#contact">無料相談する</a></li>
+  </ul>
+</div>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="hero-inner">
+    <span class="hero-eyebrow">CLINIC MARKETING × AI</span>
+    <h1>集客に悩むクリニックへ。<br><em>来院を増やす仕組み</em>を、AIでつくる。</h1>
+    <p class="hero-sub">Googleマップ（MEO）・口コミ・ホームページの対策で「見つけてもらい、選ばれる」状態へ。さらに商圏・広告効果・リピート/リファラルのデータ分析で「次の一手」を可視化します。医療現場183事例の知見をもとに、業務効率化から集客まで一気通貫で。</p>
+    <div class="hero-btns">
+      <a href="#contact" class="btn-p">無料で相談する →</a>
+      <a href="/jidoka-shindan.html" class="btn-o">まず無料診断を試す</a>
+    </div>
+  </div>
+</header>
+
+<!-- 課題 -->
+<section class="section">
+  <div class="section-inner">
+    <div class="section-label">Issue</div>
+    <h2 class="section-title">「いい医療を提供しているのに、患者が増えない」</h2>
+    <p class="section-lead">クリニックの集客は、診療の質だけでは決まりません。多くの場合、ボトルネックは次のどれかに潜んでいます。</p>
+    <div class="pillar" style="border-top-color:var(--light);">
+      <ul>
+        <li><strong>Googleマップで埋もれている</strong>——近隣で検索しても上位に出てこない（MEO未対策）。</li>
+        <li><strong>口コミが放置されている</strong>——低評価に返信がなく、新規患者の不安を払拭できていない。</li>
+        <li><strong>ホームページが「あるだけ」</strong>——予約・問い合わせの導線が弱く、来院につながらない。</li>
+        <li><strong>広告の効果が分からない</strong>——出稿しているが、どのエリア・どの施策が効いたか測れていない。</li>
+        <li><strong>リピート/紹介が偶然頼み</strong>——再来・紹介を増やす仕組みがなく、毎月ゼロから集客している。</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- 2つの柱 -->
+<section class="section alt">
+  <div class="section-inner">
+    <div class="section-label">Solution</div>
+    <h2 class="section-title">「集めるチャネル」と「分析で次の一手」の両輪で支援</h2>
+    <p class="section-lead">来院を増やすWeb集客と、データで打ち手を磨くマーケ分析。AIで両方を効率化し、改善のループを回します。</p>
+
+    <div class="pillar reveal">
+      <span class="pillar-tag">柱①　AI × Web集客（MEO・口コミ・HP）</span>
+      <h3>「見つけてもらい、選ばれる」状態をつくる</h3>
+      <p>今すでに取り組まれている集客チャネルを、AIで増強します。属人的だった運用を、続けられる仕組みに変えます。</p>
+      <ul>
+        <li><strong>MEO（Googleマップ最適化）</strong>：プロフィール・カテゴリ・写真・投稿を整え、近隣検索での露出を高めます。</li>
+        <li><strong>口コミ対策</strong>：返信文をAIで即時生成し、トーンを統一。取りこぼしを防ぎ、来院前の不安を払拭します。</li>
+        <li><strong>ホームページ改善</strong>：予約・問い合わせ導線を見直し、検索意図に沿ったコンテンツで来院につなげます。</li>
+        <li><strong>広告クリエイティブ</strong>：訴求・キーワードのAI生成で、出稿の質とスピードを底上げします。</li>
+      </ul>
+      <div class="note">
+        <div class="note-label">⚠ 口コミ運用の方針</div>
+        <p>Googleのポリシーを遵守します。報酬による誘導や★を制限する収集（口コミゲーティング）は行わず、依頼は全患者に等しく。AIは返信文の生成・運用効率化に用い、口コミの捏造は一切行いません。</p>
+      </div>
+    </div>
+
+    <div class="pillar reveal">
+      <span class="pillar-tag">柱②　データ分析マーケティング</span>
+      <h3>「どこに・誰に・何を」を、データで判断する</h3>
+      <p>来院データをもとに、勘ではなく数字で打ち手を決めます。広告も再来施策も、効果を測りながら磨いていきます。</p>
+      <ul>
+        <li><strong>商圏分析</strong>：どのエリアから来院しているか、空白商圏はどこかを可視化します。</li>
+        <li><strong>広告効果測定</strong>：出稿エリア×来院の前後比較で、施策が新患に効いたかを判定します。</li>
+        <li><strong>リピート・離脱分析</strong>：再来率や来院間隔から、離れやすい層と再来施策の効きどころを把握します。</li>
+        <li><strong>リファラル分析</strong>：紹介・口コミの経路を把握し、増やせるポイントを特定します。</li>
+      </ul>
+      <div class="note">
+        <div class="note-label">⚠ 個人情報の取り扱い</div>
+        <p>分析は<strong>個人を特定しない統計・商圏分析（郵便番号・エリア単位の集計）</strong>を基本とします。患者情報を扱う場合は、個人情報取扱いの委託契約と安全管理措置を前提に、利用目的の範囲内で適切に運用します。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 進め方 -->
+<section class="section">
+  <div class="section-inner">
+    <div class="section-label">How it works</div>
+    <h2 class="section-title">業務効率化から始め、集客まで広げる</h2>
+    <p class="section-lead">いきなり大きく始める必要はありません。負担の小さい所から着手し、成果を見ながら広げます。</p>
+    <div class="steps">
+      <div class="step reveal"><div class="step-num">1</div><div class="step-body"><h4>無料診断・ヒアリング</h4><p>「時間とりもどし診断」や無料相談で、現状の集客と業務の課題を整理します。</p></div></div>
+      <div class="step reveal"><div class="step-num">2</div><div class="step-body"><h4>Web集客の改善（柱①）</h4><p>MEO・口コミ・HPなど、すぐ効果が出てコンプラ負荷の低い施策から着手します。</p></div></div>
+      <div class="step reveal"><div class="step-num">3</div><div class="step-body"><h4>データ分析で磨く（柱②）</h4><p>来院データの統計分析で、広告・再来施策の効果を測りながら次の一手を決めます。</p></div></div>
+      <div class="step reveal"><div class="step-num">4</div><div class="step-body"><h4>成果を横展開</h4><p>うまくいった施策を継続・拡大。改善のループを定着させます。</p></div></div>
+    </div>
+
+    <a href="https://aidealize.com/bpr/industry/病院" class="case-link reveal">
+      <div class="case-link-text">
+        <strong>病院・クリニックのDX事例集を見る</strong>
+        <span>記録・受付・データ活用など、医療現場での導入事例を掲載しています。</span>
+      </div>
+      <span class="case-link-btn">事例を見る →</span>
+    </a>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta" id="contact">
+  <h2>まず30分、集客のお悩みを聞かせてください。</h2>
+  <p>「何から手をつければいいか分からない」段階でも大丈夫です。現状をお伺いし、効果が出やすい順番をご提案します。無料相談・資料請求はお気軽に。</p>
+  <div class="hero-btns" style="justify-content:center;">
+    <a href="/#contact" class="btn-p">無料で相談する →</a>
+    <a href="/jidoka-shindan.html" class="btn-o">まず無料診断を試す</a>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-logo">
+    <div class="footer-logo-mark"></div>
+    <span class="footer-logo-text"><span>A</span>idealize株式会社</span>
+  </div>
+  <span class="footer-copy">© 2020 AIdealize Inc. All rights reserved.</span>
+</footer>
+
+<script>
+(function(){
+  const btn=document.getElementById('navHamburger');
+  const drawer=document.getElementById('navDrawer');
+  const nav=document.getElementById('mainNav');
+  btn.addEventListener('click',function(){btn.classList.toggle('open');drawer.classList.toggle('open');});
+  drawer.querySelectorAll('.drawer-link').forEach(function(l){l.addEventListener('click',function(){btn.classList.remove('open');drawer.classList.remove('open');});});
+  window.addEventListener('scroll',function(){nav.classList.toggle('scrolled',window.scrollY>10);});
+})();
+const obs=new IntersectionObserver(function(e){e.forEach(function(x){if(x.isIntersecting)x.target.classList.add('visible');});},{threshold:0.08,rootMargin:'0px 0px -30px 0px'});
+document.querySelectorAll('.reveal').forEach(function(el){obs.observe(el);});
+</script>
+</body>
+</html>
