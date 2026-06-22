@@ -389,8 +389,52 @@ footer{background:#1f1f1f;border-top:1px solid rgba(255,255,255,0.06);padding:40
     <span class="btn-cta-note">月額 ¥14,800〜 / 初期費用半額キャンペーン中 / いつでも解約可</span>
   </div>
 
+  <!-- FAQ -->
+  <style>
+  .faq-list{margin:28px 0 8px;}
+  .faq-item{border:1px solid #d8eaee;border-radius:10px;margin-bottom:12px;overflow:hidden;background:#fff;}
+  .faq-item summary{list-style:none;cursor:pointer;padding:16px 48px 16px 18px;font-size:15px;font-weight:700;color:#0f2b33;line-height:1.6;position:relative;}
+  .faq-item summary::-webkit-details-marker{display:none;}
+  .faq-item summary::after{content:'+';position:absolute;right:18px;top:50%;transform:translateY(-50%);font-size:22px;font-weight:400;color:#0891b2;}
+  .faq-item[open] summary::after{content:'−';}
+  .faq-item .faq-a{padding:0 18px 18px;font-size:14px;color:#4b5563;line-height:1.95;}
+  .faq-item .faq-a a{color:#0891b2;}
+  </style>
+  <h2>よくある質問｜訪問看護・ケアマネのICT活用</h2>
+  <div class="faq-list">
+    <details class="faq-item">
+      <summary>居宅介護支援（ケアマネ）のICT活用とは何ですか？</summary>
+      <div class="faq-a">ケアマネジャーのICT活用とは、モニタリング記録やアセスメントの電子化、関係機関との情報共有のデジタル化などを指します。たとえば訪問後に話した内容からAIで記録を作成するといった音声入力の活用も、その一例です。詳しくは<a href="/column/caremane-monitoring-kiroku/">ケアマネのモニタリング記録をAIで効率化する記事</a>もご覧ください。</div>
+    </details>
+    <details class="faq-item">
+      <summary>訪問看護のICT化は何から始めればよいですか？</summary>
+      <div class="faq-a">多くのステーションが最初に取り組むのは「記録業務のICT化」です。手書き・紙の記録を、音声入力やAIによる自動作成に切り替えるだけでも、記録時間の削減と情報共有のスムーズ化につながります。具体的な方法は<a href="/column/kaigo-kiroku-onsei-nyuryoku/">介護記録の音声入力ガイド</a>で解説しています。</div>
+    </details>
+    <details class="faq-item">
+      <summary>ICT加算とは何ですか？</summary>
+      <div class="faq-a">ICT加算とは、情報通信機器（ICT）を活用した取り組みを評価する加算の総称です。対象や算定要件は制度改定や事業所の体制によって異なり、保険者の判断も関わります。本記事の上部で算定要件・対象事業所・申請の流れを詳しく解説していますので、最新の基準と保険者の確認のうえでご検討ください。</div>
+    </details>
+    <details class="faq-item">
+      <summary>はなまる看護AIは、ICT加算の算定に役立ちますか？</summary>
+      <div class="faq-a">はなまる看護AIは、SOAP記録の音声入力・自動作成によって記録業務のICT化を後押しします。ただし、ICT加算の算定可否は各加算の要件・事業所の体制・保険者の判断によって決まります。加算の算定を目的とする場合は、必ず要件をご確認ください。</div>
+    </details>
+  </div>
+
 </div>
 </article>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {"@type":"Question","name":"居宅介護支援（ケアマネ）のICT活用とは何ですか？","acceptedAnswer":{"@type":"Answer","text":"ケアマネジャーのICT活用とは、モニタリング記録やアセスメントの電子化、関係機関との情報共有のデジタル化などを指します。訪問後に話した内容からAIで記録を作成する音声入力の活用も、その一例です。"}},
+    {"@type":"Question","name":"訪問看護のICT化は何から始めればよいですか？","acceptedAnswer":{"@type":"Answer","text":"多くのステーションが最初に取り組むのは記録業務のICT化です。手書き・紙の記録を音声入力やAIによる自動作成に切り替えるだけでも、記録時間の削減と情報共有のスムーズ化につながります。"}},
+    {"@type":"Question","name":"ICT加算とは何ですか？","acceptedAnswer":{"@type":"Answer","text":"ICT加算とは、情報通信機器（ICT）を活用した取り組みを評価する加算の総称です。対象や算定要件は制度改定や事業所の体制によって異なり、保険者の判断も関わります。最新の基準と保険者の確認のうえでご検討ください。"}},
+    {"@type":"Question","name":"はなまる看護AIは、ICT加算の算定に役立ちますか？","acceptedAnswer":{"@type":"Answer","text":"はなまる看護AIはSOAP記録の音声入力・自動作成によって記録業務のICT化を後押しします。ただしICT加算の算定可否は各加算の要件・事業所の体制・保険者の判断によって決まるため、加算の算定を目的とする場合は必ず要件をご確認ください。"}}
+  ]
+}
+</script>
 
 <!-- 関連記事 -->
 <section class="related-section">
