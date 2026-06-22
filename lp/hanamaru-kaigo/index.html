@@ -1296,5 +1296,15 @@ document.addEventListener('click', function(e){
   });
 });
 </script>
+<script>
+// SOAPデモ(iframe: dify.aidealize.com)からのSOAP生成完了通知を受信し、GA4へ計測
+window.addEventListener('message', function(e){
+  if (e.origin !== 'https://dify.aidealize.com') return;
+  if (e.data && e.data.type === 'soap_generated') {
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push({ event: 'generate_soap_note', source: 'iframe_demo' });
+  }
+});
+</script>
 </body>
 </html>
