@@ -356,6 +356,22 @@ footer{background:#1f1f1f;border-top:1px solid rgba(255,255,255,0.06);padding:40
 
   <p>「はなまる看護AI」は、LINEに話すだけで記録が自動で整う医療・介護特化型AIです。ケアマネのモニタリング記録の効率化にも活用できます。まずは無料で、その使いやすさを体感してみてください。</p>
 
+  <!-- 資料DL リード獲得 -->
+  <div class="inline-cta reveal">
+    <div class="inline-cta-tag">無料ダウンロード</div>
+    <h3>「クリニック・介護のAI業務自動化<br>ムダ取りチェックシート」を無料配布</h3>
+    <p>現場のムダを5カテゴリ・25項目でセルフ点検。自動化できる業務がひと目で分かります。会社名とメールアドレスのご記入だけでお送りします。</p>
+    <form class="gas-form" data-page="コラム：ケアプランAI・ケアマネ業務" data-formtype="資料ダウンロード" style="margin:0 auto;">
+      <div class="gas-form-group"><input type="text" name="company" placeholder="会社名・事業所名" required></div>
+      <div class="gas-form-group"><input type="email" name="email" placeholder="メールアドレス" required></div>
+      <button type="submit" class="gas-form-btn" style="background:var(--red);color:#fff;">チェックシートを受け取る</button>
+    </form>
+    <div class="gas-form-thanks" style="display:none">
+      <p>✅ 受け付けました。担当者より資料をメールでお送りします。<br><span class="gas-form-note">迷惑メールフォルダもご確認ください。</span></p>
+    </div>
+    <span class="btn-cta-note">個人情報は第三者に提供しません／しつこい営業はしません。</span>
+  </div>
+
   <!-- 末尾CTA -->
   <div class="inline-cta reveal">
     <div class="inline-cta-tag">無料トライアル実施中</div>
@@ -401,6 +417,7 @@ footer{background:#1f1f1f;border-top:1px solid rgba(255,255,255,0.06);padding:40
   <span class="footer-copy">© 2020 AIdealize Inc. All rights reserved.</span>
 </footer>
 
+<script src="/js/gas-forms.js"></script>
 <script>
 (function(){
   const btn=document.getElementById('navHamburger');
