@@ -466,6 +466,10 @@ window.addEventListener('message', function(e){
     「どのサービスを選べばいい？」と迷ったら、課題に合ったセットプランからスタートしてください。予算の名目（教育費・コンプライアンス・売上）ごとに、最も投資対効果の高い組み合わせを用意しています。
   </p>
 
+  <style>
+  .svc-link { text-decoration:none; color:inherit; transition:transform .15s ease, box-shadow .15s ease, border-color .15s ease; }
+  .svc-link:hover { transform:translateX(2px); box-shadow:0 2px 10px rgba(0,0,0,0.10); }
+  </style>
   <div class="setplan-grid" style="display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-bottom:48px;">
 
     <!-- Plan 01: 攻めのセット -->
@@ -481,13 +485,13 @@ window.addEventListener('message', function(e){
         <div style="border-top:1px solid #f0d0d0;padding-top:16px;margin-bottom:20px;">
           <div style="font-size:11px;font-weight:700;color:#888;margin-bottom:10px;">構成サービス</div>
           <div style="display:flex;flex-direction:column;gap:8px;">
-            <div style="display:flex;align-items:center;gap:10px;background:white;border:1px solid #f0d0d0;border-radius:4px;padding:10px 12px;">
+            <a href="https://aidealize.com/lp/hanamaruai/" class="svc-link" style="display:flex;align-items:center;gap:10px;background:white;border:1px solid #f0d0d0;border-radius:4px;padding:10px 12px;">
               <span style="font-size:18px;">📋</span>
               <div>
                 <div style="font-size:12px;font-weight:900;color:#1a1a1a;">はなまるAI（一般版）</div>
                 <div style="font-size:11px;color:#888;">暗黙知をAIインタビューで即マニュアル化</div>
               </div>
-            </div>
+            </a>
             <div style="display:flex;align-items:center;justify-content:center;color:#c0272d;font-size:13px;font-weight:700;">↓ そのまま連携</div>
             <div style="display:flex;align-items:center;gap:10px;background:white;border:1px solid #f0d0d0;border-radius:4px;padding:10px 12px;">
               <span style="font-size:18px;">🤖</span>
@@ -518,27 +522,27 @@ window.addEventListener('message', function(e){
         <div style="border-top:1px solid #ccd5f0;padding-top:16px;margin-bottom:20px;">
           <div style="font-size:11px;font-weight:700;color:#888;margin-bottom:10px;">構成サービス</div>
           <div style="display:flex;flex-direction:column;gap:8px;">
-            <div style="display:flex;align-items:center;gap:10px;background:white;border:1px solid #ccd5f0;border-radius:4px;padding:10px 12px;">
+            <a href="https://aidealize.com/service/prevention/" class="svc-link" style="display:flex;align-items:center;gap:10px;background:white;border:1px solid #ccd5f0;border-radius:4px;padding:10px 12px;">
               <span style="font-size:18px;">🔒</span>
               <div>
                 <div style="font-size:12px;font-weight:900;color:#1a1a1a;">AIデジタル査察 Prevention</div>
                 <div style="font-size:11px;color:#888;">サイバーリスクの可視化（Lv.1 無料）</div>
               </div>
-            </div>
-            <div style="display:flex;align-items:center;gap:10px;background:white;border:1px solid #ccd5f0;border-radius:4px;padding:10px 12px;">
+            </a>
+            <a href="https://aidealize.com/service/bcp/" class="svc-link" style="display:flex;align-items:center;gap:10px;background:white;border:1px solid #ccd5f0;border-radius:4px;padding:10px 12px;">
               <span style="font-size:18px;">🛡️</span>
               <div>
                 <div style="font-size:12px;font-weight:900;color:#1a1a1a;">BCP自動作成AI支援</div>
                 <div style="font-size:11px;color:#888;">義務化BCP策定をAIで効率化</div>
               </div>
-            </div>
-            <div style="display:flex;align-items:center;gap:10px;background:white;border:1px solid #ccd5f0;border-radius:4px;padding:10px 12px;">
+            </a>
+            <a href="https://aidealize.com/bousai/" class="svc-link" style="display:flex;align-items:center;gap:10px;background:white;border:1px solid #ccd5f0;border-radius:4px;padding:10px 12px;">
               <span style="font-size:18px;">🏢</span>
               <div>
                 <div style="font-size:12px;font-weight:900;color:#1a1a1a;">防災・連携支援</div>
                 <div style="font-size:11px;color:#888;">計画を実際の訓練・運用に落とし込む</div>
               </div>
-            </div>
+            </a>
           </div>
         </div>
 
@@ -562,26 +566,24 @@ window.addEventListener('message', function(e){
           <div style="font-size:11px;font-weight:700;color:#888;margin-bottom:10px;">構成サービス</div>
           <div style="display:flex;flex-direction:column;gap:8px;">
             <div style="display:flex;align-items:center;gap:10px;background:white;border:1px solid #e8d4a0;border-radius:4px;padding:10px 12px;">
-              <span style="font-size:18px;">🏥</span>
+              <span style="font-size:18px;">🏥🤝</span>
               <div>
-                <div style="font-size:12px;font-weight:900;color:#1a1a1a;">はなまるAI 看護版</div>
-                <div style="font-size:11px;color:#888;">音声でSOAPノートを自動生成</div>
+                <div style="font-size:12px;font-weight:900;color:#1a1a1a;">
+                  はなまるAI
+                  <a href="https://aidealize.com/lp/hanamaru-kango/" style="color:#0891b2;text-decoration:underline;">看護版</a>
+                  <span style="color:#888;font-weight:400;">or</span>
+                  <a href="https://aidealize.com/lp/hanamaru-kaigo/" style="color:#059669;text-decoration:underline;">介護版</a>
+                </div>
+                <div style="font-size:11px;color:#888;">音声でSOAP・ケア記録を自動生成</div>
               </div>
             </div>
-            <div style="display:flex;align-items:center;gap:10px;background:white;border:1px solid #e8d4a0;border-radius:4px;padding:10px 12px;">
-              <span style="font-size:18px;">🤝</span>
-              <div>
-                <div style="font-size:12px;font-weight:900;color:#1a1a1a;">はなまるAI 介護版</div>
-                <div style="font-size:11px;color:#888;font-style:italic;">開発中 — 日誌・ケア記録の自動作成</div>
-              </div>
-            </div>
-            <div style="display:flex;align-items:center;gap:10px;background:white;border:1px solid #e8d4a0;border-radius:4px;padding:10px 12px;">
+            <a href="/lp/jinzai" class="svc-link" style="display:flex;align-items:center;gap:10px;background:white;border:1px solid #e8d4a0;border-radius:4px;padding:10px 12px;">
               <span style="font-size:18px;">👥</span>
               <div>
                 <div style="font-size:12px;font-weight:900;color:#1a1a1a;">人材育成・研修支援</div>
                 <div style="font-size:11px;color:#888;">浮いた時間でスキルアップ研修を設計</div>
               </div>
-            </div>
+            </a>
           </div>
         </div>
 
