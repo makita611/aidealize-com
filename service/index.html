@@ -977,15 +977,6 @@ window.addEventListener('message', function(e){
       <div style="margin-top:16px;font-size:12px;font-weight:700;color:#b8892a;">詳細を見る →</div>
     </a>
 
-    <!-- Prevention -->
-    <a href="prevention/" class="other-card fade-up" style="border-top:3px solid #7a1a1a;">
-      <div class="other-icon">🔒</div>
-      <div style="display:inline-block;font-size:10px;font-weight:700;letter-spacing:2px;color:#9e2b2b;border:1px solid rgba(158,43,43,0.4);padding:2px 8px;border-radius:2px;margin-bottom:10px;">CYBERSECURITY</div>
-      <div class="other-name">AIデジタル査察 Prevention</div>
-      <div class="other-desc">元消防士の「点検する目」とAIを融合したIT査察点検サービス。医療・介護施設のサイバーリスクをBCP義務化対応含め5段階で可視化。外周目視点検（Lv.1）は無料で提供。</div>
-      <div style="margin-top:16px;font-size:12px;font-weight:700;color:#9e2b2b;">詳細を見る →</div>
-    </a>
-
     <!-- AIdealize Engine -->
     <a href="imageanalysis/" class="other-card fade-up" style="border-top:3px solid #1976D2;">
       <div class="other-icon">🔬</div>
@@ -995,62 +986,134 @@ window.addEventListener('message', function(e){
       <div style="margin-top:16px;font-size:12px;font-weight:700;color:#1976D2;">詳細を見る →</div>
     </a>
 
-    <!-- コール営業 AI分析 -->
-    <a href="../lp/call-ai-lp1.html" class="other-card fade-up" style="border-top:3px solid #1a3f6f;">
-      <div class="other-icon">📞</div>
-      <div style="display:inline-block;font-size:10px;font-weight:700;letter-spacing:2px;color:#1a3f6f;border:1px solid rgba(26,63,111,0.4);padding:2px 8px;border-radius:2px;margin-bottom:10px;">CALL × AI</div>
-      <div class="other-name">コール営業 AI成約最大化</div>
-      <div class="other-desc">単年年商10億円を達成した構築ノウハウを基に、コール営業の成約率をAIで最大化。架電データ×コール履歴をAIが解析し"勝ちパターン"を特定。広告費を変えずに利益を劇的に向上させます。</div>
-      <div style="margin-top:16px;font-size:12px;font-weight:700;color:#1a3f6f;">詳細を見る →</div>
-    </a>
-
   </div>
 </div>
 
 <hr class="divider">
 
-<!-- その他サービス -->
+<!-- 課題・目的から選ぶ -->
+<style>
+.goal-block { margin-bottom:36px; }
+.goal-head { display:flex; align-items:flex-start; gap:14px; margin-bottom:18px; padding-bottom:12px; border-bottom:1px solid var(--border); }
+.goal-no { font-family:'Bebas Neue',sans-serif; font-size:32px; line-height:1; color:var(--accent); flex-shrink:0; }
+.goal-name { font-size:17px; font-weight:900; color:var(--ink); margin-bottom:4px; }
+.goal-sub { font-size:12px; color:var(--muted); line-height:1.7; }
+.goal-cards { display:grid; grid-template-columns:repeat(auto-fill,minmax(260px,320px)); gap:16px; }
+@media(max-width:560px){ .goal-cards{ grid-template-columns:1fr; } }
+</style>
 <div class="section">
-  <div class="section-label">SERVICES</div>
-  <div class="section-title">その他のサービス</div>
+  <div class="section-label">FIND BY GOAL</div>
+  <div class="section-title">課題・目的から選ぶ</div>
+  <p style="font-size:14px;color:var(--muted);max-width:640px;line-height:1.9;margin-bottom:40px;">
+    「何から始めれば?」が決まっていなくても大丈夫。解決したい課題の方向から、最適なAIサービスをお選びいただけます。
+  </p>
 
-  <div class="other-grid">
-    <a class="other-card fade-up" href="https://aidealize.com/service/clinic-marketing/">
-      <div class="other-icon">📈</div>
-      <div class="other-tag">CLINIC MARKETING</div><span class="other-new">NEW</span>
-      <div class="other-name">クリニック集客・AIマーケ支援</div>
-      <div class="other-desc">MEO・口コミ対策・HP改善で来院を増やし、商圏分析・広告効果測定・リピート/リファラル分析で次の一手を可視化。集客に悩むクリニックを一気通貫で支援します。</div>
-    </a>
-
-    <div class="other-card fade-up">
-      <div class="other-icon">🤖</div>
-      <div class="other-tag">RAG</div><span class="other-new">NEW</span>
-      <div class="other-name">社内RAGチャットボット構築</div>
-      <div class="other-desc">業務マニュアル・社内規程・FAQをナレッジ化し、社員が自然言語で検索・回答できるチャットボットを構築します。</div>
+  <!-- ① 業務効率化・人手不足解消 -->
+  <div class="goal-block">
+    <div class="goal-head">
+      <span class="goal-no">01</span>
+      <div>
+        <div class="goal-name">業務効率化・人手不足解消</div>
+        <div class="goal-sub">記録・事務・問い合わせをAIで自動化し、本業の時間を取り戻す</div>
+      </div>
     </div>
-
-    <a class="other-card fade-up" href="https://aidealize.com/service/bcp/">
-      <div class="other-icon">🛡️</div>
-      <div class="other-tag">BCP</div><span class="other-new">NEW</span>
-      <div class="other-name">BCP自動作成AI支援</div>
-      <div class="other-desc">2025年4月に義務化が完全施行されたBCP策定を、AIインタビューで効率的に支援。介護・医療・建設など法令対応が急務の業種に対応します。</div>
-    </a>
-
-    <a class="other-card fade-up" href="https://aidealize.com/bousai/">
-      <div class="other-icon">🏢</div>
-      <div class="other-tag">DISASTER</div>
-      <div class="other-name">防災・連携支援</div>
-      <div class="other-desc">企業・自治体向けに、事業継続計画の策定から防災訓練・緊急時対応マニュアルの整備まで支援します。</div>
-    </a>
-
-    <a class="other-card fade-up" href="/lp/jinzai">
-      <div class="other-icon">👥</div>
-      <div class="other-tag">HR</div>
-      <div class="other-name">人材育成・研修支援</div>
-      <div class="other-desc">AIを活用した人材育成プログラムの設計から、OJT効率化・研修コンテンツ自動生成まで。育てる仕組みをAIで構築します。</div>
-    </a>
-
+    <div class="goal-cards">
+      <a class="other-card fade-up" href="https://aidealize.com/lp/ai-lp1/">
+        <div class="other-icon">⚙️</div>
+        <div class="other-tag">BPR × AI</div>
+        <div class="other-name">AI業務改善（BPR×AI実装）</div>
+        <div class="other-desc">業務フローの再設計からAIツールの実装・現場定着まで一気通貫。「今いちばん大変な業務」から着手します。</div>
+      </a>
+      <a class="other-card fade-up" href="https://aidealize.com/lp/hanamaruai/">
+        <div class="other-icon">📋</div>
+        <div class="other-tag">MANUAL AI</div>
+        <div class="other-name">はなして マニュアルAI</div>
+        <div class="other-desc">AIが1問1答でインタビューし、業務マニュアルを自動生成。属人化を解消し、そのまま社内RAGに連携できます。</div>
+      </a>
+      <div class="other-card fade-up">
+        <div class="other-icon">🤖</div>
+        <div class="other-tag">RAG</div><span class="other-new">NEW</span>
+        <div class="other-name">社内RAGチャットボット構築</div>
+        <div class="other-desc">業務マニュアル・社内規程・FAQをナレッジ化し、社員が自然言語で検索・回答できるチャットボットを構築します。</div>
+      </div>
+    </div>
   </div>
+
+  <!-- ② 売上・集客アップ -->
+  <div class="goal-block">
+    <div class="goal-head">
+      <span class="goal-no">02</span>
+      <div>
+        <div class="goal-name">売上・集客アップ</div>
+        <div class="goal-sub">来院・成約につながる「次の一手」をAIで可視化する</div>
+      </div>
+    </div>
+    <div class="goal-cards">
+      <a class="other-card fade-up" href="https://aidealize.com/service/clinic-marketing/">
+        <div class="other-icon">📈</div>
+        <div class="other-tag">CLINIC MARKETING</div><span class="other-new">NEW</span>
+        <div class="other-name">クリニック集客・AIマーケ支援</div>
+        <div class="other-desc">MEO・口コミ対策・HP改善で来院を増やし、商圏分析・広告効果測定・リピート/リファラル分析で次の一手を可視化します。</div>
+      </a>
+      <a class="other-card fade-up" href="../lp/call-ai-lp1.html">
+        <div class="other-icon">📞</div>
+        <div class="other-tag">CALL × AI</div>
+        <div class="other-name">コール営業 AI成約最大化</div>
+        <div class="other-desc">架電データ×コール履歴をAIが解析し"勝ちパターン"を特定。広告費を変えずに成約率と利益を引き上げます。</div>
+      </a>
+    </div>
+  </div>
+
+  <!-- ③ リスク・法令対応（守り） -->
+  <div class="goal-block">
+    <div class="goal-head">
+      <span class="goal-no">03</span>
+      <div>
+        <div class="goal-name">リスク・法令対応（守り）</div>
+        <div class="goal-sub">義務化BCP・防災・サイバーリスクへの備えを一気に整える</div>
+      </div>
+    </div>
+    <div class="goal-cards">
+      <a class="other-card fade-up" href="https://aidealize.com/service/bcp/">
+        <div class="other-icon">🛡️</div>
+        <div class="other-tag">BCP</div><span class="other-new">NEW</span>
+        <div class="other-name">BCP自動作成AI支援</div>
+        <div class="other-desc">2025年4月に義務化が完全施行されたBCP策定を、AIインタビューで効率的に支援。介護・医療・建設など法令対応が急務の業種に対応します。</div>
+      </a>
+      <a class="other-card fade-up" href="https://aidealize.com/bousai/">
+        <div class="other-icon">🏢</div>
+        <div class="other-tag">DISASTER</div>
+        <div class="other-name">防災・連携支援</div>
+        <div class="other-desc">企業・自治体向けに、事業継続計画の策定から防災訓練・緊急時対応マニュアルの整備まで支援します。</div>
+      </a>
+      <a class="other-card fade-up" href="prevention/">
+        <div class="other-icon">🔒</div>
+        <div class="other-tag">CYBERSECURITY</div>
+        <div class="other-name">AIデジタル査察 Prevention</div>
+        <div class="other-desc">元消防士の「点検する目」とAIを融合したIT査察点検。サイバーリスクをBCP義務化対応含め5段階で可視化。Lv.1は無料。</div>
+      </a>
+    </div>
+  </div>
+
+  <!-- ④ 人材育成・定着 -->
+  <div class="goal-block" style="margin-bottom:0;">
+    <div class="goal-head">
+      <span class="goal-no">04</span>
+      <div>
+        <div class="goal-name">人材育成・定着</div>
+        <div class="goal-sub">浮いた時間を、育てる仕組みづくりに変える</div>
+      </div>
+    </div>
+    <div class="goal-cards">
+      <a class="other-card fade-up" href="/lp/jinzai">
+        <div class="other-icon">👥</div>
+        <div class="other-tag">HR</div>
+        <div class="other-name">人材育成・研修支援</div>
+        <div class="other-desc">AIを活用した人材育成プログラムの設計から、OJT効率化・研修コンテンツ自動生成まで。育てる仕組みをAIで構築します。</div>
+      </a>
+    </div>
+  </div>
+
 </div>
 
 <!-- CTA -->
