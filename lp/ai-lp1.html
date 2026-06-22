@@ -1756,6 +1756,12 @@ document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 })();
 </script>
 <script src="/js/gas-forms.js"></script>
+<style>
+.float-cta{display:none;position:fixed;bottom:14px;left:14px;right:14px;z-index:900;background:var(--gold,#b8873c);color:#fff;text-align:center;padding:15px;border-radius:8px;font-size:15px;font-weight:700;text-decoration:none;box-shadow:0 8px 24px rgba(0,0,0,0.28);letter-spacing:0.02em;}
+.float-cta:hover{filter:brightness(1.06);}
+@media(max-width:768px){.float-cta{display:block;}}
+</style>
+<a href="#contact" class="float-cta" onclick="window.dataLayer=window.dataLayer||[];window.dataLayer.push({event:'float_cta_click',page:'ai-lp1'})">無料業務診断を申し込む（無料・30分）→</a>
 </body>
 </html>
 
