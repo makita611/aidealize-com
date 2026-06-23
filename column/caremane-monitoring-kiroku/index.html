@@ -28,6 +28,17 @@
   "publisher": {"@type": "Organization", "name": "AIdealize株式会社", "url": "https://aidealize.com"}
 }
 </script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "VideoObject",
+  "name": "話すだけでモニタリング記録が完成するAI音声入力デモ",
+  "description": "訪問後に話した内容を、AIがモニタリング記録の項目別の文章へ自動で整理するデモ動画。ケアマネジャーの記録作成時間を削減します。",
+  "thumbnailUrl": "https://aidealize.com/images/hanamaruUIsample.png",
+  "uploadDate": "2026-06-10",
+  "contentUrl": "https://aidealize.com/images/soaptalk01.mp4"
+}
+</script>
 <style>
 :root{
   --red:#0891b2;--red-dark:#0e7490;
@@ -118,6 +129,12 @@ body{font-family:'Noto Sans JP',sans-serif;background:var(--white);color:var(--i
 .demo-voice-label{font-size:10px;color:rgba(255,255,255,0.35);font-family:'DM Mono',monospace;letter-spacing:0.1em;margin-bottom:8px;}
 .demo-voice p{font-size:13px;line-height:1.9;color:rgba(255,255,255,0.7);margin:0;}
 .demo-arrow{text-align:center;font-size:20px;color:rgba(200,16,46,0.7);padding:10px 0 14px;}
+
+/* ARTICLE FIGURE / VIDEO */
+.article-figure{margin:28px 0;}
+.article-figure img,.article-video{width:100%;height:auto;border-radius:10px;border:1px solid var(--border);display:block;}
+.article-video{background:#000;}
+.article-figure figcaption{font-size:12px;color:var(--light);margin-top:8px;text-align:center;line-height:1.7;}
 
 /* POINT BOX */
 .point-box{background:var(--bg2);border-radius:8px;padding:20px 24px;margin:20px 0;}
@@ -294,6 +311,13 @@ footer{background:#1f1f1f;border-top:1px solid rgba(255,255,255,0.06);padding:40
 
   <p>「はなまる看護AI」は訪問看護向けのSOAP記録AIとして開発されたサービスですが、その仕組みは<strong>「現場で話した内容を、決まったフォーマットの文章に整理する」</strong>という点で、ケアマネジャーのモニタリング記録にも応用が可能です。</p>
 
+  <figure class="article-figure reveal">
+    <video preload="none" muted playsinline controls poster="/images/hanamaruUIsample.png" class="article-video" aria-label="ケアマネのモニタリング記録をAI音声入力で作成するデモ動画">
+      <source src="/images/soaptalk01.mp4" type="video/mp4">
+    </video>
+    <figcaption>話した内容をAIが記録フォーマットに整理するデモ（はなまる看護AI）</figcaption>
+  </figure>
+
   <div class="demo-block reveal">
     <div class="demo-label">モニタリング記録への活用イメージ</div>
     <div class="demo-voice">
@@ -322,6 +346,11 @@ footer{background:#1f1f1f;border-top:1px solid rgba(255,255,255,0.06);padding:40
   </div>
 
   <p>このように、訪問先からの移動中に話した内容を、AIが項目別に整理した文章として出力します。あとはこの文章をベースに、自社のモニタリングシートへ反映するだけです。<strong>「訪問の記憶が新鮮なうちに、その場で記録の骨子が完成する」</strong>ことが最大のメリットです。</p>
+
+  <figure class="article-figure reveal">
+    <img src="/images/hanamaruUIsample.png" loading="lazy" width="1200" height="800" alt="はなまる看護AIで作成したモニタリング記録のサンプル画面。ケアマネが話した内容がAIで項目別に整理されている">
+    <figcaption>AIが整理した記録は、そのままモニタリングシートに転記できる文章で出力されます。</figcaption>
+  </figure>
 
   <!-- 中間CTA -->
   <div class="inline-cta reveal">
