@@ -28,6 +28,17 @@
   "publisher": {"@type": "Organization", "name": "AIdealize株式会社", "url": "https://aidealize.com"}
 }
 </script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "VideoObject",
+  "name": "LINEに話すだけで訪問看護のSOAP記録が完成するデモ",
+  "description": "訪問ケア終了後、LINEのトーク画面に話しかけるだけで、はなまる看護AIがSOAP形式の記録を自動作成する操作デモ動画。",
+  "thumbnailUrl": "https://aidealize.com/images/hanamaruUIsample.png",
+  "uploadDate": "2026-06-03",
+  "contentUrl": "https://aidealize.com/column/hanamaru-kango-ai/columnv1.mp4"
+}
+</script>
 <style>
 :root {
   --red: #0891b2;
@@ -240,6 +251,11 @@ body { font-family: 'Noto Sans JP', sans-serif; background: var(--white); color:
 .soap-voice-label { font-size: 10px; color: rgba(255,255,255,0.35); font-family: 'DM Mono', monospace; letter-spacing: 0.1em; margin-bottom: 8px; }
 .soap-voice p { font-size: 13px; line-height: 1.9; color: rgba(255,255,255,0.7); }
 .soap-arrow { text-align: center; font-size: 20px; color: rgba(200,16,46,0.7); padding: 10px 0 14px; }
+
+/* ARTICLE FIGURE */
+.article-figure { margin: 28px 0; }
+.article-figure img { width: 100%; height: auto; border-radius: 10px; border: 1px solid var(--border); display: block; }
+.article-figure figcaption { font-size: 12px; color: var(--light); margin-top: 8px; text-align: center; line-height: 1.7; }
 
 /* COMPARE TABLE */
 .compare-wrap { overflow-x: auto; margin: 24px 0 32px; }
@@ -503,6 +519,11 @@ footer {
   </div>
 
   <p>あとはこの文章を自社の介護記録システムにコピー&ペーストするだけ。<strong>特別なITスキルは一切不要。記録作業が「話す1分」だけに変わります。</strong></p>
+
+  <figure class="article-figure reveal">
+    <img src="/images/hanamaruUIsample.png" loading="lazy" width="1200" height="800" alt="はなまる看護AIがLINEで作成した訪問看護のSOAP記録サンプル画面">
+    <figcaption>話した内容がSOAP形式に整理されて出力される実際の画面イメージ（はなまる看護AI）</figcaption>
+  </figure>
 
   <!-- 中間CTA -->
   <div class="inline-cta reveal">

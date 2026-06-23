@@ -28,6 +28,17 @@
   "publisher": {"@type": "Organization", "name": "AIdealize株式会社", "url": "https://aidealize.com"}
 }
 </script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "VideoObject",
+  "name": "認知症BPSD・施設拒否ケースの記録を話すだけでSOAPに変換するデモ",
+  "description": "現場での走り書きや音声メモを、はなまる看護AIがSOAP形式の訪問看護記録へ自動変換する操作デモ動画。",
+  "thumbnailUrl": "https://aidealize.com/images/hanamaruUIsample.png",
+  "uploadDate": "2026-06-05",
+  "contentUrl": "https://aidealize.com/images/soaptalk01.mp4"
+}
+</script>
 <style>
 :root{
   --red:#0891b2;--red-dark:#0e7490;
@@ -114,6 +125,12 @@ body{font-family:'Noto Sans JP',sans-serif;background:var(--white);color:var(--i
 .demo-item{display:flex;align-items:flex-start;gap:10px;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.06);border-radius:6px;padding:12px 14px;}
 .demo-badge{background:var(--red);color:#fff;font-family:'DM Mono',monospace;font-size:11px;font-weight:700;width:24px;height:24px;border-radius:4px;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px;}
 .demo-text{font-size:13px;line-height:1.85;color:rgba(255,255,255,0.78);}
+
+/* ARTICLE FIGURE / VIDEO */
+.article-figure{margin:28px 0;}
+.article-figure img,.article-video{width:100%;height:auto;border-radius:10px;border:1px solid var(--border);display:block;}
+.article-video{background:#000;}
+.article-figure figcaption{font-size:12px;color:var(--light);margin-top:8px;text-align:center;line-height:1.7;}
 
 /* POINT BOX */
 .point-box{background:var(--bg2);border-radius:8px;padding:20px 24px;margin:20px 0;}
@@ -300,6 +317,11 @@ footer{background:#1f1f1f;border-top:1px solid rgba(255,255,255,0.06);padding:40
     </div>
   </div>
 
+  <figure class="article-figure reveal">
+    <img src="/images/hanamaruUIsample.png" loading="lazy" width="1200" height="800" alt="認知症BPSD・施設拒否ケースのSOAP記録がAIで整理されて出力された画面サンプル">
+    <figcaption>現場の走り書きから、上記のようなSOAP記録が整理されて出力されます（はなまる看護AI）</figcaption>
+  </figure>
+
   <h2>各項目の解説｜S・O・A・P それぞれのポイント</h2>
 
   <h3>S（主観的データ）のポイント</h3>
@@ -329,6 +351,13 @@ footer{background:#1f1f1f;border-top:1px solid rgba(255,255,255,0.06);padding:40
     <div class="point-box-label">書き方のコツ</div>
     <p>当日の本人の鎮静化、家族へのメンタルケア、ケアマネジャーへの緊急連携、主治医への薬剤調整相談の<strong>4つを同時並行で動くアクションプランとして具体化</strong>します。「様子を見る」では不十分で、「誰に・何を・どのタイミングで報告するか」を1つずつ明記することで、次の訪問時や引き継ぎ時に活きる記録になります。</p>
   </div>
+
+  <figure class="article-figure reveal">
+    <video preload="none" muted playsinline controls poster="/images/hanamaruUIsample.png" class="article-video" aria-label="話すだけで認知症BPSDケースのSOAP記録を作成するデモ動画">
+      <source src="/images/soaptalk01.mp4" type="video/mp4">
+    </video>
+    <figcaption>話した内容をAIがSOAP形式に変換するデモ（はなまる看護AI）</figcaption>
+  </figure>
 
   <!-- 中間CTA -->
   <div class="inline-cta reveal">
