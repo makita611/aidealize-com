@@ -72,9 +72,14 @@ body{font-family:'Noto Sans JP',sans-serif;background:var(--white);color:var(--i
 .hero-btns{display:flex;gap:12px;flex-wrap:wrap;}
 .hero-media{position:relative;}
 .hero-media img{width:100%;height:auto;border-radius:16px;box-shadow:0 24px 60px -24px rgba(8,145,178,0.35);display:block;}
-.hero-badge{position:absolute;left:-14px;bottom:22px;background:#fff;border:1px solid var(--border);border-radius:12px;padding:12px 16px;box-shadow:0 12px 30px -10px rgba(0,0,0,0.18);}
-.hero-badge b{display:block;font-family:'DM Mono',monospace;font-size:22px;color:var(--red);line-height:1.1;}
-.hero-badge span{font-size:11px;color:var(--body);}
+.hero-card{position:absolute;left:-18px;bottom:20px;background:rgba(255,255,255,0.96);backdrop-filter:blur(6px);border:1px solid var(--border);border-radius:14px;padding:13px 15px;box-shadow:0 16px 40px -12px rgba(8,145,178,0.38);width:206px;}
+.hero-card-h{display:flex;align-items:center;gap:7px;font-size:11px;font-weight:700;color:var(--ink);margin-bottom:8px;}
+.hero-card-h::before{content:'';width:7px;height:7px;border-radius:50%;background:var(--green);box-shadow:0 0 0 3px rgba(5,150,105,0.15);}
+.hero-card svg{width:100%;height:40px;display:block;margin-bottom:10px;}
+.hero-card-stats{display:flex;gap:10px;}
+.hero-card-stats > div{flex:1;}
+.hero-card-stats b{display:block;font-family:'DM Mono',monospace;font-size:16px;color:var(--red);line-height:1.1;}
+.hero-card-stats span{font-size:10px;color:var(--body);}
 .btn-p{display:inline-flex;align-items:center;gap:6px;background:var(--red);color:#fff;padding:14px 30px;border-radius:6px;font-size:14px;font-weight:700;text-decoration:none;transition:background 0.2s,transform 0.2s;}
 .btn-p:hover{background:var(--red-dark);transform:translateY(-2px);}
 .btn-o{display:inline-flex;align-items:center;gap:6px;border:2px solid var(--red);color:var(--red);padding:12px 26px;border-radius:6px;font-size:14px;font-weight:700;text-decoration:none;transition:all 0.2s;}
@@ -154,6 +159,12 @@ body{font-family:'Noto Sans JP',sans-serif;background:var(--white);color:var(--i
 .resolve p{font-size:14.5px;line-height:2;color:var(--ink);margin:0;}
 .resolve strong{color:var(--red-dark);}
 @media(max-width:760px){.voices{grid-template-columns:1fr;}}
+
+/* GSC SCREENSHOT（本物の管理画面） */
+.gsc-shot{margin-top:22px;border:1px solid var(--border);border-radius:12px;overflow:hidden;background:#fff;box-shadow:0 8px 24px -14px rgba(0,0,0,0.22);}
+.gsc-shot img{width:100%;display:block;}
+.gsc-cap{font-size:12px;color:var(--body);line-height:1.75;padding:12px 16px;background:var(--bg);margin:0;}
+.gsc-cap b{color:#be123c;}
 @media(max-width:760px){.loop-wrap{grid-template-columns:1fr;}}
 
 /* NOTE */
@@ -238,9 +249,16 @@ footer{background:#1f1f1f;border-top:1px solid rgba(255,255,255,0.06);padding:40
     </div>
     <div class="hero-media">
       <img src="/images/womanp3.webp" alt="集客の相談に応えるAIdealizeの担当者" loading="eager">
-      <div class="hero-badge">
-        <b>集客→分析</b>
-        <span>一気通貫で支援</span>
+      <div class="hero-card">
+        <div class="hero-card-h">集客レポート（自社実績）</div>
+        <svg viewBox="0 0 180 40" preserveAspectRatio="none" aria-hidden="true">
+          <polygon points="2,36 40,31 80,23 120,14 168,3 168,40 2,40" fill="var(--tag-bg)"/>
+          <polyline points="2,36 40,31 80,23 120,14 168,3" fill="none" stroke="var(--red)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <div class="hero-card-stats">
+          <div><b>約30倍</b><span>検索表示/3ヶ月</span></div>
+          <div><b>1ページ目</b><span>検索順位</span></div>
+        </div>
       </div>
     </div>
   </div>
@@ -290,15 +308,9 @@ footer{background:#1f1f1f;border-top:1px solid rgba(255,255,255,0.06);padding:40
       </div>
     </div>
 
-    <div class="ranktable reveal">
-      <div class="rt-cap">検索結果での掲載順位（自社サイト・実データ）</div>
-      <div class="rt-grid rt-head"><span>上位のページ</span><span style="text-align:right;">表示回数</span><span style="justify-self:end;">掲載順位</span></div>
-      <div class="rt-grid rt-row"><span class="rt-page">トップページ</span><span class="rt-imp">214</span><span class="rt-pos">3.9位</span></div>
-      <div class="rt-grid rt-row"><span class="rt-page">サービスLP</span><span class="rt-imp">144</span><span class="rt-pos">4.6位</span></div>
-      <div class="rt-grid rt-row"><span class="rt-page">会社案内ページ</span><span class="rt-imp">103</span><span class="rt-pos">4.7位</span></div>
-      <div class="rt-grid rt-row"><span class="rt-page">コラム記事</span><span class="rt-imp">40</span><span class="rt-pos">4.8位</span></div>
-      <div class="rt-grid rt-row"><span class="rt-page">情報ページ</span><span class="rt-imp">59</span><span class="rt-pos">6.0位</span></div>
-      <div class="rt-note">→ 主要ページが軒並み<b>検索1ページ目（上位5位前後）</b>に表示。広告ではなく検索で、継続的に見つけてもらえる状態をつくれます。</div>
+    <div class="gsc-shot reveal">
+      <img src="/images/GSC20260624.jpg" alt="実際のGoogle Search Console画面。多くのページが検索1ページ目に表示されている掲載順位の実データ" loading="lazy">
+      <p class="gsc-cap">※実際のGoogle Search Console画面（直近3ヶ月）。<b>赤枠＝検索結果での掲載順位</b>。主要ページが軒並み<b>検索1ページ目</b>に表示されています。</p>
     </div>
   </div>
 </section>
