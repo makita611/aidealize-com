@@ -144,6 +144,16 @@ body{font-family:'Noto Sans JP',sans-serif;background:var(--white);color:var(--i
 .rt-note{font-size:11.5px;color:var(--body);padding:12px 18px 14px;background:var(--bg);line-height:1.7;}
 .rt-note b{color:#be123c;}
 @media(max-width:480px){.rt-grid{grid-template-columns:1fr 60px 78px;padding:11px 12px;}.rt-cap{padding:14px 12px 4px;}.rt-note{padding:12px;}}
+
+/* VOICE（本音の悩み） */
+.voices{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:24px;}
+.voice{background:#fff;border:1px solid var(--border);border-left:3px solid var(--red);border-radius:10px;padding:22px 22px 22px 24px;}
+.voice p{font-size:14px;line-height:1.9;color:var(--ink);margin:0;}
+.voice p strong{color:var(--red-dark);}
+.resolve{background:linear-gradient(135deg,#ecfeff,#f0fdf4);border:1px solid #cffafe;border-radius:12px;padding:24px 28px;}
+.resolve p{font-size:14.5px;line-height:2;color:var(--ink);margin:0;}
+.resolve strong{color:var(--red-dark);}
+@media(max-width:760px){.voices{grid-template-columns:1fr;}}
 @media(max-width:760px){.loop-wrap{grid-template-columns:1fr;}}
 
 /* NOTE */
@@ -297,16 +307,28 @@ footer{background:#1f1f1f;border-top:1px solid rgba(255,255,255,0.06);padding:40
 <section class="section">
   <div class="section-inner">
     <div class="section-label">Issue</div>
-    <h2 class="section-title">"取れない理由"は、いつも同じ場所に潜んでいる</h2>
-    <p class="section-lead">「もっと顧客が欲しいのに取れない」。それは商品やサービスの質の問題ではないことがほとんどです。多くの場合、ボトルネックは次のどれかにあります。</p>
-    <div class="pillar" style="border-top-color:var(--light);">
-      <ul>
-        <li><strong>検索で見つからない</strong>——Googleマップ・検索で近隣の見込み客に出てこない（MEO・SEO未対策）。</li>
-        <li><strong>口コミ・評判が放置されている</strong>——低評価に返信がなく、はじめての人の不安を払拭できていない。</li>
-        <li><strong>サイトが「あるだけ」</strong>——予約・問い合わせの導線が弱く、見た人が行動につながらない。</li>
-        <li><strong>広告の効果が分からない</strong>——出しているが、どのエリア・どの施策が効いたか測れていない。</li>
-        <li><strong>リピート/紹介が偶然頼み</strong>——再来・紹介を増やす仕組みがなく、毎月ゼロから集客している。</li>
-      </ul>
+    <h2 class="section-title">広告、"任せっきり"になっていませんか?</h2>
+    <p class="section-lead">集客がうまくいかない会社の多くに、共通する"本音"があります。</p>
+    <div class="voices">
+      <div class="voice"><p>代理店に任せてはいる。でも、<strong>送られてくる報告書は、正直ちゃんと見ていない。</strong></p></div>
+      <div class="voice"><p>毎月、広告費は出ていく。<strong>でも"効いているのか"は、正直よく分からない。</strong></p></div>
+      <div class="voice"><p>忙しくて集客まで手が回らない。<strong>気づけば、何年もずっとそのまま。</strong></p></div>
+    </div>
+    <div class="resolve">
+      <p>——任せること自体は、悪くありません。問題は、<strong>「良くなっているか分からないまま」続いてしまっていること</strong>。本来やるべきこと（検索順位を上げる・表示回数を増やす・反応率を上げる）をちゃんとやれば、見つけてもらえる回数は増え、集客につながります。事実、当社サイトはそれだけで<strong>3ヶ月で表示が約30倍</strong>になりました。私たちは、その"やるべきこと"を代わりに実行し、<strong>結果をぜんぶ数字で見えるように</strong>します。</p>
+    </div>
+
+    <div style="margin-top:28px;">
+      <p style="font-size:12px;color:var(--light);font-family:'DM Mono',monospace;letter-spacing:0.06em;margin-bottom:14px;">具体的に、どこで取りこぼしているか</p>
+      <div class="pillar" style="border-top-color:var(--light);margin-bottom:0;">
+        <ul>
+          <li><strong>検索で見つからない</strong>——Googleマップ・検索で近隣の見込み客に出てこない（MEO・SEO未対策）。</li>
+          <li><strong>口コミ・評判が放置されている</strong>——低評価に返信がなく、はじめての人の不安を払拭できていない。</li>
+          <li><strong>サイトが「あるだけ」</strong>——予約・問い合わせの導線が弱く、見た人が行動につながらない。</li>
+          <li><strong>広告の効果が分からない</strong>——出しているが、どの施策が効いたか測れていない。</li>
+          <li><strong>リピート/紹介が偶然頼み</strong>——再来・紹介を増やす仕組みがなく、毎月ゼロから集客している。</li>
+        </ul>
+      </div>
     </div>
   </div>
 </section>
