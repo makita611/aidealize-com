@@ -130,6 +130,20 @@ body{font-family:'Noto Sans JP',sans-serif;background:var(--white);color:var(--i
 .graph{background:var(--bg);border:1px solid var(--border);border-radius:12px;padding:18px 18px 12px;}
 .graph svg{width:100%;height:auto;display:block;}
 .graph-cap{font-size:11px;color:var(--light);text-align:center;margin-top:6px;}
+
+/* RANK TABLE（掲載順位を赤枠で強調・クリック数は非表示） */
+.ranktable{margin-top:22px;border:1px solid var(--border);border-radius:12px;overflow:hidden;background:#fff;}
+.rt-cap{font-size:12px;font-weight:700;color:var(--ink);padding:14px 18px 4px;}
+.rt-grid{display:grid;grid-template-columns:1fr 84px 92px;gap:8px;align-items:center;padding:11px 18px;}
+.rt-head{font-family:'DM Mono',monospace;font-size:10.5px;letter-spacing:0.04em;color:var(--light);border-bottom:1px solid var(--border);}
+.rt-row{font-size:13px;border-bottom:1px solid var(--border);}
+.rt-row:last-child{border-bottom:none;}
+.rt-page{color:var(--ink);font-weight:500;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+.rt-imp{text-align:right;color:var(--body);font-family:'DM Mono',monospace;}
+.rt-pos{justify-self:end;background:#fff1f2;border:1.6px solid #e11d48;color:#be123c;font-weight:700;font-size:12px;padding:4px 9px;border-radius:6px;font-family:'DM Mono',monospace;white-space:nowrap;}
+.rt-note{font-size:11.5px;color:var(--body);padding:12px 18px 14px;background:var(--bg);line-height:1.7;}
+.rt-note b{color:#be123c;}
+@media(max-width:480px){.rt-grid{grid-template-columns:1fr 60px 78px;padding:11px 12px;}.rt-cap{padding:14px 12px 4px;}.rt-note{padding:12px;}}
 @media(max-width:760px){.loop-wrap{grid-template-columns:1fr;}}
 
 /* NOTE */
@@ -264,6 +278,17 @@ footer{background:#1f1f1f;border-top:1px solid rgba(255,255,255,0.06);padding:40
         </svg>
         <p class="graph-cap">※Google Search Console 実データ（2026/3/23〜6/22・当社サイト）</p>
       </div>
+    </div>
+
+    <div class="ranktable reveal">
+      <div class="rt-cap">検索結果での掲載順位（自社サイト・実データ）</div>
+      <div class="rt-grid rt-head"><span>上位のページ</span><span style="text-align:right;">表示回数</span><span style="justify-self:end;">掲載順位</span></div>
+      <div class="rt-grid rt-row"><span class="rt-page">トップページ</span><span class="rt-imp">214</span><span class="rt-pos">3.9位</span></div>
+      <div class="rt-grid rt-row"><span class="rt-page">サービスLP</span><span class="rt-imp">144</span><span class="rt-pos">4.6位</span></div>
+      <div class="rt-grid rt-row"><span class="rt-page">会社案内ページ</span><span class="rt-imp">103</span><span class="rt-pos">4.7位</span></div>
+      <div class="rt-grid rt-row"><span class="rt-page">コラム記事</span><span class="rt-imp">40</span><span class="rt-pos">4.8位</span></div>
+      <div class="rt-grid rt-row"><span class="rt-page">情報ページ</span><span class="rt-imp">59</span><span class="rt-pos">6.0位</span></div>
+      <div class="rt-note">→ 主要ページが軒並み<b>検索1ページ目（上位5位前後）</b>に表示。広告ではなく検索で、継続的に見つけてもらえる状態をつくれます。</div>
     </div>
   </div>
 </section>
