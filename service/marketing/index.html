@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>集客をAIで強化｜業種問わず「顧客が取れない」を解決するマーケティング支援【AIdealize】</title>
+<meta name="description" content="クリニック・介護・サロン・民間救急・店舗・BtoBまで業種を問わず、「顧客が欲しいのに取れない」を解決するAIマーケティング支援。MEO・口コミ・HP改善で見つけて選ばれ、商圏・広告効果・リピート/リファラル分析で次の一手を可視化。集客から分析まで一気通貫で、続けて取れる仕組みをつくります。">
+<link rel="canonical" href="https://aidealize.com/service/marketing/">
+<meta property="og:title" content="集客をAIで強化｜業種問わず「顧客が取れない」を解決するマーケティング支援">
+<meta property="og:description" content="業種を問わず「顧客が取れない」を解決。MEO・口コミ・HPで集め、商圏/広告/リピート分析で次の一手を可視化。集客から分析まで一気通貫。">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://aidealize.com/service/marketing/">
+<meta property="og:site_name" content="AIdealize株式会社">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700;900&family=Shippori+Mincho:wght@400;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-P6VNBWH3');</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "name": "AIマーケティング・集客支援（業種共通）",
+  "serviceType": "集客・顧客獲得支援（MEO・口コミ・HP改善・商圏/広告効果/リピート分析）",
+  "provider": {"@type": "Organization", "name": "AIdealize株式会社", "url": "https://aidealize.com"},
+  "areaServed": "JP",
+  "description": "業種を問わず、Web集客（MEO・口コミ・HP改善）とデータ分析（商圏・広告効果・リピート/リファラル）を組み合わせ、集客から分析まで一気通貫で支援するAIマーケティングサービス。"
+}
+</script>
+<style>
+:root{
+  --red:#0891b2;--red-dark:#0e7490;
+  --ink:#1e293b;--body:#4b5563;--light:#94a3b8;
+  --border:#e2e8f0;--bg:#f8fafc;--bg2:#f1f5f9;--white:#fff;
+  --tag-bg:#ecfeff;--green:#059669;--green-bg:#ecfdf5;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{font-family:'Noto Sans JP',sans-serif;background:var(--white);color:var(--ink);overflow-x:hidden;line-height:1.7;}
+
+/* NAV */
+#mainNav{position:fixed;top:0;left:0;right:0;z-index:1000;display:flex;align-items:center;justify-content:space-between;padding:0 60px;height:68px;background:rgba(255,255,255,0.97);border-bottom:1px solid var(--border);backdrop-filter:blur(12px);transition:box-shadow 0.3s;}
+#mainNav.scrolled{box-shadow:0 2px 16px rgba(0,0,0,0.06);}
+.nav-logo{display:flex;align-items:center;gap:10px;text-decoration:none;}
+.nav-logo img{height:34px;width:auto;}
+.nav-logo-text{font-family:'DM Mono',monospace;font-size:15px;font-weight:500;color:var(--ink);letter-spacing:0.02em;}
+.nav-logo-text span{color:var(--red);}
+.nav-links{display:flex;align-items:center;gap:32px;list-style:none;}
+.nav-links a{font-size:13px;font-weight:500;color:var(--body);text-decoration:none;transition:color 0.2s;}
+.nav-links a:hover{color:var(--ink);}
+.nav-cta{background:var(--red) !important;color:#fff !important;padding:9px 20px;border-radius:4px;font-size:12px !important;font-weight:700 !important;}
+.nav-cta:hover{background:var(--red-dark) !important;}
+.nav-hamburger{display:none;flex-direction:column;justify-content:center;gap:5px;width:40px;height:40px;background:none;border:none;cursor:pointer;}
+.nav-hamburger span{display:block;width:22px;height:2px;background:var(--ink);transition:all 0.3s;transform-origin:center;}
+.nav-hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg);}
+.nav-hamburger.open span:nth-child(2){opacity:0;}
+.nav-hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
+.nav-drawer{display:none;position:fixed;top:68px;left:0;right:0;background:#fff;border-bottom:2px solid var(--red);padding:20px 28px 28px;z-index:999;}
+.nav-drawer.open{display:block;}
+.nav-drawer ul{list-style:none;display:flex;flex-direction:column;}
+.nav-drawer ul li a{display:block;padding:13px 0;font-size:15px;font-weight:500;color:var(--ink);text-decoration:none;border-bottom:1px solid var(--border);}
+.nav-drawer ul li:last-child a{margin-top:16px;text-align:center;background:var(--red);color:#fff !important;padding:13px;border-radius:4px;font-weight:700 !important;border-bottom:none;}
+@media(max-width:1024px){#mainNav{padding:0 28px;}.nav-links{display:none;}.nav-hamburger{display:flex;}}
+@media(max-width:480px){#mainNav{padding:0 16px;height:60px;}.nav-drawer{top:60px;}.nav-logo-text{font-size:13px;}}
+
+/* HERO */
+.hero{padding:120px 24px 56px;background:linear-gradient(160deg,#ecfeff 0%,var(--white) 55%,#f8fafc 100%);border-bottom:1px solid var(--border);}
+.hero-grid{max-width:1080px;margin:0 auto;display:grid;grid-template-columns:1.05fr 0.95fr;gap:48px;align-items:center;}
+.hero-eyebrow{display:inline-flex;align-items:center;background:var(--tag-bg);color:var(--red);font-size:11px;font-weight:700;letter-spacing:0.08em;padding:5px 14px;border-radius:100px;margin-bottom:20px;}
+.hero h1{font-family:'Shippori Mincho',serif;font-size:clamp(24px,3.6vw,38px);font-weight:700;line-height:1.55;color:var(--ink);margin-bottom:20px;}
+.hero h1 em{font-style:normal;border-bottom:3px solid var(--red);}
+.hero-sub{font-size:15px;line-height:2;color:var(--body);margin-bottom:28px;}
+.hero-btns{display:flex;gap:12px;flex-wrap:wrap;}
+.hero-media{position:relative;}
+.hero-media img{width:100%;height:auto;border-radius:16px;box-shadow:0 24px 60px -24px rgba(8,145,178,0.35);display:block;}
+.hero-badge{position:absolute;left:-14px;bottom:22px;background:#fff;border:1px solid var(--border);border-radius:12px;padding:12px 16px;box-shadow:0 12px 30px -10px rgba(0,0,0,0.18);}
+.hero-badge b{display:block;font-family:'DM Mono',monospace;font-size:22px;color:var(--red);line-height:1.1;}
+.hero-badge span{font-size:11px;color:var(--body);}
+.btn-p{display:inline-flex;align-items:center;gap:6px;background:var(--red);color:#fff;padding:14px 30px;border-radius:6px;font-size:14px;font-weight:700;text-decoration:none;transition:background 0.2s,transform 0.2s;}
+.btn-p:hover{background:var(--red-dark);transform:translateY(-2px);}
+.btn-o{display:inline-flex;align-items:center;gap:6px;border:2px solid var(--red);color:var(--red);padding:12px 26px;border-radius:6px;font-size:14px;font-weight:700;text-decoration:none;transition:all 0.2s;}
+.btn-o:hover{background:var(--tag-bg);}
+@media(max-width:880px){.hero-grid{grid-template-columns:1fr;gap:32px;text-align:center;}.hero-btns{justify-content:center;}.hero-media{max-width:460px;margin:0 auto;}}
+
+/* STATS BAND */
+.stats{background:var(--ink);padding:30px 24px;}
+.stats-inner{max-width:1000px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);gap:20px;text-align:center;}
+.stat b{display:block;font-family:'DM Mono',monospace;font-size:clamp(22px,3vw,32px);color:#fff;line-height:1.1;}
+.stat b em{font-style:normal;color:var(--red);font-size:0.6em;margin-left:2px;}
+.stat span{font-size:12px;color:rgba(255,255,255,0.6);}
+@media(max-width:680px){.stats-inner{grid-template-columns:repeat(2,1fr);gap:22px 12px;}}
+
+/* SECTION */
+.section{padding:72px 24px;}
+.section-inner{max-width:980px;margin:0 auto;}
+.section.alt{background:var(--bg);}
+.section-label{font-family:'DM Mono',monospace;font-size:11px;color:var(--red);letter-spacing:0.14em;text-transform:uppercase;text-align:center;margin-bottom:12px;}
+.section-title{font-family:'Shippori Mincho',serif;font-size:clamp(20px,2.6vw,28px);font-weight:700;color:var(--ink);line-height:1.55;text-align:center;margin-bottom:14px;}
+.section-lead{font-size:15px;line-height:2;color:var(--body);text-align:center;max-width:680px;margin:0 auto 40px;}
+
+/* INDUSTRY GRID */
+.ind-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;}
+.ind-card{display:flex;flex-direction:column;background:#fff;border:1px solid var(--border);border-radius:12px;padding:24px 22px;text-decoration:none;transition:transform 0.2s,box-shadow 0.2s,border-color 0.2s;}
+.ind-card:hover{transform:translateY(-3px);box-shadow:0 14px 30px -16px rgba(8,145,178,0.4);border-color:var(--red);}
+.ind-ico{font-size:26px;margin-bottom:12px;line-height:1;}
+.ind-card h3{font-family:'Shippori Mincho',serif;font-size:17px;font-weight:700;color:var(--ink);margin-bottom:8px;}
+.ind-card p{font-size:13px;line-height:1.8;color:var(--body);margin-bottom:14px;flex-grow:1;}
+.ind-tag{align-self:flex-start;font-size:11px;font-weight:700;padding:4px 11px;border-radius:100px;}
+.ind-tag.ready{background:var(--tag-bg);color:var(--red);}
+.ind-tag.soon{background:var(--bg2);color:var(--light);}
+@media(max-width:820px){.ind-grid{grid-template-columns:repeat(2,1fr);}}
+@media(max-width:480px){.ind-grid{grid-template-columns:1fr;}}
+
+/* PILLAR */
+.pillar{background:#fff;border:1px solid var(--border);border-top:4px solid var(--red);border-radius:12px;padding:32px 30px;margin-bottom:24px;}
+.pillar-tag{display:inline-block;background:var(--red);color:#fff;font-size:11px;font-weight:700;letter-spacing:0.06em;padding:4px 12px;border-radius:100px;margin-bottom:14px;}
+.pillar h3{font-family:'Shippori Mincho',serif;font-size:clamp(18px,2.2vw,22px);font-weight:700;color:var(--ink);line-height:1.5;margin-bottom:12px;}
+.pillar > p{font-size:14px;line-height:1.95;color:var(--body);margin-bottom:18px;}
+.pillar ul{list-style:none;display:flex;flex-direction:column;gap:10px;}
+.pillar ul li{display:flex;align-items:flex-start;gap:10px;font-size:14px;line-height:1.85;color:var(--body);}
+.pillar ul li::before{content:'✓';color:var(--red);font-weight:700;flex-shrink:0;}
+.pillar ul li strong{color:var(--ink);}
+
+/* LOOP / GRAPH */
+.loop-wrap{display:grid;grid-template-columns:1fr 1fr;gap:28px;align-items:center;background:#fff;border:1px solid var(--border);border-radius:14px;padding:30px;margin-top:8px;}
+.loop-steps{display:flex;flex-direction:column;gap:14px;}
+.loop-step{display:flex;gap:14px;align-items:flex-start;}
+.loop-step b{flex-shrink:0;width:34px;height:34px;border-radius:9px;background:var(--tag-bg);color:var(--red);display:flex;align-items:center;justify-content:center;font-size:18px;}
+.loop-step h4{font-family:'Shippori Mincho',serif;font-size:15px;color:var(--ink);margin-bottom:3px;}
+.loop-step p{font-size:13px;line-height:1.75;color:var(--body);}
+.graph{background:var(--bg);border:1px solid var(--border);border-radius:12px;padding:18px 18px 12px;}
+.graph svg{width:100%;height:auto;display:block;}
+.graph-cap{font-size:11px;color:var(--light);text-align:center;margin-top:6px;}
+@media(max-width:760px){.loop-wrap{grid-template-columns:1fr;}}
+
+/* NOTE */
+.note{background:#fffbeb;border:1px solid #fde68a;border-left:4px solid #d97706;border-radius:0 8px 8px 0;padding:18px 22px;margin-top:20px;}
+.note-label{font-size:11px;font-weight:700;color:#b45309;letter-spacing:0.06em;margin-bottom:8px;}
+.note p{font-size:13px;line-height:1.9;color:#7c5e1e;margin:0;}
+
+/* STEPS */
+.steps{display:flex;flex-direction:column;gap:14px;margin-top:8px;}
+.step{display:flex;gap:16px;align-items:flex-start;background:#fff;border:1px solid var(--border);border-radius:10px;padding:20px 22px;}
+.step-num{flex-shrink:0;width:30px;height:30px;border-radius:50%;background:var(--red);color:#fff;display:flex;align-items:center;justify-content:center;font-family:'DM Mono',monospace;font-weight:700;font-size:13px;}
+.step-body h4{font-family:'Shippori Mincho',serif;font-size:16px;font-weight:700;color:var(--ink);margin-bottom:6px;}
+.step-body p{font-size:13.5px;line-height:1.85;color:var(--body);}
+
+/* CTA */
+.cta{padding:72px 24px;background:var(--ink);text-align:center;}
+.cta h2{font-family:'Shippori Mincho',serif;font-size:clamp(20px,2.6vw,28px);font-weight:700;color:#fff;line-height:1.55;margin-bottom:14px;}
+.cta p{font-size:14px;color:rgba(255,255,255,0.75);line-height:1.9;max-width:560px;margin:0 auto 28px;}
+.cta .btn-p{background:var(--red);}
+.cta .btn-o{border-color:rgba(255,255,255,0.4);color:#fff;}
+.cta .btn-o:hover{background:rgba(255,255,255,0.08);}
+
+/* FOOTER */
+footer{background:#1f1f1f;border-top:1px solid rgba(255,255,255,0.06);padding:40px 60px;display:flex;align-items:center;justify-content:space-between;}
+.footer-logo{display:flex;align-items:center;gap:10px;}
+.footer-logo-mark{width:20px;height:20px;background:var(--red);clip-path:polygon(50% 0%,0% 100%,18% 100%,50% 38%,82% 100%,100% 100%);}
+.footer-logo-text{font-family:'DM Mono',monospace;font-size:13px;color:rgba(255,255,255,0.55);}
+.footer-logo-text span{color:var(--red);}
+.footer-copy{font-size:11px;color:rgba(255,255,255,0.25);font-family:'DM Mono',monospace;}
+
+.reveal{opacity:0;transform:translateY(18px);transition:opacity 0.55s ease,transform 0.55s ease;}
+.reveal.visible{opacity:1;transform:translateY(0);}
+
+@media(max-width:768px){
+  .hero{padding-top:96px;}
+  .section,.cta{padding-left:16px;padding-right:16px;}
+  footer{flex-direction:column;gap:14px;text-align:center;padding:28px 16px;}
+}
+</style>
+</head>
+<body>
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-P6VNBWH3" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
+<!-- NAV -->
+<nav id="mainNav">
+  <a href="/" class="nav-logo">
+    <img src="/images/logo.png" alt="AIdealize">
+    <span class="nav-logo-text"><span>AI</span>dealize</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="/column/">コラム</a></li>
+    <li><a href="/service/">サービス</a></li>
+    <li><a href="https://aidealize.com/bpr/">DX事例</a></li>
+    <li><a href="/company.html">会社概要</a></li>
+    <li><a href="#contact" class="nav-cta">無料相談</a></li>
+  </ul>
+  <button class="nav-hamburger" id="navHamburger" aria-label="メニュー">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+<div class="nav-drawer" id="navDrawer">
+  <ul>
+    <li><a href="/column/" class="drawer-link">コラム</a></li>
+    <li><a href="/service/" class="drawer-link">サービス</a></li>
+    <li><a href="https://aidealize.com/bpr/" class="drawer-link">DX事例</a></li>
+    <li><a href="/company.html" class="drawer-link">会社概要</a></li>
+    <li><a href="#contact">無料相談する</a></li>
+  </ul>
+</div>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="hero-grid">
+    <div class="hero-copy">
+      <span class="hero-eyebrow">CUSTOMER ACQUISITION × AI</span>
+      <h1>「いいサービスなのに、<br><em>顧客が取れない</em>」を、<br>AIで終わらせる。</h1>
+      <p class="hero-sub">業種は問いません。クリニックも、介護も、サロンも、店舗も、BtoBも——悩みの正体は同じ「見つけてもらえない・選ばれない・続かない」。Web集客（MEO・口コミ・HP）で集め、データ分析（商圏・広告効果・リピート/リファラル）で次の一手を可視化。集客から分析まで一気通貫で、"続けて取れる仕組み"をつくります。</p>
+      <div class="hero-btns">
+        <a href="#contact" class="btn-p">無料で相談する →</a>
+        <a href="#industries" class="btn-o">業種から見る</a>
+      </div>
+    </div>
+    <div class="hero-media">
+      <img src="/images/womanp3.webp" alt="集客の相談に応えるAIdealizeの担当者" loading="eager">
+      <div class="hero-badge">
+        <b>集客→分析</b>
+        <span>一気通貫で支援</span>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- STATS -->
+<section class="stats">
+  <div class="stats-inner">
+    <div class="stat"><b>656<em>件</em></b><span>分析・支援した現場の事例</span></div>
+    <div class="stat"><b>183<em>件</em></b><span>医療・クリニック領域の知見</span></div>
+    <div class="stat"><b>2<em>本柱</em></b><span>集客 × データ分析</span></div>
+    <div class="stat"><b>全<em>業種</em></b><span>業種を問わず対応</span></div>
+  </div>
+</section>
+
+<!-- 課題 -->
+<section class="section">
+  <div class="section-inner">
+    <div class="section-label">Issue</div>
+    <h2 class="section-title">業種が違っても、"取れない理由"は同じ場所に潜む</h2>
+    <p class="section-lead">「もっと顧客が欲しいのに取れない」。それは商品やサービスの質の問題ではないことがほとんどです。多くの場合、ボトルネックは次のどれかにあります。</p>
+    <div class="pillar" style="border-top-color:var(--light);">
+      <ul>
+        <li><strong>検索で見つからない</strong>——Googleマップ・検索で近隣の見込み客に出てこない（MEO・SEO未対策）。</li>
+        <li><strong>口コミ・評判が放置されている</strong>——低評価に返信がなく、はじめての人の不安を払拭できていない。</li>
+        <li><strong>サイトが「あるだけ」</strong>——予約・問い合わせの導線が弱く、見た人が行動につながらない。</li>
+        <li><strong>広告の効果が分からない</strong>——出しているが、どのエリア・どの施策が効いたか測れていない。</li>
+        <li><strong>リピート/紹介が偶然頼み</strong>——再来・紹介を増やす仕組みがなく、毎月ゼロから集客している。</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- 業種から選ぶ -->
+<section class="section alt" id="industries">
+  <div class="section-inner">
+    <div class="section-label">By Industry</div>
+    <h2 class="section-title">あなたの業種で、何ができるか</h2>
+    <p class="section-lead">基本の考え方は共通でも、効く打ち手と気をつける点は業種で変わります。お探しの業種に近いものをお選びください。専用ページのない業種も、個別にプランをご用意します。</p>
+    <div class="ind-grid">
+      <a href="/service/clinic-marketing/" class="ind-card reveal">
+        <div class="ind-ico">🏥</div>
+        <h3>クリニック・医療</h3>
+        <p>MEO・口コミ・HP改善で来院増。商圏/広告効果/リピート分析。医療広告ガイドラインを守った運用。</p>
+        <span class="ind-tag ready">専用ページを見る →</span>
+      </a>
+      <a href="#contact" class="ind-card reveal">
+        <div class="ind-ico">🧑‍🦽</div>
+        <h3>介護・訪問看護・ケアマネ</h3>
+        <p>ケアマネ・地域包括からの紹介に頼り切らず、家族が「探して選べる」状態をつくる。空き枠を埋める集客。</p>
+        <span class="ind-tag soon">ご相談ください</span>
+      </a>
+      <a href="#contact" class="ind-card reveal">
+        <div class="ind-ico">🚑</div>
+        <h3>民間救急・搬送</h3>
+        <p>認知ゼロから「いざという時の連絡先」へ。病院・施設・イベントとの提携導線と検索対策を設計。</p>
+        <span class="ind-tag soon">ご相談ください</span>
+      </a>
+      <a href="#contact" class="ind-card reveal">
+        <div class="ind-ico">💇</div>
+        <h3>美容・サロン・自由診療</h3>
+        <p>指名と単価を上げる集客。症例・口コミ・SNSとMEOを束ね、新規とリピートの両輪を回す。</p>
+        <span class="ind-tag soon">ご相談ください</span>
+      </a>
+      <a href="#contact" class="ind-card reveal">
+        <div class="ind-ico">🏠</div>
+        <h3>不動産・士業・教室・店舗</h3>
+        <p>反響を増やし、問い合わせを取りこぼさない。地域検索×広告効果測定で「効く一手」に絞る。</p>
+        <span class="ind-tag soon">ご相談ください</span>
+      </a>
+      <a href="#contact" class="ind-card reveal">
+        <div class="ind-ico">💬</div>
+        <h3>その他・BtoB</h3>
+        <p>「うちの業種でもできる?」——まずは現状をお聞かせください。最適な集客の入口からご提案します。</p>
+        <span class="ind-tag soon">まず相談する</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- 2つの柱 -->
+<section class="section">
+  <div class="section-inner">
+    <div class="section-label">Solution</div>
+    <h2 class="section-title">「集めるチャネル」と「分析で次の一手」の両輪で</h2>
+    <p class="section-lead">顧客を連れてくるWeb集客と、データで打ち手を磨くマーケ分析。AIで両方を効率化し、改善のループを回します。</p>
+
+    <div class="pillar reveal">
+      <span class="pillar-tag">柱①　AI × Web集客（MEO・口コミ・HP）</span>
+      <h3>「見つけてもらい、選ばれる」状態をつくる</h3>
+      <p>今すでに取り組まれている集客チャネルを、AIで増強します。属人的だった運用を、続けられる仕組みに変えます。</p>
+      <ul>
+        <li><strong>MEO（Googleマップ最適化）</strong>：プロフィール・カテゴリ・写真・投稿を整え、近隣検索での露出を高めます。</li>
+        <li><strong>口コミ対策</strong>：返信文をAIで即時生成し、トーンを統一。取りこぼしを防ぎ、来店前の不安を払拭します。</li>
+        <li><strong>ホームページ改善</strong>：予約・問い合わせ導線を見直し、検索意図に沿ったコンテンツで行動につなげます。</li>
+        <li><strong>広告クリエイティブ</strong>：訴求・キーワードのAI生成で、出稿の質とスピードを底上げします。</li>
+      </ul>
+      <div class="note">
+        <div class="note-label">⚠ 口コミ運用の方針</div>
+        <p>各プラットフォームのポリシーを遵守します。報酬による誘導や★を制限する収集（口コミゲーティング）は行わず、依頼は全顧客に等しく。AIは返信文の生成・運用効率化に用い、口コミの捏造は一切行いません。</p>
+      </div>
+    </div>
+
+    <div class="pillar reveal">
+      <span class="pillar-tag">柱②　データ分析マーケティング</span>
+      <h3>「どこに・誰に・何を」を、データで判断する</h3>
+      <p>顧客データをもとに、勘ではなく数字で打ち手を決めます。広告もリピート施策も、効果を測りながら磨いていきます。</p>
+      <ul>
+        <li><strong>商圏分析</strong>：どのエリアから来ているか、空白商圏はどこかを可視化します。</li>
+        <li><strong>広告効果測定</strong>：出稿エリア×成約の前後比較で、施策が新規に効いたかを判定します。</li>
+        <li><strong>リピート・離脱分析</strong>：再来率や来店間隔から、離れやすい層と再来施策の効きどころを把握します。</li>
+        <li><strong>リファラル分析</strong>：紹介・口コミの経路を把握し、増やせるポイントを特定します。</li>
+      </ul>
+      <div class="note">
+        <div class="note-label">⚠ 個人情報の取り扱い</div>
+        <p>分析は<strong>個人を特定しない統計・商圏分析（郵便番号・エリア単位の集計）</strong>を基本とします。顧客情報を扱う場合は、個人情報取扱いの委託契約と安全管理措置を前提に、利用目的の範囲内で適切に運用します。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 一気通貫ループ＋グラフ -->
+<section class="section alt">
+  <div class="section-inner">
+    <div class="section-label">Why it works</div>
+    <h2 class="section-title">「サイトを作って終わり」にしないから、伸びる</h2>
+    <p class="section-lead">集めて終わりではなく、取った後の数字まで見て改善し続ける。だから一度作って放置するサイトと違い、続けるほど効きます。</p>
+    <div class="loop-wrap reveal">
+      <div class="loop-steps">
+        <div class="loop-step"><b>📣</b><div><h4>取る（集客）</h4><p>MEO・口コミ・HP・広告で、見込み客を入口へ。</p></div></div>
+        <div class="loop-step"><b>📞</b><div><h4>受ける・つなぐ（対応）</h4><p>問い合わせ・予約・電話の取りこぼしを防ぎ、確実につなぐ。</p></div></div>
+        <div class="loop-step"><b>📊</b><div><h4>視る・改善（可視化・分析）</h4><p>どの施策・エリアが効いたかを数字で把握し、次の一手を決める。</p></div></div>
+        <div class="loop-step"><b>🔁</b><div><h4>また取る（横展開）</h4><p>効いた打ち手を継続・拡大。改善のループを定着させる。</p></div></div>
+      </div>
+      <div class="graph">
+        <svg viewBox="0 0 320 200" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="集客数が改善ループで増えていくイメージのグラフ">
+          <line x1="34" y1="170" x2="306" y2="170" stroke="#cbd5e1" stroke-width="1"/>
+          <line x1="34" y1="20" x2="34" y2="170" stroke="#cbd5e1" stroke-width="1"/>
+          <g fill="var(--red)" opacity="0.9">
+            <rect x="58"  y="132" width="30" height="38" rx="3"/>
+            <rect x="106" y="116" width="30" height="54" rx="3"/>
+            <rect x="154" y="92"  width="30" height="78" rx="3"/>
+            <rect x="202" y="64"  width="30" height="106" rx="3"/>
+            <rect x="250" y="38"  width="30" height="132" rx="3"/>
+          </g>
+          <polyline points="73,128 121,110 169,86 217,58 265,32" fill="none" stroke="#0e7490" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+          <g fill="#0e7490"><circle cx="73" cy="128" r="3.5"/><circle cx="121" cy="110" r="3.5"/><circle cx="169" cy="86" r="3.5"/><circle cx="217" cy="58" r="3.5"/><circle cx="265" cy="32" r="3.5"/></g>
+          <g fill="#94a3b8" font-family="'DM Mono',monospace" font-size="10" text-anchor="middle">
+            <text x="73" y="186">1ヶ月</text><text x="121" y="186">2</text><text x="169" y="186">3</text><text x="217" y="186">4</text><text x="265" y="186">5</text>
+          </g>
+          <text x="34" y="14" fill="#94a3b8" font-family="'DM Mono',monospace" font-size="9">問い合わせ数</text>
+        </svg>
+        <p class="graph-cap">※改善ループのイメージ図です（実際の成果は業種・現状により異なります）。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 進め方 -->
+<section class="section">
+  <div class="section-inner">
+    <div class="section-label">How it works</div>
+    <h2 class="section-title">小さく始めて、成果を見ながら広げる</h2>
+    <p class="section-lead">いきなり大きく始める必要はありません。負担の小さい所から着手し、成果を見ながら広げます。</p>
+    <div class="steps">
+      <div class="step reveal"><div class="step-num">1</div><div class="step-body"><h4>無料相談・ヒアリング</h4><p>現状の集客と「取りたい顧客像」を整理し、効果が出やすい順番を一緒に決めます。</p></div></div>
+      <div class="step reveal"><div class="step-num">2</div><div class="step-body"><h4>Web集客の改善（柱①）</h4><p>MEO・口コミ・HPなど、すぐ効果が出て負荷の低い施策から着手します。</p></div></div>
+      <div class="step reveal"><div class="step-num">3</div><div class="step-body"><h4>データ分析で磨く（柱②）</h4><p>集客データの分析で、広告・リピート施策の効果を測りながら次の一手を決めます。</p></div></div>
+      <div class="step reveal"><div class="step-num">4</div><div class="step-body"><h4>成果を横展開</h4><p>うまくいった施策を継続・拡大。改善のループを定着させます。</p></div></div>
+    </div>
+
+    <a href="https://aidealize.com/bpr/" class="ind-card reveal" style="margin-top:24px;flex-direction:row;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;background:linear-gradient(135deg,#ecfeff,#f0fdf4);border-color:#cffafe;">
+      <div>
+        <h3 style="margin-bottom:6px;">業種別のDX・活用事例を見る</h3>
+        <p style="margin-bottom:0;">業務改善からデータ活用まで、現場での導入事例を業種別に掲載しています。</p>
+      </div>
+      <span class="ind-tag ready">事例を見る →</span>
+    </a>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta" id="contact">
+  <h2>まず30分、集客のお悩みを聞かせてください。</h2>
+  <p>「何から手をつければいいか分からない」「うちの業種でもできる?」段階でも大丈夫です。現状をお伺いし、効果が出やすい順番をご提案します。無料相談・資料請求はお気軽に。</p>
+  <div class="hero-btns" style="justify-content:center;">
+    <a href="/#contact" class="btn-p">無料で相談する →</a>
+    <a href="/jidoka-shindan.html" class="btn-o">まず無料診断を試す</a>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-logo">
+    <div class="footer-logo-mark"></div>
+    <span class="footer-logo-text"><span>A</span>idealize株式会社</span>
+  </div>
+  <span class="footer-copy">© 2020 AIdealize Inc. All rights reserved.</span>
+</footer>
+
+<script>
+(function(){
+  const btn=document.getElementById('navHamburger');
+  const drawer=document.getElementById('navDrawer');
+  const nav=document.getElementById('mainNav');
+  btn.addEventListener('click',function(){btn.classList.toggle('open');drawer.classList.toggle('open');});
+  drawer.querySelectorAll('.drawer-link').forEach(function(l){l.addEventListener('click',function(){btn.classList.remove('open');drawer.classList.remove('open');});});
+  window.addEventListener('scroll',function(){nav.classList.toggle('scrolled',window.scrollY>10);});
+})();
+const obs=new IntersectionObserver(function(e){e.forEach(function(x){if(x.isIntersecting)x.target.classList.add('visible');});},{threshold:0.08,rootMargin:'0px 0px -30px 0px'});
+document.querySelectorAll('.reveal').forEach(function(el){obs.observe(el);});
+</script>
+</body>
+</html>
