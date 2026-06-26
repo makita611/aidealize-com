@@ -506,6 +506,66 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   </div>
 </section>
 
+<!-- やさしい解説（はじめての方へ） -->
+<section id="easy" style="background:linear-gradient(180deg,#002147 0%,#001535 100%);">
+  <div class="section-inner">
+    <span class="section-label">はじめての方へ ── 30秒でわかる</span>
+    <h2>そもそも、<span class="accent">何が危ないの？</span></h2>
+    <div class="divider"></div>
+    <p class="section-desc">
+      「うちは小さいから狙われない」「ITは業者任せで大丈夫」── 実は、これが一番危ない考え方です。
+      むずかしい言葉は使いません。<strong>3つだけ</strong>覚えてください。
+    </p>
+
+    <div class="stats-row" style="margin-bottom:36px;">
+      <div class="stat-card" style="text-align:left;">
+        <div style="font-size:2rem;margin-bottom:10px;">🚪</div>
+        <div style="color:#fff;font-weight:800;font-size:1rem;margin-bottom:8px;">① 入口（裏口）が開いている</div>
+        <div style="color:var(--text-sub);font-size:0.86rem;line-height:1.8;">ホームページや古い機器に「鍵のかかっていない裏口」があると、誰でも入れてしまいます。</div>
+      </div>
+      <div class="stat-card" style="text-align:left;">
+        <div style="font-size:2rem;margin-bottom:10px;">🔥</div>
+        <div style="color:#fff;font-weight:800;font-size:1rem;margin-bottom:8px;">② 中で「延焼」する</div>
+        <div style="color:var(--text-sub);font-size:0.86rem;line-height:1.8;">一度入られると、火事のように院内のPCやカルテへ被害が広がります（＝ランサムウェア）。</div>
+      </div>
+      <div class="stat-card" style="text-align:left;">
+        <div style="font-size:2rem;margin-bottom:10px;">💰</div>
+        <div style="color:#fff;font-weight:800;font-size:1rem;margin-bottom:8px;">③ 被害は数千万〜数億円</div>
+        <div style="color:var(--text-sub);font-size:0.86rem;line-height:1.8;">診療・サービスが止まり、復旧費用と信用の損失が一気にのしかかります。</div>
+      </div>
+    </div>
+
+    <div class="scheme-table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>❌ よくある誤解</th>
+            <th>⭕ 実際は…</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>「うちは小さいから狙われない」</td>
+            <td>むしろ逆。2025年、宇都宮の一般クリニックで<strong style="color:#ff9090">患者情報 最大30万件が流出</strong>。情シス担当を置けない小さい施設ほど狙われやすい。</td>
+          </tr>
+          <tr>
+            <td>「ホームページは業者任せだから安心」</td>
+            <td>業者のサイト経由で<strong style="color:#ff9090">院内まで侵入される</strong>例が多い</td>
+          </tr>
+          <tr>
+            <td>「ウイルス対策ソフトを入れてるから大丈夫」</td>
+            <td>ソフトでは防げない「裏口」からの侵入が<strong style="color:#ff9090">今の主流</strong></td>
+          </tr>
+          <tr>
+            <td>「外周点検が異常なしなら、もう安全」</td>
+            <td>それは玄関だけ。<strong style="color:#ff9090">中（院内）の点検も必須</strong></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
 <!-- PROBLEM -->
 <section id="problem">
   <div class="section-inner">
@@ -525,7 +585,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <div class="stats-row">
       <div class="stat-card">
         <div class="stat-num">30<span class="stat-unit">万件</span></div>
-        <div class="stat-label">2025年 栃木県クリニック<br>個人情報流出（推定）</div>
+        <div class="stat-label">2025年 宇都宮の一般クリニックで<br>患者情報が流出（最大）</div>
       </div>
       <div class="stat-card">
         <div class="stat-num">数億<span class="stat-unit">円</span></div>
@@ -543,19 +603,19 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
     <div class="incident-row">
       <div class="incident-card">
-        <div class="incident-org">🏥 徳島県 つるぎ町立半田病院</div>
-        <div class="incident-title">電子カルテが全暗号化、診療停止</div>
-        <div class="incident-body">ランサムウェアにより電子カルテが完全に使用不能となり、約2ヶ月にわたり通常診療を停止。復旧費用は約2億円超。「院内の別システムへの延焼」が被害を拡大させた。</div>
+        <div class="incident-org">🏥 栃木県・宇都宮セントラルクリニック（2025年2月）</div>
+        <div class="incident-title">一般クリニックで患者情報 最大30万件が流出か</div>
+        <div class="incident-body">ランサムウェア攻撃で電子カルテなど院内システムが使用不能に。患者・健診受診者の氏名・生年月日・診療情報などが外部流出した可能性があると公表。「大病院ではない普通のクリニック」がここまで被害を受けた象徴的な事例です。</div>
       </div>
       <div class="incident-card">
-        <div class="incident-org">🎮 KADOKAWA グループ</div>
-        <div class="incident-title">身代金要求、内部情報が流出</div>
-        <div class="incident-body">VPNの脆弱性を突かれ侵入。内部情報が流出し、身代金の支払いを迫られた。上場企業でさえ「裏口」の管理が不十分であれば防げない事例として注目された。</div>
+        <div class="incident-org">🏥 大都市圏・個人立の無床診療所（日医総研 報告）</div>
+        <div class="incident-title">小さな診療所も「VPNの穴」から侵入された</div>
+        <div class="incident-body">情報システム担当を置けない小規模な診療所が、VPN機器の脆弱性を突かれて侵入され、電子カルテだけでなく人事・経理のデータまで暗号化されました。「うちは小さいから大丈夫」が通用しないことを示す事例です。</div>
       </div>
       <div class="incident-card">
-        <div class="incident-org">📋 BCP義務化（令和6年度）</div>
-        <div class="incident-title">対策しないことが「義務違反」に</div>
-        <div class="incident-body">医療・介護施設へのBCP（事業継続計画）策定が義務付けられました。サイバー対策を含めた継続性を示せない場合、行政指導や監査の対象となるリスクがあります。</div>
+        <div class="incident-org">🏥 大阪急性期・総合医療センター（2022年10月）</div>
+        <div class="incident-title">「委託業者」経由で侵入され73日間停止</div>
+        <div class="incident-body">給食委託業者のVPN機器の脆弱性を突かれて侵入。診療システムの全面復旧まで約73日、被害は十数億円規模に。「ITは業者任せ」でも、その業者が侵入口になり得ることを示しています。</div>
       </div>
     </div>
 
@@ -687,10 +747,68 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   </div>
 </section>
 
+<!-- INSIDE vs OUTSIDE（外と中は別物） -->
+<section id="inout" style="background:var(--navy);">
+  <div class="section-inner">
+    <span class="section-label">SECTION 04 ── 外と中は別物</span>
+    <h2>「外」がOKでも、<span class="accent">「中」は別</span>。<br>両方の点検が必要です</h2>
+    <div class="divider"></div>
+    <p class="section-desc">
+      ホームページ（外）の点検と、院内・社内ネットワーク（中）の点検は、まったくの別物です。
+      玄関の鍵を確認しても、家の中の金庫が無防備なら意味がありません。
+      「外がOK ＝ 安全」ではないことを、わかりやすく整理しました。
+    </p>
+
+    <div class="scheme-table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th></th>
+            <th>🌐 外（ホームページ・入口）</th>
+            <th>🏥 中（院内ネット・PC・カルテ）</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong style="color:var(--gold)">たとえると</strong></td>
+            <td>建物の玄関・外壁・看板</td>
+            <td>部屋・金庫・カルテ保管室</td>
+          </tr>
+          <tr>
+            <td><strong style="color:var(--gold)">点検レベル</strong></td>
+            <td><span class="lvl-badge lvl-0">Lv.1</span> <span class="lvl-badge lvl-1">Lv.2</span> 外周点検（無料〜）</td>
+            <td><span class="lvl-badge lvl-2">Lv.3</span>〜<span class="lvl-badge lvl-4">Lv.5</span> 内部診断</td>
+          </tr>
+          <tr>
+            <td><strong style="color:var(--gold)">わかること</strong></td>
+            <td>鍵がかかっているか／裏口が外から見えていないか</td>
+            <td>侵入されても被害が広がらないか／カルテが守られているか</td>
+          </tr>
+          <tr>
+            <td><strong style="color:var(--gold)">外がOKでも…</strong></td>
+            <td>玄関が無事なだけ</td>
+            <td><span style="color:#ff9090;font-weight:700">中は未チェック。必ず点検が必要</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="warning-box" style="margin-top:32px;">
+      <p>
+        <strong>⚠ よくある勘違い：「無料点検で異常なしだったから、もう安心」</strong><br><br>
+        外周点検で「異常なし」でも、それは<strong>玄関が無事なだけ</strong>です。
+        空き巣は窓・裏口・ガレージからも入ります。
+        本当に守るべき「中（電子カルテ・利用者情報）」が安全かどうかは、
+        中の点検をして初めてわかります。<strong>外と中、両方そろって初めて「安全」です。</strong>
+      </p>
+    </div>
+  </div>
+</section>
+
 <!-- PROFILE -->
 <section id="profile">
   <div class="section-inner">
-    <span class="section-label">SECTION 04 ── CREDENTIALS</span>
+    <span class="section-label">SECTION 05 ── CREDENTIALS</span>
     <h2>なぜ「元消防士」が<span class="accent">IT査察</span>を行うのか</h2>
     <div class="divider"></div>
     <div class="profile-grid">
@@ -820,8 +938,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       { text: `[*] 旧バージョンCMS検出 .... 確認中`, delay: 4000 },
       { text: `[+] CMS: WordPress 6.4.x（最新版）`, delay: 4600 },
       { text: ``, delay: 5100 },
-      { text: `[Prevention] 外周目視点検 完了 ── 要確認ポイント: 2件`, delay: 5100 },
-      { text: `[→] LINEで詳細PDFレポートを受け取る ↓`, delay: 5600, cta: true },
+      { text: `[Prevention] 外周目視点検 完了 ── 要確認ポイント: 2件`, delay: 5100, warn: true },
     ];
 
     lines.forEach(({ text, delay, warn, cta }) => {
@@ -837,6 +954,38 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         result.scrollTop = result.scrollHeight;
       }, delay);
     });
+
+    // 危険度サマリー（診断後の注意喚起）
+    setTimeout(() => {
+      const summary = document.createElement('div');
+      summary.className = 'scan-line';
+      summary.style.cssText = 'margin-top:16px;font-family:\'Hiragino Kaku Gothic ProN\',sans-serif;';
+      summary.innerHTML =
+        '<div style="background:rgba(74,15,15,0.6);border:1px solid rgba(255,80,80,0.5);border-left:4px solid #ff5050;border-radius:8px;padding:16px 18px;">' +
+          '<div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;">' +
+            '<span style="font-size:1.3rem;">⚠️</span>' +
+            '<span style="color:#ff9090;font-weight:800;font-size:0.95rem;">危険度：要注意 ── 外側だけで「2件の弱点」を検出</span>' +
+          '</div>' +
+          '<p style="color:#ffd0d0;font-size:0.84rem;line-height:1.8;margin:0 0 10px;">' +
+            '管理画面が外から見えており、第三者が「裏口」を探せる状態です。空き巣に「ここは入りやすい家」と教えているのと同じ状態です。' +
+          '</p>' +
+          '<div style="background:rgba(0,21,53,0.5);border:1px dashed rgba(201,168,76,0.5);border-radius:6px;padding:12px 14px;">' +
+            '<p style="color:#ffe2a8;font-size:0.84rem;line-height:1.8;margin:0;">' +
+              '🔴 <strong>もっと大事なこと：</strong>この点検は「建物の<u>外側</u>」を見ただけです。<br>' +
+              '外がキレイでも、<strong>中（院内ネット・スタッフのPC・電子カルテ）</strong>が安全とは限りません。<br>' +
+              '空き巣は窓やガレージからも入ります。<strong>「中」の点検をして初めて、本当に安全と言えます。</strong>' +
+            '</p>' +
+          '</div>' +
+        '</div>';
+      result.appendChild(summary);
+
+      const ctaLine = document.createElement('div');
+      ctaLine.className = 'scan-line';
+      ctaLine.style.cssText = 'color:#06c755;margin-top:10px;font-family:"Courier New",monospace;';
+      ctaLine.textContent = '[→] LINEで詳細PDFレポート（中の点検プランつき）を受け取る ↓';
+      result.appendChild(ctaLine);
+      result.scrollTop = result.scrollHeight;
+    }, 5700);
   }
 
   document.getElementById('urlInput').addEventListener('keydown', (e) => {
