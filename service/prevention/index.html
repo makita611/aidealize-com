@@ -126,6 +126,25 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       line-height: 1.9;
     }
 
+    /* ── HERO 2カラム ── */
+    .hero-2col {
+      display: grid; grid-template-columns: 1.05fr 0.95fr;
+      gap: 48px; align-items: center; text-align: left;
+    }
+    .hero-col-img figure {
+      margin: 0; border-radius: 16px; overflow: hidden;
+      border: 1px solid var(--border);
+      box-shadow: 0 14px 40px rgba(0,0,0,0.4);
+    }
+    .hero-col-img img {
+      width: 100%; display: block;
+      aspect-ratio: 4/5; object-fit: cover; object-position: center 18%;
+    }
+    @media (max-width: 900px) {
+      .hero-2col { grid-template-columns: 1fr; gap: 28px; text-align: center; }
+      .hero-col-img { max-width: 360px; margin: 4px auto 0; }
+    }
+
     /* ── SIMULATOR ── */
     .simulator-box {
       background: rgba(10,47,92,0.7);
@@ -454,7 +473,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <section id="hero">
   <div class="hero-bg"></div>
   <div class="hero-grid"></div>
-  <div class="hero-content">
+  <div class="hero-content" style="max-width:1140px;">
+    <div class="hero-2col">
+    <div class="hero-col-text">
     <div class="hero-badge">🔥 元消防士 × AIによる「IT査察点検」</div>
     <h1>
       御社のサイトの、<br>
@@ -492,6 +513,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         LINEで詳細レポートを受け取る（無料）
       </a>
     </div>
+    </div><!-- /hero-col-text -->
+    <div class="hero-col-img">
+      <figure>
+        <img src="/images/womanp3.webp" alt="サイバーリスクに不安を抱える中小企業・クリニックの経営者">
+      </figure>
+    </div>
+    </div><!-- /hero-2col -->
 
     <!-- 業界別LP導線 -->
     <div style="margin-top:40px;padding-top:32px;border-top:1px solid rgba(201,168,76,0.2);text-align:center;">
@@ -619,6 +647,90 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       </div>
     </div>
 
+    <!-- 全国マップ -->
+    <div style="margin:8px 0 40px;">
+      <h3 style="font-size:1.15rem;color:#fff;font-weight:800;margin-bottom:8px;">被害は「全国」で起きている ── 大病院だけではありません</h3>
+      <p style="color:var(--text-sub);font-size:0.95rem;line-height:1.9;margin-bottom:24px;">
+        過去に医療機関が<strong>外部からのサイバー攻撃</strong>を受けた地域です（誤送信などの人的ミスは除き、攻撃のみを集計）。大阪・徳島・愛知・千葉…と全国に散らばり、<strong>町のクリニックから大学病院まで規模を問いません</strong>。「地方だから」「小さいから」は通用しません。
+      </p>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:28px;align-items:center;">
+        <figure style="margin:0;border-radius:14px;overflow:hidden;background:rgba(10,47,92,0.4);border:1px solid var(--border);padding:12px;">
+          <img src="/images/higaitizu1.jpg" alt="医療機関が外部からのサイバー攻撃を受けた都道府県を件数で色分けした日本地図。大阪が最多5件、徳島・愛知・千葉が各3件など全国14都道府県" style="width:100%;display:block;border-radius:8px;">
+        </figure>
+        <div>
+          <div style="display:flex;gap:14px;margin-bottom:24px;">
+            <div style="flex:1;background:rgba(74,15,15,0.35);border:1px solid rgba(255,80,80,0.25);border-radius:10px;padding:16px;text-align:center;">
+              <div style="font-size:2.1rem;font-weight:900;color:#ff9090;line-height:1;">27<span style="font-size:1rem;">件</span></div>
+              <div style="font-size:0.8rem;color:var(--text-sub);margin-top:6px;">医療機関への外部攻撃</div>
+            </div>
+            <div style="flex:1;background:rgba(74,15,15,0.35);border:1px solid rgba(255,80,80,0.25);border-radius:10px;padding:16px;text-align:center;">
+              <div style="font-size:2.1rem;font-weight:900;color:#ff9090;line-height:1;">14<span style="font-size:0.95rem;">都道府県</span></div>
+              <div style="font-size:0.8rem;color:var(--text-sub);margin-top:6px;">全国に拡大</div>
+            </div>
+          </div>
+          <div style="font-size:0.78rem;color:var(--gold);font-weight:700;letter-spacing:0.08em;margin-bottom:12px;">凡例（色の濃さ＝被害件数）</div>
+          <div style="display:flex;flex-direction:column;gap:9px;margin-bottom:18px;">
+            <div style="display:flex;align-items:flex-start;gap:10px;"><span style="width:24px;height:16px;border-radius:3px;background:#8b2418;border:1px solid rgba(255,255,255,0.2);flex-shrink:0;margin-top:3px;"></span><span style="font-size:0.9rem;color:var(--text);"><strong style="color:#ff9090;">5件</strong> ── 大阪</span></div>
+            <div style="display:flex;align-items:flex-start;gap:10px;"><span style="width:24px;height:16px;border-radius:3px;background:#c0392b;border:1px solid rgba(255,255,255,0.2);flex-shrink:0;margin-top:3px;"></span><span style="font-size:0.9rem;color:var(--text);"><strong style="color:#ffb97d;">3件</strong> ── 徳島・愛知・千葉</span></div>
+            <div style="display:flex;align-items:flex-start;gap:10px;"><span style="width:24px;height:16px;border-radius:3px;background:#d3603e;border:1px solid rgba(255,255,255,0.2);flex-shrink:0;margin-top:3px;"></span><span style="font-size:0.9rem;color:var(--text);"><strong style="color:#ffd0a0;">2件</strong> ── 奈良・石川</span></div>
+            <div style="display:flex;align-items:flex-start;gap:10px;"><span style="width:24px;height:16px;border-radius:3px;background:#efa78c;border:1px solid rgba(255,255,255,0.2);flex-shrink:0;margin-top:3px;"></span><span style="font-size:0.9rem;color:var(--text);"><strong style="color:#ffd97d;">1件</strong> ── 岡山・神奈川・栃木・静岡・岐阜・東京・福島・秋田</span></div>
+          </div>
+          <p style="font-size:0.8rem;color:var(--text-sub);line-height:1.8;border-top:1px solid var(--border);padding-top:14px;margin:0;">
+            ※ 国内外86件の被害事例から医療分野（27件）を抽出。海外1件（米 Change Healthcare）等は地図外。出典は厚生労働省報告書・各院公表・報道。医療機関名は二次被害防止のため伏せています。
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- 侵入口ワースト -->
+    <div style="margin:8px 0 40px;">
+      <h3 style="font-size:1.15rem;color:#fff;font-weight:800;margin-bottom:8px;">どこから火が入るのか ── 実際の「侵入口」ワースト</h3>
+      <p style="color:var(--text-sub);font-size:0.95rem;line-height:1.9;margin-bottom:24px;">
+        国内外86件の被害を分析すると、攻撃者が使う「入口」はほぼパターンが決まっていました。むずかしい言葉を抜きにすると、こうです。
+      </p>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px;margin-bottom:20px;">
+        <div style="background:rgba(10,47,92,0.5);border:1px solid var(--border);border-radius:10px;padding:16px 18px;">
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;"><span style="font-size:1.5rem;">🔑</span><span style="background:rgba(74,15,15,0.6);color:#ff9090;font-weight:800;font-size:0.85rem;padding:3px 11px;border-radius:20px;">23件</span></div>
+          <div style="color:#fff;font-weight:800;font-size:0.95rem;margin-bottom:4px;">ID・パスワード破り</div>
+          <div style="color:var(--text-sub);font-size:0.84rem;line-height:1.6;">単純な鍵・使い回しが突破口</div>
+        </div>
+        <div style="background:rgba(10,47,92,0.5);border:1px solid var(--border);border-radius:10px;padding:16px 18px;">
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;"><span style="font-size:1.5rem;">🤝</span><span style="background:rgba(74,15,15,0.6);color:#ff9090;font-weight:800;font-size:0.85rem;padding:3px 11px;border-radius:20px;">14件</span></div>
+          <div style="color:#fff;font-weight:800;font-size:0.95rem;margin-bottom:4px;">取引先・委託先から</div>
+          <div style="color:var(--text-sub);font-size:0.84rem;line-height:1.6;">業者経由で巻き込まれる</div>
+        </div>
+        <div style="background:rgba(10,47,92,0.5);border:1px solid var(--border);border-radius:10px;padding:16px 18px;">
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;"><span style="font-size:1.5rem;">🎣</span><span style="background:rgba(74,15,15,0.6);color:#ff9090;font-weight:800;font-size:0.85rem;padding:3px 11px;border-radius:20px;">6件</span></div>
+          <div style="color:#fff;font-weight:800;font-size:0.95rem;margin-bottom:4px;">偽の警告でだます</div>
+          <div style="color:var(--text-sub);font-size:0.84rem;line-height:1.6;">電話させ遠隔操作させる</div>
+        </div>
+        <div style="background:rgba(10,47,92,0.5);border:1px solid var(--border);border-radius:10px;padding:16px 18px;">
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;"><span style="font-size:1.5rem;">🚪</span><span style="background:rgba(74,15,15,0.6);color:#ff9090;font-weight:800;font-size:0.85rem;padding:3px 11px;border-radius:20px;">5件</span></div>
+          <div style="color:#fff;font-weight:800;font-size:0.95rem;margin-bottom:4px;">古いVPN・機器の穴</div>
+          <div style="color:var(--text-sub);font-size:0.84rem;line-height:1.6;">放置された「壊れた勝手口」</div>
+        </div>
+        <div style="background:rgba(10,47,92,0.5);border:1px solid var(--border);border-radius:10px;padding:16px 18px;">
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;"><span style="font-size:1.5rem;">🌐</span><span style="background:rgba(74,15,15,0.6);color:#ff9090;font-weight:800;font-size:0.85rem;padding:3px 11px;border-radius:20px;">5件</span></div>
+          <div style="color:#fff;font-weight:800;font-size:0.95rem;margin-bottom:4px;">サイトの穴・改ざん</div>
+          <div style="color:var(--text-sub);font-size:0.84rem;line-height:1.6;">古い部品・露出した管理画面</div>
+        </div>
+      </div>
+
+      <div class="warning-box" style="margin-bottom:20px;">
+        <p>
+          入られた後の結末が<strong>ランサムウェア（全データ暗号化）＝86件中25件</strong>。<br>
+          <strong>外周点検（Lv.1〜2）は「外から見える入口」＝🚪古いVPN・🌐サイトの穴・露出した管理画面を、攻撃者より先に塞ぐもの</strong>。VPNは件数こそ少なくても、半田病院・大阪のように被害は最大級です。
+        </p>
+      </div>
+
+      <div style="background:rgba(74,15,15,0.5);border:1px solid rgba(255,80,80,0.4);border-left:4px solid #ff5050;border-radius:8px;padding:18px 22px;">
+        <p style="color:#ffdede;font-size:0.97rem;line-height:1.9;margin:0;">
+          <strong style="color:#ff9090;font-size:1.02rem;">⚠ これは「病院だけ」の話ではありません。</strong><br>
+          EC・ホテル・製造・学習塾・銀行…<strong>顧客名簿を持つ会社はすべて標的</strong>です。実際、KADOKAWA・アスクル・公文（最大約75万人分）のような大手でさえ防げていません。<strong>「うちは小さいから関係ない」が、いちばん危険な思い込み</strong>です。
+        </p>
+      </div>
+    </div>
+
     <div class="logic-box">
       <p>
         消防の世界では「<strong>火災は起きてからでは遅い</strong>」という鉄則があります。
@@ -667,7 +779,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           </tr>
           <tr>
             <td><span class="lvl-badge lvl-1">Lv.2 軽検査</span></td>
-            <td>入口の家訓（ポートスキャン）・使用ソフトウェアの特定・旧バージョン検出</td>
+            <td>入口の戸締まり確認（ポートスキャン）・使用ソフトウェアの特定・旧バージョン検出</td>
             <td>外部の安全性確認、ドアを叩いて回る、鍵の型番確認</td>
             <td><span style="color:#ffd97d">極低</span></td>
             <td>数万円〜</td>
@@ -751,7 +863,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <strong style="color:#ff9090;font-size:1.05rem">この絵の意味：</strong>
         外（入口）は鍵がかかっていて、外から見ると「安全そう」に見えます。
         ところが一度<strong>裏口を破られて中に入られる</strong>と、カルテや個人情報が入った棚は<strong>こじ開けられ、根こそぎ盗まれます</strong>。<br>
-        外周点検が「異常なし」でも、<strong style="color:#ff9090">中の点検をしなければ、この“盗まれている状態”に気づけません。</strong>
+        外周点検が「異常なし」でも、それは入口が無事なだけ。<strong style="color:#ff9090">中まで点検して初めて、この絵のような被害につながる弱点がないか（盗まれやすい状態でないか）を確かめられます。</strong>
       </p>
     </div>
 
