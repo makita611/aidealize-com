@@ -259,6 +259,35 @@ footer a { color:inherit; }
 @keyframes fadeUp { from{opacity:0;transform:translateY(20px)} to{opacity:1;transform:none} }
 .fade-up { animation:fadeUp 0.5s ease both; }
 
+/* 代表メッセージ */
+.message-section { max-width:820px; }
+.message-block { margin-bottom:48px; }
+.message-block:last-child { margin-bottom:0; }
+.message-h { font-size:clamp(18px,2.2vw,24px); font-weight:900; line-height:1.5; margin-bottom:18px; }
+.message-h .em { color:var(--accent); }
+.message-block p { font-size:15px; line-height:2.1; color:#333; margin-bottom:18px; }
+.message-block p:last-child { margin-bottom:0; }
+.message-lead {
+  font-size:clamp(17px,2.4vw,22px); font-weight:700; line-height:1.8;
+  color:var(--ink); border-left:4px solid var(--accent);
+  padding:4px 0 4px 22px; margin:26px 0;
+}
+.message-list { list-style:none; margin:0 0 18px; padding:0; }
+.message-list li {
+  position:relative; padding:8px 0 8px 24px;
+  font-size:14px; line-height:1.8; color:#444;
+  border-bottom:1px dashed var(--border);
+}
+.message-list li::before {
+  content:''; position:absolute; left:2px; top:16px;
+  width:7px; height:7px; border-radius:50%; background:var(--accent);
+}
+.message-sign { margin-top:40px; text-align:right; font-size:14px; color:var(--muted); }
+.message-sign strong { display:inline-block; font-size:17px; color:var(--ink); margin-left:10px; }
+@media(max-width:768px){
+  .message-block p { font-size:14px; line-height:2; }
+}
+
 @media(max-width:768px){
   nav { padding:16px 20px; }
   .nav-links { display:none; }
@@ -364,6 +393,48 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         </div>
       </div>
     </div>
+  </div>
+</div>
+
+<hr class="divider">
+
+<!-- 代表メッセージ -->
+<div class="section message-section">
+  <div class="section-label">MESSAGE</div>
+  <div class="section-title">私たちの信念</div>
+
+  <div class="message-block fade-up">
+    <div class="message-h">災害が起きる前に、けがをする前に、<br><span class="em">困っている人を助けたい。</span></div>
+    <p>私はもともと消防士でした。火災や事故、けがの現場に向かい、目の前の人を助ける仕事です。やりがいは大きなものでしたが、現場に立つほどに、ひとつの思いが強くなっていきました。</p>
+    <div class="message-lead">――災害が起きる前に、けがをする前に、困っている人を助けたい。</div>
+    <p>起きてしまった被害に駆けつけるのではなく、その手前で防ぐ。社会には、消防とは違う「人の助け方」、違う「インパクトの出し方」がある――そのことを、私は知りました。</p>
+    <p>孫正義さんやビル・ゲイツが、事業で得た力を使って社会に大きく貢献している姿を知り、自分もそういう形での貢献をしたいと思ったのです。そう考えたとき、もともと素直に興味を持っていたITやAIの世界に、その答えがあるように思えました。これが、私が消防の世界から一歩踏み出した理由です。</p>
+  </div>
+
+  <div class="message-block fade-up">
+    <div class="message-h">大企業の足元で、置き去りにされている現場</div>
+    <p>その後、私はコンサルティング、ベンチャー企業の創業メンバー、そして大企業の新規事業やサービス開発など、さまざまな立場で仕事に携わってきました。数千万〜億単位の予算をかけたプロジェクトです。</p>
+    <p>しかし中小企業の話を聞くと、状況はまるで違いました。</p>
+    <ul class="message-list">
+      <li>予算をかけたくても、かけられない</li>
+      <li>ITに詳しい優秀な人材が少ない</li>
+      <li>そもそも「何を、どう頼めばいいか」がわからない</li>
+      <li>使いたい気持ちはあっても、自分たちでは作れない／何を選べばいいかわからない</li>
+    </ul>
+    <p>その結果、サービス残業が当たり前になり、本来もっと価値を生めるはずの人が、データの転記や入力といった低い付加価値の作業に時間を奪われている。大企業の足元で、本当に助けを必要としている現場が置き去りにされている――そう感じました。そして、こここそ自分が変えられる場所ではないか、と思ったのです。</p>
+  </div>
+
+  <div class="message-block fade-up">
+    <div class="message-h">経営者の悩みも、従業員の悩みも、<span class="em">技術で解決できるはず</span></div>
+    <p>中小企業の現場には、立場を越えた共通の悩みがありました。</p>
+    <p>人材不足は年々深刻になっていきます。すると社員教育にまで手が回らなくなり、従業員はモチベーションを失い、目標を見失い、やがて辞めていってしまう。人が減るからまた現場が回らなくなる――この悪循環に、経営者も従業員も苦しんでいます。</p>
+    <p>私は、経営者が抱える悩みも、従業員が抱える悩みも、AIやITの力で解決できると信じています。知識を共有し、チームの目標を一つにそろえる仕組みをつくること。それは単なる業務効率化にとどまらず、人が辞めない、人が育つ会社をつくることにつながります。事が起きてから対処するのではなく、その手前で支える。消防士の頃に抱いた思いは、形を変えて今も私の原点です。</p>
+  </div>
+
+  <div class="message-block fade-up">
+    <div class="message-h">今、自分にできることを、地道に</div>
+    <p>会社をやりながら、今も私は、地震などの災害時には現地へ足を運び、復興・再生の活動を続けています。社長として、また一人の人間として、自分が今できることを一つひとつ、地道に積み重ねていく。その姿勢こそが、AIdealizeという会社の根っこにあるものです。</p>
+    <div class="message-sign">AIdealize株式会社 代表取締役<strong>眞貴田 正博</strong></div>
   </div>
 </div>
 
