@@ -122,6 +122,30 @@ body{font-family:'Noto Sans JP',sans-serif;background:var(--white);color:var(--i
 .ba .box li{font-size:13.5px;margin-bottom:6px;line-height:1.75;}
 .ba .arrow{font-size:26px;color:var(--red);text-align:center;}
 
+/* MYTH */
+.myth-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:20px;}
+.myth-card{background:#fff;border:1px solid var(--border);border-radius:10px;padding:22px;border-top:3px solid var(--border);}
+.myth-card.hl{border-top-color:var(--red);}
+.myth-card .icon{font-size:26px;display:block;margin-bottom:10px;}
+.myth-card h3{font-family:'Shippori Mincho',serif;font-size:15px;margin-bottom:8px;line-height:1.5;}
+.myth-card p{font-size:13.5px;color:var(--body);line-height:1.85;}
+
+/* DIAG REPORT */
+.diag-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;}
+.diag-card{background:var(--bg);border-radius:10px;padding:20px;display:flex;gap:12px;align-items:flex-start;}
+.diag-icon{font-size:22px;flex-shrink:0;}
+.diag-card h4{font-family:'Shippori Mincho',serif;font-size:14.5px;margin-bottom:6px;}
+.diag-card p{font-size:13px;color:var(--body);line-height:1.8;}
+
+/* FAQ */
+.faq-list{margin-top:8px;}
+.faq-list details{background:#fff;border:1px solid var(--border);border-radius:8px;margin-bottom:10px;overflow:hidden;}
+.faq-list summary{padding:16px 18px;font-size:14px;font-weight:700;color:var(--ink);cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;}
+.faq-list summary::-webkit-details-marker{display:none;}
+.faq-list summary::after{content:"▼";color:var(--red);font-size:11px;flex-shrink:0;}
+.faq-list details[open] summary::after{content:"▲";}
+.faq-answer{padding:0 18px 16px;font-size:13.5px;color:var(--body);line-height:1.9;}
+
 /* STEPS */
 .steps{display:flex;flex-direction:column;gap:14px;}
 .step{display:flex;gap:16px;align-items:flex-start;background:#fff;border:1px solid var(--border);border-radius:10px;padding:20px 22px;}
@@ -272,8 +296,34 @@ footer{background:#1f1f1f;border-top:1px solid rgba(255,255,255,0.06);padding:40
   </div>
 </section>
 
+<!-- MYTH -->
+<section class="section alt">
+  <div class="section-inner">
+    <div class="section-label">Common myth</div>
+    <h2 class="section-title">「もっと集客すれば売れる」は、半分だけ正しい</h2>
+    <p class="section-lead">売上＝集めた数×各段の通過率。集客だけを増やしても、通過率がそのままなら、取りこぼす数も同じ比率で増えるだけです。</p>
+    <div class="myth-grid">
+      <div class="myth-card reveal">
+        <span class="icon">📢</span>
+        <h3>広告費を増やしても、漏れる段は変わらない</h3>
+        <p>集客を倍にしても、途中で同じ割合が落ちるなら、取りこぼす数も倍になります。広告を増やす前に、まず漏れている段を直すほうが費用対効果は高くなります。</p>
+      </div>
+      <div class="myth-card reveal">
+        <span class="icon">📉</span>
+        <h3>「問い合わせが増えた」だけでは判断できない</h3>
+        <p>「動く」の数字だけを見ても、来店・成約という「実る」まで繋がっていなければ意味がありません。最後まで数字を追って初めて効果が分かります。</p>
+      </div>
+      <div class="myth-card hl reveal">
+        <span class="icon">🤖</span>
+        <h3>AIで「一番漏れている一箇所」だけを特定する</h3>
+        <p>5段すべての通過率を手作業で追うのは大変です。AIで計測・集計を自動化し、いちばん直すべき場所を毎週数字で示します。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- DIAGNOSIS -->
-<section class="section alt" id="diagnose">
+<section class="section" id="diagnose">
   <div class="section-inner">
     <div class="section-label">30-sec check</div>
     <h2 class="section-title">あなたの会社は、どのタイプ？</h2>
@@ -297,7 +347,7 @@ footer{background:#1f1f1f;border-top:1px solid rgba(255,255,255,0.06);padding:40
 </section>
 
 <!-- ENTRY TYPES -->
-<section class="section">
+<section class="section alt">
   <div class="section-inner">
     <div class="section-label">Two entries</div>
     <h2 class="section-title">落ちている場所に合わせて、打ち手を選ぶ</h2>
@@ -331,7 +381,7 @@ footer{background:#1f1f1f;border-top:1px solid rgba(255,255,255,0.06);padding:40
 </section>
 
 <!-- BEFORE/AFTER -->
-<section class="section alt">
+<section class="section">
   <div class="section-inner">
     <div class="section-label">Before / After</div>
     <h2 class="section-title">導入すると、どう変わるか</h2>
@@ -358,11 +408,14 @@ footer{background:#1f1f1f;border-top:1px solid rgba(255,255,255,0.06);padding:40
 </section>
 
 <!-- HOW -->
-<section class="section">
+<section class="section alt">
   <div class="section-inner">
     <div class="section-label">How it works</div>
     <h2 class="section-title">小さく始めて、成果を見ながら広げる</h2>
     <p class="section-lead">いきなり全部やる必要はありません。無料の取りこぼし診断から、負担の小さい一箇所ずつ。AIで下書き・監査を自動化するので、続けても安く手間がかかりません。</p>
+    <div class="reveal" style="border-radius:12px;overflow:hidden;margin-bottom:28px;box-shadow:0 10px 30px -12px rgba(8,145,178,0.3);">
+      <img src="/images/womanp9.webp" alt="担当者と一緒に、取りこぼしの改善策を検討する" loading="lazy" style="width:100%;display:block;aspect-ratio:21/9;object-fit:cover;object-position:center 30%;">
+    </div>
     <div class="steps">
       <div class="step reveal"><div class="step-num">1</div><div class="step-body"><h4>無料 取りこぼし診断</h4><p>今のサイト・Googleマップ・問い合わせ導線を診断。どの段で落ちているかを1枚レポート＋改善案3つでお出しします。</p></div></div>
       <div class="step reveal"><div class="step-num">2</div><div class="step-body"><h4>一箇所を直す</h4><p>いちばん漏れている段だけを改修。動線・動画・LINE・記事など、効く一手から着手します。</p></div></div>
@@ -372,8 +425,68 @@ footer{background:#1f1f1f;border-top:1px solid rgba(255,255,255,0.06);padding:40
   </div>
 </section>
 
+<!-- REPORT CONTENTS -->
+<section class="section">
+  <div class="section-inner">
+    <div class="section-label">In the report</div>
+    <h2 class="section-title">無料診断レポートに入っているもの</h2>
+    <p class="section-lead">データを受け取ってから、以下の内容を1枚のレポートにまとめてお渡しします。</p>
+    <div class="diag-grid">
+      <div class="diag-card reveal">
+        <span class="diag-icon">🔍</span>
+        <div><h4>取りこぼしポイント</h4><p>見つかる→訪れる→信じる→動く→実る の5段のうち、どこで一番数字が落ちているかを特定します。</p></div>
+      </div>
+      <div class="diag-card reveal">
+        <span class="diag-icon">📊</span>
+        <div><h4>現状の通過率</h4><p>各段の通過率を数字で示し、どこが弱いかを一目で分かるようにします。</p></div>
+      </div>
+      <div class="diag-card reveal">
+        <span class="diag-icon">🛠️</span>
+        <div><h4>直す一箇所と打ち手</h4><p>いちばん漏れている段に対して、今すぐ着手できる改善案を3つご提案します。</p></div>
+      </div>
+      <div class="diag-card reveal">
+        <span class="diag-icon">📅</span>
+        <div><h4>計測の仕組み</h4><p>GA4等で自動計測できる形に設定し、直した後の変化がすぐ数字で見えるようにします。</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="section alt">
+  <div class="section-inner">
+    <div class="section-label">FAQ</div>
+    <h2 class="section-title">よくあるご質問</h2>
+    <div class="faq-list">
+      <details>
+        <summary>広告を出していなくても診断できますか？</summary>
+        <div class="faq-answer">はい、可能です。サイトやGoogleマップ、問い合わせ導線があれば診断できます。広告を出していない「サイト成約型」のケースにも数多く対応しています。</div>
+      </details>
+      <details>
+        <summary>小規模な店舗・事業所でも効果はありますか？</summary>
+        <div class="faq-answer">十分に効果が出ます。むしろ小規模なほど、直した一箇所の効果が数字にはっきり表れやすい傾向があります。</div>
+      </details>
+      <details>
+        <summary>どれくらいで改善が出始めますか？</summary>
+        <div class="faq-answer">動線変更やLINE集約などの軽い施策は1〜2週間ほどで数字の変化が見え始めます。全体の底上げとしては1〜3ヶ月が目安です。</div>
+      </details>
+      <details>
+        <summary>既存のサイトやGoogleマップはそのまま使えますか？</summary>
+        <div class="faq-answer">はい。多くの場合、作り直しではなく「一箇所の改修」で対応します。全面リニューアルは必要ありません。</div>
+      </details>
+      <details>
+        <summary>データの取り扱いはどうなりますか？</summary>
+        <div class="faq-answer">診断・分析で取得したデータは本サービスの目的のみに使用し、第三者への提供は行いません。必要に応じて秘密保持契約（NDA）の締結も可能です。</div>
+      </details>
+    </div>
+  </div>
+</section>
+
 <!-- CTA -->
 <section class="cta" id="contact">
+  <div style="width:104px;height:104px;border-radius:50%;overflow:hidden;margin:0 auto 20px;border:3px solid rgba(255,255,255,0.85);box-shadow:0 8px 24px rgba(0,0,0,0.2)">
+    <img src="/images/womanp6.webp" alt="担当者が無料相談をご案内します" style="width:100%;height:100%;object-fit:cover;object-position:center 25%">
+  </div>
   <h2>まず30分、集客のお悩みを聞かせてください。</h2>
   <p>「どこで取りこぼしているか分からない」段階でも大丈夫です。現状をお伺いし、無料の取りこぼし診断からご提案します。</p>
   <div style="max-width:480px;margin:28px auto 0;text-align:left;">
