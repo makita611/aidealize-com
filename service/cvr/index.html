@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>「あと一歩」の取りこぼしを止める｜成約率アップ（ファネル改善）×AI【AIdealize】</title>
+<meta name="description" content="集めた客の何割が予約・成約まで進んでいますか。集客の各段（見つかる→訪れる→信じる→動く→実る）の通過率を見える化し、いちばん漏れている一箇所だけを直して成約を増やす、成約率アップ支援。30秒の自己診断で、あなたの会社がどの段で取りこぼしているか分かります。">
+<link rel="canonical" href="https://aidealize.com/service/cvr/">
+<meta property="og:title" content="「あと一歩」の取りこぼしを止める｜成約率アップ（ファネル改善）×AI">
+<meta property="og:description" content="売上＝集めた数×各段の通過率。どの段で客が落ちているかを見える化し、いちばん漏れている一箇所を直して成約を増やします。">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://aidealize.com/service/cvr/">
+<meta property="og:site_name" content="AIdealize株式会社">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700;900&family=Shippori+Mincho:wght@400;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-P6VNBWH3');</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "name": "成約率アップ支援（とりこぼし改善／ファネル最適化）",
+  "serviceType": "コンバージョン率改善・成約プロセス可視化（ファネル分析・動線改善・MEO・LINE導線）",
+  "provider": {"@type": "Organization", "name": "AIdealize株式会社", "url": "https://aidealize.com"},
+  "areaServed": "JP",
+  "description": "集客の各段（見つかる→訪れる→信じる→動く→実る）の通過率を可視化し、最も漏れている一箇所を直して成約を増やすAI活用の成約率改善支援。"
+}
+</script>
+<style>
+:root{
+  --red:#0891b2;--red-dark:#0e7490;
+  --ink:#1e293b;--body:#4b5563;--light:#94a3b8;
+  --border:#e2e8f0;--bg:#f8fafc;--bg2:#f1f5f9;--white:#fff;
+  --tag-bg:#ecfeff;--green:#059669;--amber-bg:#fef3c7;--amber-tx:#92400e;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{font-family:'Noto Sans JP',sans-serif;background:var(--white);color:var(--ink);overflow-x:hidden;line-height:1.7;}
+
+/* NAV */
+#mainNav{position:fixed;top:0;left:0;right:0;z-index:1000;display:flex;align-items:center;justify-content:space-between;padding:0 60px;height:68px;background:rgba(255,255,255,0.97);border-bottom:1px solid var(--border);backdrop-filter:blur(12px);transition:box-shadow 0.3s;}
+#mainNav.scrolled{box-shadow:0 2px 16px rgba(0,0,0,0.06);}
+.nav-logo{display:flex;align-items:center;gap:10px;text-decoration:none;}
+.nav-logo img{height:34px;width:auto;}
+.nav-logo-text{font-family:'DM Mono',monospace;font-size:15px;font-weight:500;color:var(--ink);letter-spacing:0.02em;}
+.nav-logo-text span{color:var(--red);}
+.nav-links{display:flex;align-items:center;gap:32px;list-style:none;}
+.nav-links a{font-size:13px;font-weight:500;color:var(--body);text-decoration:none;transition:color 0.2s;}
+.nav-links a:hover{color:var(--ink);}
+.nav-cta{background:var(--red) !important;color:#fff !important;padding:9px 20px;border-radius:4px;font-size:12px !important;font-weight:700 !important;}
+.nav-cta:hover{background:var(--red-dark) !important;}
+.nav-hamburger{display:none;flex-direction:column;justify-content:center;gap:5px;width:40px;height:40px;background:none;border:none;cursor:pointer;}
+.nav-hamburger span{display:block;width:22px;height:2px;background:var(--ink);transition:all 0.3s;transform-origin:center;}
+.nav-hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg);}
+.nav-hamburger.open span:nth-child(2){opacity:0;}
+.nav-hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
+.nav-drawer{display:none;position:fixed;top:68px;left:0;right:0;background:#fff;border-bottom:2px solid var(--red);padding:20px 28px 28px;z-index:999;}
+.nav-drawer.open{display:block;}
+.nav-drawer ul{list-style:none;display:flex;flex-direction:column;}
+.nav-drawer ul li a{display:block;padding:13px 0;font-size:15px;font-weight:500;color:var(--ink);text-decoration:none;border-bottom:1px solid var(--border);}
+
+/* HERO */
+.hero{padding:120px 60px 56px;background:linear-gradient(180deg,#f0fbfd,#fff);}
+.hero-inner{max-width:900px;}
+.hero-eyebrow{font-family:'DM Mono',monospace;font-size:12px;font-weight:500;letter-spacing:0.1em;color:var(--red-dark);background:var(--tag-bg);display:inline-block;padding:5px 12px;border-radius:4px;margin-bottom:20px;}
+.hero h1{font-family:'Shippori Mincho',serif;font-size:clamp(26px,4vw,40px);font-weight:700;line-height:1.5;margin-bottom:20px;}
+.hero h1 em{font-style:normal;color:var(--red-dark);}
+.hero-sub{font-size:15px;color:var(--body);line-height:1.95;max-width:680px;margin-bottom:14px;}
+.formula{display:inline-block;background:#fff;border:1px solid #cffafe;color:var(--red-dark);font-weight:700;padding:10px 18px;border-radius:8px;font-size:17px;margin:8px 0 24px;}
+.hero-btns{display:flex;gap:14px;flex-wrap:wrap;}
+.btn-p,.btn-o{display:inline-block;padding:13px 26px;border-radius:5px;font-size:14px;font-weight:700;text-decoration:none;transition:all 0.2s;}
+.btn-p{background:var(--red);color:#fff;}
+.btn-p:hover{background:var(--red-dark);}
+.btn-o{border:1px solid var(--border);color:var(--ink);}
+.btn-o:hover{background:var(--bg);}
+
+/* SECTION */
+.section{padding:64px 60px;}
+.section.alt{background:var(--bg);}
+.section-inner{max-width:900px;margin:0 auto;}
+.section-label{font-family:'DM Mono',monospace;font-size:12px;font-weight:500;letter-spacing:0.1em;color:var(--red);margin-bottom:10px;}
+.section-title{font-family:'Shippori Mincho',serif;font-size:clamp(20px,2.8vw,28px);font-weight:700;line-height:1.5;margin-bottom:14px;}
+.section-lead{font-size:14px;color:var(--body);line-height:1.95;max-width:680px;margin-bottom:32px;}
+.hl{color:var(--red-dark);font-weight:700;}
+
+/* FUNNEL SVG */
+.funnel-wrap{border:1px solid var(--border);border-radius:12px;padding:20px;background:#fff;}
+.funnel-note{font-size:13px;color:var(--body);margin-top:14px;line-height:1.9;}
+
+/* DIAGNOSIS */
+.q{background:#fff;border:1px solid var(--border);border-radius:10px;padding:18px 20px;margin-bottom:12px;}
+.qtext{font-size:14.5px;margin:0;}
+.opts{display:flex;gap:10px;margin-top:12px;}
+.opt{border:1px solid var(--border);background:#fff;color:var(--ink);padding:9px 26px;border-radius:6px;font-size:14px;cursor:pointer;font-family:inherit;transition:all 0.15s;}
+.opt:hover{border-color:var(--red);}
+.opt.sel{background:var(--red);color:#fff;border-color:var(--red);}
+.result{margin-top:22px;border:1px solid #cffafe;border-left:5px solid var(--red);border-radius:12px;padding:22px 24px;background:linear-gradient(135deg,#ecfeff,#f0fdf4);}
+.result h3{font-family:'Shippori Mincho',serif;font-size:19px;margin:0 0 6px;color:var(--ink);}
+.result .stage{display:inline-block;background:#fff;border:1px solid var(--red);color:var(--red-dark);font-weight:700;padding:4px 12px;border-radius:999px;font-size:13px;margin:2px 0 10px;}
+.result p{font-size:14px;color:var(--body);line-height:1.9;margin:0;}
+.result .go{display:inline-block;margin-top:12px;background:var(--red);color:#fff;border:none;padding:10px 20px;border-radius:6px;font-size:14px;font-weight:700;cursor:pointer;font-family:inherit;}
+
+/* ENTRY CARDS */
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:20px;}
+.entry-card{border:1px solid var(--border);border-top:3px solid var(--red);border-radius:12px;padding:24px;background:#fff;transition:box-shadow 0.2s,border-color 0.2s;}
+.entry-card .tag{display:inline-block;font-size:12px;font-weight:700;padding:3px 10px;border-radius:999px;margin-bottom:10px;}
+.tag.site{background:var(--tag-bg);color:var(--red-dark);}
+.tag.ad{background:var(--amber-bg);color:var(--amber-tx);}
+.entry-card h3{font-family:'Shippori Mincho',serif;font-size:16px;margin-bottom:6px;}
+.entry-card .cap{font-size:13px;color:var(--body);margin-bottom:10px;}
+.entry-card ul{margin:0;padding-left:18px;}
+.entry-card li{font-size:13.5px;color:var(--body);margin-bottom:6px;line-height:1.8;}
+.hl-card{border-color:var(--red)!important;box-shadow:0 0 0 3px rgba(8,145,178,0.18);}
+
+/* BEFORE/AFTER */
+.ba{display:grid;grid-template-columns:1fr auto 1fr;gap:16px;align-items:center;}
+.ba .box{border:1px solid var(--border);border-radius:12px;padding:20px;}
+.ba .before{background:#fef2f2;}
+.ba .after{background:#ecfdf5;}
+.ba .box h4{font-family:'Shippori Mincho',serif;font-size:15px;margin-bottom:10px;}
+.ba .box ul{margin:0;padding-left:18px;}
+.ba .box li{font-size:13.5px;margin-bottom:6px;line-height:1.75;}
+.ba .arrow{font-size:26px;color:var(--red);text-align:center;}
+
+/* STEPS */
+.steps{display:flex;flex-direction:column;gap:14px;}
+.step{display:flex;gap:16px;align-items:flex-start;background:#fff;border:1px solid var(--border);border-radius:10px;padding:20px 22px;}
+.step-num{flex-shrink:0;width:30px;height:30px;border-radius:50%;background:var(--red);color:#fff;display:flex;align-items:center;justify-content:center;font-family:'DM Mono',monospace;font-weight:700;font-size:13px;}
+.step-body h4{font-family:'Shippori Mincho',serif;font-size:15px;font-weight:700;margin-bottom:6px;}
+.step-body p{font-size:13.5px;line-height:1.85;color:var(--body);}
+
+/* CTA */
+.cta{padding:72px 24px;background:var(--ink);text-align:center;}
+.cta h2{font-family:'Shippori Mincho',serif;font-size:clamp(20px,2.6vw,28px);font-weight:700;color:#fff;line-height:1.55;margin-bottom:14px;}
+.cta p{font-size:14px;color:rgba(255,255,255,0.75);line-height:1.9;max-width:560px;margin:0 auto 28px;}
+.gas-form-group{margin-bottom:12px;}
+.gas-form input,.gas-form textarea{width:100%;padding:11px 14px;border:1px solid var(--border);border-radius:6px;font-family:inherit;font-size:14px;}
+.gas-radio-group{display:flex;gap:14px;flex-wrap:wrap;font-size:13px;color:var(--body);}
+.gas-form-btn{width:100%;padding:13px;border:none;border-radius:6px;font-size:15px;font-weight:700;cursor:pointer;font-family:inherit;}
+
+/* FOOTER */
+footer{background:#1f1f1f;border-top:1px solid rgba(255,255,255,0.06);padding:40px 60px;display:flex;align-items:center;justify-content:space-between;}
+.footer-logo{display:flex;align-items:center;gap:10px;}
+.footer-logo-mark{width:20px;height:20px;background:var(--red);clip-path:polygon(50% 0%,0% 100%,18% 100%,50% 38%,82% 100%,100% 100%);}
+.footer-logo-text{font-family:'DM Mono',monospace;font-size:13px;color:rgba(255,255,255,0.55);}
+.footer-logo-text span{color:var(--red);}
+.footer-copy{font-size:11px;color:rgba(255,255,255,0.25);font-family:'DM Mono',monospace;}
+
+.reveal{opacity:0;transform:translateY(18px);transition:opacity 0.55s ease,transform 0.55s ease;}
+.reveal.visible{opacity:1;transform:translateY(0);}
+
+@media(max-width:768px){
+  #mainNav{padding:0 20px;}
+  .nav-links{display:none;}
+  .nav-hamburger{display:flex;}
+  .hero{padding:100px 20px 44px;}
+  .section,.cta{padding-left:16px;padding-right:16px;}
+  .grid2,.ba{grid-template-columns:1fr;}
+  .ba .arrow{transform:rotate(90deg);}
+  footer{flex-direction:column;gap:14px;text-align:center;padding:28px 16px;}
+}
+</style>
+</head>
+<body>
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-P6VNBWH3" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
+<!-- NAV -->
+<nav id="mainNav">
+  <a href="/" class="nav-logo">
+    <img src="/images/logo.png" alt="AIdealize">
+    <span class="nav-logo-text"><span>AI</span>dealize</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="/column/">コラム</a></li>
+    <li><a href="/service/">サービス</a></li>
+    <li><a href="https://aidealize.com/bpr/">DX事例</a></li>
+    <li><a href="/company.html">会社概要</a></li>
+    <li><a href="#contact" class="nav-cta">無料相談</a></li>
+  </ul>
+  <button class="nav-hamburger" id="navHamburger" aria-label="メニュー">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+<div class="nav-drawer" id="navDrawer">
+  <ul>
+    <li><a href="/column/" class="drawer-link">コラム</a></li>
+    <li><a href="/service/" class="drawer-link">サービス</a></li>
+    <li><a href="https://aidealize.com/bpr/" class="drawer-link">DX事例</a></li>
+    <li><a href="/company.html" class="drawer-link">会社概要</a></li>
+    <li><a href="#contact">無料相談する</a></li>
+  </ul>
+</div>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="hero-inner">
+    <span class="hero-eyebrow">CVR × とりこぼし改善</span>
+    <h1>「あと一歩」で逃している客を、<br><em>見える化して止める。</em></h1>
+    <p class="hero-sub">広告やSEOで人を集めても、途中の段で落ちていれば売上になりません。問い合わせフォームはあるのに押されない。予約が売上につながったか分からない——。その「取りこぼし」がどの段で起きているかを数字で見える化し、いちばん漏れている一箇所だけを直します。</p>
+    <div class="formula">売上 ＝ 集めた数 × 各段の通過率</div>
+    <div class="hero-btns">
+      <a href="#diagnose" class="btn-p">30秒でどこで落ちてるか診断 →</a>
+      <a href="#contact" class="btn-o">無料相談する</a>
+    </div>
+  </div>
+</header>
+
+<!-- FUNNEL -->
+<section class="section">
+  <div class="section-inner">
+    <div class="section-label">Where it leaks</div>
+    <h2 class="section-title">取りこぼしは、どの段で起きているか</h2>
+    <p class="section-lead">「集めてから売上になるまで」は5つの段でできています。段の間で客が落ちる＝取りこぼし。落ちる場所は会社のタイプで違います。</p>
+    <div class="funnel-wrap reveal">
+      <svg width="100%" viewBox="0 0 680 430" role="img" aria-label="集客の漏斗と、取りこぼしが起きる場所">
+        <g>
+          <rect x="50" y="40" width="400" height="48" rx="4" fill="#e0f2f7" stroke="#0891b2"/>
+          <text x="250" y="62" text-anchor="middle" fill="#0e7490" font-size="15" font-weight="bold" font-family="sans-serif">見つかる</text>
+          <text x="250" y="80" text-anchor="middle" fill="#0e7490" font-size="12" font-family="sans-serif">MEO・SEO・広告・SNS</text>
+        </g>
+        <g>
+          <rect x="78" y="118" width="344" height="48" rx="4" fill="#e0f2f7" stroke="#0891b2"/>
+          <text x="250" y="140" text-anchor="middle" fill="#0e7490" font-size="15" font-weight="bold" font-family="sans-serif">訪れる</text>
+          <text x="250" y="158" text-anchor="middle" fill="#0e7490" font-size="12" font-family="sans-serif">サイトに来る</text>
+        </g>
+        <g>
+          <rect x="106" y="196" width="288" height="48" rx="4" fill="#e0f2f7" stroke="#0891b2"/>
+          <text x="250" y="218" text-anchor="middle" fill="#0e7490" font-size="15" font-weight="bold" font-family="sans-serif">信じる</text>
+          <text x="250" y="236" text-anchor="middle" fill="#0e7490" font-size="12" font-family="sans-serif">強み・人柄・実績が伝わる</text>
+        </g>
+        <g>
+          <rect x="134" y="274" width="232" height="48" rx="4" fill="#e0f2f7" stroke="#0891b2"/>
+          <text x="250" y="296" text-anchor="middle" fill="#0e7490" font-size="15" font-weight="bold" font-family="sans-serif">動く</text>
+          <text x="250" y="314" text-anchor="middle" fill="#0e7490" font-size="12" font-family="sans-serif">予約・問い合わせ・LINE</text>
+        </g>
+        <g>
+          <rect x="160" y="352" width="180" height="48" rx="4" fill="#e0f2f7" stroke="#0891b2"/>
+          <text x="250" y="374" text-anchor="middle" fill="#0e7490" font-size="15" font-weight="bold" font-family="sans-serif">実る</text>
+          <text x="250" y="392" text-anchor="middle" fill="#0e7490" font-size="12" font-family="sans-serif">来院・売上・リピート</text>
+        </g>
+        <text x="250" y="107" text-anchor="middle" fill="#64748b" font-size="12" font-family="sans-serif">通過率を計測</text>
+        <text x="250" y="185" text-anchor="middle" fill="#64748b" font-size="12" font-family="sans-serif">通過率を計測</text>
+        <text x="250" y="263" text-anchor="middle" fill="#64748b" font-size="12" font-family="sans-serif">通過率を計測</text>
+        <text x="250" y="341" text-anchor="middle" fill="#64748b" font-size="12" font-family="sans-serif">通過率を計測</text>
+        <line x1="452" y1="103" x2="470" y2="103" stroke="#94a3b8" stroke-width="1"/>
+        <line x1="424" y1="181" x2="470" y2="181" stroke="#94a3b8" stroke-width="1"/>
+        <line x1="396" y1="259" x2="470" y2="259" stroke="#94a3b8" stroke-width="1"/>
+        <line x1="368" y1="337" x2="470" y2="337" stroke="#94a3b8" stroke-width="1"/>
+        <g>
+          <rect x="470" y="80" width="170" height="46" rx="4" fill="#fef3c7"/>
+          <text x="480" y="101" fill="#92400e" font-size="14" font-weight="bold" font-family="sans-serif">広告型</text>
+          <text x="480" y="118" fill="#92400e" font-size="12" font-family="sans-serif">無駄クリック・低意欲流入</text>
+        </g>
+        <g>
+          <rect x="470" y="158" width="170" height="46" rx="4" fill="#fef3c7"/>
+          <text x="480" y="179" fill="#92400e" font-size="14" font-weight="bold" font-family="sans-serif">サイト成約型</text>
+          <text x="480" y="196" fill="#92400e" font-size="12" font-family="sans-serif">強み・人柄が伝わらず離脱</text>
+        </g>
+        <g>
+          <rect x="470" y="236" width="170" height="46" rx="4" fill="#fef3c7"/>
+          <text x="480" y="257" fill="#92400e" font-size="14" font-weight="bold" font-family="sans-serif">サイト成約型</text>
+          <text x="480" y="274" fill="#92400e" font-size="12" font-family="sans-serif">不安でボタンを押せない</text>
+        </g>
+        <g>
+          <rect x="470" y="314" width="170" height="46" rx="4" fill="#fef3c7"/>
+          <text x="480" y="335" fill="#92400e" font-size="14" font-weight="bold" font-family="sans-serif">広告型</text>
+          <text x="480" y="352" fill="#92400e" font-size="12" font-family="sans-serif">予約→来院→売上が未突合</text>
+        </g>
+      </svg>
+      <p class="funnel-note">やることはシンプルです。<span class="hl">①どの段で落ちているかを見える化 → ②いちばん漏れている一箇所だけを直す → ③また計測する。</span>全部を一度にやらないので、コストも手間も最小で済みます。</p>
+    </div>
+  </div>
+</section>
+
+<!-- DIAGNOSIS -->
+<section class="section alt" id="diagnose">
+  <div class="section-inner">
+    <div class="section-label">30-sec check</div>
+    <h2 class="section-title">あなたの会社は、どのタイプ？</h2>
+    <p class="section-lead">3つの質問に答えると、まず直すべき段が分かります。</p>
+
+    <div class="q" data-q="1">
+      <p class="qtext"><b>Q1.</b> 広告費（リスティング等）を毎月まとまって使っていますか？</p>
+      <div class="opts"><button class="opt" data-a="yes">はい</button><button class="opt" data-a="no">いいえ</button></div>
+    </div>
+    <div class="q" data-q="2">
+      <p class="qtext"><b>Q2.</b> 問い合わせフォームはあるのに、問い合わせがほとんど来ませんか？</p>
+      <div class="opts"><button class="opt" data-a="yes">はい</button><button class="opt" data-a="no">いいえ</button></div>
+    </div>
+    <div class="q" data-q="3">
+      <p class="qtext"><b>Q3.</b> 予約や問い合わせが、実際の売上にいくら繋がったか説明できますか？</p>
+      <div class="opts"><button class="opt" data-a="yes">はい</button><button class="opt" data-a="no">いいえ</button></div>
+    </div>
+
+    <div id="result" class="result" hidden></div>
+  </div>
+</section>
+
+<!-- ENTRY TYPES -->
+<section class="section">
+  <div class="section-inner">
+    <div class="section-label">Two entries</div>
+    <h2 class="section-title">落ちている場所に合わせて、打ち手を選ぶ</h2>
+    <p class="section-lead">どちらも考え方は同じ（漏斗の取りこぼしを見える化して直す）。全部を一度にやらず、漏れている一箇所から着手します。</p>
+    <div class="grid2">
+      <div class="entry-card reveal" id="card-site">
+        <span class="tag site">サイト成約型</span>
+        <h3>「信じる→動く」で落ちている</h3>
+        <p class="cap">サイトはあるのに、強みや人柄が伝わらず、不安でボタンが押されない。広告費はほぼ不要。</p>
+        <ul>
+          <li>トップに「行動につながる大ボタン」を設置</li>
+          <li>スタッフ・代表の30秒ショート動画で不安を消す</li>
+          <li>問い合わせをLINE・電話に集約（フォームは裏へ）</li>
+          <li>MEO（Googleマップ）の地域キーワード最適化</li>
+        </ul>
+      </div>
+      <div class="entry-card reveal" id="card-ad">
+        <span class="tag ad">広告見える化型</span>
+        <h3>「見つかる」「動く→実る」で漏れている</h3>
+        <p class="cap">広告は回っているが、無駄クリックや、売上に繋がったかの突合ができていない。</p>
+        <ul>
+          <li>毎週、集客状況を3行で要約</li>
+          <li>CPA悪化の原因を「広告／LP／導線」に分解</li>
+          <li>無駄クリック・低意欲キーワードを特定</li>
+          <li>予約→来院→売上まで突合し、本当のROIを可視化</li>
+        </ul>
+      </div>
+    </div>
+    <p class="funnel-note">集める側（MEO・SEO・広告分析）を厚くしたい場合は <a href="/service/marketing/" style="color:var(--red-dark);font-weight:700;">集客・広告データ分析</a> をご覧ください。</p>
+  </div>
+</section>
+
+<!-- BEFORE/AFTER -->
+<section class="section alt">
+  <div class="section-inner">
+    <div class="section-label">Before / After</div>
+    <h2 class="section-title">導入すると、どう変わるか</h2>
+    <div class="ba">
+      <div class="box before reveal">
+        <h4>Before：いま</h4>
+        <ul>
+          <li>どこで客が落ちているか分からない</li>
+          <li>改善が当てずっぽうで、お金と時間が消える</li>
+          <li>紹介・代理店頼みで、自分でコントロールできない</li>
+        </ul>
+      </div>
+      <div class="arrow">→</div>
+      <div class="box after reveal">
+        <h4>After：導入後</h4>
+        <ul>
+          <li>毎週、落ちている段が3行で分かる</li>
+          <li>直すべき一箇所が名指しで分かる</li>
+          <li>最小の手間で、予約・成約が積み上がる</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW -->
+<section class="section">
+  <div class="section-inner">
+    <div class="section-label">How it works</div>
+    <h2 class="section-title">小さく始めて、成果を見ながら広げる</h2>
+    <p class="section-lead">いきなり全部やる必要はありません。無料の取りこぼし診断から、負担の小さい一箇所ずつ。AIで下書き・監査を自動化するので、続けても安く手間がかかりません。</p>
+    <div class="steps">
+      <div class="step reveal"><div class="step-num">1</div><div class="step-body"><h4>無料 取りこぼし診断</h4><p>今のサイト・Googleマップ・問い合わせ導線を診断。どの段で落ちているかを1枚レポート＋改善案3つでお出しします。</p></div></div>
+      <div class="step reveal"><div class="step-num">2</div><div class="step-body"><h4>一箇所を直す</h4><p>いちばん漏れている段だけを改修。動線・動画・LINE・記事など、効く一手から着手します。</p></div></div>
+      <div class="step reveal"><div class="step-num">3</div><div class="step-body"><h4>また計測する</h4><p>効果を確認し、次に漏れる段へ。計測はGA4等で自動化し、結果を数字で見えるようにします。</p></div></div>
+      <div class="step reveal"><div class="step-num">4</div><div class="step-body"><h4>横展開して定着</h4><p>効いた打ち手を継続・拡大。改善のループを、現場の負担なく回し続けます。</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta" id="contact">
+  <h2>まず30分、集客のお悩みを聞かせてください。</h2>
+  <p>「どこで取りこぼしているか分からない」段階でも大丈夫です。現状をお伺いし、無料の取りこぼし診断からご提案します。</p>
+  <div style="max-width:480px;margin:28px auto 0;text-align:left;">
+    <form class="gas-form" data-page="成約率アップ ―とりこぼし改善" data-formtype="無料相談" style="background:#fff;padding:28px 24px;border-radius:10px;">
+      <div class="gas-form-group"><input type="text" name="name" placeholder="お名前" required></div>
+      <div class="gas-form-group"><input type="text" name="company" placeholder="会社名・店舗名"></div>
+      <div class="gas-form-group"><input type="email" name="email" placeholder="メールアドレス" required></div>
+      <div class="gas-form-group"><input type="tel" name="phone" placeholder="電話番号"></div>
+      <div class="gas-form-group">
+        <div class="gas-radio-group">
+          <label><input type="radio" name="request" value="資料請求" required> 資料請求</label>
+          <label><input type="radio" name="request" value="オンライン相談"> オンライン相談</label>
+          <label><input type="radio" name="request" value="導入を検討中"> 導入を検討中</label>
+        </div>
+      </div>
+      <div class="gas-form-group"><textarea name="message" rows="3" placeholder="今の集客・成約のお悩みなどあればご記入ください（任意）"></textarea></div>
+      <button type="submit" class="gas-form-btn" style="background:var(--red);color:#fff;">送信する</button>
+    </form>
+    <div class="gas-form-thanks" style="display:none;background:#fff;padding:24px;border-radius:10px;text-align:center;color:var(--ink);">
+      <p>✅ お問い合わせありがとうございます。担当者より1〜2営業日以内にご連絡いたします。</p>
+    </div>
+    <div style="text-align:center;margin-top:18px;">
+      <a href="/jidoka-shindan.html" class="btn-o" style="border-color:rgba(255,255,255,0.4);color:#fff;">まず無料診断を試す</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-logo">
+    <div class="footer-logo-mark"></div>
+    <span class="footer-logo-text"><span>A</span>idealize株式会社</span>
+  </div>
+  <span class="footer-copy">© 2020 AIdealize Inc. All rights reserved.</span>
+</footer>
+
+<script>
+(function(){
+  const btn=document.getElementById('navHamburger');
+  const drawer=document.getElementById('navDrawer');
+  const nav=document.getElementById('mainNav');
+  btn.addEventListener('click',function(){btn.classList.toggle('open');drawer.classList.toggle('open');});
+  drawer.querySelectorAll('.drawer-link').forEach(function(l){l.addEventListener('click',function(){btn.classList.remove('open');drawer.classList.remove('open');});});
+  window.addEventListener('scroll',function(){nav.classList.toggle('scrolled',window.scrollY>10);});
+})();
+const obs=new IntersectionObserver(function(e){e.forEach(function(x){if(x.isIntersecting)x.target.classList.add('visible');});},{threshold:0.08,rootMargin:'0px 0px -30px 0px'});
+document.querySelectorAll('.reveal').forEach(function(el){obs.observe(el);});
+
+(function(){
+  var answers={};
+  document.querySelectorAll('#diagnose .q').forEach(function(q){
+    q.querySelectorAll('.opt').forEach(function(b){
+      b.addEventListener('click',function(){
+        q.querySelectorAll('.opt').forEach(function(x){x.classList.remove('sel');});
+        b.classList.add('sel');
+        answers[q.dataset.q]=b.dataset.a;
+        if(answers['1']&&answers['2']&&answers['3']) show();
+      });
+    });
+  });
+  function show(){
+    var site=0,ad=0;
+    if(answers['1']==='no') site+=1;
+    if(answers['2']==='yes') site+=2;
+    if(answers['1']==='yes') ad+=1;
+    if(answers['3']==='no') ad+=2;
+    var isSite=site>=ad, r=document.getElementById('result');
+    if(isSite){
+      r.innerHTML='<h3>あなたは「サイト成約型」</h3><span class="stage">落ちている段：信じる → 動く</span>'
+        +'<p>人は来ているのに、強みや人柄が伝わらず、不安で問い合わせボタンが押されていない状態です。広告を増やす前に、まずこの一箇所を直すのが最短です。</p>'
+        +'<button class="go" data-target="card-site">この直し方を見る →</button>';
+    }else{
+      r.innerHTML='<h3>あなたは「広告見える化型」</h3><span class="stage">漏れている段：見つかる ＋ 動く → 実る</span>'
+        +'<p>広告は回っているのに、無駄クリックや、予約→売上への繋がりが見えていない状態です。まず「どこでお金が消えているか」の見える化から始めます。</p>'
+        +'<button class="go" data-target="card-ad">この直し方を見る →</button>';
+    }
+    r.hidden=false;
+    r.querySelector('.go').addEventListener('click',function(){
+      var id=this.dataset.target;
+      document.querySelectorAll('.entry-card').forEach(function(c){c.classList.remove('hl-card');});
+      var card=document.getElementById(id);
+      card.classList.add('hl-card');
+      card.scrollIntoView({behavior:'smooth',block:'center'});
+    });
+    r.scrollIntoView({behavior:'smooth',block:'nearest'});
+  }
+})();
+</script>
+<script src="/js/gas-forms.js"></script>
+</body>
+</html>
