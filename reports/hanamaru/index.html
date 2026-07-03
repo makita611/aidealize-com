@@ -140,10 +140,14 @@
   </div>
 
   <div class="verdict-card">
-    <div class="verdict-good"><span class="icon">✅</span> システム改修を1件その場で実施済み<span class="done-tag">対応済み</span></div>
+    <div class="verdict-good"><span class="icon">✅</span> 修正2件をその場で実施済み<span class="done-tag">対応済み</span></div>
     <div class="verdict-but">
       <span class="icon">🔍</span>
-      <span class="txt"><b>発見：モバイルでは「信じる」段階の決め手となる実演動画が非表示だった。</b>PC版では「LINEに音声を送るだけでSOAPノートが自動生成される」様子を動画で見せているが、モバイルはCSSで動画自体を<code>display:none</code>にしていた。モバイル直帰率44%(PC 11%)・エンゲージ率56%(PC 89%)という差の主因である可能性が高い。<b>→ その場で修正し、モバイルでも動画が表示されるようにした。</b></span>
+      <span class="txt"><b>本丸の発見：モバイルの一番目立つボタンが「PC専用」の場所に案内していた。</b>ヒーローの主役CTA「まず30秒、無料でSOAP生成を試す」は全端末で同じ#demoリンクだったが、そのデモは明示的に「PC DEMO」バッジ付きで、本文にも「スマホからはLINEでご利用ください」と書かれていた。つまりモバイル訪問者は一番目立つボタンを押すと「あなたの端末では使えません」に行き着く構造だった。<b>→ モバイルだけLINE登録を主役にしたCTAへ差し替え済み。</b></span>
+    </div>
+    <div class="verdict-but" style="margin-top:10px;">
+      <span class="icon">🔍</span>
+      <span class="txt"><b>あわせて、実演動画がモバイルでは非表示だった点も修正。</b>「信じる」段階の決め手を出せるようにした。</span>
     </div>
   </div>
 
@@ -184,6 +188,14 @@
     <div class="body">
       <b>モバイルで実演動画が非表示だったCSSを修正</b>
       <span>「.hero-video-col { display:none; }」を、モバイルでも表示されるスタイルに変更済み（sites/aidealize/lp/hanamaru-kango/index.html）。</span>
+      <div class="who-badge done">対応済み</div>
+    </div>
+  </div>
+  <div class="action-card done">
+    <div class="num">✓</div>
+    <div class="body">
+      <b>【本丸】モバイルの一番目立つボタンが「PC専用デモ」に飛んでいた導線を修正</b>
+      <span>デモセクションは明示的に「PC DEMO」バッジ付きで「スマホからはLINEでご利用ください」と書かれているのに、ヒーローの一番目立つCTAは全端末で同じ#demoリンクだった。モバイルだけLINE登録を主役にしたCTAに差し替え済み。動画非表示より、こちらがモバイル低エンゲージの本丸だった可能性が高い。</span>
       <div class="who-badge done">対応済み</div>
     </div>
   </div>
