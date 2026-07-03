@@ -2,5 +2,6 @@ User-agent: *
 Allow: /
 Disallow: /liff/
 Disallow: /js/
+Disallow: /reports/
 
 Sitemap: https://aidealize.com/sitemap.xml

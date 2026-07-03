@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex,nofollow">
+<title>週次サイトレポート｜AIdealize.com</title>
+<style>
+  :root {
+    --cyan: #0891b2; --cyan-dark: #0e7490;
+    --ink: #1e293b; --body: #4b5563; --light: #94a3b8;
+    --border: #e2e8f0; --bg: #f8fafc; --bg2: #f1f5f9;
+    --tag-bg: #ecfeff;
+    --green: #059669; --green-bg: #ecfdf5;
+    --amber: #d97706; --amber-bg: #fffbeb; --amber-border: #fde68a; --amber-text: #7c5e1e;
+    --rose: #be123c; --rose-bg: #fff1f2; --rose-border: #e11d48;
+  }
+  * { box-sizing: border-box; }
+  body {
+    font-family: "Hiragino Kaku Gothic ProN","Yu Gothic","Meiryo",sans-serif;
+    background: var(--bg2);
+    margin: 0; padding: 20px; color: var(--ink); line-height: 1.65;
+  }
+  .sheet { max-width: 820px; margin: 0 auto; }
+
+  /* ── ヘッダー ───────────────────── */
+  .top {
+    background: linear-gradient(135deg, var(--ink) 0%, #16233a 100%);
+    color: #fff; border-radius: 14px; padding: 26px 30px; margin-bottom: 14px;
+    display: flex; justify-content: space-between; align-items: flex-end; flex-wrap: wrap; gap: 10px;
+    border-bottom: 3px solid var(--cyan);
+  }
+  .top h1 { margin: 0; font-size: 20px; font-weight: 700; }
+  .top .period { font-size: 12px; opacity: 0.7; }
+
+  /* ── ヒーロー数字 3枚 ───────────────── */
+  .hero-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-bottom: 14px; }
+  .hero-card { background: #fff; border-radius: 14px; padding: 18px 16px; border: 1px solid var(--border); text-align: center; }
+  .hero-card .label { font-size: 12px; color: var(--light); margin-bottom: 6px; }
+  .hero-card .value { font-size: 34px; font-weight: 800; color: var(--ink); line-height: 1; }
+  .hero-card .unit { font-size: 13px; font-weight: 500; color: var(--light); }
+  .hero-card .delta { margin-top: 8px; font-size: 13px; font-weight: 700; }
+  .delta.up { color: var(--green); }
+  .delta.flat { color: var(--light); }
+
+  /* ── 「良さそう、でも」の2層カード ───────── */
+  .verdict-card { background: #fff; border-radius: 14px; padding: 20px 22px; margin-bottom: 14px; border: 1px solid var(--border); }
+  .verdict-good {
+    display: flex; align-items: center; gap: 10px; font-size: 15px; font-weight: 700; color: var(--green);
+    padding-bottom: 12px; margin-bottom: 12px; border-bottom: 1px dashed var(--border);
+  }
+  .verdict-good .icon { font-size: 20px; }
+  .verdict-but {
+    background: var(--amber-bg); border: 1px solid var(--amber-border); border-left: 4px solid var(--amber);
+    border-radius: 0 8px 8px 0; padding: 14px 16px; display: flex; gap: 10px;
+  }
+  .verdict-but .icon { font-size: 18px; flex-shrink: 0; }
+  .verdict-but .txt { font-size: 13.5px; color: var(--amber-text); }
+  .verdict-but .txt b { color: var(--amber); }
+
+  /* ── バーグラフ ───────────── */
+  .barchart-card { background: #fff; border-radius: 14px; padding: 20px 22px; margin-bottom: 14px; border: 1px solid var(--border); }
+  .barchart-card h3 { margin: 0 0 14px; font-size: 14px; color: var(--ink); }
+  .bar-row { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; font-size: 12.5px; }
+  .bar-row .bar-label { width: 92px; flex-shrink: 0; color: var(--body); }
+  .bar-track { flex: 1; background: var(--bg2); border-radius: 6px; height: 20px; overflow: hidden; }
+  .bar-fill { height: 100%; border-radius: 6px; display: flex; align-items: center; justify-content: flex-end; padding-right: 8px; color: #fff; font-size: 11px; font-weight: 700; }
+  .bar-fill.now { background: var(--cyan); }
+  .bar-fill.prev { background: #b9c3cf; }
+  .bar-fill.warn { background: var(--rose); }
+  .bar-note { font-size: 11.5px; color: var(--light); margin-top: 4px; }
+
+  /* ── ひとことセクション ────────────── */
+  .plain-card { background: #fff; border-radius: 14px; padding: 20px 22px; margin-bottom: 14px; border: 1px solid var(--border); }
+  .plain-card h3 { margin: 0 0 12px; font-size: 14px; color: var(--ink); }
+  .plain-list { margin: 0; padding: 0; list-style: none; }
+  .plain-list li { display: flex; gap: 10px; padding: 8px 0; font-size: 14px; border-bottom: 1px solid var(--bg2); }
+  .plain-list li:last-child { border-bottom: none; }
+  .plain-list .dot { color: var(--cyan); font-weight: 900; }
+  .term { color: var(--light); font-size: 11.5px; }
+
+  /* ── アクション：2トラック構成 ──────────── */
+  .track-head { display: flex; align-items: center; gap: 10px; margin: 22px 0 12px; }
+  .track-head .tag {
+    font-size: 11px; font-weight: 700; padding: 4px 12px; border-radius: 100px; letter-spacing: 0.03em;
+  }
+  .track-head.system .tag { background: var(--tag-bg); color: var(--cyan-dark); }
+  .track-head.content .tag { background: var(--amber-bg); color: var(--amber); border: 1px solid var(--amber-border); }
+  .track-head h3 { margin: 0; font-size: 14px; color: var(--ink); }
+  .track-sub { font-size: 12px; color: var(--light); margin: -8px 0 12px; }
+
+  .action-card {
+    background: #fff; border-radius: 12px; padding: 14px 18px; margin-bottom: 10px;
+    border: 1px solid var(--border); display: flex; align-items: flex-start; gap: 12px;
+  }
+  .action-card.system { border-left: 5px solid var(--cyan); }
+  .action-card.content { border-left: 5px solid var(--amber); }
+  .action-card .num { font-size: 18px; font-weight: 800; color: var(--light); flex-shrink: 0; }
+  .action-card .body { flex: 1; }
+  .action-card .body b { display: block; font-size: 13.5px; margin-bottom: 2px; }
+  .action-card .body span { font-size: 13px; color: var(--body); }
+  .who-badge {
+    display: inline-block; font-size: 10.5px; font-weight: 700; padding: 2px 9px; border-radius: 100px;
+    margin-top: 6px;
+  }
+  .who-badge.ai { background: var(--tag-bg); color: var(--cyan-dark); }
+  .who-badge.draft { background: var(--amber-bg); color: var(--amber); }
+  .who-badge.human { background: var(--rose-bg); color: var(--rose); }
+
+  .footer { text-align: center; font-size: 11px; color: var(--light); margin-top: 18px; }
+
+  @media (max-width: 600px) { .hero-row { grid-template-columns: 1fr; } }
+  @media print { body { background: #fff; padding: 0; } }
+</style>
+</head>
+<body>
+<div class="sheet">
+
+  <div class="top">
+    <div>
+      <h1>AIdealize.com 週次レポート</h1>
+      <div class="period">2026/06/24〜06/30（前週比）</div>
+    </div>
+    <div class="period">PoCテスト版・7/1作成</div>
+  </div>
+
+  <div class="hero-row">
+    <div class="hero-card">
+      <div class="label">サイト訪問数</div>
+      <div class="value">197</div>
+      <div class="unit">セッション</div>
+      <div class="delta up">▲ 前週比 +27%</div>
+    </div>
+    <div class="hero-card">
+      <div class="label">問い合わせ成約</div>
+      <div class="value">6</div>
+      <div class="unit">件（前週0件）</div>
+      <div class="delta up">▲ 全件1ページから</div>
+    </div>
+    <div class="hero-card">
+      <div class="label">検索クリック(SEO)</div>
+      <div class="value">69</div>
+      <div class="unit">回／28日間</div>
+      <div class="delta flat">単発集計・比較なし</div>
+    </div>
+  </div>
+
+  <div class="verdict-card">
+    <div class="verdict-good"><span class="icon">✅</span> 直帰率・エンゲージメント率も大きく改善（数字だけ見れば絶好調）</div>
+    <div class="verdict-but">
+      <span class="icon">⚠️</span>
+      <span class="txt"><b>ただし鵜呑みは危険。</b>改善の裏で「流入元不明」の訪問が<b>5件→40件と8倍</b>に急増している。直帰率・エンゲージ率の改善も、この正体不明の訪問に引っ張られている可能性が高い。良い数字が出た週こそ、まず計測を疑うのが正しい姿勢。</span>
+    </div>
+  </div>
+
+  <div class="barchart-card">
+    <h3>訪問数：今週 vs 前週</h3>
+    <div class="bar-row">
+      <div class="bar-label">今週</div>
+      <div class="bar-track"><div class="bar-fill now" style="width:100%">197</div></div>
+    </div>
+    <div class="bar-row">
+      <div class="bar-label">前週</div>
+      <div class="bar-track"><div class="bar-fill prev" style="width:78.7%">155</div></div>
+    </div>
+    <h3 style="margin-top:20px;">どこから来た人が増えた？</h3>
+    <div class="bar-row">
+      <div class="bar-label">Direct（直接）</div>
+      <div class="bar-track"><div class="bar-fill now" style="width:100%">74</div></div>
+    </div>
+    <div class="bar-row">
+      <div class="bar-label">検索（SEO）</div>
+      <div class="bar-track"><div class="bar-fill now" style="width:91.9%">68</div></div>
+    </div>
+    <div class="bar-row">
+      <div class="bar-label">不明⚠️</div>
+      <div class="bar-track"><div class="bar-fill warn" style="width:54.1%">40</div></div>
+    </div>
+    <div class="bar-row">
+      <div class="bar-label">紹介・広告</div>
+      <div class="bar-track"><div class="bar-fill now" style="width:20.3%">15</div></div>
+    </div>
+    <div class="bar-note">「不明」は前週わずか5件だった枠。ここだけが突出して伸びている＝要注意サイン。</div>
+  </div>
+
+  <div class="plain-card">
+    <h3>今週わかったこと</h3>
+    <ul class="plain-list">
+      <li><span class="dot">●</span> 問い合わせ成約6件は<b>すべて「防災BCP」ページ経由</b>。本命の看護記録AIやBPRのページからの成約はゼロだった。</li>
+      <li><span class="dot">●</span> 検索エンジンでは「事例」を探している人からの表示は増えているが、まだクリックにはあまり繋がっていない<span class="term">（表示回数は伸びているのに実際にクリックされる割合＝CTRが低い状態）</span>。</li>
+      <li><span class="dot">●</span> 6/28に打った改善施策（記事の整理・新設ページ）の効果はまだこのデータに出ていない。来週以降に効果が出るか要観察。</li>
+    </ul>
+  </div>
+
+  <!-- システム改修トラック -->
+  <div class="track-head system"><span class="tag">🖥️ システム改修</span><h3>AIが自動で調査・対応できる範囲</h3></div>
+  <div class="track-sub">計測・URL・タグまわり。エンジニアの手を借りずAIが原因特定→修正まで完結できる。</div>
+
+  <div class="action-card system">
+    <div class="num">1</div>
+    <div class="body">
+      <b>「流入元不明」の正体を確認・修正</b>
+      <span>計測タグの欠落やボット混入を自動診断。原因がわかれば設定修正までAIで対応可能。</span>
+      <div class="who-badge ai">AI自動対応</div>
+    </div>
+  </div>
+  <div class="action-card system">
+    <div class="num">2</div>
+    <div class="body">
+      <b>古いURLへのアクセス・リダイレクト漏れの修正</b>
+      <span>本来リダイレクトされているはずの旧ページへのアクセスが残存。設定を点検し自動修正。</span>
+      <div class="who-badge ai">AI自動対応</div>
+    </div>
+  </div>
+
+  <!-- コンテンツ改修トラック -->
+  <div class="track-head content"><span class="tag">✍️ コンテンツ改修</span><h3>AIが下書きし、経営者・企画が確認する範囲</h3></div>
+  <div class="track-sub">文章・訴求・導線の話。AIが叩き台を作り、最終判断は人が行う。</div>
+
+  <div class="action-card content">
+    <div class="num">1</div>
+    <div class="body">
+      <b>防災BCPページの問い合わせ内容を分析</b>
+      <span>防災単体の相談か、看護・業務効率化に関する相談も混ざっているかをAIが仕分け、傾向を報告。</span>
+      <div class="who-badge draft">AI下書き→要確認</div>
+    </div>
+  </div>
+  <div class="action-card content">
+    <div class="num">2</div>
+    <div class="body">
+      <b>看護記録AI・BPR系LPのCTA文言・導線を改善</b>
+      <span>成約がゼロなページの訴求文・ボタン文言の改善案をAIが複数パターン作成。承認ボタンを押すだけの状態にして提示。</span>
+      <div class="who-badge draft">AI下書き→要確認</div>
+    </div>
+  </div>
+  <div class="action-card content">
+    <div class="num">3</div>
+    <div class="body">
+      <b>（次フェーズ）事例動画の台本づくり</b>
+      <span>撮影自体は人が行う必要があるが、構成・ナレーション原稿はAIが下書きし、撮影後の編集指示も作成。</span>
+      <div class="who-badge human">撮影は人が実施</div>
+    </div>
+  </div>
+
+  <div class="footer">AI集客エージェント｜週次サイトレポート PoC ｜ 2026-07-01作成</div>
+</div>
+</body>
+</html>
