@@ -255,6 +255,11 @@ body {
   max-width: 580px; margin-bottom: 36px;
 }
 .hero-cta-group { display: flex; align-items: center; gap: 16px; flex-wrap: wrap; margin-bottom: 56px; }
+.hero-cta-mobile { display: none; }
+@media (max-width: 640px) {
+  .hero-cta-pc { display: none; }
+  .hero-cta-mobile { display: flex; }
+}
 .hero-stats {
   display: flex; gap: 40px; padding: 28px 36px;
   border: 1px solid var(--border); border-radius: 4px;
@@ -973,9 +978,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       SOAP形式の看護記録を自動生成します。<br><br>
       スマホでもPCでも使えます。<strong>IT知識ゼロでOK。</strong>
     </p>
-    <div class="hero-cta-group" style="margin-bottom:14px;">
+    <div class="hero-cta-group hero-cta-pc" style="margin-bottom:14px;">
       <a href="#demo" class="btn-line" style="font-size:1.05rem;padding:18px 40px;background:var(--nursing) !important;">▶ まず30秒、無料でSOAP生成を試す</a>
       <a href="https://lin.ee/QDOd6Rs" target="_blank" rel="noopener" class="btn-secondary">💬 LINEで友だち追加（3ヶ月無料）→</a>
+    </div>
+    <div class="hero-cta-group hero-cta-mobile" style="margin-bottom:14px;">
+      <a href="https://lin.ee/QDOd6Rs" target="_blank" rel="noopener" class="btn-line" style="font-size:1.05rem;padding:18px 40px;background:var(--line) !important;">💬 LINEで友だち追加して今すぐ試す（3ヶ月無料）</a>
+      <a href="#demo" class="btn-secondary">PC版の30秒デモも見る →</a>
     </div>
     <p style="font-size:0.85rem;color:var(--gray);margin-bottom:48px;">※ デモは<strong>登録・インストール不要</strong>で、いますぐその場で試せます。気に入ったらLINEで友だち追加（1分・営業電話なし・利用料3ヶ月無料）。</p>
     <div class="hero-stats reveal">
