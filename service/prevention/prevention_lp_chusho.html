@@ -1110,5 +1110,17 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   })();
 </script>
 <script src="/js/gas-forms.js"></script>
+<script>
+// LINE友だち追加クリックを計測（GTMカスタムイベント: line_friend_click）
+document.addEventListener('click', function(e){
+  var a = e.target.closest('a[href*="lin.ee"]');
+  if(!a) return;
+  window.dataLayer = window.dataLayer || [];
+  window.dataLayer.push({
+    event: 'line_friend_click',
+    line_button_location: (a.textContent || '').trim().replace(/\s+/g,' ').slice(0,40)
+  });
+});
+</script>
 </body>
 </html>
