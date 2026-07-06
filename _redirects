@@ -15,6 +15,10 @@
 # ダブルスラッシュ修正
 /lp/hanamaru-kango//    /lp/hanamaru-kango/    301
 
+# はなまる看護 営業用 短縮URL（/f/<事業所コード> → UTM付きLPへ）
+# 例: /f/110001 → utm_campaign=110001。番号を増やすだけで自動対応（この1行のみで運用）
+/f/:code    /lp/hanamaru-kango/?utm_source=form&utm_medium=outreach&utm_campaign=:code    301
+
 # 旧URL call-ai → 実ファイルへ
 /lp/call-ai/        /lp/call-ai-lp1.html    301
 /lp/call-ai         /lp/call-ai-lp1.html    301
