@@ -4,10 +4,10 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>クリニックの集客をAIで強化｜MEO・口コミ対策×商圏データ分析マーケティング支援【AIdealize】</title>
-<meta name="description" content="集客に悩むクリニック向けのAIマーケティング支援。Googleマップ(MEO)・口コミ対策・HP改善で来院を増やし、商圏分析・広告効果測定・リピート/リファラル分析で「次の一手」を可視化。医療現場183事例の知見をもとに、業務効率化から集客まで一気通貫で支援します。">
+<meta name="description" content="集客に悩むクリニック向けのAIマーケティング支援。Googleマップ(MEO)・口コミ対策・HP改善で来院を増やし、商圏分析・広告効果測定・リピート/リファラル分析で「次の一手」を可視化。毎週「何をやって・何が効いたか」が届く透明な週次レポート付き。まずは御社サイトを無料で分析します。">
 <link rel="canonical" href="https://aidealize.com/service/clinic-marketing/">
 <meta property="og:title" content="クリニックの集客をAIで強化｜MEO・口コミ対策×商圏データ分析マーケティング支援">
-<meta property="og:description" content="集客に悩むクリニック向けのAIマーケ支援。MEO・口コミ・HP改善で来院増、商圏/広告効果/リピート分析で次の一手を可視化。">
+<meta property="og:description" content="集客に悩むクリニック向けのAIマーケ支援。MEO・口コミ・HP改善で来院増、商圏/広告効果/リピート分析で次の一手を可視化。毎週届く透明な週次レポート付き。まずは無料でサイト分析。">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://aidealize.com/service/clinic-marketing/">
 <meta property="og:site_name" content="AIdealize株式会社">
@@ -23,7 +23,20 @@
   "serviceType": "クリニック向けマーケティング支援（MEO・口コミ・商圏データ分析）",
   "provider": {"@type": "Organization", "name": "AIdealize株式会社", "url": "https://aidealize.com"},
   "areaServed": "JP",
-  "description": "クリニック向けに、MEO・口コミ対策・HP改善によるWeb集客と、商圏分析・広告効果測定・リピート/リファラル分析を組み合わせたAIマーケティング支援を提供。"
+  "description": "クリニック向けに、MEO・口コミ対策・HP改善によるWeb集客と、商圏分析・広告効果測定・リピート/リファラル分析を組み合わせたAIマーケティング支援を提供。毎週の透明な週次レポートで運用の中身を可視化。"
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {"@type":"Question","name":"広告を出していなくても分析できますか？","acceptedAnswer":{"@type":"Answer","text":"はい、可能です。サイト・Googleマップ・問い合わせ導線があれば分析できます。広告に頼らず「サイトと口コミで選ばれる」クリニックのケースにも数多く対応しています。"}},
+    {"@type":"Question","name":"小さなクリニックでも効果はありますか？","acceptedAnswer":{"@type":"Answer","text":"十分に効果が出ます。むしろ規模が小さいほど、直した一箇所の効果が来院数の変化にはっきり表れやすい傾向があります。"}},
+    {"@type":"Question","name":"どれくらいで変化が出始めますか？","acceptedAnswer":{"@type":"Answer","text":"MEOや予約導線などの軽い施策は1〜2週間で数字の変化が見え始めます。検索順位・来院の底上げは1〜3ヶ月が目安です。毎週のレポートで途中経過が見えます。"}},
+    {"@type":"Question","name":"今のホームページやGoogleマップはそのまま使えますか？","acceptedAnswer":{"@type":"Answer","text":"はい。多くの場合、作り直しではなく「一箇所の改修」で対応します。全面リニューアルは必要ありません。"}},
+    {"@type":"Question","name":"患者データの取り扱いはどうなりますか？","acceptedAnswer":{"@type":"Answer","text":"分析は個人を特定しない統計・商圏分析（エリア単位の集計）を基本とします。患者情報を扱う場合は委託契約と安全管理措置を前提に、利用目的の範囲内で運用します。必要に応じてNDAを締結します。"}}
+  ]
 }
 </script>
 <style>
@@ -32,6 +45,7 @@
   --ink:#1e293b;--body:#4b5563;--light:#94a3b8;
   --border:#e2e8f0;--bg:#f8fafc;--bg2:#f1f5f9;--white:#fff;
   --tag-bg:#ecfeff;--green:#059669;--green-bg:#ecfdf5;
+  --amber:#d97706;--amber-bg:#fffbeb;--amber-border:#fde68a;--amber-text:#7c5e1e;
 }
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
 html{scroll-behavior:smooth;}
@@ -74,6 +88,8 @@ body{font-family:'Noto Sans JP',sans-serif;background:var(--white);color:var(--i
 .btn-p:hover{background:var(--red-dark);transform:translateY(-2px);}
 .btn-o{display:inline-flex;align-items:center;gap:6px;border:2px solid var(--red);color:var(--red);padding:12px 26px;border-radius:6px;font-size:14px;font-weight:700;text-decoration:none;transition:all 0.2s;}
 .btn-o:hover{background:var(--tag-bg);}
+.hero-offer{display:inline-block;margin-top:20px;font-size:12.5px;color:var(--body);background:#fff;border:1px dashed var(--red);border-radius:100px;padding:7px 18px;}
+.hero-offer b{color:var(--red-dark);}
 
 /* SECTION */
 .section{padding:72px 24px;}
@@ -98,12 +114,53 @@ body{font-family:'Noto Sans JP',sans-serif;background:var(--white);color:var(--i
 .note-label{font-size:11px;font-weight:700;color:#b45309;letter-spacing:0.06em;margin-bottom:8px;}
 .note p{font-size:13px;line-height:1.9;color:#7c5e1e;margin:0;}
 
+/* CASE */
+.case-wrap{background:#fff;border:1px solid var(--border);border-radius:14px;padding:34px 32px;box-shadow:0 4px 24px rgba(15,23,42,0.05);}
+.case-badge{display:inline-flex;align-items:center;gap:7px;background:var(--green-bg);color:var(--green);font-size:11.5px;font-weight:700;padding:5px 14px;border-radius:100px;margin-bottom:16px;}
+.case-wrap h3{font-family:'Shippori Mincho',serif;font-size:clamp(18px,2.2vw,22px);color:var(--ink);line-height:1.5;margin-bottom:12px;}
+.case-wrap > p{font-size:14px;line-height:1.95;color:var(--body);}
+.case-metrics{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:24px 0 18px;}
+.metric{background:var(--bg);border:1px solid var(--border);border-radius:10px;padding:20px 14px;text-align:center;}
+.metric .m-label{font-size:11.5px;color:var(--light);margin-bottom:10px;line-height:1.5;}
+.metric .m-val{font-family:'Shippori Mincho',serif;font-size:20px;font-weight:700;color:var(--ink);line-height:1.35;}
+.metric .m-val em{font-style:normal;color:var(--green);}
+.metric .m-arrow{color:var(--light);font-weight:400;}
+.case-honest{background:var(--amber-bg);border:1px solid var(--amber-border);border-left:4px solid var(--amber);border-radius:0 8px 8px 0;padding:14px 18px;font-size:12.5px;line-height:1.85;color:var(--amber-text);}
+.case-honest b{color:var(--amber);}
+@media(max-width:600px){.case-metrics{grid-template-columns:1fr;}}
+
+/* TRANSPARENCY (differentiator) */
+.diff-strip{background:linear-gradient(135deg,#ecfeff,#f0fdf4);border:1px solid #cffafe;border-radius:14px;padding:32px 30px;}
+.report-mock{background:#fff;border:1px solid var(--border);border-radius:10px;padding:18px 20px;margin-top:20px;}
+.report-mock .rm-head{display:flex;justify-content:space-between;align-items:center;border-bottom:1px dashed var(--border);padding-bottom:12px;margin-bottom:12px;}
+.report-mock .rm-title{font-size:13px;font-weight:700;color:var(--ink);}
+.report-mock .rm-badge{font-size:10.5px;font-weight:700;color:var(--red-dark);background:var(--tag-bg);padding:3px 10px;border-radius:100px;}
+.report-mock ul{list-style:none;display:flex;flex-direction:column;gap:8px;}
+.report-mock ul li{font-size:13px;color:var(--body);display:flex;gap:8px;line-height:1.7;}
+.report-mock ul li::before{content:'●';color:var(--red);font-size:9px;margin-top:5px;flex-shrink:0;}
+
 /* STEPS */
 .steps{display:flex;flex-direction:column;gap:14px;margin-top:8px;}
 .step{display:flex;gap:16px;align-items:flex-start;background:#fff;border:1px solid var(--border);border-radius:10px;padding:20px 22px;}
 .step-num{flex-shrink:0;width:30px;height:30px;border-radius:50%;background:var(--red);color:#fff;display:flex;align-items:center;justify-content:center;font-family:'DM Mono',monospace;font-weight:700;font-size:13px;}
 .step-body h4{font-family:'Shippori Mincho',serif;font-size:16px;font-weight:700;color:var(--ink);margin-bottom:6px;}
 .step-body p{font-size:13.5px;line-height:1.85;color:var(--body);}
+
+/* DIAG GRID (無料分析でお渡しするもの) */
+.diag-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;}
+.diag-card{display:flex;gap:14px;background:#fff;border:1px solid var(--border);border-radius:10px;padding:22px;}
+.diag-icon{font-size:24px;flex-shrink:0;line-height:1.4;}
+.diag-card h4{font-family:'Shippori Mincho',serif;font-size:15px;margin-bottom:6px;color:var(--ink);}
+.diag-card p{font-size:13px;color:var(--body);line-height:1.8;}
+@media(max-width:600px){.diag-grid{grid-template-columns:1fr;}}
+
+/* FAQ */
+.faq-list details{background:#fff;border:1px solid var(--border);border-radius:10px;margin-bottom:12px;overflow:hidden;}
+.faq-list summary{cursor:pointer;padding:18px 46px 18px 22px;font-size:14.5px;font-weight:700;color:var(--ink);list-style:none;position:relative;}
+.faq-list summary::-webkit-details-marker{display:none;}
+.faq-list summary::after{content:'+';position:absolute;right:22px;top:16px;color:var(--red);font-weight:700;font-size:18px;}
+.faq-list details[open] summary::after{content:'−';}
+.faq-answer{padding:0 22px 18px;font-size:13.5px;color:var(--body);line-height:1.9;}
 
 /* CASE LINK */
 .case-link{display:flex;align-items:center;justify-content:space-between;gap:16px;background:linear-gradient(135deg,#ecfeff,#f0fdf4);border:1px solid #cffafe;border-radius:12px;padding:24px 28px;margin-top:24px;text-decoration:none;flex-wrap:wrap;}
@@ -133,6 +190,7 @@ footer{background:#1f1f1f;border-top:1px solid rgba(255,255,255,0.06);padding:40
 @media(max-width:768px){
   .hero{padding-top:100px;}
   .section,.cta{padding-left:16px;padding-right:16px;}
+  .case-wrap,.diff-strip{padding-left:20px;padding-right:20px;}
   footer{flex-direction:column;gap:14px;text-align:center;padding:28px 16px;}
 }
 </style>
@@ -151,7 +209,7 @@ footer{background:#1f1f1f;border-top:1px solid rgba(255,255,255,0.06);padding:40
     <li><a href="/service/">サービス</a></li>
     <li><a href="https://aidealize.com/bpr/">DX事例</a></li>
     <li><a href="/company.html">会社概要</a></li>
-    <li><a href="#contact" class="nav-cta">無料相談</a></li>
+    <li><a href="#contact" class="nav-cta">無料でサイト分析</a></li>
   </ul>
   <button class="nav-hamburger" id="navHamburger" aria-label="メニュー">
     <span></span><span></span><span></span>
@@ -163,7 +221,7 @@ footer{background:#1f1f1f;border-top:1px solid rgba(255,255,255,0.06);padding:40
     <li><a href="/service/" class="drawer-link">サービス</a></li>
     <li><a href="https://aidealize.com/bpr/" class="drawer-link">DX事例</a></li>
     <li><a href="/company.html" class="drawer-link">会社概要</a></li>
-    <li><a href="#contact">無料相談する</a></li>
+    <li><a href="#contact">無料でサイトを分析する</a></li>
   </ul>
 </div>
 
@@ -172,11 +230,12 @@ footer{background:#1f1f1f;border-top:1px solid rgba(255,255,255,0.06);padding:40
   <div class="hero-inner">
     <span class="hero-eyebrow">CLINIC MARKETING × AI</span>
     <h1>集客に悩むクリニックへ。<br><em>来院を増やす仕組み</em>を、AIでつくる。</h1>
-    <p class="hero-sub">Googleマップ（MEO）・口コミ・ホームページの対策で「見つけてもらい、選ばれる」状態へ。さらに商圏・広告効果・リピート/リファラルのデータ分析で「次の一手」を可視化します。医療現場183事例の知見をもとに、業務効率化から集客まで一気通貫で。</p>
+    <p class="hero-sub">Googleマップ（MEO）・口コミ・ホームページの対策で「見つけてもらい、選ばれる」状態へ。さらに商圏・広告効果・リピート/リファラルのデータ分析で「次の一手」を可視化します。そして毎週、<strong>「何をやって・何が効いたか」が1枚で届く</strong>——中身の見える集客を、医療現場183事例の知見とともに。</p>
     <div class="hero-btns">
-      <a href="#contact" class="btn-p">無料で相談する →</a>
-      <a href="/jidoka-shindan.html" class="btn-o">まず無料診断を試す</a>
+      <a href="#contact" class="btn-p">無料でサイトを分析する →</a>
+      <a href="#case" class="btn-o">実際のレポートを見る</a>
     </div>
+    <div class="hero-offer">まずは御社サイトの現状を <b>無料で1枚のレポートに</b> してお渡しします（費用・契約は不要）</div>
   </div>
 </header>
 
@@ -239,6 +298,61 @@ footer{background:#1f1f1f;border-top:1px solid rgba(255,255,255,0.06);padding:40
   </div>
 </section>
 
+<!-- 実例 CASE -->
+<section class="section" id="case">
+  <div class="section-inner">
+    <div class="section-label">Case</div>
+    <h2 class="section-title">実際に運用しているクリニックの例</h2>
+    <p class="section-lead">「自分たちのサイトで証明」ではなく、実際にご支援している医療機関での運用例です。派手な数字を盛るのではなく、毎週の変化を"正直に"お見せしています。</p>
+    <div class="case-wrap reveal">
+      <span class="case-badge">● 運用中｜関東・自由診療クリニック（美容医療）</span>
+      <h3>毎週「何をやって・何が効いたか」を1枚で共有しながら、検索での見つかりやすさを改善中。</h3>
+      <p>MEO・地域ページ・導線を継続改善しつつ、GA4／Googleサーチコンソールのデータを毎週自動取得。院長が読める言葉で「今週やったこと・数字の変化・次の一手」を1枚にまとめてお渡ししています。運用初期ですが、検索での露出が着実に伸びています。</p>
+      <div class="case-metrics">
+        <div class="metric">
+          <div class="m-label">検索での平均掲載順位</div>
+          <div class="m-val">47位 <span class="m-arrow">→</span> <em>32位</em></div>
+        </div>
+        <div class="metric">
+          <div class="m-label">検索結果での表示回数</div>
+          <div class="m-val">110 <span class="m-arrow">→</span> <em>205回</em></div>
+        </div>
+        <div class="metric">
+          <div class="m-label">しっかり読まれた率<br>（エンゲージ率）</div>
+          <div class="m-val">28% <span class="m-arrow">→</span> <em>54%</em></div>
+        </div>
+      </div>
+      <div class="case-honest">
+        ⚠ <b>正直にお伝えします。</b>上記は運用初期・直近1週間の速報値で、来院数そのものはLINE予約など「サイトの外」で起きるため、その部分は別途つき合わせて可視化します。<b>「良い数字ほど、まず計測を疑う」</b>——都合のいい数字だけ並べないのが、私たちのレポートの流儀です。</div>
+    </div>
+  </div>
+</section>
+
+<!-- 透明性＝差別化 -->
+<section class="section alt">
+  <div class="section-inner">
+    <div class="section-label">Why us</div>
+    <h2 class="section-title">代理店に毎月払っている「あれ」の正体が、全部見える</h2>
+    <p class="section-lead">多くの代理店は、良い結果だけを月次でまとめて報告します。私たちは逆。<strong>毎週、やったこと・効いたこと・効かなかったことまで1枚で届きます。</strong>「任せっきり」から「中身が見える」へ。</p>
+    <div class="diff-strip reveal">
+      <p style="font-size:14px;line-height:1.95;color:var(--body);">毎週月曜、こんな1枚が届きます（実際のレポートの抜粋イメージ）——</p>
+      <div class="report-mock">
+        <div class="rm-head">
+          <span class="rm-title">週次サイトレポート｜○○クリニック</span>
+          <span class="rm-badge">最新</span>
+        </div>
+        <ul>
+          <li>今週の来院導線（予約・電話・地図）は先週比＋◯件。一番効いたのは△△ページの改修。</li>
+          <li>検索での見つかりやすさ（掲載順位）が改善。ただし表示は増えてもクリックが弱い1語を発見→次週タイトル改善。</li>
+          <li>⚠ 良く見える数字の裏で計測の抜けを1件検知。修正済み。鵜呑みにせず裏取りしています。</li>
+          <li>次の一手：🖥️システム改修（AIが自動対応）／✍️コンテンツ改修（下書き：AI／最終OK：院長）に分けて提案。</li>
+        </ul>
+      </div>
+      <p style="font-size:12.5px;color:var(--light);margin-top:14px;">※ データ取得は自動、判断と文章は人が確認。専門用語には必ず日本語の補足を添えます。</p>
+    </div>
+  </div>
+</section>
+
 <!-- 進め方 -->
 <section class="section">
   <div class="section-inner">
@@ -246,10 +360,10 @@ footer{background:#1f1f1f;border-top:1px solid rgba(255,255,255,0.06);padding:40
     <h2 class="section-title">業務効率化から始め、集客まで広げる</h2>
     <p class="section-lead">いきなり大きく始める必要はありません。負担の小さい所から着手し、成果を見ながら広げます。</p>
     <div class="steps">
-      <div class="step reveal"><div class="step-num">1</div><div class="step-body"><h4>無料診断・ヒアリング</h4><p>「時間とりもどし診断」や無料相談で、現状の集客と業務の課題を整理します。</p></div></div>
+      <div class="step reveal"><div class="step-num">1</div><div class="step-body"><h4>無料でサイトを分析</h4><p>まず御社サイト・Googleマップの現状を1枚のレポートにしてお渡しします。費用も契約も不要。ここで「どこで取りこぼしているか」が見えます。</p></div></div>
       <div class="step reveal"><div class="step-num">2</div><div class="step-body"><h4>Web集客の改善（柱①）</h4><p>MEO・口コミ・HPなど、すぐ効果が出てコンプラ負荷の低い施策から着手します。</p></div></div>
       <div class="step reveal"><div class="step-num">3</div><div class="step-body"><h4>データ分析で磨く（柱②）</h4><p>来院データの統計分析で、広告・再来施策の効果を測りながら次の一手を決めます。</p></div></div>
-      <div class="step reveal"><div class="step-num">4</div><div class="step-body"><h4>成果を横展開</h4><p>うまくいった施策を継続・拡大。改善のループを定着させます。</p></div></div>
+      <div class="step reveal"><div class="step-num">4</div><div class="step-body"><h4>毎週レポートで横展開</h4><p>うまくいった施策を継続・拡大。毎週の週次レポートで改善のループを定着させます。</p></div></div>
     </div>
 
     <a href="https://aidealize.com/bpr/industry/病院" class="case-link reveal">
@@ -262,12 +376,69 @@ footer{background:#1f1f1f;border-top:1px solid rgba(255,255,255,0.06);padding:40
   </div>
 </section>
 
+<!-- 無料分析でお渡しするもの -->
+<section class="section alt">
+  <div class="section-inner">
+    <div class="section-label">In the report</div>
+    <h2 class="section-title">無料分析レポートに入っているもの</h2>
+    <p class="section-lead">御社サイト・Googleマップのデータをもとに、以下を1枚のレポートにまとめてお渡しします。営業トークではなく、数字と具体的な打ち手です。</p>
+    <div class="diag-grid">
+      <div class="diag-card reveal">
+        <span class="diag-icon">🔍</span>
+        <div><h4>取りこぼしポイント</h4><p>見つかる→訪れる→信じる→動く（予約・来院）の各段のうち、どこで一番数字が落ちているかを特定します。</p></div>
+      </div>
+      <div class="diag-card reveal">
+        <span class="diag-icon">📍</span>
+        <div><h4>MEO・検索での現在地</h4><p>近隣検索での掲載順位・表示回数の現状と、埋もれている地域キーワードを洗い出します。</p></div>
+      </div>
+      <div class="diag-card reveal">
+        <span class="diag-icon">🛠️</span>
+        <div><h4>直す一箇所と打ち手</h4><p>いちばん漏れている段に対して、今すぐ着手できる改善案を3つご提案します。</p></div>
+      </div>
+      <div class="diag-card reveal">
+        <span class="diag-icon">📅</span>
+        <div><h4>計測の仕組み</h4><p>GA4等で自動計測できる形に設定し、直した後の変化がすぐ数字で見えるようにします。</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="section">
+  <div class="section-inner">
+    <div class="section-label">FAQ</div>
+    <h2 class="section-title">よくあるご質問</h2>
+    <div class="faq-list">
+      <details>
+        <summary>広告を出していなくても分析できますか？</summary>
+        <div class="faq-answer">はい、可能です。サイト・Googleマップ・問い合わせ導線があれば分析できます。広告に頼らず「サイトと口コミで選ばれる」クリニックのケースにも数多く対応しています。</div>
+      </details>
+      <details>
+        <summary>小さなクリニックでも効果はありますか？</summary>
+        <div class="faq-answer">十分に効果が出ます。むしろ規模が小さいほど、直した一箇所の効果が来院数の変化にはっきり表れやすい傾向があります。</div>
+      </details>
+      <details>
+        <summary>どれくらいで変化が出始めますか？</summary>
+        <div class="faq-answer">MEOや予約導線などの軽い施策は1〜2週間で数字の変化が見え始めます。検索順位・来院の底上げは1〜3ヶ月が目安です。毎週のレポートで途中経過が見えるので、待たされる感覚がありません。</div>
+      </details>
+      <details>
+        <summary>今のホームページやGoogleマップはそのまま使えますか？</summary>
+        <div class="faq-answer">はい。多くの場合、作り直しではなく「一箇所の改修」で対応します。全面リニューアルは必要ありません。</div>
+      </details>
+      <details>
+        <summary>患者データの取り扱いはどうなりますか？</summary>
+        <div class="faq-answer">分析は個人を特定しない統計・商圏分析（エリア単位の集計）を基本とします。患者情報を扱う場合は委託契約と安全管理措置を前提に、利用目的の範囲内で運用します。必要に応じてNDA（秘密保持契約）を締結します。</div>
+      </details>
+    </div>
+  </div>
+</section>
+
 <!-- CTA -->
 <section class="cta" id="contact">
-  <h2>まず30分、集客のお悩みを聞かせてください。</h2>
-  <p>「何から手をつければいいか分からない」段階でも大丈夫です。現状をお伺いし、効果が出やすい順番をご提案します。無料相談・資料請求はお気軽に。</p>
+  <h2>まず、御社サイトを無料で分析します。</h2>
+  <p>「何から手をつければいいか分からない」段階でも大丈夫です。御社サイト・Googleマップの現状を1枚のレポートにしてお渡しします。<strong style="color:#fff;">費用も契約も不要</strong>。その1枚を見てから、続けるかどうか決めてください。</p>
   <div class="hero-btns" style="justify-content:center;">
-    <a href="/#contact" class="btn-p">無料で相談する →</a>
+    <a href="/#contact" class="btn-p">無料でサイトを分析する →</a>
     <a href="/jidoka-shindan.html" class="btn-o">まず無料診断を試す</a>
   </div>
 </section>
