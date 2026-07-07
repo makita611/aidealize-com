@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex,nofollow">
+<title>週次サイトレポート｜artmake-komi.com</title>
+<style>
+  :root {
+    --cyan: #0891b2; --cyan-dark: #0e7490;
+    --ink: #1e293b; --body: #4b5563; --light: #94a3b8;
+    --border: #e2e8f0; --bg: #f8fafc; --bg2: #f1f5f9;
+    --tag-bg: #ecfeff; --funnel-fill: #e0f2f7;
+    --green: #059669; --green-bg: #ecfdf5;
+    --amber: #d97706; --amber-bg: #fffbeb; --amber-border: #fde68a; --amber-text: #7c5e1e;
+    --rose: #be123c; --rose-bg: #fff1f2; --rose-border: #e11d48;
+  }
+  * { box-sizing: border-box; }
+  body { font-family: "Hiragino Kaku Gothic ProN","Yu Gothic","Meiryo",sans-serif; background: var(--bg2); margin: 0; padding: 20px; color: var(--ink); line-height: 1.65; }
+  .sheet { max-width: 820px; margin: 0 auto; }
+
+  .top { background: linear-gradient(135deg, var(--ink) 0%, #16233a 100%); color: #fff; border-radius: 14px; padding: 22px 26px; margin-bottom: 14px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 14px; border-bottom: 3px solid var(--cyan); }
+  .top-left { display: flex; align-items: center; gap: 14px; }
+  .top-left img { width: 52px; height: 52px; border-radius: 50%; object-fit: cover; border: 2px solid rgba(255,255,255,0.5); }
+  .top h1 { margin: 0; font-size: 19px; font-weight: 700; }
+  .top .period { font-size: 12px; opacity: 0.7; }
+
+  .hero-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-bottom: 14px; }
+  .hero-card { background: #fff; border-radius: 14px; padding: 18px 16px; border: 1px solid var(--border); text-align: center; }
+  .hero-card .label { font-size: 12px; color: var(--light); margin-bottom: 6px; }
+  .hero-card .value { font-size: 30px; font-weight: 800; color: var(--ink); line-height: 1; }
+  .hero-card .unit { font-size: 12.5px; font-weight: 500; color: var(--light); }
+  .hero-card .delta { margin-top: 8px; font-size: 12.5px; font-weight: 700; }
+  .delta.up { color: var(--green); }
+  .delta.down { color: var(--rose); }
+  .delta.flat { color: var(--light); }
+
+  .funnel-card { background: #fff; border-radius: 14px; padding: 20px 22px; margin-bottom: 14px; border: 1px solid var(--border); }
+  .funnel-card h3 { margin: 0 0 4px; font-size: 15px; color: var(--ink); }
+  .funnel-card .sub { font-size: 12px; color: var(--light); margin-bottom: 16px; }
+  .fstrip { display: flex; align-items: flex-end; gap: 3px; height: 92px; }
+  .fstep {
+    background: var(--funnel-fill); border-radius: 6px 6px 4px 4px; padding: 8px 4px 6px;
+    text-align: center; position: relative; display: flex; flex-direction: column; justify-content: flex-end;
+  }
+  .fstep:nth-child(1) { flex: 1.3; height: 100%; background: #b9e2ec; }
+  .fstep:nth-child(3) { flex: 1.15; height: 85%; background: #cbe9f0; }
+  .fstep:nth-child(5) { flex: 1; height: 70%; background: #ddf0f4; }
+  .fstep:nth-child(7) { flex: 0.9; height: 55%; background: #eaf6f8; }
+  .fstep .name { font-size: 11.5px; font-weight: 700; color: var(--cyan-dark); white-space: nowrap; }
+  .fstep .num { font-size: 12px; font-weight: 700; color: var(--ink); margin-top: 3px; }
+  .fstep.blind { flex: 0.8; height: 40%; background: #f4f5f7; border: 1px dashed var(--light); }
+  .fstep.blind .name { color: var(--light); font-size: 11px; }
+  .fstep.blind .num { color: var(--light); font-weight: 500; font-size: 11px; }
+  .fchevron { display: flex; align-items: flex-end; color: var(--light); font-size: 12px; padding: 0 1px 10px; }
+  .fnote { background: var(--amber-bg); border: 1px solid var(--amber-border); border-left: 4px solid var(--amber); border-radius: 0 8px 8px 0; padding: 10px 14px; margin-top: 12px; font-size: 12.5px; color: var(--amber-text); }
+
+  .verdict-card { background: #fff; border-radius: 14px; padding: 20px 22px; margin-bottom: 14px; border: 1px solid var(--border); }
+  .verdict-good { display: flex; align-items: center; gap: 10px; font-size: 15px; font-weight: 700; color: var(--green); padding-bottom: 12px; margin-bottom: 12px; border-bottom: 1px dashed var(--border); }
+  .verdict-good .icon { font-size: 20px; }
+  .verdict-but { background: var(--amber-bg); border: 1px solid var(--amber-border); border-left: 4px solid var(--amber); border-radius: 0 8px 8px 0; padding: 14px 16px; display: flex; gap: 10px; }
+  .verdict-but .icon { font-size: 18px; flex-shrink: 0; }
+  .verdict-but .txt { font-size: 13.5px; color: var(--amber-text); }
+  .verdict-but .txt b { color: var(--amber); }
+
+  .barchart-card { background: #fff; border-radius: 14px; padding: 20px 22px; margin-bottom: 14px; border: 1px solid var(--border); }
+  .barchart-card h3 { margin: 0 0 14px; font-size: 14px; color: var(--ink); }
+  .bar-row { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; font-size: 12.5px; }
+  .bar-row .bar-label { width: 100px; flex-shrink: 0; color: var(--body); }
+  .bar-track { flex: 1; background: var(--bg2); border-radius: 6px; height: 20px; overflow: hidden; }
+  .bar-fill { height: 100%; border-radius: 6px; display: flex; align-items: center; justify-content: flex-end; padding-right: 8px; color: #fff; font-size: 11px; font-weight: 700; }
+  .bar-fill.now { background: var(--cyan); }
+  .bar-fill.prev { background: #b9c3cf; }
+  .bar-fill.warn { background: var(--rose); }
+  .bar-note { font-size: 11.5px; color: var(--light); margin-top: 4px; }
+
+  .plain-card { background: #fff; border-radius: 14px; padding: 20px 22px; margin-bottom: 14px; border: 1px solid var(--border); }
+  .plain-card h3 { margin: 0 0 12px; font-size: 14px; color: var(--ink); }
+  .plain-list { margin: 0; padding: 0; list-style: none; }
+  .plain-list li { display: flex; gap: 10px; padding: 8px 0; font-size: 14px; border-bottom: 1px solid var(--bg2); }
+  .plain-list li:last-child { border-bottom: none; }
+  .plain-list .dot { color: var(--cyan); font-weight: 900; }
+  .term { color: var(--light); font-size: 11.5px; }
+
+  .track-head { display: flex; align-items: center; gap: 10px; margin: 22px 0 8px; }
+  .track-head .tag { font-size: 11px; font-weight: 700; padding: 4px 12px; border-radius: 100px; letter-spacing: 0.03em; }
+  .track-head.system .tag { background: var(--tag-bg); color: var(--cyan-dark); }
+  .track-head.content .tag { background: var(--amber-bg); color: var(--amber); border: 1px solid var(--amber-border); }
+  .track-head h3 { margin: 0; font-size: 14px; color: var(--ink); }
+  .track-explain { font-size: 12.5px; color: var(--body); background: var(--bg2); border-radius: 8px; padding: 10px 14px; margin-bottom: 12px; }
+
+  .action-card { background: #fff; border-radius: 12px; padding: 14px 18px; margin-bottom: 10px; border: 1px solid var(--border); display: flex; align-items: flex-start; gap: 12px; }
+  .action-card.system { border-left: 5px solid var(--cyan); }
+  .action-card.content { border-left: 5px solid var(--amber); }
+  .action-card .num { font-size: 18px; font-weight: 800; color: var(--light); flex-shrink: 0; }
+  .action-card .body { flex: 1; }
+  .action-card .body b { display: block; font-size: 13.5px; margin-bottom: 2px; }
+  .action-card .body span { font-size: 13px; color: var(--body); }
+  .who-badge { display: inline-block; font-size: 11px; font-weight: 700; padding: 3px 10px; border-radius: 100px; margin-top: 7px; }
+  .who-badge.ai { background: var(--tag-bg); color: var(--cyan-dark); }
+  .who-badge.draft { background: var(--amber-bg); color: var(--amber); }
+  .who-badge.human { background: var(--rose-bg); color: var(--rose); }
+
+  .footer { text-align: center; font-size: 11px; color: var(--light); margin-top: 18px; }
+
+  @media (max-width: 600px) { .hero-row { grid-template-columns: 1fr; } }
+  @media print { body { background: #fff; padding: 0; } }
+</style>
+</head>
+<body>
+<div class="sheet">
+
+  <div class="top">
+    <div class="top-left">
+      <img src="assets/komi.jpg" alt="artmake-komi スタッフ">
+      <div>
+        <h1>artmake-komi.com 週次レポート</h1>
+        <div class="period">GA4: 2026/06/30〜07/06（前週比）／ GSC: 2026/06/28〜07/04</div>
+      </div>
+    </div>
+    <div class="period">PoCテスト版・7/7作成</div>
+  </div>
+
+  <div class="hero-row">
+    <div class="hero-card">
+      <div class="label">サイト訪問数</div>
+      <div class="value">26</div>
+      <div class="unit">セッション</div>
+      <div class="delta down">▼ 前週比 -19%（前週32）</div>
+    </div>
+    <div class="hero-card">
+      <div class="label">LINE・Instagramへの誘導</div>
+      <div class="value">5</div>
+      <div class="unit">件（前週3件）</div>
+      <div class="delta up">▲ 「動く」段階の件数</div>
+    </div>
+    <div class="hero-card">
+      <div class="label">実際の来院・成約</div>
+      <div class="value">？</div>
+      <div class="unit">サイト分析では不明</div>
+      <div class="delta flat">LINE内のやり取りは見えない</div>
+    </div>
+  </div>
+
+  <!-- ファネル図 -->
+  <div class="funnel-card">
+    <h3>集客のファネルで見る（<a href="https://aidealize.com/service/cvr/" style="color:var(--cyan-dark);">売上＝集めた数×各段の通過率</a>）</h3>
+    <div class="sub">今週のkomiの数字を当てはめると――</div>
+
+    <div class="fstrip">
+      <div class="fstep">
+        <div class="name">見つかる</div>
+        <div class="num">205回</div>
+      </div>
+      <div class="fchevron">›</div>
+      <div class="fstep">
+        <div class="name">訪れる</div>
+        <div class="num">26件</div>
+      </div>
+      <div class="fchevron">›</div>
+      <div class="fstep">
+        <div class="name">信じる</div>
+        <div class="num">14件</div>
+      </div>
+      <div class="fchevron">›</div>
+      <div class="fstep">
+        <div class="name">動く</div>
+        <div class="num">5件</div>
+      </div>
+      <div class="fchevron">›</div>
+      <div class="fstep blind">
+        <div class="name">実る</div>
+        <div class="num">？</div>
+      </div>
+    </div>
+
+    <div class="fnote">⚠️ <b>「動く」までしか見えていない。</b>LINE・Instagramをタップした5人が本当に予約・来院（実る）したかは、サイトの外（LINE公式アカウントのやり取り）なのでGA4だけでは追えない。「見つかる」＝検索での表示回数、「信じる」＝しっかり読まれた訪問数（エンゲージ）。</div>
+  </div>
+
+  <div class="verdict-card">
+    <div class="verdict-good"><span class="icon">✅</span> 一番の朗報：<b>検索での「見つかりやすさ」が大きく改善</b>（表示205回＝前週の約2倍、平均掲載順位47位→32位）</div>
+    <div class="verdict-but">
+      <span class="icon">⚠️</span>
+      <span class="txt"><b>ただし喜ぶのはまだ早い。</b>訪問数自体は32→26と減少しており、検索クリック7件・誘導5件と<b>絶対数がまだ小さい</b>。この1週間の増減だけで「上向いた」と断定するのは時期尚早<b>（サンプル不足）</b>。傾向として見るのは良いが、数週間の継続観察が必要。</span>
+    </div>
+  </div>
+
+  <div class="barchart-card">
+    <h3>訪問数：今週 vs 前週</h3>
+    <div class="bar-row">
+      <div class="bar-label">今週</div>
+      <div class="bar-track"><div class="bar-fill now" style="width:81.3%">26</div></div>
+    </div>
+    <div class="bar-row">
+      <div class="bar-label">前週</div>
+      <div class="bar-track"><div class="bar-fill prev" style="width:100%">32</div></div>
+    </div>
+    <h3 style="margin-top:20px;">ページ別「訪れる→動く」の実績</h3>
+    <div class="bar-row">
+      <div class="bar-label">/tokyo</div>
+      <div class="bar-track"><div class="bar-fill now" style="width:100%">8訪問・LINE等2件</div></div>
+    </div>
+    <div class="bar-row">
+      <div class="bar-label">トップページ</div>
+      <div class="bar-track"><div class="bar-fill now" style="width:75%">6訪問・LINE等1件</div></div>
+    </div>
+    <div class="bar-row">
+      <div class="bar-label">/tsukuba</div>
+      <div class="bar-track"><div class="bar-fill now" style="width:50%">4訪問・LINE等1件</div></div>
+    </div>
+    <div class="bar-row">
+      <div class="bar-label">/paramedical</div>
+      <div class="bar-track"><div class="bar-fill warn" style="width:25%">2訪問・LINE等1件</div></div>
+    </div>
+    <div class="bar-note">/paramedical は2訪問中1件が誘導＝通過率が高い。訪問は少ないが刺さっているページの要素を他へ広げたい。</div>
+  </div>
+
+  <div class="plain-card">
+    <h3>今週わかったこと</h3>
+    <ul class="plain-list">
+      <li><span class="dot">●</span> 検索エンジンでの<b>表示回数が110→205回とほぼ倍増</b>、平均掲載順位も47位→32位へ改善。「つくば」「茨城」「高崎」など地域名での露出が増えてきた。</li>
+      <li><span class="dot">●</span> ただし「アートメイク 茨城」（表示35回）「アートメイク 高崎」（表示38回）は<b>掲載順位60位前後</b>とほぼ検索結果に出ておらずクリックにつながっていない<span class="term">（地域ページ /takasaki 等のSEOが弱い・前週から継続）</span>。</li>
+      <li><span class="dot">●</span> <b>/tsukuba.html・/takasaki.html・/ota.html など「.html付き」URL</b>に直帰率100%の着地が発生。<b>/tsukuba と /tsukuba.html のようにURLが二重化</b>している疑いがある<span class="term">（同じ内容が2つのURLで存在＝SEO評価が分散する）</span>。</li>
+    </ul>
+  </div>
+
+  <div class="track-head system"><span class="tag">🖥️ システム改修</span><h3>AIが自動で調査・対応できる範囲</h3></div>
+  <div class="track-explain">計測やデータ・URLの設定まわり。エンジニアを介さずAIが原因を見つけて直せる部分です。</div>
+  <div class="action-card system">
+    <div class="num">1</div>
+    <div class="body">
+      <b>「.html付き」重複URLの点検・一本化</b>
+      <span>/tsukuba と /tsukuba.html のように同じ内容が2URLで存在している疑い。正規URLを1つに決め、リダイレクト／canonical設定で統一（SEO評価の分散を防ぐ）。</span>
+      <div class="who-badge ai">AIが調査〜修正まで実施</div>
+    </div>
+  </div>
+
+  <div class="track-head content"><span class="tag">✍️ コンテンツ改修</span><h3>文章・訴求まわり</h3></div>
+  <div class="track-explain">AIが文章の下書きを作ります。ゼロから人が書く必要はありません。ただし最終的に「これで公開OK」と判断するのは経営者・企画の仕事です。</div>
+  <div class="action-card content">
+    <div class="num">1</div>
+    <div class="body">
+      <b>「茨城」「高崎」など地域ページのSEOテコ入れ</b>
+      <span>表示は取れているのに60位前後と弱い。地域名＋症例・価格・アクセス情報を厚くした文章案をAIが下書き。</span>
+      <div class="who-badge draft">下書き：AI／最終OK：人</div>
+    </div>
+  </div>
+  <div class="action-card content">
+    <div class="num">2</div>
+    <div class="body">
+      <b>誘導率の高い /tokyo・/paramedical の「効いている要素」を他ページへ横展開</b>
+      <span>訴求文・症例写真の見せ方・LINEボタンまでの導線など、通過率が高い要因をAIが分析し、他ページ用の改善文案を下書き。</span>
+      <div class="who-badge draft">下書き：AI／最終OK：人</div>
+    </div>
+  </div>
+  <div class="action-card content">
+    <div class="num">3</div>
+    <div class="body">
+      <b>「実る」段階を見えるようにする（LINE予約数との突き合わせ）</b>
+      <span>LINE公式アカウントの予約・来院実績を月1回共有してもらえれば、「動く→実る」の通過率まで計算できるようになる。</span>
+      <div class="who-badge human">データ提供は人（経営者側）</div>
+    </div>
+  </div>
+
+  <div class="footer">AI集客エージェント｜週次サイトレポート PoC ｜ 2026-07-07作成 ｜ GA4・GSC共にAPI自動取得</div>
+</div>
+</body>
+</html>
