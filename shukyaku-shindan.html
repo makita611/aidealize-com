@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>集客タイプ診断 ―まず直す一箇所が分かる | AIdealize株式会社</title>
+<meta name="description" content="5つの質問に答えるだけで、あなたの集客が「見つかる・信じる・動く・実る」のどこで止まっているかを即時診断。まず直すべき一箇所と打ち手が分かります。費用も契約も不要。">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700;900&family=Rajdhani:wght@600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --red: #1F3864;
+  --red-dark: #162a50;
+  --navy: #1F3864;
+  --navy-light: #2E5090;
+  --teal: #0E8C7F;
+  --bg: #F4F6FA;
+  --bg2: #FFFFFF;
+  --bg3: #EEF3F9;
+  --line: #D0D8E8;
+  --text: #1A1A2E;
+  --muted: #5A6A80;
+  --gold: #C9A25A;
+  --warn: #E0524D;
+}
+* { margin:0; padding:0; box-sizing:border-box; }
+body {
+  font-family: 'Noto Sans JP', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  min-height: 100vh;
+  overflow-x: hidden;
+  font-size: 16px;
+  font-weight: 500;
+}
+body::before {
+  content:''; position:fixed; inset:0;
+  background-image:
+    linear-gradient(rgba(30,58,95,0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(30,58,95,0.04) 1px, transparent 1px);
+  background-size: 60px 60px; pointer-events:none; z-index:0;
+}
+.container { max-width: 780px; margin: 0 auto; padding: 0 20px 80px; position: relative; z-index: 1; }
+.header { text-align: center; padding: 56px 0 40px; }
+.header-badge {
+  display: inline-block; font-family: 'Rajdhani', sans-serif; font-size: 15px;
+  letter-spacing: 3px; color: #fff; background: var(--teal); border: 1px solid var(--teal);
+  padding: 8px 20px; margin-bottom: 24px; text-transform: uppercase; border-radius: 2px;
+}
+.header h1 { font-size: clamp(25px, 5vw, 38px); font-weight: 900; line-height: 1.25; letter-spacing: -0.5px; margin-bottom: 16px; }
+.header h1 span { color: var(--teal); }
+.header p { font-size: 15px; color: var(--muted); line-height: 1.85; font-weight: 500; }
+.steps { display: flex; align-items: center; justify-content: center; gap: 0; margin-bottom: 40px; }
+.step-item { display: flex; align-items: center; gap: 8px; font-size: 11px; color: var(--muted); letter-spacing: 1px; }
+.step-item.active { color: var(--text); }
+.step-item.active .step-num { background: var(--teal); border-color: var(--teal); color: #fff; }
+.step-item.done .step-num { background: var(--navy); border-color: var(--navy); color: #fff; }
+.step-num {
+  width: 26px; height: 26px; border-radius: 50%; border: 1px solid var(--muted);
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'Rajdhani', sans-serif; font-size: 13px; font-weight: 700;
+}
+.step-line { width: 40px; height: 1px; background: var(--line); margin: 0 6px; }
+.card { background: var(--bg2); border: 1px solid var(--line); border-radius: 4px; padding: 32px; margin-bottom: 16px; position: relative; overflow: hidden; }
+.card::before { content:''; position:absolute; top:0; left:0; right:0; height:2px; background: linear-gradient(90deg, var(--teal), var(--navy-light)); }
+.card-title { font-size: 13px; font-weight: 700; letter-spacing: 2px; color: var(--muted); text-transform: uppercase; margin-bottom: 22px; display: flex; align-items: center; gap: 10px; }
+.card-title::after { content:''; flex:1; height:1px; background: var(--line); }
+.q { margin-bottom: 30px; }
+.q:last-of-type { margin-bottom: 8px; }
+.q-head { font-size: 15px; font-weight: 700; margin-bottom: 4px; line-height: 1.6; }
+.q-head .qn { font-family:'Rajdhani',sans-serif; color: var(--teal); margin-right: 8px; font-size: 17px; }
+.q-sub { font-size: 12.5px; color: var(--muted); margin-bottom: 14px; line-height: 1.6; }
+.q-label { display:block; font-size:14px; font-weight:700; margin-bottom:12px; }
+.q-label .required { color: var(--teal); font-size:11px; margin-left:6px; font-weight:400; }
+.opts { display: flex; flex-direction: column; gap: 8px; }
+.opt { display:flex; align-items:center; gap:12px; padding:13px 16px; background:var(--bg3); border:1px solid var(--line); border-radius:3px; cursor:pointer; transition:all .18s; user-select:none; font-size:14px; line-height:1.5; }
+.opt:hover { border-color: rgba(14,140,127,0.45); background: rgba(14,140,127,0.05); }
+.opt.selected { border-color: var(--teal); background: rgba(14,140,127,0.09); font-weight:700; }
+.opt .radio { width:18px; height:18px; border-radius:50%; border:1px solid var(--muted); flex-shrink:0; position:relative; transition:all .18s; }
+.opt.selected .radio { border-color: var(--teal); }
+.opt.selected .radio::after { content:''; position:absolute; inset:4px; border-radius:50%; background: var(--teal); }
+.radio-group { display:flex; flex-wrap:wrap; gap:8px; }
+.radio-btn { padding:9px 16px; border:1px solid var(--line); border-radius:2px; font-size:13px; cursor:pointer; background:var(--bg3); color:var(--muted); transition:all .2s; user-select:none; }
+.radio-btn:hover { border-color: var(--navy-light); color: var(--text); }
+.radio-btn.selected { border-color: var(--teal); background: rgba(14,140,127,0.12); color: var(--text); font-weight:700; }
+.calc-btn { width:100%; padding:18px; background:var(--teal); color:#fff; border:none; border-radius:3px; font-family:'Noto Sans JP',sans-serif; font-size:15px; font-weight:700; letter-spacing:1px; cursor:pointer; transition:all .2s; margin-top:8px; }
+.calc-btn:hover { background:#0a766b; transform: translateY(-1px); box-shadow: 0 8px 30px rgba(14,140,127,0.35); }
+.calc-btn:active { transform: translateY(0); }
+.error-msg { font-size:12px; color:var(--warn); margin-top:10px; display:none; text-align:center; }
+#result-section { display:none; animation: fadeUp .5s ease forwards; }
+@keyframes fadeUp { from { opacity:0; transform: translateY(20px); } to { opacity:1; transform: translateY(0); } }
+.type-badge { display:inline-block; font-size:12px; letter-spacing:1.5px; color:var(--teal); font-weight:700; margin-bottom:8px; }
+.type-name { font-size: clamp(21px,4vw,27px); font-weight:900; line-height:1.3; margin-bottom:14px; }
+.type-name span { color: var(--teal); }
+.bars { margin: 22px 0 6px; }
+.bar-row { display:flex; align-items:center; gap:12px; margin-bottom:12px; }
+.bar-label { width:78px; flex-shrink:0; font-size:12.5px; font-weight:700; text-align:right; }
+.bar-track { flex:1; height:12px; background: var(--bg3); border-radius:6px; overflow:hidden; border:1px solid var(--line); }
+.bar-fill { height:100%; border-radius:6px; width:0; transition: width 1s cubic-bezier(.2,.8,.2,1); background: linear-gradient(90deg, var(--navy-light), var(--teal)); }
+.bar-row.weak .bar-fill { background: linear-gradient(90deg, #E0857F, var(--warn)); }
+.bar-row.weak .bar-label { color: var(--warn); }
+.bar-pct { width:44px; text-align:right; font-family:'Rajdhani',sans-serif; font-size:15px; font-weight:700; color: var(--muted); }
+.bar-row.weak .bar-pct { color: var(--warn); }
+.reframe-box { background: rgba(14,140,127,0.08); border:1px solid rgba(14,140,127,0.3); border-left:3px solid var(--teal); padding:16px 20px; border-radius:2px; font-size:13.5px; line-height:1.9; color:var(--text); margin:20px 0 16px; }
+.reframe-box strong { color: var(--teal); }
+.fix-box { background: rgba(31,56,100,0.06); border:1px solid rgba(46,80,144,0.28); border-left:3px solid var(--navy-light); padding:16px 20px; border-radius:2px; font-size:13.5px; line-height:1.85; color:var(--text); margin-bottom:18px; }
+.fix-box .fix-h { font-size:12px; letter-spacing:1px; color:var(--navy-light); font-weight:700; margin-bottom:6px; }
+.svc-link { display:inline-flex; align-items:center; gap:6px; font-size:13px; font-weight:700; color:var(--teal); text-decoration:none; margin-top:6px; }
+.svc-link:hover { text-decoration: underline; }
+.disclaimer { font-size:11px; color:var(--muted); line-height:1.8; padding:12px 0; border-top:1px solid var(--line); }
+.lead-card { background: linear-gradient(135deg, rgba(31,56,100,0.12), rgba(14,140,127,0.1)); border:1px solid rgba(14,140,127,0.25); border-radius:4px; padding:32px 34px; }
+.lead-card h3 { font-size:17px; font-weight:700; margin-bottom:8px; }
+.lead-card h3 span { color: var(--teal); }
+.lead-card p { font-size:13px; color:var(--muted); margin-bottom:22px; line-height:1.75; }
+.input-row { display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-bottom:12px; }
+@media(max-width:500px){ .input-row { grid-template-columns:1fr; } }
+.text-input { width:100%; padding:12px 14px; background:var(--bg); border:1px solid var(--line); border-radius:2px; color:var(--text); font-family:'Noto Sans JP',sans-serif; font-size:13px; outline:none; transition:border-color .2s; }
+.text-input:focus { border-color: var(--teal); }
+.text-input::placeholder { color: var(--muted); }
+.submit-btn { width:100%; padding:16px; background: linear-gradient(135deg, var(--navy), var(--teal)); color:#fff; border:none; border-radius:3px; font-family:'Noto Sans JP',sans-serif; font-size:14px; font-weight:700; cursor:pointer; margin-top:12px; transition:all .2s; }
+.submit-btn:hover { opacity:.92; transform: translateY(-1px); box-shadow: 0 6px 20px rgba(14,140,127,0.3); }
+.privacy-note { font-size:11px; color:var(--muted); text-align:center; margin-top:12px; }
+#complete-msg { display:none; text-align:center; padding:40px; }
+#complete-msg .big-check { font-size:48px; margin-bottom:16px; }
+#complete-msg h3 { font-size:20px; margin-bottom:10px; }
+#complete-msg p { font-size:13px; color:var(--muted); line-height:1.8; }
+.retry { text-align:center; margin-top:18px; }
+.retry a { font-size:12px; color:var(--muted); text-decoration:none; cursor:pointer; }
+.retry a:hover { color: var(--text); }
+.footer-link { text-align:center; margin-top:40px; font-size:12px; color:var(--muted); }
+.footer-link a { color:var(--muted); text-decoration:none; }
+.footer-link a:hover { color: var(--text); }
+</style>
+</head>
+<body>
+
+<div class="container">
+
+  <div class="header">
+    <div class="header-badge">集客タイプ診断</div>
+    <h1>あなたの集客は、<br><span>どこで止まって</span>いますか？</h1>
+    <p>5つの質問に答えるだけ。「見つかる → 信じる → 動く → 実る」のどの段で<br>お客様を取りこぼしているかを即時診断し、<strong style="color:var(--text)">まず直す一箇所</strong>をお伝えします。</p>
+  </div>
+
+  <div class="steps">
+    <div class="step-item active" id="step1-ind"><div class="step-num">1</div><span>5つの質問</span></div>
+    <div class="step-line"></div>
+    <div class="step-item" id="step2-ind"><div class="step-num">2</div><span>診断結果</span></div>
+    <div class="step-line"></div>
+    <div class="step-item" id="step3-ind"><div class="step-num">3</div><span>詳細レポート</span></div>
+  </div>
+
+  <div id="input-section">
+    <div class="card">
+      <div class="card-title">5つの質問（所要 約30秒）</div>
+
+      <div class="q">
+        <div class="q-label">まず、御社の業種を選んでください <span class="required">必須</span></div>
+        <div class="radio-group" id="industry-group">
+          <div class="radio-btn selected" data-ind="クリニック・医療" onclick="selectIndustry(this)">クリニック・医療</div>
+          <div class="radio-btn" data-ind="介護・訪問看護" onclick="selectIndustry(this)">介護・訪問看護</div>
+          <div class="radio-btn" data-ind="美容・サロン・自由診療" onclick="selectIndustry(this)">美容・サロン・自由診療</div>
+          <div class="radio-btn" data-ind="リユース・買取・店舗" onclick="selectIndustry(this)">リユース・買取・店舗</div>
+          <div class="radio-btn" data-ind="不動産・士業・教室" onclick="selectIndustry(this)">不動産・士業・教室</div>
+          <div class="radio-btn" data-ind="その他・BtoB" onclick="selectIndustry(this)">その他・BtoB</div>
+        </div>
+      </div>
+
+      <div id="questions"></div>
+
+      <button class="calc-btn" onclick="calculate()">▶ 無料で「まず直す一箇所」を診断する</button>
+      <div class="error-msg" id="q-error">すべての質問にお答えください</div>
+    </div>
+  </div><!-- /input-section -->
+
+  <div id="result-section">
+    <div class="card">
+      <div class="card-title">診断結果</div>
+      <div class="type-badge" id="r-badge">YOUR TYPE</div>
+      <div class="type-name" id="r-type">—</div>
+
+      <div class="bars" id="r-bars"></div>
+
+      <div class="reframe-box" id="r-reframe"></div>
+      <div class="fix-box" id="r-fix"></div>
+
+      <div class="disclaimer">
+        ※本診断は、いただいた5つの回答から「集客の4段階」のどこが弱いかを簡易的に可視化した参考結果です。実際のボトルネックは、サイト・Googleマップ・広告・問い合わせ導線を実際に見て初めて正確に分かります。下記の無料レポートで御社の実データをもとに確認します。
+      </div>
+    </div>
+
+    <div class="lead-card" id="lead-form-wrap">
+      <h3>📩 この結果をふまえた<span>1枚の無料レポート</span>をお送りします</h3>
+      <p>御社サイト・Googleマップ・問い合わせ導線を実際に確認し、「まず直す一箇所」と具体的な打ち手を1枚にまとめてお渡しします。費用も契約も不要。受け取ってから、続けるか決めてください。</p>
+      <div class="input-row">
+        <input class="text-input" id="lead-name" type="text" placeholder="お名前（例：山田 太郎）">
+        <input class="text-input" id="lead-company" type="text" placeholder="会社名・店舗名（任意）">
+      </div>
+      <input class="text-input" id="lead-site" type="url" placeholder="サイトURL（分析対象・任意）" style="margin-bottom:12px">
+      <input class="text-input" id="lead-email" type="email" placeholder="メールアドレス（例：info@example.com）" style="margin-bottom:0">
+      <div class="error-msg" id="lead-error" style="text-align:left">メールアドレスを正しく入力してください</div>
+      <button class="submit-btn" onclick="submitLead()">無料レポートを受け取る（無料）→</button>
+      <div class="privacy-note">入力情報はAIdealize株式会社のご連絡・レポート送付のみに使用します。</div>
+    </div>
+
+    <div id="complete-msg">
+      <div class="big-check">✅</div>
+      <h3>ありがとうございます！</h3>
+      <p>担当者が御社サイトを確認し、1〜2営業日以内に<br>1枚のレポートをお送りします。<br><br>
+      サービスの詳細は<br>
+      <a href="/service/marketing/" style="color:#0E8C7F;">こちらからご覧いただけます →</a></p>
+    </div>
+
+    <div class="retry"><a onclick="resetAll()">← もう一度診断する</a></div>
+  </div><!-- /result-section -->
+
+  <div class="footer-link">
+    <a href="/">AIdealize株式会社</a>
+    &nbsp;|&nbsp;
+    <a href="/service/">サービス一覧</a>
+  </div>
+
+</div><!-- /container -->
+
+<script>
+// ── 集客の4段階（ファネル）──
+const AXES = [
+  { key:'find',    label:'見つかる', full:'見つけてもらえていない型',
+    reframe:'お客様が<strong>そもそも御社にたどり着けていない</strong>状態です。良いサービスでも、検索やGoogleマップで見つからなければ選ばれません。',
+    fix:'最優先は「見つかる」入口づくり。Googleビジネスプロフィール（MEO）の整備と、"地域名＋業種"で表示される検索対策から着手すると、広告費をかけずに新規の流入を増やせます。',
+    svc:{href:'/service/marketing/', text:'集客サービスの詳細を見る'} },
+  { key:'trust',   label:'信じる', full:'選ばれていない型',
+    reframe:'人は来ているのに、<strong>強みや安心材料が伝わらず</strong>、他社と比べられて離脱している状態です。「見つかる」より一歩先の取りこぼしです。',
+    fix:'サイトに「選ぶ判断材料」を揃えるのが最優先。実績・お客様の声・料金・院長/スタッフの人柄など、不安を消す情報を整えるだけで問い合わせ率は変わります。',
+    svc:{href:'/service/cvr/', text:'成約率アップの詳細を見る'} },
+  { key:'act',     label:'動く', full:'導線ロス型',
+    reframe:'関心は持たれているのに、<strong>問い合わせ・予約ボタンまで辿り着けず</strong>逃している状態です。特にスマホでの導線でよく起きます。',
+    fix:'問い合わせ導線の作り直しが最優先。スマホで常に見える予約/問い合わせボタン、LINE・電話へのワンタップ導線を整えるだけで、同じ流入から取れる数が増えます。',
+    svc:{href:'/service/cvr/', text:'成約率アップの詳細を見る'} },
+  { key:'measure', label:'実る', full:'数字が見えていない型',
+    reframe:'集客は動いているのに、<strong>「どこから来て、何が売上に繋がったか」が見えず</strong>、次の一手を勘で決めている状態です。伸ばす余地が一番大きいタイプです。',
+    fix:'計測と週次の可視化が最優先。流入元・問い合わせ・成約を毎週1枚のレポートで追えるようにすると、効いている施策に集中でき、ムダな費用を止められます。これが私たちの一番の強みです。',
+    svc:{href:'/service/marketing/', text:'集客サービスの詳細を見る'} },
+];
+
+// 業種別の一言（fixに付け足す）
+const IND_TIP = {
+  "クリニック・医療":"（医療広告ガイドラインに配慮しつつ実施します）",
+  "介護・訪問看護":"（ケアマネ・地域包括からの紹介導線もあわせて設計します）",
+  "美容・サロン・自由診療":"（口コミ・症例・ビフォーアフターの見せ方が特に効きます）",
+  "リユース・買取・店舗":"（「地域名＋買取／店舗名」の検索とMEOが特に効きます）",
+  "不動産・士業・教室":"（問い合わせ前の「信頼」情報が成約を左右します）",
+  "その他・BtoB":"（指名検索と、比較検討層向けの情報整備が効きます）",
+};
+
+// ── 5つの質問（Q1は業種＝上部。以下Q2-Q5が各軸を採点）──
+const QUESTIONS = [
+  { axis:'find', head:'新規のお客様は、主にどこから来ていますか？',
+    sub:'いま一番多い流入経路に近いものを選んでください',
+    opts:[
+      { t:'Googleマップ・検索・SNSなどオンラインで見つけて来る', s:2 },
+      { t:'広告を出していて、そこから来ている', s:1 },
+      { t:'紹介・リピート中心で、新規のオンライン流入は少ない', s:0 },
+      { t:'正直、どこから来ているか分からない', s:0 },
+    ] },
+  { axis:'find', head:'「地域名＋業種」で検索したとき、御社は上位に出ますか？',
+    sub:'例：「渋谷 皮膚科」「川越 買取」など',
+    opts:[
+      { t:'だいたい上位（地図やトップ付近）に出る', s:2 },
+      { t:'たまに出る・ページを探せば見つかる', s:1 },
+      { t:'ほとんど出ない・確認したことがない', s:0 },
+    ] },
+  { axis:'trust', head:'サイトに、お客様が「選ぶ判断材料」は揃っていますか？',
+    sub:'実績・お客様の声・料金・スタッフ紹介・症例など',
+    opts:[
+      { t:'ひと通り揃っていて、強みも伝わると思う', s:2 },
+      { t:'一部はあるが、足りない・古いところがある', s:1 },
+      { t:'ほとんど無い、または会社案内的な内容だけ', s:0 },
+    ] },
+  { axis:'act', head:'スマホでサイトを見たとき、問い合わせ・予約にすぐ辿り着けますか？',
+    sub:'ボタンの見つけやすさ・LINEや電話へのつながりやすさ',
+    opts:[
+      { t:'常にボタンが見えていて、ワンタップで繋がる', s:2 },
+      { t:'探せばあるが、少し分かりにくい', s:1 },
+      { t:'分かりにくい・スマホで見づらい', s:0 },
+    ] },
+  { axis:'measure', head:'問い合わせ・予約が「どこから来て、売上にいくら繋がったか」説明できますか？',
+    sub:'チャネル別の費用対効果を把握できているか',
+    opts:[
+      { t:'数字で説明できる（毎月/毎週チェックしている）', s:2 },
+      { t:'なんとなく分かるが、正確には追えていない', s:1 },
+      { t:'まったく分からない・見ていない', s:0 },
+    ] },
+];
+
+let currentIndustry = "クリニック・医療";
+const answers = {}; // qIndex -> {axis, score}
+
+function renderQuestions(){
+  const wrap = document.getElementById('questions');
+  wrap.innerHTML = QUESTIONS.map((q,i)=>
+    '<div class="q" data-qi="'+i+'">' +
+      '<div class="q-head"><span class="qn">Q'+(i+1)+'</span>'+q.head+'</div>' +
+      '<div class="q-sub">'+q.sub+'</div>' +
+      '<div class="opts">' +
+        q.opts.map((o,j)=>
+          '<div class="opt" data-qi="'+i+'" data-oi="'+j+'" data-score="'+o.s+'" onclick="selectOpt(this)">' +
+            '<div class="radio"></div><div>'+o.t+'</div>' +
+          '</div>'
+        ).join('') +
+      '</div>' +
+    '</div>'
+  ).join('');
+}
+
+function selectOpt(el){
+  const qi = el.dataset.qi;
+  el.parentNode.querySelectorAll('.opt').forEach(o=>o.classList.remove('selected'));
+  el.classList.add('selected');
+  answers[qi] = { axis: QUESTIONS[qi].axis, score: parseInt(el.dataset.score) };
+  document.getElementById('q-error').style.display = 'none';
+  notifyHeight();
+}
+
+function selectIndustry(el){
+  document.querySelectorAll('#industry-group .radio-btn').forEach(b=>b.classList.remove('selected'));
+  el.classList.add('selected');
+  currentIndustry = el.dataset.ind;
+}
+
+function calculate(){
+  if (Object.keys(answers).length < QUESTIONS.length){
+    document.getElementById('q-error').style.display = 'block';
+    notifyHeight();
+    return;
+  }
+
+  // 軸ごとに得点/満点を集計 → %
+  const acc = {}; // axisKey -> {got,max}
+  AXES.forEach(a=> acc[a.key] = {got:0, max:0});
+  QUESTIONS.forEach((q,i)=>{
+    acc[q.axis].got += answers[i].score;
+    acc[q.axis].max += 2;
+  });
+  const pct = {};
+  AXES.forEach(a=> pct[a.key] = Math.round(acc[a.key].got / acc[a.key].max * 100));
+
+  // 最弱軸＝タイプ（同点はファネル順で前＝より土台に近い方を優先）
+  let weakest = AXES[0].key, min = 101;
+  AXES.forEach(a=>{ if (pct[a.key] < min){ min = pct[a.key]; weakest = a.key; } });
+  const type = AXES.find(a=>a.key===weakest);
+
+  // 表示切替
+  document.getElementById('input-section').style.display = 'none';
+  document.getElementById('result-section').style.display = 'block';
+  document.getElementById('step1-ind').classList.replace('active','done');
+  document.getElementById('step2-ind').classList.add('active');
+
+  document.getElementById('r-type').innerHTML = 'あなたは<span>「'+type.full+'」</span>';
+
+  // バー描画
+  document.getElementById('r-bars').innerHTML = AXES.map(a=>
+    '<div class="bar-row'+(a.key===weakest?' weak':'')+'">' +
+      '<div class="bar-label">'+a.label+(a.key===weakest?' ⚠':'')+'</div>' +
+      '<div class="bar-track"><div class="bar-fill" data-pct="'+pct[a.key]+'"></div></div>' +
+      '<div class="bar-pct">'+pct[a.key]+'</div>' +
+    '</div>'
+  ).join('');
+  setTimeout(()=>{ document.querySelectorAll('.bar-fill').forEach(f=>{ f.style.width = f.dataset.pct+'%'; }); }, 60);
+
+  document.getElementById('r-reframe').innerHTML =
+    '最も弱いのは「<strong>'+type.label+'</strong>」の段です。'+type.reframe;
+
+  document.getElementById('r-fix').innerHTML =
+    '<div class="fix-h">まず直す一箇所</div>' + type.fix + (IND_TIP[currentIndustry]||'') +
+    '<br><a class="svc-link" href="'+type.svc.href+'">'+type.svc.text+' →</a>';
+
+  sendToGAS({
+    type: 'shukyaku_calc',
+    timestamp: new Date().toISOString(),
+    industry: currentIndustry,
+    weakest: type.full,
+    scores: AXES.map(a=>a.label+':'+pct[a.key]).join(' / ')
+  });
+
+  document.getElementById('result-section').scrollIntoView({behavior:'smooth', block:'start'});
+  setTimeout(notifyHeight, 250);
+}
+
+function resetAll(){
+  document.getElementById('result-section').style.display = 'none';
+  document.getElementById('input-section').style.display = 'block';
+  document.getElementById('lead-form-wrap').style.display = 'block';
+  document.getElementById('complete-msg').style.display = 'none';
+  document.getElementById('step1-ind').classList.remove('done');
+  document.getElementById('step1-ind').classList.add('active');
+  document.getElementById('step2-ind').classList.remove('active','done');
+  document.getElementById('step3-ind').classList.remove('active');
+  window.scrollTo({top:0, behavior:'smooth'});
+  setTimeout(notifyHeight, 200);
+}
+
+// ── GAS送信（既存の診断と同じスプレッドシートに記録）──
+const GAS_URL = 'https://script.google.com/macros/s/AKfycbznmcKuNRRfPrwP1Ev_alYlLIb5Z-b2fPBmNlnk-r923HibXl3OTc-tGJVP7750RgvQ/exec';
+function sendToGAS(data){
+  fetch(GAS_URL, { method:'POST', mode:'no-cors', headers:{'Content-Type':'application/json'}, body: JSON.stringify(data) }).catch(()=>{});
+}
+
+function submitLead(){
+  const name = document.getElementById('lead-name').value.trim();
+  const company = document.getElementById('lead-company').value.trim();
+  const site = document.getElementById('lead-site').value.trim();
+  const email = document.getElementById('lead-email').value.trim();
+  if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){ document.getElementById('lead-error').style.display='block'; return; }
+  const weakest = (document.getElementById('r-type').textContent||'').replace(/[「」あなたは]/g,'');
+  sendToGAS({ type:'shukyaku_lead', timestamp:new Date().toISOString(), name, company, email, site, industry: currentIndustry, weakest });
+  document.getElementById('lead-form-wrap').style.display = 'none';
+  document.getElementById('complete-msg').style.display = 'block';
+  document.getElementById('step2-ind').classList.replace('active','done');
+  document.getElementById('step3-ind').classList.add('active');
+  setTimeout(notifyHeight, 100);
+}
+
+// ── iframe埋め込み用：高さ通知 ──
+function notifyHeight(){
+  var h = Math.max(document.body.scrollHeight, document.documentElement.scrollHeight);
+  window.parent.postMessage({type:'roiHeight', height: h}, '*');
+}
+window.addEventListener('load', function(){
+  const p = new URLSearchParams(location.search).get('ind');
+  if (p){
+    const btn = [...document.querySelectorAll('#industry-group .radio-btn')].find(b=>b.dataset.ind===p);
+    if (btn){ document.querySelectorAll('#industry-group .radio-btn').forEach(b=>b.classList.remove('selected')); btn.classList.add('selected'); currentIndustry = p; }
+  }
+  renderQuestions();
+  setTimeout(notifyHeight, 200);
+});
+</script>
+</body>
+</html>

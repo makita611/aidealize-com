@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>無料サイト即時診断 ―URLを入れるだけ | AIdealize株式会社</title>
+<meta name="description" content="サイトのURLを入れるだけで、集客の観点（スマホ対応・SSL・検索対策・SNS表示・問い合わせ導線・表示速度など）を即時で自動チェック。その場でスコアと改善ポイントが分かります。費用も登録も不要。">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700;900&family=Rajdhani:wght@600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --red:#1F3864; --red-dark:#162a50; --navy:#1F3864; --navy-light:#2E5090; --teal:#0E8C7F;
+  --bg:#F4F6FA; --bg2:#FFFFFF; --bg3:#EEF3F9; --line:#D0D8E8; --text:#1A1A2E; --muted:#5A6A80;
+  --good:#0E8C7F; --warn:#C98A28; --bad:#E0524D;
+}
+* { margin:0; padding:0; box-sizing:border-box; }
+body { font-family:'Noto Sans JP',sans-serif; background:var(--bg); color:var(--text); min-height:100vh; overflow-x:hidden; font-size:16px; font-weight:500; }
+body::before { content:''; position:fixed; inset:0; background-image: linear-gradient(rgba(30,58,95,0.04) 1px,transparent 1px), linear-gradient(90deg,rgba(30,58,95,0.04) 1px,transparent 1px); background-size:60px 60px; pointer-events:none; z-index:0; }
+.container { max-width:780px; margin:0 auto; padding:0 20px 80px; position:relative; z-index:1; }
+.header { text-align:center; padding:56px 0 36px; }
+.header-badge { display:inline-block; font-family:'Rajdhani',sans-serif; font-size:15px; letter-spacing:3px; color:#fff; background:var(--teal); border:1px solid var(--teal); padding:8px 20px; margin-bottom:24px; text-transform:uppercase; border-radius:2px; }
+.header h1 { font-size:clamp(25px,5vw,38px); font-weight:900; line-height:1.25; letter-spacing:-0.5px; margin-bottom:16px; }
+.header h1 span { color:var(--teal); }
+.header p { font-size:15px; color:var(--muted); line-height:1.85; }
+.card { background:var(--bg2); border:1px solid var(--line); border-radius:4px; padding:32px; margin-bottom:16px; position:relative; overflow:hidden; }
+.card::before { content:''; position:absolute; top:0; left:0; right:0; height:2px; background:linear-gradient(90deg,var(--teal),var(--navy-light)); }
+.card-title { font-size:13px; font-weight:700; letter-spacing:2px; color:var(--muted); text-transform:uppercase; margin-bottom:20px; display:flex; align-items:center; gap:10px; }
+.card-title::after { content:''; flex:1; height:1px; background:var(--line); }
+.url-row { display:flex; gap:10px; }
+@media(max-width:540px){ .url-row { flex-direction:column; } }
+.url-input { flex:1; padding:15px 16px; background:var(--bg); border:1px solid var(--line); border-radius:3px; color:var(--text); font-family:inherit; font-size:15px; outline:none; transition:border-color .2s; }
+.url-input:focus { border-color:var(--teal); }
+.url-input::placeholder { color:var(--muted); }
+.go-btn { padding:15px 28px; background:var(--teal); color:#fff; border:none; border-radius:3px; font-family:inherit; font-size:15px; font-weight:700; letter-spacing:1px; cursor:pointer; white-space:nowrap; transition:all .2s; }
+.go-btn:hover { background:#0a766b; transform:translateY(-1px); box-shadow:0 8px 24px rgba(14,140,127,0.32); }
+.go-btn:disabled { opacity:.6; cursor:default; transform:none; box-shadow:none; }
+.hint { font-size:12px; color:var(--muted); margin-top:12px; line-height:1.7; }
+.error-msg { font-size:13px; color:var(--bad); margin-top:14px; display:none; }
+#loading { display:none; text-align:center; padding:48px 0; }
+.spinner { width:38px; height:38px; border:3px solid var(--bg3); border-top-color:var(--teal); border-radius:50%; margin:0 auto 18px; animation:spin .8s linear infinite; }
+@keyframes spin { to { transform:rotate(360deg); } }
+#loading p { font-size:14px; color:var(--muted); }
+#loading .lurl { font-size:12px; color:var(--text); margin-top:6px; word-break:break-all; }
+#result { display:none; animation:fadeUp .5s ease forwards; }
+@keyframes fadeUp { from { opacity:0; transform:translateY(20px); } to { opacity:1; transform:translateY(0); } }
+.score-wrap { display:flex; align-items:center; gap:28px; margin-bottom:6px; }
+@media(max-width:540px){ .score-wrap { flex-direction:column; gap:14px; text-align:center; } }
+.score-ring { --p:0; width:132px; height:132px; border-radius:50%; flex-shrink:0; display:flex; align-items:center; justify-content:center; background:conic-gradient(var(--ring) calc(var(--p)*1%), var(--bg3) 0); transition:--p 1s ease; }
+.score-inner { width:104px; height:104px; border-radius:50%; background:var(--bg2); display:flex; flex-direction:column; align-items:center; justify-content:center; }
+.score-num { font-family:'Rajdhani',sans-serif; font-size:46px; font-weight:700; line-height:1; color:var(--text); }
+.score-cap { font-size:10px; letter-spacing:1.5px; color:var(--muted); text-transform:uppercase; margin-top:2px; }
+.score-side h2 { font-size:20px; font-weight:900; margin-bottom:8px; }
+.score-side .surl { font-size:12px; color:var(--muted); word-break:break-all; margin-bottom:12px; }
+.pills { display:flex; gap:8px; flex-wrap:wrap; }
+.pill { font-size:12px; font-weight:700; padding:4px 12px; border-radius:20px; }
+.pill.good { color:var(--good); background:rgba(14,140,127,0.1); }
+.pill.warn { color:var(--warn); background:rgba(201,138,40,0.12); }
+.pill.bad { color:var(--bad); background:rgba(224,82,77,0.1); }
+.checks { margin-top:24px; }
+.check { display:flex; gap:14px; padding:16px 0; border-top:1px solid var(--line); }
+.check-ic { width:24px; height:24px; border-radius:50%; flex-shrink:0; display:flex; align-items:center; justify-content:center; font-size:13px; font-weight:700; color:#fff; margin-top:1px; }
+.check-ic.good { background:var(--good); }
+.check-ic.warn { background:var(--warn); }
+.check-ic.bad { background:var(--bad); }
+.check-body { flex:1; }
+.check-label { font-size:14.5px; font-weight:700; margin-bottom:3px; }
+.check-detail { font-size:13px; color:var(--text); line-height:1.7; }
+.check-why { font-size:11.5px; color:var(--muted); margin-top:4px; }
+.disclaimer { font-size:11px; color:var(--muted); line-height:1.8; padding:16px 0 0; border-top:1px solid var(--line); margin-top:6px; }
+.lead-card { background:linear-gradient(135deg,rgba(31,56,100,0.12),rgba(14,140,127,0.1)); border:1px solid rgba(14,140,127,0.25); border-radius:4px; padding:32px 34px; }
+.lead-card h3 { font-size:17px; font-weight:700; margin-bottom:8px; }
+.lead-card h3 span { color:var(--teal); }
+.lead-card p { font-size:13px; color:var(--muted); margin-bottom:22px; line-height:1.75; }
+.lead-card ul { list-style:none; margin:0 0 22px; padding:0; }
+.lead-card li { font-size:13px; color:var(--text); padding:5px 0 5px 22px; position:relative; }
+.lead-card li::before { content:'✓'; position:absolute; left:0; color:var(--teal); font-weight:700; }
+.input-row { display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-bottom:12px; }
+@media(max-width:500px){ .input-row { grid-template-columns:1fr; } }
+.text-input { width:100%; padding:12px 14px; background:var(--bg); border:1px solid var(--line); border-radius:2px; color:var(--text); font-family:inherit; font-size:13px; outline:none; transition:border-color .2s; }
+.text-input:focus { border-color:var(--teal); }
+.submit-btn { width:100%; padding:16px; background:linear-gradient(135deg,var(--navy),var(--teal)); color:#fff; border:none; border-radius:3px; font-family:inherit; font-size:14px; font-weight:700; cursor:pointer; margin-top:12px; transition:all .2s; }
+.submit-btn:hover { opacity:.92; transform:translateY(-1px); box-shadow:0 6px 20px rgba(14,140,127,0.3); }
+.lead-err { font-size:12px; color:var(--bad); margin-top:8px; display:none; }
+.privacy-note { font-size:11px; color:var(--muted); text-align:center; margin-top:12px; }
+#complete-msg { display:none; text-align:center; padding:36px; }
+#complete-msg .big-check { font-size:48px; margin-bottom:16px; }
+#complete-msg h3 { font-size:20px; margin-bottom:10px; }
+#complete-msg p { font-size:13px; color:var(--muted); line-height:1.8; }
+.retry { text-align:center; margin-top:18px; }
+.retry a { font-size:12px; color:var(--muted); text-decoration:none; cursor:pointer; }
+.retry a:hover { color:var(--text); }
+.footer-link { text-align:center; margin-top:40px; font-size:12px; color:var(--muted); }
+.footer-link a { color:var(--muted); text-decoration:none; }
+.footer-link a:hover { color:var(--text); }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <div class="header">
+    <div class="header-badge">無料サイト即時診断</div>
+    <h1>URLを入れるだけ。<br><span>60秒で</span>サイトの伸びしろが分かる。</h1>
+    <p>スマホ対応・SSL・検索対策・SNS表示・問い合わせ導線・表示速度など、<br>集客の観点で<strong style="color:var(--text)">その場で自動チェック</strong>します。登録も費用も不要。</p>
+  </div>
+
+  <div class="card" id="input-card">
+    <div class="card-title">サイトURLを入力</div>
+    <div class="url-row">
+      <input class="url-input" id="url" type="url" placeholder="https://example.com" autocomplete="url" spellcheck="false">
+      <button class="go-btn" id="go" onclick="run()">▶ 無料で診断する</button>
+    </div>
+    <div class="hint">御社サイトでも、気になる競合サイトでもOK。トップページのURLを貼り付けてください。</div>
+    <div class="error-msg" id="err"></div>
+  </div>
+
+  <div id="loading">
+    <div class="spinner"></div>
+    <p>サイトを取得して診断しています…</p>
+    <div class="lurl" id="loading-url"></div>
+  </div>
+
+  <div id="result">
+    <div class="card">
+      <div class="card-title">診断結果</div>
+      <div class="score-wrap">
+        <div class="score-ring" id="ring"><div class="score-inner"><div class="score-num" id="score">0</div><div class="score-cap">SCORE</div></div></div>
+        <div class="score-side">
+          <h2 id="score-head">診断結果</h2>
+          <div class="surl" id="res-url"></div>
+          <div class="pills" id="pills"></div>
+        </div>
+      </div>
+      <div class="checks" id="checks"></div>
+      <div class="disclaimer">
+        ※本診断は、サイトのHTMLから自動で取得できる範囲の技術チェックです。実際の集客は、これに加えて<strong>Googleマップ（MEO）の登録状況・競合との比較・広告の費用対効果・問い合わせ後の成約</strong>までを見て初めて全体像が分かります。その深い部分を、下記の無料レポートで人の目で確認します。
+      </div>
+    </div>
+
+    <div class="lead-card" id="lead-form-wrap">
+      <h3>📩 この自動診断に、<span>人の目の1枚レポート</span>を無料でお付けします</h3>
+      <p>自動チェックでは分からない、御社ならではの伸びしろを担当者が確認してお渡しします。費用も契約も不要。受け取ってから、続けるか決めてください。</p>
+      <ul>
+        <li>Googleマップ（MEO）の登録・見え方</li>
+        <li>「地域名＋業種」での検索順位と競合比較</li>
+        <li>まず直すべき一箇所と、具体的な打ち手</li>
+      </ul>
+      <div class="input-row">
+        <input class="text-input" id="lead-name" type="text" placeholder="お名前（例：山田 太郎）">
+        <input class="text-input" id="lead-company" type="text" placeholder="会社名・店舗名（任意）">
+      </div>
+      <input class="text-input" id="lead-email" type="email" placeholder="メールアドレス（例：info@example.com）" style="margin-bottom:0">
+      <div class="lead-err" id="lead-err">メールアドレスを正しく入力してください</div>
+      <button class="submit-btn" onclick="submitLead()">無料レポートを受け取る（無料）→</button>
+      <div class="privacy-note">入力情報はAIdealize株式会社のご連絡・レポート送付のみに使用します。</div>
+    </div>
+
+    <div id="complete-msg">
+      <div class="big-check">✅</div>
+      <h3>ありがとうございます！</h3>
+      <p>担当者が御社サイトとGoogleマップを確認し、1〜2営業日以内に<br>1枚のレポートをお送りします。<br><br>
+      <a href="/service/marketing/" style="color:#0E8C7F;">集客サービスの詳細を見る →</a></p>
+    </div>
+
+    <div class="retry"><a onclick="resetAll()">← 別のURLを診断する</a></div>
+  </div>
+
+  <div class="footer-link">
+    <a href="/">AIdealize株式会社</a> &nbsp;|&nbsp; <a href="/service/">サービス一覧</a>
+  </div>
+</div>
+
+<script>
+let lastResult = null;
+
+function setError(msg){ const e=document.getElementById('err'); e.textContent=msg; e.style.display='block'; notifyHeight(); }
+function clearError(){ document.getElementById('err').style.display='none'; }
+
+async function run(){
+  clearError();
+  let url = document.getElementById('url').value.trim();
+  if (!url){ setError('サイトのURLを入力してください'); return; }
+  if (!/^https?:\/\//i.test(url)) url = 'https://' + url;
+
+  document.getElementById('input-card').style.display = 'none';
+  document.getElementById('result').style.display = 'none';
+  document.getElementById('loading').style.display = 'block';
+  document.getElementById('loading-url').textContent = url;
+  document.getElementById('go').disabled = true;
+  notifyHeight();
+
+  try {
+    const res = await fetch('/api/site-check?url=' + encodeURIComponent(url), { headers:{'Accept':'application/json'} });
+    const data = await res.json();
+    if (!data.ok){ backToInput(); setError(data.error || '診断できませんでした。URLをご確認ください'); return; }
+    lastResult = data;
+    render(data);
+  } catch(e){
+    backToInput();
+    setError('診断サーバーに接続できませんでした。時間をおいて再度お試しください。');
+  } finally {
+    document.getElementById('go').disabled = false;
+  }
+}
+
+function backToInput(){
+  document.getElementById('loading').style.display = 'none';
+  document.getElementById('input-card').style.display = 'block';
+  notifyHeight();
+}
+
+function render(data){
+  document.getElementById('loading').style.display = 'none';
+  document.getElementById('result').style.display = 'block';
+
+  const ring = document.getElementById('ring');
+  const color = data.score >= 75 ? 'var(--good)' : data.score >= 50 ? 'var(--warn)' : 'var(--bad)';
+  ring.style.setProperty('--ring', color);
+  const head = data.score >= 75 ? '基礎はしっかりできています' : data.score >= 50 ? '伸びしろがいくつかあります' : '改善で大きく変わる余地があります';
+  document.getElementById('score-head').textContent = head;
+  document.getElementById('res-url').textContent = data.url;
+
+  document.getElementById('pills').innerHTML =
+    '<span class="pill good">良好 '+data.counts.good+'</span>' +
+    '<span class="pill warn">改善余地 '+data.counts.warn+'</span>' +
+    '<span class="pill bad">要対応 '+data.counts.bad+'</span>';
+
+  document.getElementById('checks').innerHTML = data.checks.map(c=>{
+    const icon = c.status==='good'?'✓':(c.status==='warn'?'!':'×');
+    return '<div class="check">' +
+      '<div class="check-ic '+c.status+'">'+icon+'</div>' +
+      '<div class="check-body">' +
+        '<div class="check-label">'+esc(c.label)+'</div>' +
+        '<div class="check-detail">'+esc(c.detail)+'</div>' +
+        '<div class="check-why">なぜ大事か：'+esc(c.why)+'</div>' +
+      '</div></div>';
+  }).join('');
+
+  // スコアリング数字＆リングをアニメーション
+  const target = data.score;
+  ring.style.setProperty('--p', target);
+  animateNum('score', target);
+
+  document.getElementById('result').scrollIntoView({behavior:'smooth', block:'start'});
+  setTimeout(notifyHeight, 300);
+}
+
+function animateNum(id, target){
+  const el = document.getElementById(id); el.textContent = target;
+  const start = Date.now();
+  const tick = ()=>{ const p=Math.min((Date.now()-start)/800,1); el.textContent=Math.round(target*(1-Math.pow(1-p,3))); if(p<1) requestAnimationFrame(tick); };
+  requestAnimationFrame(tick);
+}
+
+function resetAll(){
+  document.getElementById('result').style.display='none';
+  document.getElementById('lead-form-wrap').style.display='block';
+  document.getElementById('complete-msg').style.display='none';
+  document.getElementById('input-card').style.display='block';
+  document.getElementById('url').value='';
+  clearError();
+  window.scrollTo({top:0,behavior:'smooth'});
+  setTimeout(notifyHeight,200);
+}
+
+// ── GAS送信（既存の診断と同じスプレッドシートに記録）──
+const GAS_URL = 'https://script.google.com/macros/s/AKfycbznmcKuNRRfPrwP1Ev_alYlLIb5Z-b2fPBmNlnk-r923HibXl3OTc-tGJVP7750RgvQ/exec';
+function sendToGAS(data){ fetch(GAS_URL,{method:'POST',mode:'no-cors',headers:{'Content-Type':'application/json'},body:JSON.stringify(data)}).catch(()=>{}); }
+
+function submitLead(){
+  const name=document.getElementById('lead-name').value.trim();
+  const company=document.getElementById('lead-company').value.trim();
+  const email=document.getElementById('lead-email').value.trim();
+  if(!email||!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){ document.getElementById('lead-err').style.display='block'; return; }
+  sendToGAS({ type:'sitecheck_lead', timestamp:new Date().toISOString(), name, company, email,
+    site:(lastResult&&lastResult.url)||document.getElementById('url').value.trim(),
+    score:(lastResult&&lastResult.score) });
+  document.getElementById('lead-form-wrap').style.display='none';
+  document.getElementById('complete-msg').style.display='block';
+  setTimeout(notifyHeight,100);
+}
+
+function esc(s){ return String(s==null?'':s).replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m])); }
+
+// ── iframe埋め込み用：高さ通知 ──
+function notifyHeight(){ var h=Math.max(document.body.scrollHeight,document.documentElement.scrollHeight); window.parent.postMessage({type:'roiHeight',height:h},'*'); }
+document.getElementById('url').addEventListener('keydown',function(e){ if(e.key==='Enter') run(); });
+window.addEventListener('load',function(){
+  const q=new URLSearchParams(location.search).get('url');
+  if(q){ document.getElementById('url').value=q; run(); }
+  setTimeout(notifyHeight,200);
+});
+</script>
+</body>
+</html>
