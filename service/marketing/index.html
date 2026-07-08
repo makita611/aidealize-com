@@ -26,6 +26,19 @@
   "description": "業種を問わず、Web集客（MEO・口コミ・HP改善）とデータ分析（商圏・広告効果・リピート/リファラル）を組み合わせ、集客から分析まで一気通貫で支援するAIマーケティングサービス。"
 }
 </script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {"@type": "Question", "name": "広告を出していなくても集客できますか？", "acceptedAnswer": {"@type": "Answer", "text": "はい。MEO・口コミ・ホームページ改善など、広告に頼らないチャネルから着手できます。広告を出していないローカル店舗・クリニックの支援にも数多く対応しています。"}},
+    {"@type": "Question", "name": "対応できる業種は？", "acceptedAnswer": {"@type": "Answer", "text": "クリニック・医療、介護・訪問看護、リユース／買取、美容・サロン、不動産・士業・教室・店舗、BtoBなど幅広く対応します。専用ページのない業種も個別にプランをご用意します。"}},
+    {"@type": "Question", "name": "費用はどれくらいかかりますか？", "acceptedAnswer": {"@type": "Answer", "text": "まずは無料のサイト分析から始められます。契約前に「どこで取りこぼしているか」を1枚のレポートでお出しし、費用対効果を確認いただいてから進めます。"}},
+    {"@type": "Question", "name": "どれくらいで成果が出ますか？", "acceptedAnswer": {"@type": "Answer", "text": "MEOや導線改善などの軽い施策は1〜2週間で数字の変化が見え始めます。検索露出や集客の底上げは1〜3ヶ月が目安です。毎週のレポートで途中経過が見えます。"}},
+    {"@type": "Question", "name": "今のサイトやGoogleマップはそのまま使えますか？", "acceptedAnswer": {"@type": "Answer", "text": "はい。多くの場合、作り直しではなく「一箇所ずつの改修」で対応します。全面リニューアルは必要ありません。"}}
+  ]
+}
+</script>
 <style>
 :root{
   --red:#0891b2;--red-dark:#0e7490;
@@ -198,6 +211,15 @@ footer{background:#1f1f1f;border-top:1px solid rgba(255,255,255,0.06);padding:40
 
 .reveal{opacity:0;transform:translateY(18px);transition:opacity 0.55s ease,transform 0.55s ease;}
 .reveal.visible{opacity:1;transform:translateY(0);}
+
+/* FAQ */
+.faq-list{margin-top:8px;max-width:760px;margin-left:auto;margin-right:auto;}
+.faq-list details{background:#fff;border:1px solid var(--border);border-radius:8px;margin-bottom:10px;overflow:hidden;}
+.faq-list summary{padding:16px 18px;font-size:14px;font-weight:700;color:var(--ink);cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:12px;}
+.faq-list summary::-webkit-details-marker{display:none;}
+.faq-list summary::after{content:"▼";color:var(--red);font-size:11px;flex-shrink:0;}
+.faq-list details[open] summary::after{content:"▲";}
+.faq-answer{padding:0 18px 16px;font-size:13.5px;color:var(--body);line-height:1.9;}
 
 @media(max-width:768px){
   .hero{padding-top:96px;}
@@ -394,6 +416,7 @@ footer{background:#1f1f1f;border-top:1px solid rgba(255,255,255,0.06);padding:40
         <span class="ind-tag soon">まず相談する</span>
       </a>
     </div>
+    <p class="section-lead" style="margin-top:32px;">集めた見込み客を予約・成約まで取りこぼさない仕組みは <a href="/service/cvr/" style="color:var(--red-dark);font-weight:700;">成約率アップ（とりこぼし改善）</a> をご覧ください。</p>
   </div>
 </section>
 
@@ -491,6 +514,36 @@ footer{background:#1f1f1f;border-top:1px solid rgba(255,255,255,0.06);padding:40
       </div>
       <span class="ind-tag ready">事例を見る →</span>
     </a>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="section alt">
+  <div class="section-inner">
+    <div class="section-label" style="text-align:center;">FAQ</div>
+    <h2 class="section-title" style="text-align:center;">よくあるご質問</h2>
+    <div class="faq-list">
+      <details>
+        <summary>広告を出していなくても集客できますか？</summary>
+        <div class="faq-answer">はい。MEO・口コミ・ホームページ改善など、広告に頼らないチャネルから着手できます。広告を出していないローカル店舗・クリニックの支援にも数多く対応しています。</div>
+      </details>
+      <details>
+        <summary>対応できる業種は？</summary>
+        <div class="faq-answer">クリニック・医療、介護・訪問看護、リユース／買取、美容・サロン、不動産・士業・教室・店舗、BtoBなど幅広く対応します。専用ページのない業種も個別にプランをご用意します。</div>
+      </details>
+      <details>
+        <summary>費用はどれくらいかかりますか？</summary>
+        <div class="faq-answer">まずは無料のサイト分析から始められます。契約前に「どこで取りこぼしているか」を1枚のレポートでお出しし、費用対効果を確認いただいてから進めます。</div>
+      </details>
+      <details>
+        <summary>どれくらいで成果が出ますか？</summary>
+        <div class="faq-answer">MEOや導線改善などの軽い施策は1〜2週間で数字の変化が見え始めます。検索露出や集客の底上げは1〜3ヶ月が目安です。毎週のレポートで途中経過が見えます。</div>
+      </details>
+      <details>
+        <summary>今のサイトやGoogleマップはそのまま使えますか？</summary>
+        <div class="faq-answer">はい。多くの場合、作り直しではなく「一箇所ずつの改修」で対応します。全面リニューアルは必要ありません。</div>
+      </details>
+    </div>
   </div>
 </section>
 
