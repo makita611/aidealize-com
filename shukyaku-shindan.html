@@ -421,8 +421,10 @@ function submitLead(){
 }
 
 // ── iframe埋め込み用：高さ通知 ──
+// bodyはmin-height:100vhでiframe高に張り付くため、コンテンツ(.container)基準で測る（結果→入力で縮められるように）
 function notifyHeight(){
-  var h = Math.max(document.body.scrollHeight, document.documentElement.scrollHeight);
+  var c = document.querySelector('.container');
+  var h = c ? Math.ceil(c.offsetTop + c.offsetHeight) : Math.max(document.body.scrollHeight, document.documentElement.scrollHeight);
   window.parent.postMessage({type:'roiHeight', height: h}, '*');
 }
 window.addEventListener('load', function(){

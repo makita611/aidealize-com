@@ -281,7 +281,8 @@ function submitLead(){
 function esc(s){ return String(s==null?'':s).replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m])); }
 
 // ── iframe埋め込み用：高さ通知 ──
-function notifyHeight(){ var h=Math.max(document.body.scrollHeight,document.documentElement.scrollHeight); window.parent.postMessage({type:'roiHeight',height:h},'*'); }
+// bodyはmin-height:100vhでiframe高に張り付くため、コンテンツ(.container)基準で測る（結果→入力で縮められるように）
+function notifyHeight(){ var c=document.querySelector('.container'); var h=c?Math.ceil(c.offsetTop+c.offsetHeight):Math.max(document.body.scrollHeight,document.documentElement.scrollHeight); window.parent.postMessage({type:'roiHeight',height:h},'*'); }
 document.getElementById('url').addEventListener('keydown',function(e){ if(e.key==='Enter') run(); });
 window.addEventListener('load',function(){
   const q=new URLSearchParams(location.search).get('url');
