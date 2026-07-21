@@ -1,0 +1,722 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- 実在企業への提案イメージ。検索に載せない・公開先はaidealize側のホスティングのみ -->
+<meta name="robots" content="noindex, nofollow">
+<title>【提案イメージ】株式会社増保鉄工 採用サイト案</title>
+<style>
+:root{
+  --ink:#171c22;
+  --steel:#232d38;
+  --spark:#c9501a;        /* CTA。小さい文字でも読めるよう v1(#e2621b)から濃くした */
+  --spark-lite:#e2621b;   /* 面で使う用（背景・ボタン） */
+  --spark-dark:#a8400f;   /* 小さい文字用。--spark では12-13pxで読みにくかった */
+  --draft:#5b7185;        /* 「図面／技術」を表す寒色。線・番号にだけ使う（人・CTAは橙のまま） */
+  --paper:#f7f8f9;
+  --line:#e0e4e8;
+  --muted:#4a5460;        /* 本文グレー。実機で薄く感じたため濃くした */
+  --max:1040px;
+  --hd:66px;              /* ヘッダー高さ。scroll-margin と揃える */
+  /* 数字は図面の数値のように等幅で。tabular-nums で桁も揃える */
+  --mono:"DIN Alternate","Roboto Mono",ui-monospace,"SFMono-Regular",Menlo,Consolas,monospace;
+}
+/* ダークモードのブラウザで背景が黒くなり、黒文字が見えなくなる事故を防ぐ。 */
+:root{color-scheme:light}
+html,body{background:#fff}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:"Hiragino Kaku Gothic ProN","Yu Gothic",system-ui,sans-serif;
+  color:var(--ink);line-height:1.9;-webkit-text-size-adjust:100%;
+  font-feature-settings:"palt";letter-spacing:.02em}
+img{max-width:100%;height:auto;display:block}
+a{color:inherit}
+.wrap{max-width:var(--max);margin:0 auto;padding:0 22px}
+.num{font-family:var(--mono);font-variant-numeric:tabular-nums;font-style:normal}
+
+section{padding:88px 0;scroll-margin-top:var(--hd);background:#fff}
+.paper{background:var(--paper)}
+.dark{background:var(--ink);color:#fff}
+
+.proposal{background:#111;color:#ffd76e;text-align:center;font-size:12.5px;
+  padding:8px 14px;letter-spacing:.04em;line-height:1.6}
+
+/* 見出しラベル＝図面のシート番号。番号(等幅)＋細い仕切り＋名称で全編を一枚の図面に見立てる */
+.label{display:inline-flex;align-items:center;gap:12px;margin-bottom:12px;
+  font-size:12.5px;letter-spacing:.14em;font-weight:800;color:var(--spark-dark)}
+.label i{font-family:var(--mono);font-style:normal;color:var(--draft);font-weight:700;
+  font-size:14px;border-right:1px solid var(--line);padding-right:12px}
+h2{font-size:clamp(23px,3.6vw,34px);line-height:1.5;letter-spacing:.01em;margin-bottom:14px;
+  font-weight:800}
+.lead{color:var(--muted);margin-bottom:42px;font-size:16px;max-width:38em}
+.dark .lead{color:#c2ccd6}
+.dark .label{color:#ffb877}
+.dark .label i{color:#8aa0b3;border-color:rgba(255,255,255,.18)}
+
+/* 再利用する画像スロット。撮るべき写真の中身をタグで明示（＝素材を渡せばそのまま差し替え可） */
+.imgslot{background:repeating-linear-gradient(135deg,#e8ecf0 0 10px,#eef1f4 10px 20px);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;
+  color:#7d8b99;font-size:12.5px;text-align:center;padding:16px;line-height:1.6;border-radius:8px}
+.imgslot .tag{font-family:var(--mono);font-size:10px;letter-spacing:.12em;color:#8a97a4;
+  border:1px solid #cbd3da;border-radius:3px;padding:2px 8px}
+.imgslot b{font-size:13px;color:#5f6d7a;font-weight:800}
+.imgslot span{font-size:11.5px;opacity:.85}
+
+header{position:sticky;top:0;z-index:50;background:rgba(23,28,34,.97);color:#fff;
+  backdrop-filter:saturate(1.4) blur(6px)}
+.hd{display:flex;align-items:center;justify-content:space-between;gap:16px;
+  padding:11px 22px;max-width:var(--max);margin:0 auto}
+.logo{font-weight:800;font-size:16.5px;letter-spacing:.05em;line-height:1.35}
+.logo span{display:block;font-size:10.5px;color:#9dabb8;font-weight:500;letter-spacing:.12em}
+.nav{display:flex;gap:22px;font-size:14px}
+.nav a{text-decoration:none;color:#dde4ea;padding:4px 0;border-bottom:2px solid transparent}
+.nav a:hover{color:#ffc46b;border-color:#ffc46b}
+.btn{display:inline-block;background:var(--spark-lite);color:#fff;text-decoration:none;
+  padding:15px 32px;border-radius:4px;font-weight:700;font-size:15.5px;letter-spacing:.04em;
+  box-shadow:0 3px 16px rgba(226,98,27,.3)}
+.btn:hover{filter:brightness(1.08)}
+.btn.line{background:transparent;border:1.5px solid rgba(255,255,255,.75);box-shadow:none}
+.btn.ghost{background:transparent;border:1.5px solid var(--line);color:var(--ink);box-shadow:none}
+
+/* ヒーロー：実写動画を背景に敷き、その上に暗幕＋方眼＋門型フレーム線画。
+   動画で合成っぽさを消しつつ、図面の線画で「見えなくなる骨組み」の世界観は維持する。 */
+.hero{position:relative;background:var(--steel);color:#fff;overflow:hidden}
+.hero .bgvid{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0}
+/* 暗幕。左（文字側）を濃く、右を薄くして動画を覗かせる＝可読性と実写感の両立 */
+.hero .ph{position:absolute;inset:0;z-index:1;
+  background:linear-gradient(100deg,rgba(20,26,32,.93) 0%,rgba(20,26,32,.74) 46%,rgba(20,26,32,.4) 100%)}
+.hero .ph::after{content:"";position:absolute;inset:0;
+  background-image:
+    linear-gradient(rgba(255,255,255,.04) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(255,255,255,.04) 1px,transparent 1px);
+  background-size:46px 46px}
+.hero .frame{position:absolute;right:-8px;bottom:0;width:min(54%,540px);z-index:2;pointer-events:none}
+.hero .frame line{stroke:rgba(255,255,255,.16);stroke-width:1.2;
+  stroke-linecap:round;vector-effect:non-scaling-stroke}
+.hero .frame .hi{stroke:rgba(255,196,107,.72);stroke-width:1.8}
+.hero .frame .dim{stroke:rgba(255,255,255,.3);stroke-width:1}
+.hero .frame .plate{stroke:rgba(255,255,255,.34);stroke-width:3.4}
+.hero .wrap{position:relative;z-index:3;padding:106px 22px 84px}
+.hero .eyebrow{display:inline-block;font-size:12.5px;letter-spacing:.14em;
+  margin-bottom:26px;color:#ffc46b;font-weight:700}
+.hero h1{font-size:clamp(29px,5.2vw,50px);line-height:1.4;font-weight:800;
+  letter-spacing:.005em;text-shadow:0 3px 24px rgba(0,0,0,.35)}
+.hero h1 em{font-style:normal;display:block;color:#ffc46b;margin-top:6px}
+.hero p{margin-top:26px;font-size:clamp(15px,1.9vw,17px);max-width:29em;opacity:.94;line-height:2}
+.hero .cta{margin-top:38px;display:flex;gap:12px;flex-wrap:wrap}
+
+.stats{display:flex;border-top:1px solid rgba(255,255,255,.2);margin-top:52px}
+.stats div{flex:1;padding:22px 8px 0}
+.stats b{font-family:var(--mono);font-variant-numeric:tabular-nums;
+  font-size:clamp(25px,3.8vw,34px);color:#ffc46b;display:block;line-height:1.15;font-weight:800}
+.stats b i{font-family:"Hiragino Kaku Gothic ProN","Yu Gothic",sans-serif;
+  font-style:normal;font-size:14px;margin-left:2px}
+.stats small{font-size:12px;opacity:.82;letter-spacing:.02em}
+
+/* 仕事の中身（3工程） */
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;counter-reset:st}
+.step{background:#fff;border:1px solid var(--line);border-radius:10px;
+  position:relative;counter-increment:st;overflow:hidden}
+.step::before{content:"0" counter(st);position:absolute;top:14px;right:18px;z-index:2;
+  font-family:var(--mono);font-size:34px;font-weight:800;color:rgba(255,255,255,.62);
+  letter-spacing:-.03em;line-height:1;text-shadow:0 1px 6px rgba(0,0,0,.25)}
+.step .imgslot{border-radius:0;aspect-ratio:16/10}
+.step .body{padding:26px 24px}
+.step h3{font-size:18px;margin-bottom:10px;font-weight:800}
+.step p{font-size:14.5px;color:var(--muted);line-height:1.85}
+
+/* 職種（JOBS） */
+.jobs{display:grid;grid-template-columns:repeat(2,1fr);gap:22px}
+.job{background:#fff;border:1px solid var(--line);border-radius:10px;overflow:hidden;
+  display:flex;flex-direction:column}
+.job .imgslot{aspect-ratio:16/9;border-radius:0}
+.job .body{padding:26px 26px 28px}
+.job .jt{font-family:var(--mono);font-size:12px;color:var(--draft);font-weight:700;
+  letter-spacing:.08em}
+.job h3{font-size:20px;font-weight:800;margin:4px 0 8px}
+.job .desc{font-size:14.5px;color:var(--muted);line-height:1.85}
+.job .why{margin-top:16px;padding-top:16px;border-top:1px dashed var(--line)}
+.job .why b{display:block;font-size:12px;color:var(--spark-dark);letter-spacing:.06em;
+  font-weight:800;margin-bottom:5px}
+.job .why p{font-size:14.5px;line-height:1.8;font-weight:700}
+
+/* 数字で見る（データ） */
+.numgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;
+  background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.15);border-radius:10px;
+  overflow:hidden}
+.numgrid div{background:var(--ink);padding:30px 22px}
+.numgrid .n{font-family:var(--mono);font-variant-numeric:tabular-nums;
+  font-size:clamp(32px,5.4vw,50px);color:#ffc46b;font-weight:800;line-height:1}
+.numgrid .n i{font-style:normal;font-size:15px;margin-left:3px;
+  font-family:"Hiragino Kaku Gothic ProN",sans-serif}
+.numgrid small{display:block;color:#c2ccd6;margin-top:10px;font-size:13px;letter-spacing:.02em}
+
+/* 社員紹介 */
+.persons{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+.person{background:#fff;border:1px solid var(--line);border-radius:10px;overflow:hidden;
+  display:flex;flex-direction:column}
+.person .imgslot{aspect-ratio:4/5;border-radius:0}
+.person .body{padding:20px;display:flex;flex-direction:column;flex:1}
+.person .meta{font-size:12px;color:var(--spark);font-weight:700;letter-spacing:.05em;margin-bottom:8px}
+.person .meta .num{color:var(--draft);margin-right:.35em}
+.person h3{font-size:16.5px;font-weight:800;margin-bottom:4px}
+.person .role{font-size:12.5px;color:var(--muted);margin-bottom:13px}
+.person blockquote{font-size:15px;font-weight:700;line-height:1.65;margin-bottom:11px;
+  border-left:3px solid var(--spark-lite);padding-left:13px}
+.person p{font-size:13.5px;color:var(--muted);line-height:1.8}
+
+/* 座談会（CROSS TALK） */
+.talk-wrap{display:grid;grid-template-columns:.9fr 1.1fr;gap:36px;align-items:start}
+.talk .imgslot{aspect-ratio:4/3}
+.talk .theme{font-size:13.5px;color:var(--spark-dark);font-weight:800;margin:2px 0 16px}
+.bub{display:flex;gap:13px;margin-bottom:16px}
+.bub .who{flex:0 0 68px;font-family:var(--mono);font-size:11.5px;font-weight:800;
+  color:var(--draft);padding-top:13px;letter-spacing:.03em}
+.bub.b2 .who{color:var(--spark)}
+.bub .say{background:#fff;border:1px solid var(--line);border-radius:12px;
+  padding:14px 17px;font-size:14.5px;line-height:1.8}
+
+/* 代表メッセージ */
+.msg-wrap{display:grid;grid-template-columns:.8fr 1.2fr;gap:40px;align-items:center}
+.msg .imgslot{aspect-ratio:3/4}
+.msg .text p{font-size:15.5px;line-height:2.05;margin-bottom:16px}
+.msg .sign{margin-top:22px;font-size:18px;font-weight:800}
+.msg .sign small{display:block;color:var(--muted);font-weight:600;font-size:13px;
+  letter-spacing:.06em;margin-bottom:4px}
+
+/* 働く環境＋福利厚生 */
+.env{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
+.env div{background:#fff;border:1px solid var(--line);border-top:3px solid var(--spark-lite);
+  padding:24px;border-radius:0 0 8px 8px}
+.env b{display:block;font-size:16.5px;margin-bottom:8px;font-weight:800}
+.env p{font-size:14.5px;color:var(--muted);line-height:1.85}
+.chips{display:flex;flex-wrap:wrap;gap:10px;margin-top:26px}
+.chips span{background:#fff;border:1px solid var(--line);border-radius:999px;
+  padding:9px 17px;font-size:13.5px;font-weight:700}
+
+/* 入社後の流れ */
+.flow{counter-reset:f;max-width:820px}
+.flow li{list-style:none;counter-increment:f;padding:20px 0 20px 62px;position:relative;
+  border-bottom:1px solid var(--line)}
+.flow li:last-child{border-bottom:0}
+.flow li::before{content:counter(f);position:absolute;left:8px;top:20px;width:36px;height:36px;
+  background:var(--ink);color:#fff;border-radius:50%;display:flex;align-items:center;
+  justify-content:center;font-family:var(--mono);font-weight:800;font-size:15px}
+.flow b{display:block;font-size:16.5px;font-weight:800}
+.flow p{font-size:14.5px;color:var(--muted)}
+
+/* 一日の流れ */
+.day{display:grid;grid-template-columns:repeat(4,1fr);gap:2px;background:var(--line);
+  border:1px solid var(--line);border-radius:8px;overflow:hidden}
+.day div{background:#fff;padding:20px 16px}
+.day time{display:block;font-family:var(--mono);font-variant-numeric:tabular-nums;
+  font-size:19px;font-weight:800;color:var(--spark);letter-spacing:.02em;margin-bottom:4px}
+.day b{display:block;font-size:14.5px;margin-bottom:3px}
+.day small{font-size:13.5px;color:var(--muted);line-height:1.75}
+
+/* FAQ */
+.faq{max-width:820px}
+.faq details{border-bottom:1px solid var(--line);padding:4px 0}
+.faq summary{cursor:pointer;padding:16px 0;font-weight:800;font-size:16px;list-style:none;
+  display:flex;gap:12px;align-items:flex-start}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::before{content:"Q";font-family:var(--mono);color:var(--spark-dark);font-weight:800;flex:0 0 auto}
+.faq details[open] summary{color:var(--spark-dark)}
+.faq .a{padding:0 0 18px 26px;font-size:14.5px;color:var(--muted);line-height:1.9}
+
+/* 応募について（未経験／経験者の入口分け＝中途対応） */
+.entry-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.entry .card{background:#fff;border:1px solid var(--line);border-radius:12px;padding:32px 30px;
+  border-top:4px solid var(--spark-lite);display:flex;flex-direction:column}
+.entry .card.exp{border-top-color:var(--draft)}
+.entry .tagm{font-family:var(--mono);font-size:12px;letter-spacing:.08em;font-weight:700;
+  color:var(--spark-dark)}
+.entry .card.exp .tagm{color:var(--draft)}
+.entry .card h3{font-size:21px;font-weight:800;margin:6px 0 12px}
+.entry .card p{font-size:14.5px;color:var(--muted);line-height:1.9;flex:1}
+.entry .card .btn{margin-top:20px;align-self:flex-start}
+
+table{width:100%;border-collapse:collapse;font-size:14.5px}
+th,td{border-bottom:1px solid var(--line);padding:17px 12px;text-align:left;vertical-align:top}
+th{width:28%;font-weight:700;white-space:nowrap;color:var(--muted)}
+.dark th{color:#ffc46b}
+.dark td,.dark th{border-color:rgba(255,255,255,.15)}
+.todo{opacity:.7;font-size:12.5px}
+
+/* 設備・現場ギャラリー */
+.gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:8px}
+.gallery .imgslot{aspect-ratio:4/3}
+
+.cta-band{background:var(--spark-lite);color:#fff;text-align:center}
+.cta-band h2{color:#fff}
+.cta-band .label{color:rgba(255,255,255,.9);justify-content:center}
+.cta-band .label i{color:rgba(255,255,255,.75);border-color:rgba(255,255,255,.35)}
+.cta-band .btn{background:#fff;color:var(--spark);box-shadow:none}
+.tel-big{font-family:var(--mono);font-variant-numeric:tabular-nums;
+  font-size:clamp(27px,4.6vw,40px);font-weight:800;letter-spacing:.03em;
+  display:inline-block;margin:8px 0 2px;text-decoration:none}
+
+footer{background:var(--ink);color:#fff;padding:48px 0 96px;font-size:13.5px}
+.copy{margin-top:28px;padding-top:18px;border-top:1px solid rgba(255,255,255,.15);
+  font-size:12px;opacity:.72;line-height:1.8}
+
+.sticky{display:none}
+@media(max-width:980px){ .nav{gap:16px;font-size:13px} }
+@media(max-width:860px){
+  :root{--hd:60px}
+  .nav{display:none}
+  .steps,.env,.jobs,.talk-wrap,.msg-wrap,.entry-grid{grid-template-columns:1fr}
+  .persons{grid-template-columns:1fr 1fr}
+  .numgrid,.day,.gallery{grid-template-columns:1fr 1fr}
+  .hero .wrap{padding:66px 22px 56px}
+  .hero .frame{opacity:.32;width:82%;right:-40px}
+  section{padding:58px 0}
+  .stats{flex-wrap:wrap;gap:0}
+  .stats div{flex:1 0 50%;padding:18px 8px 10px}
+  .sticky{display:flex;position:fixed;left:0;right:0;bottom:0;z-index:60;background:#fff;
+    border-top:1px solid var(--line);padding:8px;gap:8px;box-shadow:0 -3px 16px rgba(0,0,0,.13)}
+  .sticky a{flex:1;text-align:center;padding:15px 6px;border-radius:4px;text-decoration:none;
+    font-weight:700;font-size:14.5px}
+  .sticky .c{background:var(--ink);color:#fff}
+  .sticky .m{background:var(--spark-lite);color:#fff}
+}
+</style>
+</head>
+<body>
+
+<div class="proposal">これは株式会社増保鉄工様への<strong>提案イメージ</strong>です（写真・数値は仮のもの／検索エンジン非掲載）</div>
+
+<header>
+  <div class="hd">
+    <div class="logo">株式会社増保鉄工<span>群馬県邑楽郡板倉町</span></div>
+    <nav class="nav">
+      <a href="#work">仕事内容</a>
+      <a href="#jobs">職種</a>
+      <a href="#persons">働く人</a>
+      <a href="#env">働く環境</a>
+      <a href="#faq">よくある質問</a>
+      <a href="#entry">応募について</a>
+    </nav>
+    <a class="btn" href="#req" style="padding:10px 22px;font-size:14px">募集要項</a>
+  </div>
+</header>
+
+<div class="hero">
+  <!-- 採用動画を背景ループに。音は自動再生では鳴らせない仕様なので muted（ヘッダー下でも成立） -->
+  <video class="bgvid" autoplay muted loop playsinline preload="auto" poster="hero_poster.jpg">
+    <source src="hero.mp4" type="video/mp4">
+  </video>
+  <div class="ph"></div>
+  <!-- 門型ラーメン（倉庫の骨組み）の立面図。左の登り梁だけ橙＝「あなたが組む一本」 -->
+  <svg class="frame" viewBox="0 0 520 340" fill="none" aria-hidden="true">
+    <line x1="20" y1="300" x2="500" y2="300"/>
+    <line class="plate" x1="58" y1="300" x2="84" y2="300"/>
+    <line class="plate" x1="436" y1="300" x2="462" y2="300"/>
+    <line x1="70" y1="300" x2="70" y2="140"/>
+    <line x1="450" y1="300" x2="450" y2="140"/>
+    <line class="hi" x1="70" y1="140" x2="260" y2="90"/>
+    <line x1="260" y1="90" x2="450" y2="140"/>
+    <line x1="70" y1="140" x2="450" y2="140"/>
+    <line x1="70" y1="176" x2="106" y2="140"/>
+    <line x1="450" y1="176" x2="414" y2="140"/>
+    <line x1="118" y1="127" x2="124" y2="137"/>
+    <line x1="166" y1="114" x2="172" y2="124"/>
+    <line x1="214" y1="102" x2="220" y2="112"/>
+    <line x1="306" y1="102" x2="300" y2="112"/>
+    <line x1="354" y1="114" x2="348" y2="124"/>
+    <line x1="402" y1="127" x2="396" y2="137"/>
+    <line class="dim" x1="70" y1="326" x2="450" y2="326"/>
+    <line class="dim" x1="70" y1="318" x2="70" y2="334"/>
+    <line class="dim" x1="450" y1="318" x2="450" y2="334"/>
+  </svg>
+  <div class="wrap">
+    <div class="eyebrow">群馬・板倉町／創業50年　倉庫・工場の鉄骨加工と組立</div>
+    <h1>完成したら、見えなくなる。<em>それが、いちばん大事な仕事。</em></h1>
+    <p>建物ができあがると、鉄骨は壁の内側に隠れて、外からは見えなくなります。
+       でも、その骨組みがなければ建物は立ちません。<br>
+       あの骨組みは、おれたちが組んだ。——次は、あなたと組みたい。</p>
+    <div class="cta">
+      <a class="btn" href="#req">募集要項を見る</a>
+      <a class="btn line" href="#work">どんな仕事か知る</a>
+    </div>
+    <div class="stats">
+      <div><b>50<i>年以上</i></b><small>鉄骨ひと筋の業歴</small></div>
+      <div><b>50<i>名以下</i></b><small>全員の顔がわかる規模</small></div>
+      <div><b>未経験<i>OK</i></b><small>先輩がついて教えます</small></div>
+      <div><b>増産中</b><small>主要取引先からの受注好調</small></div>
+    </div>
+  </div>
+</div>
+
+<!-- 01 何をしている会社か（3工程） -->
+<section id="work">
+  <div class="wrap">
+    <span class="label"><i>01</i>仕事の中身</span>
+    <h2>倉庫や工場の「骨組み」を、つくっています。</h2>
+    <p class="lead">図面をもとに鉄を加工し、組み立て、現場で建てる。この3つが、私たちの仕事のほぼすべてです。</p>
+    <div class="steps">
+      <div class="step">
+        <div class="imgslot"><span class="tag">IMAGE</span><b>加工の様子</b><span>切断機・穴あけ・溶接の手元／横位置</span></div>
+        <div class="body">
+        <h3>切る・穴をあける・溶接する</h3>
+        <p>図面をもとに、鉄骨を切り、穴をあけ、溶接します。ここでのズレはミリ単位でも許されません。建物全体の強さが、この最初の工程で決まるからです。</p></div>
+      </div>
+      <div class="step">
+        <div class="imgslot"><span class="tag">IMAGE</span><b>工場での組立</b><span>部材が組み上がっていく様子／横位置</span></div>
+        <div class="body">
+        <h3>工場で組み上げる</h3>
+        <p>加工した部材を、自社の工場で組み上げます。検査も外注しません。自分たちの目で確かめたものだけを、現場に送り出しています。</p></div>
+      </div>
+      <div class="step">
+        <div class="imgslot"><span class="tag">IMAGE</span><b>現場での建て方</b><span>クレーンで鉄骨を吊る瞬間／横位置</span></div>
+        <div class="body">
+        <h3>現場で建てる</h3>
+        <p>クレーンで吊り上げ、現場で組み立てます。昨日まで何もなかった土地に、骨組みが立ち上がる。この瞬間だけは、何年やっても慣れません。</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 02 職種（JOBS）：almicのJOBSを移植。1職種＝説明＋やりがい＋写真枠 -->
+<section id="jobs" class="paper">
+  <div class="wrap">
+    <span class="label"><i>02</i>職種</span>
+    <h2>あなたが担当する、4つの仕事。</h2>
+    <p class="lead">増保鉄工の仕事は、大きく4つ。未経験の方は「加工」から始めて、できることを一つずつ増やしていきます。全部をいきなり任せることはありません。</p>
+    <div class="jobs">
+      <div class="job">
+        <div class="imgslot"><span class="tag">IMAGE</span><b>加工の現場</b><span>切断・穴あけの作業風景／横位置</span></div>
+        <div class="body">
+          <div class="jt">JOB 01</div>
+          <h3>加工（切断・穴あけ）</h3>
+          <p class="desc">図面の寸法どおりに、鉄骨を切り、穴をあけます。まずここから覚えてもらう、すべての基本になる工程です。</p>
+          <div class="why"><b>この仕事のやりがい</b><p>自分が出した精度が、そのまま建物の強さになる。</p></div>
+        </div>
+      </div>
+      <div class="job">
+        <div class="imgslot"><span class="tag">IMAGE</span><b>溶接の火花</b><span>溶接作業の手元アップ／横位置</span></div>
+        <div class="body">
+          <div class="jt">JOB 02</div>
+          <h3>溶接</h3>
+          <p class="desc">部材と部材をつなぎ、一つの構造にしていきます。資格を取りながら、少しずつ難しい溶接を任されるようになります。</p>
+          <div class="why"><b>この仕事のやりがい</b><p>きれいな溶接は、見る人が見ればわかる。腕が、そのまま評価になる。</p></div>
+        </div>
+      </div>
+      <div class="job">
+        <div class="imgslot"><span class="tag">IMAGE</span><b>工場での組立</b><span>部材を組む様子／横位置</span></div>
+        <div class="body">
+          <div class="jt">JOB 03</div>
+          <h3>組立</h3>
+          <p class="desc">加工した部材を、工場で骨組みの形に組み上げます。図面を立体で読む力が身につく工程です。</p>
+          <div class="why"><b>この仕事のやりがい</b><p>バラバラだった鉄が、一つの構造物になる瞬間に立ち会える。</p></div>
+        </div>
+      </div>
+      <div class="job">
+        <div class="imgslot"><span class="tag">IMAGE</span><b>現場での建て方</b><span>クレーン作業・建て方／横位置</span></div>
+        <div class="body">
+          <div class="jt">JOB 04</div>
+          <h3>現場施工（建て方）</h3>
+          <p class="desc">現場でクレーンを使い、骨組みを実際に建てます。経験を積んだ人が中心の、責任のある仕事です。</p>
+          <div class="why"><b>この仕事のやりがい</b><p>自分が加工した鉄骨が、街に残る建物になる。</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 03 数字で見る（almicには無い差別化。データで信頼を出す） -->
+<section id="numbers" class="dark">
+  <div class="wrap">
+    <span class="label"><i>03</i>数字で見る</span>
+    <h2>数字で見る、増保鉄工。</h2>
+    <p class="lead">言葉だけでは伝わらないことを、数字で。<span class="todo">※すべて実数に差し替えます</span></p>
+    <div class="numgrid">
+      <div><div class="n">50<i>年以上</i></div><small>鉄骨加工ひと筋の業歴</small></div>
+      <div><div class="n">◯◯<i>名</i></div><small>従業員数（50名以下）</small></div>
+      <div><div class="n">◯◯<i>年</i></div><small>社員の平均勤続年数</small></div>
+      <div><div class="n">◯◯<i>%</i></div><small>未経験からの入社</small></div>
+      <div><div class="n">◯◯<i>種</i></div><small>取得を支援する資格</small></div>
+      <div><div class="n">◯◯<i>%</i></div><small>有給休暇の取得率</small></div>
+    </div>
+  </div>
+</section>
+
+<!-- 04 社員紹介 -->
+<section id="persons">
+  <div class="wrap">
+    <span class="label"><i>04</i>働く人</span>
+    <h2>ここで働いている人たちです。</h2>
+    <p class="lead">50人以下の会社なので、全員の顔と名前がわかります。4人に話を聞きました。
+      <span class="todo">※写真・氏名・内容は取材のうえ差し替えます</span></p>
+    <div class="persons">
+      <div class="person">
+        <div class="imgslot"><span class="tag">IMAGE</span><b>社員写真</b><span>作業中／縦位置4:5</span></div>
+        <div class="body">
+          <div class="meta"><span class="num">勤続32年</span>ベテラン職人</div>
+          <h3>◯◯ ◯◯</h3>
+          <div class="role">加工・溶接担当</div>
+          <blockquote>「うまい溶接は、見ればわかる。」</blockquote>
+          <p>32年やっても、まだ納得いかない日があります。ただ、若い子に教えるのは楽しいですよ。自分が覚えたことを渡していかないと、この技術はここで途切れてしまうので。</p>
+        </div>
+      </div>
+      <div class="person">
+        <div class="imgslot"><span class="tag">IMAGE</span><b>社員写真</b><span>作業中／縦位置4:5</span></div>
+        <div class="body">
+          <div class="meta"><span class="num">入社8年</span>未経験で入社</div>
+          <h3>◯◯ ◯◯</h3>
+          <div class="role">組立担当</div>
+          <blockquote>「鉄なんて、触ったこともなかった。」</blockquote>
+          <p>前はまったく違う仕事をしていました。最初は工具の名前もわからなくて。でも順番に教えてもらえるので、3年目くらいから自分で判断できるように。今は資格も取って、後輩に教える側です。</p>
+        </div>
+      </div>
+      <div class="person">
+        <div class="imgslot"><span class="tag">IMAGE</span><b>社員写真</b><span>作業中／縦位置4:5</span></div>
+        <div class="body">
+          <div class="meta"><span class="num">入社15年</span>現場責任者</div>
+          <h3>◯◯ ◯◯</h3>
+          <div class="role">建て方・現場管理</div>
+          <blockquote>「段取り八分。現場は、始まる前に決まる。」</blockquote>
+          <p>現場は天気にも左右されるし、安全が第一。だから前の日の準備がすべてです。若い人には、まず「見て、聞いて、確認する」を身につけてほしいと思っています。</p>
+        </div>
+      </div>
+      <div class="person">
+        <div class="imgslot"><span class="tag">IMAGE</span><b>社員写真</b><span>作業中／縦位置4:5</span></div>
+        <div class="body">
+          <div class="meta"><span class="num">入社2年</span>20代</div>
+          <h3>◯◯ ◯◯</h3>
+          <div class="role">加工担当</div>
+          <blockquote>「自分が作ったものが、建つ。」</blockquote>
+          <p>現場で、自分が加工した鉄骨がクレーンで吊られて組み上がっていくのを見たときは、正直しびれました。これは、ほかの仕事では味わえないと思います。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 05 座談会（CROSS TALK） -->
+<section id="talk" class="paper">
+  <div class="wrap">
+    <span class="label"><i>05</i>座談会</span>
+    <h2>先輩と若手に、本音で話してもらいました。</h2>
+    <p class="lead">いいことばかりは言いません。入る前に、正直なところを知ってほしいので。
+      <span class="todo">※取材のうえ、実際の対談内容・写真に差し替えます</span></p>
+    <div class="talk-wrap">
+      <div class="imgslot"><span class="tag">IMAGE</span><b>座談会の風景</b><span>2〜3名で話している様子／横位置4:3</span></div>
+      <div class="bubbles">
+        <div class="theme">テーマ：入ってみて、ギャップはあった？</div>
+        <div class="bub"><div class="who">若手・2年目</div><div class="say">正直、もっと体力勝負だと思ってました。実際は機械で動かすので、力より「正確さ」の仕事ですね。そこは良い意味で違いました。</div></div>
+        <div class="bub b2"><div class="who">ベテラン</div><div class="say">最初の半年は覚えることばかりで大変だと思う。でも、わからないことを聞ける相手が必ず近くにいる。それはうちの規模だからこそだよ。</div></div>
+        <div class="bub"><div class="who">若手・2年目</div><div class="say">それは本当に。手が空いてる先輩がすぐ教えてくれるので、放っておかれる感じがなかったです。</div></div>
+        <div class="theme" style="margin-top:24px">テーマ：この会社の、好きなところは？</div>
+        <div class="bub b2"><div class="who">ベテラン</div><div class="say">無理な納期の仕事を請けないところ。だから現場が荒れない。長く働ける理由はそこだと思う。</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 06 働く環境＋福利厚生 -->
+<section id="env">
+  <div class="wrap">
+    <span class="label"><i>06</i>働く環境</span>
+    <h2>入ってから「思ってたのと違う」を、なくしたい。</h2>
+    <p class="lead">だから、面接でよく聞かれることを、先に書いておきます。</p>
+    <div class="env">
+      <div><b>無理な工程は、請けません</b>
+        <p>納期を守ることで、取引先の信頼を積み重ねてきました。だからこそ、間に合わない仕事は最初から受けない。そのしわ寄せが現場に来ない会社です。</p></div>
+      <div><b>覚えた分だけ、給与は上がります</b>
+        <p>年齢や勤続年数だけで給与を決めることはしません。資格を取れば手当がつき、任せられる工程が増えれば、その分きちんと反映します。</p></div>
+      <div><b>夏場の水分補給は、我慢しなくていい</b>
+        <p>休憩室に冷蔵庫があり、飲み物は自由に飲めます。小さなことです。でも、こういうことがちゃんとしている職場かどうかは、毎日通う人間には案外大きい。</p></div>
+      <div><b>50年つづいた技術を、渡したい</b>
+        <p>いま、社内から後継者を育てたいと考えています。ただの働き手ではなく、いずれ会社を一緒に考えてくれる人を待っています。</p></div>
+    </div>
+    <div class="chips">
+      <span>各種社会保険完備</span><span>資格取得支援</span><span>作業服貸与</span>
+      <span>賞与年◯回</span><span>退職金制度</span><span>健康診断</span>
+      <span>マイカー通勤OK</span><span>屋内禁煙</span>
+      <span class="todo" style="border:0;padding:9px 4px">※実際の制度に差し替えます</span>
+    </div>
+  </div>
+</section>
+
+<!-- 07 入社後の流れ／キャリア -->
+<section id="flow" class="paper">
+  <div class="wrap">
+    <span class="label"><i>07</i>入社後の流れ</span>
+    <h2>未経験から、一人前になるまで。</h2>
+    <p class="lead">いきなり難しいことはやらせません。この順番で覚えてもらいます。</p>
+    <ol class="flow">
+      <li><b>まずは見て、覚える</b><p>先輩について工場と現場を見ます。工具の名前と、安全のルールから。</p></li>
+      <li><b>機械を使う作業から任される</b><p>切断や穴あけなど、手順が決まっている作業からはじめます。</p></li>
+      <li><b>溶接・組立ができるようになる</b><p>資格の取得は会社が後押しします。ここまで来ると、仕事が面白くなってきます。</p></li>
+      <li><b>現場に出る</b><p>自分が加工した鉄骨が、実際に建ち上がるのを見られます。</p></li>
+      <li><b>教える側・任される側になる</b><p>次に入ってくる人へ技術を渡し、工程を任されていく番です。ここから先は、一緒に会社を考えていきましょう。</p></li>
+    </ol>
+  </div>
+</section>
+
+<!-- 08 一日の流れ -->
+<section id="day">
+  <div class="wrap">
+    <span class="label"><i>08</i>一日の流れ</span>
+    <h2>ある一日の流れ</h2>
+    <p class="lead">早出や残業ありきの働き方では、ありません。<span class="todo">※実際の時間に差し替えてください</span></p>
+    <div class="day">
+      <div><time>7:30</time><b>出社・朝礼</b><small>その日の工程と、危ないところを全員で確認します</small></div>
+      <div><time>8:00</time><b>加工開始</b><small>図面を見ながら切断・穴あけ</small></div>
+      <div><time>10:00</time><b>休憩</b><small>冷蔵庫から好きな飲み物を</small></div>
+      <div><time>10:15</time><b>溶接・組立</b><small>部材を組み上げていきます</small></div>
+      <div><time>12:00</time><b>昼食</b><small>弁当持参の人が多いです</small></div>
+      <div><time>13:00</time><b>作業再開</b><small>午前の続き、または現場へ</small></div>
+      <div><time>15:00</time><b>休憩</b><small>夏場は、ここでしっかり水分を</small></div>
+      <div><time>17:30</time><b>片付け・退社</b><small>翌日の段取りをして終わり</small></div>
+    </div>
+  </div>
+</section>
+
+<!-- 09 代表メッセージ -->
+<section id="message" class="paper">
+  <div class="wrap">
+    <span class="label"><i>09</i>代表メッセージ</span>
+    <div class="msg-wrap">
+      <div class="imgslot"><span class="tag">IMAGE</span><b>代表の写真</b><span>工場を背景に／縦位置3:4</span></div>
+      <div class="text">
+        <h2 style="margin-bottom:22px">人を育てられなければ、<br>会社は続きません。</h2>
+        <p>鉄骨の仕事は、50年変わらないようでいて、少しずつ道具も基準も変わってきました。それでも変わらないのは、「人が人に技術を渡す」というやり方だけです。</p>
+        <p>うちは大きな会社ではありません。だからこそ、一人ひとりに目が届くし、頑張りもちゃんと見ています。未経験でも構いません。長く腰を据えて、この技術を受け継いでくれる人を、私たちは本気で探しています。</p>
+        <div class="sign"><small>株式会社増保鉄工　代表取締役</small>◯◯ ◯◯</div>
+        <p class="todo" style="margin-top:14px">※内容・氏名は取材のうえ差し替えます</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 10 FAQ -->
+<section id="faq">
+  <div class="wrap">
+    <span class="label"><i>10</i>よくある質問</span>
+    <h2>よくある質問</h2>
+    <p class="lead">応募の前に気になることは、だいたいこのあたりだと思います。</p>
+    <div class="faq">
+      <details open>
+        <summary>本当に未経験でも大丈夫ですか？</summary>
+        <div class="a">大丈夫です。いま働いている社員にも、まったく違う業種から入って一人前になった人がいます。工具の名前と安全のルールから、順番に教えます。いきなり難しい作業はやらせません。</div>
+      </details>
+      <details>
+        <summary>経験者だと、何が違いますか？</summary>
+        <div class="a">加工・溶接・建て方の経験は、給与・任せる工程の両面できちんと評価します。前職で身につけたやり方も尊重します。まずは面接で、これまでの経験を聞かせてください。</div>
+      </details>
+      <details>
+        <summary>体力に自信がないのですが</summary>
+        <div class="a">重い部材はクレーンや機械で動かすので、腕力勝負の仕事ではありません。ただし、夏場の工場は暑いです。そのぶん、休憩と水分補給はしっかり取ってもらいます。</div>
+      </details>
+      <details>
+        <summary>資格は持っていないとだめですか？</summary>
+        <div class="a">入社の時点では不要です。働きながら取ってもらいます。取得にかかる費用は会社が支援しますし、資格が増えれば手当がつきます。</div>
+      </details>
+      <details>
+        <summary>残業は多いですか？</summary>
+        <div class="a">間に合わない仕事は最初から受けない方針なので、恒常的な長時間残業はありません。納期前に多少お願いすることはありますが、事前に分かる形にしています。</div>
+      </details>
+      <details>
+        <summary>見学だけでもできますか？</summary>
+        <div class="a">歓迎します。工場を見て、働いている人の様子を見てから決めてもらって構いません。お電話いただければ、日程を調整します。</div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- 11 応募について（新卒/未経験 と 中途/経験者 の入口分け） -->
+<section id="entry" class="paper">
+  <div class="wrap">
+    <span class="label"><i>11</i>応募について</span>
+    <h2>どちらの入口からでも、歓迎します。</h2>
+    <p class="lead">未経験の方も、経験者の方も。あなたに合った入り方で構いません。</p>
+    <div class="entry-grid">
+      <div class="card">
+        <div class="tagm">FOR BEGINNERS</div>
+        <h3>未経験・第二新卒の方へ</h3>
+        <p>工具の名前も、図面の読み方も、ゼロから教えます。「ものづくりに興味がある」その気持ちだけ持ってきてください。まずは工場見学だけでも大歓迎です。実際に見て、雰囲気を確かめてから決めてもらえます。</p>
+        <a class="btn" href="#req">募集要項を見る</a>
+      </div>
+      <div class="card exp">
+        <div class="tagm">FOR EXPERIENCED</div>
+        <h3>経験者（中途）の方へ</h3>
+        <p>加工・溶接・建て方の経験は、給与にも、任せる仕事にも、正当に反映します。前職での経験ややり方も尊重します。長く安定して腕を振るいたい方に、腰を据えて働ける環境を用意しています。</p>
+        <a class="btn ghost" href="#req">募集要項を見る</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 12 募集要項 -->
+<section id="req" class="dark">
+  <div class="wrap">
+    <span class="label"><i>12</i>募集要項</span>
+    <h2>募集要項</h2>
+    <p class="lead">応募の前に、電話で質問だけ、でも構いません。</p>
+    <table>
+      <tr><th>職種</th><td>鉄骨加工・組立スタッフ（未経験可／経験者優遇）</td></tr>
+      <tr><th>雇用形態</th><td>正社員（試用期間◯ヶ月／条件変更なし）</td></tr>
+      <tr><th>勤務地</th><td>群馬県邑楽郡板倉町海老瀬7094-1（自社工場）および近隣の施工現場</td></tr>
+      <tr><th>仕事内容</th><td>倉庫・工場等の鉄骨加工、工場での組立、現場での組立作業</td></tr>
+      <tr><th>給与</th><td>月給 ◯◯万円 〜 ◯◯万円<br><span class="todo">※経験・資格を考慮して決定／実際の金額に差し替えてください</span></td></tr>
+      <tr><th>昇給・賞与</th><td>昇給 年◯回／賞与 年◯回<span class="todo">（実績に差し替え）</span></td></tr>
+      <tr><th>勤務時間</th><td>◯:◯◯〜◯:◯◯（休憩◯分）</td></tr>
+      <tr><th>休日・休暇</th><td>◯曜日／年末年始・夏季休暇／有給休暇 ほか</td></tr>
+      <tr><th>待遇・福利厚生</th><td>各種社会保険／資格取得支援／作業服貸与／退職金制度 ほか</td></tr>
+      <tr><th>応募方法</th><td>お電話またはメールでご連絡ください。まずは見学だけでも構いません。</td></tr>
+      <tr><th>こんな人を待っています</th><td>ものづくりに興味がある方。長く腰を据えて働きたい方。<br>経験はなくて構いません。</td></tr>
+    </table>
+  </div>
+</section>
+
+<section class="cta-band">
+  <div class="wrap">
+    <span class="label">お問い合わせ</span>
+    <h2 style="margin-bottom:8px">見学だけでも、歓迎します。</h2>
+    <p style="margin-bottom:22px;opacity:.95">工場を見てから決めてもらって構いません。まずは気軽にどうぞ。</p>
+    <a class="tel-big" href="tel:0276000000">0276-00-0000</a>
+    <p style="font-size:13px;opacity:.9;margin-bottom:22px">受付 ◯:◯◯〜◯:◯◯（◯曜休）</p>
+    <a class="btn" href="mailto:info@example.co.jp">メールで問い合わせる</a>
+  </div>
+</section>
+
+<!-- 13 会社概要＋設備ギャラリー -->
+<section id="company">
+  <div class="wrap">
+    <span class="label"><i>13</i>会社概要</span>
+    <h2>会社概要</h2>
+    <div class="gallery">
+      <div class="imgslot"><span class="tag">IMAGE</span><b>工場外観</b><span>建物の全景／横位置</span></div>
+      <div class="imgslot"><span class="tag">IMAGE</span><b>設備・機械</b><span>加工機や溶接設備／横位置</span></div>
+      <div class="imgslot"><span class="tag">IMAGE</span><b>施工事例</b><span>建てた倉庫・工場／横位置</span></div>
+    </div>
+    <table style="margin-top:32px">
+      <tr><th>会社名</th><td>株式会社増保鉄工</td></tr>
+      <tr><th>所在地</th><td>群馬県邑楽郡板倉町海老瀬7094-1</td></tr>
+      <tr><th>事業内容</th><td>鉄骨加工組立／倉庫・工場等の鉄骨加工・組立／現場での組立作業</td></tr>
+      <tr><th>業歴</th><td>50年以上</td></tr>
+      <tr><th>従業員数</th><td>50名以下</td></tr>
+      <tr><th>資本金</th><td>1,000万円以下</td></tr>
+    </table>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="logo">株式会社増保鉄工<span>群馬県邑楽郡板倉町海老瀬7094-1</span></div>
+    <p class="copy">© <span id="y"></span> 株式会社増保鉄工<br>
+      本ページは提案用のイメージです。掲載内容・写真は御社と相談のうえ決定します。</p>
+  </div>
+</footer>
+
+<div class="sticky">
+  <a class="c" href="tel:0276000000">電話する</a>
+  <a class="m" href="#req">募集要項を見る</a>
+</div>
+
+<script>document.getElementById('y').textContent=new Date().getFullYear();</script>
+</body>
+</html>

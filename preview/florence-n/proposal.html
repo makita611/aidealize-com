@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta name="robots" content="noindex,nofollow,noarchive">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>florence-n 様｜ホームページ改善・集客ご提案（aidealize）</title>
+<style>
+  :root{
+    --blue:#2f6fb0;--blue-d:#1f4e82;--blue-l:#eaf2fb;--accent:#f2a25c;
+    --ink:#22333b;--ink-2:#5a6b72;--line:#e3e9ea;--bg:#fff;--soft:#f5f8fc;
+    --red:#c0392b;--amber:#b26a1f;--green:#2e7d5b;
+    font-family:"Hiragino Kaku Gothic ProN","Hiragino Sans","Noto Sans JP","Yu Gothic",Meiryo,system-ui,sans-serif;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;color:var(--ink);line-height:1.85;font-size:16px;background:var(--soft)}
+  .page{max-width:860px;margin:0 auto;background:#fff;padding:0 0 60px}
+  .wrap{padding:0 40px}
+  a{color:var(--blue-d)}
+  h2{font-size:1.4rem;border-left:5px solid var(--blue);padding-left:12px;margin:44px 0 16px;letter-spacing:.03em}
+  h3{font-size:1.08rem;color:var(--blue-d);margin:22px 0 8px}
+  p{margin:8px 0}
+  ul{margin:8px 0;padding-left:1.3em}
+  li{margin:5px 0}
+  .cover{background:linear-gradient(150deg,var(--blue),var(--blue-d));color:#fff;padding:48px 40px}
+  .cover .kicker{font-size:.8rem;letter-spacing:.2em;opacity:.85;font-weight:700}
+  .cover h1{font-size:1.9rem;margin:10px 0 8px;line-height:1.4}
+  .cover .meta{font-size:.9rem;opacity:.9;margin-top:16px}
+  .lead{background:var(--blue-l);border-radius:12px;padding:18px 22px;margin:24px 0;font-size:.98rem}
+  table{width:100%;border-collapse:collapse;margin:14px 0;font-size:.93rem}
+  th,td{border:1px solid var(--line);padding:10px 12px;text-align:left;vertical-align:top}
+  th{background:var(--soft);color:var(--blue-d);white-space:nowrap}
+  .sev{font-weight:800;white-space:nowrap}
+  .r{color:var(--red)} .a{color:var(--amber)} .g{color:var(--green)}
+  .cards{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:16px 0}
+  .card{border:1px solid var(--line);border-radius:12px;padding:18px 20px;background:#fff}
+  .card h3{margin:0 0 6px}
+  .card p{margin:0;color:var(--ink-2);font-size:.92rem}
+  .phase{border-left:3px solid var(--blue);padding:4px 0 4px 18px;margin:12px 0}
+  .phase b{color:var(--blue-d)}
+  .todo{color:var(--amber);background:#fff4e6;border:1px dashed var(--accent);padding:0 .4em;border-radius:6px;font-size:.85em;font-weight:700}
+  .note{font-size:.85rem;color:var(--ink-2)}
+  .foot{margin-top:44px;border-top:1px solid var(--line);padding-top:18px;font-size:.85rem;color:var(--ink-2)}
+  .badge{display:inline-block;background:var(--accent);color:#fff;font-weight:700;font-size:.78rem;padding:.2em .8em;border-radius:999px;margin-bottom:8px}
+  @media print{body{background:#fff}.page{max-width:none}}
+  @media(max-width:640px){.wrap,.cover{padding-left:22px;padding-right:22px}.cards{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="page">
+
+  <div class="cover">
+    <div class="kicker">WEBSITE IMPROVEMENT &amp; MARKETING PROPOSAL</div>
+    <h1>florence-n 様<br>ホームページ改善・集客のご提案</h1>
+    <div class="meta">ご提案：aidealize ／ 2026年7月　<span style="opacity:.7">※本書は現状診断にもとづくたたき台です</span></div>
+  </div>
+
+  <div class="wrap">
+
+    <div class="lead">
+      <b>ご提案の要点：</b>いま御社サイトは「①訪問者が入口で警告を見て離脱する状態」「②サイトに集客の導線がほぼ無い状態」の2つの課題を抱えています。これを<strong>「安全化 → 集客できるサイトへ刷新 → 毎週改善し続ける運用」</strong>の3ステップで解決し、<strong>ご利用相談と看護師採用の問い合わせを増やす</strong>ことをゴールにご提案します。
+    </div>
+
+    <h2>1. 現状の診断</h2>
+    <p>実際にサーバーの応答を確認したところ、まず<strong>セキュリティ上の緊急課題</strong>が見つかりました。</p>
+    <table>
+      <tr><th>深刻度</th><th>問題</th><th>いま起きていること</th></tr>
+      <tr><td class="sev r">緊急</td><td>SSL証明書の期限切れ（約3.5か月放置）</td><td>サイトを開いた人全員に「この接続は保護されません」の全画面警告が表示され、大半がそこで離脱。<b>今この瞬間も機会損失が発生</b>しています。</td></tr>
+      <tr><td class="sev r">高</td><td>サーバーのPHPがサポート終了版</td><td>セキュリティ修正が提供されず、既知の弱点が放置された状態です。</td></tr>
+      <tr><td class="sev a">中</td><td>管理者ユーザー名の露出・セキュリティ設定不足</td><td>不正ログインを狙う攻撃の的になりやすい状態です。</td></tr>
+      <tr><td class="sev a">中</td><td>サイトが実質「初期状態」</td><td>サービス内容・強み・採用・問い合わせへの導線がなく、見た人が行動に移せません。</td></tr>
+    </table>
+    <p class="note">※ ①②③はサーバー／WordPressの管理権限をお預かりして対応します（後述「ご用意いただくもの」）。</p>
+
+    <h2>2. ゴール（3つ）</h2>
+    <div class="cards">
+      <div class="card"><h3>① 安心して見られるサイト</h3><p>警告を解消し、二度と証明書が切れない自動更新の仕組みへ。土台のセキュリティも整備。</p></div>
+      <div class="card"><h3>② 問い合わせ・採用が増える導線</h3><p>強み・サービス・採用を伝え、電話とフォームへ自然に誘導するトップページへ刷新。</p></div>
+      <div class="card"><h3>③ 放置しない運用</h3><p>作って終わりにせず、毎週アクセスと反響を見て改善し続けます（次項）。</p></div>
+    </div>
+
+    <h2>3. 制作（サイトの作り方）</h2>
+    <p>ご希望をふまえ、<strong>ハイブリッド構成</strong>でご提案します。</p>
+    <ul>
+      <li><b>トップ・主要ページ</b>：aidealize 側で高速・安全なHTMLとして制作（今回のトップページ案がその第一弾です）。既存のお写真・ロゴを活かします。</li>
+      <li><b>ブログ・お知らせ</b>：これまで通り<strong>WordPressで御社が更新</strong>できる形を維持。</li>
+      <li>これにより「見栄え・表示速度・安全性」と「更新のしやすさ」を両立します。</li>
+    </ul>
+    <p><b>トップページ案の特長：</b>0歳の小児・医療的ケア児から高齢者まで対応という<strong>強みを前面に</strong>、24時間対応・電話CTA・採用募集・ケアマネ様向けの導線を配置。<span class="todo">正式名称・管理者・営業時間・対応エリア・小児対応範囲は確認のうえ反映します</span></p>
+
+    <h2>4. 集客ロードマップ</h2>
+    <p>訪問看護は「地域で探される」「ケアマネ様から紹介される」「働き手を採用する」の3方向で伸びます。優先順に：</p>
+    <table>
+      <tr><th>施策</th><th>ねらい</th><th>優先</th></tr>
+      <tr><td><b>MEO（Googleビジネスプロフィール）</b></td><td>「葛飾区 訪問看護」等の地図検索で上位化。低コストで地域の相談・紹介を獲得。</td><td class="g">最優先</td></tr>
+      <tr><td><b>採用導線の強化</b></td><td>看護師採用は事業成長の要。採用ページと応募フォームで人材確保。</td><td class="g">高</td></tr>
+      <tr><td><b>フォーム・電話CTA最適化</b></td><td>今ある訪問者を確実に問い合わせへ。離脱を減らす。</td><td class="g">高</td></tr>
+      <tr><td><b>SEO・コンテンツ</b></td><td>「小児 訪問看護」「在宅 看取り」「ケアマネ向け」等で検索流入を資産化。</td><td class="a">中〜長期</td></tr>
+      <tr><td><b>計測（GA4／GTM／GSC）</b></td><td>反響を数値で把握し、改善判断の土台に。全施策の前提。</td><td class="g">初期に設定</td></tr>
+    </table>
+
+    <h2>5. コンテンツ計画（例）</h2>
+    <p>ブログを「地域 × 症状・ケア × ケアマネ／ご家族 × 採用」で計画的に。まずは月1〜2本から無理なく。</p>
+    <ul>
+      <li>地域：「葛飾区で訪問看護をお探しの方へ」「対応エリアと訪問の流れ」</li>
+      <li>強み：「小児・医療的ケア児の在宅看護でできること」</li>
+      <li>ご家族向け：「退院後、自宅で医療的ケアが必要になったら」「在宅での看取りに寄り添う」</li>
+      <li>ケアマネ様向け：「連携の流れ・ご依頼方法」</li>
+      <li>採用：「スタッフインタビュー」「1日の仕事の流れ」</li>
+    </ul>
+
+    <h2>6. 運用 ― 作りっぱなしにしません（ここが私たちの特長）</h2>
+    <p>多くの制作会社は「作って納品して終わり」。aidealize は納品後、<strong>毎週、AIがアクセス数・検索順位・問い合わせ状況を分析したレポートを提出</strong>し、次の改善を回し続けます。御社は数字を見ながら安心して任せられます。</p>
+    <ul>
+      <li>毎週：アクセス／検索順位／問い合わせ・電話の反響／今週の改善ポイントを1枚で報告</li>
+      <li>毎月：施策の振り返りと翌月の打ち手をご相談</li>
+    </ul>
+
+    <h2>7. 進め方とスケジュール</h2>
+    <div class="phase"><b>Phase 0（最優先・数日）</b>　SSL証明書の更新で警告を解消（自動更新化）。</div>
+    <div class="phase"><b>Phase 1（土台の安全化）</b>　PHP更新・セキュリティ設定・バックアップ・不要データ整理。</div>
+    <div class="phase"><b>Phase 2（制作）</b>　トップページ確定 → 主要ページ（サービス／選ばれる理由／流れ／採用／会社概要）。</div>
+    <div class="phase"><b>Phase 3（集客・運用）</b>　MEO・計測設定 → コンテンツ発信 → <b>毎週レポートで改善</b>。</div>
+
+    <h2>8. ご用意・ご共有いただくもの</h2>
+    <p>スムーズに進めるため、以下のアクセスと情報をお預かりできますと幸いです。</p>
+    <ul>
+      <li><b>アクセス権</b>：サーバー（またはレンタルサーバー管理画面）／WordPress管理画面／ドメイン・SSLの契約情報</li>
+      <li><b>計測アカウント</b>：Google アナリティクス(GA4)・Google タグマネージャー(GTM)・Search Console・ビジネスプロフィール（無ければ当社で開設代行）</li>
+      <li><b>基本情報</b>：<span class="todo">正式名称／管理者名／営業時間・休業日／対応エリア／小児対応の範囲／指定番号／採用条件／問い合わせフォームのご希望</span></li>
+    </ul>
+
+    <div class="foot">
+      本提案は現状のサーバー応答・公開情報にもとづく初版です。ご要望・ご予算に合わせて範囲を調整いたします。<br>
+      ご提案：aidealize
+    </div>
+
+  </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex,nofollow,noarchive"><!-- 提案プレビュー：検索に出さない。本番公開時に削除 -->
+<title>florence-n｜あなただけの訪問看護（東京・葛飾区）</title>
+<meta name="description" content="東京・葛飾区の訪問看護ステーション florence-n。0歳の小児・医療的ケア児から高齢者まで、24時間365日、看護師とリハビリ専門職がご自宅に伺い、その人らしい毎日を支えます。">
+<style>
+  :root{
+    --blue:#2f6fb0;         /* メインカラー：ロゴの青に合わせた信頼のブルー */
+    --blue-d:#1f4e82;
+    --blue-l:#eaf2fb;
+    --accent:#f2a25c;       /* アクセント：あたたかいオレンジ */
+    --ink:#22333b;
+    --ink-2:#5a6b72;
+    --line:#e3e9ea;
+    --bg:#ffffff;
+    --bg-soft:#f5f8fc;
+    --radius:16px;
+    --shadow:0 10px 34px rgba(31,78,130,.12);
+    --wrap:1080px;
+    font-family:"Hiragino Kaku Gothic ProN","Hiragino Sans","Noto Sans JP","Yu Gothic",Meiryo,system-ui,sans-serif;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;color:var(--ink);background:var(--bg);line-height:1.8;font-size:16.5px;letter-spacing:.02em}
+  img{max-width:100%;display:block}
+  a{color:inherit}
+  .wrap{max-width:var(--wrap);margin:0 auto;padding:0 20px}
+  .btn{display:inline-flex;align-items:center;gap:.5em;padding:.9em 1.6em;border-radius:999px;font-weight:700;text-decoration:none;transition:.2s;line-height:1.3}
+  .btn--primary{background:var(--accent);color:#fff;box-shadow:0 6px 18px rgba(242,162,92,.45)}
+  .btn--primary:hover{transform:translateY(-2px)}
+  .btn--tel{background:#fff;color:var(--blue-d);border:2px solid var(--blue)}
+  .btn--tel:hover{background:var(--blue-l)}
+  .btn--ghost{background:rgba(255,255,255,.15);color:#fff;border:2px solid rgba(255,255,255,.7)}
+  .btn--ghost:hover{background:rgba(255,255,255,.28)}
+
+  /* ---- ヘッダー ---- */
+  .site-header{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.94);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+  .site-header .wrap{display:flex;align-items:center;justify-content:space-between;height:70px}
+  .logo{display:flex;align-items:center;gap:10px;text-decoration:none}
+  .logo img{width:44px;height:44px;border-radius:50%}
+  .logo .lt{font-weight:800;font-size:1.2rem;color:var(--blue-d);letter-spacing:.04em;line-height:1.2}
+  .logo .lt small{display:block;font-size:.62rem;font-weight:600;color:var(--ink-2);letter-spacing:.12em}
+  .nav{display:flex;align-items:center;gap:24px}
+  .nav a{text-decoration:none;font-weight:600;font-size:.95rem;color:var(--ink)}
+  .nav a:hover{color:var(--blue)}
+  .nav .tel{font-weight:800;color:var(--blue-d);font-size:1.05rem}
+  .nav .tel small{display:block;font-size:.6rem;color:var(--accent);font-weight:700;letter-spacing:.08em}
+  .nav-cta{background:var(--accent);color:#fff!important;padding:.5em 1.1em;border-radius:999px}
+
+  /* ---- ヒーロー ---- */
+  .hero{position:relative;background:
+      radial-gradient(1000px 460px at 82% -10%,rgba(242,162,92,.20),transparent),
+      linear-gradient(155deg,var(--blue) 0%,var(--blue-d) 100%);
+    color:#fff;overflow:hidden}
+  .hero .wrap{position:relative;z-index:2;padding:60px 20px 68px;display:grid;grid-template-columns:1.1fr .9fr;gap:44px;align-items:center}
+  .hero .badge{display:inline-flex;align-items:center;gap:.5em;background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.35);padding:.4em 1em;border-radius:999px;font-size:.85rem;font-weight:700;margin-bottom:20px}
+  .hero h1{font-size:clamp(1.9rem,4.6vw,3rem);line-height:1.35;margin:0 0 16px;font-weight:800;letter-spacing:.03em}
+  .hero p.lead{font-size:clamp(1rem,2.2vw,1.15rem);opacity:.97;margin:0 0 28px}
+  .hero-cta{display:flex;flex-wrap:wrap;gap:14px}
+  .hero-trust{display:flex;flex-wrap:wrap;gap:10px;margin-top:28px}
+  .hero-trust span{background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.28);padding:.45em .95em;border-radius:10px;font-size:.83rem;font-weight:600}
+  .hero-figure{position:relative}
+  .hero-figure img{border-radius:22px;box-shadow:0 20px 50px rgba(0,0,0,.28);width:100%;aspect-ratio:4/3;object-fit:cover;object-position:center}
+  .hero-figure .tag{position:absolute;left:-14px;bottom:18px;background:#fff;color:var(--blue-d);font-weight:800;font-size:.85rem;padding:.6em 1em;border-radius:12px;box-shadow:var(--shadow)}
+
+  /* ---- セクション共通 ---- */
+  section{padding:70px 0}
+  .sec-head{text-align:center;margin-bottom:44px}
+  .sec-head .en{display:block;color:var(--blue);font-weight:800;letter-spacing:.2em;font-size:.8rem;margin-bottom:8px}
+  .sec-head h2{font-size:clamp(1.5rem,3.4vw,2.05rem);margin:0;font-weight:800;letter-spacing:.04em}
+  .sec-head p{color:var(--ink-2);margin:12px 0 0}
+  .soft{background:var(--bg-soft)}
+
+  /* 対応年齢バンド */
+  .band .wrap{display:grid;grid-template-columns:1.15fr .85fr;gap:40px;align-items:center}
+  .band img{border-radius:20px;box-shadow:var(--shadow);width:100%;max-width:300px;margin-left:auto;aspect-ratio:3/4;object-fit:cover}
+  .band h2{font-size:clamp(1.4rem,3.2vw,1.9rem);margin:0 0 14px;letter-spacing:.03em}
+  .band h2 .hl{color:var(--blue)}
+  .band p{margin:0 0 14px;color:var(--ink-2)}
+  .band ul{margin:0;padding-left:1.2em;color:var(--ink)}
+  .band li{margin-bottom:6px}
+
+  /* 選ばれる理由 */
+  .reasons{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+  .reason{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:30px 24px;box-shadow:var(--shadow)}
+  .reason .ico{width:56px;height:56px;border-radius:14px;background:var(--blue-l);color:var(--blue-d);display:grid;place-items:center;font-size:1.6rem;margin-bottom:16px}
+  .reason h3{margin:0 0 8px;font-size:1.15rem}
+  .reason p{margin:0;color:var(--ink-2);font-size:.95rem}
+
+  /* サービス */
+  .services{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+  .svc{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:24px;transition:.2s}
+  .svc:hover{border-color:var(--blue);box-shadow:var(--shadow);transform:translateY(-3px)}
+  .svc h3{margin:0 0 6px;font-size:1.05rem;color:var(--blue-d)}
+  .svc h3 span{color:var(--accent);margin-right:.4em}
+  .svc p{margin:0;color:var(--ink-2);font-size:.92rem}
+  .svc-intro{display:grid;grid-template-columns:300px 1fr;gap:32px;align-items:center;margin-bottom:34px}
+  .svc-intro img{border-radius:16px;box-shadow:var(--shadow);width:100%;aspect-ratio:4/5;object-fit:cover}
+  .svc-intro p{margin:0;color:var(--ink-2)}
+  .svc-intro h3{margin:0 0 8px;color:var(--blue-d);font-size:1.15rem}
+
+  /* 流れ */
+  .flow{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;counter-reset:step}
+  .step{position:relative;background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:28px 20px 22px;text-align:center}
+  .step::before{counter-increment:step;content:counter(step);position:absolute;top:-18px;left:50%;transform:translateX(-50%);width:38px;height:38px;border-radius:50%;background:var(--blue);color:#fff;font-weight:800;display:grid;place-items:center;box-shadow:var(--shadow)}
+  .step h3{margin:14px 0 6px;font-size:1.02rem}
+  .step p{margin:0;color:var(--ink-2);font-size:.88rem}
+
+  /* 対応エリア + 採用 */
+  .split{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+  .card{border-radius:var(--radius);padding:38px 34px}
+  .card--area{background:var(--blue-l);border:1px solid #cfe0f2}
+  .card--area h3{margin:0 0 10px;color:var(--blue-d);font-size:1.3rem}
+  .card--recruit{background:linear-gradient(150deg,var(--accent),#e0863f);color:#fff}
+  .card--recruit h3{margin:0 0 10px;font-size:1.3rem}
+  .card p{margin:0 0 18px}
+
+  /* 会社概要 */
+  .company{max-width:760px;margin:0 auto}
+  .company table{width:100%;border-collapse:collapse}
+  .company th,.company td{text-align:left;padding:14px 12px;border-bottom:1px solid var(--line);font-size:.96rem;vertical-align:top}
+  .company th{width:34%;color:var(--blue-d);font-weight:700;white-space:nowrap}
+  .todo{color:#b26a1f;background:#fff4e6;border:1px dashed var(--accent);padding:0 .4em;border-radius:6px;font-size:.85em;font-weight:700}
+
+  /* CTA帯 */
+  .cta-band{background:linear-gradient(155deg,var(--blue),var(--blue-d));color:#fff;text-align:center}
+  .cta-band h2{font-size:clamp(1.4rem,3.4vw,2rem);margin:0 0 10px}
+  .cta-band .tel-big{font-size:clamp(1.8rem,6vw,2.8rem);font-weight:800;letter-spacing:.04em;margin:12px 0 4px}
+  .cta-band .tel-big a{text-decoration:none}
+  .cta-band small{opacity:.9}
+  .cta-band .btns{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-top:24px}
+
+  /* フッター */
+  footer{background:#182a3a;color:#c2d1de;padding:46px 0 28px;font-size:.9rem}
+  footer .cols{display:flex;flex-wrap:wrap;gap:30px;justify-content:space-between}
+  footer .fbrand{display:flex;align-items:center;gap:10px;margin-bottom:10px}
+  footer .fbrand img{width:40px;height:40px;border-radius:50%}
+  footer h4{color:#fff;margin:0 0 10px;font-size:1.05rem}
+  footer a{color:#c2d1de;text-decoration:none}
+  footer a:hover{color:#fff}
+  footer .fnav{display:flex;gap:18px;flex-wrap:wrap}
+  .copy{border-top:1px solid rgba(255,255,255,.12);margin-top:28px;padding-top:16px;text-align:center;font-size:.8rem;opacity:.75}
+
+  /* レスポンシブ */
+  @media(max-width:860px){
+    .hero .wrap{grid-template-columns:1fr;gap:30px}
+    .hero-figure{max-width:360px;margin:0 auto}
+    .band .wrap{grid-template-columns:1fr;gap:24px}
+    .band img{margin:0 auto}
+    .svc-intro{grid-template-columns:1fr;gap:20px}
+    .svc-intro img{max-width:300px;margin:0 auto}
+    .reasons,.flow,.split{grid-template-columns:1fr}
+    .services{grid-template-columns:1fr 1fr}
+    .nav a:not(.tel):not(.nav-cta){display:none}
+  }
+  @media(max-width:560px){
+    .services{grid-template-columns:1fr}
+    .nav .tel small{display:none}
+  }
+</style>
+</head>
+<body>
+
+<!-- ============ ヘッダー ============ -->
+<header class="site-header">
+  <div class="wrap">
+    <a class="logo" href="#top">
+      <img src="images/logo.jpeg" alt="florence-n ロゴ">
+      <span class="lt">florence-n<small>あなただけの訪問看護</small></span>
+    </a>
+    <nav class="nav">
+      <a href="#reasons">選ばれる理由</a>
+      <a href="#services">サービス</a>
+      <a href="#flow">ご利用の流れ</a>
+      <a href="#recruit">採用</a>
+      <a href="#company">会社概要</a>
+      <a class="tel" href="tel:0359038256">03-5903-8256<small>看護のご相談は24時間</small></a>
+      <a class="nav-cta" href="#contact">お問い合わせ</a>
+    </nav>
+  </div>
+</header>
+
+<!-- ============ ヒーロー ============ -->
+<section class="hero" id="top">
+  <div class="wrap">
+    <div class="hero-copy">
+      <span class="badge">🕑 24時間365日対応・東京都葛飾区</span>
+      <h1>住み慣れたご自宅で、<br>その人らしい毎日を。</h1>
+      <p class="lead">0歳の小児から高齢者まで。経験豊富な看護師とリハビリ専門職が、ご自宅にお伺いします。医療的なケアから療養のご相談、ご家族の不安まで、「あなただけの訪問看護」で寄り添います。</p>
+      <div class="hero-cta">
+        <a class="btn btn--primary" href="#contact">無料でご相談する</a>
+        <a class="btn btn--tel" href="tel:0359038256">📞 03-5903-8256 に電話</a>
+      </div>
+      <div class="hero-trust">
+        <span>👶 小児・医療的ケア児にも対応</span>
+        <span>🤝 主治医・ケアマネと連携</span>
+        <span>💗 看護・リハビリ・緩和ケア</span>
+      </div>
+    </div>
+    <div class="hero-figure">
+      <img src="images/photo_fv.jpg" alt="ご自宅で高齢者の健康状態を確認する訪問看護師">
+      <span class="tag">住み慣れた家で、安心を。</span>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 対応年齢バンド ============ -->
+<section class="band">
+  <div class="wrap">
+    <div>
+      <h2><span class="hl">0歳から高齢者まで</span><br>その人らしい在宅生活を支えます</h2>
+      <p>florence-n は、高齢者の在宅療養に加え、<strong>小児・医療的ケア児の訪問看護にも対応</strong>しています。<span class="todo">要確認：小児対応の範囲・実績</span></p>
+      <ul>
+        <li>退院直後の医療的ケアが必要なお子さま・ご本人</li>
+        <li>人工呼吸器・胃ろう・吸引など在宅医療のサポート</li>
+        <li>ご家族が安心して過ごせるための相談・レスパイト支援</li>
+      </ul>
+    </div>
+    <img src="images/photo1.jpg" alt="ご自宅で乳児をケアする訪問看護師">
+  </div>
+</section>
+
+<!-- ============ 選ばれる理由 ============ -->
+<section id="reasons" class="soft">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="en">WHY CHOOSE US</span>
+      <h2>florence-n が選ばれる理由</h2>
+      <p>「その人らしさ」を大切に、ご本人とご家族に安心をお届けします。</p>
+    </div>
+    <div class="reasons">
+      <div class="reason">
+        <div class="ico">🕑</div>
+        <h3>24時間365日、そばに</h3>
+        <p>看護系のお問い合わせは24時間対応。夜間・休日の急な体調変化にも、電話・緊急訪問で迅速にお応えします。</p>
+      </div>
+      <div class="reason">
+        <div class="ico">🤝</div>
+        <h3>チームで支える連携力</h3>
+        <p>主治医・ケアマネジャー・ご家族と情報を共有し、在宅療養をチームで支えます。退院時のご相談もお任せください。</p>
+      </div>
+      <div class="reason">
+        <div class="ico">💗</div>
+        <h3>ひとりひとりに合わせて</h3>
+        <p>画一的なケアではなく、その方の生活・ご希望に合わせたオーダーメイドの看護計画をご提案します。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ サービス内容 ============ -->
+<section id="services">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="en">SERVICES</span>
+      <h2>サービス内容</h2>
+      <p>主治医の指示のもと、幅広い在宅ケアに対応します。<span class="todo">要確認：実際の提供サービスに合わせて調整</span></p>
+    </div>
+    <div class="svc-intro">
+      <img src="images/photo3.jpg" alt="訪問看護記録と聴診器">
+      <div>
+        <h3>確かな記録と連携で、安心の在宅ケアを</h3>
+        <p>一回ごとの訪問看護記録にもとづき、体調の変化を主治医・ケアマネジャーと共有。医療処置からリハビリ、精神的な支えまで、下記のような幅広いケアをその方に合わせてご提供します。</p>
+      </div>
+    </div>
+    <div class="services">
+      <div class="svc"><h3><span>◆</span>健康管理・医療処置</h3><p>血圧・体温などの健康チェック、点滴、褥瘡（床ずれ）の処置、カテーテル管理などの医療的ケア。</p></div>
+      <div class="svc"><h3><span>◆</span>小児・医療的ケア児</h3><p>在宅で医療的ケアが必要なお子さまの看護と、ご家族への相談・サポート。</p></div>
+      <div class="svc"><h3><span>◆</span>在宅リハビリ</h3><p>理学療法士等による機能訓練・生活動作の練習で、住み慣れた環境での自立を支えます。</p></div>
+      <div class="svc"><h3><span>◆</span>緩和ケア・ターミナル</h3><p>痛みや症状をやわらげ、ご本人とご家族が穏やかに過ごせるよう、在宅での看取りにも対応。</p></div>
+      <div class="svc"><h3><span>◆</span>認知症ケア</h3><p>ご本人の尊厳を大切にした関わりと、ご家族への介護アドバイス・精神的サポート。</p></div>
+      <div class="svc"><h3><span>◆</span>ご家族の相談支援</h3><p>介護の不安や困りごと、医療・福祉サービスの活用まで、何でもご相談ください。</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ ご利用の流れ ============ -->
+<section id="flow" class="soft">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="en">HOW IT WORKS</span>
+      <h2>ご利用の流れ</h2>
+      <p>お問い合わせから訪問開始まで、丁寧にサポートします。</p>
+    </div>
+    <div class="flow">
+      <div class="step"><h3>お問い合わせ</h3><p>お電話・フォームでご連絡ください。ケアマネジャー様からのご相談も歓迎です。</p></div>
+      <div class="step"><h3>ご相談・訪問</h3><p>ご本人の状態・ご希望を伺い、必要なケアをご提案します。</p></div>
+      <div class="step"><h3>主治医と連携</h3><p>主治医の訪問看護指示書をもとに、看護計画を作成します。</p></div>
+      <div class="step"><h3>ケア開始</h3><p>計画に沿って定期訪問を開始。状態に合わせて柔軟に見直します。</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 対応エリア + 採用 ============ -->
+<section>
+  <div class="wrap">
+    <div class="split">
+      <div class="card card--area">
+        <h3>📍 対応エリア</h3>
+        <p>東京都葛飾区を中心に訪問しています。周辺地域もお気軽にご相談ください。<span class="todo">要確認：具体的な対応区・町名</span></p>
+        <p style="margin:0;color:var(--ink-2);font-size:.92rem">〒125-0052　東京都葛飾区柴又〔要確認：番地〕<br>TEL 03-5903-8256／FAX 03-5903-8257</p>
+      </div>
+      <div class="card card--recruit" id="recruit">
+        <img src="images/photo2.jpg" alt="スタッフの手" style="width:132px;height:132px;object-fit:cover;border-radius:14px;border:3px solid rgba(255,255,255,.55);margin-bottom:16px">
+        <h3>👩‍⚕️ 一緒に働く看護師・スタッフ募集</h3>
+        <p>「その人らしさ」に寄り添う看護を、一緒に届けませんか。経験・ブランクは問いません。まずはお話だけでも歓迎です。<span class="todo" style="background:rgba(255,255,255,.25);color:#fff;border-color:#fff">要確認：募集職種・条件</span></p>
+        <a class="btn btn--ghost" href="#contact">採用について問い合わせる</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 会社概要 ============ -->
+<section id="company" class="soft">
+  <div class="wrap company">
+    <div class="sec-head">
+      <span class="en">COMPANY</span>
+      <h2>会社概要</h2>
+    </div>
+    <table>
+      <tr><th>事業所名</th><td>florence-n 訪問看護ステーション <span class="todo">要確認：正式名称</span></td></tr>
+      <tr><th>所在地</th><td>〒125-0052　東京都葛飾区柴又 <span class="todo">要確認：番地・ビル名</span></td></tr>
+      <tr><th>電話 / FAX</th><td>TEL 03-5903-8256／FAX 03-5903-8257</td></tr>
+      <tr><th>管理者</th><td><span class="todo">要確認</span></td></tr>
+      <tr><th>営業時間</th><td>平日 〔要確認〕（看護に関するお問い合わせは24時間対応）</td></tr>
+      <tr><th>休業日</th><td><span class="todo">要確認</span></td></tr>
+      <tr><th>事業内容</th><td>訪問看護（小児〜高齢者）<span class="todo">要確認：指定番号・その他事業</span></td></tr>
+    </table>
+  </div>
+</section>
+
+<!-- ============ CTA帯 / お問い合わせ ============ -->
+<section class="cta-band" id="contact">
+  <div class="wrap">
+    <h2>まずはお気軽にご相談ください</h2>
+    <p>ご本人・ご家族はもちろん、医療・介護関係者の方からのご相談も歓迎します。</p>
+    <div class="tel-big"><a href="tel:0359038256">📞 03-5903-8256</a></div>
+    <small>看護に関するお問い合わせは24時間受付／FAX 03-5903-8257</small>
+    <div class="btns">
+      <a class="btn btn--primary" href="#contact">お問い合わせフォーム <span class="todo">要リンク</span></a>
+      <a class="btn btn--ghost" href="tel:0359038256">今すぐ電話する</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ フッター ============ -->
+<footer>
+  <div class="wrap">
+    <div class="cols">
+      <div>
+        <div class="fbrand"><img src="images/logo.jpeg" alt="florence-n ロゴ"><h4 style="margin:0">florence-n</h4></div>
+        <p style="margin:0">あなただけの訪問看護<br>〒125-0052 東京都葛飾区柴又<br>TEL 03-5903-8256／FAX 03-5903-8257</p>
+      </div>
+      <div>
+        <h4>メニュー</h4>
+        <div class="fnav" style="flex-direction:column;gap:8px">
+          <a href="#reasons">選ばれる理由</a>
+          <a href="#services">サービス内容</a>
+          <a href="#flow">ご利用の流れ</a>
+          <a href="#recruit">採用情報</a>
+          <a href="#company">会社概要</a>
+          <a href="#contact">お問い合わせ</a>
+        </div>
+      </div>
+    </div>
+    <div class="copy">© florence-n. All rights reserved.</div>
+  </div>
+</footer>
+
+<!-- ▼ 提案プレビュー用バッジ：本番公開時はこの<div>ごと削除 -->
+<div style="position:fixed;right:14px;bottom:14px;z-index:99;background:rgba(34,51,59,.82);color:#fff;font-size:.72rem;font-weight:700;letter-spacing:.05em;padding:.5em .9em;border-radius:999px;box-shadow:0 4px 14px rgba(0,0,0,.25);backdrop-filter:blur(4px);pointer-events:none">提案プレビュー版（公開前）</div>
+<!-- ▲ ここまで -->
+
+</body>
+</html>
