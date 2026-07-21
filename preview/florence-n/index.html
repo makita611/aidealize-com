@@ -41,7 +41,7 @@
   .site-header .wrap{display:flex;align-items:center;justify-content:space-between;height:70px}
   .logo{display:flex;align-items:center;gap:10px;text-decoration:none}
   .logo img{width:44px;height:44px;border-radius:50%}
-  .logo .lt{font-weight:800;font-size:1.2rem;color:var(--blue-d);letter-spacing:.04em;line-height:1.2}
+  .logo .lt{font-weight:800;font-size:1.2rem;color:var(--blue-d);letter-spacing:.04em;line-height:1.2;white-space:nowrap}
   .logo .lt small{display:block;font-size:.62rem;font-weight:600;color:var(--ink-2);letter-spacing:.12em}
   .nav{display:flex;align-items:center;gap:24px}
   .nav a{text-decoration:none;font-weight:600;font-size:.95rem;color:var(--ink)}
@@ -154,7 +154,7 @@
     .svc-intro img{max-width:300px;margin:0 auto}
     .reasons,.flow,.split{grid-template-columns:1fr}
     .services{grid-template-columns:1fr 1fr}
-    .nav a:not(.tel):not(.nav-cta){display:none}
+    .nav a:not(.nav-cta){display:none}
   }
   @media(max-width:560px){
     .services{grid-template-columns:1fr}
