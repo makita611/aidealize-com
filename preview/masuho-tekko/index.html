@@ -339,6 +339,26 @@ footer{background:var(--ink);color:#fff;padding:48px 0 96px;font-size:13.5px}
 .certlist li{font-size:14.5px;padding:13px 0 13px 28px;position:relative;border-bottom:1px solid var(--line)}
 .certlist li::before{content:"\2713";position:absolute;left:0;color:var(--spark);font-weight:800}
 .certlist li:last-child{border-bottom:0}
+
+/* 選考の流れ：番号ステップ。社長10分面談を key で強調 */
+.select{list-style:none;counter-reset:sp}
+.select li{position:relative;padding:20px 0 20px 66px;border-bottom:1px dashed var(--line);counter-increment:sp}
+.select li:last-child{border-bottom:0}
+.select li::before{content:counter(sp);position:absolute;left:8px;top:20px;width:38px;height:38px;
+  background:var(--ink);color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;
+  font-family:var(--mono);font-weight:800;font-size:15px}
+.select li.key::before{background:var(--spark);box-shadow:0 0 0 4px #fff2ea}
+.select b{display:block;font-size:16.5px;font-weight:800;margin-bottom:5px}
+.select li.key b{color:var(--spark-dark)}
+.select p{font-size:14px;color:var(--muted)}
+.select .tagk{display:inline-block;font-size:11px;font-weight:800;color:#fff;background:var(--spark);
+  border-radius:20px;padding:2px 10px;margin-left:8px;vertical-align:middle;letter-spacing:.04em}
+.invite{margin-top:32px;background:linear-gradient(135deg,var(--steel),var(--ink));color:#fff;
+  border-radius:12px;padding:32px;text-align:center}
+.invite b{display:block;font-size:clamp(18px,2.6vw,23px);font-weight:800;margin-bottom:10px;line-height:1.6}
+.invite b em{font-style:normal;color:#ffc46b}
+.invite p{font-size:14.5px;color:#c2ccd6;margin-bottom:20px;line-height:1.85}
+.invite .btn{background:var(--spark-lite);color:#fff;box-shadow:none}
 </style>
 </head>
 <body>
@@ -714,6 +734,10 @@ footer{background:var(--ink);color:#fff;padding:48px 0 96px;font-size:13.5px}
         <div class="a">大丈夫です。いま働いている社員にも、まったく違う業種から入って一人前になった人がいます。工具の名前と安全のルールから、順番に教えます。いきなり難しい作業はやらせません。</div>
       </details>
       <details>
+        <summary>高校を出たばかりでも、働けますか？</summary>
+        <div class="a">もちろんです。高卒新卒の方も歓迎しています。社会人としての基本から、仕事のやり方まで、先輩が一つずつ教えます。焦らなくて大丈夫です。ご家族が心配される点も、工場見学のときに何でも聞いてください。</div>
+      </details>
+      <details>
         <summary>経験者だと、何が違いますか？</summary>
         <div class="a">加工・溶接・建て方の経験は、給与・任せる工程の両面できちんと評価します。前職で身につけたやり方も尊重します。まずは面接で、これまでの経験を聞かせてください。</div>
       </details>
@@ -746,8 +770,8 @@ footer{background:var(--ink);color:#fff;padding:48px 0 96px;font-size:13.5px}
     <div class="entry-grid">
       <div class="card">
         <div class="tagm">FOR BEGINNERS</div>
-        <h3>未経験・第二新卒の方へ</h3>
-        <p>工具の名前も、図面の読み方も、ゼロから教えます。「ものづくりに興味がある」その気持ちだけ持ってきてください。まずは工場見学だけでも大歓迎です。実際に見て、雰囲気を確かめてから決めてもらえます。</p>
+        <h3>高卒新卒・未経験の方へ</h3>
+        <p>工具の名前も、図面の読み方も、ゼロから教えます。高校を出たばかりの方も、別の仕事からの転職も歓迎です。「ものづくりに興味がある」——その気持ちだけ持ってきてください。まずは工場見学だけでも大歓迎です。</p>
         <a class="btn" href="#req">募集要項を見る</a>
       </div>
       <div class="card exp">
@@ -768,6 +792,7 @@ footer{background:var(--ink);color:#fff;padding:48px 0 96px;font-size:13.5px}
     <p class="lead">応募の前に、電話で質問だけ、でも構いません。</p>
     <table>
       <tr><th>職種</th><td>鉄骨加工・組立スタッフ（未経験可／経験者優遇）</td></tr>
+      <tr><th>募集対象</th><td>高卒新卒・中途（既卒・第二新卒も歓迎）／未経験可・経験者優遇</td></tr>
       <tr><th>雇用形態</th><td>正社員（試用期間◯ヶ月／条件変更なし）</td></tr>
       <tr><th>勤務地</th><td>群馬県邑楽郡板倉町海老瀬7094-1（自社工場）および近隣の施工現場</td></tr>
       <tr><th>仕事内容</th><td>倉庫・工場等の鉄骨加工、工場での組立、現場での組立作業</td></tr>
@@ -777,8 +802,28 @@ footer{background:var(--ink);color:#fff;padding:48px 0 96px;font-size:13.5px}
       <tr><th>休日・休暇</th><td>◯曜日／年末年始・夏季休暇／有給休暇 ほか</td></tr>
       <tr><th>待遇・福利厚生</th><td>各種社会保険／資格取得支援／作業服貸与／退職金制度 ほか</td></tr>
       <tr><th>応募方法</th><td>お電話またはメールでご連絡ください。まずは見学だけでも構いません。</td></tr>
-      <tr><th>こんな人を待っています</th><td>ものづくりに興味がある方。長く腰を据えて働きたい方。<br>経験はなくて構いません。</td></tr>
+      <tr><th>こんな人を待っています</th><td>ものづくりに興味がある方。長く腰を据えて働きたい方。<br>高校を出たばかりの方も、経験がない方も歓迎します。</td></tr>
     </table>
+  </div>
+</section>
+
+<!-- 選考の流れ：社長10分面談で心理的ハードルを下げる（小さい会社の武器） -->
+<section id="select" class="paper">
+  <div class="wrap">
+    <span class="label"><i>15</i>選考の流れ</span>
+    <h2>まずは「話すだけ」から。</h2>
+    <p class="lead">いきなり正式な面接ではありません。見て、話して、合わなければ断ってもらって構いません。お互いに知ることから始めましょう。</p>
+    <ol class="select">
+      <li><b>お問い合わせ・工場見学</b><p>電話かメールで。「見てみたいだけ」でも大歓迎です。実際の現場を見てから考えてください。</p></li>
+      <li class="key"><b>社長と、10分だけ話す<span class="tagk">選考ではありません</span></b><p>どんな会社で、どんな人が働いているか。社長と気軽に10分。求人票では分からないことが、顔を合わせれば分かります。ここで「合いそうか」を、お互いに確かめます。</p></li>
+      <li><b>面接</b><p>これまでの経験や、これからやりたいことを聞かせてください。堅い面接ではありません。高校を出たばかりの方も、緊張しなくて大丈夫です。</p></li>
+      <li><b>内定・入社</b><p>入社日はご相談のうえで決めます。未経験の方も、初日から先輩がついて教えます。</p></li>
+    </ol>
+    <div class="invite">
+      <b>「まず、社長と10分だけ話しませんか？」<em>応募を決める前で、構いません。</em></b>
+      <p>顔を合わせて話せば、この会社が自分に合うかどうか、だいたい分かります。<br>ご家族が心配なことも、その場で何でも聞いてください。</p>
+      <a class="btn" href="tel:0276000000">☎ 電話して、話してみる</a>
+    </div>
   </div>
 </section>
 
@@ -796,7 +841,7 @@ footer{background:var(--ink);color:#fff;padding:48px 0 96px;font-size:13.5px}
 <!-- 会社の認定・工場グレード：鉄骨業のB2B信頼の核 -->
 <section id="cert" class="paper">
   <div class="wrap">
-    <span class="label"><i>15</i>会社の認定</span>
+    <span class="label"><i>16</i>会社の認定</span>
     <h2>この鉄骨は、認められた工場が作っています。</h2>
     <p class="lead">鉄骨には、工場の性能を国が評価する制度があります。どこで作られたかは、建物の安全に直結します。<span class="todo">※グレード・認定は御社の実際の取得区分に差し替えます</span></p>
     <div class="certs">
@@ -815,7 +860,7 @@ footer{background:var(--ink);color:#fff;padding:48px 0 96px;font-size:13.5px}
 <!-- 13 会社概要＋設備ギャラリー -->
 <section id="company">
   <div class="wrap">
-    <span class="label"><i>16</i>会社概要</span>
+    <span class="label"><i>17</i>会社概要</span>
     <h2>会社概要</h2>
     <div class="gallery">
       <div class="imgslot"><span class="tag">IMAGE</span><b>工場外観</b><span>建物の全景／横位置</span></div>
