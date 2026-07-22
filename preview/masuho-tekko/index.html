@@ -268,7 +268,8 @@ footer{background:var(--ink);color:#fff;padding:48px 0 96px;font-size:13.5px}
   .nav{display:none}
   .steps,.env,.jobs,.talk-wrap,.msg-wrap,.entry-grid{grid-template-columns:1fr}
   .persons{grid-template-columns:1fr 1fr}
-  .numgrid,.day,.gallery{grid-template-columns:1fr 1fr}
+  .numgrid,.day,.gallery,.qcds{grid-template-columns:1fr 1fr}
+  .works,.quals,.certs{grid-template-columns:1fr}
   .hero .wrap{padding:66px 22px 56px}
   .hero .frame{opacity:.32;width:82%;right:-40px}
   section{padding:58px 0}
@@ -281,6 +282,63 @@ footer{background:var(--ink);color:#fff;padding:48px 0 96px;font-size:13.5px}
   .sticky .c{background:var(--ink);color:#fff}
   .sticky .m{background:var(--spark-lite);color:#fff}
 }
+
+/* 施工事例：受注・実績＋「子供が自慢できる」情緒フック */
+.pridebar{background:var(--steel);color:#fff;border-radius:10px;padding:26px 28px;margin-bottom:30px;
+  display:flex;gap:20px;align-items:center;flex-wrap:wrap}
+.pridebar b{font-size:clamp(17px,2.4vw,22px);font-weight:800;line-height:1.55}
+.pridebar b em{font-style:normal;color:#ffc46b;display:block;margin-top:4px}
+.pridebar p{font-size:14px;color:#c2ccd6;flex:1;min-width:230px;line-height:1.85}
+.works{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.work{border:1px solid var(--line);border-radius:10px;overflow:hidden;background:#fff}
+.work .imgslot{aspect-ratio:4/3;border-radius:0}
+.work .body{padding:16px 18px}
+.work .date{font-family:var(--mono);font-size:12px;color:var(--draft);font-weight:700;letter-spacing:.06em}
+.work h3{font-size:16px;font-weight:800;margin:4px 0 6px;line-height:1.5}
+.work p{font-size:13px;color:var(--muted);line-height:1.75}
+
+/* キャリア年表：節目ごとに できること＋資格＋手当・昇進 */
+.tl{position:relative;margin:0 0 0 8px;padding-left:34px;border-left:2px solid var(--line)}
+.tl li{list-style:none;position:relative;padding:0 0 30px}
+.tl li:last-child{padding-bottom:0}
+.tl li::before{content:"";position:absolute;left:-43px;top:2px;width:15px;height:15px;border-radius:50%;
+  background:#fff;border:3px solid var(--draft)}
+.tl li.key::before{border-color:var(--spark)}
+.tl .yr{font-family:var(--mono);font-size:13px;font-weight:800;color:var(--spark-dark);letter-spacing:.04em}
+.tl b{display:block;font-size:16.5px;font-weight:800;margin:2px 0 6px}
+.tl p{font-size:14px;color:var(--muted)}
+.tl .badge{display:inline-block;margin-top:9px;font-size:12px;font-weight:700;color:var(--spark-dark);
+  background:#fff2ea;border:1px solid #f6d3bf;border-radius:20px;padding:4px 12px}
+
+/* 資格一覧：公的／業界／社内 → 手当・昇進 */
+.quals{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.qual{border:1px solid var(--line);border-radius:10px;padding:22px 22px 10px;background:#fff}
+.qual .cat{font-size:12.5px;font-weight:800;color:var(--draft);letter-spacing:.08em;margin-bottom:12px}
+.qual ul{list-style:none}
+.qual li{font-size:13.5px;padding:8px 0 8px 20px;position:relative;border-bottom:1px dashed var(--line)}
+.qual li:last-child{border-bottom:0}
+.qual li::before{content:"";position:absolute;left:3px;top:16px;width:7px;height:7px;background:var(--spark);border-radius:2px}
+.qnote{margin-top:22px;background:#fff;border:1px solid var(--line);border-left:3px solid var(--spark-lite);
+  border-radius:0 8px 8px 0;padding:18px 22px;font-size:14.5px;line-height:1.85}
+.qnote b{color:var(--spark-dark)}
+
+/* 社長方針 QCDS */
+.qcds{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:8px}
+.qcds div{background:#fff;border:1px solid var(--line);border-top:3px solid var(--draft);
+  border-radius:0 0 8px 8px;padding:20px}
+.qcds .k{font-family:var(--mono);font-size:26px;font-weight:800;color:var(--draft);line-height:1}
+.qcds b{display:block;font-size:14.5px;margin:8px 0 4px}
+.qcds small{font-size:12.5px;color:var(--muted);line-height:1.7}
+
+/* 会社の認定・工場グレード */
+.certs{display:grid;grid-template-columns:1fr 1.1fr;gap:32px;align-items:center}
+.gradebox{background:var(--steel);color:#fff;border-radius:12px;padding:34px;text-align:center}
+.gradebox .g{font-family:var(--mono);font-size:64px;font-weight:800;color:#ffc46b;line-height:1}
+.gradebox small{display:block;font-size:13px;color:#c2ccd6;margin-top:10px;line-height:1.7}
+.certlist{list-style:none}
+.certlist li{font-size:14.5px;padding:13px 0 13px 28px;position:relative;border-bottom:1px solid var(--line)}
+.certlist li::before{content:"\2713";position:absolute;left:0;color:var(--spark);font-weight:800}
+.certlist li:last-child{border-bottom:0}
 </style>
 </head>
 <body>
@@ -293,8 +351,10 @@ footer{background:var(--ink);color:#fff;padding:48px 0 96px;font-size:13.5px}
     <nav class="nav">
       <a href="#work">仕事内容</a>
       <a href="#jobs">職種</a>
+      <a href="#works">施工事例</a>
       <a href="#persons">働く人</a>
       <a href="#env">働く環境</a>
+      <a href="#flow">キャリア</a>
       <a href="#faq">よくある質問</a>
       <a href="#entry">応募について</a>
     </nav>
@@ -425,10 +485,31 @@ footer{background:var(--ink);color:#fff;padding:48px 0 96px;font-size:13.5px}
   </div>
 </section>
 
+<!-- 受注・施工事例：B2B信頼＋「子供が自慢できる」情緒フック -->
+<section id="works">
+  <div class="wrap">
+    <span class="label"><i>03</i>施工事例</span>
+    <h2>あの建物の骨組みは、うちが作った。</h2>
+    <p class="lead">鉄骨は完成すると壁の中に隠れて見えなくなります。それでも、街に、日本に、私たちの仕事は残り続けます。<span class="todo">※以下は「見せ方」のイメージです。御社の実際の受注・施工実績に差し替えます</span></p>
+    <div class="pridebar">
+      <b>「これ、お父さんの会社が作ったんだよ。」<em>子どもが、学校で自慢できる仕事。</em></b>
+      <p>完成すれば見えなくなる骨組みでも、そこにあった仕事は誇りとして残ります。自分が関わった建物が、地図に載る。これは、そういう仕事です。</p>
+    </div>
+    <div class="works">
+      <div class="work"><div class="imgslot"><span class="tag">IMAGE</span><b>施工写真</b><span>完成した建物／横位置</span></div>
+        <div class="body"><div class="date">20XX年XX月</div><h3>東京スカイツリー 主柱部品 製作</h3><p>ランドマークの構造部材の一部を担当。<span class="todo">※記載例／実績に差し替え</span></p></div></div>
+      <div class="work"><div class="imgslot"><span class="tag">IMAGE</span><b>施工写真</b><span>工場・本館／横位置</span></div>
+        <div class="body"><div class="date">20XX年XX月</div><h3>◯◯電機 ◯◯工場 本館　鉄骨製作・施工</h3><p>大型工場の鉄骨を、製作から建て方まで一貫対応。<span class="todo">※記載例／実績に差し替え</span></p></div></div>
+      <div class="work"><div class="imgslot"><span class="tag">IMAGE</span><b>施工写真</b><span>物流倉庫／横位置</span></div>
+        <div class="body"><div class="date">20XX年XX月</div><h3>◯◯物流センター　鉄骨工事</h3><p>短工期の物流倉庫を、品質を落とさず納期どおりに。<span class="todo">※記載例／実績に差し替え</span></p></div></div>
+    </div>
+  </div>
+</section>
+
 <!-- 03 数字で見る（almicには無い差別化。データで信頼を出す） -->
 <section id="numbers" class="dark">
   <div class="wrap">
-    <span class="label"><i>03</i>数字で見る</span>
+    <span class="label"><i>04</i>数字で見る</span>
     <h2>数字で見る、増保鉄工。</h2>
     <p class="lead">言葉だけでは伝わらないことを、数字で。<span class="todo">※すべて実数に差し替えます</span></p>
     <div class="numgrid">
@@ -445,9 +526,9 @@ footer{background:var(--ink);color:#fff;padding:48px 0 96px;font-size:13.5px}
 <!-- 04 社員紹介 -->
 <section id="persons">
   <div class="wrap">
-    <span class="label"><i>04</i>働く人</span>
+    <span class="label"><i>05</i>働く人・先輩の声</span>
     <h2>ここで働いている人たちです。</h2>
-    <p class="lead">50人以下の会社なので、全員の顔と名前がわかります。4人に話を聞きました。
+    <p class="lead">50人以下の会社なので、全員の顔と名前がわかります。入社1年目・5年目・10年目、そして勤続30年のベテラン。4人に話を聞きました。
       <span class="todo">※写真・氏名・内容は取材のうえ差し替えます</span></p>
     <div class="persons">
       <div class="person">
@@ -463,7 +544,7 @@ footer{background:var(--ink);color:#fff;padding:48px 0 96px;font-size:13.5px}
       <div class="person">
         <div class="imgslot"><span class="tag">IMAGE</span><b>社員写真</b><span>作業中／縦位置4:5</span></div>
         <div class="body">
-          <div class="meta"><span class="num">入社8年</span>未経験で入社</div>
+          <div class="meta"><span class="num">入社5年</span>未経験で入社</div>
           <h3>◯◯ ◯◯</h3>
           <div class="role">組立担当</div>
           <blockquote>「鉄なんて、触ったこともなかった。」</blockquote>
@@ -473,7 +554,7 @@ footer{background:var(--ink);color:#fff;padding:48px 0 96px;font-size:13.5px}
       <div class="person">
         <div class="imgslot"><span class="tag">IMAGE</span><b>社員写真</b><span>作業中／縦位置4:5</span></div>
         <div class="body">
-          <div class="meta"><span class="num">入社15年</span>現場責任者</div>
+          <div class="meta"><span class="num">入社10年</span>現場責任者</div>
           <h3>◯◯ ◯◯</h3>
           <div class="role">建て方・現場管理</div>
           <blockquote>「段取り八分。現場は、始まる前に決まる。」</blockquote>
@@ -483,7 +564,7 @@ footer{background:var(--ink);color:#fff;padding:48px 0 96px;font-size:13.5px}
       <div class="person">
         <div class="imgslot"><span class="tag">IMAGE</span><b>社員写真</b><span>作業中／縦位置4:5</span></div>
         <div class="body">
-          <div class="meta"><span class="num">入社2年</span>20代</div>
+          <div class="meta"><span class="num">入社1年</span>20代</div>
           <h3>◯◯ ◯◯</h3>
           <div class="role">加工担当</div>
           <blockquote>「自分が作ったものが、建つ。」</blockquote>
@@ -497,7 +578,7 @@ footer{background:var(--ink);color:#fff;padding:48px 0 96px;font-size:13.5px}
 <!-- 05 座談会（CROSS TALK） -->
 <section id="talk" class="paper">
   <div class="wrap">
-    <span class="label"><i>05</i>座談会</span>
+    <span class="label"><i>06</i>座談会</span>
     <h2>先輩と若手に、本音で話してもらいました。</h2>
     <p class="lead">いいことばかりは言いません。入る前に、正直なところを知ってほしいので。
       <span class="todo">※取材のうえ、実際の対談内容・写真に差し替えます</span></p>
@@ -518,7 +599,7 @@ footer{background:var(--ink);color:#fff;padding:48px 0 96px;font-size:13.5px}
 <!-- 06 働く環境＋福利厚生 -->
 <section id="env">
   <div class="wrap">
-    <span class="label"><i>06</i>働く環境</span>
+    <span class="label"><i>07</i>働く環境</span>
     <h2>入ってから「思ってたのと違う」を、なくしたい。</h2>
     <p class="lead">だから、面接でよく聞かれることを、先に書いておきます。</p>
     <div class="env">
@@ -543,23 +624,36 @@ footer{background:var(--ink);color:#fff;padding:48px 0 96px;font-size:13.5px}
 <!-- 07 入社後の流れ／キャリア -->
 <section id="flow" class="paper">
   <div class="wrap">
-    <span class="label"><i>07</i>入社後の流れ</span>
+    <span class="label"><i>08</i>キャリアと資格</span>
     <h2>未経験から、一人前になるまで。</h2>
-    <p class="lead">いきなり難しいことはやらせません。この順番で覚えてもらいます。</p>
-    <ol class="flow">
-      <li><b>まずは見て、覚える</b><p>先輩について工場と現場を見ます。工具の名前と、安全のルールから。</p></li>
-      <li><b>機械を使う作業から任される</b><p>切断や穴あけなど、手順が決まっている作業からはじめます。</p></li>
-      <li><b>溶接・組立ができるようになる</b><p>資格の取得は会社が後押しします。ここまで来ると、仕事が面白くなってきます。</p></li>
-      <li><b>現場に出る</b><p>自分が加工した鉄骨が、実際に建ち上がるのを見られます。</p></li>
-      <li><b>教える側・任される側になる</b><p>次に入ってくる人へ技術を渡し、工程を任されていく番です。ここから先は、一緒に会社を考えていきましょう。</p></li>
-    </ol>
+    <p class="lead">この会社では、続けるほど「できること」と「資格」と「給与」が一緒に増えていきます。年齢や勤続年数ではなく、身につけた分だけ評価します。<span class="todo">※年数・資格・手当は御社の制度に差し替えます</span></p>
+    <ul class="tl">
+      <li class="key"><div class="yr">入社</div><b>まずは、見て覚える</b><p>先輩について工場と現場へ。工具の名前と、安全のルールから。いきなり難しい作業はやらせません。</p></li>
+      <li><div class="yr">〜半年</div><b>機械を使う加工を任される</b><p>切断・穴あけなど、手順が決まった作業から。<span class="badge">玉掛け・技能講習の取得支援</span></p></li>
+      <li class="key"><div class="yr">1年目</div><b>溶接・組立ができるようになる</b><p>資格取得の費用は会社が支援します。<span class="badge">資格手当がつく</span></p></li>
+      <li><div class="yr">3年目</div><b>図面を任され、判断できる</b><p>自分で段取りを組めるように。<span class="badge">溶接管理技術者 等に挑戦</span></p></li>
+      <li class="key"><div class="yr">5年目</div><b>後輩を教える側へ</b><p>技術を渡す立場になります。<span class="badge">昇給・昇格の対象</span></p></li>
+      <li><div class="yr">10年〜</div><b>現場・工程を任される</b><p>会社の中核として、いずれ後継の一角へ。<span class="badge">管理職・上位資格</span></p></li>
+    </ul>
+
+    <h3 style="margin-top:46px;font-size:19px;font-weight:800">取れる資格と、その先。</h3>
+    <p class="lead" style="margin:8px 0 22px">資格は「公的・業界・社内」の3種類。取るほど手当が増え、昇進にもつながります。</p>
+    <div class="quals">
+      <div class="qual"><div class="cat">国家・公的資格</div><ul>
+        <li>2級建築士</li><li>技能検定（鉄工・溶接）</li><li>玉掛け・クレーン 等</li></ul></div>
+      <div class="qual"><div class="cat">業界資格</div><ul>
+        <li>鉄骨製作管理技術者（1級／2級）</li><li>建築鉄骨検査技術者（製品／超音波）</li><li>溶接管理技術者（WES）</li><li>鉄骨製作工場 品質管理責任者</li></ul></div>
+      <div class="qual"><div class="cat">社内認定</div><ul>
+        <li>社内技能等級</li><li>工程リーダー認定</li><li>安全管理者 認定 等</li><li class="todo" style="border:0;padding-left:0">※御社の制度に差し替え</li></ul></div>
+    </div>
+    <div class="qnote"><b>資格手当・昇進の仕組み：</b>資格を取得すると毎月の手当が増え、任せられる工程・役割が広がります。それが、そのまま昇給・昇格につながります。<span class="todo">※金額・等級は御社の規定に差し替えます</span></div>
   </div>
 </section>
 
 <!-- 08 一日の流れ -->
 <section id="day">
   <div class="wrap">
-    <span class="label"><i>08</i>一日の流れ</span>
+    <span class="label"><i>09</i>一日の流れ</span>
     <h2>ある一日の流れ</h2>
     <p class="lead">早出や残業ありきの働き方では、ありません。<span class="todo">※実際の時間に差し替えてください</span></p>
     <div class="day">
@@ -578,7 +672,7 @@ footer{background:var(--ink);color:#fff;padding:48px 0 96px;font-size:13.5px}
 <!-- 09 代表メッセージ -->
 <section id="message" class="paper">
   <div class="wrap">
-    <span class="label"><i>09</i>代表メッセージ</span>
+    <span class="label"><i>10</i>代表メッセージ</span>
     <div class="msg-wrap">
       <div class="imgslot"><span class="tag">IMAGE</span><b>代表の写真</b><span>工場を背景に／縦位置3:4</span></div>
       <div class="text">
@@ -592,10 +686,26 @@ footer{background:var(--ink);color:#fff;padding:48px 0 96px;font-size:13.5px}
   </div>
 </section>
 
+<!-- 社長方針：QCDS＋ISO。B2Bの信頼シグナル -->
+<section id="policy">
+  <div class="wrap">
+    <span class="label"><i>11</i>私たちの方針</span>
+    <h2>品質・原価・納期・安全。この4つが、信頼のすべて。</h2>
+    <p class="lead">50年変わらず守ってきた考え方です。どれか一つでも欠けたら、次の仕事は来ません。</p>
+    <div class="qcds">
+      <div><div class="k">Q</div><b>品質 Quality</b><small>検査は自社の目で。妥協した鉄骨は、現場に出しません。</small></div>
+      <div><div class="k">C</div><b>原価 Cost</b><small>無駄をなくし、適正な価格でお応えします。</small></div>
+      <div><div class="k">D</div><b>納期 Delivery</b><small>約束した日を守る。守れない仕事は、請けません。</small></div>
+      <div><div class="k">S</div><b>安全 Safety</b><small>全員が無事に帰る。現場は、安全から始まります。</small></div>
+    </div>
+    <p style="margin-top:20px;font-size:14.5px;color:var(--muted)">品質マネジメントの国際規格 <b style="color:var(--ink)">ISO 9001</b> の取得も進めています。<span class="todo">※準備中／取得済みに合わせて差し替え</span></p>
+  </div>
+</section>
+
 <!-- 10 FAQ -->
 <section id="faq">
   <div class="wrap">
-    <span class="label"><i>10</i>よくある質問</span>
+    <span class="label"><i>12</i>よくある質問</span>
     <h2>よくある質問</h2>
     <p class="lead">応募の前に気になることは、だいたいこのあたりだと思います。</p>
     <div class="faq">
@@ -630,7 +740,7 @@ footer{background:var(--ink);color:#fff;padding:48px 0 96px;font-size:13.5px}
 <!-- 11 応募について（新卒/未経験 と 中途/経験者 の入口分け） -->
 <section id="entry" class="paper">
   <div class="wrap">
-    <span class="label"><i>11</i>応募について</span>
+    <span class="label"><i>13</i>応募について</span>
     <h2>どちらの入口からでも、歓迎します。</h2>
     <p class="lead">未経験の方も、経験者の方も。あなたに合った入り方で構いません。</p>
     <div class="entry-grid">
@@ -653,7 +763,7 @@ footer{background:var(--ink);color:#fff;padding:48px 0 96px;font-size:13.5px}
 <!-- 12 募集要項 -->
 <section id="req" class="dark">
   <div class="wrap">
-    <span class="label"><i>12</i>募集要項</span>
+    <span class="label"><i>14</i>募集要項</span>
     <h2>募集要項</h2>
     <p class="lead">応募の前に、電話で質問だけ、でも構いません。</p>
     <table>
@@ -683,10 +793,29 @@ footer{background:var(--ink);color:#fff;padding:48px 0 96px;font-size:13.5px}
   </div>
 </section>
 
+<!-- 会社の認定・工場グレード：鉄骨業のB2B信頼の核 -->
+<section id="cert" class="paper">
+  <div class="wrap">
+    <span class="label"><i>15</i>会社の認定</span>
+    <h2>この鉄骨は、認められた工場が作っています。</h2>
+    <p class="lead">鉄骨には、工場の性能を国が評価する制度があります。どこで作られたかは、建物の安全に直結します。<span class="todo">※グレード・認定は御社の実際の取得区分に差し替えます</span></p>
+    <div class="certs">
+      <div class="gradebox"><div class="g">R</div><small>鉄骨製作工場 性能評価グレード<br>（S・H・M・R・J の区分）<br>認定：日本鉄骨評価センター 他</small></div>
+      <ul class="certlist">
+        <li>建設業許可（鋼構造物工事業 ほか）</li>
+        <li>鉄骨製作工場 性能評価グレード認定</li>
+        <li>ISO 9001 品質マネジメント（準備中／取得済）</li>
+        <li>各種溶接施工法の認定</li>
+        <li class="todo" style="border:0">※御社が保有する認定・許可に差し替えます</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
 <!-- 13 会社概要＋設備ギャラリー -->
 <section id="company">
   <div class="wrap">
-    <span class="label"><i>13</i>会社概要</span>
+    <span class="label"><i>16</i>会社概要</span>
     <h2>会社概要</h2>
     <div class="gallery">
       <div class="imgslot"><span class="tag">IMAGE</span><b>工場外観</b><span>建物の全景／横位置</span></div>
