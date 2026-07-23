@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>【提案イメージ】ケアサプライシステムズ株式会社 採用・広報ページ案</title>
+<style>
+:root{
+  --green:#2c7a63;         /* わかばの深緑。安心と清潔 */
+  --green-deep:#1c5142;
+  --accent:#f08a3c;        /* 夕暮れの暖色。CTAと数字だけ */
+  --ink:#22302b;
+  --muted:#54645e;
+  --paper:#f2f7f4;
+  --line:#dbe6e0;
+  --max:1040px;
+  --hd:64px;
+  --mono:"DIN Alternate","Roboto Mono",ui-monospace,Menlo,Consolas,monospace;
+}
+:root{color-scheme:light}
+html,body{background:#fff}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:"Hiragino Kaku Gothic ProN","Yu Gothic",system-ui,sans-serif;
+  color:var(--ink);line-height:1.9;-webkit-text-size-adjust:100%;
+  font-feature-settings:"palt";letter-spacing:.02em}
+img{max-width:100%;height:auto;display:block}
+a{color:inherit}
+.wrap{max-width:var(--max);margin:0 auto;padding:0 22px}
+.num{font-family:var(--mono);font-variant-numeric:tabular-nums;font-style:normal}
+section{padding:84px 0;scroll-margin-top:var(--hd);background:#fff}
+.paper{background:var(--paper)}
+
+.proposal{background:#123a2f;color:#ffd76e;text-align:center;font-size:12.5px;
+  padding:8px 14px;letter-spacing:.04em;line-height:1.6}
+
+.label{display:inline-flex;align-items:center;gap:12px;margin-bottom:12px;
+  font-size:13px;letter-spacing:.12em;font-weight:800;color:var(--green)}
+.label i{font-family:var(--mono);font-style:normal;color:#8fa79d;font-weight:700;
+  font-size:14px;border-right:1px solid var(--line);padding-right:12px}
+h2{font-size:clamp(23px,3.6vw,34px);line-height:1.5;margin-bottom:14px;font-weight:800}
+.lead{color:var(--muted);margin-bottom:40px;font-size:16px;max-width:38em}
+.todo{opacity:.72;font-size:12.5px}
+.ph-cap{display:block;font-size:11.5px;color:var(--muted);margin-top:8px}
+
+header{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.96);
+  border-bottom:1px solid var(--line);backdrop-filter:saturate(1.3) blur(6px)}
+.hd{display:flex;align-items:center;justify-content:space-between;gap:16px;
+  padding:11px 22px;max-width:var(--max);margin:0 auto}
+.logo{font-weight:800;font-size:16px;letter-spacing:.04em;line-height:1.35;color:var(--green-deep)}
+.logo span{display:block;font-size:10.5px;color:#7d9089;font-weight:500;letter-spacing:.12em}
+.nav{display:flex;gap:22px;font-size:14px}
+.nav a{text-decoration:none;color:#3c4a45;padding:4px 0;border-bottom:2px solid transparent}
+.nav a:hover{color:var(--green);border-color:var(--green)}
+.btn{display:inline-block;background:var(--green);color:#fff;text-decoration:none;
+  padding:14px 30px;border-radius:6px;font-weight:700;font-size:15px;letter-spacing:.04em;
+  box-shadow:0 3px 14px rgba(44,122,99,.25)}
+.btn:hover{filter:brightness(1.08)}
+.btn.acc{background:var(--accent);color:#fff;box-shadow:0 3px 14px rgba(240,138,60,.35)}
+.btn.line{background:#fff;color:var(--green);border:1.5px solid var(--green);box-shadow:none}
+
+/* ヒーロー：御社の実写真。「介護の仕事の本当の顔」を最初に見せる */
+.hero{position:relative;color:#fff;overflow:hidden;background:var(--green-deep)}
+.hero .bg{position:absolute;inset:0;background:url(images/concept01.jpg) center 30%/cover no-repeat;
+  filter:brightness(.78) saturate(1.02)}
+.hero::after{content:"";position:absolute;inset:0;
+  background:linear-gradient(100deg,rgba(15,44,35,.9) 0%,rgba(15,44,35,.6) 46%,rgba(15,44,35,.15) 100%)}
+.hero .wrap{position:relative;padding:104px 22px 84px;z-index:1}
+.hero .eyebrow{display:inline-block;font-size:12.5px;letter-spacing:.14em;margin-bottom:22px;
+  color:#ffd98f;font-weight:800;border:1px solid rgba(255,217,143,.5);border-radius:20px;padding:6px 16px}
+.hero h1{font-size:clamp(28px,4.8vw,46px);line-height:1.55;font-weight:800;text-shadow:0 2px 18px rgba(0,0,0,.45)}
+.hero h1 em{font-style:normal;color:#ffcf70}
+.hero p{margin-top:22px;font-size:clamp(15px,1.9vw,17px);max-width:31em;line-height:2;
+  text-shadow:0 1px 10px rgba(0,0,0,.5)}
+.hero .cta{margin-top:34px;display:flex;gap:12px;flex-wrap:wrap}
+.hero .cap{position:absolute;right:14px;bottom:10px;z-index:2;font-size:10.5px;opacity:.75}
+.stats{display:flex;border-top:1px solid rgba(255,255,255,.25);margin-top:52px}
+.stats div{flex:1;padding:20px 8px 0}
+.stats b{font-family:var(--mono);font-size:clamp(22px,3.6vw,30px);color:#ffcf70;display:block;
+  line-height:1.2;font-weight:800}
+.stats b i{font-style:normal;font-size:13.5px;margin-left:2px}
+.stats small{font-size:12px;opacity:.85}
+
+/* 働く人の声：採用サイトの実インタビューを前面に */
+.voice{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.v{background:#fff;border:1px solid var(--line);border-radius:12px;padding:24px;font-size:14px;
+  color:var(--ink);line-height:1.9;position:relative}
+.v::before{content:"“";position:absolute;top:6px;left:14px;font-size:44px;color:var(--green);
+  opacity:.25;font-family:Georgia,serif;line-height:1}
+.v b{display:block;color:var(--green);font-size:12.5px;margin-top:12px;font-weight:800}
+
+/* 職種 */
+.jobs{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.job{background:#fff;border:1px solid var(--line);border-radius:10px;padding:20px 22px;transition:.2s}
+.job:hover{border-color:var(--green);box-shadow:0 8px 24px rgba(44,122,99,.12);transform:translateY(-2px)}
+.job h4{font-size:15.5px;font-weight:800;margin-bottom:4px;color:var(--green-deep)}
+.job p{font-size:13px;color:var(--muted);line-height:1.75}
+
+/* 広報室：aidealizeの提供価値そのもの */
+.pr{display:grid;grid-template-columns:1.05fr 1fr;gap:34px;align-items:center}
+.pr .ph{border-radius:12px;overflow:hidden;box-shadow:0 14px 38px rgba(18,58,47,.18)}
+.pr h3{font-size:clamp(21px,3vw,28px);font-weight:800;line-height:1.6;margin-bottom:14px}
+.pr p{font-size:14.5px;color:var(--muted);margin-bottom:14px}
+.cal{margin-top:10px;background:#fff;border:1px solid var(--line);border-radius:10px;overflow:hidden;font-size:13.5px}
+.cal div{display:flex;gap:14px;padding:12px 18px;border-bottom:1px solid var(--line);align-items:baseline}
+.cal div:last-child{border-bottom:0}
+.cal b{font-family:var(--mono);color:var(--green);white-space:nowrap;font-size:12.5px}
+
+/* 電話バンド */
+.quick{background:linear-gradient(120deg,var(--green),var(--green-deep));color:#fff;
+  border-radius:14px;padding:34px;display:flex;gap:26px;align-items:center;flex-wrap:wrap}
+.quick b{font-size:clamp(18px,2.6vw,23px);font-weight:800;line-height:1.6;flex:1;min-width:250px}
+.quick b em{font-style:normal;color:#ffd98f;display:block;font-size:14.5px;font-weight:700;margin-top:6px}
+.quick .tel{font-family:var(--mono);font-size:clamp(24px,4vw,34px);font-weight:800;color:#fff;
+  text-decoration:none;letter-spacing:.02em}
+.quick small{display:block;font-size:12px;opacity:.85}
+
+.sns{display:flex;gap:14px;flex-wrap:wrap}
+.sns a{flex:1;min-width:200px;border:1px solid var(--line);border-radius:10px;padding:20px;
+  text-decoration:none;text-align:center;font-weight:800;font-size:14.5px;transition:.2s;background:#fff}
+.sns a:hover{border-color:var(--green);color:var(--green)}
+.sns small{display:block;font-weight:500;font-size:12px;color:var(--muted);margin-top:4px}
+
+table{width:100%;border-collapse:collapse;font-size:14.5px}
+th,td{border-bottom:1px solid var(--line);padding:16px 12px;text-align:left;vertical-align:top}
+th{width:30%;font-weight:700;white-space:nowrap;color:var(--muted)}
+
+footer{background:var(--green-deep);color:#fff;padding:46px 0 96px;font-size:13.5px}
+.copy{margin-top:26px;padding-top:16px;border-top:1px solid rgba(255,255,255,.2);
+  font-size:12px;opacity:.75;line-height:1.8}
+
+.sticky{display:none}
+@media(max-width:980px){ .nav{gap:15px;font-size:13px} }
+@media(max-width:860px){
+  :root{--hd:58px}
+  .nav{display:none}
+  .voice,.jobs{grid-template-columns:1fr}
+  .pr{grid-template-columns:1fr}
+  .hero .wrap{padding:74px 22px 58px}
+  section{padding:54px 0}
+  .stats{flex-wrap:wrap}
+  .stats div{flex:1 0 50%;padding:16px 8px 8px}
+  .quick{flex-direction:column;text-align:center}
+  .sticky{display:flex;position:fixed;left:0;right:0;bottom:0;z-index:60;background:#fff;
+    border-top:1px solid var(--line);padding:8px;gap:8px;box-shadow:0 -3px 16px rgba(0,0,0,.12)}
+  .sticky a{flex:1;text-align:center;padding:14px 6px;border-radius:6px;text-decoration:none;
+    font-weight:700;font-size:14.5px}
+  .sticky .c{background:var(--green-deep);color:#fff}
+  .sticky .m{background:var(--accent);color:#fff}
+}
+</style>
+</head>
+<body>
+
+<div class="proposal">これはケアサプライシステムズ株式会社様への<strong>提案イメージ</strong>です（採用・広報ページの刷新案。写真・インタビューは御社サイトより引用しています／検索エンジン非掲載）</div>
+
+<header>
+  <div class="hd">
+    <div class="logo">ケアサプライシステムズ株式会社<span>群馬県高崎市／わかば・とうわ　県内74の介護施設</span></div>
+    <nav class="nav">
+      <a href="#voice">働く人の声</a>
+      <a href="#jobs">募集職種</a>
+      <a href="#pr">発信・広報</a>
+      <a href="#visit">見学会</a>
+      <a href="#company">会社概要</a>
+    </nav>
+    <a class="btn acc" href="#visit" style="padding:10px 20px;font-size:14px">見学を申し込む</a>
+  </div>
+</header>
+
+<div class="hero">
+  <div class="bg"></div>
+  <div class="wrap">
+    <div class="eyebrow">群馬県内74施設　わかば・とうわ　スタッフ募集中</div>
+    <h1>優しさと思いやりは、<br><em>技術じゃなくて、人間力。</em></h1>
+    <p>グループホーム、デイサービス、訪問介護、訪問看護——。群馬の5つのエリアで、ご利用者様の「その方らしい毎日」を支える仲間を探しています。資格がなくても、ブランクがあっても大丈夫です。</p>
+    <div class="cta">
+      <a class="btn acc" href="#visit">事業所見学会に参加する</a>
+      <a class="btn line" style="background:transparent;color:#fff;border-color:rgba(255,255,255,.7)" href="#voice">働く人の声を見る</a>
+    </div>
+    <div class="stats">
+      <div><b>74<i>施設</i></b><small>群馬県内で運営</small></div>
+      <div><b>5<i>エリア</i></b><small>高崎・前橋・伊勢崎・桐生・藤岡</small></div>
+      <div><b>6<i>職種</i></b><small>介護・看護・ケアマネ・事務</small></div>
+      <div><b>毎月<i>開催</i></b><small>事業所見学会・入職キャンペーン</small></div>
+    </div>
+  </div>
+  <span class="cap">写真は御社採用サイトより（実際のスタッフとご利用者様）</span>
+</div>
+
+<!-- 01 働く人の声：採用サイトの実インタビューを冒頭に -->
+<section id="voice" class="paper">
+  <div class="wrap">
+    <span class="label"><i>01</i>働く人の声</span>
+    <h2>「ありがとう」が絶えない仕事です。</h2>
+    <p class="lead">実際に働くスタッフの言葉が、いちばんの求人票だと思っています。（御社採用サイトのインタビューより）</p>
+    <div class="voice">
+      <div class="v">大変だけど、やりがいがある。「ありがとう」と言われることが嬉しい。<b>グループホーム勤務</b></div>
+      <div class="v">子供がいながら働ける職場。先輩方に支えられています。<b>訪問介護サービス勤務</b></div>
+      <div class="v">「人生の最終章であなたと出会えてよかった」——今でも心に残っている言葉です。<b>居宅介護支援勤務</b></div>
+    </div>
+    <span class="ph-cap">※動画インタビュー（1人3分・スマホ撮影でOK）に差し替えると応募率がさらに上がります。撮影・編集もお任せください。</span>
+  </div>
+</section>
+
+<!-- 02 募集職種 -->
+<section id="jobs">
+  <div class="wrap">
+    <span class="label"><i>02</i>募集職種</span>
+    <h2>あなたに合う働き方が、74施設のどこかにある。</h2>
+    <p class="lead">職種×エリア×勤務時間で探せる求人ページへ。<span class="todo">※各職種は御社採用サイトの求人リストへ接続します</span></p>
+    <div class="jobs">
+      <div class="job"><h4>介護スタッフ（グループホーム）</h4><p>認知症高齢者の暮らしに寄り添う少人数ケア。未経験・無資格OK。</p></div>
+      <div class="job"><h4>介護スタッフ（デイサービス）</h4><p>日帰りの機能訓練とレクリエーション。日勤中心で家庭と両立。</p></div>
+      <div class="job"><h4>訪問介護スタッフ</h4><p>ご自宅での生活援助・身体介護。直行直帰の働き方も相談可。</p></div>
+      <div class="job"><h4>看護師（訪問看護・施設）</h4><p>医療面からご利用者様をサポート。ブランク歓迎。</p></div>
+      <div class="job"><h4>ケアマネジャー（居宅介護支援）</h4><p>ご利用者様とご家族の人生に伴走するケアプラン作成。</p></div>
+      <div class="job"><h4>本部スタッフ（事務・広報）</h4><p>74施設を支える本部業務。広報・PRは外部パートナーと分担できます。</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- 03 発信・広報：aidealizeが担う部分をそのまま見せる -->
+<section id="pr" class="paper">
+  <div class="wrap">
+    <span class="label"><i>03</i>発信・広報</span>
+    <div class="pr">
+      <div>
+        <h3>74施設の「いい瞬間」は、<br>毎日どこかで生まれている。</h3>
+        <p>芍薬が咲いた。夏祭りをやった。新しい施設がオープンした——。発信のネタは現場に無限にあります。足りないのは、それを拾って形にする「手」だけ。</p>
+        <p>週1回の定期発信×月1本の動画で、応募者にもご家族にも「中の様子が見える」会社にします。</p>
+        <div class="cal">
+          <div><b>毎週</b>施設ブログ・Instagram投稿（現場から写真を集めて代行執筆）</div>
+          <div><b>毎月</b>スタッフインタビュー動画1本（撮影・編集・字幕まで）</div>
+          <div><b>毎月</b>見学会・キャンペーン告知の更新とアクセスレポート1枚</div>
+        </div>
+      </div>
+      <div class="ph"><img src="images/concept02.jpg" alt="スタッフとご利用者様の日常"></div>
+    </div>
+    <div class="sns" style="margin-top:34px">
+      <a href="#">Instagram<small>施設の日常・季節の行事</small></a>
+      <a href="#">YouTube / TikTok<small>スタッフインタビュー動画</small></a>
+      <a href="#">LINE公式<small>見学予約・応募の質問もLINEで</small></a>
+    </div>
+  </div>
+</section>
+
+<!-- 04 見学会CTA -->
+<section id="visit" style="padding:50px 0">
+  <div class="wrap">
+    <div class="quick">
+      <b>まずは、見学から。<em>事業所見学会を毎月開催しています。お電話1本でご案内します。</em></b>
+      <div><a class="tel num" href="tel:0120940970">0120-940-970</a>
+        <small>採用フリーダイヤル（本部：高崎市島野町）</small></div>
+    </div>
+  </div>
+</section>
+
+<!-- 05 会社概要 -->
+<section id="company" class="paper">
+  <div class="wrap">
+    <span class="label"><i>04</i>会社概要</span>
+    <h2>会社概要</h2>
+    <table>
+      <tr><th>社名</th><td>ケアサプライシステムズ株式会社</td></tr>
+      <tr><th>本社</th><td>〒370-0015 群馬県高崎市島野町890-8　TEL 027-360-5400</td></tr>
+      <tr><th>事業内容</th><td>有料老人ホーム・グループホーム・デイサービス・訪問介護・居宅介護支援・訪問看護・福祉用具の運営（群馬県内74施設）</td></tr>
+      <tr><th>ブランド</th><td>わかば／とうわ　ほか</td></tr>
+      <tr><th>展開エリア</th><td>高崎・安中／前橋／伊勢崎／桐生・みどり／藤岡</td></tr>
+    </table>
+    <p class="todo" style="margin-top:14px">※沿革・施設数などの正確な数値は、御社と相談のうえ確定します。</p>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="logo" style="color:#fff">ケアサプライシステムズ株式会社<span style="color:#9dbcb0">群馬県高崎市島野町890-8／採用フリーダイヤル 0120-940-970</span></div>
+    <p class="copy">© <span id="y"></span> Care Supply Systems Co.,Ltd.<br>
+      本ページは提案用のイメージです。掲載内容・写真は御社と相談のうえ決定します。</p>
+  </div>
+</footer>
+
+<div class="sticky">
+  <a class="c" href="tel:0120940970">☎ 見学の相談</a>
+  <a class="m" href="#jobs">募集職種</a>
+</div>
+
+<script>document.getElementById('y').textContent=new Date().getFullYear();</script>
+</body>
+</html>
