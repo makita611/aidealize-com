@@ -86,6 +86,15 @@ header{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.96);
 .stats b i{font-style:normal;font-size:14px;margin-left:2px}
 .stats small{font-size:12px;color:var(--muted)}
 
+/* 実写真カード（御社サイトより引用）。低解像度でも枠付きカードなら締まる */
+.heroph{position:absolute;right:26px;top:96px;width:330px;background:#fff;border-radius:12px;
+  padding:10px 10px 4px;box-shadow:0 16px 44px rgba(14,68,120,.18);transform:rotate(1.6deg);z-index:2}
+.heroph img{border-radius:8px;width:100%}
+.heroph span{display:block;font-size:11.5px;color:var(--muted);padding:7px 4px;text-align:center}
+@media(max-width:1120px){.heroph{position:static;transform:none;width:100%;max-width:360px;margin:30px 0 0}}
+.ph-real{border-radius:10px;width:100%}
+.ph-cap{display:block;font-size:11.5px;color:var(--muted);margin-top:6px}
+
 /* 取扱い6分野 */
 .cats{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
 .cat{background:#fff;border:1px solid var(--line);border-radius:10px;overflow:hidden;
@@ -169,7 +178,7 @@ footer{background:var(--blue-deep);color:#fff;padding:46px 0 96px;font-size:13.5
 </head>
 <body>
 
-<div class="proposal">これは株式会社佐藤機工様への<strong>提案イメージ</strong>です（写真・数値は仮のもの。御社の素材に差し替えます／検索エンジン非掲載）</div>
+<div class="proposal">これは株式会社佐藤機工様への<strong>提案イメージ</strong>です（数値は仮のもの。写真の一部は御社サイトより引用しています／検索エンジン非掲載）</div>
 
 <header>
   <div class="hd">
@@ -195,6 +204,8 @@ footer{background:var(--blue-deep);color:#fff;padding:46px 0 96px;font-size:13.5
       <a class="btn acc" href="#quote">見積りを依頼する</a>
       <a class="btn line" href="#service">取扱い分野を見る</a>
     </div>
+    <div class="heroph"><img src="images/honsha.jpg" alt="株式会社佐藤機工 本社入口">
+      <span>新潟県胎内市・本社（写真は御社サイトより）</span></div>
     <div class="stats">
       <div><b>1975<i>年</i></b><small>創業。地域とともに50年</small></div>
       <div><b>◯◯<i>社</i></b><small>取扱メーカー<span class="todo">※実数に</span></small></div>
@@ -283,7 +294,8 @@ footer{background:var(--blue-deep);color:#fff;padding:46px 0 96px;font-size:13.5
   <div class="wrap">
     <span class="label"><i>04</i>採用情報</span>
     <div class="recruit">
-      <div class="imgslot"><span class="tag">IMAGE</span><b>社員の働く様子</b><span>倉庫・配達・営業など／横位置</span></div>
+      <div><img class="ph-real" src="images/staff.jpg" alt="佐藤機工で働くスタッフ">
+        <span class="ph-cap">写真は御社サイト「フォトギャラリー」より（新しい写真に差し替え可能です）</span></div>
       <div>
         <h3>地域のものづくりを、<br>裏側から支える仕事。</h3>
         <p>製造業の現場に「必要なもの」を届けるのが私たちの役割です。工具の知識はゼロで構いません。地元で長く働きたい方を、1975年からずっと育ててきました。</p>
@@ -313,6 +325,7 @@ footer{background:var(--blue-deep);color:#fff;padding:46px 0 96px;font-size:13.5
   <div class="wrap">
     <span class="label"><i>06</i>会社案内</span>
     <h2>会社案内</h2>
+    <img class="ph-real" src="images/seizou.jpg" alt="製造部門外観" style="max-width:420px;margin-bottom:26px">
     <table>
       <tr><th>会社名</th><td>株式会社佐藤機工</td></tr>
       <tr><th>創業</th><td>1975年</td></tr>
@@ -322,7 +335,10 @@ footer{background:var(--blue-deep);color:#fff;padding:46px 0 96px;font-size:13.5
       <tr><th>営業時間</th><td>月〜金 8:30〜18:00／土 8:00〜17:00（日祝休）</td></tr>
       <tr><th>従業員数</th><td>50名以下</td></tr>
     </table>
-    <div class="eco"><b>環境への取り組み：</b>ISO14001（環境マネジメントシステム）認証を取得し、地域の環境に配慮した事業運営を続けています。<span class="todo">※環境方針の全文は下層ページに掲載します</span></div>
+    <div class="eco" style="display:flex;gap:22px;align-items:center;flex-wrap:wrap">
+      <img src="images/clean.jpg" alt="地域のクリーン作戦" style="width:230px;border-radius:8px;flex:0 0 auto">
+      <div style="flex:1;min-width:240px"><b>環境への取り組み：</b>ISO14001（環境マネジメントシステム）認証を取得。地域のクリーン作戦にも継続参加しています。<span class="todo">※写真は御社サイトより／環境方針の全文は下層ページに掲載します</span></div>
+    </div>
   </div>
 </section>
 
