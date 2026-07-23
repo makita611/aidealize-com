@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>【提案イメージ】株式会社佐藤機工 コーポレートサイト案</title>
+<style>
+:root{
+  --blue:#155fa8;         /* 工具・信頼の青。明るい紙面の主役 */
+  --blue-deep:#0e4478;
+  --accent:#f09a1f;       /* 差し色。CTAと数字だけ */
+  --ink:#1b2530;
+  --muted:#4c5a68;
+  --paper:#f2f6fa;
+  --line:#dde5ec;
+  --max:1040px;
+  --hd:64px;
+  --mono:"DIN Alternate","Roboto Mono",ui-monospace,Menlo,Consolas,monospace;
+}
+/* ダークモードでも紙面は白のまま（黒背景で文字が消える事故を防ぐ） */
+:root{color-scheme:light}
+html,body{background:#fff}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:"Hiragino Kaku Gothic ProN","Yu Gothic",system-ui,sans-serif;
+  color:var(--ink);line-height:1.9;-webkit-text-size-adjust:100%;
+  font-feature-settings:"palt";letter-spacing:.02em}
+img{max-width:100%;height:auto;display:block}
+a{color:inherit}
+.wrap{max-width:var(--max);margin:0 auto;padding:0 22px}
+.num{font-family:var(--mono);font-variant-numeric:tabular-nums;font-style:normal}
+section{padding:84px 0;scroll-margin-top:var(--hd);background:#fff}
+.paper{background:var(--paper)}
+
+.proposal{background:#0d2b47;color:#ffd76e;text-align:center;font-size:12.5px;
+  padding:8px 14px;letter-spacing:.04em;line-height:1.6}
+
+.label{display:inline-flex;align-items:center;gap:12px;margin-bottom:12px;
+  font-size:13px;letter-spacing:.12em;font-weight:800;color:var(--blue)}
+.label i{font-family:var(--mono);font-style:normal;color:#8aa0b6;font-weight:700;
+  font-size:14px;border-right:1px solid var(--line);padding-right:12px}
+h2{font-size:clamp(23px,3.6vw,34px);line-height:1.5;margin-bottom:14px;font-weight:800}
+.lead{color:var(--muted);margin-bottom:40px;font-size:16px;max-width:38em}
+
+.imgslot{background:repeating-linear-gradient(135deg,#e3ebf2 0 10px,#ecf1f6 10px 20px);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;
+  color:#7b8b9a;font-size:12.5px;text-align:center;padding:16px;line-height:1.6;border-radius:8px}
+.imgslot .tag{font-family:var(--mono);font-size:10px;letter-spacing:.12em;color:#8a99a8;
+  border:1px solid #c8d3dd;border-radius:3px;padding:2px 8px}
+.imgslot b{font-size:13px;color:#5d6e7e;font-weight:800}
+.todo{opacity:.72;font-size:12.5px}
+
+header{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.96);
+  border-bottom:1px solid var(--line);backdrop-filter:saturate(1.3) blur(6px)}
+.hd{display:flex;align-items:center;justify-content:space-between;gap:16px;
+  padding:11px 22px;max-width:var(--max);margin:0 auto}
+.logo{font-weight:800;font-size:16.5px;letter-spacing:.05em;line-height:1.35;color:var(--blue-deep)}
+.logo span{display:block;font-size:10.5px;color:#7d8d9c;font-weight:500;letter-spacing:.12em}
+.nav{display:flex;gap:22px;font-size:14px}
+.nav a{text-decoration:none;color:#3c4956;padding:4px 0;border-bottom:2px solid transparent}
+.nav a:hover{color:var(--blue);border-color:var(--blue)}
+.btn{display:inline-block;background:var(--blue);color:#fff;text-decoration:none;
+  padding:14px 30px;border-radius:6px;font-weight:700;font-size:15px;letter-spacing:.04em;
+  box-shadow:0 3px 14px rgba(21,95,168,.25)}
+.btn:hover{filter:brightness(1.08)}
+.btn.acc{background:var(--accent);box-shadow:0 3px 14px rgba(240,154,31,.3)}
+.btn.line{background:#fff;color:var(--blue);border:1.5px solid var(--blue);box-shadow:none}
+
+/* ヒーロー：明るい紙面。Jimdo無料の暗く古い印象からの転換を一目で見せる */
+.hero{position:relative;background:linear-gradient(155deg,#f8fbfe 0%,#e9f1f9 55%,#f4f8fc 100%);
+  overflow:hidden;border-bottom:1px solid var(--line)}
+.hero::after{content:"";position:absolute;right:-140px;top:-120px;width:520px;height:520px;
+  border-radius:50%;background:radial-gradient(circle,rgba(21,95,168,.10),transparent 65%)}
+.hero .wrap{position:relative;padding:92px 22px 72px;z-index:1}
+.hero .eyebrow{display:inline-block;font-size:12.5px;letter-spacing:.14em;margin-bottom:22px;
+  color:var(--blue);font-weight:800;background:#e3eefa;border-radius:20px;padding:6px 16px}
+.hero h1{font-size:clamp(28px,5vw,46px);line-height:1.45;font-weight:800;color:var(--blue-deep)}
+.hero h1 em{font-style:normal;color:var(--blue)}
+.hero p{margin-top:22px;font-size:clamp(15px,1.9vw,17px);max-width:31em;color:#39485a;line-height:2}
+.hero .cta{margin-top:34px;display:flex;gap:12px;flex-wrap:wrap}
+.stats{display:flex;border-top:1px solid var(--line);margin-top:48px}
+.stats div{flex:1;padding:20px 8px 0}
+.stats b{font-family:var(--mono);font-size:clamp(24px,3.8vw,32px);color:var(--blue);display:block;
+  line-height:1.15;font-weight:800}
+.stats b i{font-style:normal;font-size:14px;margin-left:2px}
+.stats small{font-size:12px;color:var(--muted)}
+
+/* 取扱い6分野 */
+.cats{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.cat{background:#fff;border:1px solid var(--line);border-radius:10px;overflow:hidden;
+  transition:.2s;text-decoration:none;display:block}
+.cat:hover{transform:translateY(-3px);box-shadow:0 8px 24px rgba(21,95,168,.12);border-color:var(--blue)}
+.cat .imgslot{aspect-ratio:16/9;border-radius:0}
+.cat .body{padding:18px 20px}
+.cat h3{font-size:16.5px;font-weight:800;margin-bottom:4px;color:var(--blue-deep)}
+.cat p{font-size:13.5px;color:var(--muted);line-height:1.75}
+
+.reasons{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.reason{background:#fff;border:1px solid var(--line);border-top:3px solid var(--blue);
+  border-radius:0 0 10px 10px;padding:24px}
+.reason h3{font-size:17px;font-weight:800;margin-bottom:8px}
+.reason p{font-size:14px;color:var(--muted)}
+
+/* 在庫・納期の即応バンド */
+.quick{background:linear-gradient(120deg,var(--blue),var(--blue-deep));color:#fff;
+  border-radius:14px;padding:34px;display:flex;gap:26px;align-items:center;flex-wrap:wrap}
+.quick b{font-size:clamp(18px,2.6vw,23px);font-weight:800;line-height:1.6;flex:1;min-width:250px}
+.quick b em{font-style:normal;color:#ffd98f;display:block;font-size:14.5px;font-weight:700;margin-top:6px}
+.quick .tel{font-family:var(--mono);font-size:clamp(24px,4vw,34px);font-weight:800;color:#fff;
+  text-decoration:none;letter-spacing:.02em}
+.quick small{display:block;font-size:12px;opacity:.85}
+
+form{background:#fff;border:1px solid var(--line);border-radius:12px;padding:28px}
+.f{margin-bottom:16px}
+.f label{display:block;font-size:13.5px;font-weight:800;margin-bottom:6px}
+.f .req{color:#c0392b;font-size:11px;margin-left:6px}
+.f input,.f textarea,.f select{width:100%;padding:12px;border:1px solid var(--line);
+  border-radius:6px;font-size:16px;font-family:inherit;background:#fff}
+.f input:focus,.f textarea:focus{outline:2px solid var(--blue);border-color:transparent}
+.fgrid{display:grid;grid-template-columns:1fr 1fr;gap:0 18px}
+
+/* 採用バンド（募集要件の「採用ページ重点」に応える入口） */
+.recruit{display:grid;grid-template-columns:1.1fr 1fr;gap:34px;align-items:center}
+.recruit .imgslot{aspect-ratio:4/3}
+.recruit h3{font-size:clamp(19px,2.8vw,25px);font-weight:800;line-height:1.6;margin-bottom:12px}
+.recruit p{font-size:14.5px;color:var(--muted);margin-bottom:20px}
+
+.sns{display:flex;gap:14px;flex-wrap:wrap}
+.sns a{flex:1;min-width:200px;border:1px solid var(--line);border-radius:10px;padding:20px;
+  text-decoration:none;text-align:center;font-weight:800;font-size:14.5px;transition:.2s}
+.sns a:hover{border-color:var(--blue);color:var(--blue)}
+.sns small{display:block;font-weight:500;font-size:12px;color:var(--muted);margin-top:4px}
+
+table{width:100%;border-collapse:collapse;font-size:14.5px}
+th,td{border-bottom:1px solid var(--line);padding:16px 12px;text-align:left;vertical-align:top}
+th{width:30%;font-weight:700;white-space:nowrap;color:var(--muted)}
+.eco{background:#eef7ee;border:1px solid #cfe6cf;border-radius:10px;padding:20px 24px;
+  margin-top:24px;font-size:14.5px}
+.eco b{color:#22713f}
+
+.access{display:grid;grid-template-columns:1fr 1fr;gap:30px;align-items:start}
+.map{aspect-ratio:4/3;border-radius:10px}
+
+footer{background:var(--blue-deep);color:#fff;padding:46px 0 96px;font-size:13.5px}
+.copy{margin-top:26px;padding-top:16px;border-top:1px solid rgba(255,255,255,.2);
+  font-size:12px;opacity:.75;line-height:1.8}
+
+.sticky{display:none}
+@media(max-width:980px){ .nav{gap:15px;font-size:13px} }
+@media(max-width:860px){
+  :root{--hd:58px}
+  .nav{display:none}
+  .cats,.reasons{grid-template-columns:1fr}
+  .recruit,.access,.fgrid{grid-template-columns:1fr}
+  .hero .wrap{padding:60px 22px 50px}
+  section{padding:54px 0}
+  .stats{flex-wrap:wrap}
+  .stats div{flex:1 0 50%;padding:16px 8px 8px}
+  .quick{flex-direction:column;text-align:center}
+  .sticky{display:flex;position:fixed;left:0;right:0;bottom:0;z-index:60;background:#fff;
+    border-top:1px solid var(--line);padding:8px;gap:8px;box-shadow:0 -3px 16px rgba(0,0,0,.12)}
+  .sticky a{flex:1;text-align:center;padding:14px 6px;border-radius:6px;text-decoration:none;
+    font-weight:700;font-size:14.5px}
+  .sticky .c{background:var(--blue-deep);color:#fff}
+  .sticky .m{background:var(--accent);color:#fff}
+}
+</style>
+</head>
+<body>
+
+<div class="proposal">これは株式会社佐藤機工様への<strong>提案イメージ</strong>です（写真・数値は仮のもの。御社の素材に差し替えます／検索エンジン非掲載）</div>
+
+<header>
+  <div class="hd">
+    <div class="logo">株式会社佐藤機工<span>新潟県胎内市／機械工具の専門商社</span></div>
+    <nav class="nav">
+      <a href="#service">取扱い分野</a>
+      <a href="#reason">選ばれる理由</a>
+      <a href="#quote">見積り依頼</a>
+      <a href="#recruit">採用情報</a>
+      <a href="#company">会社案内</a>
+      <a href="#access">アクセス</a>
+    </nav>
+    <a class="btn acc" href="#quote" style="padding:10px 20px;font-size:14px">見積り依頼</a>
+  </div>
+</header>
+
+<div class="hero">
+  <div class="wrap">
+    <div class="eyebrow">1975年創業　切削工具・工作機械・鋼材の専門商社</div>
+    <h1>ものづくりの現場に、<br><em>「今すぐ欲しい」を届ける。</em></h1>
+    <p>切削工具から工作機械、鋼材、高圧ガス、メンテナンスまで。新潟・胎内から、地域の製造業を50年支えてきました。在庫と納期のご相談は、まず一本お電話ください。</p>
+    <div class="cta">
+      <a class="btn acc" href="#quote">見積りを依頼する</a>
+      <a class="btn line" href="#service">取扱い分野を見る</a>
+    </div>
+    <div class="stats">
+      <div><b>1975<i>年</i></b><small>創業。地域とともに50年</small></div>
+      <div><b>◯◯<i>社</i></b><small>取扱メーカー<span class="todo">※実数に</span></small></div>
+      <div><b>◯◯<i>点</i></b><small>常時在庫<span class="todo">※実数に</span></small></div>
+      <div><b>ISO<i>14001</i></b><small>環境マネジメント認証</small></div>
+    </div>
+  </div>
+</div>
+
+<!-- 01 取扱い分野：現Jimdoサイトの「取扱商品」を検索意図別の入口に再編 -->
+<section id="service">
+  <div class="wrap">
+    <span class="label"><i>01</i>取扱い分野</span>
+    <h2>工具から機械、ガス、メンテナンスまで。</h2>
+    <p class="lead">「これ、どこに頼めばいい？」をまとめて引き受けるのが専門商社の仕事です。各分野の詳しい内容は、個別ページでご案内します。</p>
+    <div class="cats">
+      <a class="cat" href="#"><div class="imgslot"><span class="tag">IMAGE</span><b>切削工具</b></div>
+        <div class="body"><h3>切削工具</h3><p>エンドミル・ドリル・チップ等。国内外メーカーを横断して最適品を提案。</p></div></a>
+      <a class="cat" href="#"><div class="imgslot"><span class="tag">IMAGE</span><b>測定工具</b></div>
+        <div class="body"><h3>測定工具</h3><p>マイクロメータ・ノギス・ゲージ類。校正のご相談も承ります。</p></div></a>
+      <a class="cat" href="#"><div class="imgslot"><span class="tag">IMAGE</span><b>工作機械</b></div>
+        <div class="body"><h3>工作機械・周辺機器</h3><p>選定から搬入・立ち上げまで。設備更新のご相談に対応します。</p></div></a>
+      <a class="cat" href="#"><div class="imgslot"><span class="tag">IMAGE</span><b>鋼材</b></div>
+        <div class="body"><h3>鋼材</h3><p>在庫販売。急ぎの材料手配は納期を最優先でご案内します。</p></div></a>
+      <a class="cat" href="#"><div class="imgslot"><span class="tag">IMAGE</span><b>高圧ガス</b></div>
+        <div class="body"><h3>高圧ガス</h3><p>溶接・切断用ガスの供給。定期配送のご相談も可能です。</p></div></a>
+      <a class="cat" href="#"><div class="imgslot"><span class="tag">IMAGE</span><b>メンテナンス</b></div>
+        <div class="body"><h3>メンテナンス・リース</h3><p>工具の再研磨・修理・リース。買って終わりにしない体制です。</p></div></a>
+    </div>
+  </div>
+</section>
+
+<!-- 02 選ばれる理由 -->
+<section id="reason" class="paper">
+  <div class="wrap">
+    <span class="label"><i>02</i>選ばれる理由</span>
+    <h2>50年、現場の「困った」に応えてきました。</h2>
+    <p class="lead">価格だけの勝負はしません。現場が止まらないことを、いちばん大事にしています。</p>
+    <div class="reasons">
+      <div class="reason"><h3>在庫と納期に、強い</h3>
+        <p>「明日必要」に応えるための在庫体制。無ければ最短ルートで手配し、納期を正直にお伝えします。</p></div>
+      <div class="reason"><h3>メーカー横断で、最適品を提案</h3>
+        <p>特定メーカーに縛られない専門商社だから、用途と予算に合う一本を客観的に選べます。</p></div>
+      <div class="reason"><h3>売って終わりに、しない</h3>
+        <p>再研磨・修理・リース・定期配送まで。導入後もずっと使える状態を支えます。</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- 03 在庫・納期の即応（募集要件「在庫・納期案内」への回答） -->
+<section>
+  <div class="wrap">
+    <div class="quick">
+      <b>お急ぎの工具・材料、まずお電話ください。<em>在庫があれば最短当日。無くても納期を即答します。</em></b>
+      <div><a class="tel num" href="tel:0254433884">0254-43-3884</a>
+        <small>平日 8:30-18:00／土 8:00-17:00（日祝休）</small></div>
+    </div>
+  </div>
+</section>
+
+<!-- 04 簡易見積り（募集要件「問い合わせ・見積り導線」への回答） -->
+<section id="quote" class="paper">
+  <div class="wrap">
+    <span class="label"><i>03</i>見積り依頼</span>
+    <h2>型番がわかれば、そのまま。わからなくても、大丈夫。</h2>
+    <p class="lead">「こういう加工がしたい」だけでも構いません。最適な工具と概算をご案内します。<span class="todo">※送信先は御社のメール／既存フローに接続します</span></p>
+    <form action="#" method="post">
+      <div class="fgrid">
+        <div class="f"><label>会社名<span class="req">必須</span></label><input type="text" name="company" required></div>
+        <div class="f"><label>ご担当者名<span class="req">必須</span></label><input type="text" name="name" required></div>
+        <div class="f"><label>電話番号<span class="req">必須</span></label><input type="tel" name="tel" required></div>
+        <div class="f"><label>メールアドレス</label><input type="email" name="email"></div>
+      </div>
+      <div class="f"><label>ご依頼内容</label>
+        <select name="type"><option>見積り依頼（型番あり）</option><option>工具の選定相談</option>
+        <option>納期の確認</option><option>メンテナンス・再研磨</option><option>その他</option></select></div>
+      <div class="f"><label>品名・型番・数量など</label>
+        <textarea name="detail" rows="4" placeholder="例）◯◯社 エンドミル △△△-6mm ×10本／お急ぎ"></textarea></div>
+      <button class="btn acc" type="submit" style="width:100%;border:0;cursor:pointer;font-size:16px">この内容で見積りを依頼する</button>
+    </form>
+  </div>
+</section>
+
+<!-- 05 採用（募集要件「採用ページ重点」への入口。詳細は下層ページ想定） -->
+<section id="recruit">
+  <div class="wrap">
+    <span class="label"><i>04</i>採用情報</span>
+    <div class="recruit">
+      <div class="imgslot"><span class="tag">IMAGE</span><b>社員の働く様子</b><span>倉庫・配達・営業など／横位置</span></div>
+      <div>
+        <h3>地域のものづくりを、<br>裏側から支える仕事。</h3>
+        <p>製造業の現場に「必要なもの」を届けるのが私たちの役割です。工具の知識はゼロで構いません。地元で長く働きたい方を、1975年からずっと育ててきました。</p>
+        <a class="btn" href="#">採用情報を見る</a>
+        <span class="todo" style="margin-left:12px">※採用専用ページを別途設計します</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 06 SNS導線（募集要件「SNS連携」への回答） -->
+<section class="paper">
+  <div class="wrap">
+    <span class="label"><i>05</i>SNS</span>
+    <h2>日々の入荷・現場の様子を発信しています。</h2>
+    <p class="lead">新着の在庫やキャンペーンは、SNSがいちばん早いです。<span class="todo">※御社の実際のアカウントを接続します</span></p>
+    <div class="sns">
+      <a href="#">Instagram<small>入荷情報・倉庫の日常</small></a>
+      <a href="#">X（旧Twitter）<small>納期・営業日のお知らせ</small></a>
+      <a href="#">LINE公式<small>見積り・問い合わせもLINEで</small></a>
+    </div>
+  </div>
+</section>
+
+<!-- 07 会社案内 -->
+<section id="company">
+  <div class="wrap">
+    <span class="label"><i>06</i>会社案内</span>
+    <h2>会社案内</h2>
+    <table>
+      <tr><th>会社名</th><td>株式会社佐藤機工</td></tr>
+      <tr><th>創業</th><td>1975年</td></tr>
+      <tr><th>所在地</th><td>〒959-2644 新潟県胎内市大川町3355-1</td></tr>
+      <tr><th>事業内容</th><td>切削工具・測定工具・工作機械・鋼材の販売／高圧ガス／工具メンテナンス・リース</td></tr>
+      <tr><th>電話・FAX</th><td>TEL 0254-43-3884／FAX 0254-43-3886</td></tr>
+      <tr><th>営業時間</th><td>月〜金 8:30〜18:00／土 8:00〜17:00（日祝休）</td></tr>
+      <tr><th>従業員数</th><td>50名以下</td></tr>
+    </table>
+    <div class="eco"><b>環境への取り組み：</b>ISO14001（環境マネジメントシステム）認証を取得し、地域の環境に配慮した事業運営を続けています。<span class="todo">※環境方針の全文は下層ページに掲載します</span></div>
+  </div>
+</section>
+
+<!-- 08 アクセス -->
+<section id="access" class="paper">
+  <div class="wrap">
+    <span class="label"><i>07</i>アクセス</span>
+    <h2>アクセス</h2>
+    <div class="access">
+      <div class="imgslot map"><span class="tag">MAP</span><b>Googleマップ埋め込み</b></div>
+      <div>
+        <table>
+          <tr><th>住所</th><td>新潟県胎内市大川町3355-1</td></tr>
+          <tr><th>駐車場</th><td>あり<span class="todo">（台数を記載）</span></td></tr>
+          <tr><th>最寄り</th><td><span class="todo">※目印・道順を記載（中条駅から◯分 等）</span></td></tr>
+        </table>
+        <p style="margin-top:16px;font-size:14px;color:var(--muted)">ご来店の際は、お電話いただければ商品をご用意してお待ちします。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="logo" style="color:#fff">株式会社佐藤機工<span style="color:#9db5ca">新潟県胎内市大川町3355-1／TEL 0254-43-3884</span></div>
+    <p class="copy">© <span id="y"></span> 株式会社佐藤機工<br>
+      本ページは提案用のイメージです。掲載内容・写真は御社と相談のうえ決定します。</p>
+  </div>
+</footer>
+
+<div class="sticky">
+  <a class="c" href="tel:0254433884">☎ 電話する</a>
+  <a class="m" href="#quote">見積り依頼</a>
+</div>
+
+<script>document.getElementById('y').textContent=new Date().getFullYear();</script>
+</body>
+</html>
