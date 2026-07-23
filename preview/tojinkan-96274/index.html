@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>【提案イメージ】藤仁館医療福祉専門学校 学生募集ページ案</title>
+<style>
+:root{
+  --teal:#0e6e6a;          /* 医療福祉の深緑 */
+  --teal-deep:#0a4d4a;
+  --coral:#f2695c;         /* 若さのコーラル。CTAと数字だけ */
+  --ink:#22302e;
+  --muted:#5a6b68;
+  --paper:#f2f8f6;
+  --line:#dcE8e5;
+  --max:1040px;
+  --hd:64px;
+  --mono:"DIN Alternate","Roboto Mono",ui-monospace,Menlo,Consolas,monospace;
+}
+:root{color-scheme:light}
+html,body{background:#fff}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:"Hiragino Kaku Gothic ProN","Yu Gothic",system-ui,sans-serif;
+  color:var(--ink);line-height:1.9;-webkit-text-size-adjust:100%;
+  font-feature-settings:"palt";letter-spacing:.02em}
+img{max-width:100%;height:auto;display:block}
+a{color:inherit}
+.wrap{max-width:var(--max);margin:0 auto;padding:0 22px}
+.num{font-family:var(--mono);font-variant-numeric:tabular-nums;font-style:normal}
+section{padding:84px 0;scroll-margin-top:var(--hd);background:#fff}
+.paper{background:var(--paper)}
+
+.proposal{background:#0a3d3a;color:#ffd9a8;text-align:center;font-size:12.5px;
+  padding:8px 14px;letter-spacing:.04em;line-height:1.6}
+
+.label{display:inline-flex;align-items:center;gap:12px;margin-bottom:12px;
+  font-size:13px;letter-spacing:.12em;font-weight:800;color:var(--teal)}
+.label i{font-family:var(--mono);font-style:normal;color:#8fa8a4;font-weight:700;
+  font-size:14px;border-right:1px solid var(--line);padding-right:12px}
+h2{font-size:clamp(23px,3.6vw,34px);line-height:1.5;margin-bottom:14px;font-weight:800}
+.lead{color:var(--muted);margin-bottom:40px;font-size:16px;max-width:38em}
+.todo{opacity:.72;font-size:12.5px}
+
+header{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.96);
+  border-bottom:1px solid var(--line);backdrop-filter:saturate(1.3) blur(6px)}
+.hd{display:flex;align-items:center;justify-content:space-between;gap:16px;
+  padding:11px 22px;max-width:var(--max);margin:0 auto}
+.logo{font-weight:800;font-size:16px;letter-spacing:.04em;line-height:1.35;color:var(--teal-deep)}
+.logo span{display:block;font-size:10.5px;color:#7f9a94;font-weight:500;letter-spacing:.12em}
+.nav{display:flex;gap:22px;font-size:14px}
+.nav a{text-decoration:none;color:#3c4f4c;padding:4px 0;border-bottom:2px solid transparent}
+.nav a:hover{color:var(--teal);border-color:var(--teal)}
+.btn{display:inline-block;background:var(--teal);color:#fff;text-decoration:none;
+  padding:14px 30px;border-radius:8px;font-weight:700;font-size:15px;letter-spacing:.04em;
+  box-shadow:0 3px 14px rgba(14,110,106,.25)}
+.btn:hover{filter:brightness(1.08)}
+.btn.acc{background:var(--coral);color:#fff;box-shadow:0 3px 14px rgba(242,105,92,.35)}
+.btn.line{background:#fff;color:var(--teal);border:1.5px solid var(--teal);box-shadow:none}
+
+/* ヒーロー：実際の授業風景 */
+.hero{position:relative;color:#fff;overflow:hidden;background:var(--teal-deep)}
+.hero .bg{position:absolute;inset:0;background:url(images/photo_feature_01.jpg) center 30%/cover no-repeat;
+  filter:brightness(.6) saturate(1.02)}
+.hero::after{content:"";position:absolute;inset:0;
+  background:linear-gradient(100deg,rgba(8,56,53,.92) 0%,rgba(8,56,53,.58) 46%,rgba(8,56,53,.2) 100%)}
+.hero .wrap{position:relative;padding:104px 22px 84px;z-index:1}
+.hero .eyebrow{display:inline-block;font-size:12.5px;letter-spacing:.14em;margin-bottom:22px;
+  color:#ffd9a8;font-weight:800;border:1px solid rgba(255,217,168,.5);border-radius:20px;padding:6px 16px}
+.hero h1{font-size:clamp(29px,5vw,48px);line-height:1.55;font-weight:800;text-shadow:0 2px 18px rgba(0,0,0,.45)}
+.hero h1 em{font-style:normal;color:#ffcf8a}
+.hero p{margin-top:22px;font-size:clamp(15px,1.9vw,17px);max-width:31em;line-height:2;
+  text-shadow:0 1px 10px rgba(0,0,0,.5)}
+.hero .cta{margin-top:34px;display:flex;gap:12px;flex-wrap:wrap}
+.hero .cap{position:absolute;right:14px;bottom:10px;z-index:2;font-size:10.5px;opacity:.75}
+.stats{display:flex;border-top:1px solid rgba(255,255,255,.25);margin-top:52px}
+.stats div{flex:1;padding:20px 8px 0}
+.stats b{font-family:var(--mono);font-size:clamp(20px,3.4vw,28px);color:#ffcf8a;display:block;
+  line-height:1.3;font-weight:800}
+.stats b i{font-style:normal;font-size:13.5px;margin-left:2px}
+.stats small{font-size:12px;opacity:.85}
+
+/* 学科カード */
+.cats{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.cat{background:#fff;border:1px solid var(--line);border-radius:12px;overflow:hidden;
+  transition:.2s;text-decoration:none;display:block}
+.cat:hover{transform:translateY(-3px);box-shadow:0 8px 24px rgba(14,110,106,.14);border-color:var(--teal)}
+.cat .ph{aspect-ratio:16/10;overflow:hidden}
+.cat .ph img{width:100%;height:100%;object-fit:cover}
+.cat .body{padding:18px 20px}
+.cat h3{font-size:16.5px;font-weight:800;margin-bottom:4px;color:var(--teal-deep)}
+.cat p{font-size:13.5px;color:var(--muted);line-height:1.75}
+.cat .chip{display:inline-block;background:var(--paper);color:var(--teal);font-size:11.5px;
+  font-weight:800;border-radius:4px;padding:2px 10px;margin-bottom:8px}
+.ph-cap{display:block;font-size:11.5px;color:var(--muted);margin-top:8px}
+
+/* 選ばれる理由 */
+.why{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.w{background:#fff;border:1px solid var(--line);border-radius:10px;padding:22px;font-size:13.5px;color:var(--muted)}
+.w b{display:block;color:var(--ink);font-size:15px;margin-bottom:6px;font-weight:800}
+.w i{font-family:var(--mono);font-style:normal;color:var(--coral);font-weight:800;font-size:13px}
+
+/* オープンキャンパス（このページの主役CTA） */
+.oc{display:grid;grid-template-columns:1.05fr 1fr;gap:34px;align-items:center}
+.oc .ph{border-radius:12px;overflow:hidden;box-shadow:0 14px 38px rgba(10,77,74,.18)}
+.oc h3{font-size:clamp(21px,3vw,28px);font-weight:800;line-height:1.6;margin-bottom:14px}
+.oc p{font-size:14.5px;color:var(--muted);margin-bottom:20px}
+
+/* 電話バンド */
+.quick{background:linear-gradient(120deg,var(--teal),var(--teal-deep));color:#fff;
+  border-radius:14px;padding:34px;display:flex;gap:26px;align-items:center;flex-wrap:wrap}
+.quick b{font-size:clamp(18px,2.6vw,23px);font-weight:800;line-height:1.6;flex:1;min-width:250px}
+.quick b em{font-style:normal;color:#ffd9a8;display:block;font-size:14.5px;font-weight:700;margin-top:6px}
+.quick .tel{font-family:var(--mono);font-size:clamp(24px,4vw,34px);font-weight:800;color:#fff;
+  text-decoration:none;letter-spacing:.02em}
+.quick small{display:block;font-size:12px;opacity:.85}
+
+/* SNS */
+.sns{display:flex;gap:14px;flex-wrap:wrap}
+.sns a{flex:1;min-width:200px;border:1px solid var(--line);border-radius:10px;padding:20px;
+  text-decoration:none;text-align:center;font-weight:800;font-size:14.5px;transition:.2s;background:#fff}
+.sns a:hover{border-color:var(--coral);color:var(--coral)}
+.sns small{display:block;font-weight:500;font-size:12px;color:var(--muted);margin-top:4px}
+
+table{width:100%;border-collapse:collapse;font-size:14.5px}
+th,td{border-bottom:1px solid var(--line);padding:16px 12px;text-align:left;vertical-align:top}
+th{width:30%;font-weight:700;white-space:nowrap;color:var(--muted)}
+
+footer{background:var(--teal-deep);color:#fff;padding:46px 0 96px;font-size:13.5px}
+.copy{margin-top:26px;padding-top:16px;border-top:1px solid rgba(255,255,255,.2);
+  font-size:12px;opacity:.75;line-height:1.8}
+
+.sticky{display:none}
+@media(max-width:980px){ .nav{gap:15px;font-size:13px} }
+@media(max-width:860px){
+  :root{--hd:58px}
+  .nav{display:none}
+  .cats,.why{grid-template-columns:1fr}
+  .oc{grid-template-columns:1fr}
+  .hero .wrap{padding:74px 22px 58px}
+  section{padding:54px 0}
+  .stats{flex-wrap:wrap}
+  .stats div{flex:1 0 50%;padding:16px 8px 8px}
+  .quick{flex-direction:column;text-align:center}
+  .sticky{display:flex;position:fixed;left:0;right:0;bottom:0;z-index:60;background:#fff;
+    border-top:1px solid var(--line);padding:8px;gap:8px;box-shadow:0 -3px 16px rgba(0,0,0,.12)}
+  .sticky a{flex:1;text-align:center;padding:14px 6px;border-radius:6px;text-decoration:none;
+    font-weight:700;font-size:14.5px}
+  .sticky .c{background:var(--teal);color:#fff}
+  .sticky .m{background:var(--coral);color:#fff}
+}
+</style>
+</head>
+<body>
+
+<div class="proposal">これは学校法人藤仁館学園様への<strong>提案イメージ</strong>「学生募集ページ」案です（数値・内容は御校サイトと公開情報を基にした仮のもの。写真は御校サイトより引用しています／検索エンジン非掲載）</div>
+
+<header>
+  <div class="hd">
+    <div class="logo">藤仁館医療福祉専門学校<span>学校法人 藤仁館学園／高崎駅から徒歩圏</span></div>
+    <nav class="nav">
+      <a href="#course">学科紹介</a>
+      <a href="#why">選ばれる理由</a>
+      <a href="#oc">オープンキャンパス</a>
+      <a href="#school">学校概要</a>
+    </nav>
+    <a class="btn acc" href="#oc" style="padding:10px 20px;font-size:14px">オープンキャンパス</a>
+  </div>
+</header>
+
+<div class="hero">
+  <div class="bg"></div>
+  <div class="wrap">
+    <div class="eyebrow">2026年4月「高崎福祉医療カレッジ」から校名変更しました</div>
+    <h1>人を支える力は、<br><em>一生モノの国家資格になる。</em></h1>
+    <p>介護福祉士も、看護師も、社会福祉士も。高崎駅から通えるキャンパスで、医療福祉のプロへの最短ルートを。社会人・子育て中の方の学び直しも歓迎です。</p>
+    <div class="cta">
+      <a class="btn acc" href="#oc">オープンキャンパスに行く</a>
+      <a class="btn line" style="background:transparent;color:#fff;border-color:rgba(255,255,255,.7)" href="#course">学科を見る</a>
+    </div>
+    <div class="stats">
+      <div><b>約2,500<i>名</i></b><small>介護福祉士 国家試験合格者数</small></div>
+      <div><b>2<i>学科＋通信</i></b><small>介護福祉・看護師・通信課程</small></div>
+      <div><b>9<i>キャンパス</i></b><small>高崎から横浜まで首都圏に展開</small></div>
+      <div><b>駅チカ<i>通学</i></b><small>高崎駅から徒歩圏の本校</small></div>
+    </div>
+  </div>
+  <span class="cap">写真は御校の実際の授業風景（御校サイトより）</span>
+</div>
+
+<!-- 01 学科紹介 -->
+<section id="course">
+  <div class="wrap">
+    <span class="label"><i>01</i>学科紹介</span>
+    <h2>あなたのペースで、資格に届く3つの道。</h2>
+    <p class="lead">高校からの進学も、社会人の学び直しも、働きながらの通信も。目指す資格と生活に合わせて選べます。</p>
+    <div class="cats">
+      <a class="cat" href="#">
+        <div class="ph"><img src="images/photo_course_intro.jpg" alt="介護福祉学科"></div>
+        <div class="body"><span class="chip">2年制・定員40名</span><h3>介護福祉学科</h3><p>現場で頼られる介護福祉士へ。実習と国家試験対策を2年に凝縮。学費サポート制度も充実。</p></div></a>
+      <a class="cat" href="#">
+        <div class="ph"><img src="images/photo_feature_02.jpg" alt="看護師学科の実習室"></div>
+        <div class="body"><span class="chip">3年制・定員40名</span><h3>看護師学科</h3><p>本物の病棟さながらの実習室で、確かな看護技術を。地域の医療機関と連携した実習体制。</p></div></a>
+      <a class="cat" href="#">
+        <div class="ph"><img src="images/photo_feature_03.jpg" alt="国家試験対策のテキスト"></div>
+        <div class="body"><span class="chip">通信課程</span><h3>社会福祉士・精神保健福祉士・看護師</h3><p>働きながら国家資格を目指せる通信課程。首都圏9キャンパスでスクーリング可能。</p></div></a>
+    </div>
+    <span class="ph-cap">※写真はすべて御校の実際の授業・施設（御校サイトより）</span>
+  </div>
+</section>
+
+<!-- 02 選ばれる理由 -->
+<section id="why" class="paper">
+  <div class="wrap">
+    <span class="label"><i>02</i>選ばれる理由</span>
+    <h2>数字と実績で、選ばれてきた学校。</h2>
+    <p class="lead">群馬と首都圏の医療福祉現場に、多くの卒業生を送り続けてきました。<span class="todo">※開校年・実績数値は御校と相談のうえ正確に記載します</span></p>
+    <div class="why">
+      <div class="w"><i>REASON 01</i><b>国試に強い</b>介護福祉士国家試験の合格者は約2,500名。長年の受験対策ノウハウを授業に還元しています。</div>
+      <div class="w"><i>REASON 02</i><b>現場に近い</b>地域の病院・施設と連携した実習が豊富。就職まで切れ目なくサポートします。</div>
+      <div class="w"><i>REASON 03</i><b>学び直しに優しい</b>社会人・子育て世代の入学者が多数。夜間・通信・給付金制度の相談もできます。</div>
+    </div>
+  </div>
+</section>
+
+<!-- 03 オープンキャンパス -->
+<section id="oc">
+  <div class="wrap">
+    <span class="label"><i>03</i>オープンキャンパス</span>
+    <div class="oc">
+      <div class="ph"><img src="images/photo_feature_01.jpg" alt="在校生と話せるオープンキャンパス"></div>
+      <div>
+        <h3>まずは、見に来てください。<br>在校生と話せます。</h3>
+        <p>授業や実習室の見学、入試・学費の個別相談、通信課程の説明会まで。保護者の方との参加も歓迎です。スマホから1分で予約できます。</p>
+        <a class="btn acc" href="#">開催日を見る・予約する</a>
+        <p class="todo" style="margin-top:14px">※予約導線は御校の既存フォーム（オープンキャンパス・個別相談）に接続します</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 04 電話バンド -->
+<section class="paper" style="padding:50px 0">
+  <div class="wrap">
+    <div class="quick">
+      <b>入試・学費・学び直しのご相談はこちら。<em>資料請求だけでも、お気軽にどうぞ。</em></b>
+      <div><a class="tel num" href="tel:0273862323">027-386-2323</a>
+        <small>藤仁館医療福祉専門学校 高崎本校（平日 9:00-17:00）</small></div>
+    </div>
+  </div>
+</section>
+
+<!-- 05 SNS：高校生が学校を探す場所に、学校のリアルを -->
+<section>
+  <div class="wrap">
+    <span class="label"><i>04</i>SNS</span>
+    <h2>高校生が学校を探す場所は、検索よりSNS。</h2>
+    <p class="lead">授業のようす、在校生の1日、卒業生の今。進路を考える高校生と保護者に届く形で、学校のリアルを発信し続けます。<span class="todo">※運用体制もあわせてご提案します</span></p>
+    <div class="sns">
+      <a href="#">Instagram<small>キャンパスの日常・行事</small></a>
+      <a href="#">TikTok<small>在校生の1日・実習のリアル</small></a>
+      <a href="#">LINE公式<small>資料請求・OC予約・入試情報</small></a>
+    </div>
+  </div>
+</section>
+
+<!-- 06 学校概要 -->
+<section id="school" class="paper">
+  <div class="wrap">
+    <span class="label"><i>05</i>学校概要</span>
+    <h2>学校概要</h2>
+    <table>
+      <tr><th>名称</th><td>藤仁館医療福祉専門学校（2026年4月、高崎福祉医療カレッジより校名変更）</td></tr>
+      <tr><th>運営</th><td>学校法人 藤仁館学園</td></tr>
+      <tr><th>高崎本校</th><td>〒370-0045 群馬県高崎市東町28-1　TEL 027-386-2323</td></tr>
+      <tr><th>学科</th><td>介護福祉学科（2年制・40名）／看護師学科（3年制・40名）／通信課程（社会福祉士科・精神保健福祉士科・看護師科）</td></tr>
+      <tr><th>キャンパス</th><td>高崎・高松町・太田・熊谷・大宮・南浦和・池袋・北千住・横浜</td></tr>
+    </table>
+    <p class="todo" style="margin-top:14px">※設立年・沿革・指定/認可情報は御校と相談のうえ正確に記載します。</p>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="logo" style="color:#fff">藤仁館医療福祉専門学校<span style="color:#9dbcb8">学校法人藤仁館学園／群馬県高崎市東町28-1　TEL 027-386-2323</span></div>
+    <p class="copy">© <span id="y"></span> 学校法人藤仁館学園<br>
+      本ページは提案用のイメージです。掲載内容・写真は御校と相談のうえ決定します。スマホ対応・常時SSL（https）で制作します。</p>
+  </div>
+</footer>
+
+<div class="sticky">
+  <a class="c" href="tel:0273862323">☎ 電話する</a>
+  <a class="m" href="#oc">オープンキャンパス</a>
+</div>
+
+<script>document.getElementById('y').textContent=new Date().getFullYear();</script>
+</body>
+</html>

@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>【提案イメージ】東群グループ 採用広報ページ案（ティーテクノロジーズ株式会社様向け）</title>
+<style>
+:root{
+  --navy:#16283c;          /* 夜間輸送の濃紺 */
+  --navy-deep:#0d1a29;
+  --blue:#2b5d8c;          /* 見出し・リンクの群青 */
+  --accent:#f08c1e;        /* 反射ベストのオレンジ。CTAと数字だけ */
+  --ink:#1d2630;
+  --muted:#51606e;
+  --paper:#f3f6f9;
+  --line:#dbe3ea;
+  --max:1040px;
+  --hd:64px;
+  --mono:"DIN Alternate","Roboto Mono",ui-monospace,Menlo,Consolas,monospace;
+}
+:root{color-scheme:light}
+html,body{background:#fff}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:"Hiragino Kaku Gothic ProN","Yu Gothic",system-ui,sans-serif;
+  color:var(--ink);line-height:1.9;-webkit-text-size-adjust:100%;
+  font-feature-settings:"palt";letter-spacing:.02em}
+img{max-width:100%;height:auto;display:block}
+a{color:inherit}
+.wrap{max-width:var(--max);margin:0 auto;padding:0 22px}
+.num{font-family:var(--mono);font-variant-numeric:tabular-nums;font-style:normal}
+section{padding:84px 0;scroll-margin-top:var(--hd);background:#fff}
+.paper{background:var(--paper)}
+
+.proposal{background:#0d1a29;color:#ffc97e;text-align:center;font-size:12.5px;
+  padding:8px 14px;letter-spacing:.04em;line-height:1.6}
+
+.label{display:inline-flex;align-items:center;gap:12px;margin-bottom:12px;
+  font-size:13px;letter-spacing:.12em;font-weight:800;color:var(--blue)}
+.label i{font-family:var(--mono);font-style:normal;color:#8b9dae;font-weight:700;
+  font-size:14px;border-right:1px solid var(--line);padding-right:12px}
+h2{font-size:clamp(23px,3.6vw,34px);line-height:1.5;margin-bottom:14px;font-weight:800}
+.lead{color:var(--muted);margin-bottom:40px;font-size:16px;max-width:38em}
+.todo{opacity:.72;font-size:12.5px}
+
+header{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.96);
+  border-bottom:1px solid var(--line);backdrop-filter:saturate(1.3) blur(6px)}
+.hd{display:flex;align-items:center;justify-content:space-between;gap:16px;
+  padding:11px 22px;max-width:var(--max);margin:0 auto}
+.logo{font-weight:800;font-size:16.5px;letter-spacing:.05em;line-height:1.35;color:var(--navy)}
+.logo span{display:block;font-size:10.5px;color:#7d8d9c;font-weight:500;letter-spacing:.12em}
+.nav{display:flex;gap:22px;font-size:14px}
+.nav a{text-decoration:none;color:#3c4956;padding:4px 0;border-bottom:2px solid transparent}
+.nav a:hover{color:var(--blue);border-color:var(--blue)}
+.btn{display:inline-block;background:var(--blue);color:#fff;text-decoration:none;
+  padding:14px 30px;border-radius:6px;font-weight:700;font-size:15px;letter-spacing:.04em;
+  box-shadow:0 3px 14px rgba(43,93,140,.25)}
+.btn:hover{filter:brightness(1.08)}
+.btn.acc{background:var(--accent);color:#241503;box-shadow:0 3px 14px rgba(240,140,30,.35)}
+.btn.line{background:#fff;color:var(--blue);border:1.5px solid var(--blue);box-shadow:none}
+
+/* ヒーロー：夜明けの高速を走るトラック（御社グループサイトより） */
+.hero{position:relative;color:#fff;overflow:hidden;background:var(--navy-deep)}
+.hero .bg{position:absolute;inset:0;background:url(images/top_service01.png) center 40%/cover no-repeat;
+  filter:brightness(.55) saturate(1.1)}
+.hero::after{content:"";position:absolute;inset:0;
+  background:linear-gradient(100deg,rgba(11,20,32,.92) 0%,rgba(11,20,32,.6) 46%,rgba(11,20,32,.22) 100%)}
+.hero .wrap{position:relative;padding:104px 22px 84px;z-index:1}
+.hero .eyebrow{display:inline-block;font-size:12.5px;letter-spacing:.14em;margin-bottom:22px;
+  color:#ffc97e;font-weight:800;border:1px solid rgba(255,201,126,.5);border-radius:20px;padding:6px 16px}
+.hero h1{font-size:clamp(29px,5vw,48px);line-height:1.5;font-weight:800;text-shadow:0 2px 18px rgba(0,0,0,.45)}
+.hero h1 em{font-style:normal;color:#ffc061}
+.hero p{margin-top:22px;font-size:clamp(15px,1.9vw,17px);max-width:31em;line-height:2;
+  text-shadow:0 1px 10px rgba(0,0,0,.5)}
+.hero .cta{margin-top:34px;display:flex;gap:12px;flex-wrap:wrap}
+.hero .cap{position:absolute;right:14px;bottom:10px;z-index:2;font-size:10.5px;opacity:.75}
+.stats{display:flex;border-top:1px solid rgba(255,255,255,.25);margin-top:52px}
+.stats div{flex:1;padding:20px 8px 0}
+.stats b{font-family:var(--mono);font-size:clamp(20px,3.4vw,28px);color:#ffc061;display:block;
+  line-height:1.3;font-weight:800}
+.stats b i{font-style:normal;font-size:13.5px;margin-left:2px}
+.stats small{font-size:12px;opacity:.85}
+
+/* 事業3分野 */
+.cats{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.cat{background:#fff;border:1px solid var(--line);border-radius:10px;overflow:hidden;
+  transition:.2s;text-decoration:none;display:block}
+.cat:hover{transform:translateY(-3px);box-shadow:0 8px 24px rgba(43,93,140,.14);border-color:var(--blue)}
+.cat .ph{aspect-ratio:16/9;overflow:hidden;background:#e8edf2}
+.cat .ph img{width:100%;height:100%;object-fit:cover}
+.cat .body{padding:18px 20px}
+.cat h3{font-size:16.5px;font-weight:800;margin-bottom:4px;color:var(--navy)}
+.cat p{font-size:13.5px;color:var(--muted);line-height:1.75}
+.ph-cap{display:block;font-size:11.5px;color:var(--muted);margin-top:8px}
+
+/* 職種（このページの主役） */
+.jobs{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.job{background:#fff;border:1px solid var(--line);border-radius:12px;padding:26px;position:relative}
+.job .tag{position:absolute;top:-12px;left:20px;background:var(--accent);color:#241503;
+  font-size:11.5px;font-weight:800;letter-spacing:.08em;border-radius:4px;padding:3px 12px}
+.job h4{font-size:18px;font-weight:800;margin-bottom:8px}
+.job .co{font-size:12.5px;color:var(--blue);font-weight:700;margin-bottom:10px}
+.job ul{list-style:none;font-size:13.5px;color:var(--muted)}
+.job li{padding-left:1.2em;position:relative;margin-bottom:3px}
+.job li::before{content:"✓";position:absolute;left:0;color:var(--accent);font-weight:800}
+.job .btn{margin-top:18px;width:100%;text-align:center;padding:13px 10px;font-size:14.5px}
+
+/* 社長メッセージ */
+.msg{display:grid;grid-template-columns:300px 1fr;gap:34px;align-items:center}
+.msg .ph{border-radius:12px;overflow:hidden;box-shadow:0 14px 38px rgba(13,26,41,.18)}
+.msg h3{font-size:clamp(20px,2.8vw,26px);font-weight:800;line-height:1.6;margin-bottom:14px}
+.msg p{font-size:14.5px;color:var(--muted)}
+
+/* 電話バンド */
+.quick{background:linear-gradient(120deg,var(--blue),var(--navy));color:#fff;
+  border-radius:14px;padding:34px;display:flex;gap:26px;align-items:center;flex-wrap:wrap}
+.quick b{font-size:clamp(18px,2.6vw,23px);font-weight:800;line-height:1.6;flex:1;min-width:250px}
+.quick b em{font-style:normal;color:#ffc97e;display:block;font-size:14.5px;font-weight:700;margin-top:6px}
+.quick .tel{font-family:var(--mono);font-size:clamp(24px,4vw,34px);font-weight:800;color:#fff;
+  text-decoration:none;letter-spacing:.02em}
+.quick small{display:block;font-size:12px;opacity:.85}
+
+/* SNS */
+.sns{display:flex;gap:14px;flex-wrap:wrap}
+.sns a{flex:1;min-width:200px;border:1px solid var(--line);border-radius:10px;padding:20px;
+  text-decoration:none;text-align:center;font-weight:800;font-size:14.5px;transition:.2s;background:#fff}
+.sns a:hover{border-color:var(--blue);color:var(--blue)}
+.sns small{display:block;font-weight:500;font-size:12px;color:var(--muted);margin-top:4px}
+
+table{width:100%;border-collapse:collapse;font-size:14.5px}
+th,td{border-bottom:1px solid var(--line);padding:16px 12px;text-align:left;vertical-align:top}
+th{width:30%;font-weight:700;white-space:nowrap;color:var(--muted)}
+
+footer{background:var(--navy-deep);color:#fff;padding:46px 0 96px;font-size:13.5px}
+.copy{margin-top:26px;padding-top:16px;border-top:1px solid rgba(255,255,255,.2);
+  font-size:12px;opacity:.75;line-height:1.8}
+
+.sticky{display:none}
+@media(max-width:980px){ .nav{gap:15px;font-size:13px} }
+@media(max-width:860px){
+  :root{--hd:58px}
+  .nav{display:none}
+  .cats,.jobs{grid-template-columns:1fr}
+  .msg{grid-template-columns:1fr}
+  .msg .ph{max-width:300px}
+  .hero .wrap{padding:74px 22px 58px}
+  section{padding:54px 0}
+  .stats{flex-wrap:wrap}
+  .stats div{flex:1 0 50%;padding:16px 8px 8px}
+  .quick{flex-direction:column;text-align:center}
+  .sticky{display:flex;position:fixed;left:0;right:0;bottom:0;z-index:60;background:#fff;
+    border-top:1px solid var(--line);padding:8px;gap:8px;box-shadow:0 -3px 16px rgba(0,0,0,.12)}
+  .sticky a{flex:1;text-align:center;padding:14px 6px;border-radius:6px;text-decoration:none;
+    font-weight:700;font-size:14.5px}
+  .sticky .c{background:var(--navy);color:#fff}
+  .sticky .m{background:var(--accent);color:#241503}
+}
+</style>
+</head>
+<body>
+
+<div class="proposal">これはティーテクノロジーズ株式会社様（東群グループ）への<strong>提案イメージ</strong>「グループ採用広報ページ」案です（内容はグループ各社サイトと求人情報を基にした仮のもの。写真は御社グループサイトより引用しています／検索エンジン非掲載）</div>
+
+<header>
+  <div class="hd">
+    <div class="logo">東群グループ 採用サイト<span>TOUGUN GROUP RECRUIT／群馬県伊勢崎市</span></div>
+    <nav class="nav">
+      <a href="#service">グループの仕事</a>
+      <a href="#jobs">募集職種</a>
+      <a href="#message">メッセージ</a>
+      <a href="#company">グループ概要</a>
+    </nav>
+    <a class="btn acc" href="#jobs" style="padding:10px 20px;font-size:14px">募集職種を見る</a>
+  </div>
+</header>
+
+<div class="hero">
+  <div class="bg"></div>
+  <div class="wrap">
+    <div class="eyebrow">輸送・倉庫・整備・ITまで。群馬の物流を支える東群グループ</div>
+    <h1>群馬の「届く」を、<br><em>止めない仕事。</em></h1>
+    <p>スーパーの棚に、工場のラインに、あなたの家に。毎日あたりまえに届くその裏側を、東群グループが走っています。ドライバーから倉庫、整備、ITまで——グループ横断で仲間を募集中です。</p>
+    <div class="cta">
+      <a class="btn acc" href="#jobs">募集職種を見る</a>
+      <a class="btn line" style="background:transparent;color:#fff;border-color:rgba(255,255,255,.7)" href="#service">グループの仕事を知る</a>
+    </div>
+    <div class="stats">
+      <div><b>輸送×倉庫<i>一貫</i></b><small>保管から配送までワンストップ</small></div>
+      <div><b>4<i>事業</i></b><small>輸送・倉庫・車両整備・IT</small></div>
+      <div><b>伊勢崎<i>本社</i></b><small>地元密着・マイカー通勤可</small></div>
+      <div><b>IT部門<i>新設</i></b><small>2024年設立ティーテクノロジーズ</small></div>
+    </div>
+  </div>
+  <span class="cap">写真は御社グループサイトより</span>
+</div>
+
+<!-- 01 グループの仕事 -->
+<section id="service">
+  <div class="wrap">
+    <span class="label"><i>01</i>グループの仕事</span>
+    <h2>運ぶだけじゃない。物流の全部がここにある。</h2>
+    <p class="lead">輸送・倉庫・車両整備、そしてRPA・AIで物流を効率化するIT部門まで。ひとつのグループの中に、キャリアの選択肢が揃っています。</p>
+    <div class="cats">
+      <div class="cat">
+        <div class="ph"><img src="images/top_service01.png" alt="幹線輸送のトラック"></div>
+        <div class="body"><h3>輸送・倉庫</h3><p>群馬・関東圏の定期輸送と倉庫運営。保管から配送まで一貫して担う、グループの中核事業です。</p></div></div>
+      <div class="cat">
+        <div class="ph"><img src="images/top_service02.png" alt="車両整備"></div>
+        <div class="body"><h3>車両販売・整備</h3><p>グループのトラックを支える整備部門。安全運行の土台を、プロの手でつくります。</p></div></div>
+      <div class="cat">
+        <div class="ph"><img src="images/top_service05.png" alt="IT・RPAソリューション"></div>
+        <div class="body"><h3>IT・RPAソリューション</h3><p>2024年設立のティーテクノロジーズ。RPA・生成AIで物流と地域企業のDXを推進します。</p></div></div>
+    </div>
+    <span class="ph-cap">※写真は御社グループサイトより引用</span>
+  </div>
+</section>
+
+<!-- 02 募集職種（このページの主役） -->
+<section id="jobs" class="paper">
+  <div class="wrap">
+    <span class="label"><i>02</i>募集職種</span>
+    <h2>グループの求人を、ここに一本化。</h2>
+    <p class="lead">いまは求人媒体ごとにバラバラな募集を、グループ採用ページに集約。SNSや動画で興味を持った方が、迷わず応募まで進める受け皿になります。<span class="todo">※職種・待遇は御社の実際の求人情報に合わせて記載します</span></p>
+    <div class="jobs">
+      <div class="job"><span class="tag">積極採用中</span>
+        <h4>トラックドライバー（中型・大型）</h4>
+        <div class="co">東群運送株式会社</div>
+        <ul>
+          <li>群馬・関東圏の定期便が中心</li>
+          <li>未経験からの免許取得支援も相談可</li>
+          <li>マイカー通勤可・社会保険完備</li>
+        </ul>
+        <a class="btn acc" href="#">この職種に応募する</a>
+      </div>
+      <div class="job">
+        <h4>倉庫スタッフ・フォークリフト</h4>
+        <div class="co">東群ホールディングス株式会社</div>
+        <ul>
+          <li>伊勢崎市内の自社倉庫での入出庫・仕分け</li>
+          <li>資格取得支援あり</li>
+          <li>幅広い年代が活躍中</li>
+        </ul>
+        <a class="btn acc" href="#">この職種に応募する</a>
+      </div>
+      <div class="job">
+        <h4>自動車整備士</h4>
+        <div class="co">車両販売・整備部門</div>
+        <ul>
+          <li>グループ車両の点検・整備</li>
+          <li>大型整備の経験が積める</li>
+          <li>経験者優遇</li>
+        </ul>
+        <a class="btn acc" href="#">この職種に応募する</a>
+      </div>
+      <div class="job"><span class="tag">新設部門</span>
+        <h4>ITエンジニア・RPA開発</h4>
+        <div class="co">ティーテクノロジーズ株式会社</div>
+        <ul>
+          <li>RPA・生成AIの導入支援と開発</li>
+          <li>企画から運用まで一貫して関われる</li>
+          <li>未経験と経験者の協働を重視</li>
+        </ul>
+        <a class="btn acc" href="#">この職種に応募する</a>
+      </div>
+    </div>
+    <p class="todo" style="margin-top:14px">※応募ボタンは各社の応募フロー（電話／Indeed／自社フォーム）に接続します。スマホから2分で送れる応募フォームを想定。</p>
+  </div>
+</section>
+
+<!-- 03 メッセージ -->
+<section id="message">
+  <div class="wrap">
+    <span class="label"><i>03</i>メッセージ</span>
+    <div class="msg">
+      <div class="ph"><img src="images/top_menu01.jpg" alt="グループ代表"></div>
+      <div>
+        <h3>物流の未来は、<br>人がつくる。</h3>
+        <p>「物流からロジスティクスへ」。業界が大きく変わるいま、東群グループは輸送・倉庫の現場力にITの力を掛け合わせ、次の時代の物流をつくろうとしています。その主役は、一人ひとりの社員です。<span class="todo">※メッセージ本文・お名前は御社と相談のうえ正式に掲載します</span></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 04 電話バンド -->
+<section class="paper" style="padding:50px 0">
+  <div class="wrap">
+    <div class="quick">
+      <b>採用に関するご質問・ご相談はこちらから。<em>「話を聞くだけ」でも歓迎です。</em></b>
+      <div><a class="tel num" href="tel:0270255881">0270-25-5881</a>
+        <small>東群グループ本社（平日 9:00-17:00）</small></div>
+    </div>
+  </div>
+</section>
+
+<!-- 05 SNS：Instagram縦動画の「着地先」をつくる -->
+<section>
+  <div class="wrap">
+    <span class="label"><i>04</i>SNS</span>
+    <h2>ドライバーの1日を、縦動画で。</h2>
+    <p class="lead">Instagramで興味を持った求職者が、このページに着地して応募する——動画発信と受け皿をセットで回すのが、いちばん効率のよい採用広報です。<span class="todo">※撮影・編集・投稿の運用体制もあわせてご提案します</span></p>
+    <div class="sns">
+      <a href="#">Instagram リール<small>ドライバーの1日・倉庫の裏側</small></a>
+      <a href="#">TikTok / YouTube<small>大型トラックの運転席から</small></a>
+      <a href="#">社内報 WEB版<small>グループの「人」を社外にも</small></a>
+    </div>
+  </div>
+</section>
+
+<!-- 06 グループ概要 -->
+<section id="company" class="paper">
+  <div class="wrap">
+    <span class="label"><i>05</i>グループ概要</span>
+    <h2>グループ概要</h2>
+    <table>
+      <tr><th>グループ本社</th><td>東群ホールディングス株式会社<br>〒372-0011 群馬県伊勢崎市三和町2739番地2　TEL 0270-25-5881</td></tr>
+      <tr><th>事業内容</th><td>貨物輸送／倉庫・物流センター運営／車両販売・整備／IT・RPAソリューション</td></tr>
+      <tr><th>IT部門</th><td>ティーテクノロジーズ株式会社（2024年設立）<br>群馬県伊勢崎市三和町2739番地2　TEL 0270-75-2497</td></tr>
+      <tr><th>主なグループ会社</th><td>東群運送株式会社　ほか</td></tr>
+    </table>
+    <p class="todo" style="margin-top:14px">※グループ各社の正式名称・沿革・車両数・従業員数などは御社と相談のうえ正確に記載します。</p>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="logo" style="color:#fff">東群グループ 採用サイト<span style="color:#93a7ba">群馬県伊勢崎市三和町2739-2／TEL 0270-25-5881</span></div>
+    <p class="copy">© <span id="y"></span> TOUGUN GROUP<br>
+      本ページは提案用のイメージです。掲載内容・写真は御社と相談のうえ決定します。スマホ対応・常時SSL（https）で制作します。</p>
+  </div>
+</footer>
+
+<div class="sticky">
+  <a class="c" href="tel:0270255881">☎ 電話する</a>
+  <a class="m" href="#jobs">募集職種</a>
+</div>
+
+<script>document.getElementById('y').textContent=new Date().getFullYear();</script>
+</body>
+</html>
