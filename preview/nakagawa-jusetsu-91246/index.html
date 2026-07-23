@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>【提案イメージ】株式会社中川住設 公式サイト案</title>
+<style>
+:root{
+  --ink:#292019;          /* 濃い焦げ茶。内装の木の色 */
+  --wood:#9a5b26;         /* 主役の木色 */
+  --terra:#c25e2a;        /* CTA。テラコッタ */
+  --paper:#f7f3ee;        /* 温かい紙色 */
+  --cream:#fbf9f5;
+  --line:#e6ddd2;
+  --muted:#6a5d50;
+  --max:1040px;
+  --hd:64px;
+  --mono:"DIN Alternate","Roboto Mono",ui-monospace,Menlo,Consolas,monospace;
+}
+:root{color-scheme:light}
+html,body{background:var(--cream)}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:"Hiragino Kaku Gothic ProN","Yu Gothic",system-ui,sans-serif;
+  color:var(--ink);line-height:1.9;-webkit-text-size-adjust:100%;
+  font-feature-settings:"palt";letter-spacing:.02em}
+img{max-width:100%;height:auto;display:block}
+a{color:inherit}
+.wrap{max-width:var(--max);margin:0 auto;padding:0 22px}
+section{padding:84px 0;scroll-margin-top:var(--hd);background:var(--cream)}
+.paper{background:var(--paper)}
+.dark{background:var(--ink);color:#f5efe8}
+
+.proposal{background:#221a12;color:#ffd76e;text-align:center;font-size:12.5px;
+  padding:8px 14px;letter-spacing:.04em;line-height:1.6}
+
+.label{display:inline-flex;align-items:center;gap:12px;margin-bottom:12px;
+  font-size:13px;letter-spacing:.12em;font-weight:800;color:var(--wood)}
+.label i{font-family:var(--mono);font-style:normal;color:#b3a190;font-weight:700;
+  font-size:14px;border-right:1px solid var(--line);padding-right:12px}
+h2{font-size:clamp(23px,3.6vw,34px);line-height:1.5;margin-bottom:14px;font-weight:800}
+.lead{color:var(--muted);margin-bottom:40px;font-size:16px;max-width:38em}
+.dark .label{color:#e8b57e}
+.dark .lead{color:#cfc3b5}
+
+.imgslot{background:repeating-linear-gradient(135deg,#ece4da 0 10px,#f2ece3 10px 20px);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;
+  color:#96876f;font-size:12.5px;text-align:center;padding:16px;line-height:1.6;border-radius:8px}
+.imgslot .tag{font-family:var(--mono);font-size:10px;letter-spacing:.12em;color:#a3957e;
+  border:1px solid #d4c8b8;border-radius:3px;padding:2px 8px}
+.imgslot b{font-size:13px;color:#77684f;font-weight:800}
+.todo{opacity:.72;font-size:12.5px}
+
+header{position:sticky;top:0;z-index:50;background:rgba(251,249,245,.96);
+  border-bottom:1px solid var(--line);backdrop-filter:saturate(1.3) blur(6px)}
+.hd{display:flex;align-items:center;justify-content:space-between;gap:16px;
+  padding:11px 22px;max-width:var(--max);margin:0 auto}
+.logo{font-weight:800;font-size:16.5px;letter-spacing:.05em;line-height:1.35}
+.logo span{display:block;font-size:10.5px;color:#98876f;font-weight:500;letter-spacing:.12em}
+.nav{display:flex;gap:22px;font-size:14px}
+.nav a{text-decoration:none;color:#544737;padding:4px 0;border-bottom:2px solid transparent}
+.nav a:hover{color:var(--wood);border-color:var(--wood)}
+.btn{display:inline-block;background:var(--terra);color:#fff;text-decoration:none;
+  padding:14px 30px;border-radius:6px;font-weight:700;font-size:15px;letter-spacing:.04em;
+  box-shadow:0 3px 14px rgba(194,94,42,.28)}
+.btn:hover{filter:brightness(1.07)}
+.btn.line{background:transparent;color:var(--wood);border:1.5px solid var(--wood);box-shadow:none}
+
+/* ヒーロー：住宅→ホテルの「幅」を一枚で見せる */
+.hero{position:relative;background:linear-gradient(160deg,#f6f0e8 0%,#efe6da 60%,#f4eee6 100%);
+  border-bottom:1px solid var(--line);overflow:hidden}
+.hero::after{content:"";position:absolute;left:-120px;bottom:-160px;width:460px;height:460px;
+  border-radius:50%;background:radial-gradient(circle,rgba(154,91,38,.10),transparent 65%)}
+.hero .wrap{position:relative;padding:92px 22px 70px;z-index:1}
+.hero .eyebrow{display:inline-block;font-size:12.5px;letter-spacing:.14em;margin-bottom:22px;
+  color:var(--wood);font-weight:800;background:#f1e6d8;border-radius:20px;padding:6px 16px}
+.hero h1{font-size:clamp(27px,4.9vw,45px);line-height:1.5;font-weight:800}
+.hero h1 em{font-style:normal;color:var(--wood)}
+.hero p{margin-top:22px;font-size:clamp(15px,1.9vw,17px);max-width:32em;color:#4d4234;line-height:2}
+.hero .cta{margin-top:32px;display:flex;gap:12px;flex-wrap:wrap}
+.stats{display:flex;border-top:1px solid var(--line);margin-top:46px}
+.stats div{flex:1;padding:20px 8px 0}
+.stats b{font-family:var(--mono);font-size:clamp(23px,3.6vw,31px);color:var(--wood);display:block;
+  line-height:1.15;font-weight:800}
+.stats b i{font-style:normal;font-size:14px;margin-left:2px}
+.stats small{font-size:12px;color:var(--muted)}
+
+/* 事業3本柱＋ホテル */
+.fields{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.field{background:#fff;border:1px solid var(--line);border-radius:10px;overflow:hidden}
+.field .imgslot{aspect-ratio:16/10;border-radius:0}
+.field .body{padding:18px 20px}
+.field h3{font-size:16.5px;font-weight:800;margin-bottom:4px}
+.field p{font-size:13.5px;color:var(--muted);line-height:1.8}
+
+/* ホテル修繕・ガレージホテル＝「革新」の証明バンド */
+.wide{background:var(--ink);color:#f5efe8;border-radius:14px;overflow:hidden;
+  display:grid;grid-template-columns:1fr 1fr;align-items:stretch}
+.wide .imgslot{border-radius:0;min-height:280px}
+.wide .body{padding:36px}
+.wide .k{font-size:12.5px;letter-spacing:.14em;color:#e8b57e;font-weight:800;margin-bottom:12px}
+.wide h3{font-size:clamp(19px,2.8vw,25px);font-weight:800;line-height:1.6;margin-bottom:12px}
+.wide p{font-size:14.5px;color:#cfc3b5;line-height:1.95}
+
+.reasons{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.reason{background:#fff;border:1px solid var(--line);border-top:3px solid var(--wood);
+  border-radius:0 0 10px 10px;padding:24px}
+.reason h3{font-size:17px;font-weight:800;margin-bottom:8px}
+.reason p{font-size:14px;color:var(--muted)}
+
+/* 施工事例 */
+.works{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.work{background:#fff;border:1px solid var(--line);border-radius:10px;overflow:hidden}
+.work .imgslot{aspect-ratio:4/3;border-radius:0}
+.work .body{padding:16px 18px}
+.work .cat{font-family:var(--mono);font-size:11.5px;color:var(--wood);font-weight:800;letter-spacing:.06em}
+.work h3{font-size:15.5px;font-weight:800;margin:4px 0 6px;line-height:1.55}
+.work p{font-size:13px;color:var(--muted);line-height:1.75}
+
+.voice{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.voice div{background:#fff;border:1px solid var(--line);border-radius:10px;padding:22px}
+.voice p{font-size:14px;line-height:1.85}
+.voice cite{display:block;margin-top:12px;font-size:12.5px;color:var(--muted);font-style:normal}
+
+.flow{counter-reset:f;max-width:760px}
+.flow li{list-style:none;counter-increment:f;padding:18px 0 18px 60px;position:relative;
+  border-bottom:1px dashed var(--line)}
+.flow li:last-child{border-bottom:0}
+.flow li::before{content:counter(f);position:absolute;left:8px;top:18px;width:35px;height:35px;
+  background:var(--wood);color:#fff;border-radius:50%;display:flex;align-items:center;
+  justify-content:center;font-family:var(--mono);font-weight:800;font-size:14px}
+.flow b{display:block;font-size:16px;font-weight:800}
+.flow p{font-size:13.5px;color:var(--muted)}
+
+table{width:100%;border-collapse:collapse;font-size:14.5px}
+th,td{border-bottom:1px solid var(--line);padding:16px 12px;text-align:left;vertical-align:top}
+th{width:30%;font-weight:700;white-space:nowrap;color:var(--muted)}
+
+.cta-band{background:var(--terra);color:#fff;text-align:center}
+.cta-band h2{color:#fff}
+.cta-band .label{color:rgba(255,255,255,.9);justify-content:center}
+.cta-band .label i{color:rgba(255,255,255,.7);border-color:rgba(255,255,255,.35)}
+.cta-band .btn{background:#fff;color:var(--terra);box-shadow:none}
+.tel-big{font-family:var(--mono);font-size:clamp(26px,4.5vw,38px);font-weight:800;
+  letter-spacing:.02em;display:inline-block;margin:8px 0 2px;text-decoration:none}
+
+footer{background:var(--ink);color:#f5efe8;padding:46px 0 96px;font-size:13.5px}
+.copy{margin-top:26px;padding-top:16px;border-top:1px solid rgba(255,255,255,.18);
+  font-size:12px;opacity:.75;line-height:1.8}
+
+.sticky{display:none}
+@media(max-width:980px){ .nav{gap:15px;font-size:13px} }
+@media(max-width:860px){
+  :root{--hd:58px}
+  .nav{display:none}
+  .fields,.reasons,.works,.voice,.wide{grid-template-columns:1fr}
+  .hero .wrap{padding:58px 22px 48px}
+  section{padding:54px 0}
+  .stats{flex-wrap:wrap}
+  .stats div{flex:1 0 50%;padding:16px 8px 8px}
+  .sticky{display:flex;position:fixed;left:0;right:0;bottom:0;z-index:60;background:#fff;
+    border-top:1px solid var(--line);padding:8px;gap:8px;box-shadow:0 -3px 16px rgba(0,0,0,.12)}
+  .sticky a{flex:1;text-align:center;padding:14px 6px;border-radius:6px;text-decoration:none;
+    font-weight:700;font-size:14.5px}
+  .sticky .c{background:var(--ink);color:#fff}
+  .sticky .m{background:var(--terra);color:#fff}
+}
+</style>
+</head>
+<body>
+
+<div class="proposal">これは株式会社中川住設様への<strong>提案イメージ</strong>です（写真・数値は仮のもの。御社の素材に差し替えます／検索エンジン非掲載）</div>
+
+<header>
+  <div class="hd">
+    <div class="logo">株式会社中川住設<span>広島市／内装リフォーム・建物修繕</span></div>
+    <nav class="nav">
+      <a href="#service">事業内容</a>
+      <a href="#hotel">大規模実績</a>
+      <a href="#works">施工事例</a>
+      <a href="#reason">選ばれる理由</a>
+      <a href="#flow">ご依頼の流れ</a>
+      <a href="#company">会社概要</a>
+    </nav>
+    <a class="btn" href="#contact" style="padding:10px 20px;font-size:14px">相談する</a>
+  </div>
+</header>
+
+<div class="hero">
+  <div class="wrap">
+    <div class="eyebrow">広島市佐伯区　内装リフォーム・住宅設備・建物修繕</div>
+    <h1>住まいの床の張り替えから、<br><em>外資系ホテルの修繕まで。</em></h1>
+    <p>中川住設は、住宅のリフォームを丁寧に積み重ねながら、店舗・企業建物・ホテルの大規模修繕まで手がける内装のプロフェッショナルです。丁寧で迅速な対応を、どの現場でも。</p>
+    <div class="cta">
+      <a class="btn" href="#contact">リフォームの相談をする</a>
+      <a class="btn line" href="#works">施工事例を見る</a>
+    </div>
+    <div class="stats">
+      <div><b>2016<i>年</i></b><small>設立。広島で実績を積み重ねて</small></div>
+      <div><b>◯◯◯<i>件</i></b><small>施工実績<span class="todo">※実数に</span></small></div>
+      <div><b>ホテル<i>修繕</i></b><small>外資系ホテルの大規模工事も</small></div>
+      <div><b>迅速<i>対応</i></b><small>お見積り・現地調査は無料</small></div>
+    </div>
+  </div>
+</div>
+
+<!-- 01 事業内容 -->
+<section id="service">
+  <div class="wrap">
+    <span class="label"><i>01</i>事業内容</span>
+    <h2>「住まい」も「店」も「働く場所」も。</h2>
+    <p class="lead">内装のことなら、規模を問わず。個人のお客様から企業様まで、同じ丁寧さでお応えします。</p>
+    <div class="fields">
+      <div class="field"><div class="imgslot"><span class="tag">IMAGE</span><b>住宅リフォームの施工写真</b></div>
+        <div class="body"><h3>住宅リフォーム</h3><p>内装の張り替え、水回り、間取り変更まで。住みながらの工事も、養生と段取りで負担を最小限に。</p></div></div>
+      <div class="field"><div class="imgslot"><span class="tag">IMAGE</span><b>住宅設備の施工写真</b></div>
+        <div class="body"><h3>住宅設備の販売・施工</h3><p>キッチン・バス・トイレ・給湯器。機器の選定から施工まで一括でお任せいただけます。</p></div></div>
+      <div class="field"><div class="imgslot"><span class="tag">IMAGE</span><b>店舗・企業建物の施工写真</b></div>
+        <div class="body"><h3>店舗・企業建物の修繕</h3><p>店舗内装、オフィス、大規模な建物修繕まで。法人様の窓口として一貫対応します。</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- 02 大規模実績＝「信頼と革新」の証明 -->
+<section id="hotel" class="paper">
+  <div class="wrap">
+    <span class="label"><i>02</i>大規模実績</span>
+    <h2>街のリフォーム店が、ホテルを任される理由。</h2>
+    <p class="lead">丁寧さの積み重ねが、大きな信頼につながりました。</p>
+    <div class="wide">
+      <div class="imgslot"><span class="tag">IMAGE</span><b>ホテル修繕の現場写真</b><span>※掲載可否は要確認</span></div>
+      <div class="body">
+        <div class="k">LARGE-SCALE WORKS</div>
+        <h3>外資系ホテルの修繕を、<br>広島の会社が。</h3>
+        <p>大手企業様・外資系ホテル様の建物修繕を受注しています。求められる品質基準と工期管理をクリアし続けることが、私たちの「信頼」の証明です。住宅のお客様にも、同じ品質でお応えします。</p>
+      </div>
+    </div>
+    <div class="wide" style="margin-top:18px">
+      <div class="body">
+        <div class="k">GARAGE HOTEL</div>
+        <h3>自社でガレージホテルを<br>企画・運営しています。</h3>
+        <p>人々の目を引くユニークな建物を、自ら企画し、施工し、経営する。「こんな空間にしたい」という発想からご一緒できるのが、施工だけの会社との違いです。</p>
+      </div>
+      <div class="imgslot"><span class="tag">IMAGE</span><b>ガレージホテルの写真</b><span>外観・内装／横位置</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- 03 施工事例 -->
+<section id="works">
+  <div class="wrap">
+    <span class="label"><i>03</i>施工事例</span>
+    <h2>施工事例</h2>
+    <p class="lead">実際の工事内容と費用の目安をご紹介します。<span class="todo">※記載イメージ。御社の実績・写真に差し替えます</span></p>
+    <div class="works">
+      <div class="work"><div class="imgslot"><span class="tag">IMAGE</span><b>Before / After</b></div>
+        <div class="body"><div class="cat">住宅リフォーム</div><h3>広島市◯◯区 A様邸／内装全面リフォーム</h3><p>築20年の戸建てを全面改装。工期◯週間・費用◯◯万円。</p></div></div>
+      <div class="work"><div class="imgslot"><span class="tag">IMAGE</span><b>Before / After</b></div>
+        <div class="body"><div class="cat">水回り</div><h3>B様邸／キッチン・浴室の設備交換</h3><p>設備選定から施工まで一括対応。工期◯日・費用◯◯万円。</p></div></div>
+      <div class="work"><div class="imgslot"><span class="tag">IMAGE</span><b>施工写真</b></div>
+        <div class="body"><div class="cat">店舗・法人</div><h3>◯◯様 店舗内装工事</h3><p>営業を止めない工程計画で内装を刷新。工期◯日。</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- 04 選ばれる理由 -->
+<section id="reason" class="paper">
+  <div class="wrap">
+    <span class="label"><i>04</i>選ばれる理由</span>
+    <h2>モットーは「丁寧で、迅速」。</h2>
+    <p class="lead">多くのお客様に恵まれて経営してこられたのは、この積み重ねだと考えています。</p>
+    <div class="reasons">
+      <div class="reason"><h3>丁寧で迅速な対応</h3>
+        <p>お問い合わせへの返事、現地調査、お見積り。すべての速さと丁寧さが信頼の入口だと考えています。</p></div>
+      <div class="reason"><h3>大規模工事の品質基準</h3>
+        <p>外資系ホテルや大手企業様の修繕で求められる品質・工程管理を、住宅のお客様にも同じように。</p></div>
+      <div class="reason"><h3>発想からご一緒できる</h3>
+        <p>ガレージホテルを自ら企画・運営する会社です。「どうしたい」を形にする提案力があります。</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- 05 ご依頼の流れ -->
+<section id="flow">
+  <div class="wrap">
+    <span class="label"><i>05</i>ご依頼の流れ</span>
+    <h2>ご相談から、お引き渡しまで。</h2>
+    <ol class="flow">
+      <li><b>お問い合わせ</b><p>電話またはフォームから。「相談だけ」でも大丈夫です。</p></li>
+      <li><b>現地調査・お見積り（無料）</b><p>実際に拝見し、内訳の分かるお見積りをお出しします。</p></li>
+      <li><b>ご契約・着工</b><p>工程表をお渡しし、近隣へのご挨拶も私たちが行います。</p></li>
+      <li><b>お引き渡し・アフター</b><p>仕上がりをご確認いただき、その後のご相談も承ります。</p></li>
+    </ol>
+  </div>
+</section>
+
+<!-- 06 お客様の声 -->
+<section class="paper">
+  <div class="wrap">
+    <span class="label"><i>06</i>お客様の声</span>
+    <h2>お客様の声</h2>
+    <p class="lead"><span class="todo">※実際にいただいたお声に差し替えます</span></p>
+    <div class="voice">
+      <div><p>見積りの内訳が分かりやすく、追加費用の説明も事前にきちんとありました。仕上がりも大満足です。</p><cite>広島市／戸建てリフォーム</cite></div>
+      <div><p>連絡への返事がとにかく早い。工事中も毎日きれいに片付けて帰られるのが印象的でした。</p><cite>広島市／水回り交換</cite></div>
+      <div><p>店舗の改装を営業を止めずにやっていただけた。工程の組み方がプロでした。</p><cite>広島市／店舗内装</cite></div>
+    </div>
+  </div>
+</section>
+
+<!-- 07 お問い合わせ -->
+<section id="contact" class="cta-band">
+  <div class="wrap">
+    <span class="label">お問い合わせ</span>
+    <h2 style="margin-bottom:8px">現地調査・お見積りは無料です</h2>
+    <p style="margin-bottom:20px;opacity:.95">「これ、直せる？」の一言からどうぞ。相談だけでも歓迎します。</p>
+    <a class="tel-big" href="tel:0000000000">082-000-0000</a>
+    <p style="font-size:13px;opacity:.9;margin-bottom:20px">受付 ◯:◯◯〜◯:◯◯（◯曜休）<span class="todo">※実際の番号・時間に差し替え</span></p>
+    <a class="btn" href="mailto:info@example.co.jp">メールで相談する</a>
+  </div>
+</section>
+
+<!-- 08 会社概要 -->
+<section id="company">
+  <div class="wrap">
+    <span class="label"><i>07</i>会社概要</span>
+    <h2>会社概要</h2>
+    <table>
+      <tr><th>会社名</th><td>株式会社中川住設</td></tr>
+      <tr><th>所在地</th><td>広島県広島市佐伯区五月が丘5-32-7</td></tr>
+      <tr><th>設立</th><td>2016年（平成28年）</td></tr>
+      <tr><th>事業内容</th><td>内装工事業／リフォーム・住宅設備の販売・施工／店舗・企業建物の修繕／宿泊施設の企画・運営</td></tr>
+      <tr><th>建設業許可</th><td><span class="todo">※許可番号を記載</span></td></tr>
+      <tr><th>対応エリア</th><td>広島市および近郊<span class="todo">※実際の対応エリアに差し替え</span></td></tr>
+    </table>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="logo" style="color:#f5efe8">株式会社中川住設<span style="color:#b3a190">広島県広島市佐伯区五月が丘5-32-7</span></div>
+    <p class="copy">© <span id="y"></span> 株式会社中川住設<br>
+      本ページは提案用のイメージです。掲載内容・写真は御社と相談のうえ決定します。</p>
+  </div>
+</footer>
+
+<div class="sticky">
+  <a class="c" href="tel:0000000000">☎ 電話で相談</a>
+  <a class="m" href="#contact">無料見積り</a>
+</div>
+
+<script>document.getElementById('y').textContent=new Date().getFullYear();</script>
+</body>
+</html>
