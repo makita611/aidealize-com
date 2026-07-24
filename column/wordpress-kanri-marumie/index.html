@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>WordPressの管理画面、丸見えになっていませんか？5分でできる自己チェックと防御策【AIdealize】</title>
+<meta name="description" content="中小企業のWordPressサイトが狙われる最大の原因は「管理画面(ログインURL)が丸見え」であること。専門知識がなくても5分でできる自己チェック5ステップと、今すぐできる無料・低コストの防御策をわかりやすく解説します。">
+<link rel="canonical" href="https://aidealize.com/column/wordpress-kanri-marumie/">
+<meta property="og:title" content="WordPressの管理画面、丸見えになっていませんか？5分でできる自己チェックと防御策">
+<meta property="og:description" content="中小企業のWordPressが狙われる原因「管理画面の丸見え」。5分の自己チェック5ステップと今すぐできる防御策を解説。">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://aidealize.com/column/wordpress-kanri-marumie/">
+<meta property="og:site_name" content="AIdealize株式会社">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700;900&family=Shippori+Mincho:wght@400;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-P6VNBWH3');</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "WordPressの管理画面、丸見えになっていませんか？5分でできる自己チェックと防御策",
+  "description": "中小企業のWordPressが狙われる原因「管理画面の丸見え」。専門知識がなくてもできる5分の自己チェック5ステップと、今すぐできる無料・低コストの防御策を解説します。",
+  "datePublished": "2026-07-10",
+  "author": {"@type": "Organization", "name": "AIdealize株式会社"},
+  "publisher": {"@type": "Organization", "name": "AIdealize株式会社", "url": "https://aidealize.com"}
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {"@type":"Question","name":"自社サイトの管理画面が「丸見え」か、どう確認できますか？","acceptedAnswer":{"@type":"Answer","text":"自社ドメインの末尾に「/wp-admin/」または「/wp-login.php」を付けてアクセスします。ログイン画面が表示されたら管理画面が公開状態(丸見え)です。404エラーやアクセス拒否になれば、URL変更などの対策がされています。"}},
+    {"@type":"Question","name":"中小企業の小さなサイトでも本当に攻撃されますか？","acceptedAnswer":{"@type":"Answer","text":"はい。攻撃は人が手作業で狙うのではなく、自動プログラム(ボット)が24時間無差別にWordPressサイトを巡回して行います。企業規模は関係なく、セキュリティが甘い順に標的になります。"}},
+    {"@type":"Question","name":"一番効果が高い対策はどれですか？","acceptedAnswer":{"@type":"Answer","text":"ログインページのURLを初期設定(/wp-login.php)から変更することです。SiteGuard WP Pluginなどの無料プラグインで設定でき、機械的な自動攻撃の大半を入口の時点で遮断できます。"}},
+    {"@type":"Question","name":"制作会社に作ってもらったサイトなら安全ですか？","acceptedAnswer":{"@type":"Answer","text":"必ずしも安全ではありません。多くのWeb制作契約には納品後の継続的な更新(保守)が含まれておらず、保守契約がなければプラグイン更新やバックアップは自社の責任になります。契約内容を確認してください。"}}
+  ]
+}
+</script>
+<style>
+:root{
+  --red:#0891b2;--red-dark:#0e7490;
+  --ink:#1e293b;--body:#4b5563;--light:#94a3b8;
+  --border:#e2e8f0;--bg:#f8fafc;--bg2:#f1f5f9;--white:#fff;
+  --tag-bg:#ecfeff;--green:#059669;--green-bg:#ecfdf5;
+  --demo-bg:#0f172a;--amber-bg:#fef3c7;--amber-tx:#92400e;--danger:#dc2626;--danger-bg:#fef2f2;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{font-family:'Noto Sans JP',sans-serif;background:var(--white);color:var(--ink);overflow-x:hidden;line-height:1.7;}
+#mainNav{position:fixed;top:0;left:0;right:0;z-index:1000;display:flex;align-items:center;justify-content:space-between;padding:0 60px;height:68px;background:rgba(255,255,255,0.97);border-bottom:1px solid var(--border);backdrop-filter:blur(12px);transition:box-shadow 0.3s;}
+#mainNav.scrolled{box-shadow:0 2px 16px rgba(0,0,0,0.06);}
+.nav-logo{display:flex;align-items:center;gap:10px;text-decoration:none;}
+.nav-logo img{height:34px;width:auto;}
+.nav-logo-text{font-family:'DM Mono',monospace;font-size:15px;font-weight:500;color:var(--ink);letter-spacing:0.02em;}
+.nav-logo-text span{color:var(--red);}
+.nav-links{display:flex;align-items:center;gap:32px;list-style:none;}
+.nav-links a{font-size:13px;font-weight:500;color:var(--body);text-decoration:none;transition:color 0.2s;}
+.nav-links a:hover{color:var(--ink);}
+.nav-cta{background:var(--red) !important;color:#fff !important;padding:9px 20px;border-radius:4px;font-size:12px !important;font-weight:700 !important;}
+.nav-cta:hover{background:var(--red-dark) !important;}
+.nav-hamburger{display:none;flex-direction:column;justify-content:center;gap:5px;width:40px;height:40px;background:none;border:none;cursor:pointer;}
+.nav-hamburger span{display:block;width:22px;height:2px;background:var(--ink);transition:all 0.3s;transform-origin:center;}
+.nav-hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg);}
+.nav-hamburger.open span:nth-child(2){opacity:0;}
+.nav-hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
+.nav-drawer{display:none;position:fixed;top:68px;left:0;right:0;background:#fff;border-bottom:2px solid var(--red);padding:20px 28px 28px;z-index:999;}
+.nav-drawer.open{display:block;}
+.nav-drawer ul{list-style:none;display:flex;flex-direction:column;}
+.nav-drawer ul li a{display:block;padding:13px 0;font-size:15px;font-weight:500;color:var(--ink);text-decoration:none;border-bottom:1px solid var(--border);}
+.nav-drawer ul li:last-child a{margin-top:16px;text-align:center;background:var(--red);color:#fff !important;padding:13px;border-radius:4px;font-weight:700 !important;border-bottom:none;}
+@media(max-width:1024px){#mainNav{padding:0 28px;}.nav-links{display:none;}.nav-hamburger{display:flex;}}
+@media(max-width:480px){#mainNav{padding:0 16px;height:60px;}.nav-drawer{top:60px;}.nav-logo-text{font-size:13px;}}
+.article-header{padding:116px 24px 52px;background:var(--bg);border-bottom:1px solid var(--border);}
+.article-header-inner{max-width:760px;margin:0 auto;}
+.breadcrumb{display:flex;align-items:center;gap:6px;font-size:12px;color:var(--light);margin-bottom:20px;flex-wrap:wrap;}
+.breadcrumb a{color:var(--light);text-decoration:none;}
+.breadcrumb a:hover{color:var(--red);}
+.breadcrumb span{color:var(--border);}
+.article-tag{display:inline-flex;align-items:center;background:var(--tag-bg);color:var(--red);font-size:11px;font-weight:700;letter-spacing:0.06em;padding:4px 12px;border-radius:100px;margin-bottom:18px;}
+.article-h1{font-family:'Shippori Mincho',serif;font-size:clamp(20px,3vw,34px);font-weight:700;color:var(--ink);line-height:1.65;margin-bottom:20px;}
+.article-meta{display:flex;align-items:center;gap:20px;flex-wrap:wrap;font-size:12px;color:var(--light);}
+.article-body{padding:72px 24px 100px;}
+.article-body-inner{max-width:760px;margin:0 auto;}
+.summary-box{background:var(--bg);border-left:4px solid var(--red);padding:24px 28px;border-radius:0 6px 6px 0;margin-bottom:52px;}
+.summary-box-title{font-size:11px;font-weight:700;color:var(--red);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:12px;}
+.summary-box ul{list-style:none;display:flex;flex-direction:column;gap:8px;}
+.summary-box ul li{display:flex;align-items:flex-start;gap:8px;font-size:14px;line-height:1.8;color:var(--ink);}
+.summary-box ul li::before{content:'✓';color:var(--red);font-weight:700;flex-shrink:0;margin-top:1px;}
+.article-body-inner h2{font-family:'Shippori Mincho',serif;font-size:clamp(17px,2.2vw,24px);font-weight:700;color:var(--ink);line-height:1.65;margin:56px 0 20px;padding-bottom:10px;border-bottom:1px solid var(--border);position:relative;}
+.article-body-inner h2::after{content:'';position:absolute;bottom:-1px;left:0;width:48px;height:2px;background:var(--red);}
+.article-body-inner h3{font-family:'Shippori Mincho',serif;font-size:clamp(15px,1.8vw,19px);font-weight:700;color:var(--ink);line-height:1.7;margin:36px 0 14px;padding-left:14px;border-left:3px solid var(--red);}
+.article-body-inner p{font-size:15px;line-height:2;color:var(--body);margin-bottom:22px;}
+.article-body-inner strong{color:var(--ink);font-weight:700;}
+.article-body-inner a{color:var(--red-dark);font-weight:700;text-decoration:underline;text-underline-offset:2px;}
+.article-body-inner ul,.article-body-inner ol{list-style:none;margin-bottom:22px;display:flex;flex-direction:column;gap:8px;}
+.article-body-inner ul li,.article-body-inner ol li{font-size:14px;line-height:1.9;color:var(--body);display:flex;align-items:flex-start;gap:10px;}
+.article-body-inner ul li::before{content:'─';color:var(--red);flex-shrink:0;margin-top:4px;font-size:12px;}
+.article-body-inner ol{counter-reset:ol;}
+.article-body-inner ol li{counter-increment:ol;}
+.article-body-inner ol li::before{content:counter(ol);background:var(--red);color:#fff;width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0;margin-top:2px;font-family:'DM Mono',monospace;}
+.pain-cards{display:flex;flex-direction:column;gap:12px;margin:24px 0;}
+.pain-card{background:var(--bg);border-left:4px solid var(--red);border-radius:0 8px 8px 0;padding:18px 20px;display:flex;align-items:flex-start;gap:12px;}
+.pain-card-icon{font-size:22px;flex-shrink:0;margin-top:2px;}
+.pain-card-body{font-size:14px;line-height:1.85;color:var(--body);}
+.pain-card-body strong{color:var(--ink);}
+.point-box{background:var(--bg2);border-radius:8px;padding:20px 24px;margin:20px 0;}
+.point-box-label{font-size:10px;font-family:'DM Mono',monospace;color:var(--red);letter-spacing:0.12em;text-transform:uppercase;margin-bottom:10px;}
+.point-box p{font-size:14px;line-height:1.9;color:var(--body);margin-bottom:0;}
+.case-box{border:1px solid #cffafe;border-left:5px solid var(--red);border-radius:0 10px 10px 0;padding:24px 26px;margin:28px 0;background:linear-gradient(135deg,#ecfeff,#f0fdf4);}
+.case-box p{margin-bottom:0;font-size:14px;line-height:1.9;color:var(--body);}
+.inline-cta{background:var(--bg);border:1px solid var(--border);border-top:4px solid var(--red);border-radius:10px;padding:36px;margin:52px 0;text-align:center;}
+.inline-cta-tag{font-size:11px;color:var(--red);font-weight:700;letter-spacing:0.08em;margin-bottom:12px;}
+.inline-cta h3{font-family:'Shippori Mincho',serif;font-size:clamp(16px,2vw,22px);font-weight:700;color:var(--ink);line-height:1.65;margin-bottom:12px;}
+.inline-cta p{font-size:14px;color:var(--body);line-height:1.9;margin-bottom:22px;}
+.cta-btns-pair{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;}
+.btn-cta-red{display:inline-flex;align-items:center;gap:6px;background:var(--red);color:#fff;padding:13px 28px;border-radius:4px;font-size:14px;font-weight:700;text-decoration:none;transition:background 0.2s,transform 0.2s;}
+.btn-cta-red:hover{background:var(--red-dark);transform:translateY(-2px);}
+.btn-cta-ghost{display:inline-flex;align-items:center;gap:6px;background:#fff;color:var(--red);border:1.5px solid var(--red);padding:13px 28px;border-radius:4px;font-size:14px;font-weight:700;text-decoration:none;transition:background 0.2s;}
+.btn-cta-ghost:hover{background:var(--tag-bg);}
+.btn-cta-note{display:block;margin-top:12px;font-size:11px;color:var(--light);}
+/* security extras */
+.flow{background:var(--demo-bg);color:#cbd5e1;border-radius:8px;padding:20px 22px;font-family:'DM Mono',monospace;font-size:12.5px;line-height:1.9;white-space:pre-wrap;margin:24px 0;overflow-x:auto;}
+.flow .a{color:#f87171;}
+.flow .c{color:#67e8f9;}
+.check{display:flex;flex-direction:column;gap:12px;margin:24px 0;}
+.check-item{border:1px solid var(--border);border-radius:8px;padding:16px 20px;background:#fff;}
+.check-q{font-family:'Shippori Mincho',serif;font-weight:700;color:var(--ink);font-size:15px;margin-bottom:12px;}
+.check-q .n{display:inline-flex;align-items:center;justify-content:center;width:24px;height:24px;background:var(--red);color:#fff;border-radius:50%;font-family:'DM Mono',monospace;font-size:12px;margin-right:8px;}
+.check-v{display:flex;gap:10px;font-size:13.5px;line-height:1.7;margin-top:6px;color:var(--body);}
+.check-v .b{flex-shrink:0;font-weight:700;width:62px;}
+.check-v.ng .b{color:var(--danger);}
+.check-v.ok .b{color:var(--green);}
+.dtable{width:100%;border-collapse:collapse;font-size:13px;margin:24px 0;}
+.dtable th,.dtable td{border:1px solid var(--border);padding:11px 13px;text-align:left;vertical-align:top;line-height:1.7;}
+.dtable th{background:var(--bg2);color:var(--ink);font-weight:700;}
+.dtable td{color:var(--body);}
+.dtable .hl{color:var(--danger);font-weight:700;}
+.dwrap{overflow-x:auto;}
+code{font-family:'DM Mono',monospace;background:var(--bg2);border:1px solid var(--border);border-radius:4px;padding:2px 7px;font-size:0.9em;color:var(--red-dark);word-break:break-all;}
+.warn-box{background:var(--danger-bg);border:1px solid #fecaca;border-left:4px solid var(--danger);border-radius:0 8px 8px 0;padding:18px 22px;margin:24px 0;font-size:14px;line-height:1.9;color:var(--body);}
+.warn-box strong{color:var(--danger);}
+.faq-block{margin-top:16px;}
+.related-section{padding:60px 24px;background:var(--white);border-top:1px solid var(--border);}
+.related-inner{max-width:760px;margin:0 auto;}
+.related-label{font-family:'DM Mono',monospace;font-size:11px;color:var(--red);letter-spacing:0.14em;text-transform:uppercase;margin-bottom:20px;}
+.related-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;}
+.related-card{border:1px solid var(--border);border-top:3px solid var(--red);padding:20px;text-decoration:none;color:inherit;border-radius:0 0 6px 6px;transition:box-shadow 0.2s,transform 0.2s;}
+.related-card:hover{box-shadow:0 4px 16px rgba(0,0,0,0.07);transform:translateY(-2px);}
+.related-card-tag{font-size:10px;font-family:'DM Mono',monospace;color:var(--red);letter-spacing:0.1em;margin-bottom:8px;}
+.related-card-title{font-family:'Shippori Mincho',serif;font-size:14px;font-weight:700;color:var(--ink);line-height:1.6;}
+.back-section{padding:28px 24px;background:var(--bg);border-top:1px solid var(--border);}
+.back-section-inner{max-width:760px;margin:0 auto;}
+.back-link{display:inline-flex;align-items:center;gap:6px;font-size:13px;color:var(--body);text-decoration:none;transition:color 0.2s;}
+.back-link:hover{color:var(--red);}
+footer{background:#1f1f1f;border-top:1px solid rgba(255,255,255,0.06);padding:40px 60px;display:flex;align-items:center;justify-content:space-between;}
+.footer-logo{display:flex;align-items:center;gap:10px;}
+.footer-logo-mark{width:20px;height:20px;background:var(--red);clip-path:polygon(50% 0%,0% 100%,18% 100%,50% 38%,82% 100%,100% 100%);}
+.footer-logo-text{font-family:'DM Mono',monospace;font-size:13px;color:rgba(255,255,255,0.55);}
+.footer-logo-text span{color:var(--red);}
+.footer-copy{font-size:11px;color:rgba(255,255,255,0.25);font-family:'DM Mono',monospace;}
+.reveal{opacity:0;transform:translateY(18px);transition:opacity 0.55s ease,transform 0.55s ease;}
+.reveal.visible{opacity:1;transform:translateY(0);}
+@media(max-width:768px){
+  .article-header,.article-body,.back-section,.related-section{padding-left:16px;padding-right:16px;}
+  .article-header{padding-top:88px;}
+  .related-grid{grid-template-columns:1fr !important;}
+  .cta-btns-pair{flex-direction:column;align-items:center;}
+  .inline-cta{padding:24px 18px;}
+  footer{flex-direction:column;gap:14px;text-align:center;padding:28px 16px;}
+}
+</style>
+</head>
+<body>
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-P6VNBWH3" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
+<nav id="mainNav">
+  <a href="/" class="nav-logo">
+    <img src="/images/logo.png" alt="AIdealize">
+    <span class="nav-logo-text"><span>AI</span>dealize</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="/column/">コラム</a></li>
+    <li><a href="/service/">サービス</a></li>
+    <li><a href="https://aidealize.com/bpr/">DX事例</a></li>
+    <li><a href="/company.html">会社概要</a></li>
+    <li><a href="/service/prevention/#contact" class="nav-cta">無料でサイト点検</a></li>
+  </ul>
+  <button class="nav-hamburger" id="navHamburger" aria-label="メニュー"><span></span><span></span><span></span></button>
+</nav>
+<div class="nav-drawer" id="navDrawer">
+  <ul>
+    <li><a href="/column/" class="drawer-link">コラム</a></li>
+    <li><a href="/service/" class="drawer-link">サービス</a></li>
+    <li><a href="https://aidealize.com/bpr/" class="drawer-link">DX事例</a></li>
+    <li><a href="/company.html" class="drawer-link">会社概要</a></li>
+    <li><a href="/service/prevention/#contact">無料でサイト点検</a></li>
+  </ul>
+</div>
+
+<header class="article-header">
+  <div class="article-header-inner">
+    <nav class="breadcrumb" aria-label="パンくず">
+      <a href="/">ホーム</a><span>/</span>
+      <a href="/column/">コラム</a><span>/</span>
+      <span>WordPress管理画面の丸見えチェック</span>
+    </nav>
+    <div class="article-tag">Webセキュリティ / WordPress</div>
+    <h1 class="article-h1">
+      WordPressの管理画面、<br>
+      丸見えになっていませんか？<br>
+      5分でできる自己チェックと防御策。
+    </h1>
+    <div class="article-meta">
+      <div>📅 2026年7月10日</div>
+      <div>⏱ 読了約8分</div>
+      <div>✍ AIdealize編集部</div>
+    </div>
+  </div>
+</header>
+
+<article class="article-body">
+<div class="article-body-inner">
+
+  <div class="summary-box reveal">
+    <div class="summary-box-title">この記事でわかること</div>
+    <ul>
+      <li>なぜ「WordPressの管理画面が丸見え」だと危険なのか</li>
+      <li>専門知識がなくても5分でできる自己チェック5ステップ</li>
+      <li>今すぐできる無料・低コストの防御策4つ</li>
+      <li>「制作会社にお任せ」で放置される、見落としがちな運用の落とし穴</li>
+    </ul>
+  </div>
+
+  <p>「うちみたいな小さな会社のホームページなんて、誰も攻撃してこないよ」——もしそうお考えなら、少しだけ危険信号です。サイバー攻撃者が狙っているのは大企業だけではありません。<strong>自動化された攻撃プログラム（ボット）が、インターネット上のWebサイトを24時間無差別に巡回し</strong>、セキュリティの甘いサイトを片端から探しています。</p>
+
+  <p>特に、日本の中小企業で最も多く使われているCMS「<strong>WordPress（ワードプレス）</strong>」は、そのシェアの高さゆえに世界で最も攻撃の標的にされやすいシステムです。そして被害に遭う多くのサイトに共通しているのが、「<strong>管理画面の入口が丸見え（無防備）</strong>」という事実です。この記事では、専門知識がなくても5分で確認できる自己チェック手順と、今すぐ実践すべき防御策を解説します。</p>
+
+  <h2>なぜ「管理画面が丸見え」だと危険なのか</h2>
+
+  <p>WordPressを初期設定のまま導入している場合、管理画面へのログインURLは原則として決まっています。誰でも次のURLをブラウザに打ち込むだけで、ログイン画面にたどり着けてしまいます。</p>
+
+  <div class="flow">https://<あなたの会社ドメイン>/wp-login.php
+https://<あなたの会社ドメイン>/wp-admin/</div>
+
+  <p>これは例えるなら、<strong>オフィスの金庫が路地に面したガラス張りで、鍵穴が剥き出しになっている</strong>ようなもの。攻撃者は手作業で探しているわけではなく、専用のボットで全世界のWordPressサイトに自動アクセスし、ユーザー名とパスワードをひたすら試します。これが「ブルートフォース攻撃（総当たり攻撃）」の入口です。</p>
+
+  <div class="flow"><span class="c">URLがデフォルトのまま</span> ＝ 鍵穴の場所が丸見え
+   ↓
+ユーザー名とパスワードを自動プログラムで延々と試行
+   ↓
+<span class="a">ログイン突破 → サイト乗っ取り完了</span></div>
+
+  <h3>乗っ取られた場合に起きること</h3>
+  <ul>
+    <li><strong>サイトの改ざん・閲覧不能化</strong>：トップページが不適切な画像やメッセージに書き換えられる。</li>
+    <li><strong>マルウェア拡散拠点化</strong>：自社サイトを訪れた顧客のPCにウイルスを感染させてしまう。</li>
+    <li><strong>他社攻撃の「踏み台」</strong>：自社サーバー経由で取引先や大手企業へ攻撃が仕掛けられる。</li>
+    <li><strong>検索エンジンからのペナルティ</strong>：Googleに「危険なサイト」と警告され、検索結果から消える（＝集客力の喪失）。</li>
+  </ul>
+
+  <div class="warn-box">
+    <strong>「うちは情報を扱ってないから平気」は通用しません。</strong><br>
+    今の攻撃者の目的は情報窃取だけではありません。あなたのサイトを踏み台にして他社へウイルスを撒く、詐欺ECサイトに書き換えるといった被害が多発しています。この場合、あなたの会社は被害者であると同時に「加害者」として損害賠償を問われるリスクを負います。守るべきは情報だけでなく「会社の信用」そのものです。
+  </div>
+
+  <h2>【5分で完了】管理画面の「丸見え度」自己チェック5ステップ</h2>
+
+  <p>いますぐブラウザを開いて、次の5点を確認してください。Web担当者でも経営者でも、専門知識なしで判定できます。</p>
+
+  <div class="check">
+    <div class="check-item reveal">
+      <div class="check-q"><span class="n">1</span>ログインURLが初期設定のままではないか</div>
+      <p style="font-size:13.5px;color:var(--body);margin-bottom:8px;line-height:1.8;">自社URLの末尾に <code>/wp-admin</code> または <code>/wp-login.php</code> を付けてアクセスします。</p>
+      <div class="check-v ng"><span class="b">危険 ×</span><span>見慣れたログイン入力フォームが表示される（＝入口が全世界にオープン）。</span></div>
+      <div class="check-v ok"><span class="b">安全 ○</span><span>「404 Not Found」やアクセス拒否になる（URL変更などの対策済み）。</span></div>
+    </div>
+    <div class="check-item reveal">
+      <div class="check-q"><span class="n">2</span>ユーザー名が「admin」や会社名になっていないか</div>
+      <p style="font-size:13.5px;color:var(--body);margin-bottom:8px;line-height:1.8;">攻撃ボットは <code>admin</code> やドメイン名（会社名）を最初のログイン候補として自動入力します。</p>
+      <div class="check-v ng"><span class="b">危険 ×</span><span>ログインIDが admin / test / user / 会社名 になっている。</span></div>
+      <div class="check-v ok"><span class="b">安全 ○</span><span>推測されにくい無作為な英数字になっている。</span></div>
+    </div>
+    <div class="check-item reveal">
+      <div class="check-q"><span class="n">3</span>ユーザー名が外部から丸見えになっていないか</div>
+      <p style="font-size:13.5px;color:var(--body);margin-bottom:8px;line-height:1.8;">URL欄に <code>https://自社ドメイン/?author=1</code> と入力してアクセスします。多くの環境で「投稿者ID（＝ログインユーザー名）」が露出します。</p>
+      <div class="check-v ng"><span class="b">危険 ×</span><span>URLが <code>/author/○○○/</code> に変化し、末尾にユーザー名が表示される。</span></div>
+      <div class="check-v ok"><span class="b">安全 ○</span><span>トップにリダイレクトされる、またはニックネームのみ表示される。</span></div>
+    </div>
+    <div class="check-item reveal">
+      <div class="check-q"><span class="n">4</span>ログインを何回間違えてもブロックされないか</div>
+      <p style="font-size:13.5px;color:var(--body);margin-bottom:8px;line-height:1.8;">あえて誤ったパスワードを3〜5回続けて入力してみます。</p>
+      <div class="check-v ng"><span class="b">危険 ×</span><span>何度でも「パスワードが違います」と出て、無制限に再試行できる。</span></div>
+      <div class="check-v ok"><span class="b">安全 ○</span><span>試行制限（◯分間ブロック）や画像認証（CAPTCHA）がある。</span></div>
+    </div>
+    <div class="check-item reveal">
+      <div class="check-q"><span class="n">5</span>本体・プラグイン・テーマの更新が止まっていないか</div>
+      <p style="font-size:13.5px;color:var(--body);margin-bottom:8px;line-height:1.8;">管理画面のダッシュボードに、赤い更新通知が溜まっていませんか。攻撃の多くは放置された「既知の脆弱性」を突いて行われます。</p>
+      <div class="check-v ng"><span class="b">危険 ×</span><span>数か月〜数年、更新を一度も押していない。</span></div>
+      <div class="check-v ok"><span class="b">安全 ○</span><span>常に最新、または自動更新が有効になっている。</span></div>
+    </div>
+  </div>
+
+  <h3>チェック結果の判定めやす</h3>
+  <div class="dwrap">
+  <table class="dtable">
+    <thead><tr><th>「危険」該当数</th><th>危険度</th><th>今すぐやること</th></tr></thead>
+    <tbody>
+      <tr><td>0個</td><td>安全</td><td>良好な状態。定期バックアップと更新を継続。</td></tr>
+      <tr><td>1〜2個</td><td class="hl">要警戒</td><td>ログインURLの変更・プラグイン更新を早急に。</td></tr>
+      <tr><td>3個以上</td><td class="hl">厳重注意</td><td>いつ乗っ取られてもおかしくない状態。下記をすぐ実施。</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <div class="inline-cta reveal">
+    <div class="inline-cta-tag">無料・費用契約なし</div>
+    <h3>自社サイトが「外から」どう見えているか、<br>無料で点検します。</h3>
+    <p>攻撃者と同じ外部の視点で、ログインURLの露出やユーザー名の暴露など危険箇所を可視化し、1枚のレポートにしてお渡しします。調査は公開情報の範囲（不正アクセス禁止法を完全遵守）で行います。</p>
+    <div class="cta-btns-pair">
+      <a href="/service/prevention/#contact" class="btn-cta-red">無料の外周点検を受ける →</a>
+      <a href="/service/prevention/" class="btn-cta-ghost">サイト点検サービスを見る</a>
+    </div>
+    <span class="btn-cta-note">オンライン対応・押し売りなし</span>
+  </div>
+
+  <h2>今すぐできる4つの防御策（無料・低コスト）</h2>
+
+  <p>「危険」に該当しても、焦る必要はありません。以下でセキュリティレベルは劇的に上がります。</p>
+
+  <div class="pain-cards">
+    <div class="pain-card reveal"><div class="pain-card-icon">🔑</div><div class="pain-card-body"><strong>① ログインURLを変更する（最優先）</strong><br>『SiteGuard WP Plugin』など国内定番の無料プラグインで、ログインURLを任意の文字列に変更。これだけで無作為な自動攻撃の大半を入口で遮断できます。</div></div>
+    <div class="pain-card reveal"><div class="pain-card-icon">📱</div><div class="pain-card-body"><strong>② 2要素認証（2FA）／画像認証を入れる</strong><br>パスワードに加え、スマホアプリのワンタイムコードや画像認証を必須化。万一パスワードが解読されてもログインを阻止できます。</div></div>
+    <div class="pain-card reveal"><div class="pain-card-icon">🙈</div><div class="pain-card-body"><strong>③ ユーザー名の隠蔽と「admin」の廃止</strong><br>複雑なユーザー名で新しい管理者を作成し、初期の <code>admin</code> は削除。表示名（ニックネーム）もログインIDとは別に設定します。</div></div>
+    <div class="pain-card reveal"><div class="pain-card-icon">💾</div><div class="pain-card-body"><strong>④ 自動バックアップを構築する</strong><br>万一の改ざんに備え、『UpdraftPlus』等で毎日自動バックアップ。「元に戻せる」ことが最大の保険になります。</div></div>
+  </div>
+
+  <h2>【落とし穴】「制作会社にお任せ」で放置されるケース</h2>
+
+  <p>多くの経営者が「制作会社に作ってもらったからセキュリティも万全」と思い込んでいます。しかし一般的なWebサイト<strong>制作契約には、納品後の継続的な更新（保守・メンテナンス）が含まれないケースが多い</strong>のです。</p>
+
+  <div class="case-box reveal">
+    <p>納品された瞬間から、WordPressの“カウントダウン”は始まっています。保守契約がなければ、プラグイン更新やバックアップは自社の責任。放置すれば数か月後には脆弱性だらけのサイトに変貌します。まずは<strong>保守契約の有無を確認</strong>し、含まれていなければ自社での運用ルールを決めましょう。</p>
+  </div>
+
+  <h3>社内で今すぐ決めるべき管理ルール</h3>
+  <ul>
+    <li><strong>1人1アカウントの徹底</strong>：複数人で <code>admin</code> を使い回さない（変更履歴を追跡できるように）。</li>
+    <li><strong>退職者アカウントの即時削除</strong>：放置された元社員アカウントからの流出を防ぐ。</li>
+    <li><strong>パスワードマネージャーの活用</strong>：推測されやすいものをやめ、16文字以上のランダム文字列に。</li>
+    <li><strong>使っていないプラグインは「削除」</strong>：無効化だけでは脆弱性が残る。削除して裏口を減らす。</li>
+  </ul>
+
+  <h2>よくある質問（FAQ）</h2>
+  <div class="faq-block">
+    <h3>自社サイトの管理画面が「丸見え」か、簡単に確認する方法は？</h3>
+    <p>自社ドメイン末尾に <code>/wp-admin/</code> または <code>/wp-login.php</code> を付けてアクセスします。ログイン画面が出たら「丸見え」、404エラーやアクセス拒否なら対策済みです。</p>
+    <h3>中小企業の小さなサイトでも本当に攻撃されますか？</h3>
+    <p>はい。攻撃は人が手作業で狙うのではなく、ボットが24時間無差別に巡回して行います。企業規模は関係なく、セキュリティが甘い順に標的になります。</p>
+    <h3>一番効果が高い対策はどれですか？</h3>
+    <p>ログインURLの変更です。無料プラグインで設定でき、機械的な自動攻撃の大半を入口で遮断できます。</p>
+    <h3>制作会社に作ってもらったサイトなら安全ですか？</h3>
+    <p>必ずしも安全ではありません。多くの制作契約は納品後の保守を含みません。まず契約内容を確認してください。</p>
+  </div>
+
+  <h2>まとめ｜管理画面の保護は「企業の信用管理」そのもの</h2>
+  <p>WordPressのセキュリティ対策は、高額なサーバーやソフトを買わなければできないものではありません。<strong>ログインURLを変える／更新を溜め込まない／パスワードを複雑化し2要素認証を入れる</strong>——この基本だけで、攻撃を受けるリスクは劇的に下がります。</p>
+  <p>自社サイトが犯罪の踏み台にされ、取引先や顧客に迷惑をかけてからでは遅すぎます。まずは今すぐ「丸見え度チェック」を実行し、会社の看板であり貴重な集客ツールであるWebサイトを守り抜いてください。</p>
+
+  <div class="inline-cta reveal">
+    <div class="inline-cta-tag">無料相談・費用契約なし</div>
+    <h3>「うちのサイトは大丈夫？」を、<br>プロが外部の視点で無料点検します。</h3>
+    <p>公開情報の範囲で“攻撃者から見た自社サイト”を可視化し、優先度の高い対策から整理してお渡しします。押し売りはしません。</p>
+    <div class="cta-btns-pair">
+      <a href="/service/prevention/#contact" class="btn-cta-red">無料の外周点検を受ける →</a>
+      <a href="/column/torihikisaki-security-hojokin/" class="btn-cta-ghost">取引先対応・補助金の記事も読む</a>
+    </div>
+    <span class="btn-cta-note">オンライン対応・所要約30分・押し売りなし</span>
+  </div>
+
+</div>
+</article>
+
+<section class="related-section">
+  <div class="related-inner">
+    <div class="related-label">Related Articles</div>
+    <div class="related-grid">
+      <a href="/column/torihikisaki-security-hojokin/" class="related-card">
+        <div class="related-card-tag">Webセキュリティ / 補助金</div>
+        <div class="related-card-title">取引先に「セキュリティ大丈夫？」と聞かれたら？IPA「42.1%」と補助金活用術。</div>
+      </a>
+      <a href="/column/wordpress-zeijakusei-furui-site/" class="related-card">
+        <div class="related-card-tag">Webセキュリティ / 保守</div>
+        <div class="related-card-title">なぜWordPressの脆弱性被害は減らないのか？「古いサイト」の危うい現実。</div>
+      </a>
+      <a href="/column/komuten-site-tenken/" class="related-card">
+        <div class="related-card-tag">工務店Web集客 / 実態調査</div>
+        <div class="related-card-title">地方の工務店サイトを点検してわかった「放置サイト」の実態と脱出策。</div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<div class="back-section">
+  <div class="back-section-inner">
+    <a href="/column/" class="back-link">← コラム一覧に戻る</a>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-logo">
+    <div class="footer-logo-mark"></div>
+    <span class="footer-logo-text"><span>A</span>idealize株式会社</span>
+  </div>
+  <span class="footer-copy">© 2020 AIdealize Inc. All rights reserved.</span>
+</footer>
+
+<script>
+(function(){
+  const btn=document.getElementById('navHamburger');
+  const drawer=document.getElementById('navDrawer');
+  const nav=document.getElementById('mainNav');
+  btn.addEventListener('click',function(){btn.classList.toggle('open');drawer.classList.toggle('open');});
+  drawer.querySelectorAll('.drawer-link').forEach(function(l){l.addEventListener('click',function(){btn.classList.remove('open');drawer.classList.remove('open');});});
+  window.addEventListener('scroll',function(){nav.classList.toggle('scrolled',window.scrollY>10);});
+})();
+const obs=new IntersectionObserver(function(e){e.forEach(function(x){if(x.isIntersecting)x.target.classList.add('visible');});},{threshold:0.08,rootMargin:'0px 0px -30px 0px'});
+document.querySelectorAll('.reveal').forEach(function(el){obs.observe(el);});
+</script>
+</body>
+</html>

@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>地方の工務店サイト約9,000件を診断してわかった「放置サイト」の実態と脱出策【AIdealize】</title>
+<meta name="description" content="群馬・茨城・埼玉の地域住宅事業者（工務店・リフォーム・外壁塗装等）約9,000サイトを診断した実データを公開。約5社に1社に明確な放置シグナル、3割近くが施工事例なし。放置が注文住宅の成約率を下げる理由と、現場リソースゼロでも生きたサイトに蘇らせる3ステップを解説します。">
+<link rel="canonical" href="https://aidealize.com/column/komuten-site-tenken/">
+<meta property="og:title" content="地方の工務店サイト約9,000件を診断してわかった「放置サイト」の実態と脱出策">
+<meta property="og:description" content="約5社に1社に明確な放置シグナル。工務店サイトの放置が成約を下げる理由と、現場リソースゼロで蘇らせる3ステップを、実データつきで解説。">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://aidealize.com/column/komuten-site-tenken/">
+<meta property="og:site_name" content="AIdealize株式会社">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700;900&family=Shippori+Mincho:wght@400;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-P6VNBWH3');</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "地方の工務店サイト約9,000件を診断してわかった「放置サイト」の実態と脱出策",
+  "description": "群馬・茨城・埼玉の地域住宅事業者 約9,000サイトを診断した実データと、放置が成約率を下げる理由、現場リソースゼロでサイトを蘇らせる3ステップを解説します。",
+  "datePublished": "2026-07-19",
+  "author": {"@type": "Organization", "name": "AIdealize株式会社"},
+  "publisher": {"@type": "Organization", "name": "AIdealize株式会社", "url": "https://aidealize.com"}
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {"@type":"Question","name":"工務店のホームページは、放置しているとどうなりますか？","acceptedAnswer":{"@type":"Answer","text":"更新が止まったサイトは「まだ営業しているのか」という不信感を与え、検索順位も下がります。さらにCMSやSSLが放置されると、個人情報漏洩やサイバー攻撃の踏み台にされるリスクも高まります。集客・信頼・安全のすべてを損ないます。"}},
+    {"@type":"Question","name":"忙しくて更新できません。何から手をつければよいですか？","acceptedAnswer":{"@type":"Answer","text":"まずSSL化とフッターの年数・CMS更新など技術面を修復し、次に『写真5〜10枚＋こだわり3点の箇条書き』だけの軽い施工事例投稿を習慣化します。文章の完璧さより『今も元気に建てている証拠』を出すことが重要です。"}},
+    {"@type":"Question","name":"自社サイトが放置状態かどうか、どこで見分けられますか？","acceptedAnswer":{"@type":"Answer","text":"フッターの著作権表記の年数、お知らせ・施工事例の最新日付、スマホ表示の崩れ、URL欄の『保護されていない通信』警告の4点を確認してください。いずれかが古い・崩れている場合は放置シグナルです。"}}
+  ]
+}
+</script>
+<style>
+:root{
+  --red:#0891b2;--red-dark:#0e7490;
+  --ink:#1e293b;--body:#4b5563;--light:#94a3b8;
+  --border:#e2e8f0;--bg:#f8fafc;--bg2:#f1f5f9;--white:#fff;
+  --tag-bg:#ecfeff;--green:#059669;--green-bg:#ecfdf5;
+  --demo-bg:#0f172a;--amber-bg:#fef3c7;--amber-tx:#92400e;--danger:#dc2626;--danger-bg:#fef2f2;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{font-family:'Noto Sans JP',sans-serif;background:var(--white);color:var(--ink);overflow-x:hidden;line-height:1.7;}
+#mainNav{position:fixed;top:0;left:0;right:0;z-index:1000;display:flex;align-items:center;justify-content:space-between;padding:0 60px;height:68px;background:rgba(255,255,255,0.97);border-bottom:1px solid var(--border);backdrop-filter:blur(12px);transition:box-shadow 0.3s;}
+#mainNav.scrolled{box-shadow:0 2px 16px rgba(0,0,0,0.06);}
+.nav-logo{display:flex;align-items:center;gap:10px;text-decoration:none;}
+.nav-logo img{height:34px;width:auto;}
+.nav-logo-text{font-family:'DM Mono',monospace;font-size:15px;font-weight:500;color:var(--ink);letter-spacing:0.02em;}
+.nav-logo-text span{color:var(--red);}
+.nav-links{display:flex;align-items:center;gap:32px;list-style:none;}
+.nav-links a{font-size:13px;font-weight:500;color:var(--body);text-decoration:none;transition:color 0.2s;}
+.nav-links a:hover{color:var(--ink);}
+.nav-cta{background:var(--red) !important;color:#fff !important;padding:9px 20px;border-radius:4px;font-size:12px !important;font-weight:700 !important;}
+.nav-cta:hover{background:var(--red-dark) !important;}
+.nav-hamburger{display:none;flex-direction:column;justify-content:center;gap:5px;width:40px;height:40px;background:none;border:none;cursor:pointer;}
+.nav-hamburger span{display:block;width:22px;height:2px;background:var(--ink);transition:all 0.3s;transform-origin:center;}
+.nav-hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg);}
+.nav-hamburger.open span:nth-child(2){opacity:0;}
+.nav-hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
+.nav-drawer{display:none;position:fixed;top:68px;left:0;right:0;background:#fff;border-bottom:2px solid var(--red);padding:20px 28px 28px;z-index:999;}
+.nav-drawer.open{display:block;}
+.nav-drawer ul{list-style:none;display:flex;flex-direction:column;}
+.nav-drawer ul li a{display:block;padding:13px 0;font-size:15px;font-weight:500;color:var(--ink);text-decoration:none;border-bottom:1px solid var(--border);}
+.nav-drawer ul li:last-child a{margin-top:16px;text-align:center;background:var(--red);color:#fff !important;padding:13px;border-radius:4px;font-weight:700 !important;border-bottom:none;}
+@media(max-width:1024px){#mainNav{padding:0 28px;}.nav-links{display:none;}.nav-hamburger{display:flex;}}
+@media(max-width:480px){#mainNav{padding:0 16px;height:60px;}.nav-drawer{top:60px;}.nav-logo-text{font-size:13px;}}
+.article-header{padding:116px 24px 52px;background:var(--bg);border-bottom:1px solid var(--border);}
+.article-header-inner{max-width:760px;margin:0 auto;}
+.breadcrumb{display:flex;align-items:center;gap:6px;font-size:12px;color:var(--light);margin-bottom:20px;flex-wrap:wrap;}
+.breadcrumb a{color:var(--light);text-decoration:none;}
+.breadcrumb a:hover{color:var(--red);}
+.breadcrumb span{color:var(--border);}
+.article-tag{display:inline-flex;align-items:center;background:var(--tag-bg);color:var(--red);font-size:11px;font-weight:700;letter-spacing:0.06em;padding:4px 12px;border-radius:100px;margin-bottom:18px;}
+.article-h1{font-family:'Shippori Mincho',serif;font-size:clamp(20px,3vw,34px);font-weight:700;color:var(--ink);line-height:1.65;margin-bottom:20px;}
+.article-meta{display:flex;align-items:center;gap:20px;flex-wrap:wrap;font-size:12px;color:var(--light);}
+.article-body{padding:72px 24px 100px;}
+.article-body-inner{max-width:760px;margin:0 auto;}
+.summary-box{background:var(--bg);border-left:4px solid var(--red);padding:24px 28px;border-radius:0 6px 6px 0;margin-bottom:52px;}
+.summary-box-title{font-size:11px;font-weight:700;color:var(--red);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:12px;}
+.summary-box ul{list-style:none;display:flex;flex-direction:column;gap:8px;}
+.summary-box ul li{display:flex;align-items:flex-start;gap:8px;font-size:14px;line-height:1.8;color:var(--ink);}
+.summary-box ul li::before{content:'✓';color:var(--red);font-weight:700;flex-shrink:0;margin-top:1px;}
+.article-body-inner h2{font-family:'Shippori Mincho',serif;font-size:clamp(17px,2.2vw,24px);font-weight:700;color:var(--ink);line-height:1.65;margin:56px 0 20px;padding-bottom:10px;border-bottom:1px solid var(--border);position:relative;}
+.article-body-inner h2::after{content:'';position:absolute;bottom:-1px;left:0;width:48px;height:2px;background:var(--red);}
+.article-body-inner h3{font-family:'Shippori Mincho',serif;font-size:clamp(15px,1.8vw,19px);font-weight:700;color:var(--ink);line-height:1.7;margin:36px 0 14px;padding-left:14px;border-left:3px solid var(--red);}
+.article-body-inner p{font-size:15px;line-height:2;color:var(--body);margin-bottom:22px;}
+.article-body-inner strong{color:var(--ink);font-weight:700;}
+.article-body-inner a{color:var(--red-dark);font-weight:700;text-decoration:underline;text-underline-offset:2px;}
+.article-body-inner ul,.article-body-inner ol{list-style:none;margin-bottom:22px;display:flex;flex-direction:column;gap:8px;}
+.article-body-inner ul li,.article-body-inner ol li{font-size:14px;line-height:1.9;color:var(--body);display:flex;align-items:flex-start;gap:10px;}
+.article-body-inner ul li::before{content:'─';color:var(--red);flex-shrink:0;margin-top:4px;font-size:12px;}
+.article-body-inner ol{counter-reset:ol;}
+.article-body-inner ol li{counter-increment:ol;}
+.article-body-inner ol li::before{content:counter(ol);background:var(--red);color:#fff;width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0;margin-top:2px;font-family:'DM Mono',monospace;}
+.pain-cards{display:flex;flex-direction:column;gap:12px;margin:24px 0;}
+.pain-card{background:var(--bg);border-left:4px solid var(--red);border-radius:0 8px 8px 0;padding:18px 20px;display:flex;align-items:flex-start;gap:12px;}
+.pain-card-icon{font-size:22px;flex-shrink:0;margin-top:2px;}
+.pain-card-body{font-size:14px;line-height:1.85;color:var(--body);}
+.pain-card-body strong{color:var(--ink);}
+.point-box{background:var(--bg2);border-radius:8px;padding:20px 24px;margin:20px 0;}
+.point-box-label{font-size:10px;font-family:'DM Mono',monospace;color:var(--red);letter-spacing:0.12em;text-transform:uppercase;margin-bottom:10px;}
+.point-box p{font-size:14px;line-height:1.9;color:var(--body);margin-bottom:0;}
+.case-box{border:1px solid #cffafe;border-left:5px solid var(--red);border-radius:0 10px 10px 0;padding:24px 26px;margin:28px 0;background:linear-gradient(135deg,#ecfeff,#f0fdf4);}
+.case-box p{margin-bottom:0;font-size:14px;line-height:1.9;color:var(--body);}
+.case-honest{margin-top:16px;background:var(--amber-bg);color:var(--amber-tx);border-radius:8px;padding:14px 16px;font-size:13px;line-height:1.85;}
+.inline-cta{background:var(--bg);border:1px solid var(--border);border-top:4px solid var(--red);border-radius:10px;padding:36px;margin:52px 0;text-align:center;}
+.inline-cta-tag{font-size:11px;color:var(--red);font-weight:700;letter-spacing:0.08em;margin-bottom:12px;}
+.inline-cta h3{font-family:'Shippori Mincho',serif;font-size:clamp(16px,2vw,22px);font-weight:700;color:var(--ink);line-height:1.65;margin-bottom:12px;}
+.inline-cta p{font-size:14px;color:var(--body);line-height:1.9;margin-bottom:22px;}
+.cta-btns-pair{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;}
+.btn-cta-red{display:inline-flex;align-items:center;gap:6px;background:var(--red);color:#fff;padding:13px 28px;border-radius:4px;font-size:14px;font-weight:700;text-decoration:none;transition:background 0.2s,transform 0.2s;}
+.btn-cta-red:hover{background:var(--red-dark);transform:translateY(-2px);}
+.btn-cta-ghost{display:inline-flex;align-items:center;gap:6px;background:#fff;color:var(--red);border:1.5px solid var(--red);padding:13px 28px;border-radius:4px;font-size:14px;font-weight:700;text-decoration:none;transition:background 0.2s;}
+.btn-cta-ghost:hover{background:var(--tag-bg);}
+.btn-cta-note{display:block;margin-top:12px;font-size:11px;color:var(--light);}
+.effect-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:24px 0;}
+.effect-card{background:#fff;border:1px solid var(--border);border-top:3px solid var(--red);border-radius:6px;padding:20px 16px;text-align:center;}
+.effect-num{font-family:'DM Mono',monospace;font-size:10px;color:var(--red);letter-spacing:0.12em;margin-bottom:8px;}
+.effect-title{font-size:12px;color:var(--body);line-height:1.6;margin-bottom:8px;}
+.effect-val{font-family:'Shippori Mincho',serif;font-size:22px;font-weight:700;color:var(--ink);}
+.effect-val em{font-style:normal;color:var(--red-dark);}
+.flow{background:var(--demo-bg);color:#cbd5e1;border-radius:8px;padding:20px 22px;font-family:'DM Mono',monospace;font-size:12.5px;line-height:1.9;white-space:pre-wrap;margin:24px 0;overflow-x:auto;}
+.flow .a{color:#f87171;}
+.flow .c{color:#67e8f9;}
+.dtable{width:100%;border-collapse:collapse;font-size:13px;margin:24px 0;}
+.dtable th,.dtable td{border:1px solid var(--border);padding:11px 13px;text-align:left;vertical-align:top;line-height:1.7;}
+.dtable th{background:var(--bg2);color:var(--ink);font-weight:700;}
+.dtable td{color:var(--body);}
+.dtable .hl{color:var(--danger);font-weight:700;white-space:nowrap;}
+.dwrap{overflow-x:auto;}
+code{font-family:'DM Mono',monospace;background:var(--bg2);border:1px solid var(--border);border-radius:4px;padding:2px 7px;font-size:0.9em;color:var(--red-dark);word-break:break-all;}
+.note{font-size:12px;color:var(--light);margin-top:-12px;margin-bottom:22px;}
+.related-section{padding:60px 24px;background:var(--white);border-top:1px solid var(--border);}
+.related-inner{max-width:760px;margin:0 auto;}
+.related-label{font-family:'DM Mono',monospace;font-size:11px;color:var(--red);letter-spacing:0.14em;text-transform:uppercase;margin-bottom:20px;}
+.related-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;}
+.related-card{border:1px solid var(--border);border-top:3px solid var(--red);padding:20px;text-decoration:none;color:inherit;border-radius:0 0 6px 6px;transition:box-shadow 0.2s,transform 0.2s;}
+.related-card:hover{box-shadow:0 4px 16px rgba(0,0,0,0.07);transform:translateY(-2px);}
+.related-card-tag{font-size:10px;font-family:'DM Mono',monospace;color:var(--red);letter-spacing:0.1em;margin-bottom:8px;}
+.related-card-title{font-family:'Shippori Mincho',serif;font-size:14px;font-weight:700;color:var(--ink);line-height:1.6;}
+.back-section{padding:28px 24px;background:var(--bg);border-top:1px solid var(--border);}
+.back-section-inner{max-width:760px;margin:0 auto;}
+.back-link{display:inline-flex;align-items:center;gap:6px;font-size:13px;color:var(--body);text-decoration:none;transition:color 0.2s;}
+.back-link:hover{color:var(--red);}
+footer{background:#1f1f1f;border-top:1px solid rgba(255,255,255,0.06);padding:40px 60px;display:flex;align-items:center;justify-content:space-between;}
+.footer-logo{display:flex;align-items:center;gap:10px;}
+.footer-logo-mark{width:20px;height:20px;background:var(--red);clip-path:polygon(50% 0%,0% 100%,18% 100%,50% 38%,82% 100%,100% 100%);}
+.footer-logo-text{font-family:'DM Mono',monospace;font-size:13px;color:rgba(255,255,255,0.55);}
+.footer-logo-text span{color:var(--red);}
+.footer-copy{font-size:11px;color:rgba(255,255,255,0.25);font-family:'DM Mono',monospace;}
+.reveal{opacity:0;transform:translateY(18px);transition:opacity 0.55s ease,transform 0.55s ease;}
+.reveal.visible{opacity:1;transform:translateY(0);}
+@media(max-width:768px){
+  .article-header,.article-body,.back-section,.related-section{padding-left:16px;padding-right:16px;}
+  .article-header{padding-top:88px;}
+  .effect-grid{grid-template-columns:1fr;}
+  .related-grid{grid-template-columns:1fr !important;}
+  .cta-btns-pair{flex-direction:column;align-items:center;}
+  .inline-cta{padding:24px 18px;}
+  footer{flex-direction:column;gap:14px;text-align:center;padding:28px 16px;}
+}
+</style>
+</head>
+<body>
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-P6VNBWH3" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
+<nav id="mainNav">
+  <a href="/" class="nav-logo">
+    <img src="/images/logo.png" alt="AIdealize">
+    <span class="nav-logo-text"><span>AI</span>dealize</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="/column/">コラム</a></li>
+    <li><a href="/service/">サービス</a></li>
+    <li><a href="https://aidealize.com/bpr/">DX事例</a></li>
+    <li><a href="/company.html">会社概要</a></li>
+    <li><a href="/service/prevention/#contact" class="nav-cta">無料でサイト点検</a></li>
+  </ul>
+  <button class="nav-hamburger" id="navHamburger" aria-label="メニュー"><span></span><span></span><span></span></button>
+</nav>
+<div class="nav-drawer" id="navDrawer">
+  <ul>
+    <li><a href="/column/" class="drawer-link">コラム</a></li>
+    <li><a href="/service/" class="drawer-link">サービス</a></li>
+    <li><a href="https://aidealize.com/bpr/" class="drawer-link">DX事例</a></li>
+    <li><a href="/company.html" class="drawer-link">会社概要</a></li>
+    <li><a href="/service/prevention/#contact">無料でサイト点検</a></li>
+  </ul>
+</div>
+
+<header class="article-header">
+  <div class="article-header-inner">
+    <nav class="breadcrumb" aria-label="パンくず">
+      <a href="/">ホーム</a><span>/</span>
+      <a href="/column/">コラム</a><span>/</span>
+      <span>工務店サイト約9,000件診断の実態</span>
+    </nav>
+    <div class="article-tag">工務店Web集客 / 実態調査</div>
+    <h1 class="article-h1">
+      地方の工務店サイトを約9,000件診断して<br>
+      わかった「放置サイト」の実態と、<br>
+      受注を取り戻す脱出策。
+    </h1>
+    <div class="article-meta">
+      <div>📅 2026年7月19日</div>
+      <div>⏱ 読了約9分</div>
+      <div>✍ AIdealize編集部</div>
+    </div>
+  </div>
+</header>
+
+<article class="article-body">
+<div class="article-body-inner">
+
+  <div class="summary-box reveal">
+    <div class="summary-box-title">この記事でわかること</div>
+    <ul>
+      <li>地方の工務店サイト約9,000件を診断してわかった「放置サイト」の実データ</li>
+      <li>放置サイトが注文住宅の成約率を下げる3つの理由</li>
+      <li>工務店が「サイト放置の罠」にハマる住宅業界特有の構造</li>
+      <li>現場リソースがなくてもサイトを蘇らせる、負担1/10の3ステップ</li>
+    </ul>
+  </div>
+
+  <p>「家づくりには何十年もの耐久性と、丁寧なメンテナンスが不可欠」——そう顧客に伝える工務店が、自社の最も重要な営業窓口である<strong>「Webサイト」を何年も放置している</strong>。注文住宅を検討する施主の多くは、住宅展示場に行く前に、スマホで複数の工務店サイト・SNS・口コミを徹底的に比較します。もはやWebサイトの状態は、そのまま「選ばれるかどうか」に直結します。</p>
+
+  <p>今回私たちは、群馬・茨城・埼玉の<strong>地域住宅事業者（工務店・リフォーム・外壁塗装など）約9,000件のサイト</strong>をGoogleマップ経由で収集し、<strong>公開情報の範囲でSSL・スマホ対応・施工事例・更新性・ローカルSEOなどを自動診断</strong>しました。その結果、<strong>およそ5社に1社に、はっきりした「放置シグナル」</strong>が見られ、さらに多くのサイトが「実績を載せていない」「地域検索に出てこない」といった“もったいない状態”にあることが分かりました。</p>
+
+  <div class="note">※本記事の数値は、上記約9,000件の公開サイトを公開情報の範囲で自動診断した実データです。対象の抽出方法や診断時点により数値は変動します。個別企業名は掲載していません。</div>
+
+  <h2>約9,000件の診断でわかった「放置サイト」の実態</h2>
+
+  <p>SSL・スマホ対応・施工事例・更新性・ローカルSEOなどの観点で診断した結果、該当率が高かった項目は以下です。</p>
+
+  <div class="dwrap">
+  <table class="dtable">
+    <thead><tr><th>点検項目</th><th>該当率（約9,000件中）</th><th>主なリスク</th></tr></thead>
+    <tbody>
+      <tr><td>① 施工事例（施工実績）が見当たらない</td><td class="hl">28.6%</td><td>実力が伝わらず、比較で負ける</td></tr>
+      <tr><td>② Googleビジネスプロフィール等ローカルSEOの整備不足</td><td class="hl">23.4%</td><td>地域検索で見つけてもらえない</td></tr>
+      <tr><td>③ 著作権表記（Copyright）が古い・放置</td><td class="hl">16.0%</td><td>廃業疑念・信頼性の低下</td></tr>
+      <tr><td>④ スマホ非対応（レスポンシブでない）</td><td class="hl">13.9%</td><td>スマホ客の離脱</td></tr>
+      <tr><td>⑤ 問い合わせフォームが見当たらない</td><td class="hl">13.7%</td><td>受け皿がなく取りこぼし</td></tr>
+      <tr><td>⑥ 常時SSL（https）未対応</td><td class="hl">12.6%</td><td>「保護されていない通信」警告・SEO下落</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <div class="effect-grid">
+    <div class="effect-card"><div class="effect-num">GOOD</div><div class="effect-title">大きな問題なし</div><div class="effect-val"><em>約81%</em></div></div>
+    <div class="effect-card"><div class="effect-num">WARN</div><div class="effect-title">要改善（中度の放置）</div><div class="effect-val"><em>約17%</em></div></div>
+    <div class="effect-card"><div class="effect-num">RISK</div><div class="effect-title">重度の放置</div><div class="effect-val"><em>約2%</em></div></div>
+  </div>
+  <p class="note">※「放置スコア」は、SSL・スマホ対応・施工事例の有無・更新性・ローカルSEO等を合算した独自指標。中度＋重度を合わせると<strong>約19%（およそ5社に1社）</strong>に、はっきりした放置シグナルが見られました。一方で、多くのサイトは致命傷ではないものの「施工事例が載っていない」「地域検索に出てこない」など“もったいない状態”でした。</p>
+
+  <h3>点検で見つかった「もったいない放置」の具体例</h3>
+  <div class="pain-cards">
+    <div class="pain-card reveal"><div class="pain-card-icon">📅</div><div class="pain-card-body"><strong>フッターの著作権が「© 2019」で止まっている</strong><br>最下部の著作権表記が数年前のまま。訪問者に「まだ営業している？」という根本的な不信感を与えます。</div></div>
+    <div class="pain-card reveal"><div class="pain-card-icon">🏠</div><div class="pain-card-body"><strong>「新着見学会情報」の最新記事が2年前</strong><br>トップの一番目立つ場所にある「お知らせ」「完成見学会」が数年前で停止。活気のなさが伝わってしまいます。</div></div>
+    <div class="pain-card reveal"><div class="pain-card-icon">⚠️</div><div class="pain-card-body"><strong>問い合わせページで「安全ではありません」と警告</strong><br>SSL未対応で、資料請求フォームに「保護されていない通信」の赤い警告。これでは個人情報を入力してもらえません。</div></div>
+  </div>
+
+  <h2>なぜ「放置サイト」は注文住宅の成約率を下げるのか</h2>
+
+  <p>住宅は数百万〜数千万円という人生最大級の買い物。顧客が最も重視するのは「圧倒的な信頼感」です。放置サイトは、その信頼を静かに崩していきます。</p>
+
+  <h3>① 「ここ、まだ営業してる？」という不信感</h3>
+  <p>20〜30代のファミリー層は、確実にスマホで工務店サイトを確認します。見学会の日付が「2022年10月」で止まっていたり、ブログが数年間更新されていなかったりすると、無意識に<strong>「この会社は活気がない」「経営が危ないのでは」</strong>と判断し、静かに競合へ流れます。</p>
+
+  <h3>② 問い合わせフォームからの個人情報漏洩</h3>
+  <p>注文住宅の資料請求には、氏名・住所・電話番号・年収・建築予定地といった<strong>極めて機密性の高い個人情報</strong>が入力されます。SSL未対応や、WordPressが放置されて脆弱性が残ったサイトでは、これらが傍受・流出する危険が高まります。</p>
+
+  <h3>③ 検索エンジン（Google）からの評価低下</h3>
+  <p>Googleは「情報の新鮮さ」「安全面（SSL）」「表示速度」を重要指標とします。放置サイトは段階的に順位が下がり、最終的には<strong>「地域名＋工務店」「地域名＋注文住宅」</strong>などの検索結果から姿を消します。</p>
+
+  <div class="inline-cta reveal">
+    <div class="inline-cta-tag">無料・費用契約なし</div>
+    <h3>自社サイトは「放置シグナル」を<br>出していませんか？無料で点検します。</h3>
+    <p>フッターの年数・SSL・CMSの状態・スマホ表示・お知らせの鮮度まで、公開情報の範囲で点検し、直すべき箇所を1枚のレポートにしてお渡しします。</p>
+    <div class="cta-btns-pair">
+      <a href="/service/prevention/#contact" class="btn-cta-red">無料でサイト点検を受ける →</a>
+      <a href="/service/prevention/" class="btn-cta-ghost">サイト点検サービスを見る</a>
+    </div>
+    <span class="btn-cta-note">オンライン対応・押し売りなし</span>
+  </div>
+
+  <h2>【独自考察】工務店が「放置の罠」にハマる構造</h2>
+
+  <p>なぜ、これほど多くの工務店でサイト放置が起きるのか。そこには住宅業界特有の構造があります。</p>
+
+  <div class="flow">「家づくり」＝ 完成したら引渡し（<span class="c">納品完了</span>）
+   ↓ 同じ感覚で…
+「Web制作」＝ 公開したら<span class="a">納品完了（もう触らなくていい）</span>と思い込む</div>
+
+  <ul>
+    <li><strong>「建物」と同じ感覚で「作ったら完成」</strong>：建物は一度建てれば残る。その感覚でサイトも「作れば完成」と考えがち。しかしサイトは「育て続ける店舗」です。</li>
+    <li><strong>写真撮影・文章作成のハードルが高い</strong>：「きれいな事例を」「プロっぽい文章を」と構えすぎ、結果として何も更新できなくなる。</li>
+    <li><strong>制作会社との保守契約が曖昧</strong>：月額を払っていても「サーバー代の立て替えのみ」で、更新やアップデートが含まれていないケースが多い。</li>
+  </ul>
+
+  <h2>現場リソースゼロから始める「復活の3ステップ」</h2>
+
+  <p>「更新すべきは分かっているが、現場が忙しくて手が回らない」——これが本音でしょう。専任担当がいなくてもサイトを蘇らせる、負担を最小化する3段階です。</p>
+
+  <h3>ステップ1：技術的欠陥の即時修復（まず1日で）</h3>
+  <ul>
+    <li><strong>SSL化（https）の対応</strong>：未対応ならサーバー設定を変更して暗号化。</li>
+    <li><strong>フッターの年数を自動化</strong>：テーマ設定やPHPで「現在の年」が自動表示される仕組みに。</li>
+    <li><strong>本体・プラグインの最新化</strong>：管理画面からWordPress本体とプラグインを更新。</li>
+  </ul>
+
+  <h3>ステップ2：ハードルを下げた「施工事例」の習慣化（週15分）</h3>
+  <p>更新を続けるコツは、完璧な文章を目指さないこと。次のテンプレートで十分です。</p>
+  <div class="point-box">
+    <div class="point-box-label">続く施工事例フォーマット</div>
+    <p><strong>タイトル：</strong>【地域名】〇〇市 吹き抜けのある平屋（完成見学会）<br><strong>写真：</strong>スマホで撮ったリビング・外観を5〜10枚<br><strong>文章：</strong>お施主様のこだわりを箇条書きで3行だけ</p>
+  </div>
+  <p>これだけで、検索エンジンと見込み客に<strong>「今も元気に良い家を建てている工務店だ」</strong>と伝わります。ユーザーが見ているのは文章の上手さではなく、稼働している“証拠”です。</p>
+
+  <h3>ステップ3：Googleビジネスプロフィール（MEO）と連携（月1回）</h3>
+  <p>サイト更新が難しければ、まずスマホから手軽に投稿できる<strong>Googleビジネスプロフィール（Googleマップ）</strong>を更新。地域集客では、サイトとGoogleマップの連動が最強の集客ラインになります。MEOの詳しい進め方は<a href="/column/meo-shukyaku/">MEO（Googleマップ集客）とは？</a>で解説しています。</p>
+
+  <div class="case-box reveal">
+    <p>写真と事実（スペック）に特化した更新体制に切り替えるだけで、<strong>現場の負担を1/10に減らしつつ、成約率を引き上げる</strong>ことができます。競合の多くが放置に苦しんでいる今こそ、地道な更新が最大の差別化になります。</p>
+    <div class="case-honest">⚠ <strong>正直にお伝えします。</strong>更新すれば必ず受注が増える、という単純な話ではありません。まず「見つかる→訪れる→信じる→動く」のどこで取りこぼしているかを数字で確認し、いちばん漏れている一箇所から直すのが近道です。</div>
+  </div>
+
+  <h2>よくある質問（FAQ）</h2>
+  <h3>工務店のホームページは、放置しているとどうなりますか？</h3>
+  <p>更新が止まったサイトは「まだ営業しているのか」という不信感を与え、検索順位も下がります。さらにCMSやSSLが放置されると、個人情報漏洩やサイバー攻撃の踏み台にされるリスクも高まります。</p>
+  <h3>忙しくて更新できません。何から手をつければよいですか？</h3>
+  <p>まずSSL化・フッターの年数・CMS更新など技術面を修復し、次に「写真5〜10枚＋こだわり3点の箇条書き」だけの軽い施工事例投稿を習慣化します。完璧さより「今も建てている証拠」を出すことが重要です。</p>
+  <h3>自社サイトが放置状態か、どこで見分けられますか？</h3>
+  <p>フッターの著作権の年数、お知らせ・施工事例の最新日付、スマホ表示の崩れ、URL欄の「保護されていない通信」警告の4点を確認してください。</p>
+
+  <h2>まとめ｜Webサイトは24時間働く「筆頭営業マン」</h2>
+  <p>地方の工務店にとって、Webサイトは単なる会社案内ではなく、<strong>24時間365日、家づくりへの情熱と信頼を伝え続ける「筆頭営業マン」</strong>です。多くの競合が放置している今こそ、適切にメンテナンスして最新情報を発信し続けるだけで、地域で圧倒的な差別化と信頼を獲得できます。</p>
+  <p>まずは自社サイトのフッターの年数と、最新のお知らせの日付を確認することから始めてみてください。</p>
+
+  <div class="inline-cta reveal">
+    <div class="inline-cta-tag">無料相談・費用契約なし</div>
+    <h3>「うちのサイトは放置になっていないか」<br>プロが無料で点検します。</h3>
+    <p>技術面（SSL・CMS・速度）から運用面（更新の鮮度）まで点検し、優先度順に打ち手を整理してお渡しします。押し売りはしません。</p>
+    <div class="cta-btns-pair">
+      <a href="/service/prevention/#contact" class="btn-cta-red">無料でサイト点検を受ける →</a>
+      <a href="/column/wordpress-zeijakusei-furui-site/" class="btn-cta-ghost">古いサイトのリスク記事も読む</a>
+    </div>
+    <span class="btn-cta-note">オンライン対応・所要約30分・押し売りなし</span>
+  </div>
+
+</div>
+</article>
+
+<section class="related-section">
+  <div class="related-inner">
+    <div class="related-label">Related Articles</div>
+    <div class="related-grid">
+      <a href="/column/wordpress-zeijakusei-furui-site/" class="related-card">
+        <div class="related-card-tag">Webセキュリティ / 保守</div>
+        <div class="related-card-title">なぜWordPressの脆弱性被害は減らないのか？「古いサイト」の危うい現実。</div>
+      </a>
+      <a href="/column/wordpress-kanri-marumie/" class="related-card">
+        <div class="related-card-tag">Webセキュリティ / WordPress</div>
+        <div class="related-card-title">WordPressの管理画面、丸見えになっていませんか？5分でできる自己チェック。</div>
+      </a>
+      <a href="/column/meo-shukyaku/" class="related-card">
+        <div class="related-card-tag">MEO / Googleマップ集客</div>
+        <div class="related-card-title">MEO（Googleマップ集客）とは？やり方と成功事例をわかりやすく解説。</div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<div class="back-section">
+  <div class="back-section-inner">
+    <a href="/column/" class="back-link">← コラム一覧に戻る</a>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-logo">
+    <div class="footer-logo-mark"></div>
+    <span class="footer-logo-text"><span>A</span>idealize株式会社</span>
+  </div>
+  <span class="footer-copy">© 2020 AIdealize Inc. All rights reserved.</span>
+</footer>
+
+<script>
+(function(){
+  const btn=document.getElementById('navHamburger');
+  const drawer=document.getElementById('navDrawer');
+  const nav=document.getElementById('mainNav');
+  btn.addEventListener('click',function(){btn.classList.toggle('open');drawer.classList.toggle('open');});
+  drawer.querySelectorAll('.drawer-link').forEach(function(l){l.addEventListener('click',function(){btn.classList.remove('open');drawer.classList.remove('open');});});
+  window.addEventListener('scroll',function(){nav.classList.toggle('scrolled',window.scrollY>10);});
+})();
+const obs=new IntersectionObserver(function(e){e.forEach(function(x){if(x.isIntersecting)x.target.classList.add('visible');});},{threshold:0.08,rootMargin:'0px 0px -30px 0px'});
+document.querySelectorAll('.reveal').forEach(function(el){obs.observe(el);});
+</script>
+</body>
+</html>
