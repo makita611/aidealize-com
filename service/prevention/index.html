@@ -1238,6 +1238,21 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     drawer.querySelectorAll('.drawer-link').forEach(function(l){l.addEventListener('click',function(){btn.classList.remove('open');drawer.classList.remove('open')})});
     window.addEventListener('scroll',function(){nav.classList.toggle('scrolled',window.scrollY>10)});
   })();
+
+  // 営業リンク(?url=)から来たら、その会社のURLを自動入力して点検を実行
+  (function(){
+    try {
+      var p = new URLSearchParams(location.search);
+      var u = p.get('url') || p.get('site');
+      if (u) {
+        var inp = document.getElementById('urlInput');
+        if (inp) {
+          inp.value = u;
+          setTimeout(function(){ try { runScan(); } catch(e){} }, 700);
+        }
+      }
+    } catch (e) {}
+  })();
 </script>
 <script src="/js/gas-forms.js"></script>
 <script>
