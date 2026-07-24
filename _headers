@@ -1,0 +1,11 @@
+# Cloudflare Pages セキュリティヘッダー（全ページ共通）
+# 目的: 外周点検で満点になるよう、業界標準のセキュリティヘッダーを付与する。
+# CSP は既存の依存（Google Tag Manager / Analytics / Ads・Googleフォント・
+# Googleマップ埋め込み・GASフォーム送信・自ドメイン）を壊さない範囲で許可している。
+/*
+  Strict-Transport-Security: max-age=31536000; includeSubDomains; preload
+  X-Frame-Options: SAMEORIGIN
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: strict-origin-when-cross-origin
+  Permissions-Policy: geolocation=(), microphone=(), camera=()
+  Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com https://tagmanager.google.com https://www.google-analytics.com https://ssl.google-analytics.com https://www.googleadservices.com https://googleads.g.doubleclick.net https://www.google.com https://*.g.doubleclick.net; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://tagmanager.google.com; img-src 'self' data: https:; font-src 'self' data: https://fonts.gstatic.com; connect-src 'self' https://www.googletagmanager.com https://www.google-analytics.com https://*.google-analytics.com https://*.analytics.google.com https://region1.google-analytics.com https://script.google.com https://script.googleusercontent.com https://*.g.doubleclick.net https://www.google.com; frame-src 'self' https://www.googletagmanager.com https://www.google.com https://td.doubleclick.net https://*.g.doubleclick.net; object-src 'none'; base-uri 'self'; frame-ancestors 'self'
