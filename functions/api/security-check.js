@@ -102,31 +102,37 @@ export async function onRequestGet(context) {
 
     // ============ 判定 ============
     const checks = [];
-    const add = (key, label, status, detail, why) => checks.push({ key, label, status, detail, why });
+    const add = (key, label, status, detail, why, fix) => checks.push({ key, label, status, detail, why, fix: fix || '' });
 
     add('https', '常時SSL（HTTPS）', isHttps ? 'good' : 'bad',
       isHttps ? '暗号化された安全な接続です' : 'httpのままです。通信が盗み見られる恐れがあり、ブラウザにも「保護されていない通信」と警告されます',
-      '通信を暗号化する、防犯の最低ライン');
+      '通信を暗号化する、防犯の最低ライン',
+      '無料のSSL証明書（Let\'s Encrypt等）を導入し、http→httpsへ常時リダイレクト（当社で対応可）');
 
     add('hsts', 'HTTPSの常時強制（HSTS）', hsts ? 'good' : 'warn',
       hsts ? '常にHTTPSへ誘導する設定があります' : '未設定。最初のアクセスがhttpに逃げると、その一瞬を盗聴・改ざんされる余地が残ります',
-      '「必ず鍵のかかった扉から入らせる」設定');
+      '「必ず鍵のかかった扉から入らせる」設定',
+      'サーバー/CDNで Strict-Transport-Security ヘッダーを付与（当社で対応可）');
 
     add('clickjacking', 'なりすまし操作対策（クリックジャッキング）', (xfo || cspFrameAncestors) ? 'good' : 'warn',
       (xfo || cspFrameAncestors) ? 'サイトを透明な枠で覆う攻撃への対策があります' : '未設定。サイトを透明な枠で覆い、利用者に気づかせず操作させる攻撃を防げていません',
-      '来訪者を騙してクリックさせる手口への備え');
+      '来訪者を騙してクリックさせる手口への備え',
+      'X-Frame-Options または CSP frame-ancestors を設定（当社で対応可）');
 
     add('nosniff', 'ファイル種別の偽装対策', /nosniff/i.test(nosniff) ? 'good' : 'warn',
       /nosniff/i.test(nosniff) ? 'X-Content-Type-Options が設定されています' : '未設定。アップロードされた不正ファイルが別の種類として実行される余地があります',
-      '偽装ファイルを勝手に実行させない設定');
+      '偽装ファイルを勝手に実行させない設定',
+      'X-Content-Type-Options: nosniff ヘッダーを付与（当社で対応可）');
 
     add('csp', 'コンテンツの読み込み制限（CSP）', csp ? 'good' : 'warn',
       csp ? 'Content-Security-Policy が設定されています' : '未設定。外部から不正なスクリプトを差し込まれた際の被害を抑える設定がありません',
-      '万一の改ざん時に被害を最小化する設定');
+      '万一の改ざん時に被害を最小化する設定',
+      'Content-Security-Policy を導入し、読み込み元を制限（当社で対応可）');
 
     add('version', 'サーバー・システム情報の露出', versionLeaks.length ? 'warn' : 'good',
       versionLeaks.length ? `バージョン情報が外から見えています（${versionLeaks.join(' / ')}）。古い版だと既知の弱点を狙われます` : 'サーバーの詳細バージョンは隠されています',
-      '「鍵の型番」を攻撃者に教えないための基本');
+      '「鍵の型番」を攻撃者に教えないための基本',
+      'サーバー設定で Server / X-Powered-By のバージョン表記を隠す（当社で対応可）');
 
     add('cms', 'サイトシステム（CMS）バージョンの露出',
       cms ? (cmsVersion ? 'bad' : 'warn') : 'good',
@@ -135,14 +141,16 @@ export async function onRequestGet(context) {
             ? `${cms} ${cmsVersion} とバージョンまで丸見えです。既知の弱点を狙い撃ちされる典型的な入口です`
             : `${cms} を使用中と分かります（バージョンは非表示）。更新状況の点検をおすすめします`)
         : '使用システムやバージョンの露出は見当たりません',
-      'バージョンが見える＝弱点を検索して狙われやすい');
+      'バージョンが見える＝弱点を検索して狙われやすい',
+      'CMS本体・プラグインを最新へ更新し、generator等のバージョン表記を非表示に（当社で対応可）');
 
     add('admin', '管理画面（裏口）の露出',
       exposedAdmin.length ? 'bad' : 'good',
       exposedAdmin.length
         ? `管理ログイン画面が外から見えています（${exposedAdmin.join(', ')}）。第三者がパスワード破りを試せる状態です`
         : '一般的な管理画面URLは、外からは見えませんでした',
-      '「裏口」が見えていると総当たり攻撃の的になる');
+      '「裏口」が見えていると総当たり攻撃の的になる',
+      '管理画面をIP制限・Basic認証・URL変更で隠し、2段階認証を有効化（当社で対応可）');
 
     // --- スコア（good=1, warn=0.5, bad=0）---
     const w = { good: 1, warn: 0.5, bad: 0 };

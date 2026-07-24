@@ -503,6 +503,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       </div>
       <div id="scan-result"></div>
       <p class="hero-sub-note">※ SSL・管理画面露出など公開情報のみを確認します。不正アクセス禁止法を遵守。</p>
+      <div id="scan-lead"></div>
     </div>
 
     <div class="line-cta-wrap">
@@ -531,6 +532,58 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       </div>
     </div>
 
+  </div>
+</section>
+
+<!-- 見本：点検するとこう出る（危険な例 / 満点の例） -->
+<section id="sample" style="background:var(--navy);padding-top:64px;padding-bottom:64px;">
+  <div class="section-inner">
+    <span class="section-label">見本 ── 点検するとこう出ます</span>
+    <h2>あなたのサイトは<span class="accent">どちらですか？</span></h2>
+    <div class="divider"></div>
+    <p class="section-desc" style="margin-bottom:36px;">
+      上のシミュレーターにドメインを入れると、数秒でこのような結果が出ます。
+      「危険な例」と「満点の例」を並べました。まずは無料で、自社サイトを点検してみてください。
+    </p>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:24px;">
+
+      <!-- 危険な例 -->
+      <div style="background:rgba(74,15,15,0.35);border:1px solid rgba(255,80,80,0.4);border-radius:12px;padding:24px;">
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;">
+          <span style="color:#ff9090;font-weight:900;font-size:1.05rem;">⚠️ 危険な例</span>
+          <span style="background:rgba(255,80,80,0.15);color:#ff9090;font-weight:900;font-size:1.1rem;padding:4px 14px;border-radius:20px;">44<span style="font-size:0.8rem;">/100</span></span>
+        </div>
+        <div style="font-family:'Courier New',monospace;font-size:0.82rem;line-height:1.9;color:#ffd0d0;">
+          <div>✕ CMSバージョンの露出 <span style="color:#ff9090;">← WordPress 7.0.2 が丸見え</span></div>
+          <div>✕ 管理画面（裏口）の露出 <span style="color:#ff9090;">← /wp-login.php が公開状態</span></div>
+          <div>! サーバー情報の露出 <span style="color:#ffb97d;">← PHPのバージョンが露出</span></div>
+          <div>! HSTS / クリックジャッキング / CSP <span style="color:#ffb97d;">← 未設定</span></div>
+          <div>+ 常時SSL（HTTPS） <span style="color:#7dffb0;">← OK</span></div>
+        </div>
+        <div style="margin-top:14px;padding-top:14px;border-top:1px dashed rgba(255,80,80,0.3);font-size:0.84rem;color:#ffd0d0;line-height:1.8;">
+          <strong style="color:#ff9090;">要確認 7件。</strong>各項目に「直し方」も表示され、そのまま無料相談へ進めます。
+        </div>
+      </div>
+
+      <!-- 満点の例 -->
+      <div style="background:rgba(10,47,92,0.4);border:1px solid rgba(125,255,176,0.4);border-radius:12px;padding:24px;">
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;">
+          <span style="color:#7dffb0;font-weight:900;font-size:1.05rem;">✅ 満点の例</span>
+          <span style="background:rgba(125,255,176,0.15);color:#7dffb0;font-weight:900;font-size:1.1rem;padding:4px 14px;border-radius:20px;">100<span style="font-size:0.8rem;">/100</span></span>
+        </div>
+        <div style="font-family:'Courier New',monospace;font-size:0.82rem;line-height:1.9;color:#c7ffe0;">
+          <div>+ 常時SSL（HTTPS）</div>
+          <div>+ HTTPSの常時強制（HSTS）</div>
+          <div>+ なりすまし操作対策（クリックジャッキング）</div>
+          <div>+ コンテンツの読み込み制限（CSP）</div>
+          <div>+ バージョン露出なし ／ 管理画面の露出なし</div>
+        </div>
+        <div style="margin-top:14px;padding-top:14px;border-top:1px dashed rgba(125,255,176,0.3);font-size:0.84rem;color:#c7ffe0;line-height:1.8;">
+          <strong style="color:#7dffb0;">要確認 0件。</strong>外周（入口）は合格。※当社サイトも実際にこの状態です。
+        </div>
+      </div>
+
+    </div>
   </div>
 </section>
 
@@ -1025,6 +1078,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     const result = document.getElementById('scan-result');
     result.classList.add('show');
     result.innerHTML = '';
+    const leadWrap = document.getElementById('scan-lead');
+    if (leadWrap) leadWrap.innerHTML = '';
 
     if (!input) {
       result.innerHTML = '<span style="color:#ff9090">⚠ ドメインを入力してください（例: your-clinic.jp）</span>';
@@ -1067,10 +1122,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     const col  = { good: '#7dffb0', warn: '#ffb97d', bad: '#ff9090' };
     const checks = data.checks || [];
     checks.forEach((c, i) => {
-      setTimeout(() => line(`${mark[c.status] || '[*]'} ${c.label} … ${c.detail}`, col[c.status] || '#7dffb0'), i * 280);
+      setTimeout(() => {
+        line(`${mark[c.status] || '[*]'} ${c.label} … ${c.detail}`, col[c.status] || '#7dffb0');
+        if (c.status !== 'good' && c.fix) line(`    └ 対処：${c.fix}`, '#c9a84c');
+      }, i * 300);
     });
 
-    const totalDelay = checks.length * 280 + 200;
+    const totalDelay = checks.length * 300 + 200;
     setTimeout(() => {
       const bad = data.counts.bad, warn = data.counts.warn;
       const findings = bad + warn;
@@ -1080,7 +1138,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       const level      = bad >= 1 ? '要注意' : (warn >= 1 ? 'やや注意' : '良好');
       const levelColor = bad >= 1 ? '#ff9090' : (warn >= 1 ? '#ffb97d' : '#7dffb0');
       const levelIcon  = bad >= 1 ? '⚠️' : (warn >= 1 ? '🔍' : '✅');
-      const lead = findings > 0
+      const leadMsg = findings > 0
         ? '外から見える範囲だけで、第三者が「裏口」を探す手がかりになる弱点が見つかりました。空き巣に「ここは入りやすい家」と教えているのと同じ状態です。'
         : '外周（入口）については、目立った弱点は見つかりませんでした。ただし、安心はまだ早いです。';
 
@@ -1093,7 +1151,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             '<span style="font-size:1.3rem;">' + levelIcon + '</span>' +
             '<span style="color:' + levelColor + ';font-weight:800;font-size:0.95rem;">危険度：' + level + ' ── 外側だけで「' + findings + '件」を検出</span>' +
           '</div>' +
-          '<p style="color:#ffd0d0;font-size:0.84rem;line-height:1.8;margin:0 0 10px;">' + lead + '</p>' +
+          '<p style="color:#ffd0d0;font-size:0.84rem;line-height:1.8;margin:0 0 10px;">' + leadMsg + '</p>' +
           '<div style="background:rgba(0,21,53,0.5);border:1px dashed rgba(201,168,76,0.5);border-radius:6px;padding:12px 14px;">' +
             '<p style="color:#ffe2a8;font-size:0.84rem;line-height:1.8;margin:0;">' +
               '🔴 <strong>もっと大事なこと：</strong>この点検は「建物の<u>外側</u>」を見ただけです。<br>' +
@@ -1103,18 +1161,69 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           '</div>' +
         '</div>';
       result.appendChild(summary);
-
-      const ctaLine = document.createElement('div');
-      ctaLine.className = 'scan-line';
-      ctaLine.style.cssText = 'color:#06c755;margin-top:10px;font-family:"Courier New",monospace;';
-      ctaLine.textContent = '[→] LINEで詳細PDFレポート（中の点検プランつき）を受け取る ↓';
-      result.appendChild(ctaLine);
       result.scrollTop = result.scrollHeight;
 
       // 計測（GTM）：点検実行イベント
       window.dataLayer = window.dataLayer || [];
       window.dataLayer.push({ event: 'security_scan_done', scan_domain: domain, scan_findings: findings, scan_score: data.score });
+
+      // 結果 → リード獲得フォームを表示（点検結果を自動で引き継ぐ）
+      renderScanLeadForm(data, domain, findings);
     }, totalDelay);
+  }
+
+  // 点検結果を引き継ぐリード獲得フォームを生成し、GASへ送信する
+  function renderScanLeadForm(data, domain, findings) {
+    // ※ 送信先GASは /js/gas-forms.js と同一エンドポイント
+    var GAS_URL = 'https://script.google.com/macros/s/AKfycbweIGAPeJwD-U8D4Cks6fjGmp5hR2kpuwCx_9janRnGq3qdUFR4DDpYGgl33-bkFr3v/exec';
+    var wrap = document.getElementById('scan-lead');
+    if (!wrap) return;
+    var issues = (data.checks || []).filter(function (c) { return c.status !== 'good'; });
+    var findingsText = issues.map(function (c) { return (c.status === 'bad' ? '×' : '!') + ' ' + c.label + '：' + c.detail; }).join('\n');
+    var inputStyle = 'width:100%;padding:12px 14px;border:1px solid rgba(201,168,76,0.3);border-radius:6px;font-size:14px;font-family:inherit;box-sizing:border-box;background:rgba(0,21,53,0.6);color:#fff;';
+
+    wrap.innerHTML =
+      '<div style="margin-top:22px;background:rgba(255,255,255,0.04);border:1px solid var(--border);border-radius:12px;padding:22px;">' +
+        '<div style="font-size:0.82rem;color:var(--gold);font-weight:700;letter-spacing:0.08em;margin-bottom:6px;">▶ この結果の詳細レポートを無料で受け取る</div>' +
+        '<p style="font-size:0.84rem;color:var(--text-sub);line-height:1.8;margin-bottom:14px;">診断結果をPDFにまとめ、<strong style="color:#ffe2a8;">具体的な直し方</strong>と「中（院内）」の点検プランを添えてお送りします。担当より1〜2営業日以内にご連絡します。</p>' +
+        '<div style="font-size:0.78rem;color:var(--text-sub);background:rgba(0,21,53,0.5);border:1px dashed rgba(201,168,76,0.35);border-radius:6px;padding:8px 12px;margin-bottom:14px;">対象：<strong style="color:#fff;">' + domain + '</strong>　／　安全スコア：<strong style="color:#fff;">' + data.score + '/100</strong>　／　要確認：<strong style="color:#ffb97d;">' + findings + '件</strong></div>' +
+        '<form id="scanLeadForm" novalidate>' +
+          '<div style="margin-bottom:10px;"><input name="name" placeholder="お名前" required style="' + inputStyle + '"></div>' +
+          '<div style="margin-bottom:10px;"><input name="company" placeholder="施設名・会社名" style="' + inputStyle + '"></div>' +
+          '<div style="margin-bottom:10px;"><input name="email" type="email" placeholder="メールアドレス" required style="' + inputStyle + '"></div>' +
+          '<div style="margin-bottom:14px;"><input name="phone" type="tel" placeholder="電話番号（任意）" style="' + inputStyle + '"></div>' +
+          '<button type="submit" style="width:100%;padding:14px;border:none;border-radius:6px;font-size:15px;font-weight:700;cursor:pointer;background:#06c755;color:#fff;">詳細レポートを無料で受け取る</button>' +
+        '</form>' +
+        '<div id="scanLeadThanks" style="display:none;padding:18px;background:rgba(6,199,85,0.12);border:1px solid #06c755;border-radius:8px;text-align:center;color:#c7ffe0;line-height:1.8;">✅ 送信ありがとうございます。<br>診断結果をもとに、担当より1〜2営業日以内にご連絡します。</div>' +
+      '</div>';
+
+    var form = document.getElementById('scanLeadForm');
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      var btn = form.querySelector('button[type=submit]');
+      btn.disabled = true; btn.textContent = '送信中...';
+      var fd = new FormData(form);
+      fd.append('page', 'Prevention');
+      fd.append('form_type', '外周点検リード');
+      fd.append('request', '点検結果の詳細レポート希望');
+      fd.append('scan_url', data.url || domain);
+      fd.append('scan_score', String(data.score));
+      fd.append('scan_findings', String(findings));
+      fd.append('scan_detail', findingsText);
+      fd.append('message', '【自動点検結果】対象:' + domain + ' / スコア:' + data.score + '/100 / 要確認:' + findings + '件\n' + findingsText);
+      var done = false;
+      function showThanks() {
+        if (done) return; done = true;
+        window.dataLayer = window.dataLayer || [];
+        window.dataLayer.push({ event: 'form_submit', form_type: '外周点検リード', page_name: 'Prevention' });
+        window.dataLayer.push({ event: 'scan_lead_submit', scan_domain: domain, scan_score: data.score, scan_findings: findings });
+        form.style.display = 'none';
+        var t = document.getElementById('scanLeadThanks');
+        if (t) t.style.display = 'block';
+      }
+      setTimeout(showThanks, 2500);
+      fetch(GAS_URL, { method: 'POST', mode: 'no-cors', body: fd }).catch(function () {}).finally(showThanks);
+    });
   }
 
   document.getElementById('urlInput').addEventListener('keydown', (e) => {
