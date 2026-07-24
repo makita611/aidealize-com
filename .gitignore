@@ -20,3 +20,6 @@ downloads/
 # OS
 .DS_Store
 Thumbs.db
+
+# Cloudflare Pages/Wrangler local cache
+.wrangler/
