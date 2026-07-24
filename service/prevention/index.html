@@ -1020,63 +1020,80 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 </footer>
 
 <script>
-  function runScan() {
+  async function runScan() {
     const input = document.getElementById('urlInput').value.trim();
     const result = document.getElementById('scan-result');
+    result.classList.add('show');
+    result.innerHTML = '';
 
     if (!input) {
       result.innerHTML = '<span style="color:#ff9090">⚠ ドメインを入力してください（例: your-clinic.jp）</span>';
-      result.classList.add('show');
+      return;
+    }
+    const domain = input.replace(/^https?:\/\//, '').replace(/\/.*$/, '');
+
+    const line = (text, color) => {
+      const d = document.createElement('div');
+      d.className = 'scan-line';
+      d.style.animationDelay = '0s';
+      d.style.color = color || '#7dffb0';
+      d.textContent = text;
+      result.appendChild(d);
+      result.scrollTop = result.scrollHeight;
+      return d;
+    };
+
+    line(`[Prevention] 外周目視点検 Lv.1 開始 — ${domain}`);
+    const loading = line(`[*] サーバーに問い合わせ中 ...（公開情報のみを確認します）`, '#9fb4cc');
+
+    let data;
+    try {
+      const res = await fetch('/api/security-check?url=' + encodeURIComponent(input), { headers: { 'Accept': 'application/json' } });
+      data = await res.json();
+    } catch (e) {
+      loading.textContent = '[✕] 点検サーバーに接続できませんでした。時間をおいて再度お試しください';
+      loading.style.color = '#ff9090';
+      return;
+    }
+    loading.remove();
+
+    if (!data || !data.ok) {
+      line(`[✕] ${(data && data.error) || 'このサイトは点検できませんでした'}`, '#ff9090');
+      line(`　ドメインをご確認ください（例: your-clinic.jp）`, '#9fb4cc');
       return;
     }
 
-    const domain = input.replace(/^https?:\/\//, '').replace(/\/.*$/, '');
-    result.innerHTML = '';
-    result.classList.add('show');
-
-    const lines = [
-      { text: `[Prevention] 外周目視点検 Lv.1 開始 — ${domain}`, delay: 0 },
-      { text: `[*] ターゲット: ${domain}`, delay: 400 },
-      { text: `[*] SSL証明書 ............ 確認中`, delay: 800 },
-      { text: `[+] SSL/TLS: 有効（有効期限: 2026-09-12）`, delay: 1400 },
-      { text: `[*] 管理画面露出スキャン .... 確認中`, delay: 1900 },
-      { text: `[!] /wp-admin へのアクセス: 検出 ← 要確認`, delay: 2500, warn: true },
-      { text: `[*] HTTPセキュリティヘッダー . 確認中`, delay: 3000 },
-      { text: `[!] X-Frame-Options: 未設定 ← 要確認`, delay: 3500, warn: true },
-      { text: `[*] 旧バージョンCMS検出 .... 確認中`, delay: 4000 },
-      { text: `[+] CMS: WordPress 6.4.x（最新版）`, delay: 4600 },
-      { text: ``, delay: 5100 },
-      { text: `[Prevention] 外周目視点検 完了 ── 要確認ポイント: 2件`, delay: 5100, warn: true },
-    ];
-
-    lines.forEach(({ text, delay, warn, cta }) => {
-      setTimeout(() => {
-        const span = document.createElement('div');
-        span.className = 'scan-line';
-        span.style.animationDelay = '0s';
-        if (warn) span.style.color = '#ffb97d';
-        else if (cta) span.style.color = '#06c755';
-        else span.style.color = '#7dffb0';
-        span.textContent = text;
-        result.appendChild(span);
-        result.scrollTop = result.scrollHeight;
-      }, delay);
+    const mark = { good: '[+]', warn: '[!]', bad: '[✕]' };
+    const col  = { good: '#7dffb0', warn: '#ffb97d', bad: '#ff9090' };
+    const checks = data.checks || [];
+    checks.forEach((c, i) => {
+      setTimeout(() => line(`${mark[c.status] || '[*]'} ${c.label} … ${c.detail}`, col[c.status] || '#7dffb0'), i * 280);
     });
 
-    // 危険度サマリー（診断後の注意喚起）
+    const totalDelay = checks.length * 280 + 200;
     setTimeout(() => {
+      const bad = data.counts.bad, warn = data.counts.warn;
+      const findings = bad + warn;
+      line('');
+      line(`[Prevention] 外周目視点検 完了 ── 要確認ポイント: ${findings}件（安全スコア ${data.score}/100）`, findings > 0 ? '#ffb97d' : '#7dffb0');
+
+      const level      = bad >= 1 ? '要注意' : (warn >= 1 ? 'やや注意' : '良好');
+      const levelColor = bad >= 1 ? '#ff9090' : (warn >= 1 ? '#ffb97d' : '#7dffb0');
+      const levelIcon  = bad >= 1 ? '⚠️' : (warn >= 1 ? '🔍' : '✅');
+      const lead = findings > 0
+        ? '外から見える範囲だけで、第三者が「裏口」を探す手がかりになる弱点が見つかりました。空き巣に「ここは入りやすい家」と教えているのと同じ状態です。'
+        : '外周（入口）については、目立った弱点は見つかりませんでした。ただし、安心はまだ早いです。';
+
       const summary = document.createElement('div');
       summary.className = 'scan-line';
       summary.style.cssText = 'margin-top:16px;font-family:\'Hiragino Kaku Gothic ProN\',sans-serif;';
       summary.innerHTML =
         '<div style="background:rgba(74,15,15,0.6);border:1px solid rgba(255,80,80,0.5);border-left:4px solid #ff5050;border-radius:8px;padding:16px 18px;">' +
           '<div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;">' +
-            '<span style="font-size:1.3rem;">⚠️</span>' +
-            '<span style="color:#ff9090;font-weight:800;font-size:0.95rem;">危険度：要注意 ── 外側だけで「2件の弱点」を検出</span>' +
+            '<span style="font-size:1.3rem;">' + levelIcon + '</span>' +
+            '<span style="color:' + levelColor + ';font-weight:800;font-size:0.95rem;">危険度：' + level + ' ── 外側だけで「' + findings + '件」を検出</span>' +
           '</div>' +
-          '<p style="color:#ffd0d0;font-size:0.84rem;line-height:1.8;margin:0 0 10px;">' +
-            '管理画面が外から見えており、第三者が「裏口」を探せる状態です。空き巣に「ここは入りやすい家」と教えているのと同じ状態です。' +
-          '</p>' +
+          '<p style="color:#ffd0d0;font-size:0.84rem;line-height:1.8;margin:0 0 10px;">' + lead + '</p>' +
           '<div style="background:rgba(0,21,53,0.5);border:1px dashed rgba(201,168,76,0.5);border-radius:6px;padding:12px 14px;">' +
             '<p style="color:#ffe2a8;font-size:0.84rem;line-height:1.8;margin:0;">' +
               '🔴 <strong>もっと大事なこと：</strong>この点検は「建物の<u>外側</u>」を見ただけです。<br>' +
@@ -1093,7 +1110,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       ctaLine.textContent = '[→] LINEで詳細PDFレポート（中の点検プランつき）を受け取る ↓';
       result.appendChild(ctaLine);
       result.scrollTop = result.scrollHeight;
-    }, 5700);
+
+      // 計測（GTM）：点検実行イベント
+      window.dataLayer = window.dataLayer || [];
+      window.dataLayer.push({ event: 'security_scan_done', scan_domain: domain, scan_findings: findings, scan_score: data.score });
+    }, totalDelay);
   }
 
   document.getElementById('urlInput').addEventListener('keydown', (e) => {
