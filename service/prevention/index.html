@@ -1239,7 +1239,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     window.addEventListener('scroll',function(){nav.classList.toggle('scrolled',window.scrollY>10)});
   })();
 
-  // 営業リンク(?url=)から来たら、その会社のURLを自動入力して点検を実行
+  // 営業リンク(?url=)から来たら、その会社のURLを箱に自動入力する。
+  // ※点検の実行は本人にボタンを押してもらう（自分のサイトの点検を自分で開始する形＝
+  //   不正アクセス禁止法・同意ベースの建付けに沿う。こちらから自動実行はしない）。
   (function(){
     try {
       var p = new URLSearchParams(location.search);
@@ -1248,7 +1250,18 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         var inp = document.getElementById('urlInput');
         if (inp) {
           inp.value = u;
-          setTimeout(function(){ try { runScan(); } catch(e){} }, 700);
+          // 押してほしいボタンに気づいてもらうため、入口までスクロール＋一瞬強調
+          var btn = document.querySelector('.sim-btn');
+          setTimeout(function(){
+            try {
+              inp.scrollIntoView({ behavior: 'smooth', block: 'center' });
+              if (btn) {
+                btn.style.transition = 'box-shadow .4s';
+                btn.style.boxShadow = '0 0 0 4px rgba(201,168,76,0.55)';
+                setTimeout(function(){ btn.style.boxShadow = ''; }, 1400);
+              }
+            } catch (e) {}
+          }, 500);
         }
       }
     } catch (e) {}

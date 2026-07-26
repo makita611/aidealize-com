@@ -74,7 +74,10 @@ body{font-family:'Noto Sans JP',sans-serif;background:var(--white);color:var(--i
 
 /* HERO */
 .hero{padding:120px 60px 56px;background:linear-gradient(180deg,#f0fbfd,#fff);}
-.hero-inner{max-width:900px;}
+.hero-inner{max-width:1120px;margin:0 auto;display:grid;grid-template-columns:1.05fr 0.95fr;gap:48px;align-items:center;}
+.hero-text{min-width:0;}
+.hero-img{margin:0;}
+.hero-img img{width:100%;display:block;aspect-ratio:4/3;object-fit:cover;object-position:center 25%;border-radius:16px;box-shadow:0 12px 40px rgba(8,145,178,0.14);}
 .hero-eyebrow{font-family:'DM Mono',monospace;font-size:12px;font-weight:500;letter-spacing:0.1em;color:var(--red-dark);background:var(--tag-bg);display:inline-block;padding:5px 12px;border-radius:4px;margin-bottom:20px;}
 .hero h1{font-family:'Shippori Mincho',serif;font-size:clamp(26px,4vw,40px);font-weight:700;line-height:1.5;margin-bottom:20px;}
 .hero h1 em{font-style:normal;color:var(--red-dark);}
@@ -191,6 +194,9 @@ footer{background:#1f1f1f;border-top:1px solid rgba(255,255,255,0.06);padding:40
   .nav-links{display:none;}
   .nav-hamburger{display:flex;}
   .hero{padding:100px 20px 44px;}
+  .hero-inner{grid-template-columns:1fr;gap:26px;}
+  .hero-img{order:-1;}
+  .hero-img img{aspect-ratio:16/10;object-position:center 20%;}
   .section,.cta{padding-left:16px;padding-right:16px;}
   .grid2,.ba{grid-template-columns:1fr;}
   .ba .arrow{transform:rotate(90deg);}
@@ -231,16 +237,54 @@ footer{background:#1f1f1f;border-top:1px solid rgba(255,255,255,0.06);padding:40
 <!-- HERO -->
 <header class="hero">
   <div class="hero-inner">
-    <span class="hero-eyebrow">CVR × とりこぼし改善</span>
-    <h1>「あと一歩」で逃している客を、<br><em>見える化して止める。</em></h1>
-    <p class="hero-sub">広告やSEOで人を集めても、途中の段で落ちていれば売上になりません。問い合わせフォームはあるのに押されない。予約が売上につながったか分からない——。その「取りこぼし」がどの段で起きているかを数字で見える化し、いちばん漏れている一箇所だけを直します。</p>
-    <div class="formula">売上 ＝ 集めた数 × 各段の通過率</div>
-    <div class="hero-btns">
-      <a href="#diagnose" class="btn-p">30秒でどこで落ちてるか診断 →</a>
-      <a href="#contact" class="btn-o">無料相談する</a>
+    <div class="hero-text">
+      <span class="hero-eyebrow">CVR × とりこぼし改善</span>
+      <h1>「あと一歩」で逃している客を、<br><em>見える化して止める。</em></h1>
+      <p class="hero-sub">広告やSEOで人を集めても、途中の段で落ちていれば売上になりません。問い合わせフォームはあるのに押されない。予約が売上につながったか分からない——。その「取りこぼし」がどの段で起きているかを数字で見える化し、いちばん漏れている一箇所だけを直します。</p>
+      <div class="formula">売上 ＝ 集めた数 × 各段の通過率</div>
+      <div class="hero-btns">
+        <a href="#site-check-tool" class="btn-p">URLを入れて今すぐ無料採点 →</a>
+        <a href="#contact" class="btn-o">無料相談する</a>
+      </div>
     </div>
+    <figure class="hero-img">
+      <img src="/images/womanp1.webp" alt="自社サイトのどこで客を取りこぼしているかを確認する経営者" fetchpriority="high">
+    </figure>
   </div>
 </header>
+
+<!-- 無料サイト即時診断（ヒーロー直下・主役）-->
+<section class="section" id="site-check-tool" style="padding-top:40px;">
+  <div class="section-inner">
+    <div class="section-label">Instant check</div>
+    <h2 class="section-title">サイトの取りこぼしを、その場で数値化</h2>
+    <p class="section-lead">URLを入れて診断ボタンを押すだけ。スマホ対応・問い合わせ導線・表示速度など「動く（問い合わせ）」段で漏れていないかを、その場で自動採点します。登録も費用も不要です。</p>
+    <iframe id="siteCheckFrame" src="/site-check.html" title="無料サイト即時診断" width="100%" height="560" frameborder="0" scrolling="no" style="display:block;border:1px solid var(--border);border-radius:14px;overflow:hidden;background:#F4F6FA;"></iframe>
+  </div>
+</section>
+<script>
+// iframeの高さ同期
+window.addEventListener('message', function(e){
+  if (e.data && e.data.type === 'roiHeight') {
+    var f = document.getElementById('siteCheckFrame');
+    if (f && e.data.height) f.style.height = e.data.height + 'px';
+  }
+});
+// 営業リンク(?url=)から来たら、その会社のURLをチェッカーの箱に自動入力し、
+// チェッカーまでスクロールする。点検の実行は本人にボタンを押してもらう。
+(function(){
+  try {
+    var u = new URLSearchParams(location.search).get('url');
+    if (u) {
+      var f = document.getElementById('siteCheckFrame');
+      if (f) f.src = '/site-check.html?url=' + encodeURIComponent(u);
+      setTimeout(function(){
+        try { document.getElementById('site-check-tool').scrollIntoView({behavior:'smooth',block:'start'}); } catch(e){}
+      }, 400);
+    }
+  } catch (e) {}
+})();
+</script>
 
 <!-- FUNNEL -->
 <section class="section">
@@ -359,23 +403,6 @@ footer{background:#1f1f1f;border-top:1px solid rgba(255,255,255,0.06);padding:40
   </div>
 </section>
 
-<!-- 無料サイト即時診断（インライン埋め込み） -->
-<section class="section alt" id="site-check-tool">
-  <div class="section-inner">
-    <div class="section-label">Instant check</div>
-    <h2 class="section-title">サイトの取りこぼしを、その場で数値化</h2>
-    <p class="section-lead">URLを入れるだけ。スマホ対応・問い合わせ導線・表示速度など「動く（問い合わせ）」段で漏れていないかを、その場で自動採点します。登録も費用も不要です。</p>
-    <iframe id="siteCheckFrame" src="/site-check.html" title="無料サイト即時診断" width="100%" height="560" frameborder="0" scrolling="no" loading="lazy" style="display:block;border:1px solid var(--border);border-radius:14px;overflow:hidden;background:#F4F6FA;"></iframe>
-  </div>
-</section>
-<script>
-window.addEventListener('message', function(e){
-  if (e.data && e.data.type === 'roiHeight') {
-    var f = document.getElementById('siteCheckFrame');
-    if (f && e.data.height) f.style.height = e.data.height + 'px';
-  }
-});
-</script>
 
 <!-- ENTRY TYPES -->
 <section class="section alt">

@@ -285,8 +285,10 @@ function esc(s){ return String(s==null?'':s).replace(/[&<>"']/g,m=>({'&':'&amp;'
 function notifyHeight(){ var c=document.querySelector('.container'); var h=c?Math.ceil(c.offsetTop+c.offsetHeight):Math.max(document.body.scrollHeight,document.documentElement.scrollHeight); window.parent.postMessage({type:'roiHeight',height:h},'*'); }
 document.getElementById('url').addEventListener('keydown',function(e){ if(e.key==='Enter') run(); });
 window.addEventListener('load',function(){
+  // 営業リンク(?url=)から来たら、その会社のURLを箱に入れておく。
+  // 点検の実行は本人にボタンを押してもらう（自分のサイトの点検を自分で開始する形）。
   const q=new URLSearchParams(location.search).get('url');
-  if(q){ document.getElementById('url').value=q; run(); }
+  if(q){ document.getElementById('url').value=q; }
   setTimeout(notifyHeight,200);
 });
 </script>
