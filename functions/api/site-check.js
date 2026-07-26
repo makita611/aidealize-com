@@ -54,6 +54,7 @@ export async function onRequestGet(context) {
       }
     }
 
+    const t0 = Date.now();  // 全体の取得開始（下流の dlMs 用）
     let { res, err, ms: ttfbMs } = await fetchOnce(target.toString());
     // https の証明書エラー等（523/525/526）や接続失敗のときは http で取り直す。
     // 診断対象は「SSL証明書が壊れた放置サイト」が多く、その場合 https は落ちるが
