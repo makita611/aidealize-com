@@ -37,24 +37,41 @@ export async function onRequestGet(context) {
     if (blocked) return json({ ok: false, error: 'このURLは点検できません' }, 400);
 
     // --- トップページ取得（タイムアウト・リダイレクト追従）---
-    const controller = new AbortController();
-    const timer = setTimeout(() => controller.abort(), 8000);
-    let res;
-    try {
-      res = await fetch(target.toString(), {
-        method: 'GET',
-        redirect: 'follow',
-        signal: controller.signal,
-        headers: { 'User-Agent': UA, 'Accept': 'text/html,application/xhtml+xml' },
-      });
-    } catch (e) {
-      clearTimeout(timer);
-      const msg = e.name === 'AbortError'
+    async function fetchOnce(u) {
+      const controller = new AbortController();
+      const timer = setTimeout(() => controller.abort(), 8000);
+      try {
+        return { res: await fetch(u, {
+          method: 'GET',
+          redirect: 'follow',
+          signal: controller.signal,
+          headers: { 'User-Agent': UA, 'Accept': 'text/html,application/xhtml+xml' },
+        }) };
+      } catch (e) {
+        return { err: e };
+      } finally {
+        clearTimeout(timer);
+      }
+    }
+
+    let { res, err } = await fetchOnce(target.toString());
+    // https の証明書エラー等（523/525/526）や接続失敗のときは http で取り直す。
+    // 点検対象は「SSL証明書が壊れた放置サイト」が多く、その場合 https は落ちるが
+    // http なら生きている。ここで諦めると最も狙い目の見込み客を点検できない
+    // （scheme無しのドメインを渡された時に既定の https で落ちるケースも同じ）。
+    const sslBroken = res && [523, 525, 526].includes(res.status);
+    if ((err || sslBroken) && target.protocol === 'https:') {
+      const httpTarget = 'http://' + target.host + target.pathname + target.search;
+      const retry = await fetchOnce(httpTarget);
+      if (retry.res) { res = retry.res; err = null; }
+    }
+
+    if (err) {
+      const msg = err.name === 'AbortError'
         ? 'サイトの応答が遅く、8秒以内に取得できませんでした'
         : 'サイトに接続できませんでした（URLをご確認ください）';
       return json({ ok: false, error: msg });
     }
-    clearTimeout(timer);
 
     if (res.status >= 400) {
       return json({ ok: false, error: `サイトがエラー応答を返しました（HTTP ${res.status}）。URLをご確認いただくか、時間をおいてお試しください` });

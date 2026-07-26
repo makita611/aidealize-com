@@ -32,27 +32,44 @@ export async function onRequestGet(context) {
     if (blocked) return json({ ok: false, error: 'このURLは診断できません' }, 400);
 
     // --- ページ取得（タイムアウト・リダイレクト追従）---
-    const controller = new AbortController();
-    const timer = setTimeout(() => controller.abort(), 8000);
-    const t0 = Date.now();
-    let res;
-    try {
-      res = await fetch(target.toString(), {
-        method: 'GET',
-        redirect: 'follow',
-        signal: controller.signal,
-        headers: {
-          'User-Agent': 'Mozilla/5.0 (compatible; AIdealizeSiteCheck/1.0; +https://aidealize.com)',
-          'Accept': 'text/html,application/xhtml+xml',
-        },
-      });
-    } catch (e) {
-      clearTimeout(timer);
-      const msg = e.name === 'AbortError' ? 'サイトの応答が遅く、8秒以内に取得できませんでした' : 'サイトに接続できませんでした（URLをご確認ください）';
+    async function fetchOnce(u) {
+      const controller = new AbortController();
+      const timer = setTimeout(() => controller.abort(), 8000);
+      const t0 = Date.now();
+      try {
+        const res = await fetch(u, {
+          method: 'GET',
+          redirect: 'follow',
+          signal: controller.signal,
+          headers: {
+            'User-Agent': 'Mozilla/5.0 (compatible; AIdealizeSiteCheck/1.0; +https://aidealize.com)',
+            'Accept': 'text/html,application/xhtml+xml',
+          },
+        });
+        return { res, ms: Date.now() - t0 };
+      } catch (e) {
+        return { err: e, ms: Date.now() - t0 };
+      } finally {
+        clearTimeout(timer);
+      }
+    }
+
+    let { res, err, ms: ttfbMs } = await fetchOnce(target.toString());
+    // https の証明書エラー等（523/525/526）や接続失敗のときは http で取り直す。
+    // 診断対象は「SSL証明書が壊れた放置サイト」が多く、その場合 https は落ちるが
+    // http なら生きている。scheme無しのドメインを渡された時も既定の https で落ちるため、
+    // ここで諦めると最も狙い目の見込み客を診断できない。
+    const sslBroken = res && [523, 525, 526].includes(res.status);
+    if ((err || sslBroken) && target.protocol === 'https:') {
+      const httpTarget = 'http://' + target.host + target.pathname + target.search;
+      const retry = await fetchOnce(httpTarget);
+      if (retry.res) { res = retry.res; err = null; ttfbMs = retry.ms; }
+    }
+
+    if (err) {
+      const msg = err.name === 'AbortError' ? 'サイトの応答が遅く、8秒以内に取得できませんでした' : 'サイトに接続できませんでした（URLをご確認ください）';
       return json({ ok: false, error: msg });
     }
-    const ttfbMs = Date.now() - t0;
-    clearTimeout(timer);
 
     if (res.status >= 400) {
       return json({ ok: false, error: `サイトがエラー応答を返しました（HTTP ${res.status}）。URLをご確認いただくか、時間をおいてお試しください` });
