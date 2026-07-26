@@ -287,6 +287,38 @@ footer{background:#1f1f1f;border-top:1px solid rgba(255,255,255,0.06);padding:40
   </div>
 </header>
 
+<!-- 無料セルフ診断（ヒーロー直下・主役） -->
+<section class="section" id="site-check-tool" style="padding-top:40px;">
+  <div class="section-inner">
+    <div class="section-label" style="text-align:center;">無料セルフ診断・60秒</div>
+    <h2 class="section-title" style="text-align:center;">まずは無料で、御社サイトを即チェック</h2>
+    <p class="section-lead">URLを入れて診断ボタンを押すだけ。スマホ対応・検索対策・SNS表示・問い合わせ導線・表示速度などを、その場で自動採点します。登録も費用も不要。競合サイトのURLでも診断できます。</p>
+    <iframe id="siteCheckFrame" src="/site-check.html" title="無料サイト即時診断" width="100%" height="560" frameborder="0" scrolling="no" style="display:block;border:1px solid var(--border);border-radius:14px;overflow:hidden;background:#f8fafc;"></iframe>
+  </div>
+</section>
+<script>
+// iframeの高さ同期
+window.addEventListener('message', function(e){
+  if (e.data && e.data.type === 'roiHeight') {
+    var f = document.getElementById('siteCheckFrame');
+    if (f && e.data.height) f.style.height = e.data.height + 'px';
+  }
+});
+// 営業リンク(?url=)から来たら、その会社のURLをチェッカーの箱に自動入力（ボタンは本人が押す）
+(function(){
+  try {
+    var u = new URLSearchParams(location.search).get('url');
+    if (u) {
+      var f = document.getElementById('siteCheckFrame');
+      if (f) f.src = '/site-check.html?url=' + encodeURIComponent(u);
+      setTimeout(function(){
+        try { document.getElementById('site-check-tool').scrollIntoView({behavior:'smooth',block:'start'}); } catch(e){}
+      }, 400);
+    }
+  } catch (e) {}
+})();
+</script>
+
 <!-- STATS -->
 <section class="stats">
   <div class="stats-inner">
@@ -516,24 +548,6 @@ footer{background:#1f1f1f;border-top:1px solid rgba(255,255,255,0.06);padding:40
     </a>
   </div>
 </section>
-
-<!-- 無料セルフ診断（インライン埋め込み） -->
-<section class="section" id="site-check-tool">
-  <div class="section-inner">
-    <div class="section-label" style="text-align:center;">無料セルフ診断・60秒</div>
-    <h2 class="section-title" style="text-align:center;">まずは無料で、御社サイトを即チェック</h2>
-    <p class="section-lead">URLを入れるだけ。スマホ対応・検索対策・SNS表示・問い合わせ導線・表示速度などを、その場で自動採点します。登録も費用も不要。競合サイトのURLでも診断できます。</p>
-    <iframe id="siteCheckFrame" src="/site-check.html" title="無料サイト即時診断" width="100%" height="560" frameborder="0" scrolling="no" loading="lazy" style="display:block;border:1px solid var(--border);border-radius:14px;overflow:hidden;background:#f8fafc;"></iframe>
-  </div>
-</section>
-<script>
-window.addEventListener('message', function(e){
-  if (e.data && e.data.type === 'roiHeight') {
-    var f = document.getElementById('siteCheckFrame');
-    if (f && e.data.height) f.style.height = e.data.height + 'px';
-  }
-});
-</script>
 
 <!-- FAQ -->
 <section class="section alt">
