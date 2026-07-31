@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SSL証明書の「期限切れ・失効」で何が起きる？「保護されていない通信」警告の正体と対処【AIdealize】</title>
+<meta name="description" content="SSL証明書が期限切れ・失効するとサイトに「保護されていない通信」の警告が出て、訪問者は離脱し検索評価も下がります。地域事業者サイト約9,000件の診断でも常時SSL未対応が一定数。証明書失効の仕組み、放置のリスク、自動更新での再発防止までAIdealizeが解説します。">
+<link rel="canonical" href="https://aidealize.com/column/ssl-shometsu-kigen/">
+<meta property="og:title" content="SSL証明書の「期限切れ・失効」で何が起きる？「保護されていない通信」警告の正体と対処">
+<meta property="og:description" content="SSL証明書の期限切れ・失効で起こること、放置のリスク、自動更新での再発防止を実データつきで解説。">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://aidealize.com/column/ssl-shometsu-kigen/">
+<meta property="og:site_name" content="AIdealize株式会社">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700;900&family=Shippori+Mincho:wght@400;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-P6VNBWH3');</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "SSL証明書の「期限切れ・失効」で何が起きる？「保護されていない通信」警告の正体と対処",
+  "description": "SSL証明書が期限切れ・失効すると何が起きるのか、放置のリスクと自動更新での再発防止を解説します。",
+  "datePublished": "2026-08-02",
+  "author": {"@type": "Organization", "name": "AIdealize株式会社"},
+  "publisher": {"@type": "Organization", "name": "AIdealize株式会社", "url": "https://aidealize.com"}
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {"@type":"Question","name":"SSL証明書が期限切れになると何が起きますか？","acceptedAnswer":{"@type":"Answer","text":"ブラウザに「保護されていない通信」「この接続ではプライバシーが保護されません」といった警告が表示され、多くの訪問者はその時点で離脱します。問い合わせフォームは使われなくなり、検索エンジンの評価も下がります。信頼・集客・安全のすべてを損ないます。"}},
+    {"@type":"Question","name":"SSL証明書の有効期限はどのくらいですか？","acceptedAnswer":{"@type":"Answer","text":"多くの証明書は有効期限が数か月〜1年程度で、業界的にも短期化が進んでいます。手動運用では更新忘れが起きやすいため、自動更新の設定が実質的に必須です。無料のLet's Encryptなどは自動更新が前提の仕組みになっています。"}},
+    {"@type":"Question","name":"自分のサイトのSSLが切れていないか、どう確認できますか？","acceptedAnswer":{"@type":"Answer","text":"ブラウザのURL欄に鍵マークがあるか、「保護されていない通信」の表示が出ていないかを確認します。鍵マークをクリックすると証明書の有効期限も見られます。定期的なチェックか、期限を監視する仕組みを入れておくと安心です。"}}
+  ]
+}
+</script>
+<style>
+:root{
+  --red:#0891b2;--red-dark:#0e7490;
+  --ink:#1e293b;--body:#4b5563;--light:#94a3b8;
+  --border:#e2e8f0;--bg:#f8fafc;--bg2:#f1f5f9;--white:#fff;
+  --tag-bg:#ecfeff;--green:#059669;--green-bg:#ecfdf5;
+  --demo-bg:#0f172a;--amber-bg:#fef3c7;--amber-tx:#92400e;--danger:#dc2626;--danger-bg:#fef2f2;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{font-family:'Noto Sans JP',sans-serif;background:var(--white);color:var(--ink);overflow-x:hidden;line-height:1.7;}
+#mainNav{position:fixed;top:0;left:0;right:0;z-index:1000;display:flex;align-items:center;justify-content:space-between;padding:0 60px;height:68px;background:rgba(255,255,255,0.97);border-bottom:1px solid var(--border);backdrop-filter:blur(12px);transition:box-shadow 0.3s;}
+#mainNav.scrolled{box-shadow:0 2px 16px rgba(0,0,0,0.06);}
+.nav-logo{display:flex;align-items:center;gap:10px;text-decoration:none;}
+.nav-logo img{height:34px;width:auto;}
+.nav-logo-text{font-family:'DM Mono',monospace;font-size:15px;font-weight:500;color:var(--ink);letter-spacing:0.02em;}
+.nav-logo-text span{color:var(--red);}
+.nav-links{display:flex;align-items:center;gap:32px;list-style:none;}
+.nav-links a{font-size:13px;font-weight:500;color:var(--body);text-decoration:none;transition:color 0.2s;}
+.nav-links a:hover{color:var(--ink);}
+.nav-cta{background:var(--red) !important;color:#fff !important;padding:9px 20px;border-radius:4px;font-size:12px !important;font-weight:700 !important;}
+.nav-cta:hover{background:var(--red-dark) !important;}
+.nav-hamburger{display:none;flex-direction:column;justify-content:center;gap:5px;width:40px;height:40px;background:none;border:none;cursor:pointer;}
+.nav-hamburger span{display:block;width:22px;height:2px;background:var(--ink);transition:all 0.3s;transform-origin:center;}
+.nav-hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg);}
+.nav-hamburger.open span:nth-child(2){opacity:0;}
+.nav-hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
+.nav-drawer{display:none;position:fixed;top:68px;left:0;right:0;background:#fff;border-bottom:2px solid var(--red);padding:20px 28px 28px;z-index:999;}
+.nav-drawer.open{display:block;}
+.nav-drawer ul{list-style:none;display:flex;flex-direction:column;}
+.nav-drawer ul li a{display:block;padding:13px 0;font-size:15px;font-weight:500;color:var(--ink);text-decoration:none;border-bottom:1px solid var(--border);}
+.nav-drawer ul li:last-child a{margin-top:16px;text-align:center;background:var(--red);color:#fff !important;padding:13px;border-radius:4px;font-weight:700 !important;border-bottom:none;}
+@media(max-width:1024px){#mainNav{padding:0 28px;}.nav-links{display:none;}.nav-hamburger{display:flex;}}
+@media(max-width:480px){#mainNav{padding:0 16px;height:60px;}.nav-drawer{top:60px;}.nav-logo-text{font-size:13px;}}
+.article-header{padding:116px 24px 52px;background:var(--bg);border-bottom:1px solid var(--border);}
+.article-header-inner{max-width:760px;margin:0 auto;}
+.breadcrumb{display:flex;align-items:center;gap:6px;font-size:12px;color:var(--light);margin-bottom:20px;flex-wrap:wrap;}
+.breadcrumb a{color:var(--light);text-decoration:none;}
+.breadcrumb a:hover{color:var(--red);}
+.breadcrumb span{color:var(--border);}
+.article-tag{display:inline-flex;align-items:center;background:var(--tag-bg);color:var(--red);font-size:11px;font-weight:700;letter-spacing:0.06em;padding:4px 12px;border-radius:100px;margin-bottom:18px;}
+.article-h1{font-family:'Shippori Mincho',serif;font-size:clamp(20px,3vw,34px);font-weight:700;color:var(--ink);line-height:1.65;margin-bottom:20px;}
+.article-meta{display:flex;align-items:center;gap:20px;flex-wrap:wrap;font-size:12px;color:var(--light);}
+.article-body{padding:72px 24px 100px;}
+.article-body-inner{max-width:760px;margin:0 auto;}
+.summary-box{background:var(--bg);border-left:4px solid var(--red);padding:24px 28px;border-radius:0 6px 6px 0;margin-bottom:52px;}
+.summary-box-title{font-size:11px;font-weight:700;color:var(--red);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:12px;}
+.summary-box ul{list-style:none;display:flex;flex-direction:column;gap:8px;}
+.summary-box ul li{display:flex;align-items:flex-start;gap:8px;font-size:14px;line-height:1.8;color:var(--ink);}
+.summary-box ul li::before{content:'✓';color:var(--red);font-weight:700;flex-shrink:0;margin-top:1px;}
+.article-body-inner h2{font-family:'Shippori Mincho',serif;font-size:clamp(17px,2.2vw,24px);font-weight:700;color:var(--ink);line-height:1.65;margin:56px 0 20px;padding-bottom:10px;border-bottom:1px solid var(--border);position:relative;}
+.article-body-inner h2::after{content:'';position:absolute;bottom:-1px;left:0;width:48px;height:2px;background:var(--red);}
+.article-body-inner h3{font-family:'Shippori Mincho',serif;font-size:clamp(15px,1.8vw,19px);font-weight:700;color:var(--ink);line-height:1.7;margin:36px 0 14px;padding-left:14px;border-left:3px solid var(--red);}
+.article-body-inner p{font-size:15px;line-height:2;color:var(--body);margin-bottom:22px;}
+.article-body-inner strong{color:var(--ink);font-weight:700;}
+.article-body-inner a{color:var(--red-dark);font-weight:700;text-decoration:underline;text-underline-offset:2px;}
+.article-body-inner ul,.article-body-inner ol{list-style:none;margin-bottom:22px;display:flex;flex-direction:column;gap:8px;}
+.article-body-inner ul li,.article-body-inner ol li{font-size:14px;line-height:1.9;color:var(--body);display:flex;align-items:flex-start;gap:10px;}
+.article-body-inner ul li::before{content:'─';color:var(--red);flex-shrink:0;margin-top:4px;font-size:12px;}
+.article-body-inner ol{counter-reset:ol;}
+.article-body-inner ol li{counter-increment:ol;}
+.article-body-inner ol li::before{content:counter(ol);background:var(--red);color:#fff;width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0;margin-top:2px;font-family:'DM Mono',monospace;}
+.pain-cards{display:flex;flex-direction:column;gap:12px;margin:24px 0;}
+.pain-card{background:var(--bg);border-left:4px solid var(--red);border-radius:0 8px 8px 0;padding:18px 20px;display:flex;align-items:flex-start;gap:12px;}
+.pain-card-icon{font-size:22px;flex-shrink:0;margin-top:2px;}
+.pain-card-body{font-size:14px;line-height:1.85;color:var(--body);}
+.pain-card-body strong{color:var(--ink);}
+.point-box{background:var(--bg2);border-radius:8px;padding:20px 24px;margin:20px 0;}
+.point-box-label{font-size:10px;font-family:'DM Mono',monospace;color:var(--red);letter-spacing:0.12em;text-transform:uppercase;margin-bottom:10px;}
+.point-box p{font-size:14px;line-height:1.9;color:var(--body);margin-bottom:0;}
+.case-box{border:1px solid #cffafe;border-left:5px solid var(--red);border-radius:0 10px 10px 0;padding:24px 26px;margin:28px 0;background:linear-gradient(135deg,#ecfeff,#f0fdf4);}
+.case-box p{margin-bottom:0;font-size:14px;line-height:1.9;color:var(--body);}
+.case-honest{margin-top:16px;background:var(--amber-bg);color:var(--amber-tx);border-radius:8px;padding:14px 16px;font-size:13px;line-height:1.85;}
+.inline-cta{background:var(--bg);border:1px solid var(--border);border-top:4px solid var(--red);border-radius:10px;padding:36px;margin:52px 0;text-align:center;}
+.inline-cta-tag{font-size:11px;color:var(--red);font-weight:700;letter-spacing:0.08em;margin-bottom:12px;}
+.inline-cta h3{font-family:'Shippori Mincho',serif;font-size:clamp(16px,2vw,22px);font-weight:700;color:var(--ink);line-height:1.65;margin-bottom:12px;}
+.inline-cta p{font-size:14px;color:var(--body);line-height:1.9;margin-bottom:22px;}
+.cta-btns-pair{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;}
+.btn-cta-red{display:inline-flex;align-items:center;gap:6px;background:var(--red);color:#fff;padding:13px 28px;border-radius:4px;font-size:14px;font-weight:700;text-decoration:none;transition:background 0.2s,transform 0.2s;}
+.btn-cta-red:hover{background:var(--red-dark);transform:translateY(-2px);}
+.btn-cta-ghost{display:inline-flex;align-items:center;gap:6px;background:#fff;color:var(--red);border:1.5px solid var(--red);padding:13px 28px;border-radius:4px;font-size:14px;font-weight:700;text-decoration:none;transition:background 0.2s;}
+.btn-cta-ghost:hover{background:var(--tag-bg);}
+.btn-cta-note{display:block;margin-top:12px;font-size:11px;color:var(--light);}
+.effect-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:24px 0;}
+.effect-card{background:#fff;border:1px solid var(--border);border-top:3px solid var(--red);border-radius:6px;padding:20px 16px;text-align:center;}
+.effect-num{font-family:'DM Mono',monospace;font-size:10px;color:var(--red);letter-spacing:0.12em;margin-bottom:8px;}
+.effect-title{font-size:12px;color:var(--body);line-height:1.6;margin-bottom:8px;}
+.effect-val{font-family:'Shippori Mincho',serif;font-size:22px;font-weight:700;color:var(--ink);}
+.effect-val em{font-style:normal;color:var(--red-dark);}
+.flow{background:var(--demo-bg);color:#cbd5e1;border-radius:8px;padding:20px 22px;font-family:'DM Mono',monospace;font-size:12.5px;line-height:1.9;white-space:pre-wrap;margin:24px 0;overflow-x:auto;}
+.flow .a{color:#f87171;}
+.flow .c{color:#67e8f9;}
+.dtable{width:100%;border-collapse:collapse;font-size:13px;margin:24px 0;}
+.dtable th,.dtable td{border:1px solid var(--border);padding:11px 13px;text-align:left;vertical-align:top;line-height:1.7;}
+.dtable th{background:var(--bg2);color:var(--ink);font-weight:700;}
+.dtable td{color:var(--body);}
+.dtable .hl{color:var(--danger);font-weight:700;white-space:nowrap;}
+.dwrap{overflow-x:auto;}
+code{font-family:'DM Mono',monospace;background:var(--bg2);border:1px solid var(--border);border-radius:4px;padding:2px 7px;font-size:0.9em;color:var(--red-dark);word-break:break-all;}
+.note{font-size:12px;color:var(--light);margin-top:-12px;margin-bottom:22px;}
+.related-section{padding:60px 24px;background:var(--white);border-top:1px solid var(--border);}
+.related-inner{max-width:760px;margin:0 auto;}
+.related-label{font-family:'DM Mono',monospace;font-size:11px;color:var(--red);letter-spacing:0.14em;text-transform:uppercase;margin-bottom:20px;}
+.related-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;}
+.related-card{border:1px solid var(--border);border-top:3px solid var(--red);padding:20px;text-decoration:none;color:inherit;border-radius:0 0 6px 6px;transition:box-shadow 0.2s,transform 0.2s;}
+.related-card:hover{box-shadow:0 4px 16px rgba(0,0,0,0.07);transform:translateY(-2px);}
+.related-card-tag{font-size:10px;font-family:'DM Mono',monospace;color:var(--red);letter-spacing:0.1em;margin-bottom:8px;}
+.related-card-title{font-family:'Shippori Mincho',serif;font-size:14px;font-weight:700;color:var(--ink);line-height:1.6;}
+.back-section{padding:28px 24px;background:var(--bg);border-top:1px solid var(--border);}
+.back-section-inner{max-width:760px;margin:0 auto;}
+.back-link{display:inline-flex;align-items:center;gap:6px;font-size:13px;color:var(--body);text-decoration:none;transition:color 0.2s;}
+.back-link:hover{color:var(--red);}
+footer{background:#1f1f1f;border-top:1px solid rgba(255,255,255,0.06);padding:40px 60px;display:flex;align-items:center;justify-content:space-between;}
+.footer-logo{display:flex;align-items:center;gap:10px;}
+.footer-logo-mark{width:20px;height:20px;background:var(--red);clip-path:polygon(50% 0%,0% 100%,18% 100%,50% 38%,82% 100%,100% 100%);}
+.footer-logo-text{font-family:'DM Mono',monospace;font-size:13px;color:rgba(255,255,255,0.55);}
+.footer-logo-text span{color:var(--red);}
+.footer-copy{font-size:11px;color:rgba(255,255,255,0.25);font-family:'DM Mono',monospace;}
+.reveal{opacity:0;transform:translateY(18px);transition:opacity 0.55s ease,transform 0.55s ease;}
+.reveal.visible{opacity:1;transform:translateY(0);}
+@media(max-width:768px){
+  .article-header,.article-body,.back-section,.related-section{padding-left:16px;padding-right:16px;}
+  .article-header{padding-top:88px;}
+  .effect-grid{grid-template-columns:1fr;}
+  .related-grid{grid-template-columns:1fr !important;}
+  .cta-btns-pair{flex-direction:column;align-items:center;}
+  .inline-cta{padding:24px 18px;}
+  footer{flex-direction:column;gap:14px;text-align:center;padding:28px 16px;}
+}
+</style>
+</head>
+<body>
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-P6VNBWH3" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
+<nav id="mainNav">
+  <a href="/" class="nav-logo">
+    <img src="/images/logo.png" alt="AIdealize">
+    <span class="nav-logo-text"><span>AI</span>dealize</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="/column/">コラム</a></li>
+    <li><a href="/service/">サービス</a></li>
+    <li><a href="https://aidealize.com/bpr/">DX事例</a></li>
+    <li><a href="/company.html">会社概要</a></li>
+    <li><a href="/service/prevention/#contact" class="nav-cta">無料でサイト点検</a></li>
+  </ul>
+  <button class="nav-hamburger" id="navHamburger" aria-label="メニュー"><span></span><span></span><span></span></button>
+</nav>
+<div class="nav-drawer" id="navDrawer">
+  <ul>
+    <li><a href="/column/" class="drawer-link">コラム</a></li>
+    <li><a href="/service/" class="drawer-link">サービス</a></li>
+    <li><a href="https://aidealize.com/bpr/" class="drawer-link">DX事例</a></li>
+    <li><a href="/company.html" class="drawer-link">会社概要</a></li>
+    <li><a href="/service/prevention/#contact">無料でサイト点検</a></li>
+  </ul>
+</div>
+
+<header class="article-header">
+  <div class="article-header-inner">
+    <nav class="breadcrumb" aria-label="パンくず">
+      <a href="/">ホーム</a><span>/</span>
+      <a href="/column/">コラム</a><span>/</span>
+      <span>SSL証明書の期限切れ・失効</span>
+    </nav>
+    <div class="article-tag">Webセキュリティ / 保守</div>
+    <h1 class="article-h1">
+      SSL証明書の「期限切れ・失効」で<br>
+      何が起きる？「保護されていない通信」<br>
+      警告の正体と対処。
+    </h1>
+    <div class="article-meta">
+      <div>📅 2026年8月2日</div>
+      <div>⏱ 読了約7分</div>
+      <div>✍ AIdealize編集部</div>
+    </div>
+  </div>
+</header>
+
+<article class="article-body">
+<div class="article-body-inner">
+
+  <div class="summary-box reveal">
+    <div class="summary-box-title">この記事でわかること</div>
+    <ul>
+      <li>SSL証明書が期限切れ・失効すると訪問者と検索評価に何が起きるか</li>
+      <li>「保護されていない通信」「この接続ではプライバシーが保護されません」の正体</li>
+      <li>なぜ証明書の更新忘れが起きるのか（有効期限の短期化）</li>
+      <li>自動更新と定期監視で二度と切らさない再発防止策</li>
+    </ul>
+  </div>
+
+  <p>ある日突然、自社サイトを開いた顧客のブラウザに<strong>「保護されていない通信」「この接続ではプライバシーが保護されません」</strong>という警告が表示される——SSL証明書の期限切れ・失効で起きる、意外とよくあるトラブルです。多くの訪問者は、この警告を見た瞬間にページを閉じます。</p>
+
+  <p>私たちが地域事業者サイト約9,000件を公開情報の範囲で診断した中でも、<strong>常時SSL（https）に未対応のサイトが一定数（診断対象の約12.6%）</strong>見られました。「一度SSL化したのに、証明書の更新が止まっていた」というケースも珍しくありません。この記事では、SSL証明書の失効で起きることと、二度と切らさないための対処を解説します。</p>
+
+  <div class="note">※上記の割合は、約9,000件の公開サイトを公開情報の範囲で自動診断した実データに基づきます。抽出方法や診断時点により変動します。個別企業名は掲載していません。</div>
+
+  <h2>SSL証明書が失効すると何が起きるのか</h2>
+
+  <p>SSL証明書は、サイトとの通信を暗号化し「このサイトは本物です」と証明する仕組みです。これが期限切れ・失効すると、ブラウザは訪問者を守るために警告を出します。</p>
+
+  <div class="flow">証明書が期限切れ / 失効
+   ↓
+ブラウザが<span class="a">全画面で警告表示</span>（保護されていない通信 / NET::ERR_CERT_DATE_INVALID）
+   ↓
+訪問者は<span class="a">「危険なサイトかも」と離脱</span> ／ フォームは使われない ／ 検索評価も低下</div>
+
+  <div class="effect-grid">
+    <div class="effect-card"><div class="effect-num">TRUST</div><div class="effect-title">信頼</div><div class="effect-val"><em>急落</em></div></div>
+    <div class="effect-card"><div class="effect-num">CVR</div><div class="effect-title">問い合わせ</div><div class="effect-val"><em>停止</em></div></div>
+    <div class="effect-card"><div class="effect-num">SEO</div><div class="effect-title">検索評価</div><div class="effect-val"><em>低下</em></div></div>
+  </div>
+
+  <h3>特に怖いのは「フォームからの流出」と「機会損失」</h3>
+  <p>問い合わせ・予約・資料請求フォームを持つサイトでは、暗号化が切れた状態で個人情報が送られると<strong>傍受のリスク</strong>が高まります。加えて、警告画面で離脱した見込み客は戻ってきません。<strong>症状が見た目に出ないまま、問い合わせだけが静かにゼロになる</strong>——これがSSL失効の最も怖いところです。</p>
+
+  <div class="inline-cta reveal">
+    <div class="inline-cta-tag">無料・費用契約なし</div>
+    <h3>自社サイトのSSLは切れていませんか？<br>証明書の状態を無料で点検します。</h3>
+    <p>SSLの有無・証明書の有効期限・混在コンテンツ（一部http）まで、公開情報の範囲で点検し、直すべき箇所を1枚のレポートにしてお渡しします。</p>
+    <div class="cta-btns-pair">
+      <a href="/service/prevention/#contact" class="btn-cta-red">無料でサイト点検を受ける →</a>
+      <a href="/service/prevention/" class="btn-cta-ghost">サイト点検サービスを見る</a>
+    </div>
+    <span class="btn-cta-note">オンライン対応・押し売りなし</span>
+  </div>
+
+  <h2>なぜ「更新忘れ」が起きるのか</h2>
+
+  <p>「一度SSL化したのに、なぜ切れるのか」——最大の理由は、<strong>SSL証明書には有効期限があり、その期限が年々短くなっている</strong>ことです。</p>
+
+  <ul>
+    <li><strong>証明書には有効期限がある</strong>：数か月〜1年程度で切れます。業界的に有効期間の短期化が進んでいます。</li>
+    <li><strong>手動更新は忘れやすい</strong>：担当者の異動・制作会社との契約終了などで、更新の担当が宙に浮きがち。</li>
+    <li><strong>通知に気づかない</strong>：更新期限の通知メールが、使われていない管理用アドレスに届いていることも。</li>
+  </ul>
+
+  <div class="point-box">
+    <div class="point-box-label">ここが重要</div>
+    <p>SSL失効は「技術力の問題」ではなく「運用の穴」です。誰が・いつ・どうやって更新するかが決まっていないと、いつか必ず切れます。だからこそ<strong>自動更新と定期監視</strong>で仕組み化するのが本質的な対策です。</p>
+  </div>
+
+  <h2>二度と切らさないための再発防止策</h2>
+
+  <h3>ステップ1：自動更新を設定する</h3>
+  <p>無料の<strong>Let's Encrypt</strong>などは、自動更新が前提の仕組みです。多くのレンタルサーバーには「無料独自SSL・自動更新」機能があり、有効化しておけば期限切れをほぼ防げます。まずは自社サーバーにこの機能があるか確認しましょう。</p>
+
+  <h3>ステップ2：有効期限を定期的に監視する</h3>
+  <p>自動更新を設定していても、設定ミスやサーバー移転で失効することがあります。<strong>証明書の有効期限を定期的にチェックする仕組み</strong>を入れておくと、切れる前に気づけます。月1回でも、URL欄の鍵マークと有効期限を確認する習慣が保険になります。</p>
+
+  <h3>ステップ3：混在コンテンツ（http混じり）も解消する</h3>
+  <p>SSL化していても、画像やスクリプトの一部が<code>http://</code>のままだと「保護されていない通信」と表示されることがあります。サイト全体を<code>https://</code>で統一することも忘れずに。</p>
+
+  <div class="case-box reveal">
+    <p>SSLの期限切れは、起きてから対処すると「問い合わせが止まっていた期間」の損失が発生します。<strong>自動更新＋定期監視で「起きないようにする」方が、圧倒的に安く済みます</strong>。サイトのセキュリティは、CMSやプラグインの更新と合わせて“健康診断”として定期的に見るのが理想です。</p>
+    <div class="case-honest">⚠ <strong>正直にお伝えします。</strong>SSLを直すこと自体は難しくありません。本当の課題は「誰も見ていない状態」を放置しないこと。証明書・CMS・プラグインを含めて、定期的に点検する運用の仕組みを持てるかどうかが分かれ目です。</div>
+  </div>
+
+  <h2>よくある質問（FAQ）</h2>
+  <h3>SSL証明書が期限切れになると何が起きますか？</h3>
+  <p>ブラウザに「保護されていない通信」などの警告が表示され、多くの訪問者はその時点で離脱します。フォームは使われなくなり、検索評価も下がります。信頼・集客・安全のすべてを損ないます。</p>
+  <h3>SSL証明書の有効期限はどのくらいですか？</h3>
+  <p>多くの証明書は数か月〜1年程度で、短期化が進んでいます。手動運用では更新忘れが起きやすいため、自動更新の設定が実質的に必須です。</p>
+  <h3>自分のサイトのSSLが切れていないか、どう確認できますか？</h3>
+  <p>URL欄に鍵マークがあるか、「保護されていない通信」の表示が出ていないかを確認します。鍵マークをクリックすると有効期限も見られます。</p>
+
+  <h2>まとめ｜SSL失効は「運用の穴」から起きる</h2>
+  <p>SSL証明書の期限切れ・失効は、技術力ではなく運用の穴から起きます。そして症状が見た目に出ないまま、信頼と問い合わせを静かに奪っていきます。対策はシンプルで、自動更新を設定し、有効期限を定期的に監視すること。これで大半のトラブルは防げます。</p>
+  <p>まずは今すぐ、自社サイトのURL欄に鍵マークが表示されているかを確認してみてください。それが、いちばん簡単な健康診断です。</p>
+
+  <div class="inline-cta reveal">
+    <div class="inline-cta-tag">無料相談・費用契約なし</div>
+    <h3>「うちのサイトは大丈夫か」<br>SSL・CMS・保守状態をまとめて無料点検します。</h3>
+    <p>SSLの有効期限からWordPress・プラグインの更新状況まで点検し、優先度順に打ち手を整理してお渡しします。押し売りはしません。</p>
+    <div class="cta-btns-pair">
+      <a href="/service/prevention/#contact" class="btn-cta-red">無料でサイト点検を受ける →</a>
+      <a href="/column/wordpress-zeijakusei-furui-site/" class="btn-cta-ghost">古いサイトのリスク記事も読む</a>
+    </div>
+    <span class="btn-cta-note">オンライン対応・所要約30分・押し売りなし</span>
+  </div>
+
+</div>
+</article>
+
+<section class="related-section">
+  <div class="related-inner">
+    <div class="related-label">Related Articles</div>
+    <div class="related-grid">
+      <a href="/column/wordpress-zeijakusei-furui-site/" class="related-card">
+        <div class="related-card-tag">Webセキュリティ / 保守</div>
+        <div class="related-card-title">なぜWordPressの脆弱性被害は減らないのか？「古いサイト」を放置する日本企業の危うい現実。</div>
+      </a>
+      <a href="/column/wordpress-kanri-marumie/" class="related-card">
+        <div class="related-card-tag">Webセキュリティ / WordPress</div>
+        <div class="related-card-title">WordPressの管理画面、丸見えになっていませんか？5分でできる自己チェックと防御策。</div>
+      </a>
+      <a href="/column/komuten-site-tenken/" class="related-card">
+        <div class="related-card-tag">工務店Web集客 / 実態調査</div>
+        <div class="related-card-title">地方の工務店サイトを約9,000件診断してわかった「放置サイト」の実態と脱出策。</div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<div class="back-section">
+  <div class="back-section-inner">
+    <a href="/column/" class="back-link">← コラム一覧に戻る</a>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-logo">
+    <div class="footer-logo-mark"></div>
+    <span class="footer-logo-text"><span>A</span>idealize株式会社</span>
+  </div>
+  <span class="footer-copy">© 2020 AIdealize Inc. All rights reserved.</span>
+</footer>
+
+<script>
+(function(){
+  const btn=document.getElementById('navHamburger');
+  const drawer=document.getElementById('navDrawer');
+  const nav=document.getElementById('mainNav');
+  btn.addEventListener('click',function(){btn.classList.toggle('open');drawer.classList.toggle('open');});
+  drawer.querySelectorAll('.drawer-link').forEach(function(l){l.addEventListener('click',function(){btn.classList.remove('open');drawer.classList.remove('open');});});
+  window.addEventListener('scroll',function(){nav.classList.toggle('scrolled',window.scrollY>10);});
+})();
+const obs=new IntersectionObserver(function(e){e.forEach(function(x){if(x.isIntersecting)x.target.classList.add('visible');});},{threshold:0.08,rootMargin:'0px 0px -30px 0px'});
+document.querySelectorAll('.reveal').forEach(function(el){obs.observe(el);});
+</script>
+</body>
+</html>
