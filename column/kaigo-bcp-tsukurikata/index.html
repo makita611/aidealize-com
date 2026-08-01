@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>介護BCPの作り方｜自然災害・感染症2種類の手順と書くべき項目を解説【AIdealize】</title>
+<meta name="description" content="介護施設のBCP（業務継続計画）の作り方を、自然災害・感染症の2種類に分けて手順で解説。基本方針・体制、安否確認、優先業務の絞り込み、備蓄、代替手段、研修訓練まで書くべき項目を整理。ひな形を活かして最短で完成させる進め方も紹介します。">
+<link rel="canonical" href="https://aidealize.com/column/kaigo-bcp-tsukurikata/">
+<meta property="og:title" content="介護BCPの作り方｜自然災害・感染症2種類の手順と書くべき項目">
+<meta property="og:description" content="介護BCPの作り方を自然災害・感染症の2種類に分けて手順で解説。書くべき項目とひな形を活かした最短の進め方を紹介。">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://aidealize.com/column/kaigo-bcp-tsukurikata/">
+<meta property="og:site_name" content="AIdealize株式会社">
+<meta property="og:image" content="https://aidealize.com/images/jinzaitop1.jpg">
+<meta name="twitter:image" content="https://aidealize.com/images/jinzaitop1.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-P6VNBWH3');</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Article","headline":"介護BCPの作り方｜自然災害・感染症2種類の手順と書くべき項目を解説","description":"介護BCPの作り方を自然災害・感染症の2種類に分けて手順で解説。書くべき項目とひな形を活かした最短の進め方を紹介。","datePublished":"2026-08-02","author":{"@type":"Organization","name":"AIdealize株式会社"},"publisher":{"@type":"Organization","name":"AIdealize株式会社","url":"https://aidealize.com"}}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+{"@type":"Question","name":"介護BCPは何から作ればいいですか？","acceptedAnswer":{"@type":"Answer","text":"まず基本方針と推進体制（誰が指揮を執り、誰が代行するか）を決め、次に緊急時の連絡網・安否確認、優先業務の絞り込み、備蓄・代替手段、研修訓練計画の順で整理します。自然災害と感染症の2種類を別々に作成します。"}},
+{"@type":"Question","name":"自然災害BCPと感染症BCPは何が違いますか？","acceptedAnswer":{"@type":"Answer","text":"自然災害BCPは建物被害やライフライン停止を前提に避難・安全確保を、感染症BCPは職員の同時多数欠勤を前提にゾーニングや応援体制を中心に組みます。想定リスクが異なるため体制・手順も分けて作成します。"}},
+{"@type":"Question","name":"BCPのひな形は使ってよいですか？","acceptedAnswer":{"@type":"Answer","text":"厚生労働省のひな形は出発点として有効です。ただし空欄を埋めるだけでなく、連絡網・優先業務・代替手段を自施設の実情に合わせることで、実際に使えるBCPになります。"}}
+]}
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700;900&family=Shippori+Mincho:wght@400;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/column/article-base.css">
+</head>
+<body>
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-P6VNBWH3" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
+<nav id="mainNav">
+  <a href="/" class="nav-logo"><img src="/images/logo.png" alt="AIdealize"><span class="nav-logo-text"><span>AI</span>dealize</span></a>
+  <ul class="nav-links">
+    <li><a href="/column/">コラム</a></li>
+    <li><a href="/service/">サービス</a></li>
+    <li><a href="https://aidealize.com/bpr/">DX事例</a></li>
+    <li><a href="/company.html">会社概要</a></li>
+    <li><a href="/service/bcp/" class="nav-cta">BCP無料作成</a></li>
+  </ul>
+  <button class="nav-hamburger" id="navHamburger" aria-label="メニュー"><span></span><span></span><span></span></button>
+</nav>
+<div class="nav-drawer" id="navDrawer">
+  <ul>
+    <li><a href="/column/" class="drawer-link">コラム</a></li>
+    <li><a href="/service/" class="drawer-link">サービス</a></li>
+    <li><a href="https://aidealize.com/bpr/" class="drawer-link">DX事例</a></li>
+    <li><a href="/company.html" class="drawer-link">会社概要</a></li>
+    <li><a href="/service/bcp/">BCPを無料で作成する</a></li>
+  </ul>
+</div>
+
+<header class="article-header">
+  <div class="article-header-inner">
+    <nav class="breadcrumb" aria-label="パンくず">
+      <a href="/">ホーム</a><span>/</span><a href="/column/">コラム</a><span>/</span><span>介護BCP・作り方</span>
+    </nav>
+    <div class="article-tag">制度・BCP作成</div>
+    <h1 class="article-h1">介護BCPの作り方。<br>自然災害・感染症2種類の手順と書くべき項目。</h1>
+    <div class="article-meta">
+      <div class="article-meta-item">📅 2026年8月2日</div>
+      <div class="article-meta-item">⏱ 読了約9分</div>
+      <div class="article-meta-item">✍ AIdealize編集部</div>
+    </div>
+  </div>
+</header>
+
+<article class="article-body">
+<div class="article-body-inner">
+
+  <div class="summary-box reveal">
+    <div class="summary-box-title">この記事でわかること</div>
+    <ul>
+      <li>介護BCPを作る全体の流れ（5ステップ）</li>
+      <li>自然災害BCP・感染症BCPそれぞれに書くべき項目</li>
+      <li>「優先業務の絞り込み」がBCPの核心である理由</li>
+      <li>ひな形（雛形）を活かして最短で完成させる進め方</li>
+    </ul>
+  </div>
+
+  <p>介護施設のBCP（業務継続計画）は義務化されていますが、いざ作ろうとすると「項目が多くて、どの順番で何を書けばいいか分からない」と手が止まりがちです。この記事では、<strong>作成の流れと、自然災害・感染症それぞれに書くべき項目</strong>を、実務の順序に沿って整理します。</p>
+
+  <p>まだ義務化の全体像（時期・減算）を確認していない方は、先に<a href="/column/kaigo-bcp-gimuka/">介護施設のBCP義務化はいつから？未策定の減算リスク</a>をご覧いただくと、この記事の位置づけが分かりやすくなります。</p>
+
+  <h2>介護BCP作成の全体像（5ステップ）</h2>
+
+  <p>細部は事業形態で変わりますが、どの介護BCPも大きくは次の順序で組み立てます。いきなり本文を書き始めず、この流れを頭に入れてから進めると迷いません。</p>
+
+  <div class="effect-grid reveal">
+    <div class="effect-card"><div class="effect-num">STEP 01</div><div class="effect-title">方針と体制を決める</div><div class="effect-body">基本方針、指揮系統、担当者と代行順位。BCPの土台です。</div></div>
+    <div class="effect-card"><div class="effect-num">STEP 02</div><div class="effect-title">被害・リスクを想定する</div><div class="effect-body">自施設の立地・建物・利用者像から、災害と感染症の影響を洗い出す。</div></div>
+    <div class="effect-card"><div class="effect-num">STEP 03</div><div class="effect-title">優先業務を絞る</div><div class="effect-body">止めない中核業務と、一時停止できる業務を仕分ける。</div></div>
+  </div>
+  <div class="effect-grid reveal">
+    <div class="effect-card"><div class="effect-num">STEP 04</div><div class="effect-title">資源と代替手段を用意</div><div class="effect-body">人員・設備・物資の備え、欠けたときの代わりの手を決める。</div></div>
+    <div class="effect-card"><div class="effect-num">STEP 05</div><div class="effect-title">研修・訓練につなげる</div><div class="effect-body">作って終わりにせず、教育と訓練の年間計画に落とす。</div></div>
+    <div class="effect-card"><div class="effect-num">＋更新</div><div class="effect-title">定期的に見直す</div><div class="effect-body">人員異動・制度改定に合わせて内容を最新化する。</div></div>
+  </div>
+
+  <h2>自然災害BCPに書くべき項目</h2>
+
+  <p>自然災害BCPは、地震・水害・台風・大規模停電などで<strong>建物やライフラインが被害を受けた状態</strong>を前提にします。人手と設備が制約されるなかで、利用者の安全を守り、サービスをどう継続・再開するかを描きます。</p>
+
+  <ol>
+    <li><strong>推進体制と参集ルール</strong>——発災時に誰が判断し、誰がどこに集まるか。夜間・休日の体制も明記。</li>
+    <li><strong>安否確認</strong>——利用者・職員・家族の安否をどの手段で確認するか（連絡網・安否確認の一次手段と代替）。</li>
+    <li><strong>利用者の安全確保・避難</strong>——避難経路、医療的ケア継続、要介護者の搬送方法。</li>
+    <li><strong>備蓄</strong>——水・食料・医薬品・衛生用品・電源の備蓄量と保管場所のリスト。</li>
+    <li><strong>ライフライン停止時の対応</strong>——停電・断水・通信途絶それぞれの代替手段。</li>
+    <li><strong>優先業務と復旧目標</strong>——最優先で継続する業務、いつまでに何を再開するか。</li>
+  </ol>
+
+  <div class="point-box">
+    <div class="point-box-label">POINT</div>
+    <p>ハザードマップで自施設が<strong>浸水・土砂災害の想定区域に入っているか</strong>を必ず確認しましょう。立地リスクによって、垂直避難か水平避難か、事前の対応が変わります。</p>
+  </div>
+
+  <!-- 中間CTA -->
+  <div class="inline-cta reveal">
+    <div class="inline-cta-tag">元消防士 × AI ／ 費用0円</div>
+    <h3>項目が多くて手が止まる方へ。<br>たたき台をAIが自動生成します。</h3>
+    <p>確認事項リストに記入するだけで、ガイドライン準拠のBCP本文を自動生成。災害現場を知る元消防士が確認し、Word形式でお届けします。</p>
+    <div class="cta-btns-pair"><a href="/service/bcp/" class="btn-cta-red">BCP無料作成の詳細を見る →</a></div>
+    <span class="btn-cta-note">介護・医療・中小企業対応／全国オンライン完結</span>
+  </div>
+
+  <h2>感染症BCPに書くべき項目</h2>
+
+  <p>感染症BCPは、新型コロナやインフルエンザ等の集団感染で<strong>職員が同時に多数欠勤する状況</strong>を前提にします。建物は無事でも「人が動かせない」ことが最大の危機になる、という点が自然災害と大きく違います。</p>
+
+  <ol>
+    <li><strong>感染防止体制</strong>——平常時の予防（手指衛生・健康観察）と、発生時の指揮体制。</li>
+    <li><strong>初動対応</strong>——感染疑い・陽性が出たときの報告経路、保健所・嘱託医との連携。</li>
+    <li><strong>ゾーニング</strong>——感染エリアと非感染エリアの区分、動線・ケア方法の分離。</li>
+    <li><strong>職員確保・応援体制</strong>——欠勤が増えたときのシフト再編、法人内・他事業所からの応援。</li>
+    <li><strong>優先業務の縮小運用</strong>——最小人数でも止めない業務と、一時縮小する業務の線引き。</li>
+    <li><strong>物資</strong>——マスク・手袋・ガウン・消毒液など感染対策物資の備蓄。</li>
+  </ol>
+
+  <h2>BCPの核心は「優先業務の絞り込み」</h2>
+
+  <p>多くの介護BCPがつまずくのが、この優先業務の絞り込みです。緊急時は人手も時間も足りません。<strong>「全部大事」では現場が動けなくなる</strong>ため、あらかじめ「何を残し、何を一時停止するか」を決めておくことがBCPの中核になります。</p>
+
+  <div class="compare-wrap">
+    <table class="compare-table">
+      <thead><tr><th>業務の例</th><th>平常時</th><th class="hl">緊急時の扱い</th></tr></thead>
+      <tbody>
+        <tr><td>食事・水分・排泄など生命維持ケア</td><td>通常提供</td><td class="hl"><span class="check">✓</span> 最優先で継続</td></tr>
+        <tr><td>与薬・医療的ケア</td><td>通常提供</td><td class="hl"><span class="check">✓</span> 継続（応援確保）</td></tr>
+        <tr><td>入浴・レク・行事</td><td>通常提供</td><td>一時停止・縮小</td></tr>
+        <tr><td>記録・事務作業</td><td>通常</td><td>簡素化・後回し可</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p>この仕分けが決まっていれば、人員が半分になっても現場は「まず何をするか」を迷いません。ここを具体的に書けているかが、使えるBCPかどうかの分かれ目です。</p>
+
+  <h2>ひな形を活かして最短で仕上げる</h2>
+
+  <p>ゼロから全項目を書き起こすのは大変です。厚生労働省のひな形（雛形）をたたき台にし、<strong>自施設の実情（人員・立地・利用者像・設備）を上書きしていく</strong>のが現実的で速い進め方です。埋めるだけで終わらせず、連絡網・優先業務・代替手段の3点を自施設に合わせることを意識してください。詳しくは<a href="/column/kaigo-bcp-hinagata/">BCPのひな形を埋めるだけで大丈夫？形骸化を防ぐ作り方</a>で解説しています。</p>
+
+  <p>私たちAIdealizeでは、この「たたき台の自動生成＋元消防士の確認」を<strong>費用0円のBCP無料作成サービス</strong>として提供しています。項目を一から考える負担なく、自然災害・感染症の2種類を監査で通用する形に仕上げられます。</p>
+
+  <h2>まとめ</h2>
+
+  <p>介護BCPは、①方針と体制→②リスク想定→③優先業務の絞り込み→④資源と代替手段→⑤研修訓練、の順で組み立てます。自然災害と感染症では前提が違うため、2種類を別々に。<strong>優先業務の仕分けを具体的に書けているか</strong>が、使えるBCPの決め手です。完璧を待たず、たたき台から始めて運用しながら育てていきましょう。</p>
+
+  <!-- 末尾CTA -->
+  <div class="inline-cta reveal">
+    <div class="inline-cta-tag">元消防士 × AI ／ 30分・費用0円</div>
+    <h3>介護施設のBCP、まず無料で作ってしまいましょう。</h3>
+    <p>義務化・減算対応のBCPを、元消防士とAIが無料で作成。自然災害・感染症の2種類とも、全国オンラインで完結します。</p>
+    <div class="cta-btns-pair"><a href="/service/bcp/" class="btn-cta-red">BCP無料作成の詳細・申し込み →</a></div>
+    <span class="btn-cta-note">しつこい営業はしません／まず話を聞くだけでもOK</span>
+  </div>
+
+</div>
+</article>
+
+<section class="related-section">
+  <div class="related-inner">
+    <div class="related-label">Related Articles</div>
+    <div class="related-grid">
+      <a href="/column/kaigo-bcp-gimuka/" class="related-card"><div class="related-card-tag">制度 / BCP義務化</div><div class="related-card-title">介護施設のBCP義務化はいつから？未策定の減算リスクと2種類のBCPの作り方。</div></a>
+      <a href="/column/kaigo-bcp-hinagata/" class="related-card"><div class="related-card-tag">BCP / ひな形</div><div class="related-card-title">BCPのひな形を埋めるだけで大丈夫？形骸化を防ぐ作り方。</div></a>
+      <a href="/service/bcp/" class="related-card"><div class="related-card-tag">サービス / BCP無料作成</div><div class="related-card-title">介護施設のBCPを無料作成。元消防士×AIが30分で、義務化・減算に対応。</div></a>
+      <a href="/column/houkan-ict-kasan/" class="related-card"><div class="related-card-tag">ICT加算 / 制度</div><div class="related-card-title">訪問看護のICT加算とは？算定要件・申請の流れとAI記録ツールでの満たし方。</div></a>
+    </div>
+  </div>
+</section>
+
+<div class="back-section"><div class="back-section-inner"><a href="/column/" class="back-link">← コラム一覧に戻る</a></div></div>
+
+<footer>
+  <div class="footer-logo"><div class="footer-logo-mark"></div><span class="footer-logo-text"><span>A</span>idealize株式会社</span></div>
+  <span class="footer-copy">© 2020 AIdealize Inc. All rights reserved.</span>
+</footer>
+
+<script src="/js/gas-forms.js"></script>
+<script>
+(function(){
+  const btn=document.getElementById('navHamburger'),drawer=document.getElementById('navDrawer'),nav=document.getElementById('mainNav');
+  btn.addEventListener('click',function(){btn.classList.toggle('open');drawer.classList.toggle('open');});
+  drawer.querySelectorAll('.drawer-link').forEach(function(l){l.addEventListener('click',function(){btn.classList.remove('open');drawer.classList.remove('open');});});
+  window.addEventListener('scroll',function(){nav.classList.toggle('scrolled',window.scrollY>10);});
+})();
+const obs=new IntersectionObserver(function(e){e.forEach(function(x){if(x.isIntersecting)x.target.classList.add('visible');});},{threshold:0.08,rootMargin:'0px 0px -30px 0px'});
+document.querySelectorAll('.reveal').forEach(function(el){obs.observe(el);});
+</script>
+</body>
+</html>
