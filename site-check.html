@@ -56,7 +56,24 @@ body::before { content:''; position:fixed; inset:0; background-image: linear-gra
 .pill.warn { color:var(--warn); background:rgba(201,138,40,0.12); }
 .pill.bad { color:var(--bad); background:rgba(224,82,77,0.1); }
 .checks { margin-top:24px; }
+.cat-block { margin-top:10px; }
+.cat-head { display:flex; align-items:baseline; justify-content:space-between; gap:12px; border-top:2px solid var(--navy); padding-top:16px; margin-top:20px; }
+.cat-name { font-size:15px; font-weight:900; letter-spacing:.5px; }
+.cat-score { font-family:'Rajdhani',sans-serif; font-size:26px; font-weight:700; line-height:1; }
+.cat-score span { font-size:12px; color:var(--muted); font-weight:600; margin-left:2px; }
+.cat-score.good { color:var(--good); }
+.cat-score.warn { color:var(--warn); }
+.cat-score.bad  { color:var(--bad); }
+.cat-desc { font-size:12px; color:var(--muted); margin:3px 0 2px; }
 .check { display:flex; gap:14px; padding:16px 0; border-top:1px solid var(--line); }
+.cat-desc + .check { border-top:none; }
+.pick-block { margin-top:18px; border:1px solid var(--line); border-radius:10px; padding:4px 18px 12px; }
+.pick-block.worst { border-left:4px solid var(--bad); }
+.pick-block.best { border-left:4px solid var(--good); }
+.pick-head { font-size:14px; font-weight:900; padding:15px 0 2px; letter-spacing:.3px; }
+.pick-block .check:first-of-type { border-top:none; }
+.rest-note { margin-top:16px; background:var(--bg3); border-radius:10px; padding:16px 18px; font-size:13px; line-height:1.85; color:var(--text); }
+.rest-note b { color:var(--navy); }
 .check-ic { width:24px; height:24px; border-radius:50%; flex-shrink:0; display:flex; align-items:center; justify-content:center; font-size:13px; font-weight:700; color:#fff; margin-top:1px; }
 .check-ic.good { background:var(--good); }
 .check-ic.warn { background:var(--warn); }
@@ -98,8 +115,8 @@ body::before { content:''; position:fixed; inset:0; background-image: linear-gra
 
   <div class="header">
     <div class="header-badge">無料サイト即時診断</div>
-    <h1>URLを入れるだけ。<br><span>60秒で</span>サイトの伸びしろが分かる。</h1>
-    <p>スマホ対応・SSL・検索対策・SNS表示・問い合わせ導線・表示速度など、<br>集客の観点で<strong style="color:var(--text)">その場で自動チェック</strong>します。登録も費用も不要。</p>
+    <h1>URLを入れるだけ。<br><span>60秒で</span>サイトの&ldquo;作り込み度&rdquo;が分かる。</h1>
+    <p>スマホ対応・SSL・検索対策・SNS表示・問い合わせ導線・表示速度など、<br>成約する&ldquo;器&rdquo;として整っているかを<strong style="color:var(--text)">その場で自動チェック</strong>します。登録も費用も不要。</p>
   </div>
 
   <div class="card" id="input-card">
@@ -120,9 +137,9 @@ body::before { content:''; position:fixed; inset:0; background-image: linear-gra
 
   <div id="result">
     <div class="card">
-      <div class="card-title">診断結果</div>
+      <div class="card-title">サイトの作り込み度</div>
       <div class="score-wrap">
-        <div class="score-ring" id="ring"><div class="score-inner"><div class="score-num" id="score">0</div><div class="score-cap">SCORE</div></div></div>
+        <div class="score-ring" id="ring"><div class="score-inner"><div class="score-num" id="score">0</div><div class="score-cap">作り込み度</div></div></div>
         <div class="score-side">
           <h2 id="score-head">診断結果</h2>
           <div class="surl" id="res-url"></div>
@@ -131,17 +148,18 @@ body::before { content:''; position:fixed; inset:0; background-image: linear-gra
       </div>
       <div class="checks" id="checks"></div>
       <div class="disclaimer">
-        ※本診断は、サイトのHTMLから自動で取得できる範囲の技術チェックです。実際の集客は、これに加えて<strong>Googleマップ（MEO）の登録状況・競合との比較・広告の費用対効果・問い合わせ後の成約</strong>までを見て初めて全体像が分かります。その深い部分を、下記の無料レポートで人の目で確認します。
+        ※本診断は、HTMLから分かる<strong>「サイトの作り込み度」</strong>の自動チェックです。<strong>実際に集客できているか（検索順位・アクセス数）や、デザインの古さ・見やすさは、コードだけでは分かりません。</strong>そこは検索データ（Googleサーチコンソール／アナリティクス）と<strong>集客のプロの目</strong>で、下記の無料レポートで確認します。
       </div>
     </div>
 
     <div class="lead-card" id="lead-form-wrap">
-      <h3>📩 この自動診断に、<span>人の目の1枚レポート</span>を無料でお付けします</h3>
-      <p>自動チェックでは分からない、御社ならではの伸びしろを担当者が確認してお渡しします。費用も契約も不要。受け取ってから、続けるか決めてください。</p>
+      <h3>📩 この自動診断に、<span>集客のプロによる1枚レポート</span>を無料でお付けします</h3>
+      <p>自動チェックでは分からない「実際に集客できているか」「デザインの古さ・刺さり」を、検索データと集客のプロの目で確認してお渡しします。費用も契約も不要。受け取ってから、続けるか決めてください。</p>
       <ul>
         <li>Googleマップ（MEO）の登録・見え方</li>
         <li>「地域名＋業種」での検索順位と競合比較</li>
         <li>まず直すべき一箇所と、具体的な打ち手</li>
+        <li><strong>検索データ（サーチコンソール等）をご共有いただければ</strong>、実際のアクセス・順位・取りこぼしまで踏み込んで診断します</li>
       </ul>
       <div class="input-row">
         <input class="text-input" id="lead-name" type="text" placeholder="お名前（例：山田 太郎）">
@@ -214,16 +232,11 @@ function render(data){
   const ring = document.getElementById('ring');
   const color = data.score >= 75 ? 'var(--good)' : data.score >= 50 ? 'var(--warn)' : 'var(--bad)';
   ring.style.setProperty('--ring', color);
-  const head = data.score >= 75 ? '基礎はしっかりできています' : data.score >= 50 ? '伸びしろがいくつかあります' : '改善で大きく変わる余地があります';
+  const head = data.score >= 75 ? '土台は合格。勝負は「集客・成約」から先です' : data.score >= 50 ? '伸びしろがいくつかあります' : '改善で大きく変わる余地があります';
   document.getElementById('score-head').textContent = head;
   document.getElementById('res-url').textContent = data.url;
 
-  document.getElementById('pills').innerHTML =
-    '<span class="pill good">良好 '+data.counts.good+'</span>' +
-    '<span class="pill warn">改善余地 '+data.counts.warn+'</span>' +
-    '<span class="pill bad">要対応 '+data.counts.bad+'</span>';
-
-  document.getElementById('checks').innerHTML = data.checks.map(c=>{
+  const rowHtml = (c)=>{
     const icon = c.status==='good'?'✓':(c.status==='warn'?'!':'×');
     return '<div class="check">' +
       '<div class="check-ic '+c.status+'">'+icon+'</div>' +
@@ -232,7 +245,56 @@ function render(data){
         '<div class="check-detail">'+esc(c.detail)+'</div>' +
         '<div class="check-why">なぜ大事か：'+esc(c.why)+'</div>' +
       '</div></div>';
-  }).join('');
+  };
+  const cats = data.categories;
+
+  if (!cats) {
+    // フォールバック（旧API形式）
+    document.getElementById('pills').innerHTML =
+      '<span class="pill good">良好 '+data.counts.good+'</span>' +
+      '<span class="pill warn">改善余地 '+data.counts.warn+'</span>' +
+      '<span class="pill bad">要対応 '+data.counts.bad+'</span>';
+    document.getElementById('checks').innerHTML = data.checks.map(rowHtml).join('');
+  } else {
+    const catMeta = {
+      base:   { name:'土台（衛生）',       desc:'SSL・スマホ対応など最低限の作り' },
+      modern: { name:'見た目の新しさ',     desc:'古い作り・放置していないか' },
+      growth: { name:'集客・成約の導線',   desc:'計測・電話・LINE・信頼づくり' },
+    };
+    const order = ['base','modern','growth'];
+    const col = (s)=> s>=75?'good':s>=50?'warn':'bad';
+
+    document.getElementById('pills').innerHTML = order.map(key=>{
+      const cat = cats[key]; if(!cat || cat.score==null) return '';
+      return '<span class="pill '+col(cat.score)+'">'+catMeta[key].name+' '+cat.score+'</span>';
+    }).join('');
+
+    // 全項目は見せず、ワースト3＋ベスト3だけ表示。残りは無料レポートへ誘導（続きが気になる設計）。
+    const sev = { bad:0, warn:1, good:2 };
+    const catPri = { growth:0, modern:1, base:2 }; // 集客導線を優先して見せる
+    const worst = data.checks.filter(c=>c.status!=='good')
+      .sort((a,b)=> (sev[a.status]-sev[b.status]) || (catPri[a.cat]-catPri[b.cat])).slice(0,3);
+    const best = data.checks.filter(c=>c.status==='good')
+      .sort((a,b)=> catPri[a.cat]-catPri[b.cat]).slice(0,3);
+    const shown = new Set([...worst, ...best].map(c=>c.key));
+    const rest = data.checks.filter(c=>!shown.has(c.key));
+    const teaser = rest.slice(0,4).map(c=>c.label).join('・');
+
+    let html = '';
+    if (worst.length) {
+      html += '<div class="pick-block worst"><div class="pick-head">🔧 まず直したい '+worst.length+'点</div>' +
+        worst.map(rowHtml).join('') + '</div>';
+    }
+    if (best.length) {
+      html += '<div class="pick-block best"><div class="pick-head">✅ できている '+best.length+'点</div>' +
+        best.map(rowHtml).join('') + '</div>';
+    }
+    if (rest.length) {
+      html += '<div class="rest-note">このほか <b>'+rest.length+'項目</b>（'+esc(teaser)+' など）を診断済みです。'+
+        '<b>「まず直すべき一箇所」と全項目の詳細</b>は、下の無料レポートでお伝えします。</div>';
+    }
+    document.getElementById('checks').innerHTML = html;
+  }
 
   // スコアリング数字＆リングをアニメーション
   const target = data.score;
