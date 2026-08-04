@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>【提案イメージ】コヤマ営繕 公式サイト案</title>
+<style>
+:root{
+  --ink:#2a231b;          /* 濃い焦げ茶。木の色 */
+  --wood:#8a5a2b;         /* 主役の木色 */
+  --terra:#c65f2b;        /* CTA。テラコッタ */
+  --paper:#f6f2ec;        /* 温かい紙色 */
+  --cream:#fbf9f5;
+  --line:#e7ddd1;
+  --muted:#6b5d4f;
+  --max:1040px;
+  --hd:64px;
+  --mono:"DIN Alternate","Roboto Mono",ui-monospace,Menlo,Consolas,monospace;
+}
+:root{color-scheme:light}
+html,body{background:var(--cream)}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:"Hiragino Kaku Gothic ProN","Yu Gothic",system-ui,sans-serif;
+  color:var(--ink);line-height:1.9;-webkit-text-size-adjust:100%;
+  font-feature-settings:"palt";letter-spacing:.02em}
+img{max-width:100%;height:auto;display:block}
+a{color:inherit}
+.wrap{max-width:var(--max);margin:0 auto;padding:0 22px}
+section{padding:84px 0;scroll-margin-top:var(--hd);background:var(--cream)}
+.paper{background:var(--paper)}
+
+.proposal{background:#241b12;color:#ffd76e;text-align:center;font-size:12.5px;
+  padding:8px 14px;letter-spacing:.04em;line-height:1.6}
+
+.label{display:inline-flex;align-items:center;gap:12px;margin-bottom:12px;
+  font-size:13px;letter-spacing:.12em;font-weight:800;color:var(--wood)}
+.label i{font-family:var(--mono);font-style:normal;color:#b3a190;font-weight:700;
+  font-size:14px;border-right:1px solid var(--line);padding-right:12px}
+h2{font-size:clamp(23px,3.6vw,34px);line-height:1.5;margin-bottom:14px;font-weight:800}
+.lead{color:var(--muted);margin-bottom:40px;font-size:16px;max-width:38em}
+
+.imgslot{background:repeating-linear-gradient(135deg,#ece4da 0 10px,#f2ece3 10px 20px);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;
+  color:#96876f;font-size:12.5px;text-align:center;padding:16px;line-height:1.6;border-radius:8px}
+.imgslot .tag{font-family:var(--mono);font-size:10px;letter-spacing:.12em;color:#a3957e;
+  border:1px solid #d4c8b8;border-radius:3px;padding:2px 8px}
+.imgslot b{font-size:13px;color:#77684f;font-weight:800}
+.todo{opacity:.72;font-size:12.5px}
+
+header{position:sticky;top:0;z-index:50;background:rgba(251,249,245,.96);
+  border-bottom:1px solid var(--line);backdrop-filter:saturate(1.3) blur(6px)}
+.hd{display:flex;align-items:center;justify-content:space-between;gap:16px;
+  padding:11px 22px;max-width:var(--max);margin:0 auto}
+.logo{font-weight:800;font-size:16.5px;letter-spacing:.05em;line-height:1.35}
+.logo span{display:block;font-size:10.5px;color:#98876f;font-weight:500;letter-spacing:.12em}
+.nav{display:flex;gap:22px;font-size:14px}
+.nav a{text-decoration:none;color:#544737;padding:4px 0;border-bottom:2px solid transparent}
+.nav a:hover{color:var(--wood);border-color:var(--wood)}
+.btn{display:inline-block;background:var(--terra);color:#fff;text-decoration:none;
+  padding:14px 30px;border-radius:6px;font-weight:700;font-size:15px;letter-spacing:.04em;
+  box-shadow:0 3px 14px rgba(198,95,43,.28)}
+.btn:hover{filter:brightness(1.07)}
+.btn.line{background:transparent;color:var(--wood);border:1.5px solid var(--wood);box-shadow:none}
+
+.hero{position:relative;background:linear-gradient(160deg,#f6f0e8 0%,#efe6da 60%,#f4eee6 100%);
+  border-bottom:1px solid var(--line);overflow:hidden}
+.hero::after{content:"";position:absolute;left:-120px;bottom:-160px;width:460px;height:460px;
+  border-radius:50%;background:radial-gradient(circle,rgba(138,90,43,.10),transparent 65%)}
+.hero .wrap{position:relative;padding:92px 22px 70px;z-index:1}
+.hero .eyebrow{display:inline-block;font-size:12.5px;letter-spacing:.14em;margin-bottom:22px;
+  color:var(--wood);font-weight:800;background:#f1e6d8;border-radius:20px;padding:6px 16px}
+.hero h1{font-size:clamp(27px,4.9vw,45px);line-height:1.5;font-weight:800}
+.hero h1 em{font-style:normal;color:var(--wood)}
+.hero p{margin-top:22px;font-size:clamp(15px,1.9vw,17px);max-width:32em;color:#4d4234;line-height:2}
+.hero .cta{margin-top:32px;display:flex;gap:12px;flex-wrap:wrap}
+.stats{display:flex;border-top:1px solid var(--line);margin-top:46px}
+.stats div{flex:1;padding:20px 8px 0}
+.stats b{font-family:var(--mono);font-size:clamp(23px,3.6vw,31px);color:var(--wood);display:block;
+  line-height:1.15;font-weight:800}
+.stats b i{font-style:normal;font-size:14px;margin-left:2px}
+.stats small{font-size:12px;color:var(--muted)}
+
+.fields{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.field{background:#fff;border:1px solid var(--line);border-radius:10px;overflow:hidden}
+.field .imgslot{aspect-ratio:16/10;border-radius:0}
+.field .body{padding:18px 20px}
+.field h3{font-size:16.5px;font-weight:800;margin-bottom:4px}
+.field p{font-size:13.5px;color:var(--muted);line-height:1.8}
+
+.reasons{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.reason{background:#fff;border:1px solid var(--line);border-top:3px solid var(--wood);
+  border-radius:0 0 10px 10px;padding:24px}
+.reason h3{font-size:17px;font-weight:800;margin-bottom:8px}
+.reason p{font-size:14px;color:var(--muted)}
+
+.works{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.work{background:#fff;border:1px solid var(--line);border-radius:10px;overflow:hidden}
+.work .imgslot{aspect-ratio:4/3;border-radius:0}
+.work .body{padding:16px 18px}
+.work .cat{font-family:var(--mono);font-size:11.5px;color:var(--wood);font-weight:800;letter-spacing:.06em}
+.work h3{font-size:15.5px;font-weight:800;margin:4px 0 6px;line-height:1.55}
+.work .spec{font-size:12.5px;color:var(--muted);line-height:1.7;border-top:1px dashed var(--line);
+  margin-top:8px;padding-top:8px}
+.work .spec span{display:inline-block;margin-right:12px}
+.work .spec b{color:var(--ink);font-weight:800}
+
+.voice{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.voice div{background:#fff;border:1px solid var(--line);border-radius:10px;padding:22px}
+.voice p{font-size:14px;line-height:1.85}
+.voice cite{display:block;margin-top:12px;font-size:12.5px;color:var(--muted);font-style:normal}
+
+.flow{counter-reset:f;max-width:760px}
+.flow li{list-style:none;counter-increment:f;padding:18px 0 18px 60px;position:relative;
+  border-bottom:1px dashed var(--line)}
+.flow li:last-child{border-bottom:0}
+.flow li::before{content:counter(f);position:absolute;left:8px;top:18px;width:35px;height:35px;
+  background:var(--wood);color:#fff;border-radius:50%;display:flex;align-items:center;
+  justify-content:center;font-family:var(--mono);font-weight:800;font-size:14px}
+.flow b{display:block;font-size:16px;font-weight:800}
+.flow p{font-size:13.5px;color:var(--muted)}
+
+table{width:100%;border-collapse:collapse;font-size:14.5px}
+th,td{border-bottom:1px solid var(--line);padding:16px 12px;text-align:left;vertical-align:top}
+th{width:30%;font-weight:700;white-space:nowrap;color:var(--muted)}
+
+.cta-band{background:var(--terra);color:#fff;text-align:center}
+.cta-band h2{color:#fff}
+.cta-band .label{color:rgba(255,255,255,.9);justify-content:center}
+.cta-band .label i{color:rgba(255,255,255,.7);border-color:rgba(255,255,255,.35)}
+.cta-band .btn{background:#fff;color:var(--terra);box-shadow:none}
+.cta-row{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:8px}
+.cta-band .btn.line{color:#fff;border-color:rgba(255,255,255,.7);background:transparent}
+.tel-big{font-family:var(--mono);font-size:clamp(26px,4.5vw,38px);font-weight:800;
+  letter-spacing:.02em;display:inline-block;margin:8px 0 2px;text-decoration:none;color:#fff}
+
+footer{background:var(--ink);color:#f5efe8;padding:46px 0 96px;font-size:13.5px}
+.copy{margin-top:26px;padding-top:16px;border-top:1px solid rgba(255,255,255,.18);
+  font-size:12px;opacity:.75;line-height:1.8}
+
+.sticky{display:none}
+@media(max-width:980px){ .nav{gap:15px;font-size:13px} }
+@media(max-width:860px){
+  :root{--hd:58px}
+  .nav{display:none}
+  .fields,.reasons,.works,.voice{grid-template-columns:1fr}
+  .hero .wrap{padding:58px 22px 48px}
+  section{padding:54px 0}
+  .stats{flex-wrap:wrap}
+  .stats div{flex:1 0 50%;padding:16px 8px 8px}
+  .sticky{display:flex;position:fixed;left:0;right:0;bottom:0;z-index:60;background:#fff;
+    border-top:1px solid var(--line);padding:8px;gap:8px;box-shadow:0 -3px 16px rgba(0,0,0,.12)}
+  .sticky a{flex:1;text-align:center;padding:14px 6px;border-radius:6px;text-decoration:none;
+    font-weight:700;font-size:14.5px}
+  .sticky .c{background:var(--ink);color:#fff}
+  .sticky .m{background:var(--terra);color:#fff}
+}
+</style>
+</head>
+<body>
+
+<div class="proposal">これはコヤマ営繕様への<strong>提案イメージ</strong>です（写真・数値は仮のもの。御社の実際の施工写真・実績に差し替えます／検索エンジン非掲載）</div>
+
+<header>
+  <div class="hd">
+    <div class="logo">コヤマ営繕<span>長野県／新築・リフォーム・建築全般</span></div>
+    <nav class="nav">
+      <a href="#service">できること</a>
+      <a href="#reason">選ばれる理由</a>
+      <a href="#works">施工事例</a>
+      <a href="#flow">家づくりの流れ</a>
+      <a href="#voice">お客様の声</a>
+      <a href="#company">会社概要</a>
+    </nav>
+    <a class="btn" href="#contact" style="padding:10px 20px;font-size:14px">相談する</a>
+  </div>
+</header>
+
+<div class="hero">
+  <div class="wrap">
+    <div class="eyebrow">長野県◯◯市　新築・リフォーム・解体まで一社で</div>
+    <h1>ハウスメーカーには、<br><em>できない家づくりを。</em></h1>
+    <p>コヤマ営繕は、地元の工務店です。規格の枠にとらわれず、ご家族の「こう暮らしたい」から一緒に考える。新築もリフォームも、建てたあとのちょっとした修繕まで、同じ担当が長くお付き合いします。</p>
+    <div class="cta">
+      <a class="btn" href="#contact">家づくりの相談をする</a>
+      <a class="btn line" href="#works">施工事例を見る</a>
+    </div>
+    <div class="stats">
+      <div><b>◯◯<i>年</i></b><small>創業。地元で積み重ねて<span class="todo">※実数に</span></small></div>
+      <div><b>◯◯◯<i>件</i></b><small>施工実績<span class="todo">※実数に</span></small></div>
+      <div><b>新築〜<i>リフォーム</i></b><small>建築のことなら一社で</small></div>
+      <div><b>無料</b><small>現地調査・お見積り</small></div>
+    </div>
+  </div>
+</div>
+
+<!-- 01 できること -->
+<section id="service">
+  <div class="wrap">
+    <span class="label"><i>01</i>できること</span>
+    <h2>建てるのも、直すのも、壊すのも。</h2>
+    <p class="lead">新築からリフォーム、基礎・解体・土木まで。建築に関わることは、まとめてお任せいただけます。</p>
+    <div class="fields">
+      <div class="field"><div class="imgslot"><span class="tag">IMAGE</span><b>新築住宅の外観・内観写真</b></div>
+        <div class="body"><h3>新築工事</h3><p>間取りも素材も、ご家族に合わせて自由設計。「こんな暮らしがしたい」から一緒に形にします。</p></div></div>
+      <div class="field"><div class="imgslot"><span class="tag">IMAGE</span><b>リフォーム施工の写真</b></div>
+        <div class="body"><h3>リフォーム工事</h3><p>水回りの交換から間取り変更、増改築まで。住みながらの工事も、段取りで負担を最小限に。</p></div></div>
+      <div class="field"><div class="imgslot"><span class="tag">IMAGE</span><b>基礎・解体・土木の現場写真</b></div>
+        <div class="body"><h3>基礎・解体・土木</h3><p>建て替え前の解体や外構、土木まで。窓口をひとつにまとめられるので、話が早く進みます。</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- 02 選ばれる理由 -->
+<section id="reason" class="paper">
+  <div class="wrap">
+    <span class="label"><i>02</i>選ばれる理由</span>
+    <h2>「夢が叶う家を建てる」ために。</h2>
+    <p class="lead">大きな会社にはない、地元工務店だからできることがあります。</p>
+    <div class="reasons">
+      <div class="reason"><h3>規格にしばられない自由設計</h3>
+        <p>ハウスメーカーのカタログにない形も、素材も。予算とご要望のあいだを、一緒に探していきます。</p></div>
+      <div class="reason"><h3>建てたあとも、近くにいる</h3>
+        <p>地元だから、何かあればすぐに駆けつけられます。「ちょっと見てほしい」に長く応え続けます。</p></div>
+      <div class="reason"><h3>担当が最後まで変わらない</h3>
+        <p>相談から完成、その先まで、同じ人がお付き合いします。話がぶれず、要望が正しく伝わります。</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- 03 施工事例＝このサイトの主役 -->
+<section id="works">
+  <div class="wrap">
+    <span class="label"><i>03</i>施工事例</span>
+    <h2>これまで手がけた、家づくり。</h2>
+    <p class="lead">実際の工事内容・工期・費用の目安まで載せると、ご家族はぐっと相談しやすくなります。<span class="todo">※記載イメージ。御社の実績・写真に差し替えます</span></p>
+    <div class="works">
+      <div class="work"><div class="imgslot"><span class="tag">IMAGE</span><b>新築 外観 / 内観</b></div>
+        <div class="body"><div class="cat">新築</div><h3>◯◯市 A様邸／自然素材の平屋</h3>
+          <div class="spec"><span>工期 <b>◯ヶ月</b></span><span>費用 <b>◯,◯◯◯万円〜</b></span><span>◯LDK</span></div></div></div>
+      <div class="work"><div class="imgslot"><span class="tag">IMAGE</span><b>Before / After</b></div>
+        <div class="body"><div class="cat">リフォーム</div><h3>B様邸／築◯年の水回り全面改装</h3>
+          <div class="spec"><span>工期 <b>◯週間</b></span><span>費用 <b>◯◯◯万円</b></span><span>キッチン・浴室</span></div></div></div>
+      <div class="work"><div class="imgslot"><span class="tag">IMAGE</span><b>Before / After</b></div>
+        <div class="body"><div class="cat">増改築</div><h3>C様邸／二世帯への間取り変更</h3>
+          <div class="spec"><span>工期 <b>◯ヶ月</b></span><span>費用 <b>◯◯◯万円</b></span><span>増築あり</span></div></div></div>
+    </div>
+    <p style="margin-top:20px"><a class="btn line" href="#" style="pointer-events:none">施工事例をもっと見る</a></p>
+  </div>
+</section>
+
+<!-- 04 家づくりの流れ -->
+<section id="flow" class="paper">
+  <div class="wrap">
+    <span class="label"><i>04</i>家づくりの流れ</span>
+    <h2>ご相談から、お引き渡しまで。</h2>
+    <ol class="flow">
+      <li><b>お問い合わせ・ご相談</b><p>電話・フォーム・LINEから。「まだ考え始めたばかり」でも大丈夫です。</p></li>
+      <li><b>現地調査・ヒアリング（無料）</b><p>ご要望や暮らし方を伺い、実際に現地を拝見します。</p></li>
+      <li><b>ご提案・お見積り</b><p>プランと、内訳の分かるお見積りをお出しします。</p></li>
+      <li><b>ご契約・着工</b><p>工程表をお渡しし、近隣へのご挨拶も私たちが行います。</p></li>
+      <li><b>お引き渡し・アフター</b><p>完成後の点検やちょっとした修繕も、末永く承ります。</p></li>
+    </ol>
+  </div>
+</section>
+
+<!-- 05 お客様の声 -->
+<section id="voice">
+  <div class="wrap">
+    <span class="label"><i>05</i>お客様の声</span>
+    <h2>建てたご家族から。</h2>
+    <p class="lead"><span class="todo">※実際にいただいたお声に差し替えます</span></p>
+    <div class="voice">
+      <div><p>要望が細かかったのに、一つずつ「それならこうしましょう」と一緒に考えてくれました。既製品では無理だった家になりました。</p><cite>◯◯市／新築（30代 ご夫婦）</cite></div>
+      <div><p>見積りの内訳が分かりやすく、追加費用の説明も先にきちんと。予算の中で最善を提案してくれました。</p><cite>◯◯市／水回りリフォーム（40代）</cite></div>
+      <div><p>引き渡しのあとも、ちょっとした不具合にすぐ来てくれる。地元の工務店にお願いしてよかったです。</p><cite>◯◯市／増改築</cite></div>
+    </div>
+  </div>
+</section>
+
+<!-- 06 お問い合わせ -->
+<section id="contact" class="cta-band">
+  <div class="wrap">
+    <span class="label">お問い合わせ</span>
+    <h2 style="margin-bottom:8px">現地調査・お見積りは無料です</h2>
+    <p style="margin-bottom:18px;opacity:.95">電話が苦手な方は、フォームやLINEからどうぞ。「相談だけ」でも歓迎します。</p>
+    <div class="cta-row">
+      <a class="btn" href="#">フォームで相談する</a>
+      <a class="btn line" href="#">LINEで相談する</a>
+    </div>
+    <p style="font-size:13px;opacity:.9;margin-top:16px">受付 ◯:◯◯〜◯:◯◯（◯曜休）<span class="todo">※受付時間・電話の窓口はヒアリング後に記載</span></p>
+  </div>
+</section>
+
+<!-- 07 会社概要 -->
+<section id="company">
+  <div class="wrap">
+    <span class="label"><i>06</i>会社概要</span>
+    <h2>会社概要</h2>
+    <table>
+      <tr><th>会社名</th><td>コヤマ営繕</td></tr>
+      <tr><th>所在地</th><td>長野県◯◯市◯◯<span class="todo">※住所を記載</span></td></tr>
+      <tr><th>電話</th><td><span class="todo">※電話番号を記載</span></td></tr>
+      <tr><th>創業</th><td><span class="todo">※創業年を記載</span></td></tr>
+      <tr><th>事業内容</th><td>新築工事／リフォーム工事／基礎・解体・土木ほか建築関連全般</td></tr>
+      <tr><th>建設業許可</th><td><span class="todo">※許可番号を記載</span></td></tr>
+      <tr><th>対応エリア</th><td>長野県◯◯市および近郊<span class="todo">※対応エリアに差し替え</span></td></tr>
+    </table>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="logo" style="color:#f5efe8">コヤマ営繕<span style="color:#b3a190">長野県／新築・リフォーム・建築全般</span></div>
+    <p class="copy">© <span id="y"></span> コヤマ営繕<br>
+      本ページは提案用のイメージです。掲載内容・写真・数値は御社と相談のうえ決定します（検索エンジンには掲載されません）。</p>
+  </div>
+</footer>
+
+<div class="sticky">
+  <a class="c" href="#contact">LINEで相談</a>
+  <a class="m" href="#contact">無料相談</a>
+</div>
+
+<script>document.getElementById('y').textContent=new Date().getFullYear();</script>
+</body>
+</html>
