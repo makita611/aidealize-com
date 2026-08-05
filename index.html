@@ -50,6 +50,10 @@ body{font-family:'Noto Sans JP',sans-serif;background:var(--white);color:var(--i
 ::-webkit-scrollbar-track{background:var(--bg);}
 ::-webkit-scrollbar-thumb{background:var(--red);border-radius:2px;}
 
+/* ── ICONS (unified line icons) ── */
+.ic{display:inline-block;width:1em;height:1em;fill:none;stroke:currentColor;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round;vertical-align:-0.145em;flex-shrink:0;}
+.ic-lead{margin-right:0.45em;}
+
 /* ── NAV ── */
 #mainNav{position:fixed;top:0;left:0;right:0;z-index:1000;display:flex;align-items:center;justify-content:space-between;padding:0 60px;height:68px;background:rgba(255,255,255,0.97);border-bottom:1px solid var(--border);backdrop-filter:blur(12px);transition:box-shadow 0.3s;}
 #mainNav.scrolled{box-shadow:0 2px 20px rgba(0,0,0,0.08);}
@@ -106,7 +110,7 @@ body{font-family:'Noto Sans JP',sans-serif;background:var(--white);color:var(--i
 .hero-stat-cards{display:flex;flex-direction:column;gap:10px;}
 .hsc{background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);border-radius:12px;padding:20px 24px;display:flex;align-items:center;gap:18px;transition:all 0.3s;}
 .hsc:hover{background:rgba(255,255,255,0.1);border-color:rgba(255,255,255,0.2);transform:translateX(4px);}
-.hsc-icon{font-size:28px;flex-shrink:0;}
+.hsc-icon{font-size:26px;flex-shrink:0;color:#7dd3fc;display:flex;}
 .hsc-num{font-family:'DM Mono',monospace;font-size:28px;font-weight:500;color:#fff;line-height:1;}
 .hsc-num em{font-size:14px;font-style:normal;color:rgba(255,255,255,0.45);margin-left:2px;}
 .hsc-label{font-size:12px;color:rgba(255,255,255,0.5);margin-top:4px;}
@@ -134,7 +138,7 @@ body{font-family:'Noto Sans JP',sans-serif;background:var(--white);color:var(--i
 .wall-card{background:var(--white);padding:36px 30px;cursor:pointer;transition:all 0.25s;position:relative;border-top:3px solid transparent;}
 .wall-card:hover,.wall-card.active{border-top-color:var(--red);box-shadow:0 8px 32px rgba(0,0,0,0.08);}
 .wall-num{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:0.14em;color:var(--light);margin-bottom:16px;text-transform:uppercase;}
-.wall-icon{font-size:32px;margin-bottom:14px;}
+.wall-icon{font-size:30px;margin-bottom:14px;color:var(--red);display:flex;}
 .wall-title{font-family:'Shippori Mincho',serif;font-size:18px;font-weight:700;color:var(--ink);line-height:1.55;margin-bottom:14px;}
 .wall-pains{display:flex;flex-direction:column;gap:8px;}
 .wall-pain-item{display:flex;align-items:flex-start;gap:8px;font-size:13px;color:var(--body);line-height:1.7;padding:8px 12px;background:var(--bg);border-radius:6px;}
@@ -148,7 +152,7 @@ body{font-family:'Noto Sans JP',sans-serif;background:var(--white);color:var(--i
 .why-card{padding:40px 32px;border:1px solid var(--border);position:relative;transition:box-shadow 0.2s;}
 .why-card:hover{box-shadow:0 8px 32px rgba(0,0,0,0.06);}
 .why-card-num{font-family:'DM Mono',monospace;font-size:64px;font-weight:500;color:rgba(37,99,235,0.06);line-height:1;position:absolute;top:16px;right:20px;}
-.why-card-icon{font-size:32px;margin-bottom:16px;}
+.why-card-icon{font-size:30px;margin-bottom:16px;color:var(--blue);display:flex;}
 .why-card-title{font-family:'Shippori Mincho',serif;font-size:18px;font-weight:700;color:var(--ink);line-height:1.6;margin-bottom:12px;}
 .why-card-body{font-size:14px;line-height:2;color:var(--body);}
 
@@ -215,6 +219,14 @@ body{font-family:'Noto Sans JP',sans-serif;background:var(--white);color:var(--i
 .h-metric{background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.08);border-radius:10px;padding:20px 24px;display:flex;align-items:center;gap:16px;}
 .h-metric-num{font-family:'DM Mono',monospace;font-size:32px;font-weight:500;color:#7dd3fc;white-space:nowrap;}
 .h-metric-desc{font-size:13px;color:rgba(255,255,255,0.6);line-height:1.6;}
+.h-video{border-radius:16px;overflow:hidden;position:relative;background:#0b1220;box-shadow:0 12px 44px rgba(8,145,178,0.28);border:1px solid rgba(255,255,255,0.12);width:100%;max-width:290px;align-self:center;}
+.h-video video{width:100%;display:block;}
+.h-video-badge{position:absolute;top:12px;left:12px;background:rgba(0,0,0,0.5);color:#fff;font-size:11px;font-weight:700;letter-spacing:0.04em;padding:6px 13px;border-radius:100px;backdrop-filter:blur(4px);display:flex;align-items:center;gap:7px;}
+.h-video-badge::before{content:'';width:7px;height:7px;border-radius:50%;background:#4ade80;animation:hvpulse 1.8s infinite;}
+@keyframes hvpulse{0%{box-shadow:0 0 0 0 rgba(74,222,128,.5);}70%{box-shadow:0 0 0 8px rgba(74,222,128,0);}100%{box-shadow:0 0 0 0 rgba(74,222,128,0);}}
+.h-mute{position:absolute;bottom:12px;right:12px;background:rgba(0,0,0,0.55);color:#fff;border:none;border-radius:6px;padding:6px 12px;font-size:12px;font-weight:700;cursor:pointer;backdrop-filter:blur(4px);transition:background 0.2s;}
+.h-mute:hover{background:rgba(0,0,0,0.8);}
+.h-video-cap{font-size:11px;color:rgba(255,255,255,0.4);text-align:center;margin-top:10px;}
 
 /* ── BPR DB BANNER ── */
 .bpr-section{background:var(--bg2);padding:72px 60px;}
@@ -313,7 +325,6 @@ footer{background:var(--navy2);padding:44px 60px;display:flex;align-items:center
   .hero-right{display:none;}
   .pain-walls,.why-grid,.services-grid,.results-grid,.numbers-grid{grid-template-columns:1fr;}
   .hanamaru-inner,.cta-inner,.company-inner,.bpr-inner{grid-template-columns:1fr;}
-  .hanamaru-right{display:none;}
   .column-grid{grid-template-columns:1fr;}
   footer{flex-direction:column;gap:16px;text-align:center;padding:32px 24px;}
   .footer-nav{flex-wrap:wrap;justify-content:center;}
@@ -329,6 +340,27 @@ footer{background:var(--navy2);padding:44px 60px;display:flex;align-items:center
 </head>
 <body>
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-P6VNBWH3" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
+<!-- ICON SPRITE (line icons, stroke=currentColor) -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><defs>
+<symbol id="i-users" viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></symbol>
+<symbol id="i-cog" viewBox="0 0 24 24"><path d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z"/><circle cx="12" cy="12" r="3"/></symbol>
+<symbol id="i-pulse" viewBox="0 0 24 24"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/><path d="M3.22 12H9.5l.5-1 2 4.5 2-7 1.5 3.5h5.27"/></symbol>
+<symbol id="i-database" viewBox="0 0 24 24"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5v14a9 3 0 0 0 18 0V5"/><path d="M3 12a9 3 0 0 0 18 0"/></symbol>
+<symbol id="i-trending-down" viewBox="0 0 24 24"><polyline points="22 17 13.5 8.5 8.5 13.5 2 7"/><polyline points="16 17 22 17 22 11"/></symbol>
+<symbol id="i-timer" viewBox="0 0 24 24"><line x1="10" x2="14" y1="2" y2="2"/><line x1="12" x2="15" y1="14" y2="11"/><circle cx="12" cy="14" r="8"/></symbol>
+<symbol id="i-building" viewBox="0 0 24 24"><path d="M6 22V4a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v18Z"/><path d="M6 12H4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h2"/><path d="M18 9h2a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2h-2"/><path d="M10 6h4"/><path d="M10 10h4"/><path d="M10 14h4"/><path d="M10 18h4"/></symbol>
+<symbol id="i-shield" viewBox="0 0 24 24"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/><path d="m9 12 2 2 4-4"/></symbol>
+<symbol id="i-trending-up" viewBox="0 0 24 24"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></symbol>
+<symbol id="i-scale" viewBox="0 0 24 24"><path d="m16 16 3-8 3 8c-.87.65-1.92 1-3 1s-2.13-.35-3-1Z"/><path d="m2 16 3-8 3 8c-.87.65-1.92 1-3 1s-2.13-.35-3-1Z"/><path d="M7 21h10"/><path d="M12 3v18"/><path d="M3 7h2c2 0 5-1 7-2 2 1 5 2 7 2h2"/></symbol>
+<symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></symbol>
+<symbol id="i-bot" viewBox="0 0 24 24"><path d="M12 8V4H8"/><rect width="16" height="12" x="4" y="8" rx="2"/><path d="M2 14h2"/><path d="M20 14h2"/><path d="M15 13v2"/><path d="M9 13v2"/></symbol>
+<symbol id="i-award" viewBox="0 0 24 24"><path d="m15.5 12.9 1.5 8.5a.5.5 0 0 1-.8.5l-3.6-2.7a1 1 0 0 0-1.2 0l-3.6 2.7a.5.5 0 0 1-.8-.5l1.5-8.5"/><circle cx="12" cy="8" r="6"/></symbol>
+<symbol id="i-home" viewBox="0 0 24 24"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></symbol>
+<symbol id="i-car" viewBox="0 0 24 24"><path d="M19 17h2c.6 0 1-.4 1-1v-3c0-.9-.7-1.7-1.5-1.9C18.7 10.6 16 10 16 10s-1.3-1.4-2.2-2.3c-.5-.4-1.1-.7-1.8-.7H5c-.6 0-1.1.4-1.4.9l-1.4 2.9A3.7 3.7 0 0 0 2 12v4c0 .6.4 1 1 1h2"/><circle cx="7" cy="17" r="2"/><path d="M9 17h6"/><circle cx="17" cy="17" r="2"/></symbol>
+<symbol id="i-bar" viewBox="0 0 24 24"><path d="M3 3v16a2 2 0 0 0 2 2h16"/><rect x="7" y="12" width="3" height="5" rx="1"/><rect x="12" y="8" width="3" height="9" rx="1"/><rect x="17" y="5" width="3" height="12" rx="1"/></symbol>
+<symbol id="i-flower" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12 16.5A4.5 4.5 0 1 1 7.5 12 4.5 4.5 0 1 1 12 7.5a4.5 4.5 0 1 1 4.5 4.5 4.5 4.5 0 1 1-4.5 4.5"/><path d="M12 7.5V9"/><path d="M7.5 12H9"/><path d="M16.5 12H15"/><path d="M12 16.5V15"/><path d="m8 8 1.88 1.88"/><path d="M14.12 9.88 16 8"/><path d="m8 16 1.88-1.88"/><path d="M14.12 14.12 16 16"/></symbol>
+</defs></svg>
 
 <!-- NAV -->
 <nav id="mainNav">
@@ -375,18 +407,18 @@ footer{background:var(--navy2);padding:44px 60px;display:flex;align-items:center
       <span class="fork-label">あなたの課題に近いのはどちらですか？</span>
       <div class="fork-btns">
         <a href="/lp/jinzai/" class="fork-btn red" onclick="window.dataLayer=window.dataLayer||[];window.dataLayer.push({event:'top_fork_click',fork:'jinzai'})">
-          <span class="fork-btn-label">👥 人の課題</span>
+          <span class="fork-btn-label"><svg class="ic ic-lead"><use href="#i-users"></use></svg>人の課題</span>
           <span class="fork-btn-text">属人化・離職・評価の不満を解消したい</span>
           <span class="fork-btn-arrow">詳しく見る →</span>
         </a>
         <a href="/bpr/" class="fork-btn blue" onclick="window.dataLayer=window.dataLayer||[];window.dataLayer.push({event:'top_fork_click',fork:'bpr'})">
-          <span class="fork-btn-label">⚙️ 業務の課題</span>
+          <span class="fork-btn-label"><svg class="ic ic-lead"><use href="#i-cog"></use></svg>業務の課題</span>
           <span class="fork-btn-text">事務作業・書類作成・手作業を自動化したい</span>
           <span class="fork-btn-arrow">事例を見る →</span>
         </a>
       </div>
       <a href="/lp/hanamaru-kango/" class="fork-btn green" onclick="window.dataLayer=window.dataLayer||[];window.dataLayer.push({event:'top_fork_click',fork:'hanamaru-kango'})">
-        <span class="fork-btn-label">🏥 医療・介護の現場</span>
+        <span class="fork-btn-label"><svg class="ic ic-lead"><use href="#i-pulse"></use></svg>医療・介護の現場</span>
         <span class="fork-btn-text">訪問看護・記録業務（SOAP）をAIで効率化したい</span>
         <span class="fork-btn-arrow">無料トライアルを見る →</span>
       </a>
@@ -403,28 +435,28 @@ footer{background:var(--navy2);padding:44px 60px;display:flex;align-items:center
     </div>
     <div class="hero-stat-cards reveal">
       <div class="hsc d1">
-        <div class="hsc-icon">📊</div>
+        <div class="hsc-icon"><svg class="ic"><use href="#i-database"></use></svg></div>
         <div>
           <div class="hsc-num">659<em>件</em></div>
           <div class="hsc-label">BPR・DX導入事例データベース（無料公開中）</div>
         </div>
       </div>
       <div class="hsc d2">
-        <div class="hsc-icon">📉</div>
+        <div class="hsc-icon"><svg class="ic"><use href="#i-trending-down"></use></svg></div>
         <div>
           <div class="hsc-num"><span class="red">42</span>→<span style="color:#4ade80">18</span><em>%</em></div>
           <div class="hsc-label">AI×ナレッジ共有で実現した離職率の改善実績</div>
         </div>
       </div>
       <div class="hsc d3">
-        <div class="hsc-icon">⏱</div>
+        <div class="hsc-icon"><svg class="ic"><use href="#i-timer"></use></svg></div>
         <div>
           <div class="hsc-num">最大<span style="color:#fbbf24">80</span><em>%削減</em></div>
           <div class="hsc-label">AI実装による業務エラー・事務工数の削減率</div>
         </div>
       </div>
       <div class="hsc" style="transition-delay:0.4s">
-        <div class="hsc-icon">🏢</div>
+        <div class="hsc-icon"><svg class="ic"><use href="#i-building"></use></svg></div>
         <div>
           <div class="hsc-num">300<em>社以上</em></div>
           <div class="hsc-label">導入・定着支援の実績（中堅・中小企業中心）</div>
@@ -465,7 +497,7 @@ footer{background:var(--navy2);padding:44px 60px;display:flex;align-items:center
       <!-- ①BCP（防災の日） -->
       <a href="/service/bcp/" style="display:block;text-decoration:none;color:inherit;position:relative;background:linear-gradient(135deg,#0d1f3c,#152d54);border-radius:14px;padding:34px 32px;overflow:hidden;box-shadow:0 10px 32px rgba(13,31,60,0.22);transition:transform .2s,box-shadow .2s;" onmouseover="this.style.transform='translateY(-3px)';this.style.boxShadow='0 16px 42px rgba(13,31,60,0.32)'" onmouseout="this.style.transform='';this.style.boxShadow='0 10px 32px rgba(13,31,60,0.22)'">
         <span style="position:absolute;top:0;right:0;background:#e8590c;color:#fff;font-size:10px;font-weight:700;letter-spacing:1.5px;padding:6px 14px;border-radius:0 0 0 12px;">9/1 防災の日 特集</span>
-        <div style="font-size:32px;margin-bottom:12px;">🛡️</div>
+        <div style="font-size:34px;margin-bottom:12px;color:#f8b26a;display:flex;"><svg class="ic"><use href="#i-shield"></use></svg></div>
         <div style="font-family:'DM Mono',monospace;font-size:11px;font-weight:700;letter-spacing:0.14em;color:#f8b26a;margin-bottom:10px;">最も相談が多いサービス</div>
         <div style="font-family:'Shippori Mincho',serif;font-size:clamp(20px,2.4vw,26px);font-weight:700;color:#fff;line-height:1.4;margin-bottom:12px;">介護施設のBCPを<br>元消防士×AIが無料作成</div>
         <div style="font-size:13px;color:rgba(255,255,255,0.72);line-height:1.9;margin-bottom:22px;">2024年から完全義務化。未策定は基本報酬の減算対象に。地震・自然災害への備えとして今こそ。30分・費用0円で、監査に通るBCPを。</div>
@@ -475,7 +507,7 @@ footer{background:var(--navy2);padding:44px 60px;display:flex;align-items:center
       <!-- ②クリニック集客 -->
       <a href="/service/clinic-marketing/" style="display:block;text-decoration:none;color:inherit;position:relative;background:#fff;border:1px solid var(--border);border-top:4px solid var(--red);border-radius:14px;padding:34px 32px;box-shadow:0 8px 24px rgba(0,0,0,0.06);transition:transform .2s,box-shadow .2s;" onmouseover="this.style.transform='translateY(-3px)';this.style.boxShadow='0 14px 36px rgba(192,39,45,0.14)'" onmouseout="this.style.transform='';this.style.boxShadow='0 8px 24px rgba(0,0,0,0.06)'">
         <span style="position:absolute;top:0;right:0;background:var(--red);color:#fff;font-size:10px;font-weight:700;letter-spacing:1.5px;padding:6px 14px;border-radius:0 0 0 12px;">集客・売上</span>
-        <div style="font-size:32px;margin-bottom:12px;">📈</div>
+        <div style="font-size:34px;margin-bottom:12px;color:var(--red);display:flex;"><svg class="ic"><use href="#i-trending-up"></use></svg></div>
         <div style="font-family:'DM Mono',monospace;font-size:11px;font-weight:700;letter-spacing:0.14em;color:var(--red);margin-bottom:10px;">伸ばしたい経営者へ</div>
         <div style="font-family:'Shippori Mincho',serif;font-size:clamp(20px,2.4vw,26px);font-weight:700;color:var(--ink);line-height:1.4;margin-bottom:12px;">クリニックの集客を<br>AI×Webで立て直す</div>
         <div style="font-size:13px;color:var(--body);line-height:1.9;margin-bottom:22px;">MEO・口コミ・ホームページ改善に加え、商圏・広告効果・リピート・リファラルをデータで分析。「集めて終わり」にしない集客支援です。</div>
@@ -498,7 +530,7 @@ footer{background:var(--navy2);padding:44px 60px;display:flex;align-items:center
     <div class="pain-walls">
       <div class="wall-card reveal d1">
         <div class="wall-num">WALL 01 ── 業務の壁</div>
-        <div class="wall-icon">⚙️</div>
+        <div class="wall-icon"><svg class="ic"><use href="#i-cog"></use></svg></div>
         <h3 class="wall-title">ツールを入れても、<br>現場が変わらない</h3>
         <div class="wall-pains">
           <div class="wall-pain-item">毎日、同じ書類作成・データ入力にスタッフが追われている</div>
@@ -509,7 +541,7 @@ footer{background:var(--navy2);padding:44px 60px;display:flex;align-items:center
       </div>
       <div class="wall-card reveal d2">
         <div class="wall-num">WALL 02 ── 人材の壁</div>
-        <div class="wall-icon">👥</div>
+        <div class="wall-icon"><svg class="ic"><use href="#i-users"></use></svg></div>
         <h3 class="wall-title">採用しても辞める、<br>ノウハウが消える</h3>
         <div class="wall-pains">
           <div class="wall-pain-item">ベテランの頭の中にしか手順がなく、業務がブラックボックス化している</div>
@@ -520,7 +552,7 @@ footer{background:var(--navy2);padding:44px 60px;display:flex;align-items:center
       </div>
       <div class="wall-card reveal d3">
         <div class="wall-num">WALL 03 ── 評価の壁</div>
-        <div class="wall-icon">⚖️</div>
+        <div class="wall-icon"><svg class="ic"><use href="#i-scale"></use></svg></div>
         <h3 class="wall-title">頑張りが見えない、<br>評価に納得されない</h3>
         <div class="wall-pains">
           <div class="wall-pain-item">誰がどれだけ会社に貢献しているか、データで見える化できていない</div>
@@ -544,18 +576,18 @@ footer{background:var(--navy2);padding:44px 60px;display:flex;align-items:center
     <div class="why-grid">
       <div class="why-card reveal d1">
         <div class="why-card-num">01</div>
-        <div class="why-card-icon">🔍</div>
+        <div class="why-card-icon"><svg class="ic"><use href="#i-search"></use></svg></div>
         <h3 class="why-card-title">業務の棚卸しから始める<br>（BPR）</h3>
         <p class="why-card-body">まず「今の業務のどこが無駄か」を丸裸にします。30分のヒアリングで課題マップを作成し、どこから手をつければ最も効果が出るかを明確にします。提案書を渡して終わりではなく、現場で手を動かします。</p>
       </div>
       <div class="why-card reveal d2">
-        <div class="why-card-icon">🤖</div>
+        <div class="why-card-icon"><svg class="ic"><use href="#i-bot"></use></svg></div>
         <div class="why-card-num">02</div>
         <h3 class="why-card-title">現場のノウハウを<br>AIに蓄積する</h3>
         <p class="why-card-body">ベテランの経験・マニュアル・過去データをAIに学習させ、誰でもいつでも引き出せる仕組みを作ります。「誰かに聞かないと進まない」状態を組織ごと変えます。</p>
       </div>
       <div class="why-card reveal d3">
-        <div class="why-card-icon">📊</div>
+        <div class="why-card-icon"><svg class="ic"><use href="#i-bar"></use></svg></div>
         <div class="why-card-num">03</div>
         <h3 class="why-card-title">データで証明できる<br>評価基盤を構築する</h3>
         <p class="why-card-body">AIの活用ログ・貢献度・サポート実績を自動集計し、感情に左右されない納得感のある評価シートを自動生成します。「見てもらえている」という実感が定着率を上げます。</p>
@@ -604,7 +636,7 @@ footer{background:var(--navy2);padding:44px 60px;display:flex;align-items:center
         <div class="svc-card-head red">
           <div class="svc-card-tag">SOLUTION 01 ── 人材定着AI</div>
           <div class="svc-card-title">属人化をなくし、<br>離職率を劇的に下げる。</div>
-          <div class="svc-card-kpi">🏆 離職率 42% → 18% に改善</div>
+          <div class="svc-card-kpi"><svg class="ic ic-lead"><use href="#i-award"></use></svg>離職率 42% → 18% に改善</div>
         </div>
         <div class="svc-card-body">
           <div class="svc-card-features">
@@ -619,7 +651,7 @@ footer{background:var(--navy2);padding:44px 60px;display:flex;align-items:center
         <div class="svc-card-head blue">
           <div class="svc-card-tag">SOLUTION 02 ── BPR事例DB</div>
           <div class="svc-card-title">同じ悩みを解決した<br>会社の事例が659件ある。</div>
-          <div class="svc-card-kpi">📊 9業界 659件 無料公開中</div>
+          <div class="svc-card-kpi"><svg class="ic ic-lead"><use href="#i-database"></use></svg>9業界 659件 無料公開中</div>
         </div>
         <div class="svc-card-body">
           <div class="svc-card-features">
@@ -643,21 +675,21 @@ footer{background:var(--navy2);padding:44px 60px;display:flex;align-items:center
     </div>
     <div class="results-grid">
       <div class="result-card reveal d1">
-        <div class="result-ind">🏠 不動産管理会社 / 45名</div>
+        <div class="result-ind"><svg class="ic ic-lead"><use href="#i-home"></use></svg>不動産管理会社 / 45名</div>
         <div class="result-metric"><span class="result-before">3日</span><span class="result-arrow">→</span><span class="result-after">当日</span></div>
         <div class="result-metric-label">入居審査の対応時間</div>
         <div class="result-divider"></div>
         <p class="result-body">審査基準をAIに落とし込んだことで、属人的な判断をなくし当日対応が実現。担当者不在時でも業務が止まらない仕組みになりました。</p>
       </div>
       <div class="result-card reveal d2">
-        <div class="result-ind">🚗 自動車買取 コールセンター / 60名</div>
+        <div class="result-ind"><svg class="ic ic-lead"><use href="#i-car"></use></svg>自動車買取 コールセンター / 60名</div>
         <div class="result-metric"><span class="result-before">13%</span><span class="result-arrow">→</span><span class="result-after">41%</span></div>
         <div class="result-metric-label">成約率の改善</div>
         <div class="result-divider"></div>
         <p class="result-body">架電データをAIで分析し「勝ちパターン」を特定。架電数を増やすことなく成約率が3倍超に改善。担当者の成長も加速しました。</p>
       </div>
       <div class="result-card reveal d3">
-        <div class="result-ind">🌸 冠婚葬祭会社 / 80名</div>
+        <div class="result-ind"><svg class="ic ic-lead"><use href="#i-flower"></use></svg>冠婚葬祭会社 / 80名</div>
         <div class="result-metric"><span class="result-before">20h</span><span class="result-arrow">→</span><span class="result-after">ほぼ0</span></div>
         <div class="result-metric-label">担当者の月間書類作業時間</div>
         <div class="result-divider"></div>
@@ -685,6 +717,14 @@ footer{background:var(--navy2);padding:44px 60px;display:flex;align-items:center
       </a>
     </div>
     <div class="hanamaru-right">
+      <div class="h-video">
+        <video id="hanamaruVideo" autoplay muted loop playsinline preload="metadata">
+          <source src="/images/soaptalk01.mp4" type="video/mp4">
+        </video>
+        <span class="h-video-badge">実際のLINE画面</span>
+        <button class="h-mute" id="hanamaruMuteBtn" onclick="toggleHanamaruMute()">🔇 音声ON</button>
+      </div>
+      <p class="h-video-cap">訪問後、LINEに話しかけるだけ。AIがSOAP形式で自動作成します。</p>
       <div class="h-metric"><div class="h-metric-num">90%↓</div><div class="h-metric-desc">記録作業時間<br>30分以上 → 1〜2分に</div></div>
       <div class="h-metric"><div class="h-metric-num">残業ゼロ</div><div class="h-metric-desc">移動中に記録が完了<br>帰社後のPC作業が不要に</div></div>
       <div class="h-metric"><div class="h-metric-num">離職防止</div><div class="h-metric-desc">「書類が辛い」という最大の<br>ストレス源を根本から除去</div></div>
@@ -700,7 +740,7 @@ footer{background:var(--navy2);padding:44px 60px;display:flex;align-items:center
       <h2 class="s-h2">「同じ悩みの会社」が<br>どう解決したか、すぐわかる。</h2>
       <p class="bpr-desc">医療・介護・不動産・製造など9業界のBPR・DX事例を659件、すべて無料で閲覧できます。「自分の業界ではどんな効果が出ているか」を確認するのにご活用ください。<br>事例を見て「自社に合う方法がわからない」場合は、無料相談で具体的なプランをご提案します。</p>
       <a href="/bpr/" style="display:inline-flex;align-items:center;gap:8px;background:var(--blue);color:#fff;padding:14px 32px;border-radius:6px;font-weight:700;font-size:0.95rem;text-decoration:none;margin-top:20px;transition:background 0.2s;" onmouseover="this.style.background='#1d4ed8'" onmouseout="this.style.background='#2563eb'">
-        📊 事例データベースを見る →
+        <svg class="ic ic-lead"><use href="#i-database"></use></svg>事例データベースを見る →
       </a>
     </div>
     <div class="bpr-cta-area reveal">
@@ -809,7 +849,7 @@ footer{background:var(--navy2);padding:44px 60px;display:flex;align-items:center
     <div class="company-photo-wrap reveal d2">
       <img src="images/bousai1.jpg" alt="眞貴田正博 能登半島地震 物資支援">
       <div class="company-award-badge">
-        <div class="award-badge-label">🏆 AWARD</div>
+        <div class="award-badge-label"><svg class="ic ic-lead"><use href="#i-award"></use></svg>AWARD</div>
         <div class="award-badge-text">三井住友銀行×みらいワークス<br>「未来2021」GAPグラント賞</div>
       </div>
       <p class="company-caption">2024年1月29日　能登半島地震 物資支援活動にて</p>
@@ -857,6 +897,16 @@ document.querySelectorAll('a[href^="#"]').forEach(function(a){
     if(t){e.preventDefault();window.scrollTo({top:t.offsetTop-72,behavior:'smooth'});}
   });
 });
+
+// HANAMARU VIDEO MUTE TOGGLE
+function toggleHanamaruMute(){
+  var v=document.getElementById('hanamaruVideo');
+  var b=document.getElementById('hanamaruMuteBtn');
+  if(!v)return;
+  v.muted=!v.muted;
+  b.textContent=v.muted?'🔇 音声ON':'🔊 音声OFF';
+  if(!v.muted){v.play().catch(function(){});}
+}
 
 // GAS FORM
 const GAS_URL='https://script.google.com/macros/s/AKfycbweIGAPeJwD-U8D4Cks6fjGmp5hR2kpuwCx_9janRnGq3qdUFR4DDpYGgl33-bkFr3v/exec';
