@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>【提案イメージ】木下商事 害虫駆除サービス サイト案</title>
+<style>
+:root{
+  --ink:#16241d;          /* 濃い緑黒。衛生と信頼 */
+  --green:#2f6b51;        /* 主役の緑。清潔・安心 */
+  --green-d:#234f3c;
+  --terra:#1f8a5b;        /* CTA。行動を促す明るめの緑 */
+  --paper:#eef4ef;        /* 淡い緑がかった紙色 */
+  --cream:#fbfcfa;
+  --line:#dde7df;
+  --muted:#5c6b62;
+  --max:1040px;
+  --hd:64px;
+  --mono:"DIN Alternate","Roboto Mono",ui-monospace,Menlo,Consolas,monospace;
+}
+:root{color-scheme:light}
+html,body{background:var(--cream)}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:"Hiragino Kaku Gothic ProN","Yu Gothic",system-ui,sans-serif;
+  color:var(--ink);line-height:1.9;-webkit-text-size-adjust:100%;
+  font-feature-settings:"palt";letter-spacing:.02em}
+img{max-width:100%;height:auto;display:block}
+a{color:inherit}
+.wrap{max-width:var(--max);margin:0 auto;padding:0 22px}
+section{padding:84px 0;scroll-margin-top:var(--hd);background:var(--cream)}
+.paper{background:var(--paper)}
+.dark{background:var(--ink);color:#eef4ef}
+
+.proposal{background:#12201a;color:#8fe0b6;text-align:center;font-size:12.5px;
+  padding:8px 14px;letter-spacing:.04em;line-height:1.6}
+
+.label{display:inline-flex;align-items:center;gap:12px;margin-bottom:12px;
+  font-size:13px;letter-spacing:.12em;font-weight:800;color:var(--green)}
+.label i{font-family:var(--mono);font-style:normal;color:#9db0a4;font-weight:700;
+  font-size:14px;border-right:1px solid var(--line);padding-right:12px}
+h2{font-size:clamp(23px,3.6vw,34px);line-height:1.5;margin-bottom:14px;font-weight:800}
+.lead{color:var(--muted);margin-bottom:40px;font-size:16px;max-width:38em}
+.dark .label{color:#7fd3a6}
+.dark .lead{color:#c2d3c8}
+
+.imgslot{background:repeating-linear-gradient(135deg,#e2ece5 0 10px,#eaf1eb 10px 20px);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;
+  color:#7f9488;font-size:12.5px;text-align:center;padding:16px;line-height:1.6;border-radius:8px}
+.imgslot .tag{font-family:var(--mono);font-size:10px;letter-spacing:.12em;color:#8ba394;
+  border:1px solid #c6d6cb;border-radius:3px;padding:2px 8px}
+.imgslot b{font-size:13px;color:#5f7568;font-weight:800}
+.todo{opacity:.72;font-size:12.5px}
+
+header{position:sticky;top:0;z-index:50;background:rgba(251,252,250,.96);
+  border-bottom:1px solid var(--line);backdrop-filter:saturate(1.3) blur(6px)}
+.hd{display:flex;align-items:center;justify-content:space-between;gap:16px;
+  padding:11px 22px;max-width:var(--max);margin:0 auto}
+.logo{font-weight:800;font-size:16.5px;letter-spacing:.05em;line-height:1.35}
+.logo span{display:block;font-size:10.5px;color:#7f9488;font-weight:500;letter-spacing:.12em}
+.nav{display:flex;gap:22px;font-size:14px}
+.nav a{text-decoration:none;color:#3f5147;padding:4px 0;border-bottom:2px solid transparent}
+.nav a:hover{color:var(--green);border-color:var(--green)}
+.btn{display:inline-block;background:var(--terra);color:#fff;text-decoration:none;
+  padding:14px 30px;border-radius:6px;font-weight:700;font-size:15px;letter-spacing:.04em;
+  box-shadow:0 3px 14px rgba(31,138,91,.28)}
+.btn:hover{filter:brightness(1.07)}
+.btn.line{background:transparent;color:var(--green);border:1.5px solid var(--green);box-shadow:none}
+
+/* ヒーロー：飲食店の衛生を守る */
+.hero{position:relative;background:linear-gradient(160deg,#eaf3ec 0%,#e0ecda 60%,#eef4ea 100%);
+  border-bottom:1px solid var(--line);overflow:hidden}
+.hero::after{content:"";position:absolute;left:-120px;bottom:-160px;width:460px;height:460px;
+  border-radius:50%;background:radial-gradient(circle,rgba(47,107,81,.12),transparent 65%)}
+.hero .wrap{position:relative;padding:92px 22px 70px;z-index:1}
+.hero .eyebrow{display:inline-block;font-size:12.5px;letter-spacing:.14em;margin-bottom:22px;
+  color:var(--green);font-weight:800;background:#dcebe0;border-radius:20px;padding:6px 16px}
+.hero h1{font-size:clamp(27px,4.9vw,45px);line-height:1.5;font-weight:800}
+.hero h1 em{font-style:normal;color:var(--green)}
+.hero p{margin-top:22px;font-size:clamp(15px,1.9vw,17px);max-width:32em;color:#3d4a43;line-height:2}
+.hero .cta{margin-top:32px;display:flex;gap:12px;flex-wrap:wrap}
+.stats{display:flex;border-top:1px solid var(--line);margin-top:46px}
+.stats div{flex:1;padding:20px 8px 0}
+.stats b{font-family:var(--mono);font-size:clamp(23px,3.6vw,31px);color:var(--green);display:block;
+  line-height:1.15;font-weight:800}
+.stats b i{font-style:normal;font-size:14px;margin-left:2px}
+.stats small{font-size:12px;color:var(--muted)}
+
+/* 物語＝老舗蕎麦店の目線 */
+.story{display:grid;grid-template-columns:1.15fr .85fr;gap:34px;align-items:center}
+.story .imgslot{min-height:300px}
+.story .k{font-size:12.5px;letter-spacing:.14em;color:var(--green);font-weight:800;margin-bottom:12px}
+.story h3{font-size:clamp(19px,2.8vw,26px);font-weight:800;line-height:1.6;margin-bottom:14px}
+.story p{font-size:14.5px;color:var(--muted);line-height:2;margin-bottom:14px}
+.story p:last-child{margin-bottom:0}
+.story em{font-style:normal;color:var(--green-d);font-weight:800;background:linear-gradient(transparent 62%,#cfe6d6 62%)}
+
+/* 対応する害虫・サービス */
+.pests{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.pest{background:#fff;border:1px solid var(--line);border-radius:10px;overflow:hidden}
+.pest .imgslot{aspect-ratio:16/10;border-radius:0}
+.pest .body{padding:18px 20px}
+.pest h3{font-size:16.5px;font-weight:800;margin-bottom:4px}
+.pest p{font-size:13.5px;color:var(--muted);line-height:1.8}
+.pest .tagline{display:inline-block;font-size:11px;font-weight:800;letter-spacing:.06em;
+  color:var(--terra);border:1px solid #bfe0cd;border-radius:20px;padding:2px 10px;margin-bottom:8px}
+
+/* 飲食店対応バンド */
+.wide{background:var(--ink);color:#eef4ef;border-radius:14px;overflow:hidden;
+  display:grid;grid-template-columns:1fr 1fr;align-items:stretch}
+.wide .imgslot{border-radius:0;min-height:280px}
+.wide .body{padding:36px}
+.wide .k{font-size:12.5px;letter-spacing:.14em;color:#7fd3a6;font-weight:800;margin-bottom:12px}
+.wide h3{font-size:clamp(19px,2.8vw,25px);font-weight:800;line-height:1.6;margin-bottom:12px}
+.wide p{font-size:14.5px;color:#c2d3c8;line-height:1.95}
+
+.reasons{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.reason{background:#fff;border:1px solid var(--line);border-top:3px solid var(--green);
+  border-radius:0 0 10px 10px;padding:24px}
+.reason h3{font-size:17px;font-weight:800;margin-bottom:8px}
+.reason p{font-size:14px;color:var(--muted)}
+
+.flow{counter-reset:f;max-width:760px}
+.flow li{list-style:none;counter-increment:f;padding:18px 0 18px 60px;position:relative;
+  border-bottom:1px dashed var(--line)}
+.flow li:last-child{border-bottom:0}
+.flow li::before{content:counter(f);position:absolute;left:8px;top:18px;width:35px;height:35px;
+  background:var(--green);color:#fff;border-radius:50%;display:flex;align-items:center;
+  justify-content:center;font-family:var(--mono);font-weight:800;font-size:14px}
+.flow b{display:block;font-size:16px;font-weight:800}
+.flow p{font-size:13.5px;color:var(--muted)}
+
+.voice{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.voice div{background:#fff;border:1px solid var(--line);border-radius:10px;padding:22px}
+.voice p{font-size:14px;line-height:1.85}
+.voice cite{display:block;margin-top:12px;font-size:12.5px;color:var(--muted);font-style:normal}
+
+table{width:100%;border-collapse:collapse;font-size:14.5px}
+th,td{border-bottom:1px solid var(--line);padding:16px 12px;text-align:left;vertical-align:top}
+th{width:30%;font-weight:700;white-space:nowrap;color:var(--muted)}
+
+.price{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.price div{background:#fff;border:1px solid var(--line);border-radius:10px;padding:22px;text-align:center}
+.price .n{font-size:15px;font-weight:800;margin-bottom:8px}
+.price .p{font-family:var(--mono);font-size:22px;font-weight:800;color:var(--green);line-height:1.3}
+.price .p small{display:block;font-size:11px;color:var(--muted);font-weight:500;font-family:inherit}
+.price .d{font-size:12.5px;color:var(--muted);margin-top:8px}
+
+.cta-band{background:var(--terra);color:#fff;text-align:center}
+.cta-band h2{color:#fff}
+.cta-band .label{color:rgba(255,255,255,.9);justify-content:center}
+.cta-band .label i{color:rgba(255,255,255,.7);border-color:rgba(255,255,255,.35)}
+.cta-band .btn{background:#fff;color:var(--terra);box-shadow:none}
+.tel-big{font-family:var(--mono);font-size:clamp(26px,4.5vw,38px);font-weight:800;
+  letter-spacing:.02em;display:inline-block;margin:8px 0 2px;text-decoration:none}
+
+footer{background:var(--ink);color:#eef4ef;padding:46px 0 96px;font-size:13.5px}
+.copy{margin-top:26px;padding-top:16px;border-top:1px solid rgba(255,255,255,.18);
+  font-size:12px;opacity:.75;line-height:1.8}
+
+.sticky{display:none}
+@media(max-width:980px){ .nav{gap:15px;font-size:13px} }
+@media(max-width:860px){
+  :root{--hd:58px}
+  .nav{display:none}
+  .pests,.reasons,.voice,.wide,.story,.price{grid-template-columns:1fr}
+  .hero .wrap{padding:58px 22px 48px}
+  section{padding:54px 0}
+  .stats{flex-wrap:wrap}
+  .stats div{flex:1 0 50%;padding:16px 8px 8px}
+  .sticky{display:flex;position:fixed;left:0;right:0;bottom:0;z-index:60;background:#fff;
+    border-top:1px solid var(--line);padding:8px;gap:8px;box-shadow:0 -3px 16px rgba(0,0,0,.12)}
+  .sticky a{flex:1;text-align:center;padding:14px 6px;border-radius:6px;text-decoration:none;
+    font-weight:700;font-size:14.5px}
+  .sticky .c{background:var(--ink);color:#fff}
+  .sticky .m{background:var(--terra);color:#fff}
+}
+</style>
+</head>
+<body>
+
+<div class="proposal">これは有限会社木下商事様（害虫駆除の新規事業）への<strong>提案イメージ</strong>です（サービス名・写真・数値・料金は仮のもの。御社の実情に差し替えます／検索エンジン非掲載）</div>
+
+<header>
+  <div class="hd">
+    <div class="logo">木下商事の害虫駆除<span>川崎市多摩区／飲食店・店舗の衛生対策</span></div>
+    <nav class="nav">
+      <a href="#story">私たちについて</a>
+      <a href="#pest">対応する害虫</a>
+      <a href="#restaurant">飲食店の方へ</a>
+      <a href="#reason">選ばれる理由</a>
+      <a href="#flow">ご依頼の流れ</a>
+      <a href="#company">会社概要</a>
+    </nav>
+    <a class="btn" href="#contact" style="padding:10px 20px;font-size:14px">相談する</a>
+  </div>
+</header>
+
+<div class="hero">
+  <div class="wrap">
+    <div class="eyebrow">川崎市・多摩区　飲食店／店舗の害虫駆除・衛生管理</div>
+    <h1>飲食店の衛生を、<br><em>飲食店の目線で守る。</em></h1>
+    <p>私たちは、川崎で1948年から続く蕎麦店を営んできた会社です。厨房の衛生を毎日守り続けてきたからこそ分かる「現場の困りごと」に、害虫駆除で応えます。ゴキブリ・ネズミ・トコジラミ、まずはご相談ください。</p>
+    <div class="cta">
+      <a class="btn" href="#contact">無料で現地調査を頼む</a>
+      <a class="btn line" href="#pest">対応する害虫を見る</a>
+    </div>
+    <div class="stats">
+      <div><b>1948<i>年</i></b><small>創業。川崎の老舗蕎麦店として</small></div>
+      <div><b>飲食店<i>目線</i></b><small>厨房の衛生を知る駆除業者</small></div>
+      <div><b>初回<i>無料</i></b><small>現地調査・お見積り</small></div>
+      <div><b>営業後<i>対応</i></b><small>閉店後・定休日の施工も相談可</small></div>
+    </div>
+  </div>
+</div>
+
+<!-- 01 私たちについて（物語） -->
+<section id="story">
+  <div class="wrap">
+    <span class="label"><i>01</i>私たちについて</span>
+    <h2>なぜ、蕎麦店が害虫駆除を。</h2>
+    <p class="lead">きれいなお店を保つ大変さを、私たちは毎日の商売で知っています。</p>
+    <div class="story">
+      <div>
+        <div class="k">OUR STORY</div>
+        <h3>厨房を守り続けた70年余りが、<br>私たちの原点です。</h3>
+        <p>木下商事は、川崎市で1948年に創業した蕎麦店「登喜和屋」を営んできました。現在は4代目が事業を受け継いでいます。飲食店にとって<em>「虫を一匹も出さないこと」がどれだけ大切で、どれだけ大変か</em>。それを、私たちは商売として身をもって知っています。</p>
+        <p>このたび、知人から害虫駆除の事業を引き継ぎ、新たな柱として立ち上げました。まずは知人の飲食店から施工を重ね、実績を積んでいます。<em>厨房の裏側も、保健所の目線も分かる駆除業者</em>——それが私たちの強みです。</p>
+      </div>
+      <div class="imgslot"><span class="tag">IMAGE</span><b>登喜和屋の店内／厨房の写真</b><span>老舗蕎麦店の雰囲気が伝わる一枚</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- 02 対応する害虫 -->
+<section id="pest" class="paper">
+  <div class="wrap">
+    <span class="label"><i>02</i>対応する害虫</span>
+    <h2>こんな害虫に、対応します。</h2>
+    <p class="lead">飲食店・店舗はもちろん、ご家庭のお困りごともご相談ください。</p>
+    <div class="pests">
+      <div class="pest"><div class="imgslot"><span class="tag">IMAGE</span><b>施工イメージ写真</b></div>
+        <div class="body"><span class="tagline">飲食店で最多</span><h3>ゴキブリ</h3><p>厨房・排水まわりの発生源を特定し、薬剤とベイト（毒餌）で継続的に抑えます。営業中に見せない対策を。</p></div></div>
+      <div class="pest"><div class="imgslot"><span class="tag">IMAGE</span><b>施工イメージ写真</b></div>
+        <div class="body"><span class="tagline">被害が深刻</span><h3>ネズミ</h3><p>侵入経路の封鎖と捕獲・忌避を組み合わせて対策。配線かじりや衛生被害を防ぎます。</p></div></div>
+      <div class="pest"><div class="imgslot"><span class="tag">IMAGE</span><b>施工イメージ写真</b></div>
+        <div class="body"><span class="tagline">相談急増中</span><h3>トコジラミ</h3><p>宿泊施設・住宅で急増中。加熱・薬剤処理で徹底対応。持ち込みの不安にもお応えします。</p></div></div>
+      <div class="pest"><div class="imgslot"><span class="tag">IMAGE</span><b>施工イメージ写真</b></div>
+        <div class="body"><h3>コバエ・飛翔害虫</h3><p>厨房・客席まわりの飛来虫を、発生源対策と捕虫機の提案で減らします。</p></div></div>
+      <div class="pest"><div class="imgslot"><span class="tag">IMAGE</span><b>施工イメージ写真</b></div>
+        <div class="body"><h3>ハチ</h3><p>店舗・住宅の軒下やベランダの巣を安全に駆除。危険なので無理をせずご連絡ください。</p></div></div>
+      <div class="pest"><div class="imgslot"><span class="tag">IMAGE</span><b>施工イメージ写真</b></div>
+        <div class="body"><h3>その他の害虫</h3><p>シロアリ・ムカデなど、上記以外もお気軽に。「これって相談できる？」の一言からどうぞ。</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- 03 飲食店の方へ -->
+<section id="restaurant">
+  <div class="wrap">
+    <span class="label"><i>03</i>飲食店の方へ</span>
+    <h2>同じ飲食業だからできる、寄り添い方。</h2>
+    <p class="lead">「営業に響かせたくない」その気持ちが、私たちには痛いほど分かります。</p>
+    <div class="wide">
+      <div class="imgslot"><span class="tag">IMAGE</span><b>飲食店の厨房・清掃の写真</b><span>横位置</span></div>
+      <div class="body">
+        <div class="k">FOR RESTAURANTS</div>
+        <h3>閉店後・定休日の施工で、<br>お客様の前に虫を出さない。</h3>
+        <p>私たちも店を開けている身です。だからこそ、営業時間や仕込みの動きを止めない段取りで施工します。保健所対応や衛生管理の記録づくりまで、飲食店の目線でご一緒します。定期管理で「出さない状態」を保つご提案も可能です。</p>
+      </div>
+    </div>
+    <div class="wide" style="margin-top:18px">
+      <div class="body">
+        <div class="k">RECURRING CARE</div>
+        <h3>一度きりで終わらせず、<br>継続で「出ない店」に。</h3>
+        <p>害虫対策は、一回の駆除より「発生させない仕組み」が肝心です。月次・季節ごとの点検で、発生源を早めに断ちます。オーナー様が本業に集中できるよう、衛生の裏方を引き受けます。<span class="todo">※プラン内容は御社の運用に合わせて設計します</span></p>
+      </div>
+      <div class="imgslot"><span class="tag">IMAGE</span><b>点検・記録作業の写真</b><span>定期管理のイメージ</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- 04 選ばれる理由 -->
+<section id="reason" class="paper">
+  <div class="wrap">
+    <span class="label"><i>04</i>選ばれる理由</span>
+    <h2>「駆除業者」である前に、「飲食店」でした。</h2>
+    <p class="lead">現場を知っているかどうか。そこが、私たちの一番の違いです。</p>
+    <div class="reasons">
+      <div class="reason"><h3>飲食店の現場を知っている</h3>
+        <p>厨房動線、仕込み、保健所対応。実際に店をやってきたから、営業に響かせない配慮ができます。</p></div>
+      <div class="reason"><h3>初回調査・お見積りは無料</h3>
+        <p>まず現地を拝見し、発生源と対策・費用を分かりやすくご説明。ご納得のうえで着手します。</p></div>
+      <div class="reason"><h3>地元・川崎の会社</h3>
+        <p>多摩区・登戸に根ざした老舗。近隣だからこそ、急なご相談にもスピーディに動けます。</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- 05 ご依頼の流れ -->
+<section id="flow">
+  <div class="wrap">
+    <span class="label"><i>05</i>ご依頼の流れ</span>
+    <h2>ご相談から、施工・その後まで。</h2>
+    <ol class="flow">
+      <li><b>お問い合わせ</b><p>電話またはフォームから。「見てほしいだけ」でも大丈夫です。</p></li>
+      <li><b>現地調査・お見積り（無料）</b><p>発生源と被害状況を確認し、内訳の分かるお見積りをお出しします。</p></li>
+      <li><b>施工</b><p>営業時間に配慮した段取りで駆除。作業内容はきちんとご報告します。</p></li>
+      <li><b>アフター・定期管理</b><p>再発の有無を確認。ご希望に応じて継続の点検プランもご用意します。</p></li>
+    </ol>
+  </div>
+</section>
+
+<!-- 06 料金の目安 -->
+<section id="price" class="paper">
+  <div class="wrap">
+    <span class="label"><i>06</i>料金の目安</span>
+    <h2>料金の目安</h2>
+    <p class="lead">現地の状況で変わります。まずは無料調査で正確なお見積りを。<span class="todo">※金額は仮です。御社の料金表に差し替えます</span></p>
+    <div class="price">
+      <div><div class="n">スポット駆除</div><div class="p">◯◯,◯◯◯円〜<small>税込／1回・被害箇所による</small></div><div class="d">ゴキブリ・ネズミなどの単発対応。</div></div>
+      <div><div class="n">飲食店・定期管理</div><div class="p">月 ◯,◯◯◯円〜<small>税込／面積・回数による</small></div><div class="d">継続点検で「出ない状態」を維持。</div></div>
+      <div><div class="n">ハチの巣駆除</div><div class="p">◯◯,◯◯◯円〜<small>税込／巣の大きさ・場所による</small></div><div class="d">危険な高所・大型は要現地確認。</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- 07 お客様の声 -->
+<section>
+  <div class="wrap">
+    <span class="label"><i>07</i>お客様の声</span>
+    <h2>お客様の声</h2>
+    <p class="lead"><span class="todo">※実際にいただいたお声に差し替えます</span></p>
+    <div class="voice">
+      <div><p>閉店後に来てもらえて、翌日の営業に全く支障が出ませんでした。飲食をやっている人だから話が早い。</p><cite>川崎市／飲食店オーナー</cite></div>
+      <div><p>どこから入ってきているのかを丁寧に説明してくれて、原因からつぶしてくれました。安心して任せられます。</p><cite>川崎市／店舗</cite></div>
+      <div><p>ハチの巣を安全に取ってもらえて助かりました。連絡してすぐ動いてくれたのがありがたかったです。</p><cite>多摩区／一般家庭</cite></div>
+    </div>
+  </div>
+</section>
+
+<!-- 08 お問い合わせ -->
+<section id="contact" class="cta-band">
+  <div class="wrap">
+    <span class="label">お問い合わせ</span>
+    <h2 style="margin-bottom:8px">現地調査・お見積りは無料です</h2>
+    <p style="margin-bottom:20px;opacity:.95">「一匹見かけた」の段階でも大丈夫。早いほど、被害は小さく済みます。</p>
+    <a class="tel-big" href="tel:0000000000">044-000-0000</a>
+    <p style="font-size:13px;opacity:.9;margin-bottom:20px">受付 ◯:◯◯〜◯:◯◯（◯曜休）<span class="todo">※実際の番号・受付時間に差し替え</span></p>
+    <a class="btn" href="mailto:info@example.co.jp">メールで相談する</a>
+  </div>
+</section>
+
+<!-- 09 会社概要 -->
+<section id="company">
+  <div class="wrap">
+    <span class="label"><i>08</i>会社概要</span>
+    <h2>会社概要</h2>
+    <table>
+      <tr><th>会社名</th><td>有限会社木下商事</td></tr>
+      <tr><th>代表者</th><td>代表取締役　木下 良輔</td></tr>
+      <tr><th>所在地</th><td>神奈川県川崎市多摩区登戸1917-1</td></tr>
+      <tr><th>創業</th><td>1948年（蕎麦店「登喜和屋」として創業）</td></tr>
+      <tr><th>事業内容</th><td>害虫駆除・衛生管理／飲食店・店舗・住宅の防除／蕎麦店「登喜和屋」の経営</td></tr>
+      <tr><th>対応エリア</th><td>川崎市・多摩区および近郊<span class="todo">※実際の対応エリアに差し替え</span></td></tr>
+      <tr><th>資格・登録</th><td><span class="todo">※防除作業監督者などの資格・登録があれば記載（信頼の裏付けになります）</span></td></tr>
+    </table>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="logo" style="color:#eef4ef">木下商事の害虫駆除<span style="color:#9db0a4">神奈川県川崎市多摩区登戸1917-1</span></div>
+    <p class="copy">© <span id="y"></span> 有限会社木下商事<br>
+      本ページは提案用のイメージです。サービス名・掲載内容・写真・料金は御社と相談のうえ決定します。</p>
+  </div>
+</footer>
+
+<div class="sticky">
+  <a class="c" href="tel:0000000000">☎ 電話で相談</a>
+  <a class="m" href="#contact">無料調査</a>
+</div>
+
+<script>document.getElementById('y').textContent=new Date().getFullYear();</script>
+</body>
+</html>
