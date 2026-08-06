@@ -335,6 +335,14 @@ function submitLead(){
   sendToGAS({ type:'sitecheck_lead', timestamp:new Date().toISOString(), name, company, email,
     site:(lastResult&&lastResult.url)||document.getElementById('url').value.trim(),
     score:(lastResult&&lastResult.score) });
+  // 診断リードをGA4に通知（iframe埋め込み時は親のGTMへ、単体時は自身のdataLayerへ）
+  try{
+    var _lead={type:'sitecheckLead',form_type:'サイト診断リード',
+      score:(lastResult&&lastResult.score),
+      site:(lastResult&&lastResult.url)||document.getElementById('url').value.trim()};
+    if(window.parent && window.parent!==window){ window.parent.postMessage(_lead,'*'); }
+    else{ window.dataLayer=window.dataLayer||[]; window.dataLayer.push({event:'form_submit',form_type:_lead.form_type,page_name:'site-check'}); }
+  }catch(_){}
   document.getElementById('lead-form-wrap').style.display='none';
   document.getElementById('complete-msg').style.display='block';
   setTimeout(notifyHeight,100);

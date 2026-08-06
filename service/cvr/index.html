@@ -269,6 +269,10 @@ window.addEventListener('message', function(e){
     var f = document.getElementById('siteCheckFrame');
     if (f && e.data.height) f.style.height = e.data.height + 'px';
   }
+  if (e.data && e.data.type === 'sitecheckLead') {
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push({event:'form_submit', form_type:(e.data.form_type||'サイト診断リード'), page_name:'service/cvr', score:e.data.score});
+  }
 });
 // 営業リンク(?url=)から来たら、その会社のURLをチェッカーの箱に自動入力し、
 // チェッカーまでスクロールする。点検の実行は本人にボタンを押してもらう。
