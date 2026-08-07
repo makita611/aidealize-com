@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>認定調査票を汎用OCR・無料AIでテキスト化していい？個人情報・法令の落とし穴｜AIdealize</title>
+<meta name="description" content="認定調査票の特記事項をChatGPTなど無料AIや汎用OCRでテキスト化するのは危険？氏名を消せば匿名になるという誤解、要配慮個人情報、守秘義務、自治体受託業務の再委託まで、介護現場が押さえるべき法令・安全管理の要点と、安全に進める方法を解説します。">
+<link rel="canonical" href="https://aidealize.com/column/ninteichosahyo-ocr-kojinjoho/">
+<meta property="og:title" content="認定調査票を汎用OCR・無料AIでテキスト化していい？個人情報・法令の落とし穴">
+<meta property="og:description" content="氏名を消せば匿名という誤解、要配慮個人情報、守秘義務、再委託まで。介護現場の安全な進め方を解説。">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://aidealize.com/column/ninteichosahyo-ocr-kojinjoho/">
+<meta property="og:site_name" content="AIdealize株式会社">
+<meta property="og:image" content="https://aidealize.com/images/womanp11.webp">
+<meta name="twitter:image" content="https://aidealize.com/images/womanp11.webp">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700;900&family=Shippori+Mincho:wght@400;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/column/article-base.css">
+<style>.article-hero-img{border-radius:12px;overflow:hidden;margin:0 0 40px;box-shadow:0 10px 30px rgba(0,0,0,0.08);}.article-hero-img img{width:100%;display:block;aspect-ratio:16/8;object-fit:cover;object-position:center 28%;}</style>
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-P6VNBWH3');</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Article","headline":"認定調査票を汎用OCR・無料AIでテキスト化していい？個人情報・法令の落とし穴","description":"氏名を消せば匿名という誤解、要配慮個人情報、守秘義務、再委託まで。安全な進め方を解説。","datePublished":"2026-08-08","author":{"@type":"Organization","name":"AIdealize株式会社"},"publisher":{"@type":"Organization","name":"AIdealize株式会社","url":"https://aidealize.com"}}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+{"@type":"Question","name":"氏名を消せば匿名情報になり、無料AIに入れても問題ありませんか？","acceptedAnswer":{"@type":"Answer","text":"いいえ。氏名を伏字にしても、年齢・地域・病歴・具体的なエピソードの組み合わせで個人を特定できる場合は個人情報に該当し得ます。介護記録に含まれる病歴や心身の状況は要配慮個人情報にあたり得るため、安全性が確認されていない無料AIサービスへの入力は避けるべきです。"}},
+{"@type":"Question","name":"介護記録を外部サービスに送るのは、そもそも禁止ですか？","acceptedAnswer":{"@type":"Answer","text":"利用目的の達成に必要な業務委託は、単純な第三者提供とは異なる整理があり得ます。ただし委託元には委託先の適切な監督が求められ、非学習・国内処理・即時削除に加えて安全管理措置や契約が必要です。なお、自治体から認定調査業務を受託して作成した調査票の場合、外部送信が再委託にあたり自治体の書面承認が必要または禁止されていることがあります。"}},
+{"@type":"Question","name":"安全に特記事項をテキスト化するには何を確認すべきですか？","acceptedAnswer":{"@type":"Answer","text":"入力データを学習に使わない契約か、処理・保存・保守が国内か、削除の対象と時点が定義されているか、再委託先が開示されているか、最終確認をケアマネ自身が行う運用か、を確認します。あわせて、自治体受託業務では契約・仕様書の再委託条項を確認してください。"}}
+]}
+</script>
+</head>
+<body>
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-P6VNBWH3" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
+<nav id="mainNav">
+  <a href="/" class="nav-logo"><img src="/images/logo.png" alt="AIdealize"><span class="nav-logo-text"><span>AI</span>dealize</span></a>
+  <ul class="nav-links">
+    <li><a href="/column/">コラム</a></li>
+    <li><a href="/service/">サービス</a></li>
+    <li><a href="https://aidealize.com/bpr/">DX事例</a></li>
+    <li><a href="/company.html">会社概要</a></li>
+    <li><a href="/lp/caremane-ocr/" class="nav-cta">特記の転記を試す</a></li>
+  </ul>
+  <button class="nav-hamburger" id="navHamburger" aria-label="メニュー"><span></span><span></span><span></span></button>
+</nav>
+<div class="nav-drawer" id="navDrawer">
+  <ul>
+    <li><a href="/column/" class="drawer-link">コラム</a></li>
+    <li><a href="/service/" class="drawer-link">サービス</a></li>
+    <li><a href="https://aidealize.com/bpr/" class="drawer-link">DX事例</a></li>
+    <li><a href="/company.html" class="drawer-link">会社概要</a></li>
+    <li><a href="/lp/caremane-ocr/">特記事項の転記を無料で試す</a></li>
+  </ul>
+</div>
+
+<header class="article-header">
+  <div class="article-header-inner">
+    <nav class="breadcrumb" aria-label="パンくず"><a href="/">ホーム</a><span>/</span><a href="/column/">コラム</a><span>/</span><span>個人情報・コンプライアンス</span></nav>
+    <div class="article-tag">個人情報・安全管理</div>
+    <h1 class="article-h1">認定調査票を汎用OCR・無料AIで<br>テキスト化していい？個人情報・法令の落とし穴。</h1>
+    <div class="article-meta"><div>📅 2026年8月8日</div><div>⏱ 読了約9分</div><div>✍ AIdealize編集部</div></div>
+  </div>
+</header>
+
+<article class="article-body">
+<div class="article-body-inner">
+
+  <div class="article-hero-img reveal"><img src="/images/womanp11.webp" alt="無料AIで個人情報を扱ってよいか悩む介護現場のケアマネジャー"></div>
+
+  <div class="summary-box reveal">
+    <div class="summary-box-title">この記事でわかること</div>
+    <ul>
+      <li>「氏名を消せば匿名」という思い込みが危ない理由</li>
+      <li>介護記録に含まれる"要配慮個人情報"と守秘義務</li>
+      <li>自治体から受託した調査票に潜む「再委託」の論点</li>
+      <li>「国内・非学習・即時削除」だけでは判断しきれない理由</li>
+      <li>安全に特記事項をテキスト化する現実的な進め方</li>
+    </ul>
+  </div>
+
+  <p>「手書きの特記事項を打ち直すのが大変。ChatGPTや無料のOCRでテキスト化できないか」——現場でよく聞く声です。気持ちはよく分かります。ですが、認定調査票には利用者の病歴や心身の状況が含まれ、扱いを誤ると<strong>個人情報保護法や守秘義務に抵触するリスク</strong>があります。この記事では、何が危なくて、どうすれば安全に進められるかを整理します。</p>
+
+  <h2>誤解①「氏名を消せば匿名情報になる」</h2>
+  <p>最も多い誤解がこれです。厚生労働省の医療・介護向けガイダンスや個人情報保護委員会の指針では、<strong>単に氏名を伏字や記号に置き換えただけでは、法令上の「匿名加工情報」にはならない</strong>とされています。年齢・性別・居住地域・具体的な既往歴・特定のエピソードなどが組み合わさると、関係者が「どの利用者か」を容易に推測できる状態（復元可能性）が残るためです。</p>
+  <div class="point-box">
+    <div class="point-box-label">要配慮個人情報とは</div>
+    <p>病歴、身体・精神の状況、障害などは「要配慮個人情報」に該当し得ます。介護記録の多くがこれを含むため、安全性が確認されていない無料AIサービスへ入力する行為は、漏えい事故や不適切開示と判断される不利益を招く恐れがあります。</p>
+  </div>
+
+  <h2>誤解②「無料AI・汎用OCRなら手軽で費用対効果が高い」</h2>
+  <p>無料でも、実際には<strong>誤変換の修正・整形・再入力・安全性の確認</strong>に職員の時間がかかります。特に手書きや、FAXで文字が潰れた用紙は認識精度が落ち、結局人が直すことに。さらに、多くの無料AIは<strong>入力データがモデルの学習に使われる可能性</strong>があり、契約上それが禁止されているかを確認せずに使うのは危険です。</p>
+
+  <h2>誤解③「大手の介護ソフトを使っていれば自動で取り込める」</h2>
+  <p>カイポケやほのぼのNEXTなどの統合型ソフトは、ソフト内部で作ったデータの連携には強い一方、<strong>外部から届いた紙の特記事項やFAX画像を解析して各項目へ配置する機能は標準搭載されていないか、限定的</strong>です。紙と介護ソフトの隙間は、専用の転記ソリューションで埋める必要があります。</p>
+
+  <div class="inline-cta reveal">
+    <div class="inline-cta-tag">安全設計の転記代行・初回10本無料</div>
+    <h3>非学習・国内処理・即時削除で、<br>安心して特記をテキスト化。</h3>
+    <p>要配慮個人情報は、付箋・番号で隠したまま送れます。AIの学習に使わず、国内で処理し、納品後に削除。最終確認はケアマネ自身が行う設計です。まずは10本、無料でお試しを。</p>
+    <div class="cta-btns-pair"><a href="/lp/caremane-ocr/" class="btn-cta-red">安全性の仕組みを見る →</a></div>
+    <span class="btn-cta-note">カード登録不要／営業電話はしません</span>
+  </div>
+
+  <h2>見落としがちな最重要論点：自治体受託業務の「再委託」</h2>
+  <p>ここは特に注意が必要です。<strong>自治体から認定調査業務そのものを受託して作成した調査票</strong>を外部サービスへ送る場合、それは"再委託"にあたる可能性があります。自治体の委託仕様書では、業務の全部または一部の再委託に<strong>発注者（自治体）の事前の書面承諾</strong>を求めたり、承諾のない再委託を禁止している例があります。</p>
+  <p>一方、<strong>ケアプラン作成のために開示請求で取得した資料を、自所の内部記録として介護ソフトに入力する</strong>場面は、これとは整理が異なります。いずれにせよ、利用する認定調査票が「どの立場で保有しているものか」を確認し、受託業務の場合は契約・仕様書の再委託条項を必ず確認してください。</p>
+  <div class="point-box">
+    <div class="point-box-label">「国内・非学習・即時削除」だけでは足りない</div>
+    <p>これらは重要な安全要素ですが、それだけで法令・自治体契約への適合が証明されるわけではありません。安全管理措置、委託先の監督、アクセス管理、バックアップ、事故対応、そして自治体契約上の権限までを含めた総合判断が必要です。「完全匿名」「100％安全」といった、条件を省いた断定は避けるべきです。</p>
+  </div>
+
+  <h2>安全に進めるためのチェックリスト</h2>
+  <ul>
+    <li>入力データを学習・品質評価に使わない契約か（非学習）</li>
+    <li>処理・保存・バックアップ・保守の所在が国内か</li>
+    <li>削除の対象（原本画像／生成テキスト／一時ファイル／ログ）と時点が定義されているか</li>
+    <li>OCRエンジン・クラウド・有人確認などの再委託先が開示されているか</li>
+    <li>氏名・被保険者番号などを隠したまま送れるか</li>
+    <li>読めない箇所を勝手に補完せず「要確認」で返すか</li>
+    <li>最終確認・確定はケアマネ自身が行う運用か（Human-in-the-loop）</li>
+    <li>法人審査に出せるデータフロー図・契約書・安全管理資料があるか</li>
+    <li>（受託業務の場合）自治体契約・仕様書の再委託条項を確認したか</li>
+  </ul>
+
+  <h2>まとめ：手軽さより「確認できる安全性」を</h2>
+  <p>特記事項のテキスト化は、現場の負担を大きく減らせます。ただし、<strong>無料AIへの安易な入力は、個人情報・守秘義務・自治体契約という三重のリスク</strong>を抱えます。選ぶべきは、非学習・国内・即時削除に加えて、<strong>再委託先や削除範囲まで開示し、最終確認をケアマネに残す</strong>設計のサービスです。そして最後は必ず、原本と照合してケアマネ自身が確定してください。</p>
+
+  <div class="inline-cta reveal">
+    <div class="inline-cta-tag">10本 無料お試し実施中</div>
+    <h3>安全設計のまま、転記だけ軽くする。</h3>
+    <p>初期費用・月額基本料0円。匿名運用OK。社協様式・全介護ソフト対応。法人のセキュリティ審査に必要な資料もご用意します。</p>
+    <div class="cta-btns-pair"><a href="/lp/caremane-ocr/" class="btn-cta-red">特記事項 転記代行センターを見る →</a></div>
+    <span class="btn-cta-note">要配慮個人情報は匿名のまま送付OK</span>
+  </div>
+
+</div>
+</article>
+
+<section class="related-section">
+  <div class="related-inner">
+    <div class="related-label">Related Articles</div>
+    <div class="related-grid">
+      <a href="/column/ninteichosahyo-tokki-tenki-daiko/" class="related-card"><div class="related-card-tag">業務効率化 / 選び方</div><div class="related-card-title">認定調査票 特記事項の「転記代行」とは？料金・精度・安全性の選び方【2026年】</div></a>
+      <a href="/column/ninteichosahyo-tokki-tenki/" class="related-card"><div class="related-card-tag">業務効率化</div><div class="related-card-title">認定調査票の特記事項の転記が大変…ケアマネの手入力を「5分」に減らす方法。</div></a>
+    </div>
+  </div>
+</section>
+
+<div class="back-section"><div class="back-section-inner"><a href="/column/" class="back-link">← コラム一覧に戻る</a></div></div>
+
+<footer>
+  <div class="footer-logo"><div class="footer-logo-mark"></div><span class="footer-logo-text"><span>A</span>idealize株式会社</span></div>
+  <span class="footer-copy">© 2020–2026 AIdealize Inc. All rights reserved.</span>
+</footer>
+
+<script src="/js/gas-forms.js"></script>
+<script src="/js/lead-capture.js"></script>
+<script>
+(function(){var b=document.getElementById('navHamburger'),d=document.getElementById('navDrawer'),n=document.getElementById('mainNav');b.addEventListener('click',function(){b.classList.toggle('open');d.classList.toggle('open');});d.querySelectorAll('.drawer-link').forEach(function(l){l.addEventListener('click',function(){b.classList.remove('open');d.classList.remove('open');});});window.addEventListener('scroll',function(){n.classList.toggle('scrolled',window.scrollY>10);});})();
+var obs=new IntersectionObserver(function(e){e.forEach(function(x){if(x.isIntersecting)x.target.classList.add('visible');});},{threshold:0.08,rootMargin:'0px 0px -30px 0px'});document.querySelectorAll('.reveal').forEach(function(el){obs.observe(el);});
+</script>
+</body>
+</html>
