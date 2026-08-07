@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url><loc>https://aidealize.com/</loc><lastmod>2026-06-13</lastmod><priority>1.0</priority></url>
-  <url><loc>https://aidealize.com/column/</loc><lastmod>2026-08-02</lastmod><priority>0.8</priority></url>
+  <url><loc>https://aidealize.com/column/</loc><lastmod>2026-08-08</lastmod><priority>0.8</priority></url>
+  <url><loc>https://aidealize.com/column/ninteichosahyo-tokki-kakikata/</loc><lastmod>2026-08-08</lastmod><priority>0.8</priority></url>
+  <url><loc>https://aidealize.com/column/ninteichosahyo-tokki-tenki/</loc><lastmod>2026-08-08</lastmod><priority>0.8</priority></url>
   <url><loc>https://aidealize.com/column/kaigo-bcp-gimuka/</loc><lastmod>2026-08-02</lastmod><priority>0.8</priority></url>
   <url><loc>https://aidealize.com/column/kaigo-bcp-tsukurikata/</loc><lastmod>2026-08-02</lastmod><priority>0.8</priority></url>
   <url><loc>https://aidealize.com/column/kaigo-bcp-hinagata/</loc><lastmod>2026-08-02</lastmod><priority>0.8</priority></url>
@@ -35,6 +37,7 @@
   <url><loc>https://aidealize.com/service/prevention/</loc><lastmod>2026-06-13</lastmod><priority>0.6</priority></url>
   <url><loc>https://aidealize.com/service/artmake/</loc><lastmod>2026-06-13</lastmod><priority>0.6</priority></url>
   <url><loc>https://aidealize.com/service/imageanalysis/</loc><lastmod>2026-06-13</lastmod><priority>0.6</priority></url>
+  <url><loc>https://aidealize.com/lp/caremane-ocr/</loc><lastmod>2026-08-08</lastmod><priority>0.8</priority></url>
   <url><loc>https://aidealize.com/lp/hanamaru-kango/</loc><lastmod>2026-06-13</lastmod><priority>0.8</priority></url>
   <url><loc>https://aidealize.com/lp/hanamaru-kaigo/</loc><lastmod>2026-06-13</lastmod><priority>0.6</priority></url>
   <url><loc>https://aidealize.com/lp/jinzai/</loc><lastmod>2026-06-13</lastmod><priority>0.6</priority></url>

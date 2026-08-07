@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>認定調査票の特記事項の転記が大変…ケアマネの手入力を「5分」に減らす方法【AIdealize】</title>
+<meta name="description" content="居宅ケアマネの隠れた負担「認定調査票の特記事項の転記」。1本1時間の手入力を、スキャンしてメールで送るだけでAIがテキスト化し、確認して貼るだけの5分に。社協様式・全介護ソフト対応、要配慮個人情報を匿名のまま扱える運用と、手書きの限界まで正直に解説します。">
+<link rel="canonical" href="https://aidealize.com/column/ninteichosahyo-tokki-tenki/">
+<meta property="og:title" content="認定調査票の特記事項の転記が大変…ケアマネの手入力を「5分」に減らす方法">
+<meta property="og:description" content="1本1時間の特記事項の転記を、スキャンしてメールで送るだけの仕組みに。社協様式・全介護ソフト対応、匿名運用まで解説。">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://aidealize.com/column/ninteichosahyo-tokki-tenki/">
+<meta property="og:site_name" content="AIdealize株式会社">
+<meta property="og:image" content="https://aidealize.com/images/womanp11.webp">
+<meta name="twitter:image" content="https://aidealize.com/images/womanp11.webp">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700;900&family=Shippori+Mincho:wght@400;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-P6VNBWH3');</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "認定調査票の特記事項の転記が大変…ケアマネの手入力を「5分」に減らす方法",
+  "description": "1本1時間の特記事項の転記を、スキャンしてメールで送るだけでAIがテキスト化し、確認して貼るだけの5分に。社協様式・全介護ソフト対応、匿名運用まで解説。",
+  "datePublished": "2026-08-07",
+  "author": {"@type": "Organization", "name": "AIdealize株式会社"},
+  "publisher": {"@type": "Organization", "name": "AIdealize株式会社", "url": "https://aidealize.com"}
+}
+</script>
+<style>
+:root{
+  --red:#0891b2;--red-dark:#0e7490;
+  --ink:#1e293b;--body:#4b5563;--light:#94a3b8;
+  --border:#e2e8f0;--bg:#f8fafc;--bg2:#f1f5f9;--white:#fff;
+  --tag-bg:#ecfeff;--green:#059669;--green-bg:#ecfdf5;
+  --demo-bg:#0f172a;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{font-family:'Noto Sans JP',sans-serif;background:var(--white);color:var(--ink);overflow-x:hidden;line-height:1.7;}
+
+/* NAV */
+#mainNav{position:fixed;top:0;left:0;right:0;z-index:1000;display:flex;align-items:center;justify-content:space-between;padding:0 60px;height:68px;background:rgba(255,255,255,0.97);border-bottom:1px solid var(--border);backdrop-filter:blur(12px);transition:box-shadow 0.3s;}
+#mainNav.scrolled{box-shadow:0 2px 16px rgba(0,0,0,0.06);}
+.nav-logo{display:flex;align-items:center;gap:10px;text-decoration:none;}
+.nav-logo img{height:34px;width:auto;}
+.nav-logo-text{font-family:'DM Mono',monospace;font-size:15px;font-weight:500;color:var(--ink);letter-spacing:0.02em;}
+.nav-logo-text span{color:var(--red);}
+.nav-links{display:flex;align-items:center;gap:32px;list-style:none;}
+.nav-links a{font-size:13px;font-weight:500;color:var(--body);text-decoration:none;transition:color 0.2s;}
+.nav-links a:hover{color:var(--ink);}
+.nav-cta{background:var(--red) !important;color:#fff !important;padding:9px 20px;border-radius:4px;font-size:12px !important;font-weight:700 !important;}
+.nav-cta:hover{background:var(--red-dark) !important;}
+.nav-hamburger{display:none;flex-direction:column;justify-content:center;gap:5px;width:40px;height:40px;background:none;border:none;cursor:pointer;}
+.nav-hamburger span{display:block;width:22px;height:2px;background:var(--ink);transition:all 0.3s;transform-origin:center;}
+.nav-hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg);}
+.nav-hamburger.open span:nth-child(2){opacity:0;}
+.nav-hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
+.nav-drawer{display:none;position:fixed;top:68px;left:0;right:0;background:#fff;border-bottom:2px solid var(--red);padding:20px 28px 28px;z-index:999;}
+.nav-drawer.open{display:block;}
+.nav-drawer ul{list-style:none;display:flex;flex-direction:column;}
+.nav-drawer ul li a{display:block;padding:13px 0;font-size:15px;font-weight:500;color:var(--ink);text-decoration:none;border-bottom:1px solid var(--border);}
+.nav-drawer ul li:last-child a{margin-top:16px;text-align:center;background:var(--red);color:#fff !important;padding:13px;border-radius:4px;font-weight:700 !important;border-bottom:none;}
+@media(max-width:1024px){#mainNav{padding:0 28px;}.nav-links{display:none;}.nav-hamburger{display:flex;}}
+@media(max-width:480px){#mainNav{padding:0 16px;height:60px;}.nav-drawer{top:60px;}.nav-logo-text{font-size:13px;}}
+
+/* ARTICLE HEADER */
+.article-header{padding:116px 24px 52px;background:var(--bg);border-bottom:1px solid var(--border);}
+.article-header-inner{max-width:760px;margin:0 auto;}
+.breadcrumb{display:flex;align-items:center;gap:6px;font-size:12px;color:var(--light);margin-bottom:20px;flex-wrap:wrap;}
+.breadcrumb a{color:var(--light);text-decoration:none;}
+.breadcrumb a:hover{color:var(--red);}
+.breadcrumb span{color:var(--border);}
+.article-tag{display:inline-flex;align-items:center;background:var(--tag-bg);color:var(--red);font-size:11px;font-weight:700;letter-spacing:0.06em;padding:4px 12px;border-radius:100px;margin-bottom:18px;}
+.article-h1{font-family:'Shippori Mincho',serif;font-size:clamp(20px,3vw,34px);font-weight:700;color:var(--ink);line-height:1.65;margin-bottom:20px;}
+.article-meta{display:flex;align-items:center;gap:20px;flex-wrap:wrap;font-size:12px;color:var(--light);}
+
+/* ARTICLE BODY */
+.article-body{padding:72px 24px 100px;}
+.article-body-inner{max-width:760px;margin:0 auto;}
+.article-hero-img{border-radius:12px;overflow:hidden;margin:0 0 40px;box-shadow:0 10px 30px rgba(0,0,0,0.08);}
+.article-hero-img img{width:100%;display:block;aspect-ratio:16/8;object-fit:cover;object-position:center 28%;}
+
+/* SUMMARY BOX */
+.summary-box{background:var(--bg);border-left:4px solid var(--red);padding:24px 28px;border-radius:0 6px 6px 0;margin-bottom:52px;}
+.summary-box-title{font-size:11px;font-weight:700;color:var(--red);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:12px;}
+.summary-box ul{list-style:none;display:flex;flex-direction:column;gap:8px;}
+.summary-box ul li{display:flex;align-items:flex-start;gap:8px;font-size:14px;line-height:1.8;color:var(--ink);}
+.summary-box ul li::before{content:'✓';color:var(--red);font-weight:700;flex-shrink:0;margin-top:1px;}
+
+/* HEADINGS */
+.article-body-inner h2{font-family:'Shippori Mincho',serif;font-size:clamp(17px,2.2vw,24px);font-weight:700;color:var(--ink);line-height:1.65;margin:56px 0 20px;padding-bottom:10px;border-bottom:1px solid var(--border);position:relative;}
+.article-body-inner h2::after{content:'';position:absolute;bottom:-1px;left:0;width:48px;height:2px;background:var(--red);}
+.article-body-inner h3{font-family:'Shippori Mincho',serif;font-size:clamp(15px,1.8vw,19px);font-weight:700;color:var(--ink);line-height:1.7;margin:36px 0 14px;padding-left:14px;border-left:3px solid var(--red);}
+.article-body-inner p{font-size:15px;line-height:2;color:var(--body);margin-bottom:22px;}
+.article-body-inner strong{color:var(--ink);font-weight:700;}
+.article-body-inner ul,.article-body-inner ol{list-style:none;margin-bottom:22px;display:flex;flex-direction:column;gap:8px;}
+.article-body-inner ul li,.article-body-inner ol li{font-size:14px;line-height:1.9;color:var(--body);display:flex;align-items:flex-start;gap:10px;}
+.article-body-inner ul li::before{content:'─';color:var(--red);flex-shrink:0;margin-top:4px;font-size:12px;}
+.article-body-inner ol{counter-reset:ol;}
+.article-body-inner ol li{counter-increment:ol;}
+.article-body-inner ol li::before{content:counter(ol);background:var(--red);color:#fff;width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0;margin-top:2px;font-family:'DM Mono',monospace;}
+
+/* PAIN CARDS */
+.pain-cards{display:flex;flex-direction:column;gap:12px;margin:24px 0;}
+.pain-card{background:var(--bg);border-left:4px solid var(--red);border-radius:0 8px 8px 0;padding:18px 20px;display:flex;align-items:flex-start;gap:12px;}
+.pain-card-icon{font-size:22px;flex-shrink:0;margin-top:2px;}
+.pain-card-body{font-size:14px;line-height:1.85;color:var(--body);}
+.pain-card-body strong{color:var(--ink);}
+
+/* QUOTE */
+.pull-quote{background:var(--bg2);border-radius:10px;padding:24px 26px;margin:28px 0;font-family:'Shippori Mincho',serif;font-size:16px;line-height:1.9;color:var(--ink);position:relative;}
+.pull-quote::before{content:'“';font-size:44px;color:var(--red);opacity:0.35;position:absolute;top:8px;left:14px;line-height:1;}
+.pull-quote .who{display:block;margin-top:10px;font-family:'Noto Sans JP',sans-serif;font-size:12px;color:var(--light);}
+
+/* STEPS */
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:24px 0;}
+.step-card{background:var(--bg);border-top:3px solid var(--red);border-radius:6px;padding:20px 16px;}
+.step-num{font-family:'DM Mono',monospace;font-size:10px;color:var(--red);letter-spacing:0.12em;margin-bottom:8px;}
+.step-title{font-family:'Shippori Mincho',serif;font-size:15px;font-weight:700;color:var(--ink);line-height:1.6;margin-bottom:8px;}
+.step-body{font-size:12px;line-height:1.85;color:var(--body);}
+
+/* COMPARE TABLE */
+.compare-wrap{overflow-x:auto;margin:24px 0 32px;}
+.compare-table{width:100%;border-collapse:collapse;font-size:13.5px;min-width:480px;}
+.compare-table th{padding:12px 18px;text-align:center;font-size:12px;font-weight:700;letter-spacing:0.05em;background:var(--bg2);color:var(--ink);border-bottom:2px solid var(--border);}
+.compare-table th:first-child{text-align:left;}
+.compare-table th.hl{background:var(--red);color:#fff;}
+.compare-table td{padding:12px 18px;border-bottom:1px solid var(--border);vertical-align:middle;line-height:1.7;color:var(--body);text-align:center;}
+.compare-table td:first-child{text-align:left;font-weight:600;color:var(--ink);}
+.compare-table td.hl{background:var(--tag-bg);color:var(--ink);font-weight:600;}
+.check{color:var(--red);font-weight:700;}
+.cross{color:#bbb;}
+
+/* POINT BOX */
+.point-box{background:var(--bg2);border-radius:8px;padding:20px 24px;margin:20px 0;}
+.point-box-label{font-size:10px;font-family:'DM Mono',monospace;color:var(--red);letter-spacing:0.12em;text-transform:uppercase;margin-bottom:10px;}
+.point-box p{font-size:14px;line-height:1.9;color:var(--body);margin-bottom:0;}
+
+/* INLINE CTA */
+.inline-cta{background:var(--bg);border:1px solid var(--border);border-top:4px solid var(--red);border-radius:10px;padding:36px;margin:52px 0;text-align:center;}
+.inline-cta-tag{font-size:11px;color:var(--red);font-weight:700;letter-spacing:0.08em;margin-bottom:12px;}
+.inline-cta h3{font-family:'Shippori Mincho',serif;font-size:clamp(16px,2vw,22px);font-weight:700;color:var(--ink);line-height:1.65;margin-bottom:12px;}
+.inline-cta p{font-size:14px;color:var(--body);line-height:1.9;margin-bottom:22px;}
+.cta-btns-pair{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;}
+.btn-cta-red{display:inline-flex;align-items:center;gap:6px;background:var(--red);color:#fff;padding:13px 28px;border-radius:4px;font-size:14px;font-weight:700;text-decoration:none;transition:background 0.2s,transform 0.2s;}
+.btn-cta-red:hover{background:var(--red-dark);transform:translateY(-2px);}
+.btn-cta-note{display:block;margin-top:12px;font-size:11px;color:var(--light);}
+
+/* EFFECT GRID */
+.effect-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:24px 0;}
+.effect-card{background:var(--bg);border-top:3px solid var(--red);border-radius:6px;padding:20px 16px;}
+.effect-num{font-family:'DM Mono',monospace;font-size:10px;color:var(--red);letter-spacing:0.12em;margin-bottom:8px;}
+.effect-title{font-family:'Shippori Mincho',serif;font-size:15px;font-weight:700;color:var(--ink);line-height:1.6;margin-bottom:8px;}
+.effect-body{font-size:12px;line-height:1.85;color:var(--body);}
+
+/* BACK */
+.back-section{padding:28px 24px;background:var(--bg);border-top:1px solid var(--border);}
+.back-section-inner{max-width:760px;margin:0 auto;}
+.back-link{display:inline-flex;align-items:center;gap:6px;font-size:13px;color:var(--body);text-decoration:none;transition:color 0.2s;}
+.back-link:hover{color:var(--red);}
+
+/* RELATED */
+.related-section{padding:60px 24px;background:var(--white);border-top:1px solid var(--border);}
+.related-inner{max-width:760px;margin:0 auto;}
+.related-label{font-family:'DM Mono',monospace;font-size:11px;color:var(--red);letter-spacing:0.14em;text-transform:uppercase;margin-bottom:20px;}
+.related-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+.related-card{border:1px solid var(--border);border-top:3px solid var(--red);padding:20px;text-decoration:none;color:inherit;border-radius:0 0 6px 6px;transition:box-shadow 0.2s,transform 0.2s;}
+.related-card:hover{box-shadow:0 4px 16px rgba(0,0,0,0.07);transform:translateY(-2px);}
+.related-card-tag{font-size:10px;font-family:'DM Mono',monospace;color:var(--red);letter-spacing:0.1em;margin-bottom:8px;}
+.related-card-title{font-family:'Shippori Mincho',serif;font-size:14px;font-weight:700;color:var(--ink);line-height:1.6;}
+
+/* FOOTER */
+footer{background:#1f1f1f;border-top:1px solid rgba(255,255,255,0.06);padding:40px 60px;display:flex;align-items:center;justify-content:space-between;}
+.footer-logo{display:flex;align-items:center;gap:10px;}
+.footer-logo-mark{width:20px;height:20px;background:var(--red);clip-path:polygon(50% 0%,0% 100%,18% 100%,50% 38%,82% 100%,100% 100%);}
+.footer-logo-text{font-family:'DM Mono',monospace;font-size:13px;color:rgba(255,255,255,0.55);}
+.footer-logo-text span{color:var(--red);}
+.footer-copy{font-size:11px;color:rgba(255,255,255,0.25);font-family:'DM Mono',monospace;}
+
+.reveal{opacity:0;transform:translateY(18px);transition:opacity 0.55s ease,transform 0.55s ease;}
+.reveal.visible{opacity:1;transform:translateY(0);}
+
+@media(max-width:768px){
+  .article-header,.article-body,.back-section,.related-section{padding-left:16px;padding-right:16px;}
+  .article-header{padding-top:88px;}
+  .steps{grid-template-columns:1fr;}
+  .effect-grid{grid-template-columns:1fr;}
+  .related-grid{grid-template-columns:1fr;}
+  .cta-btns-pair{flex-direction:column;align-items:center;}
+  .inline-cta{padding:24px 18px;}
+  footer{flex-direction:column;gap:14px;text-align:center;padding:28px 16px;}
+}
+</style>
+</head>
+<body>
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-P6VNBWH3" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
+<!-- NAV -->
+<nav id="mainNav">
+  <a href="/" class="nav-logo">
+    <img src="/images/logo.png" alt="AIdealize">
+    <span class="nav-logo-text"><span>AI</span>dealize</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="/column/">コラム</a></li>
+    <li><a href="/service/">サービス</a></li>
+    <li><a href="https://aidealize.com/bpr/">DX事例</a></li>
+    <li><a href="/company.html">会社概要</a></li>
+    <li><a href="/lp/caremane-ocr/" class="nav-cta">特記の転記を試す</a></li>
+  </ul>
+  <button class="nav-hamburger" id="navHamburger" aria-label="メニュー">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+<div class="nav-drawer" id="navDrawer">
+  <ul>
+    <li><a href="/column/" class="drawer-link">コラム</a></li>
+    <li><a href="/service/" class="drawer-link">サービス</a></li>
+    <li><a href="https://aidealize.com/bpr/" class="drawer-link">DX事例</a></li>
+    <li><a href="/company.html" class="drawer-link">会社概要</a></li>
+    <li><a href="/lp/caremane-ocr/">特記事項の転記を無料で試す</a></li>
+  </ul>
+</div>
+
+<!-- ARTICLE HEADER -->
+<header class="article-header">
+  <div class="article-header-inner">
+    <nav class="breadcrumb" aria-label="パンくず">
+      <a href="/">ホーム</a><span>/</span>
+      <a href="/column/">コラム</a><span>/</span>
+      <span>居宅介護支援・ケアマネ業務</span>
+    </nav>
+    <div class="article-tag">居宅介護支援・ケアマネ業務</div>
+    <h1 class="article-h1">
+      認定調査票の特記事項の転記が大変…<br>ケアマネの手入力を「5分」に減らす方法。
+    </h1>
+    <div class="article-meta">
+      <div class="article-meta-item">📅 2026年8月7日</div>
+      <div class="article-meta-item">⏱ 読了約8分</div>
+      <div class="article-meta-item">✍ AIdealize編集部</div>
+    </div>
+  </div>
+</header>
+
+<!-- BODY -->
+<article class="article-body">
+<div class="article-body-inner">
+
+  <div class="article-hero-img reveal">
+    <img src="/images/womanp11.webp" alt="認定調査票の特記事項の転記のために遅くまで残業する居宅ケアマネジャー">
+  </div>
+
+  <div class="summary-box reveal">
+    <div class="summary-box-title">この記事でわかること</div>
+    <ul>
+      <li>「認定調査票の特記事項の転記」に、なぜ1本1時間もかかるのか</li>
+      <li>厚労省のケアプランデータ連携システムを入れても、この手作業が残る理由</li>
+      <li>スキャンしてメールで送るだけで、確認して貼るだけの「5分」に変える方法</li>
+      <li>要配慮個人情報を、匿名のまま安全に扱う運用のコツ</li>
+      <li>手書きはどこまで読めるのか——できること・できないことを正直に</li>
+    </ul>
+  </div>
+
+  <p>居宅介護支援事業所のケアマネジャーの業務は、アセスメント、ケアプランの作成、サービス担当者会議、モニタリング、給付管理と多岐にわたります。人材不足のなか、送迎やオンコール、電話・来客対応まで兼ねることも多く、<strong>「対人援助よりも書類に追われている」</strong>という声は後を絶ちません。</p>
+
+  <p>そのなかで、意外と語られないのに現場の時間を確実に奪っているのが——<strong>要介護認定の「認定調査票」に書かれた特記事項を、自社の介護ソフトへ手入力で転記する作業</strong>です。この記事では、この“名もなき手作業”をどう軽くできるかを、現実的な方法にしぼって解説します。</p>
+
+  <h2>「特記事項の転記」に、なぜ1本1時間もかかるのか</h2>
+
+  <p>社協様式や自治体から届く認定調査票の特記事項は、手書きやPDFで届きます。ケアマネはこれを見ながら、ワイズマン・ほのぼのNEXT・カイポケといった介護ソフトの特記欄へ、1文字ずつ打ち込んでいきます。実際にお話を伺うと、<strong>「特記の転記が、一番時間がかかる」</strong>という声が返ってきます。</p>
+
+  <div class="pain-cards">
+    <div class="pain-card reveal">
+      <div class="pain-card-icon">🔍</div>
+      <div class="pain-card-body">
+        <strong>読みづらい原本を、原本とモニターで往復</strong><br>
+        判読しづらい手書きや、保護されたPDFを見ながらの入力。目線の往復が集中力を削ります。
+      </div>
+    </div>
+    <div class="pain-card reveal">
+      <div class="pain-card-icon">⏱️</div>
+      <div class="pain-card-body">
+        <strong>特記1本で45〜60分が消える</strong><br>
+        1本あたりの人件費に換算すると1,500〜2,000円相当。件数が重なる月は、深夜まで持ち越しになります。
+      </div>
+    </div>
+    <div class="pain-card reveal">
+      <div class="pain-card-icon">😮‍💨</div>
+      <div class="pain-card-body">
+        <strong>残業・眼精疲労の主因に</strong><br>
+        夕方から入力を始め、気づけば夜。目薬を差し、肩こりに耐えながらの作業が常態化します。
+      </div>
+    </div>
+  </div>
+
+  <div class="pull-quote reveal">
+    特記が、一番時間がかかるんです。やっぱり特記。手入力で全部やるよりは、ずっと楽になりますね。
+    <span class="who">— 居宅介護支援事業所のケアマネジャー（テスト利用時の声・匿名）</span>
+  </div>
+
+  <h2>データ連携システムを入れても、この手作業は残る</h2>
+
+  <p>「厚労省のケアプランデータ連携システムを導入したのに、少しも楽にならない」——これもよく聞く悩みです。理由は明確で、あのシステムは<strong>指定のデジタルデータを事業所間で取り交わす「後工程」のツール</strong>だからです。</p>
+
+  <p>行政や社協から届く<strong>紙やPDFの認定調査票という「前工程のアナログデータ」は対象外</strong>。つまり、システムの手前にある「特記事項を読み取って打ち込む」手作業は、そっくりそのまま残ります。ここが、置き去りにされてきたポイントです。</p>
+
+  <div class="point-box">
+    <div class="point-box-label">ここが盲点</div>
+    <p>効率化の話題は「ケアプランのデータ連携」に集まりがちですが、実際に毎回発生して時間を奪うのは、その<strong>手前にある「特記事項の転記」</strong>です。ここを解けば、他を変えなくても現場の残業は目に見えて減ります。</p>
+  </div>
+
+  <h2>解決策：スキャンしてメールで送るだけ、AIがテキスト化</h2>
+
+  <p>やることは、いつもの業務フローを変えないことです。新しいソフトを覚える必要も、システムを乗り換える必要もありません。認定調査票を<strong>複合機やスキャナでPDFにして、メールで送る</strong>——それだけです。</p>
+
+  <div class="steps reveal">
+    <div class="step-card">
+      <div class="step-num">STEP 01</div>
+      <div class="step-title">送る</div>
+      <div class="step-body">認定調査票をPDF化し、氏名・被保険者番号に付箋を貼る（または「13番」等の番号に置換）。指定アドレスへメールで送信。約2〜3分。</div>
+    </div>
+    <div class="step-card">
+      <div class="step-num">STEP 02</div>
+      <div class="step-title">待つ</div>
+      <div class="step-body">AIが特記事項を読み取り、項目番号ごとに整形したテキストを生成。あなたは何もする必要がありません。</div>
+    </div>
+    <div class="step-card">
+      <div class="step-num">STEP 03</div>
+      <div class="step-title">貼る</div>
+      <div class="step-body">届いたテキストを確認し、お使いの介護ソフトの特記欄に貼り付けるだけ。最後はあなたの目で確定します。</div>
+    </div>
+  </div>
+
+  <p>これまで1本「約60分」かかっていた転記が、届いたテキストを確認・修正するだけの<strong>「約5分」</strong>に。納品データは汎用的なテキスト形式なので、ワイズマン・ほのぼの・カイポケなど、<strong>介護ソフトの種類を問わず</strong>コピー＆ペーストでそのまま使えます。</p>
+
+  <!-- 中間CTA -->
+  <div class="inline-cta reveal">
+    <div class="inline-cta-tag">まずは10本・無料お試し</div>
+    <h3>特記事項の転記を、<br>「チェックだけの5分」に。</h3>
+    <p>認定調査票の特記事項を、スキャンしてメールで送るだけ。AIがテキスト化してお返しします。初期費用・月額基本料は0円、まずは10本無料でお試しいただけます。</p>
+    <div class="cta-btns-pair">
+      <a href="/lp/caremane-ocr/" class="btn-cta-red">特記事項 転記代行サービスを見る →</a>
+    </div>
+    <span class="btn-cta-note">カード登録不要／個人情報は付箋・番号で隠したままでOK</span>
+  </div>
+
+  <h2>手入力とAI併用で、業務はこう変わる</h2>
+
+  <div class="compare-wrap">
+    <table class="compare-table">
+      <thead>
+        <tr>
+          <th>比較項目</th>
+          <th>従来の手入力</th>
+          <th class="hl">スキャン＋AI転記</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>1本あたりの時間</td><td>45〜60分</td><td class="hl"><span class="check">✓</span> 約5分（確認のみ）</td></tr>
+        <tr><td>初期・月額コスト</td><td>人件費のみ（見えない負担）</td><td class="hl"><span class="check">✓</span> 初期0円・月額0円</td></tr>
+        <tr><td>介護ソフト連携</td><td>手入力</td><td class="hl"><span class="check">✓</span> 全ソフトへコピペ</td></tr>
+        <tr><td>操作の学習</td><td>不要</td><td class="hl"><span class="check">✓</span> 不要（メール送付のみ）</td></tr>
+        <tr><td>最終的な判断・責任</td><td>ケアマネが担う</td><td class="hl">ケアマネが担う（変わらない）</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p>ケアマネ4名で月16本を転記する事業所なら、従来は年間192時間。転記を外に出せば約16時間になり、<strong>年間およそ176時間（約22日分）</strong>を、本来のアセスメントや利用者訪問に回せる計算になります。</p>
+
+  <h2>「AIに要配慮個人情報を渡して大丈夫？」への答え</h2>
+
+  <p>介護現場で最も気になるのは、利用者の氏名・状態・病歴といった要配慮個人情報の取り扱いです。ここは、仕組みと運用の両面で対策できます。</p>
+
+  <ul>
+    <li><strong>匿名化のまま送れる</strong>——氏名・生年月日・被保険者番号は付箋やマスクで隠す、または「13番」などの番号に置き換えて送信。個人情報を渡さずに、特記本文だけをテキスト化できます。</li>
+    <li><strong>非学習・国内処理</strong>——入力データをAIの再学習に使わない運用で、処理は国内で完結。</li>
+    <li><strong>即時消去</strong>——お預かりしたPDF・生成テキストは、納品後に消去。外部に蓄積しません。</li>
+    <li><strong>最終確認はケアマネ</strong>——AIの出力はあくまで「下書き」。確認・確定するのはケアマネジャー自身なので、判断と責任は現場に残ります。</li>
+  </ul>
+
+  <div class="point-box">
+    <div class="point-box-label">法人の監査対策にも</div>
+    <p>「個人情報を一切渡さない運用」が選べるため、法人のセキュリティ審査や個人情報保護規程が厳しい事業所でも導入しやすいのが特長です。機密保持契約（NDA）や覚書の締結にも対応できます。</p>
+  </div>
+
+  <h2>手書きはどこまで読める？——正直なところ</h2>
+
+  <p>誇張はしません。<strong>丁寧に書かれた手書きは対応できます。</strong>実際のテストでも「手足とも職員が爪を切る」といった手書きメモは、そのままテキスト化できました。特記事項に後から追記したい場合は、余白に番号を付けて手書きで書き足していただければ、あわせて整えられます。</p>
+
+  <p>一方で、<strong>速記のように崩れすぎて、人が見ても読めない字は、AIでも読み取れません。</strong>その箇所は「［※要確認］」と注記してお返しし、内容を勝手に創作することはありません。だからこそ、最後にケアマネの目で確認する運用が、品質と安全の両方を担保します。</p>
+
+  <div class="effect-grid reveal">
+    <div class="effect-card">
+      <div class="effect-num">POINT 01</div>
+      <div class="effect-title">対応が得意</div>
+      <div class="effect-body">社協・全社協様式の特記事項。印刷・PDF、丁寧な手書き。</div>
+    </div>
+    <div class="effect-card">
+      <div class="effect-num">POINT 02</div>
+      <div class="effect-title">要確認で返す</div>
+      <div class="effect-body">崩れて読めない箇所は［※要確認］と注記。創作はしない。</div>
+    </div>
+    <div class="effect-card">
+      <div class="effect-num">POINT 03</div>
+      <div class="effect-title">きれいに送るコツ</div>
+      <div class="effect-body">スマホ撮影より、複合機・スキャナでのPDF化が高精度。</div>
+    </div>
+  </div>
+
+  <h2>まとめ：置き去りの手作業を、まず1本、外に出してみる</h2>
+
+  <p>ケアプランのデータ連携や大がかりなDXの前に、<strong>毎回確実に時間を奪っている「特記事項の転記」</strong>という足元の手作業があります。ここは、いまある業務フローを変えずに、スキャンしてメールで送るだけで軽くできます。</p>
+
+  <p>大切なのは、AIに丸投げしないこと。<strong>AIが転記の“下ごしらえ”を肩代わりし、最終確認はケアマネ自身が行う</strong>——この役割分担さえ守れば、安心して残業を減らせます。まずは1本、無料でお試しいただき、精度と手軽さを確かめてみてください。</p>
+
+  <!-- 末尾CTA -->
+  <div class="inline-cta reveal">
+    <div class="inline-cta-tag">10本 無料お試し実施中</div>
+    <h3>まず1本、送ってみてください。<br>特記事項が、テキストになって返ってきます。</h3>
+    <p>初期費用・月額基本料0円。カード登録も契約書締結も不要です。社協様式・全介護ソフト対応。</p>
+    <div class="cta-btns-pair">
+      <a href="/lp/caremane-ocr/" class="btn-cta-red">特記事項 転記代行センターを見る →</a>
+    </div>
+    <span class="btn-cta-note">要配慮個人情報は匿名のまま送付OK／営業電話はしません</span>
+  </div>
+
+</div>
+</article>
+
+<!-- 関連記事 -->
+<section class="related-section">
+  <div class="related-inner">
+    <div class="related-label">Related Articles</div>
+    <div class="related-grid">
+      <a href="/column/careplan-ai-caremane/" class="related-card">
+        <div class="related-card-tag">居宅介護支援 / ケアプランAI</div>
+        <div class="related-card-title">ケアプランAIはどこまで使える？ ケアマネのアセスメント・原案作成をAIで効率化する。</div>
+      </a>
+      <a href="/column/caremane-monitoring-kiroku/" class="related-card">
+        <div class="related-card-tag">居宅介護支援 / 記録効率化</div>
+        <div class="related-card-title">ケアマネのモニタリング記録、訪問後にLINEで話すだけでAIが作成する時代へ。</div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<div class="back-section">
+  <div class="back-section-inner">
+    <a href="/column/" class="back-link">← コラム一覧に戻る</a>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-logo">
+    <div class="footer-logo-mark"></div>
+    <span class="footer-logo-text"><span>A</span>idealize株式会社</span>
+  </div>
+  <span class="footer-copy">© 2020–2026 AIdealize Inc. All rights reserved.</span>
+</footer>
+
+<script src="/js/gas-forms.js"></script>
+<script>
+(function(){
+  const btn=document.getElementById('navHamburger');
+  const drawer=document.getElementById('navDrawer');
+  const nav=document.getElementById('mainNav');
+  btn.addEventListener('click',function(){btn.classList.toggle('open');drawer.classList.toggle('open');});
+  drawer.querySelectorAll('.drawer-link').forEach(function(l){l.addEventListener('click',function(){btn.classList.remove('open');drawer.classList.remove('open');});});
+  window.addEventListener('scroll',function(){nav.classList.toggle('scrolled',window.scrollY>10);});
+})();
+const obs=new IntersectionObserver(function(e){e.forEach(function(x){if(x.isIntersecting)x.target.classList.add('visible');});},{threshold:0.08,rootMargin:'0px 0px -30px 0px'});
+document.querySelectorAll('.reveal').forEach(function(el){obs.observe(el);});
+</script>
+</body>
+</html>
