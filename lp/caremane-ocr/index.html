@@ -211,6 +211,17 @@ body {
 .ba-col-head .ic { font-size: 16px; }
 .ba-doc { padding: 22px 22px 24px; font-size: 0.8rem; line-height: 1.8; flex: 1; }
 .ba-col.before .ba-doc { font-family: 'Zen Kaku Gothic New', sans-serif; color: #5c6773; background: repeating-linear-gradient(180deg, #fff, #fff 27px, #f0f1f4 27px, #f0f1f4 28px); }
+/* 認定調査票フォーム レプリカ */
+.form-doc { padding: 16px 16px 18px; flex: 1; background: #fcfcfa; }
+.form-title { text-align: center; font-weight: 900; font-size: 0.86rem; letter-spacing: 0.14em; color: #3a4552; border: 1.5px solid #b7bfc8; padding: 5px; margin-bottom: 10px; font-family: 'Zen Kaku Gothic New', sans-serif; }
+.form-idrow { display: flex; justify-content: flex-end; align-items: center; gap: 6px; font-size: 0.66rem; color: #8a949f; margin-bottom: 10px; }
+.form-idbox { border: 1px solid #c3cad2; border-radius: 2px; padding: 1px 12px; color: #3a4552; font-weight: 700; }
+.form-sec { border: 1px solid #c3cad2; border-radius: 3px; margin-bottom: 10px; overflow: hidden; }
+.form-sec-head { background: #eef1f4; border-bottom: 1px solid #d3d9df; padding: 4px 9px; font-size: 0.74rem; font-weight: 700; color: #3a4552; }
+.form-sec-items { padding: 4px 9px; font-size: 0.6rem; color: #99a3ad; line-height: 1.6; border-bottom: 1px dashed #dfe3e8; }
+.form-write { padding: 6px 10px 8px; background: repeating-linear-gradient(180deg, transparent, transparent 21px, #e6e9ed 21px, #e6e9ed 22px); }
+.form-write .hw { display: block; font-family: 'Zen Kaku Gothic New', sans-serif; font-size: 0.72rem; line-height: 22px; color: #2f3d52; transform: skewX(-4deg); letter-spacing: -0.01em; }
+.form-write .hw.faint { color: #6b7787; }
 .ba-scrawl { font-weight: 700; color: #5c6773; transform: skewX(-3deg); display: inline-block; letter-spacing: -0.01em; }
 .ba-doc .grp { display: inline-block; font-size: 0.72rem; font-weight: 700; color: #97a1ad; border: 1px solid #d7dbe0; border-radius: 3px; padding: 0 7px; margin: 6px 0 2px; }
 .ba-after-item { margin-bottom: 4px; }
@@ -589,17 +600,30 @@ body {
     </p>
     <div class="ba-wrap reveal">
       <div class="ba-col before">
-        <div class="ba-col-head"><svg class="ic"><use href="#i-file"/></svg> BEFORE — 手入力していた原本</div>
-        <div class="ba-doc">
-          <span class="ba-scrawl">2群</span><br>
-          <span class="ba-scrawl">2-1 病棟外は車椅子を使用するが</span><br>
-          <span class="ba-scrawl">過去1週間では機会なし。移乗介助</span><br>
-          <span class="ba-scrawl">の機会はなし。2-2 日中は杖歩行、</span><br>
-          <span class="ba-scrawl">夜間は歩行器歩行で自立。2-4 右手</span><br>
-          <span class="ba-scrawl">で補助箸を使用し自己摂取可。</span><br>
-          <span class="ba-scrawl">2-10 入浴時に更衣機会あり。自分で</span><br>
-          <span class="ba-scrawl">行うが背部は丸まって下せない為、</span><br>
-          <span class="ba-scrawl">看護師が介助。2-11 下衣は自己にて…</span>
+        <div class="ba-col-head"><svg class="ic"><use href="#i-file"/></svg> BEFORE — 届いた認定調査票（特記事項）</div>
+        <div class="form-doc">
+          <div class="form-title">認定調査票　特記事項</div>
+          <div class="form-idrow"><span>利用者ID</span><span class="form-idbox">13</span></div>
+          <div class="form-sec">
+            <div class="form-sec-head">2　移動・食事・排泄等</div>
+            <div class="form-sec-items">2-1 移乗／2-2 移動／2-5 排尿／2-6 排便／2-7 口腔清潔／2-10 上衣の着脱 …</div>
+            <div class="form-write">
+              <span class="hw">2-2 屋内は伝い歩き、屋外は歩行器使用。</span>
+              <span class="hw">ふらつきあり、見守りが必要。</span>
+              <span class="hw">2-5 2-6 リハビリパンツ使用。日中は自身で</span>
+              <span class="hw">トイレへ行くが、夜間はポータブルトイレを介助。</span>
+              <span class="hw">2-7 義歯の着脱・洗浄は一部介助。</span>
+            </div>
+          </div>
+          <div class="form-sec">
+            <div class="form-sec-head">3　認知機能</div>
+            <div class="form-sec-items">3-1 意思の伝達／3-4 短期記憶 …</div>
+            <div class="form-write">
+              <span class="hw">3-1 簡単な意思疎通は可能だが、複雑な内容は</span>
+              <span class="hw">理解に時間を要する。</span>
+              <span class="hw faint">3-4 直前の出来事を忘れることが増えている。</span>
+            </div>
+          </div>
         </div>
         <div class="ba-foot">1文字ずつ手入力：約45〜60分</div>
       </div>
@@ -611,11 +635,12 @@ body {
         <div class="ba-col-head"><svg class="ic"><use href="#i-file-check"/></svg> AFTER — 届く整形テキスト</div>
         <div class="ba-doc">
           <span class="grp">2群</span>
-          <div class="ba-after-item"><span class="k">2-1</span>病棟外は車椅子を使用するが、過去1週間では機会なし。移乗介助の機会はなし。</div>
-          <div class="ba-after-item"><span class="k">2-2</span>日中は杖歩行、夜間は歩行器歩行で自立。</div>
-          <div class="ba-after-item"><span class="k">2-4</span>右手で補助箸を使用し自己摂取可。</div>
-          <div class="ba-after-item"><span class="k">2-10</span>入浴時に更衣機会あり。自分で行うが背部は丸まって下ろせない為、看護師が介助。</div>
-          <div class="ba-after-item"><span class="k">2-11</span>下衣は自己にて行い介助はない。</div>
+          <div class="ba-after-item"><span class="k">2-2</span>屋内は伝い歩き、屋外は歩行器使用。ふらつきあり、見守りが必要。</div>
+          <div class="ba-after-item"><span class="k">2-5 2-6</span>リハビリパンツ使用。日中は自身でトイレへ行くが、夜間はポータブルトイレを介助。</div>
+          <div class="ba-after-item"><span class="k">2-7</span>義歯の着脱・洗浄は一部介助。</div>
+          <span class="grp">3群</span>
+          <div class="ba-after-item"><span class="k">3-1</span>簡単な意思疎通は可能だが、複雑な内容は理解に時間を要する。</div>
+          <div class="ba-after-item"><span class="k">3-4</span>直前の出来事を忘れることが増えている。</div>
         </div>
         <div class="ba-foot">確認して貼るだけ：約5分</div>
       </div>
