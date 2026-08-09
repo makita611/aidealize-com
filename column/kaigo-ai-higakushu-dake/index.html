@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>「AIは学習しません」だけで十分？介護AIのセキュリティ比較で見落とす5つの論点【2026年】｜AIdealize</title>
+<meta name="description" content="介護AIの比較で「非学習」「国内サーバ」だけを見て安心するのは危険です。非学習は重要な一項目にすぎず、保存場所・保持期間/削除・アクセス制御/ログ・再委託・国外アクセス・事故対応は別論点。見落としがちな5つの論点と確認の順番を、ケアマネ・介護向けに正直に整理します。">
+<link rel="canonical" href="https://aidealize.com/column/kaigo-ai-higakushu-dake/">
+<meta property="og:title" content="「AIは学習しません」だけで十分？介護AIのセキュリティ比較で見落とす5つの論点【2026年】">
+<meta property="og:description" content="非学習・国内サーバは一項目にすぎない。保存/削除・アクセス/ログ・再委託・国外アクセス・事故対応まで見る比較の考え方。">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://aidealize.com/column/kaigo-ai-higakushu-dake/">
+<meta property="og:site_name" content="AIdealize株式会社">
+<meta property="og:image" content="https://aidealize.com/images/womanp5.webp">
+<meta name="twitter:image" content="https://aidealize.com/images/womanp5.webp">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700;900&family=Shippori+Mincho:wght@400;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/column/article-base.css">
+<style>.article-hero-img{border-radius:12px;overflow:hidden;margin:0 0 40px;box-shadow:0 10px 30px rgba(0,0,0,0.08);}.article-hero-img img{width:100%;display:block;aspect-ratio:16/8;object-fit:cover;object-position:center 30%;}</style>
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-P6VNBWH3');</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Article","headline":"「AIは学習しません」だけで十分？介護AIのセキュリティ比較で見落とす5つの論点","description":"非学習・国内サーバは一項目にすぎない。保存/削除・アクセス/ログ・再委託・国外アクセス・事故対応まで見る。","datePublished":"2026-07-29","author":{"@type":"Organization","name":"AIdealize株式会社"},"publisher":{"@type":"Organization","name":"AIdealize株式会社","url":"https://aidealize.com"}}
+</script>
+</head>
+<body>
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-P6VNBWH3" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
+<nav id="mainNav">
+  <a href="/" class="nav-logo"><img src="/images/logo.png" alt="AIdealize"><span class="nav-logo-text"><span>AI</span>dealize</span></a>
+  <ul class="nav-links">
+    <li><a href="/column/">コラム</a></li>
+    <li><a href="/service/">サービス</a></li>
+    <li><a href="https://aidealize.com/bpr/">DX事例</a></li>
+    <li><a href="/company.html">会社概要</a></li>
+    <li><a href="/lp/caremane-ocr/" class="nav-cta">特記の転記を試す</a></li>
+  </ul>
+  <button class="nav-hamburger" id="navHamburger" aria-label="メニュー"><span></span><span></span><span></span></button>
+</nav>
+<div class="nav-drawer" id="navDrawer">
+  <ul>
+    <li><a href="/column/" class="drawer-link">コラム</a></li>
+    <li><a href="/service/" class="drawer-link">サービス</a></li>
+    <li><a href="https://aidealize.com/bpr/" class="drawer-link">DX事例</a></li>
+    <li><a href="/company.html" class="drawer-link">会社概要</a></li>
+    <li><a href="/lp/caremane-ocr/">特記事項の転記を無料で試す</a></li>
+  </ul>
+</div>
+
+<header class="article-header">
+  <div class="article-header-inner">
+    <nav class="breadcrumb" aria-label="パンくず"><a href="/">ホーム</a><span>/</span><a href="/column/">コラム</a><span>/</span><span>セキュリティ・比較</span></nav>
+    <div class="article-tag">セキュリティ・比較</div>
+    <h1 class="article-h1">「AIは学習しません」だけで十分？<br>介護AIのセキュリティ比較で見落とす5つの論点</h1>
+    <div class="article-meta"><div>📅 2026年7月29日</div><div>⏱ 読了約8分</div><div>✍ AIdealize編集部</div></div>
+  </div>
+</header>
+
+<article class="article-body">
+<div class="article-body-inner">
+
+  <div class="article-hero-img reveal"><img src="/images/womanp5.webp" alt="介護AIのセキュリティを比較検討するケアマネジャー"></div>
+
+  <div class="summary-box reveal">
+    <div class="summary-box-title">この記事でわかること</div>
+    <ul>
+      <li>「非学習」は安全の十分条件ではない、という前提</li>
+      <li>「国内サーバ」も重要だが一項目にすぎない理由</li>
+      <li>見落としがちな5つの論点（保存・削除・アクセス/ログ・再委託・国外・事故対応）</li>
+      <li>「氏名を消せば匿名」の誤解</li>
+      <li>一点突破を避ける確認の順番</li>
+    </ul>
+  </div>
+
+  <p>介護AIの資料でよく目立つのが「AIは学習に使いません」「国内サーバで安心」という表現です。どちらも大切な項目ですが、<strong>それだけで「安全」の証明にはなりません</strong>。この記事では、非学習・国内サーバの"次に"見るべき論点を、誇張せず整理します。</p>
+
+  <h2>「非学習」は十分条件ではない</h2>
+  <p>「入力データをAIの再学習に使わない（非学習）」は、確かに重要な確認項目です。しかし、<strong>非学習であっても、保存場所・暗号化・アクセス制御・保持期間・削除・ログ・再委託・国外処理・事故対応は別の論点</strong>として残ります。非学習は「入口の1つ」であって、これだけで安全管理措置や委託先監督を満たしたことにはなりません。</p>
+  <div class="point-box">
+    <div class="point-box-label">言い換えると</div>
+    <p>「学習に使わない」＝「漏れない・消える・監督されている」ではありません。学習利用の有無と、データの保管・削除・アクセスの安全性は、別々に確認する必要があります。</p>
+  </div>
+
+  <h2>「国内サーバ」も一項目にすぎない</h2>
+  <p>国内処理は、国外の法制度や越境取扱いに関する論点を減らし得る、意味のある要素です。ただし、<strong>それだけで安全管理要件を満たすわけではありません</strong>。国内保存でも、アクセス権限が緩ければ内部からの漏えいは起こり得ますし、保守・バックアップ・再委託先が国外に及ぶ構成もあります。「国内だから安心」で止めないことが大切です。</p>
+
+  <h2>見落としがちな5つの論点</h2>
+  <div class="compare-wrap">
+    <table class="compare-table">
+      <thead><tr><th>論点</th><th>確認するポイント</th></tr></thead>
+      <tbody>
+        <tr><td>① 保存場所・保持期間</td><td>どこに、どれだけの期間データが残るか</td></tr>
+        <tr><td>② 削除の実効性</td><td>原本／生成物／一時ファイル／ログのどこまで、いつ、確実に消えるか</td></tr>
+        <tr><td>③ アクセス制御・ログ</td><td>誰がアクセスできるか、権限管理と操作ログがあるか</td></tr>
+        <tr><td>④ 再委託・国外アクセス</td><td>再委託先の有無、保守・監視で国外からアクセスされる構成か</td></tr>
+        <tr><td>⑤ 事故対応</td><td>漏えい等の際の連絡・対応、契約終了時のデータ返却・消去</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="point-box">
+    <div class="point-box-label">「氏名を消せば匿名」も誤解</div>
+    <p>氏名を伏せても、年齢・地域・病歴・家族構成などの組み合わせで個人が識別できる場合、要配慮個人情報の性質は残ります。単なる伏字を法的な匿名加工と同じには扱わないでください。</p>
+  </div>
+
+  <div class="inline-cta reveal">
+    <div class="inline-cta-tag">特記の転記代行</div>
+    <h3>「5つの論点」に答えられるかで選ぶ。</h3>
+    <p>特記事項の転記代行は、非学習・国内処理に加え、即時削除の範囲や匿名運用まで開示。氏名・被保険者番号は付箋や番号で隠したまま送れ、確定はケアマネ本人です。まずは実物で確かめられます。</p>
+    <div class="cta-btns-pair"><a href="/lp/caremane-ocr/" class="btn-cta-red">特記事項 転記代行サービスを見る →</a></div>
+    <span class="btn-cta-note">初期・月額0円／自治体受託業務は契約確認を推奨</span>
+  </div>
+
+  <h2>一点突破を避ける——確認の順番</h2>
+  <p>「暗号化しているから安全」「非学習だから安全」という一点突破の説明を避けるには、次の順で確認すると抜けが出にくくなります。</p>
+  <ul>
+    <li><strong>データ</strong>：要配慮個人情報・利用者を識別できる情報を含むか</li>
+    <li><strong>契約関係</strong>：委託・再委託に当たるか、承認が必要か</li>
+    <li><strong>ベンダー</strong>：学習・処理場所・保存/削除・アクセス/ログ・再委託・事故対応</li>
+    <li><strong>確認体制</strong>：AIは下書きで、確定は人が行うか（Human-in-the-loop）</li>
+  </ul>
+  <p>この順にすると、「非学習」というキーワード1つで判断を止めず、全体像で比較できます。より広いチェックリストは<a href="/column/kaigo-ai-kojinjoho-checklist/">介護AIのセキュリティチェックリスト</a>にまとめています。</p>
+
+  <div class="inline-cta reveal">
+    <div class="inline-cta-tag">はなまるAI 介護版</div>
+    <h3>記録の音声化も、確認できる設計で。</h3>
+    <p>話すだけで経過記録の下書きを作成。最終確認・確定はケアマネ本人が行う設計です。音声・記録の個人情報の扱いは、導入前にご確認いただけます。</p>
+    <div class="cta-btns-pair"><a href="/lp/hanamaru-kaigo/" class="btn-cta-red">はなまるAI 介護版を見る →</a></div>
+    <span class="btn-cta-note">判断・責任はケアマネに残ります／営業電話はしません</span>
+  </div>
+
+  <h2>まとめ：キーワード1つで安心しない</h2>
+  <p>「非学習」「国内サーバ」は重要ですが、いずれも入口の一項目です。<strong>保存・削除・アクセス/ログ・再委託・国外・事故対応</strong>まで含めて、条件で比較するのが安全です。介護記録AIの比較軸は<a href="/column/kaigo-kiroku-ai-hikaku/">介護記録AIの比較チェック項目</a>もあわせてご覧ください。</p>
+  <p class="reveal" style="margin-top:24px;padding:16px 18px;background:#f4f7f6;border-radius:10px;font-size:14px;">訪問看護の看護記録の音声化は<a href="/lp/hanamaru-kango/">はなまるAI 看護版</a>もあります。用途に合わせてお選びください。</p>
+
+  <div class="inline-cta reveal">
+    <div class="inline-cta-tag">まずは試す</div>
+    <h3>比較の最後は、実物で確認する。</h3>
+    <p>紙の特記事項なら転記代行、記録の音声化なら介護版はなまるAI。どちらも確定はケアマネ本人が行う設計です。自分の資料・記録で確かめてください。</p>
+    <div class="cta-btns-pair"><a href="/lp/caremane-ocr/" class="btn-cta-red">特記の転記を見る →</a><a href="/lp/hanamaru-kaigo/" class="btn-cta-red">記録の音声化を見る →</a></div>
+    <span class="btn-cta-note">要配慮個人情報の扱いは事前にご確認ください</span>
+  </div>
+
+</div>
+</article>
+
+<section class="related-section">
+  <div class="related-inner">
+    <div class="related-label">Related Articles</div>
+    <div class="related-grid">
+      <a href="/column/kaigo-ai-kojinjoho-checklist/" class="related-card"><div class="related-card-tag">個人情報・セキュリティ</div><div class="related-card-title">介護AIに個人情報を入れて大丈夫？ケアマネ向けセキュリティチェックリスト【2026年】</div></a>
+      <a href="/column/kaigo-kiroku-ai-hikaku/" class="related-card"><div class="related-card-tag">介護記録・比較</div><div class="related-card-title">介護記録AIの比較で見るべきチェック項目｜汎用AI・音声入力・介護専用AIの違い。</div></a>
+    </div>
+  </div>
+</section>
+
+<div class="back-section"><div class="back-section-inner"><a href="/column/" class="back-link">← コラム一覧に戻る</a></div></div>
+
+<footer>
+  <div class="footer-logo"><div class="footer-logo-mark"></div><span class="footer-logo-text"><span>A</span>idealize株式会社</span></div>
+  <span class="footer-copy">© 2020–2026 AIdealize Inc. All rights reserved.</span>
+</footer>
+
+<script src="/js/gas-forms.js"></script>
+<script src="/js/lead-capture.js"></script>
+<script>
+(function(){var b=document.getElementById('navHamburger'),d=document.getElementById('navDrawer'),n=document.getElementById('mainNav');b.addEventListener('click',function(){b.classList.toggle('open');d.classList.toggle('open');});d.querySelectorAll('.drawer-link').forEach(function(l){l.addEventListener('click',function(){b.classList.remove('open');d.classList.remove('open');});});window.addEventListener('scroll',function(){n.classList.toggle('scrolled',window.scrollY>10);});})();
+var obs=new IntersectionObserver(function(e){e.forEach(function(x){if(x.isIntersecting)x.target.classList.add('visible');});},{threshold:0.08,rootMargin:'0px 0px -30px 0px'});document.querySelectorAll('.reveal').forEach(function(el){obs.observe(el);});
+</script>
+</body>
+</html>

@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ケアプランデータ連携システムとOCRは何が違う？「紙の特記事項」が対象外な理由【2026年】｜AIdealize</title>
+<meta name="description" content="ケアプランデータ連携システムを入れれば認定調査票の転記も自動化される——これは誤解です。連携システムは事業者間のケアプラン等データ交換の仕組みで、紙・PDFの特記事項をOCRするものではありません。2027年1月の介護WEBサービスへの統合予定も踏まえ、両者の役割の違いを整理します。">
+<link rel="canonical" href="https://aidealize.com/column/careplan-renkei-ocr-chigai/">
+<meta property="og:title" content="ケアプランデータ連携システムとOCRは何が違う？「紙の特記事項」が対象外な理由【2026年】">
+<meta property="og:description" content="連携システムは事業者間のデータ交換、OCRは紙画像の文字認識。技術も業務も別物である理由と、2027年の統合予定を整理。">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://aidealize.com/column/careplan-renkei-ocr-chigai/">
+<meta property="og:site_name" content="AIdealize株式会社">
+<meta property="og:image" content="https://aidealize.com/images/womanp12.webp">
+<meta name="twitter:image" content="https://aidealize.com/images/womanp12.webp">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700;900&family=Shippori+Mincho:wght@400;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/column/article-base.css">
+<style>.article-hero-img{border-radius:12px;overflow:hidden;margin:0 0 40px;box-shadow:0 10px 30px rgba(0,0,0,0.08);}.article-hero-img img{width:100%;display:block;aspect-ratio:16/8;object-fit:cover;object-position:center 30%;}</style>
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-P6VNBWH3');</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Article","headline":"ケアプランデータ連携システムとOCRは何が違う？「紙の特記事項」が対象外な理由","description":"連携システムは事業者間のデータ交換、OCRは紙画像の文字認識。役割の違いと2027年の統合予定を整理。","datePublished":"2026-08-05","author":{"@type":"Organization","name":"AIdealize株式会社"},"publisher":{"@type":"Organization","name":"AIdealize株式会社","url":"https://aidealize.com"}}
+</script>
+</head>
+<body>
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-P6VNBWH3" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
+<nav id="mainNav">
+  <a href="/" class="nav-logo"><img src="/images/logo.png" alt="AIdealize"><span class="nav-logo-text"><span>AI</span>dealize</span></a>
+  <ul class="nav-links">
+    <li><a href="/column/">コラム</a></li>
+    <li><a href="/service/">サービス</a></li>
+    <li><a href="https://aidealize.com/bpr/">DX事例</a></li>
+    <li><a href="/company.html">会社概要</a></li>
+    <li><a href="/lp/caremane-ocr/" class="nav-cta">特記の転記を試す</a></li>
+  </ul>
+  <button class="nav-hamburger" id="navHamburger" aria-label="メニュー"><span></span><span></span><span></span></button>
+</nav>
+<div class="nav-drawer" id="navDrawer">
+  <ul>
+    <li><a href="/column/" class="drawer-link">コラム</a></li>
+    <li><a href="/service/" class="drawer-link">サービス</a></li>
+    <li><a href="https://aidealize.com/bpr/" class="drawer-link">DX事例</a></li>
+    <li><a href="/company.html" class="drawer-link">会社概要</a></li>
+    <li><a href="/lp/caremane-ocr/">特記事項の転記を無料で試す</a></li>
+  </ul>
+</div>
+
+<header class="article-header">
+  <div class="article-header-inner">
+    <nav class="breadcrumb" aria-label="パンくず"><a href="/">ホーム</a><span>/</span><a href="/column/">コラム</a><span>/</span><span>制度・データ連携</span></nav>
+    <div class="article-tag">制度・データ連携</div>
+    <h1 class="article-h1">ケアプランデータ連携システムとOCRは何が違う？<br>「紙の特記事項」が対象外な理由【2026年】</h1>
+    <div class="article-meta"><div>📅 2026年8月5日</div><div>⏱ 読了約8分</div><div>✍ AIdealize編集部</div></div>
+  </div>
+</header>
+
+<article class="article-body">
+<div class="article-body-inner">
+
+  <div class="article-hero-img reveal"><img src="/images/womanp12.webp" alt="ケアプランデータ連携システムとOCRの違いを確認するケアマネジャー"></div>
+
+  <div class="summary-box reveal">
+    <div class="summary-box-title">この記事でわかること</div>
+    <ul>
+      <li>ケアプランデータ連携システムが「できること／できないこと」</li>
+      <li>「データ連携」と「紙画像のOCR」は技術も業務も別物である理由</li>
+      <li>2027年1月に介護保険資格確認等WEBサービスへ統合予定という最新動向</li>
+      <li>連携システムを入れても残る「前工程」＝自治体から届く紙・PDF</li>
+    </ul>
+  </div>
+
+  <p>「ケアプランデータ連携システムを導入すれば、認定調査票の転記作業も自動化される」——現場でよく聞く誤解です。実際には、連携システムと特記事項のOCRは<strong>解いている問題そのものが違います</strong>。この記事で、混同しやすい両者の役割を整理します。</p>
+
+  <h2>ケアプランデータ連携システムとは</h2>
+  <p>ケアプランデータ連携システムは、<strong>居宅介護支援事業所と、訪問介護・デイサービス等のサービス事業者との間で、標準仕様に沿ったケアプラン（居宅サービス計画書・サービス提供票・実績等）のデータを送受信する仕組み</strong>です。これまでFAX・郵送・手入力でやり取りしていた事業者間の情報交換を、データでつなぐことを目的にしています（厚生労働省資料）。</p>
+  <div class="point-box">
+    <div class="point-box-label">ここがポイント</div>
+    <p>連携システムが扱うのは、<strong>介護ソフトが標準仕様に沿って生成した「データ」</strong>です。事業者間の予定・実績のやり取りを効率化する後工程の仕組みであって、紙の帳票を読み取る機能ではありません。</p>
+  </div>
+
+  <h2>「データ連携」と「紙画像のOCR」は別物</h2>
+  <p>一方、OCR（光学文字認識）は、<strong>紙やPDFの画像を撮影・スキャンして、そこに写っている文字をテキストに起こす処理</strong>です。自治体から交付される認定調査票の特記事項のように、そもそもデータではなく「紙・画像」として届くものを文字にするのがOCRの役割です。</p>
+  <div class="compare-wrap">
+    <table class="compare-table">
+      <thead><tr><th>比較の軸</th><th>ケアプランデータ連携システム</th><th class="hl">特記事項のOCR</th></tr></thead>
+      <tbody>
+        <tr><td>扱う対象</td><td>標準仕様のケアプラン等の<strong>データ</strong></td><td class="hl">紙・PDFの<strong>画像</strong>（認定調査票 等）</td></tr>
+        <tr><td>相手</td><td>事業所↔サービス事業者（事業者間）</td><td class="hl">自治体→事業所（行政から届く帳票）</td></tr>
+        <tr><td>工程</td><td>ケアプラン確定後の<strong>後工程</strong></td><td class="hl">アセスメント・記録化の<strong>前工程</strong></td></tr>
+        <tr><td>目的</td><td>FAX・郵送・手入力の削減</td><td class="hl">手打ち転記を"確認"に変える</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p>つまり両者は競合ではなく、<strong>解く「転記」の種類が違う</strong>のです。連携システムがカバーするのは事業者間のデータ交換で、行政から紙で届く特記事項の文字化は対象範囲が異なります。</p>
+
+  <h2>2026〜2027年の最新動向——WEBサービスへの統合</h2>
+  <p>制度側は大きく動いています。厚生労働省は<strong>介護情報基盤を2026年4月から稼働</strong>させ、準備が整った自治体から順次利用する仕組みを進めています。さらに公式サポートサイトは、<strong>2027年1月からケアプランデータ連携機能を介護保険資格確認等WEBサービスへ統合する予定</strong>と案内しています。</p>
+  <div class="point-box">
+    <div class="point-box-label">最新記事として押さえたい点</div>
+    <p>統合が進むと、要介護認定情報などの公式データをケアマネがWEB上で参照しやすくなる方向です。ただし自治体の対応は段階的で、時期・範囲は自治体ごとに異なります。「もう全部電子化された」と断定はできません（詳しくは<a href="/column/kaigo-joho-kiban-kami/">介護情報基盤で紙はなくなる？</a>で解説）。</p>
+  </div>
+
+  <div class="inline-cta reveal">
+    <div class="inline-cta-tag">初回10本・無料お試し</div>
+    <h3>連携システムでは埋まらない「前工程」を軽くする。</h3>
+    <p>自治体から紙・PDFで届く特記事項は、スキャンしてメールで送るだけ。AIがテキスト化し、介護ソフトへ貼れる形でお返しします。介護ソフトの入れ替えは不要。最終確認はケアマネ本人です。</p>
+    <div class="cta-btns-pair"><a href="/lp/caremane-ocr/" class="btn-cta-red">特記事項 転記代行サービスを見る →</a></div>
+    <span class="btn-cta-note">初期・月額0円／カード登録不要</span>
+  </div>
+
+  <h2>連携システムを入れても残る「前工程」</h2>
+  <p>連携システムで事業者間のやり取りがデータ化されても、<strong>アセスメントや記録化の入口にある「紙・PDFの特記事項を打ち直す」手作業</strong>は現場に残りやすいのが実情です。特に、</p>
+  <ul>
+    <li>自治体によっては認定調査票が今も紙・OCR用紙で届く（自治体差が大きい）</li>
+    <li>受け取った特記事項を自所の介護ソフトへ入力する工程は連携の対象外</li>
+    <li>移行期は「紙で受領→再入力」という二度打ちが残る場面がある</li>
+  </ul>
+  <p>この前工程を軽くするのが、特記事項のOCR・転記代行の役割です。長期的には、<strong>公式のデータ連携に乗るものはそちらを使い、残る紙・PDFや非連携の工程にはOCR等を検討する</strong>という整理が、制度変化にも耐えやすい考え方になります。</p>
+
+  <h2>まとめ：役割を分けて考える</h2>
+  <p>ケアプランデータ連携システムは事業者間のデータ交換を効率化する<strong>後工程</strong>の仕組み、特記事項のOCRは行政から紙で届く帳票を文字化する<strong>前工程</strong>の手段です。両者を混同せず、自分の事業所でどの工程に手作業が残っているかを見極めるのが第一歩です。あわせて<a href="/column/ninteichosahyo-tokki-tenki/">手入力を5分に減らす方法</a>もご覧ください。</p>
+
+  <div class="inline-cta reveal">
+    <div class="inline-cta-tag">10本 無料お試し実施中</div>
+    <h3>まず、残っている手作業を1本試す。</h3>
+    <p>初期費用・月額基本料0円。カード登録も契約書締結も不要です。全介護ソフト対応、最終確認はケアマネ自身が行う設計です。</p>
+    <div class="cta-btns-pair"><a href="/lp/caremane-ocr/" class="btn-cta-red">特記事項 転記代行センターを見る →</a></div>
+    <span class="btn-cta-note">要配慮個人情報は匿名のまま送付OK／営業電話はしません</span>
+  </div>
+
+</div>
+</article>
+
+<section class="related-section">
+  <div class="related-inner">
+    <div class="related-label">Related Articles</div>
+    <div class="related-grid">
+      <a href="/column/kaigo-joho-kiban-kami/" class="related-card"><div class="related-card-tag">制度・電子化</div><div class="related-card-title">介護情報基盤で認定調査票の「紙」はなくなる？2026年時点の自治体差を整理。</div></a>
+      <a href="/column/ninteichosahyo-tokki-tenki/" class="related-card"><div class="related-card-tag">業務効率化</div><div class="related-card-title">認定調査票の特記事項の転記が大変…ケアマネの手入力を「5分」に減らす方法。</div></a>
+    </div>
+  </div>
+</section>
+
+<div class="back-section"><div class="back-section-inner"><a href="/column/" class="back-link">← コラム一覧に戻る</a></div></div>
+
+<footer>
+  <div class="footer-logo"><div class="footer-logo-mark"></div><span class="footer-logo-text"><span>A</span>idealize株式会社</span></div>
+  <span class="footer-copy">© 2020–2026 AIdealize Inc. All rights reserved.</span>
+</footer>
+
+<script src="/js/gas-forms.js"></script>
+<script src="/js/lead-capture.js"></script>
+<script>
+(function(){var b=document.getElementById('navHamburger'),d=document.getElementById('navDrawer'),n=document.getElementById('mainNav');b.addEventListener('click',function(){b.classList.toggle('open');d.classList.toggle('open');});d.querySelectorAll('.drawer-link').forEach(function(l){l.addEventListener('click',function(){b.classList.remove('open');d.classList.remove('open');});});window.addEventListener('scroll',function(){n.classList.toggle('scrolled',window.scrollY>10);});})();
+var obs=new IntersectionObserver(function(e){e.forEach(function(x){if(x.isIntersecting)x.target.classList.add('visible');});},{threshold:0.08,rootMargin:'0px 0px -30px 0px'});document.querySelectorAll('.reveal').forEach(function(el){obs.observe(el);});
+</script>
+</body>
+</html>
