@@ -1730,6 +1730,49 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   </div>
 </section>
 
+<!-- VOICES -->
+<style>
+.hk-voices { padding: 96px 0; background: var(--light); }
+.hk-voices-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 18px; margin-top: 44px; }
+.hk-voice-card { background: var(--white); border: 1px solid var(--border); border-radius: 12px; padding: 30px 26px 26px; position: relative; }
+.hk-voice-card::before { content: '\201C'; position: absolute; top: 4px; left: 18px; font-size: 3.4rem; color: var(--nursing-light); font-family: 'Zen Kaku Gothic New', serif; line-height: 1; }
+.hk-voice-quote { font-size: 1rem; font-weight: 700; color: var(--ink); line-height: 1.8; margin: 6px 0 16px; position: relative; z-index: 1; }
+.hk-voice-who { display: flex; align-items: center; gap: 10px; font-size: 0.82rem; color: var(--text2); }
+.hk-voice-avatar { width: 34px; height: 34px; border-radius: 50%; background: var(--nursing-light); color: var(--nursing-dark); display: inline-flex; align-items: center; justify-content: center; flex-shrink: 0; }
+.hk-voice-avatar svg { width: 18px; height: 18px; }
+.hk-voices-note { margin-top: 24px; font-size: 0.82rem; color: var(--gray); line-height: 1.8; }
+</style>
+<section class="hk-voices" id="voices">
+  <div class="container">
+    <div class="section-label reveal">VOICE</div>
+    <h2 class="section-title reveal">現場から、<span class="nursing-color">こんな声が届いています</span></h2>
+    <p class="section-desc reveal">実際にはなまるAIで記録を作成された、訪問看護・介護・ケアマネジャーの皆さまの声です。</p>
+    <div class="hk-voices-grid reveal">
+      <div class="hk-voice-card">
+        <div class="hk-voice-quote">書類を作ってくれるだけかと思ったら、記録にアドバイスまでくれるんです。相談相手がそばにいる感覚で、想像以上に助かっています。</div>
+        <div class="hk-voice-who"><span class="hk-voice-avatar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></span>居宅介護支援事業所／ケアマネジャー</div>
+      </div>
+      <div class="hk-voice-card">
+        <div class="hk-voice-quote">訪問が終わってすぐ、車に戻って3分ほどで記録が残せます。記憶が新しいうちに書けるので、内容の正確さも上がりました。</div>
+        <div class="hk-voice-who"><span class="hk-voice-avatar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></span>訪問看護ステーション／看護師</div>
+      </div>
+      <div class="hk-voice-card">
+        <div class="hk-voice-quote">パソコンが苦手で身構えていましたが、普段使っているLINEだけで報告書が完成します。覚えることがほとんどありませんでした。</div>
+        <div class="hk-voice-who"><span class="hk-voice-avatar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></span>居宅介護支援事業所／ケアマネジャー</div>
+      </div>
+      <div class="hk-voice-card">
+        <div class="hk-voice-quote">書類に時間がかかって残業が当たり前でしたが、帰る時間が目に見えて早くなりました。空いた時間を自分のために使えています。</div>
+        <div class="hk-voice-who"><span class="hk-voice-avatar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></span>居宅介護支援事業所／主任ケアマネジャー</div>
+      </div>
+      <div class="hk-voice-card">
+        <div class="hk-voice-quote">正直、最初は少し戸惑いました。でも数回で慣れて、今は手放せません。導入直後の不安は、そこだけ乗り越えれば大丈夫です。</div>
+        <div class="hk-voice-who"><span class="hk-voice-avatar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></span>訪問看護ステーション／管理者</div>
+      </div>
+    </div>
+    <p class="hk-voices-note reveal">※ ご本人の希望により、仮名・匿名で掲載しています。実際にいただいたご意見をもとに、個人・事業所が特定されない形で掲載しています。</p>
+  </div>
+</section>
+
 <!-- PRICING -->
 <section class="pricing" id="pricing">
   <div class="container">
@@ -1749,7 +1792,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <div class="price-name">LIGHT PLAN ／ ライトプラン</div>
         <div class="price-target">小規模ステーション・まず試してみたい方に<br>看護師5名以下の目安</div>
         <div class="price-amount">
-          <div class="price-num"><span class="currency">¥</span>14,800<span class="period"> / 月</span></div>
+          <div class="price-num"><span class="currency">¥</span>9,800<span class="period"> / 月</span></div>
           <div class="price-initial">初期費用：¥100,000</div>
           <div class="price-monitor">🎯 モニター価格：初期¥50,000</div>
         </div>
