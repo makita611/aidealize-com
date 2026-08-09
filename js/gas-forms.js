@@ -6,7 +6,7 @@
   s.textContent = [
     '.gas-form{max-width:480px}',
     '.gas-form-group{margin-bottom:12px}',
-    '.gas-form-group input,.gas-form-group select,.gas-form-group textarea{width:100%;padding:12px 14px;border:1px solid #ddd;border-radius:6px;font-size:14px;font-family:inherit;box-sizing:border-box}',
+    '.gas-form-group input,.gas-form-group select,.gas-form-group textarea{width:100%;padding:12px 14px;border:1px solid #ddd;border-radius:6px;font-size:16px;font-family:inherit;box-sizing:border-box}',
     '.gas-form-group textarea{min-height:84px;resize:vertical;line-height:1.6}',
     '.gas-form-group input:focus,.gas-form-group select:focus,.gas-form-group textarea:focus{outline:none;border-color:#1a3f6f}',
     '.gas-radio-group{display:flex;flex-wrap:wrap;gap:8px;padding:4px 0}',
