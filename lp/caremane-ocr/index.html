@@ -379,6 +379,35 @@ body {
 .footer-links a { font-size: 12px; }
 .footer-copy { font-size: 11px; }
 
+/* ====== SELF CHECK ====== */
+.selfcheck { padding: 96px 0; background: var(--light); }
+.sc-card { max-width: 760px; margin: 40px auto 0; background: var(--white); border: 1px solid var(--border); border-top: 4px solid var(--navy); border-radius: 14px; box-shadow: var(--shadow); overflow: hidden; }
+.sc-head { padding: 26px 32px 22px; border-bottom: 1px solid var(--border); }
+.sc-head .sc-kicker { display: inline-flex; align-items: center; gap: 7px; font-size: 12px; font-weight: 700; letter-spacing: 0.04em; color: var(--navy); background: var(--navy-light); border-radius: 999px; padding: 5px 14px; margin-bottom: 14px; }
+.sc-head .sc-kicker .ic { font-size: 14px; }
+.sc-head h3 { font-size: clamp(1.15rem, 3vw, 1.5rem); font-weight: 900; color: var(--ink); line-height: 1.5; font-family: 'Zen Kaku Gothic New', sans-serif; }
+.sc-head p { font-size: 0.9rem; color: var(--text2); margin-top: 8px; line-height: 1.8; }
+.sc-list { padding: 12px 20px; }
+.sc-item { display: flex; align-items: flex-start; gap: 14px; padding: 15px 14px; border-radius: 8px; cursor: pointer; transition: background 0.15s; }
+.sc-item:hover { background: var(--navy-bg); }
+.sc-item input { position: absolute; opacity: 0; width: 0; height: 0; }
+.sc-box { flex-shrink: 0; width: 24px; height: 24px; border: 2px solid var(--border); border-radius: 6px; margin-top: 1px; display: flex; align-items: center; justify-content: center; color: #fff; transition: background 0.15s, border-color 0.15s; }
+.sc-box .ic { font-size: 15px; opacity: 0; transition: opacity 0.15s; }
+.sc-item input:checked + .sc-box { background: var(--green); border-color: var(--green); }
+.sc-item input:checked + .sc-box .ic { opacity: 1; }
+.sc-item input:focus-visible + .sc-box { outline: 2px solid var(--navy-mid); outline-offset: 2px; }
+.sc-text { font-size: 0.95rem; color: var(--text); line-height: 1.7; font-weight: 500; }
+.sc-item input:checked ~ .sc-text { color: var(--ink); }
+.sc-result { padding: 0 32px; max-height: 0; overflow: hidden; transition: max-height 0.4s ease, padding 0.4s ease; background: var(--navy-bg); border-top: 1px solid var(--border); }
+.sc-result.show { max-height: 400px; padding: 28px 32px 30px; }
+.sc-result-count { font-size: 0.85rem; font-weight: 700; color: var(--navy); letter-spacing: 0.04em; margin-bottom: 8px; }
+.sc-result-count b { font-size: 1.5rem; font-family: 'Zen Kaku Gothic New', sans-serif; }
+.sc-result-msg { font-size: clamp(1.05rem, 2.6vw, 1.28rem); font-weight: 900; color: var(--ink); line-height: 1.6; font-family: 'Zen Kaku Gothic New', sans-serif; margin-bottom: 8px; }
+.sc-result-sub { font-size: 0.9rem; color: var(--text2); line-height: 1.85; margin-bottom: 22px; }
+.sc-result-cta { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }
+.sc-result-note { font-size: 0.82rem; color: var(--gray); margin-top: 14px; }
+@media (max-width: 560px) { .sc-head, .sc-result.show { padding-left: 20px; padding-right: 20px; } .sc-list { padding: 8px 8px; } }
+
 /* ====== FLOATING CTA (SP) ====== */
 .float-cta { display: none; position: fixed; bottom: 16px; left: 16px; right: 16px; z-index: 800; background: var(--green); color: #fff; text-align: center; padding: 15px; border-radius: 8px; font-size: 0.98rem; font-weight: 700; text-decoration: none; box-shadow: 0 6px 20px rgba(44,157,106,0.45); }
 @media (max-width: 640px) { .float-cta { display: flex; align-items: center; justify-content: center; gap: 8px; } .contact { padding-bottom: 96px; } }
@@ -421,6 +450,7 @@ body {
   <span class="nav-badge">居宅ケアマネ専用</span>
   <ul class="nav-links">
     <li><a href="#problem">課題</a></li>
+    <li><a href="#selfcheck">セルフチェック</a></li>
     <li><a href="#solution">仕組み</a></li>
     <li><a href="#sample">実例</a></li>
     <li><a href="#security">安心の作り</a></li>
@@ -434,6 +464,7 @@ body {
 <div class="nav-drawer" id="navDrawer">
   <ul>
     <li><a href="#problem" class="drawer-link">課題</a></li>
+    <li><a href="#selfcheck" class="drawer-link">60秒セルフチェック</a></li>
     <li><a href="#solution" class="drawer-link">仕組み</a></li>
     <li><a href="#sample" class="drawer-link">実例（Before/After）</a></li>
     <li><a href="#security" class="drawer-link">安心の作り</a></li>
@@ -546,6 +577,64 @@ body {
     <div class="problem-conclusion reveal">
       いま、ケアマネジャーは深刻な人材不足のなか、送迎・オンコール・電話対応・山のような書類に忙殺されています。そのなかでも、<strong>「特記事項の転記が、一番時間がかかる」</strong>——これは、現場のケアマネジャーから実際に届いた声です。<br>
       この“置き去りにされた手作業”を丸ごと外に出す仕組みが、いま使えます。
+    </div>
+  </div>
+</section>
+
+<!-- SELF CHECK -->
+<section class="selfcheck" id="selfcheck">
+  <div class="container">
+    <div class="section-label reveal">SELF CHECK</div>
+    <h2 class="section-title reveal">あなたの事業所は、<span class="navy-color">いくつ当てはまりますか？</span></h2>
+    <p class="section-desc reveal">認定調査票（特記事項）の転記に、どれくらい時間と気持ちを奪われているか。当てはまるものにチェックを入れると、その場で目安が出ます。<strong>60秒でできる、かんたんセルフチェックです。</strong></p>
+    <div class="sc-card reveal">
+      <div class="sc-head">
+        <span class="sc-kicker"><svg class="ic"><use href="#i-file-check"/></svg> 当てはまるものにチェック</span>
+        <h3>特記事項の転記、こんな状態になっていませんか？</h3>
+        <p>1つでも当てはまれば、その負担は「仕組み」で軽くできます。</p>
+      </div>
+      <div class="sc-list" id="scList">
+        <label class="sc-item">
+          <input type="checkbox">
+          <span class="sc-box"><svg class="ic"><use href="#i-check"/></svg></span>
+          <span class="sc-text">認定調査票が届くたび、特記事項の入力に<strong>30分〜1時間</strong>とられている</span>
+        </label>
+        <label class="sc-item">
+          <input type="checkbox">
+          <span class="sc-box"><svg class="ic"><use href="#i-check"/></svg></span>
+          <span class="sc-text">手書きやFAXで潰れた文字を、<strong>原本とモニターを往復しながら</strong>打ち直している</span>
+        </label>
+        <label class="sc-item">
+          <input type="checkbox">
+          <span class="sc-box"><svg class="ic"><use href="#i-check"/></svg></span>
+          <span class="sc-text">特記の転記のために、<strong>夕方以降や持ち帰りで残業</strong>することがある</span>
+        </label>
+        <label class="sc-item">
+          <input type="checkbox">
+          <span class="sc-box"><svg class="ic"><use href="#i-check"/></svg></span>
+          <span class="sc-text">ChatGPTなどを試したが、<strong>個人情報が心配</strong>で本格的に使えていない</span>
+        </label>
+        <label class="sc-item">
+          <input type="checkbox">
+          <span class="sc-box"><svg class="ic"><use href="#i-check"/></svg></span>
+          <span class="sc-text">事業所として<strong>「AIをどこまで使っていいか」のルールが決まっていない</strong></span>
+        </label>
+        <label class="sc-item">
+          <input type="checkbox">
+          <span class="sc-box"><svg class="ic"><use href="#i-check"/></svg></span>
+          <span class="sc-text">ひとり／少人数の事業所で、<strong>新しいソフトを覚える時間が取れない</strong></span>
+        </label>
+      </div>
+      <div class="sc-result" id="scResult">
+        <div class="sc-result-count"><b id="scNum">0</b> / 6 当てはまりました</div>
+        <div class="sc-result-msg" id="scMsg"></div>
+        <div class="sc-result-sub" id="scSub"></div>
+        <div class="sc-result-cta">
+          <a href="#contact" class="btn-primary"><svg class="ic"><use href="#i-send"/></svg> まずは10本、無料で試してみる</a>
+          <a href="#sample" class="btn-secondary">実例（Before/After）を見る <svg class="ic"><use href="#i-arrow"/></svg></a>
+        </div>
+        <p class="sc-result-note">※ このチェックは自己診断用で、入力内容はどこにも送信・保存されません。</p>
+      </div>
     </div>
   </div>
 </section>
@@ -965,6 +1054,55 @@ body {
     entries.forEach(function(entry){ if(entry.isIntersecting){ entry.target.classList.add('visible'); observer.unobserve(entry.target); } });
   }, { threshold: 0.12 });
   reveals.forEach(function(el){ observer.observe(el); });
+
+  // --- Self check ---
+  const scList = document.getElementById('scList');
+  if (scList) {
+    const boxes = scList.querySelectorAll('input[type="checkbox"]');
+    const result = document.getElementById('scResult');
+    const numEl = document.getElementById('scNum');
+    const msgEl = document.getElementById('scMsg');
+    const subEl = document.getElementById('scSub');
+    const tiers = [
+      { msg: '当てはまるものを選んでみてください。', sub: '1つでも当てはまれば、その転記作業は「仕組み」で軽くできます。' },
+      { msg: 'その“名もなき転記”が、静かに時間を奪い始めています。', sub: '今はまだ数本でも、件数が重なる月ほど負担は膨らみます。溜まる前に、一度その手間を外に出してみませんか。' },
+      { msg: '特記の転記が、事業所のボトルネックになりかけています。', sub: '手入力・個人情報の不安・ルールの空白。この3つが重なると、AI活用は止まったままになりがちです。まずは10本、リスクなく品質を確かめてみてください。' },
+      { msg: 'これは、まさに「転記代行センター」が解決するためにある状態です。', sub: '非学習・国内処理・即時削除、匿名のまま送れて、最終確認はケアマネ自身。新しいソフトを覚えることなく、届いた特記をチェックして貼るだけに変わります。まずは10本、無料でお試しを。' }
+    ];
+    function tierFor(n){ if(n===0) return 0; if(n<=2) return 1; if(n<=4) return 2; return 3; }
+    window.dataLayer = window.dataLayer || [];
+    let started = false, resultSent = false, resultTimer = null, lastCount = 0;
+    function update(){
+      let n = 0; boxes.forEach(function(b){ if(b.checked) n++; });
+      lastCount = n;
+      numEl.textContent = n;
+      const t = tiers[tierFor(n)];
+      msgEl.textContent = t.msg; subEl.textContent = t.sub;
+      result.classList.toggle('show', n > 0);
+      // 初回操作＝「セルフチェックを使った」カウント
+      if (!started) {
+        started = true;
+        window.dataLayer.push({ event: 'self_check_start', page_name: 'ケアマネOCR（特記事項転記）' });
+      }
+      // 操作が落ち着いたら結果を1回だけ送信（チェック数の分布が取れる）
+      if (n > 0 && !resultSent) {
+        clearTimeout(resultTimer);
+        resultTimer = setTimeout(function(){
+          if (resultSent) return;
+          resultSent = true;
+          window.dataLayer.push({ event: 'self_check_result', checked_count: lastCount, page_name: 'ケアマネOCR（特記事項転記）' });
+        }, 1500);
+      }
+    }
+    boxes.forEach(function(b){ b.addEventListener('change', update); });
+    // 結果カード内のCTAクリック＝チェック→無料お試し導線への転換
+    const scCta = result.querySelector('a.btn-primary');
+    if (scCta) {
+      scCta.addEventListener('click', function(){
+        window.dataLayer.push({ event: 'self_check_cta_click', checked_count: lastCount, page_name: 'ケアマネOCR（特記事項転記）' });
+      });
+    }
+  }
 })();
 </script>
 </body>

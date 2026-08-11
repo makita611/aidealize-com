@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>事業所の生成AI利用ルールの作り方｜ケアプラン作成AIの前に決める3つのこと【居宅ケアマネ】｜AIdealize</title>
+<meta name="description" content="ChatGPTやケアマネ特化AIをどう使う？「どのツールがいいか」より先に、事業所として決めるべき3つのこと（入れない情報の線引き・確定は人・使いどころの選別）を整理。ひとりケアマネでも作れる生成AI利用ルールの叩き台（コピペ可）と、ケアプラン作成AIとの向き合い方を解説します。">
+<link rel="canonical" href="https://aidealize.com/column/caremane-ai-riyou-rule/">
+<meta property="og:title" content="事業所の生成AI利用ルールの作り方｜ケアプラン作成AIの前に決める3つのこと">
+<meta property="og:description" content="「どのツールがいいか」より先に決める3つのこと。ひとりケアマネでも作れる利用ルールの叩き台（コピペ可）つき。">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://aidealize.com/column/caremane-ai-riyou-rule/">
+<meta property="og:site_name" content="AIdealize株式会社">
+<meta property="og:image" content="https://aidealize.com/images/womanp5.webp">
+<meta name="twitter:image" content="https://aidealize.com/images/womanp5.webp">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700;900&family=Shippori+Mincho:wght@400;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/column/article-base.css">
+<style>.article-hero-img{border-radius:12px;overflow:hidden;margin:0 0 40px;box-shadow:0 10px 30px rgba(0,0,0,0.08);}.article-hero-img img{width:100%;display:block;aspect-ratio:16/8;object-fit:cover;object-position:center 28%;}
+.rule-box{background:var(--bg);border:1px solid var(--border);border-top:4px solid var(--red);border-radius:10px;padding:28px 30px;margin:24px 0 32px;}
+.rule-box-title{font-family:'Shippori Mincho',serif;font-size:16px;font-weight:700;color:var(--ink);margin-bottom:6px;}
+.rule-box-note{font-size:12px;color:var(--light);margin-bottom:18px;}
+.rule-box ol{counter-reset:rule;list-style:none;display:flex;flex-direction:column;gap:14px;margin:0;}
+.rule-box ol li{counter-increment:rule;position:relative;padding-left:38px;font-size:14px;line-height:1.85;color:var(--body);}
+.rule-box ol li::before{content:counter(rule);position:absolute;left:0;top:1px;background:var(--red);color:#fff;width:24px;height:24px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;font-family:'DM Mono',monospace;}
+.rule-box ol li strong{color:var(--ink);}</style>
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-P6VNBWH3');</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Article","headline":"事業所の生成AI利用ルールの作り方｜ケアプラン作成AIの前に決める3つのこと","description":"「どのツールがいいか」より先に決める3つのこと。ひとりケアマネでも作れる利用ルールの叩き台つき。","datePublished":"2026-08-11","author":{"@type":"Organization","name":"AIdealize株式会社"},"publisher":{"@type":"Organization","name":"AIdealize株式会社","url":"https://aidealize.com"}}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+{"@type":"Question","name":"ひとりケアマネや小規模の事業所でも、AI利用ルールは必要ですか？","acceptedAnswer":{"@type":"Answer","text":"むしろ小規模ほど必要です。人数が少ないほどAIの使い方が個人任せになり、良かれと思って個人情報を入力してしまう事故が起きやすくなります。A4一枚でよいので、入れない情報・使ってよい場面・最終確認は人が行うことの3点を先に決めておくと、一人でも、増員したときも同じ基準で安心して使えます。"}},
+{"@type":"Question","name":"ケアプランをAIに作らせるのは、専門性の放棄になりませんか？","acceptedAnswer":{"@type":"Answer","text":"AIに丸投げして出力をそのまま使えば、その通りです。専門性は、利用者・家族の言葉から課題を見立て、方針を判断するところにあります。AIは文例の提案や下書き、要点整理までにとどめ、ニーズ・目標・総合方針の確定はケアマネ自身が行う——という線引きを決めておけば、専門性を保ったまま効率化できます。"}},
+{"@type":"Question","name":"無料AIと有料AI、どちらを選べばよいですか？","acceptedAnswer":{"@type":"Answer","text":"ツールの銘柄より、使い方の設計が先です。どのツールでも、要配慮個人情報を入れない・入力が学習に使われない契約か確認する・最終確認は人が行う、という運用が守れるかで安全性は決まります。個人情報を含む書類の処理は、非学習・国内処理・即時削除で、最終確認を人に残す専用サービスに切り分けるのが現実的です。"}}
+]}
+</script>
+</head>
+<body>
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-P6VNBWH3" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
+<nav id="mainNav">
+  <a href="/" class="nav-logo"><img src="/images/logo.png" alt="AIdealize"><span class="nav-logo-text"><span>AI</span>dealize</span></a>
+  <ul class="nav-links">
+    <li><a href="/column/">コラム</a></li>
+    <li><a href="/service/">サービス</a></li>
+    <li><a href="https://aidealize.com/bpr/">DX事例</a></li>
+    <li><a href="/company.html">会社概要</a></li>
+    <li><a href="/lp/caremane-ocr/" class="nav-cta">特記の転記を試す</a></li>
+  </ul>
+  <button class="nav-hamburger" id="navHamburger" aria-label="メニュー"><span></span><span></span><span></span></button>
+</nav>
+<div class="nav-drawer" id="navDrawer">
+  <ul>
+    <li><a href="/column/" class="drawer-link">コラム</a></li>
+    <li><a href="/service/" class="drawer-link">サービス</a></li>
+    <li><a href="https://aidealize.com/bpr/" class="drawer-link">DX事例</a></li>
+    <li><a href="/company.html" class="drawer-link">会社概要</a></li>
+    <li><a href="/lp/caremane-ocr/">特記事項の転記を無料で試す</a></li>
+  </ul>
+</div>
+
+<header class="article-header">
+  <div class="article-header-inner">
+    <nav class="breadcrumb" aria-label="パンくず"><a href="/">ホーム</a><span>/</span><a href="/column/">コラム</a><span>/</span><span>AI活用・事業所ルール</span></nav>
+    <div class="article-tag">AI活用・事業所ルール</div>
+    <h1 class="article-h1">ひとりケアマネでも作れる、事業所の“生成AI利用ルール”。<br>ケアプラン作成AIに飛びつく前に決める3つのこと。</h1>
+    <div class="article-meta"><div>📅 2026年8月11日</div><div>⏱ 読了約8分</div><div>✍ AIdealize編集部</div></div>
+  </div>
+</header>
+
+<article class="article-body">
+<div class="article-body-inner">
+
+  <div class="article-hero-img reveal"><img src="/images/womanp5.webp" alt="事業所で生成AIをどう使うか、ルールづくりを話し合うケアマネジャー"></div>
+
+  <div class="summary-box reveal">
+    <div class="summary-box-title">この記事でわかること</div>
+    <ul>
+      <li>「どのAIツールがいいか」より先に決めるべきものがある理由</li>
+      <li>事業所として決める3つのこと（入れない情報／確定は人／使いどころ）</li>
+      <li>ひとりケアマネでも作れる「AI利用ルール」の叩き台（コピペ可）</li>
+      <li>ケアプランをAIに作らせるのは是か非か、への現実的な答え</li>
+      <li>「生成させていい業務」と「慎重にすべき業務」の分け方</li>
+    </ul>
+  </div>
+
+  <p>「簡単な情報を入れるだけで、総合的な援助方針やニーズ、長期・短期目標をAIに作文してもらえないか」——現場の掲示板でも、こうした相談をよく見かけるようになりました。返信には、ケアマネ特化AI、汎用の生成AI、ノート型AIなど、いくつものツール名が並びます。ですが、そこで置き去りにされている、もっと大事な問いがあります。</p>
+  <p><strong>「どのツールを使うか」ではなく、「事業所として、どう使うか」。</strong>ここが決まっていないまま各自が使い始めると、便利さと引き換えに、個人情報の事故や“考える力の空洞化”というリスクを抱え込みます。この記事は、ツール比較の前に事業所で決めておくべきことを、ひとりケアマネでも回せる形で整理します。</p>
+
+  <h2>いま現場で起きていること</h2>
+  <p>相談への返信を眺めると、ある共通点が見えてきます。多くの人が<strong>すでに何かしらのAIを使い始めている</strong>一方で、「事業所としてのルールは特に決めていない」という声がほとんどなのです。便利さが先行し、運用の枠組みが追いついていない——これが2026年時点の実態です。</p>
+  <div class="pain-cards">
+    <div class="pain-card"><div class="pain-card-icon">🤔</div><div class="pain-card-body"><strong>「どれを使えばいい？」で止まる。</strong>ツールが多すぎて選べず、比較検討だけで時間が過ぎていく。</div></div>
+    <div class="pain-card"><div class="pain-card-icon">⚠️</div><div class="pain-card-body"><strong>「入れちゃダメ」しか言われていない。</strong>何がダメで、どうすれば安全かの“物差し”がなく、判断が個人任せになっている。</div></div>
+    <div class="pain-card"><div class="pain-card-icon">🧭</div><div class="pain-card-body"><strong>使いどころが曖昧。</strong>要点整理に使うのか、文書を丸ごと作らせるのか。線引きがないまま、なんとなく使っている。</div></div>
+  </div>
+  <p>ツールは日々増え、性能も変わります。だからこそ、変わりにくい“使い方の土台”を先に決めておくと、どのツールを選んでも慌てずに済みます。次の3つが、その土台です。</p>
+
+  <h2>ツール選びより先に決める、3つのこと</h2>
+
+  <h3>① 「何を入れないか」の線引き（個人情報の物差し）</h3>
+  <p>最初に決めるのは、便利な使い方ではなく<strong>「入れてはいけない情報」</strong>です。介護記録に含まれる病歴や心身の状況は要配慮個人情報にあたり得るため、安全性が確認できていないAIへ安易に入力するのは避けるべきです。ここで多い誤解が「氏名さえ消せば匿名」というもの。年齢・地域・具体的なエピソードが組み合わさると、個人が特定され得ます。</p>
+  <div class="point-box">
+    <div class="point-box-label">物差しの例</div>
+    <p>氏名・生年月日・住所・被保険者番号・事業所名は入れない。個人が推測できる固有のエピソードもぼかす。要配慮個人情報を含む書類そのものを扱うときは、非学習・国内処理・即時削除が確認できる専用サービスに切り分ける——という線を、A4一枚でよいので明文化しておきます。</p>
+  </div>
+
+  <h3>② 「AIは下書き、確定するのは人」</h3>
+  <p>2つ目は、責任の所在です。AIが作るのはあくまで<strong>下書き・たたき台</strong>であり、内容を確認して確定するのはケアマネ自身——この一線を組織のルールとして共有します。これは効率を落とすためではなく、専門職としての判断と責任を手元に残すための線引きです。掲示板でも「そのまま反映させることはほぼない、あくまで参考」という使い方が支持されていました。人が最後に確認する運用（ヒューマン・イン・ザ・ループ）は、安全なAI活用の共通原則です。</p>
+
+  <h3>③ 「どこに使うか」の選別（生成 vs 転記）</h3>
+  <p>3つ目が、意外と見落とされがちな“使いどころ”の選別です。同じAI活用でも、性質はまるで違います。</p>
+  <div class="compare-wrap">
+    <table class="compare-table">
+      <thead>
+        <tr><th>使い方</th><th>例</th><th class="hl">向き合い方</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>要点の整理・要約</td><td>長い会議録から論点を抜き出す</td><td class="hl">◎ 補助として有効</td></tr>
+        <tr><td>文例・下書きの提案</td><td>言い回しの候補を出す</td><td class="hl">◯ 下書きまで。確定は人</td></tr>
+        <tr><td>“転記”（書き写し）</td><td>紙の特記事項をテキスト化</td><td class="hl">◎ 判断を伴わず効果大</td></tr>
+        <tr><td>“生成”（中身を作る）</td><td>ニーズ・目標・総合方針を作文</td><td class="hl">△ 専門判断は人が主役</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p>ポイントは、<strong>「判断を伴わない作業ほど、AIに任せる効果が大きく、リスクが小さい」</strong>ということ。中でも“転記”は、中身を創作せずに書き写すだけなので、専門性を損なわずに時間だけを取り戻せる、もっとも“おいしい”使いどころです。逆に、ニーズや目標といった中身の生成は、AIに素案を出させるとしても主役はあくまでケアマネの判断であるべき領域です。</p>
+
+  <div class="inline-cta reveal">
+    <div class="inline-cta-tag">判断を伴わない“転記”から始める・初回10本無料</div>
+    <h3>いちばん安全でいちばん効くのは、<br>「特記事項の転記」をAIに任せること。</h3>
+    <p>認定調査票の特記事項を、非学習・国内処理・即時削除でテキスト化。要配慮個人情報は付箋・番号で隠したまま送れて、最終確認はケアマネ自身。中身を創作しないから、専門性を損なわずに時間だけが戻ります。</p>
+    <div class="cta-btns-pair"><a href="/lp/caremane-ocr/" class="btn-cta-red">特記事項 転記代行センターを見る →</a></div>
+    <span class="btn-cta-note">カード登録不要／営業電話はしません</span>
+  </div>
+
+  <h2>そのまま使える「事業所AI利用ルール」の叩き台</h2>
+  <p>3つの土台を、事業所で配れる形に落とし込むとこうなります。難しく考えず、まずはこれをコピーして、事業所名や使うツールを書き足すところから始めてみてください。</p>
+  <div class="rule-box">
+    <div class="rule-box-title">〇〇居宅介護支援事業所　生成AI利用ルール（叩き台）</div>
+    <div class="rule-box-note">※ A4一枚・ひとりでも回せる最小構成。自事業所に合わせて加筆してください。</div>
+    <ol>
+      <li><strong>入れない情報を決める。</strong>氏名・生年月日・住所・被保険者番号・事業所名は入力しない。個人が推測できる固有のエピソードはぼかす。</li>
+      <li><strong>ツールは“非学習”を確認して選ぶ。</strong>入力が学習に使われない設定・契約かを確認したツールのみ使う。不明なものは使わない。</li>
+      <li><strong>AIは下書き、確定は人。</strong>出力はそのまま使わず、必ずケアマネが内容を確認・修正して確定する。</li>
+      <li><strong>使いどころを分ける。</strong>要点整理・要約・下書き・転記は積極活用。ニーズ・目標・総合方針の中身は、AIの素案を参考にしつつ人が判断する。</li>
+      <li><strong>要配慮個人情報を含む書類は切り分ける。</strong>認定調査票などをテキスト化する作業は、非学習・国内処理・即時削除の専用サービスを使う。</li>
+      <li><strong>迷ったら管理者に相談。</strong>判断に迷う場面は各自で決めず、いったん止めて相談する。</li>
+    </ol>
+  </div>
+
+  <h2>「ケアプランをAIに作らせるのは是か非か」への答え</h2>
+  <p>この問いには、賛否どちらの声もあります。「業務効率化として当然」という立場と、「ケアプランは利用者のもの。専門性はどこにいくのか」という慎重な立場と。どちらも本質を突いています。</p>
+  <p>現実的な答えは、二択ではなく<strong>“程度と使いどころ”</strong>にあります。アセスメント結果を入れて「自分が感じた課題と比べる」、ぐちゃぐちゃの会議録を要点にまとめる——こうした<strong>思考の補助</strong>としての活用は、専門性をむしろ高めます。一方、利用者から聞いた話をそのまま入れて「はい完成」とするのは、専門職の仕事とは呼べません。<strong>AIを“考える相棒”にするのか、“考えない言い訳”にするのか。</strong>その分かれ目を決めるのが、先ほどの3つの土台です。</p>
+  <div class="point-box">
+    <div class="point-box-label">厚労省もDXを推進、ただし</div>
+    <p>国は介護現場のICT・AI活用を後押ししています。ただしそれは「専門職の判断を置き換える」ためではなく、記録や事務の負担を減らし、対人援助の時間を増やすためのもの。効率化の恩恵を受けつつ、判断は人に残す——この両立こそが、推進の本来の趣旨に沿った使い方です。</p>
+  </div>
+
+  <h2>まとめ：ツールは変わる、土台は変わらない</h2>
+  <p>AIツールは今後も増え、性能も価格も変わり続けます。銘柄選びに振り回されないために、まず<strong>「入れない情報」「確定は人」「使いどころの選別」</strong>という3つの土台を、A4一枚のルールにしておきましょう。そして最初の一歩には、<strong>判断を伴わず効果が大きい“特記事項の転記”</strong>がおすすめです。専門性を損なわずに時間だけを取り戻せて、AI活用の手応えを事業所全体で共有できます。</p>
+
+  <div class="inline-cta reveal">
+    <div class="inline-cta-tag">10本 無料お試し実施中</div>
+    <h3>ルールを守ったまま、まず“転記”だけ軽くする。</h3>
+    <p>初期費用・月額基本料0円。匿名運用OK、社協様式・全介護ソフト対応。法人のセキュリティ審査に必要な資料もご用意します。まずは10本、無料で品質をお確かめください。</p>
+    <div class="cta-btns-pair"><a href="/lp/caremane-ocr/" class="btn-cta-red">特記事項 転記代行センターを見る →</a></div>
+    <span class="btn-cta-note">要配慮個人情報は匿名のまま送付OK</span>
+  </div>
+
+</div>
+</article>
+
+<section class="related-section">
+  <div class="related-inner">
+    <div class="related-label">Related Articles</div>
+    <div class="related-grid">
+      <a href="/column/kaigo-ai-kojinjoho-checklist/" class="related-card"><div class="related-card-tag">個人情報・セキュリティ</div><div class="related-card-title">介護AIに個人情報を入れて大丈夫？ケアマネ向けセキュリティチェックリスト【2026年】</div></a>
+      <a href="/column/careplan-ai-caremane/" class="related-card"><div class="related-card-tag">ケアマネ業務</div><div class="related-card-title">ケアプランAIはどこまで使える？ ケアマネのアセスメント・原案作成をAIで効率化する。</div></a>
+      <a href="/column/ninteichosahyo-ocr-kojinjoho/" class="related-card"><div class="related-card-tag">個人情報・安全管理</div><div class="related-card-title">認定調査票を汎用OCR・無料AIでテキスト化していい？個人情報・法令の落とし穴。</div></a>
+      <a href="/column/ninteichosahyo-tokki-tenki/" class="related-card"><div class="related-card-tag">業務効率化</div><div class="related-card-title">認定調査票の特記事項の転記が大変…ケアマネの手入力を「5分」に減らす方法。</div></a>
+    </div>
+  </div>
+</section>
+
+<div class="back-section"><div class="back-section-inner"><a href="/column/" class="back-link">← コラム一覧に戻る</a></div></div>
+
+<footer>
+  <div class="footer-logo"><div class="footer-logo-mark"></div><span class="footer-logo-text"><span>A</span>idealize株式会社</span></div>
+  <span class="footer-copy">© 2020–2026 AIdealize Inc. All rights reserved.</span>
+</footer>
+
+<script src="/js/gas-forms.js"></script>
+<script src="/js/lead-capture.js"></script>
+<script>
+(function(){var b=document.getElementById('navHamburger'),d=document.getElementById('navDrawer'),n=document.getElementById('mainNav');b.addEventListener('click',function(){b.classList.toggle('open');d.classList.toggle('open');});d.querySelectorAll('.drawer-link').forEach(function(l){l.addEventListener('click',function(){b.classList.remove('open');d.classList.remove('open');});});window.addEventListener('scroll',function(){n.classList.toggle('scrolled',window.scrollY>10);});})();
+var obs=new IntersectionObserver(function(e){e.forEach(function(x){if(x.isIntersecting)x.target.classList.add('visible');});},{threshold:0.08,rootMargin:'0px 0px -30px 0px'});document.querySelectorAll('.reveal').forEach(function(el){obs.observe(el);});
+</script>
+</body>
+</html>
