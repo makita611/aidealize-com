@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-P6VNBWH3');</script>
+<!-- End Google Tag Manager -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>オーダーメイドAIツール開発事例｜図面翻訳・配送QRルート｜AIdealize株式会社</title>
+<meta name="description" content="既製ツールでは拾えない現場の細かい困りごとを、AIで1個から。図面の日本語→ベトナム語翻訳、納品書QRからのGoogleマップ自動ルートなど、建設・物流の“うちだけの手間”を消したオーダーメイド開発の事例をご紹介します。">
+<link rel="canonical" href="https://aidealize.com/works/">
+<meta name="robots" content="index,follow">
+<meta property="og:type" content="website">
+<meta property="og:title" content="オーダーメイドAIツール開発事例｜図面翻訳・配送QRルート">
+<meta property="og:description" content="現場の細かい困りごとを、AIで1個から。図面翻訳・配送QRルートなど“うちだけの手間”を消した開発事例。">
+<meta property="og:url" content="https://aidealize.com/works/">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;700;900&family=Bebas+Neue&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #ffffff;
+  --surface: #f7f7f5;
+  --border: #e5e5e0;
+  --accent: #d42e42;
+  --accent2: #e8960e;
+  --ink: #111118;
+  --muted: #777788;
+  --card: #fafaf8;
+  --red: #c0272d;
+  --red-dark: #a01f24;
+  --ink: #1a1a1a;
+  --mid: #555;
+  --white: #fff;
+  --border: #e8e8e8;
+}
+*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+html { scroll-behavior:smooth; }
+body {
+  font-family:'Noto Sans JP', sans-serif;
+  background: var(--bg);
+  color: var(--ink);
+  line-height:1.7;
+  overflow-x:hidden;
+}
+
+/* ── NAV ── */
+#mainNav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 60px; height: 68px;
+  background: rgba(255,255,255,0.97);
+  border-bottom: 1px solid var(--border);
+  backdrop-filter: blur(12px);
+  transition: box-shadow 0.3s;
+}
+#mainNav.scrolled { box-shadow: 0 4px 24px rgba(0,0,0,0.08); }
+.nav-logo { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+.nav-logo img { height: 36px; width: auto; }
+.nav-logo-text { font-family: 'DM Mono', monospace; font-size: 16px; font-weight: 500; color: var(--ink); letter-spacing: 0.02em; }
+.nav-logo-text span { color: var(--red); }
+.nav-links { display: flex; align-items: center; gap: 36px; list-style: none; margin: 0; padding: 0; }
+.nav-links a { font-size: 13px; font-weight: 500; color: var(--mid); text-decoration: none; letter-spacing: 0.04em; transition: color 0.2s; }
+.nav-links a:hover { color: var(--ink); }
+.nav-cta {
+  background: var(--red); color: var(--white) !important;
+  padding: 10px 22px; border-radius: 3px;
+  font-size: 12px !important; font-weight: 700 !important;
+  letter-spacing: 0.06em !important;
+  transition: background 0.2s !important;
+}
+.nav-cta:hover { background: var(--red-dark) !important; color: var(--white) !important; }
+.nav-hamburger { display: none; flex-direction: column; justify-content: center; gap: 5px; width: 40px; height: 40px; background: none; border: none; cursor: pointer; padding: 4px; }
+.nav-hamburger span { display: block; width: 24px; height: 2px; background: var(--ink); transition: all 0.3s; transform-origin: center; }
+.nav-hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.nav-hamburger.open span:nth-child(2) { opacity: 0; }
+.nav-hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+.nav-drawer { display: none; position: fixed; top: 68px; left: 0; right: 0; background: rgba(255,255,255,0.98); border-bottom: 2px solid var(--red); padding: 24px 32px 32px; z-index: 999; backdrop-filter: blur(12px); }
+.nav-drawer.open { display: block; }
+.nav-drawer ul { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 0; }
+.nav-drawer ul li a { display: block; padding: 14px 0; font-size: 15px; font-weight: 500; color: var(--ink); text-decoration: none; border-bottom: 1px solid var(--border); letter-spacing: 0.04em; }
+.nav-drawer ul li:last-child a { margin-top: 20px; display: block; text-align: center; background: var(--red); color: var(--white) !important; padding: 14px 22px; border-radius: 3px; font-weight: 700 !important; border-bottom: none; letter-spacing: 0.06em; }
+@media (max-width: 1024px) { #mainNav { padding: 0 32px; } .nav-links { display: none; } .nav-hamburger { display: flex; } }
+@media (max-width: 480px) { #mainNav { padding: 0 20px; height: 60px; } .nav-drawer { top: 60px; padding: 20px 20px 28px; } .nav-logo img { height: 30px; } }
+
+/* ── ヒーロー ── */
+.hero { padding:140px 40px 40px; max-width:1000px; margin:0 auto; }
+.hero-label { display:inline-block; font-size:11px; font-weight:700; letter-spacing:3px; color:var(--accent); border:1px solid var(--accent); padding:4px 14px; border-radius:2px; margin-bottom:20px; }
+.hero h1 { font-size:clamp(28px,4vw,44px); font-weight:900; line-height:1.3; margin-bottom:16px; }
+.hero p { font-size:15px; color:var(--muted); max-width:620px; line-height:1.9; }
+
+/* ── セクション ── */
+.section { padding:40px 40px 20px; max-width:1000px; margin:0 auto; }
+.section-label { font-size:11px; font-weight:700; letter-spacing:3px; color:var(--accent); margin-bottom:10px; }
+.section-title { font-size:clamp(20px,2.5vw,26px); font-weight:900; margin-bottom:16px; }
+
+/* ── カード ── */
+.other-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:20px; }
+.other-card { background:var(--card); border:1px solid var(--border); border-radius:8px; padding:32px 28px; text-decoration:none; color:inherit; display:block; transition:border-color 0.2s, box-shadow 0.2s, transform 0.2s; }
+.other-card:hover { border-color:var(--accent); box-shadow:0 6px 20px rgba(212,46,66,0.08); transform:translateY(-2px); }
+.other-icon { font-size:30px; margin-bottom:14px; }
+.other-tag { display:inline-block; font-size:10px; font-weight:700; letter-spacing:2px; color:var(--accent2); border:1px solid rgba(232,150,14,0.35); padding:3px 10px; border-radius:2px; margin-bottom:12px; }
+.other-name { font-size:17px; font-weight:900; margin-bottom:10px; line-height:1.4; }
+.other-desc { font-size:13px; color:var(--muted); line-height:1.9; }
+.other-win { margin-top:16px; font-size:12px; font-weight:700; color:var(--accent); line-height:1.7; }
+
+/* ── CTA ── */
+.cta-section { padding:70px 40px; text-align:center; background:var(--ink); margin-top:60px; }
+.cta-section h2 { font-size:clamp(22px,3vw,32px); font-weight:900; color:white; margin-bottom:14px; }
+.cta-section p { color:rgba(255,255,255,0.6); margin-bottom:8px; font-size:14px; }
+.btn-ghost { display:inline-block; padding:14px 34px; background:transparent; color:white; border:1px solid rgba(255,255,255,0.25); border-radius:3px; font-size:14px; font-weight:700; text-decoration:none; transition:border-color 0.2s; }
+.btn-ghost:hover { border-color:white; }
+
+/* ── フォーム（gas-form 最小スタイル） ── */
+.gas-form-group { margin-bottom:14px; }
+.gas-form-group input, .gas-form-group textarea { width:100%; padding:12px 14px; border:1px solid #d5d5d5; border-radius:6px; font-family:inherit; font-size:14px; color:#1a1a1a; }
+.gas-form-group textarea { resize:vertical; }
+.gas-radio-group { display:flex; flex-wrap:wrap; gap:14px; font-size:13px; color:#333; }
+.gas-radio-group label { display:flex; align-items:center; gap:6px; cursor:pointer; }
+.gas-form-btn { width:100%; padding:15px; border:none; border-radius:6px; font-size:15px; font-weight:700; cursor:pointer; }
+
+footer { padding:28px 40px; border-top:1px solid var(--border); text-align:center; color:var(--muted); font-size:12px; background:var(--bg); }
+footer a { color:inherit; }
+
+@keyframes fadeUp { from{opacity:0;transform:translateY(20px)} to{opacity:1;transform:none} }
+.fade-up { animation:fadeUp 0.5s ease both; }
+
+@media(max-width:768px){
+  .section, .hero { padding-left:20px; padding-right:20px; }
+}
+</style>
+</head>
+<body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-P6VNBWH3"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+<!-- ◎NAV -->
+<nav id="mainNav">
+  <a href="/" class="nav-logo">
+    <img src="../images/logo.png" alt="AIidealize">
+    <span class="nav-logo-text"><span>AI</span>dealize</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="https://aidealize.com/column/">コラム</a></li>
+    <li><a href="/service/">サービス一覧</a></li>
+    <li><a href="https://aidealize.com/bpr/">DX事例</a></li>
+    <li><a href="/company/">会社概要</a></li>
+    <li><a href="#contact" class="nav-cta">無料相談</a></li>
+  </ul>
+  <button class="nav-hamburger" id="navHamburger" aria-label="メニュー">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+<div class="nav-drawer" id="navDrawer">
+  <ul>
+    <li><a href="https://aidealize.com/column/" class="drawer-link">コラム</a></li>
+    <li><a href="/service/" class="drawer-link">サービス一覧</a></li>
+    <li><a href="https://aidealize.com/bpr/" class="drawer-link">DX事例</a></li>
+    <li><a href="/company/" class="drawer-link">会社概要</a></li>
+    <li><a href="#contact">無料相談</a></li>
+  </ul>
+</div>
+<script>
+(function(){
+  const btn = document.getElementById('navHamburger');
+  const drawer = document.getElementById('navDrawer');
+  const nav = document.getElementById('mainNav');
+  btn.addEventListener('click', function(){ btn.classList.toggle('open'); drawer.classList.toggle('open'); });
+  drawer.querySelectorAll('.drawer-link').forEach(function(link){
+    link.addEventListener('click', function(){ btn.classList.remove('open'); drawer.classList.remove('open'); });
+  });
+  window.addEventListener('scroll', function(){ nav.classList.toggle('scrolled', window.scrollY > 10); });
+})();
+</script>
+
+<!-- ヒーロー -->
+<div class="hero fade-up">
+  <div class="hero-label">CUSTOM AI TOOLS</div>
+  <h1>こんなものまで、作れます。</h1>
+  <p>
+    既製のツールでは拾いきれない、現場の“うちだけの困りごと”。<br>
+    「これ、地味だけど毎回めんどくさいんだよな」——そういう手間ほど、AIで1個からツールにしてきました。実際に作ってお渡ししてきたものを、いくつかご紹介します。
+  </p>
+</div>
+
+<!-- ギャラリー -->
+<div class="section">
+  <div class="other-grid">
+
+    <!-- ① 建設・製造：図面翻訳 -->
+    <div class="other-card fade-up" style="border-top:3px solid var(--accent);">
+      <div class="other-icon">📐</div>
+      <div class="other-tag">建設・製造</div>
+      <div class="other-name">図面の日本語 → ベトナム語 自動翻訳</div>
+      <div class="other-desc">
+        外国人技能実習生に図面を渡すたび、口頭やスマホ翻訳で1枚ずつ説明していた手間をなくすツール。日本語の図面をアップすると、寸法・注記ごとベトナム語に翻訳して返します。
+      </div>
+      <div class="other-win">→ 指示の伝達ミス・手戻りを減らす</div>
+    </div>
+
+    <!-- ② 物流・配送：納品書QR→ルート -->
+    <div class="other-card fade-up" style="border-top:3px solid var(--accent2);">
+      <div class="other-icon">🗺️</div>
+      <div class="other-tag">物流・多拠点配送</div>
+      <div class="other-name">納品書QR → Googleマップ ルート自動起動</div>
+      <div class="other-desc">
+        配送先の住所とQRコードを納品書に印字。ドライバーがスマホでQRを読むだけで、Googleマップのルート案内が自動で立ち上がります。住所の手入力はゼロ。
+      </div>
+      <div class="other-win">→ 入力の手間ゼロ、目的地の取り違えによる誤配も減らす</div>
+    </div>
+
+  </div>
+</div>
+
+<!-- 相談を促す一言 -->
+<div class="section" style="padding-top:8px;">
+  <div style="background:var(--surface);border:1px solid var(--border);border-left:4px solid var(--accent);border-radius:10px;padding:28px 32px;">
+    <div style="font-size:15px;font-weight:900;color:var(--ink);margin-bottom:8px;">「うちのこの作業、なんとかならない？」がスタートです</div>
+    <div style="font-size:13px;color:var(--muted);line-height:1.9;">
+      上の2つも、最初は現場の「毎回めんどくさい」という一言から生まれました。大がかりなシステムでなくて大丈夫。まずは今いちばん地味に手を取られている作業を教えてください。1個から、形にできるか一緒に考えます。
+    </div>
+  </div>
+</div>
+
+<!-- CTA -->
+<div class="cta-section" id="contact">
+  <h2>その“地味な手間”、一度話してみませんか。</h2>
+  <p>「これ作れる？」だけでも大歓迎です。30分、お気軽にご相談ください。</p>
+  <div style="max-width:480px;margin:28px auto 0;text-align:left;">
+    <form class="gas-form" data-page="オーダーメイド開発" data-formtype="無料相談"
+      style="background:#fff;padding:28px 24px;border-radius:8px;">
+      <div class="gas-form-group"><input type="text" name="name" placeholder="お名前" required></div>
+      <div class="gas-form-group"><input type="text" name="company" placeholder="会社名・事業所名"></div>
+      <div class="gas-form-group"><input type="email" name="email" placeholder="メールアドレス" required></div>
+      <div class="gas-form-group"><input type="tel" name="phone" placeholder="電話番号"></div>
+      <div class="gas-form-group"><textarea name="message" rows="3" placeholder="どんな作業を楽にしたいか、ざっくりで大丈夫です（任意）"></textarea></div>
+      <button type="submit" class="gas-form-btn" style="background:#d42e42;color:#fff;">相談してみる</button>
+    </form>
+    <div class="gas-form-thanks" style="display:none;background:#fff;padding:24px;border-radius:8px;">
+      <p>✅ お問い合わせありがとうございます。<br>担当者より1〜2営業日以内にご連絡いたします。</p>
+    </div>
+    <div style="text-align:center;margin-top:20px;">
+      <a class="btn-ghost" href="/service/">サービス一覧に戻る</a>
+    </div>
+  </div>
+</div>
+
+<footer>
+  © 2026 AIdealize株式会社　|　<a href="https://aidealize.com">TOP</a>　|　<a href="/company/">会社概要</a>　|　<a href="/service/">サービス一覧</a>
+</footer>
+<script src="/js/gas-forms.js"></script>
+<script src="/js/lead-capture.js"></script>
+</body>
+</html>
