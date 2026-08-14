@@ -503,7 +503,19 @@ window.addEventListener('message', function(e){
   }
   if (e.data && e.data.type === 'sitecheckLead') {
     window.dataLayer = window.dataLayer || [];
-    window.dataLayer.push({event:'form_submit', form_type:(e.data.form_type||'サイト診断リード'), page_name:'top/site-check-hub', score:e.data.score});
+    window.dataLayer.push({event:'form_submit', form_type:(e.data.form_type||'サイト診断リード'), page_name:'top/site-check-hub', mode:e.data.mode, score:e.data.score});
+  }
+  if (e.data && e.data.type === 'sitecheckRun') {
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push({event:'sitecheck_run', page_name:'top/site-check-hub', mode:e.data.mode, score:e.data.score});
+  }
+  if (e.data && e.data.type === 'hubRouteClick') {
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push({event:'hub_route_click', page_name:'top/site-check-hub', route_target:e.data.target, route_recommended:!!e.data.recommended, find_score:e.data.findScore, leak_score:e.data.leakScore});
+    // GA記録のあと、親ページごと該当サービスへ遷移（?service/ 配下のみ許可）
+    if (typeof e.data.href === 'string' && /^\/service\/[a-z-]*\/?$/.test(e.data.href)) {
+      setTimeout(function(){ window.location.href = e.data.href; }, 60);
+    }
   }
 });
 </script>

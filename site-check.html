@@ -223,6 +223,22 @@ const MODE_CFG = {
   },
 };
 const CFG = MODE_CFG[new URLSearchParams(location.search).get('mode')] || null;
+const MODE = new URLSearchParams(location.search).get('mode') || '';
+const IN_IFRAME = !!(window.parent && window.parent !== window);
+let _lastFind=null, _lastLeak=null; // ルーティング計測用のスコア退避
+// 親(GTM搭載ページ)へイベント送信。埋め込みでない単体表示時は自前dataLayerへ最低限push。
+function emitEvent(payload){
+  try{
+    if(IN_IFRAME){ window.parent.postMessage(payload,'*'); }
+    else { window.dataLayer=window.dataLayer||[]; window.dataLayer.push(Object.assign({event:payload.type||'sitecheck_evt'}, payload)); }
+  }catch(_){}
+}
+// まるごと診断のルーティングカードのクリック計測。埋め込み時は親がGA記録後にトップ遷移する。
+function routeClick(ev, href, target, recommended){
+  emitEvent({type:'hubRouteClick', target:target, href:href, recommended:!!recommended, findScore:_lastFind, leakScore:_lastLeak});
+  if(IN_IFRAME){ if(ev&&ev.preventDefault) ev.preventDefault(); return false; }
+  return true;
+}
 function applyMode(){
   if(!CFG) return;
   var b=document.querySelector('.header-badge'); if(b) b.textContent=CFG.badge;
@@ -345,6 +361,7 @@ function render(data){
   animateNum('score', target);
 
   renderRouting(data); // まるごと診断モードのみ：弱い所に応じて3サービスへ振り分け
+  emitEvent({type:'sitecheckRun', mode:MODE, score:data.score}); // 診断完了を計測（入口別の到達数）
 
   document.getElementById('result').scrollIntoView({behavior:'smooth', block:'start'});
   setTimeout(notifyHeight, 300);
@@ -360,6 +377,7 @@ function renderRouting(data){
   const findScore = Math.round((sc('base') + sc('modern'))/2); // 見つかる土台＝集客(marketing)
   const leakScore = sc('growth');                              // 成約導線＝取りこぼし(cvr)
   const findWeak = findScore <= leakScore; // 低いほど弱い＝優先しておすすめ
+  _lastFind = findScore; _lastLeak = leakScore; // クリック計測で送るため退避
   const svc = [
     { key:'find', rec:findWeak,  href:'/service/marketing/', tag:'集める', score:findScore,
       title:'見つかりやすさ（集客）', desc:'検索・スマホ・タイトルなど「検索で評価される土台」。低いほど、そもそも見つけてもらえていません。' },
@@ -373,7 +391,7 @@ function renderRouting(data){
     const recBadge = s.rec ? '<span style="position:absolute;top:-10px;left:14px;background:var(--teal);color:#fff;font-size:10px;font-weight:700;letter-spacing:.06em;padding:3px 10px;border-radius:20px;">まず、ここ</span>' : '';
     const scoreTxt = s.score==null ? '<span style="font-size:12px;color:var(--muted);">別ツールで点検</span>'
       : '<span style="font-family:Rajdhani,sans-serif;font-size:22px;font-weight:700;color:'+col(s.score)+';">'+s.score+'<span style="font-size:11px;color:var(--muted);">/100</span></span>';
-    return '<a href="'+s.href+'" target="_top" style="position:relative;display:flex;flex-direction:column;gap:6px;text-decoration:none;'+
+    return '<a href="'+s.href+'" target="_top" onclick="return routeClick(event,\''+s.href+'\',\''+s.key+'\','+(s.rec?'true':'false')+')" style="position:relative;display:flex;flex-direction:column;gap:6px;text-decoration:none;'+
       'background:var(--bg3);border:1px solid '+(s.rec?'var(--teal)':'var(--line)')+';'+(s.rec?'box-shadow:0 0 0 3px rgba(14,140,127,0.14);':'')+
       'border-radius:12px;padding:18px 16px 16px;transition:transform .15s;" onmouseover="this.style.transform=\'translateY(-2px)\'" onmouseout="this.style.transform=\'\'">'+
       recBadge+
@@ -428,11 +446,11 @@ function submitLead(){
     score:(lastResult&&lastResult.score) });
   // 診断リードをGA4に通知（iframe埋め込み時は親のGTMへ、単体時は自身のdataLayerへ）
   try{
-    var _lead={type:'sitecheckLead',form_type:'サイト診断リード',
+    var _lead={type:'sitecheckLead',form_type:'サイト診断リード',mode:MODE,
       score:(lastResult&&lastResult.score),
       site:(lastResult&&lastResult.url)||document.getElementById('url').value.trim()};
     if(window.parent && window.parent!==window){ window.parent.postMessage(_lead,'*'); }
-    else{ window.dataLayer=window.dataLayer||[]; window.dataLayer.push({event:'form_submit',form_type:_lead.form_type,page_name:'site-check'}); }
+    else{ window.dataLayer=window.dataLayer||[]; window.dataLayer.push({event:'form_submit',form_type:_lead.form_type,page_name:'site-check',mode:MODE}); }
   }catch(_){}
   document.getElementById('lead-form-wrap').style.display='none';
   document.getElementById('complete-msg').style.display='block';
