@@ -41,10 +41,10 @@
 </script>
 <style>
 :root{
-  --red:#0891b2;--red-dark:#0e7490;
+  --red:#4f46e5;--red-dark:#4338ca;
   --ink:#1e293b;--body:#4b5563;--light:#94a3b8;
   --border:#e2e8f0;--bg:#f8fafc;--bg2:#f1f5f9;--white:#fff;
-  --tag-bg:#ecfeff;--green:#059669;--amber-bg:#fef3c7;--amber-tx:#92400e;
+  --tag-bg:#eef2ff;--green:#059669;--amber-bg:#fef3c7;--amber-tx:#92400e;
 }
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
 html{scroll-behavior:smooth;}
@@ -73,16 +73,16 @@ body{font-family:'Noto Sans JP',sans-serif;background:var(--white);color:var(--i
 .nav-drawer ul li a{display:block;padding:13px 0;font-size:15px;font-weight:500;color:var(--ink);text-decoration:none;border-bottom:1px solid var(--border);}
 
 /* HERO */
-.hero{padding:120px 60px 56px;background:linear-gradient(180deg,#f0fbfd,#fff);}
+.hero{padding:120px 60px 56px;background:linear-gradient(180deg,#f5f6ff,#fff);}
 .hero-inner{max-width:1120px;margin:0 auto;display:grid;grid-template-columns:1.05fr 0.95fr;gap:48px;align-items:center;}
 .hero-text{min-width:0;}
 .hero-img{margin:0;}
-.hero-img img{width:100%;display:block;aspect-ratio:4/3;object-fit:cover;object-position:center 25%;border-radius:16px;box-shadow:0 12px 40px rgba(8,145,178,0.14);}
+.hero-img img{width:100%;display:block;aspect-ratio:4/3;object-fit:cover;object-position:center 25%;border-radius:16px;box-shadow:0 12px 40px rgba(79,70,229,0.14);}
 .hero-eyebrow{font-family:'DM Mono',monospace;font-size:12px;font-weight:500;letter-spacing:0.1em;color:var(--red-dark);background:var(--tag-bg);display:inline-block;padding:5px 12px;border-radius:4px;margin-bottom:20px;}
 .hero h1{font-family:'Shippori Mincho',serif;font-size:clamp(26px,4vw,40px);font-weight:700;line-height:1.5;margin-bottom:20px;}
 .hero h1 em{font-style:normal;color:var(--red-dark);}
 .hero-sub{font-size:15px;color:var(--body);line-height:1.95;max-width:680px;margin-bottom:14px;}
-.formula{display:inline-block;background:#fff;border:1px solid #cffafe;color:var(--red-dark);font-weight:700;padding:10px 18px;border-radius:8px;font-size:17px;margin:8px 0 24px;}
+.formula{display:inline-block;background:#fff;border:1px solid #e0e7ff;color:var(--red-dark);font-weight:700;padding:10px 18px;border-radius:8px;font-size:17px;margin:8px 0 24px;}
 .hero-btns{display:flex;gap:14px;flex-wrap:wrap;}
 .btn-p,.btn-o{display:inline-block;padding:13px 26px;border-radius:5px;font-size:14px;font-weight:700;text-decoration:none;transition:all 0.2s;}
 .btn-p{background:var(--red);color:#fff;}
@@ -110,7 +110,7 @@ body{font-family:'Noto Sans JP',sans-serif;background:var(--white);color:var(--i
 .opt{border:1px solid var(--border);background:#fff;color:var(--ink);padding:9px 26px;border-radius:6px;font-size:14px;cursor:pointer;font-family:inherit;transition:all 0.15s;}
 .opt:hover{border-color:var(--red);}
 .opt.sel{background:var(--red);color:#fff;border-color:var(--red);}
-.result{margin-top:22px;border:1px solid #cffafe;border-left:5px solid var(--red);border-radius:12px;padding:22px 24px;background:linear-gradient(135deg,#ecfeff,#f0fdf4);}
+.result{margin-top:22px;border:1px solid #e0e7ff;border-left:5px solid var(--red);border-radius:12px;padding:22px 24px;background:linear-gradient(135deg,#eef2ff,#f5f3ff);}
 .result h3{font-family:'Shippori Mincho',serif;font-size:19px;margin:0 0 6px;color:var(--ink);}
 .result .stage{display:inline-block;background:#fff;border:1px solid var(--red);color:var(--red-dark);font-weight:700;padding:4px 12px;border-radius:999px;font-size:13px;margin:2px 0 10px;}
 .result p{font-size:14px;color:var(--body);line-height:1.9;margin:0;}
@@ -126,7 +126,7 @@ body{font-family:'Noto Sans JP',sans-serif;background:var(--white);color:var(--i
 .entry-card .cap{font-size:13px;color:var(--body);margin-bottom:10px;}
 .entry-card ul{margin:0;padding-left:18px;}
 .entry-card li{font-size:13.5px;color:var(--body);margin-bottom:6px;line-height:1.8;}
-.hl-card{border-color:var(--red)!important;box-shadow:0 0 0 3px rgba(8,145,178,0.18);}
+.hl-card{border-color:var(--red)!important;box-shadow:0 0 0 3px rgba(79,70,229,0.18);}
 
 /* BEFORE/AFTER */
 .ba{display:grid;grid-template-columns:1fr auto 1fr;gap:16px;align-items:center;}
@@ -258,8 +258,8 @@ footer{background:#1f1f1f;border-top:1px solid rgba(255,255,255,0.06);padding:40
   <div class="section-inner">
     <div class="section-label">Instant check</div>
     <h2 class="section-title">サイトの取りこぼしを、その場で数値化</h2>
-    <p class="section-lead">URLを入れて診断ボタンを押すだけ。スマホ対応・問い合わせ導線・表示速度など「動く（問い合わせ）」段で漏れていないかを、その場で自動採点します。登録も費用も不要です。</p>
-    <iframe id="siteCheckFrame" src="/site-check.html" title="無料サイト即時診断" width="100%" height="560" frameborder="0" scrolling="no" style="display:block;border:1px solid var(--border);border-radius:14px;overflow:hidden;background:#F4F6FA;"></iframe>
+    <p class="section-lead">URLを入れて診断ボタンを押すだけ。問い合わせ導線・電話/LINE・信頼づくり・フォームの作り込みなど「<strong>信じる→動く</strong>」段で取りこぼしていないかを、その場で自動採点します。登録も費用も不要です。</p>
+    <iframe id="siteCheckFrame" src="/site-check?mode=leak" title="無料サイト即時診断（取りこぼし）" width="100%" height="560" frameborder="0" scrolling="no" style="display:block;border:1px solid var(--border);border-radius:14px;overflow:hidden;background:#F4F6FA;"></iframe>
   </div>
 </section>
 <script>
@@ -281,7 +281,7 @@ window.addEventListener('message', function(e){
     var u = new URLSearchParams(location.search).get('url');
     if (u) {
       var f = document.getElementById('siteCheckFrame');
-      if (f) f.src = '/site-check.html?url=' + encodeURIComponent(u);
+      if (f) f.src = '/site-check?mode=leak&url=' + encodeURIComponent(u);
       setTimeout(function(){
         try { document.getElementById('site-check-tool').scrollIntoView({behavior:'smooth',block:'start'}); } catch(e){}
       }, 400);
@@ -299,29 +299,29 @@ window.addEventListener('message', function(e){
     <div class="funnel-wrap reveal">
       <svg width="100%" viewBox="0 0 680 430" role="img" aria-label="集客の漏斗と、取りこぼしが起きる場所">
         <g>
-          <rect x="50" y="40" width="400" height="48" rx="4" fill="#e0f2f7" stroke="#0891b2"/>
-          <text x="250" y="62" text-anchor="middle" fill="#0e7490" font-size="15" font-weight="bold" font-family="sans-serif">見つかる</text>
-          <text x="250" y="80" text-anchor="middle" fill="#0e7490" font-size="12" font-family="sans-serif">MEO・SEO・広告・SNS</text>
+          <rect x="50" y="40" width="400" height="48" rx="4" fill="#e0e7ff" stroke="#4f46e5"/>
+          <text x="250" y="62" text-anchor="middle" fill="#4338ca" font-size="15" font-weight="bold" font-family="sans-serif">見つかる</text>
+          <text x="250" y="80" text-anchor="middle" fill="#4338ca" font-size="12" font-family="sans-serif">MEO・SEO・広告・SNS</text>
         </g>
         <g>
-          <rect x="78" y="118" width="344" height="48" rx="4" fill="#e0f2f7" stroke="#0891b2"/>
-          <text x="250" y="140" text-anchor="middle" fill="#0e7490" font-size="15" font-weight="bold" font-family="sans-serif">訪れる</text>
-          <text x="250" y="158" text-anchor="middle" fill="#0e7490" font-size="12" font-family="sans-serif">サイトに来る</text>
+          <rect x="78" y="118" width="344" height="48" rx="4" fill="#e0e7ff" stroke="#4f46e5"/>
+          <text x="250" y="140" text-anchor="middle" fill="#4338ca" font-size="15" font-weight="bold" font-family="sans-serif">訪れる</text>
+          <text x="250" y="158" text-anchor="middle" fill="#4338ca" font-size="12" font-family="sans-serif">サイトに来る</text>
         </g>
         <g>
-          <rect x="106" y="196" width="288" height="48" rx="4" fill="#e0f2f7" stroke="#0891b2"/>
-          <text x="250" y="218" text-anchor="middle" fill="#0e7490" font-size="15" font-weight="bold" font-family="sans-serif">信じる</text>
-          <text x="250" y="236" text-anchor="middle" fill="#0e7490" font-size="12" font-family="sans-serif">強み・人柄・実績が伝わる</text>
+          <rect x="106" y="196" width="288" height="48" rx="4" fill="#e0e7ff" stroke="#4f46e5"/>
+          <text x="250" y="218" text-anchor="middle" fill="#4338ca" font-size="15" font-weight="bold" font-family="sans-serif">信じる</text>
+          <text x="250" y="236" text-anchor="middle" fill="#4338ca" font-size="12" font-family="sans-serif">強み・人柄・実績が伝わる</text>
         </g>
         <g>
-          <rect x="134" y="274" width="232" height="48" rx="4" fill="#e0f2f7" stroke="#0891b2"/>
-          <text x="250" y="296" text-anchor="middle" fill="#0e7490" font-size="15" font-weight="bold" font-family="sans-serif">動く</text>
-          <text x="250" y="314" text-anchor="middle" fill="#0e7490" font-size="12" font-family="sans-serif">予約・問い合わせ・LINE</text>
+          <rect x="134" y="274" width="232" height="48" rx="4" fill="#e0e7ff" stroke="#4f46e5"/>
+          <text x="250" y="296" text-anchor="middle" fill="#4338ca" font-size="15" font-weight="bold" font-family="sans-serif">動く</text>
+          <text x="250" y="314" text-anchor="middle" fill="#4338ca" font-size="12" font-family="sans-serif">予約・問い合わせ・LINE</text>
         </g>
         <g>
-          <rect x="160" y="352" width="180" height="48" rx="4" fill="#e0f2f7" stroke="#0891b2"/>
-          <text x="250" y="374" text-anchor="middle" fill="#0e7490" font-size="15" font-weight="bold" font-family="sans-serif">実る</text>
-          <text x="250" y="392" text-anchor="middle" fill="#0e7490" font-size="12" font-family="sans-serif">来院・売上・リピート</text>
+          <rect x="160" y="352" width="180" height="48" rx="4" fill="#e0e7ff" stroke="#4f46e5"/>
+          <text x="250" y="374" text-anchor="middle" fill="#4338ca" font-size="15" font-weight="bold" font-family="sans-serif">実る</text>
+          <text x="250" y="392" text-anchor="middle" fill="#4338ca" font-size="12" font-family="sans-serif">来院・売上・リピート</text>
         </g>
         <text x="250" y="107" text-anchor="middle" fill="#64748b" font-size="12" font-family="sans-serif">通過率を計測</text>
         <text x="250" y="185" text-anchor="middle" fill="#64748b" font-size="12" font-family="sans-serif">通過率を計測</text>
@@ -475,7 +475,7 @@ window.addEventListener('message', function(e){
     <div class="section-label">How it works</div>
     <h2 class="section-title">小さく始めて、成果を見ながら広げる</h2>
     <p class="section-lead">いきなり全部やる必要はありません。無料の取りこぼし診断から、負担の小さい一箇所ずつ。AIで下書き・監査を自動化するので、続けても安く手間がかかりません。</p>
-    <div class="reveal" style="border-radius:12px;overflow:hidden;margin-bottom:28px;box-shadow:0 10px 30px -12px rgba(8,145,178,0.3);">
+    <div class="reveal" style="border-radius:12px;overflow:hidden;margin-bottom:28px;box-shadow:0 10px 30px -12px rgba(79,70,229,0.3);">
       <img src="/images/womanp9.webp" alt="担当者と一緒に、取りこぼしの改善策を検討する" loading="lazy" style="width:100%;display:block;aspect-ratio:21/9;object-fit:cover;object-position:center 30%;">
     </div>
     <div class="steps">
@@ -550,7 +550,7 @@ window.addEventListener('message', function(e){
     <div class="section-label">Case</div>
     <h2 class="section-title">実際に運用しているクリニックの例</h2>
     <p class="section-lead">「自社のサイトで証明」ではなく、実際にご支援している医療機関での運用例です。派手な数字を盛らず、各段の数字が毎週どう動いたかを"正直に"お見せしています。</p>
-    <div class="reveal" style="border:1px solid #cffafe;border-left:5px solid var(--red);border-radius:12px;padding:24px;background:linear-gradient(135deg,#ecfeff,#f0fdf4);">
+    <div class="reveal" style="border:1px solid #e0e7ff;border-left:5px solid var(--red);border-radius:12px;padding:24px;background:linear-gradient(135deg,#eef2ff,#f5f3ff);">
       <span style="display:inline-block;background:#fff;border:1px solid var(--red);color:var(--red-dark);font-weight:700;padding:4px 12px;border-radius:999px;font-size:12.5px;margin-bottom:12px;">● 運用中｜関東・自由診療クリニック（美容医療）</span>
       <p style="font-size:14.5px;line-height:1.9;color:var(--ink);margin-bottom:18px;">毎週「どの段の数字が動いたか」を1枚で共有しながら改善中。GA4／Googleサーチコンソールのデータを自動取得し、<b>見つかる〜信じる</b>の通過率を可視化しています。運用初期ですが、上流の数字が着実に伸びています。</p>
       <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:14px;">

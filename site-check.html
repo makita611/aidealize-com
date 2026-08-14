@@ -189,6 +189,37 @@ body::before { content:''; position:fixed; inset:0; background-image: linear-gra
 <script>
 let lastResult = null;
 
+// ── 診断モード（?mode=find=見つかりやすさ / leak=取りこぼし）──
+// 親ページ（/service/marketing/=find、/service/cvr/=leak）から埋め込み時に出し分ける。
+// mode 無しのときは従来どおりの汎用診断（営業リンク?url=・lead-capture 経由との互換を保つ）。
+const MODE_CFG = {
+  find: {
+    badge:'見つかりやすさ診断',
+    h1:'このサイト、<span>検索で見つかる</span>作りになってる？',
+    sub:'SSL・スマホ対応・タイトル/説明文・見出し・構造化データなど、<strong style="color:var(--text)">検索で評価される土台</strong>が整っているかをその場で自動チェックします。登録も費用も不要。',
+    catPri:{ base:0, modern:1, growth:2 },
+    service:'/service/marketing/', serviceLabel:'集客サービスの詳細を見る →',
+    leadHead:'この自動診断に、<span>集客のプロによる1枚レポート</span>を無料でお付けします',
+  },
+  leak: {
+    badge:'取りこぼし診断',
+    h1:'集めた客、<span>あと一歩</span>で取りこぼしてない？',
+    sub:'問い合わせ導線・電話/LINE・信頼づくり・フォームの作り込みなど、<strong style="color:var(--text)">来た人が成約まで動く器</strong>になっているかをその場で自動チェックします。登録も費用も不要。',
+    catPri:{ growth:0, modern:1, base:2 },
+    service:'/service/cvr/', serviceLabel:'成約率アップの詳細を見る →',
+    leadHead:'この自動診断に、<span>取りこぼしを止める1枚レポート</span>を無料でお付けします',
+  },
+};
+const CFG = MODE_CFG[new URLSearchParams(location.search).get('mode')] || null;
+function applyMode(){
+  if(!CFG) return;
+  var b=document.querySelector('.header-badge'); if(b) b.textContent=CFG.badge;
+  var h=document.querySelector('.header h1'); if(h) h.innerHTML=CFG.h1;
+  var p=document.querySelector('.header p'); if(p) p.innerHTML=CFG.sub;
+  var lh=document.querySelector('.lead-card h3'); if(lh) lh.innerHTML='📩 '+CFG.leadHead;
+  var cl=document.querySelector('#complete-msg a'); if(cl){ cl.setAttribute('href',CFG.service); cl.textContent=CFG.serviceLabel; }
+}
+
 function setError(msg){ const e=document.getElementById('err'); e.textContent=msg; e.style.display='block'; notifyHeight(); }
 function clearError(){ document.getElementById('err').style.display='none'; }
 
@@ -271,7 +302,7 @@ function render(data){
 
     // 全項目は見せず、ワースト3＋ベスト3だけ表示。残りは無料レポートへ誘導（続きが気になる設計）。
     const sev = { bad:0, warn:1, good:2 };
-    const catPri = { growth:0, modern:1, base:2 }; // 集客導線を優先して見せる
+    const catPri = (CFG && CFG.catPri) || { growth:0, modern:1, base:2 }; // モードで優先カテゴリを出し分け（既定=集客導線優先）
     const worst = data.checks.filter(c=>c.status!=='good')
       .sort((a,b)=> (sev[a.status]-sev[b.status]) || (catPri[a.cat]-catPri[b.cat])).slice(0,3);
     const best = data.checks.filter(c=>c.status==='good')
@@ -355,6 +386,7 @@ function esc(s){ return String(s==null?'':s).replace(/[&<>"']/g,m=>({'&':'&amp;'
 function notifyHeight(){ var c=document.querySelector('.container'); var h=c?Math.ceil(c.offsetTop+c.offsetHeight):Math.max(document.body.scrollHeight,document.documentElement.scrollHeight); window.parent.postMessage({type:'roiHeight',height:h},'*'); }
 document.getElementById('url').addEventListener('keydown',function(e){ if(e.key==='Enter') run(); });
 window.addEventListener('load',function(){
+  applyMode(); // ?mode=find/leak に応じて見出し・優先カテゴリ・送客先を出し分け
   // 営業リンク(?url=)から来たら、その会社のURLを箱に入れておく。
   // 点検の実行は本人にボタンを押してもらう（自分のサイトの点検を自分で開始する形）。
   const q=new URLSearchParams(location.search).get('url');
