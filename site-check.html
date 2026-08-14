@@ -152,6 +152,8 @@ body::before { content:''; position:fixed; inset:0; background-image: linear-gra
       </div>
     </div>
 
+    <div id="route-block" style="display:none;margin-bottom:16px;"></div>
+
     <div class="lead-card" id="lead-form-wrap">
       <h3>📩 この自動診断に、<span>集客のプロによる1枚レポート</span>を無料でお付けします</h3>
       <p>自動チェックでは分からない「実際に集客できているか」「デザインの古さ・刺さり」を、検索データと集客のプロの目で確認してお渡しします。費用も契約も不要。受け取ってから、続けるか決めてください。</p>
@@ -208,6 +210,16 @@ const MODE_CFG = {
     catPri:{ growth:0, modern:1, base:2 },
     service:'/service/cvr/', serviceLabel:'成約率アップの詳細を見る →',
     leadHead:'この自動診断に、<span>取りこぼしを止める1枚レポート</span>を無料でお付けします',
+  },
+  // まるごと診断（TOPページのハブ用）。全カテゴリを見て、弱い所に応じて3サービスへ振り分ける。
+  all: {
+    badge:'まるごとサイト診断',
+    h1:'このサイト、<span>集客も成約も</span>取りこぼしてない？',
+    sub:'検索で見つかる土台〜来た人が動く導線まで、<strong style="color:var(--text)">サイト全体をまとめて自動チェック</strong>。結果に合わせて、次に見るべき打ち手をご案内します。登録も費用も不要。',
+    catPri:{ growth:0, base:1, modern:2 },
+    routing:true,
+    service:'/service/', serviceLabel:'サービス一覧を見る →',
+    leadHead:'この自動診断に、<span>プロによる1枚レポート</span>を無料でお付けします',
   },
 };
 const CFG = MODE_CFG[new URLSearchParams(location.search).get('mode')] || null;
@@ -332,8 +344,56 @@ function render(data){
   ring.style.setProperty('--p', target);
   animateNum('score', target);
 
+  renderRouting(data); // まるごと診断モードのみ：弱い所に応じて3サービスへ振り分け
+
   document.getElementById('result').scrollIntoView({behavior:'smooth', block:'start'});
   setTimeout(notifyHeight, 300);
+}
+
+// ── まるごと診断（mode=all）：カテゴリの弱点から次に見るサービスを推奨 ──
+function renderRouting(data){
+  const rb = document.getElementById('route-block');
+  if(!rb) return;
+  if(!(CFG && CFG.routing) || !data.categories){ rb.style.display='none'; return; }
+  const c = data.categories;
+  const sc = (k)=> (c[k] && c[k].score!=null) ? c[k].score : 100;
+  const findScore = Math.round((sc('base') + sc('modern'))/2); // 見つかる土台＝集客(marketing)
+  const leakScore = sc('growth');                              // 成約導線＝取りこぼし(cvr)
+  const findWeak = findScore <= leakScore; // 低いほど弱い＝優先しておすすめ
+  const svc = [
+    { key:'find', rec:findWeak,  href:'/service/marketing/', tag:'集める', score:findScore,
+      title:'見つかりやすさ（集客）', desc:'検索・スマホ・タイトルなど「検索で評価される土台」。低いほど、そもそも見つけてもらえていません。' },
+    { key:'leak', rec:!findWeak, href:'/service/cvr/', tag:'取りこぼし', score:leakScore,
+      title:'成約への導線（取りこぼし）', desc:'問い合わせ導線・信頼づくり・フォーム。低いほど、来た人を成約直前で逃しています。' },
+    { key:'sec',  rec:false, href:'/service/prevention/', tag:'守る', score:null,
+      title:'サイバーの安全（外周点検）', desc:'この自動診断では測れません。SSLや管理画面の露出など「開いた裏口」は専門の外周点検で。' },
+  ];
+  const col = (s)=> s==null ? 'var(--muted)' : (s>=75?'var(--good)':(s>=50?'var(--warn)':'var(--bad)'));
+  const cards = svc.map(s=>{
+    const recBadge = s.rec ? '<span style="position:absolute;top:-10px;left:14px;background:var(--teal);color:#fff;font-size:10px;font-weight:700;letter-spacing:.06em;padding:3px 10px;border-radius:20px;">まず、ここ</span>' : '';
+    const scoreTxt = s.score==null ? '<span style="font-size:12px;color:var(--muted);">別ツールで点検</span>'
+      : '<span style="font-family:Rajdhani,sans-serif;font-size:22px;font-weight:700;color:'+col(s.score)+';">'+s.score+'<span style="font-size:11px;color:var(--muted);">/100</span></span>';
+    return '<a href="'+s.href+'" target="_top" style="position:relative;display:flex;flex-direction:column;gap:6px;text-decoration:none;'+
+      'background:var(--bg3);border:1px solid '+(s.rec?'var(--teal)':'var(--line)')+';'+(s.rec?'box-shadow:0 0 0 3px rgba(14,140,127,0.14);':'')+
+      'border-radius:12px;padding:18px 16px 16px;transition:transform .15s;" onmouseover="this.style.transform=\'translateY(-2px)\'" onmouseout="this.style.transform=\'\'">'+
+      recBadge+
+      '<div style="display:flex;justify-content:space-between;align-items:center;gap:8px;">'+
+        '<span style="font-size:11px;font-weight:700;color:var(--navy);letter-spacing:.04em;">'+s.tag+'</span>'+scoreTxt+'</div>'+
+      '<div style="font-size:14.5px;font-weight:700;color:var(--text);line-height:1.4;">'+s.title+'</div>'+
+      '<div style="font-size:11.5px;color:var(--muted);line-height:1.7;">'+s.desc+'</div>'+
+      '<div style="font-size:12px;font-weight:700;color:var(--teal);margin-top:4px;">詳しく見る →</div></a>';
+  }).join('');
+  rb.innerHTML =
+    '<div class="card" style="margin-bottom:0;">'+
+      '<div class="card-title">診断結果から、次に見るべき打ち手</div>'+
+      '<p style="font-size:12.5px;color:var(--muted);line-height:1.8;margin:-6px 0 16px;">いちばん弱かったところに<strong style="color:var(--text)">「まず、ここ」</strong>を付けました。気になる所から無料で相談できます。</p>'+
+      '<div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;">'+cards+'</div>'+
+    '</div>';
+  // モバイルは1カラム
+  if(window.matchMedia && window.matchMedia('(max-width:560px)').matches){
+    rb.querySelector('div[style*="grid-template-columns"]').style.gridTemplateColumns='1fr';
+  }
+  rb.style.display='block';
 }
 
 function animateNum(id, target){

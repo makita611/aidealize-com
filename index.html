@@ -486,6 +486,28 @@ footer{background:var(--navy2);padding:44px 60px;display:flex;align-items:center
   </div>
 </div>
 
+<!-- ═══ 無料まるごとサイト診断（入口ハブ） ═══ -->
+<section class="section" id="site-check-hub" style="padding-top:64px;padding-bottom:40px;background:var(--bg);">
+  <div class="section-inner">
+    <div class="s-eyebrow">無料まるごと診断 — 60秒・登録不要</div>
+    <h2 class="s-h2">御社サイト、<span style="color:var(--red);">まるごと無料診断</span>。</h2>
+    <p class="s-sub" style="margin-bottom:28px;">URLを入れるだけ。<strong>「検索で見つかるか（集客）」「来た人を取りこぼしていないか（成約）」</strong>をまとめて自動採点し、結果に合わせて<strong>次に見るべき打ち手</strong>までご案内します。競合サイトのURLでもOK。サイバーの安全点検は専門の外周点検へご案内します。</p>
+    <iframe id="siteCheckHub" src="/site-check?mode=all" title="無料まるごとサイト診断" width="100%" height="640" frameborder="0" scrolling="no" style="display:block;border:1px solid var(--border);border-radius:14px;overflow:hidden;background:#F4F6FA;box-shadow:0 10px 30px -14px rgba(15,31,61,0.28);"></iframe>
+  </div>
+</section>
+<script>
+window.addEventListener('message', function(e){
+  if (e.data && e.data.type === 'roiHeight') {
+    var f = document.getElementById('siteCheckHub');
+    if (f && e.data.height) f.style.height = e.data.height + 'px';
+  }
+  if (e.data && e.data.type === 'sitecheckLead') {
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push({event:'form_submit', form_type:(e.data.form_type||'サイト診断リード'), page_name:'top/site-check-hub', score:e.data.score});
+  }
+});
+</script>
+
 <!-- ═══ PICK UP 今月のおすすめ ═══ -->
 <section class="section" style="padding-top:72px;padding-bottom:28px;">
   <div class="section-inner">
