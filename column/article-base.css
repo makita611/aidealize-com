@@ -87,6 +87,15 @@ body{font-family:'Noto Sans JP',sans-serif;background:var(--white);color:var(--i
 .inline-cta h3{font-family:'Shippori Mincho',serif;font-size:clamp(16px,2vw,22px);font-weight:700;color:var(--ink);line-height:1.65;margin-bottom:12px;}
 .inline-cta p{font-size:14px;color:var(--body);line-height:1.9;margin-bottom:22px;}
 .cta-btns-pair{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;}
+.cta-miniform{display:flex;flex-direction:column;gap:10px;max-width:440px;margin:0 auto 6px;text-align:left;}
+.cta-miniform-row{display:flex;gap:10px;}
+.cta-miniform input{flex:1;width:100%;padding:12px 14px;font-size:14px;font-family:inherit;color:var(--ink);background:var(--white);border:1px solid var(--border);border-radius:5px;}
+.cta-miniform input:focus{outline:none;border-color:var(--red);box-shadow:0 0 0 3px rgba(8,145,178,0.12);}
+.cta-miniform-btn{width:100%;justify-content:center;border:none;cursor:pointer;font-family:inherit;margin-top:2px;font-size:15px;padding:15px 28px;}
+.cta-miniform-alt{margin-top:14px;}
+.cta-miniform-alt a{font-size:12px;color:var(--light);text-decoration:underline;text-underline-offset:2px;}
+.cta-miniform-alt a:hover{color:var(--red);}
+@media(max-width:600px){.cta-miniform-row{flex-direction:column;}}
 .btn-cta-red{display:inline-flex;align-items:center;gap:6px;background:var(--red);color:#fff;padding:13px 28px;border-radius:4px;font-size:14px;font-weight:700;text-decoration:none;transition:background 0.2s,transform 0.2s;}
 .btn-cta-red:hover{background:var(--red-dark);transform:translateY(-2px);}
 .btn-cta-note{display:block;margin-top:12px;font-size:11px;color:var(--light);}

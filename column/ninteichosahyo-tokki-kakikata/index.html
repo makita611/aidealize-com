@@ -127,6 +127,15 @@ body{font-family:'Noto Sans JP',sans-serif;background:var(--white);color:var(--i
 .btn-cta-red{display:inline-flex;align-items:center;gap:6px;background:var(--red);color:#fff;padding:13px 28px;border-radius:4px;font-size:14px;font-weight:700;text-decoration:none;transition:background 0.2s,transform 0.2s;}
 .btn-cta-red:hover{background:var(--red-dark);transform:translateY(-2px);}
 .btn-cta-note{display:block;margin-top:12px;font-size:11px;color:var(--light);}
+.cta-miniform{display:flex;flex-direction:column;gap:10px;max-width:440px;margin:0 auto 6px;text-align:left;}
+.cta-miniform-row{display:flex;gap:10px;}
+.cta-miniform input{flex:1;width:100%;padding:12px 14px;font-size:14px;font-family:inherit;color:var(--ink);background:var(--white);border:1px solid var(--border);border-radius:5px;}
+.cta-miniform input:focus{outline:none;border-color:var(--red);box-shadow:0 0 0 3px rgba(8,145,178,0.12);}
+.cta-miniform-btn{width:100%;justify-content:center;border:none;cursor:pointer;font-family:inherit;margin-top:2px;font-size:15px;padding:15px 28px;}
+.cta-miniform-alt{margin-top:14px;}
+.cta-miniform-alt a{font-size:12px;color:var(--light);text-decoration:underline;text-underline-offset:2px;}
+.cta-miniform-alt a:hover{color:var(--red);}
+@media(max-width:600px){.cta-miniform-row{flex-direction:column;}}
 .back-section{padding:28px 24px;background:var(--bg);border-top:1px solid var(--border);}
 .back-section-inner{max-width:760px;margin:0 auto;}
 .back-link{display:inline-flex;align-items:center;gap:6px;font-size:13px;color:var(--body);text-decoration:none;transition:color 0.2s;}
@@ -328,15 +337,21 @@ footer{background:#1f1f1f;border-top:1px solid rgba(255,255,255,0.06);padding:40
 
   <p>一方で、<strong>その特記事項を介護ソフトへ「転記する」作業は、ケアマネが時間をかけるべき仕事ではありません</strong>。書く（判断する）ところに集中し、打ち込む（作業する）ところは仕組みに任せる。その切り分けが、残業を減らし、利用者と向き合う時間を取り戻す近道です。</p>
 
-  <!-- 末尾CTA -->
+  <!-- 末尾CTA（記事内で申込完結） -->
   <div class="inline-cta reveal">
     <div class="inline-cta-tag">10本 無料お試し実施中</div>
     <h3>まず1本、送ってみてください。<br>特記事項が、テキストになって返ってきます。</h3>
-    <p>初期費用・月額基本料0円。カード登録も契約書締結も不要です。社協様式・全介護ソフト対応。</p>
-    <div class="cta-btns-pair">
-      <a href="/lp/caremane-ocr/" class="btn-cta-red">特記事項 転記代行センターを見る →</a>
-    </div>
+    <p>初期費用・月額基本料0円。カード登録も契約書締結も不要。お名前とメールだけで、その日から10本無料でお試しいただけます。</p>
+    <form class="cta-miniform" data-formtype="無料お試し" novalidate>
+      <div class="cta-miniform-row">
+        <input type="text" name="お名前" placeholder="お名前 *" required>
+        <input type="email" name="メールアドレス" placeholder="メールアドレス *" required>
+      </div>
+      <input type="text" name="事業所名" placeholder="事業所名（任意）">
+      <button type="submit" class="btn-cta-red cta-miniform-btn">10本 無料お試しを申し込む →</button>
+    </form>
     <span class="btn-cta-note">要配慮個人情報は匿名のまま送付OK／営業電話はしません</span>
+    <div class="cta-miniform-alt"><a href="/lp/caremane-ocr/">先にサービス内容を詳しく見る →</a></div>
   </div>
 
 </div>
