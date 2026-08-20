@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI業務自動化 ムダ取りチェックシート｜クリニック・介護の現場を5カテゴリ25項目で自己点検</title>
+<meta name="description" content="記録・受付・レセプト・情報共有・シフトのムダを、5カテゴリ25項目でその場で自己点検。チェックするとリアルタイムで判定と優先度がわかります。印刷もOK・登録不要。医療/介護のBPRとAI活用ならAIdealize。">
+<link rel="canonical" href="https://aidealize.com/lp/muda-tori/">
+
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-P6VNBWH3');</script>
+<!-- End Google Tag Manager -->
+
+<!-- OGP -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="AI業務自動化 ムダ取りチェックシート｜5カテゴリ25項目で現場を自己点検">
+<meta property="og:description" content="記録・受付・レセプト・情報共有・シフトのムダを25項目でチェック。リアルタイムで判定と優先度がわかります。印刷OK・登録不要。">
+<meta property="og:url" content="https://aidealize.com/lp/muda-tori/">
+<meta property="og:site_name" content="AIdealize株式会社">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700;900&family=Zen+Kaku+Gothic+New:wght@400;700;900&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --cyan:#0891b2; --cyan-d:#0e7490; --cyan-bg:#ecfeff;
+  --ink:#16212e; --navy:#1e293b; --text:#3f4956; --gray:#64748b; --light-gray:#94a3b8;
+  --bg:#f1f7f9; --white:#fff; --border:#d7e3e8; --border-soft:#e6eef1;
+  --shadow:0 4px 24px rgba(8,145,178,.08);
+  --gold:#b8902a;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  background:var(--bg); color:var(--text);
+  font-family:'Noto Sans JP',sans-serif; font-weight:400; line-height:1.85;
+  -webkit-font-smoothing:antialiased; overflow-x:hidden;
+}
+.wrap{max-width:960px;margin:0 auto;padding:0 20px}
+h1,h2,h3{font-family:'Zen Kaku Gothic New','Noto Sans JP',sans-serif;color:var(--ink);line-height:1.4}
+
+/* ---- Hero ---- */
+.hero{background:linear-gradient(135deg,#12324a 0%,#1e293b 60%,#0e3a47 100%);color:#fff;padding:44px 0 40px}
+.hero .eyebrow{font-size:12px;letter-spacing:.14em;font-weight:700;color:#7dd3e0;margin-bottom:14px}
+.hero h1{color:#fff;font-size:30px;font-weight:900;margin-bottom:16px;letter-spacing:.01em}
+.hero h1 span{color:#7dd3e0}
+.hero p{font-size:15px;color:#d8e6ec;max-width:660px}
+.hero .meta{margin-top:20px;display:flex;flex-wrap:wrap;gap:10px}
+.hero .chip{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.18);border-radius:999px;padding:7px 15px;font-size:12.5px;color:#eaf4f7;font-weight:500}
+
+/* ---- Scorebar (sticky) ---- */
+.scorebar{position:sticky;top:0;z-index:30;background:var(--white);border-bottom:1px solid var(--border);box-shadow:0 2px 12px rgba(8,145,178,.07)}
+.scorebar .in{max-width:960px;margin:0 auto;padding:12px 20px;display:flex;align-items:center;gap:16px;flex-wrap:wrap}
+.scorenum{display:flex;align-items:baseline;gap:6px;font-family:'Zen Kaku Gothic New',sans-serif}
+.scorenum b{font-size:30px;font-weight:900;color:var(--cyan-d);line-height:1}
+.scorenum small{font-size:13px;color:var(--gray)}
+.scoreband{font-size:13.5px;font-weight:700;color:var(--ink);flex:1;min-width:180px}
+.scoreband em{font-style:normal;color:var(--cyan-d)}
+.progress{flex-basis:100%;height:7px;background:var(--border-soft);border-radius:999px;overflow:hidden}
+.progress i{display:block;height:100%;width:0;background:linear-gradient(90deg,#22c1c3,var(--cyan));transition:width .35s ease}
+
+/* ---- Intro ---- */
+.intro{padding:26px 0 4px}
+.intro p{font-size:14.5px;color:var(--text)}
+.intro .hint{margin-top:8px;font-size:12.5px;color:var(--gray)}
+
+/* ---- Categories ---- */
+.cats{padding:18px 0 6px}
+.cat{background:var(--white);border:1px solid var(--border);border-radius:14px;overflow:hidden;margin-bottom:16px;box-shadow:var(--shadow)}
+.cat-h{display:flex;align-items:center;gap:12px;background:linear-gradient(100deg,var(--cyan),var(--cyan-d));color:#fff;padding:13px 18px}
+.cat-h .ic{width:34px;height:34px;border-radius:9px;background:rgba(255,255,255,.16);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.cat-h .ic svg{width:19px;height:19px;stroke:#fff}
+.cat-h .txt small{display:block;font-size:10.5px;letter-spacing:.12em;font-weight:700;opacity:.85}
+.cat-h .txt strong{font-family:'Zen Kaku Gothic New',sans-serif;font-size:16px;font-weight:700}
+.cat-h .cnt{margin-left:auto;font-size:13px;font-weight:700;background:rgba(255,255,255,.16);border-radius:999px;padding:4px 12px;white-space:nowrap}
+.items{padding:6px 10px 10px}
+.item{display:flex;gap:13px;align-items:flex-start;padding:13px 10px;border-bottom:1px solid var(--border-soft);cursor:pointer;transition:background .15s}
+.item:last-child{border-bottom:none}
+.item:hover{background:var(--cyan-bg)}
+.item .box{width:22px;height:22px;border:2px solid var(--cyan);border-radius:6px;flex-shrink:0;margin-top:1px;display:flex;align-items:center;justify-content:center;transition:all .15s;background:#fff}
+.item .box svg{width:14px;height:14px;stroke:#fff;stroke-width:3.2;opacity:0;transform:scale(.6);transition:all .15s}
+.item.on .box{background:var(--cyan);border-color:var(--cyan)}
+.item.on .box svg{opacity:1;transform:scale(1)}
+.item .lbl{font-size:14px;color:var(--text);line-height:1.6}
+.item.on .lbl{color:var(--ink);font-weight:500}
+
+/* ---- Scoring ---- */
+.scoring{padding:14px 0 8px}
+.scoring h2{font-size:20px;font-weight:900;margin-bottom:4px}
+.scoring .lede{font-size:13px;color:var(--gray);margin-bottom:16px}
+.bands{display:grid;gap:10px}
+.band{display:grid;grid-template-columns:118px 1fr;gap:14px;align-items:center;background:var(--white);border:1px solid var(--border);border-radius:12px;padding:15px 18px;transition:all .2s}
+.band .r{font-family:'Zen Kaku Gothic New',sans-serif;font-weight:700;color:var(--cyan-d);font-size:15px}
+.band .d{font-size:13.5px;color:var(--text)}
+.band.active{border-color:var(--cyan);background:linear-gradient(100deg,#ecfeff,#f4fbfd);box-shadow:0 6px 22px rgba(8,145,178,.16);transform:translateY(-1px)}
+.band.active .r{color:var(--cyan-d)}
+.band.active::before{content:"いまここ";position:absolute;margin-top:-30px;background:var(--cyan-d);color:#fff;font-size:10.5px;font-weight:700;padding:2px 9px;border-radius:999px}
+.band{position:relative}
+
+/* ---- CTA ---- */
+.cta{background:linear-gradient(135deg,#12324a,#1e293b);color:#fff;border-radius:16px;padding:34px 30px;margin:26px 0 10px;text-align:center}
+.cta h2{color:#fff;font-size:21px;font-weight:900;margin-bottom:10px}
+.cta p{font-size:14px;color:#d8e6ec;max-width:560px;margin:0 auto 22px}
+.cta .btns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;gap:8px;font-weight:700;font-size:15px;padding:14px 26px;border-radius:10px;text-decoration:none;transition:transform .15s,box-shadow .15s;border:none;cursor:pointer;font-family:inherit}
+.btn svg{width:18px;height:18px}
+.btn-primary{background:linear-gradient(90deg,#22c1c3,var(--cyan));color:#fff;box-shadow:0 8px 20px rgba(8,145,178,.35)}
+.btn-primary:hover{transform:translateY(-2px)}
+.btn-ghost{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.28);color:#fff}
+.btn-ghost:hover{background:rgba(255,255,255,.17)}
+
+/* ---- Toolbar ---- */
+.toolbar{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;padding:6px 0 34px}
+.tbtn{display:inline-flex;align-items:center;gap:7px;background:var(--white);border:1px solid var(--border);color:var(--cyan-d);font-weight:700;font-size:13.5px;padding:11px 20px;border-radius:9px;cursor:pointer;font-family:inherit;transition:all .15s}
+.tbtn svg{width:16px;height:16px;stroke:var(--cyan-d)}
+.tbtn:hover{background:var(--cyan-bg);border-color:var(--cyan)}
+
+/* ---- Footer ---- */
+.foot{background:var(--ink);color:#9fb0bd;padding:30px 0;font-size:12.5px}
+.foot .in{max-width:960px;margin:0 auto;padding:0 20px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
+.foot a{color:#7dd3e0;text-decoration:none}
+.foot strong{color:#fff;font-family:'Zen Kaku Gothic New',sans-serif;font-weight:700;display:block;margin-bottom:4px}
+
+/* ---- Print ---- */
+.print-only{display:none}
+@media print{
+  @page{margin:12mm}
+  body{background:#fff;font-size:11px;line-height:1.5}
+  .scorebar,.hero .meta,.cta,.toolbar,.foot,.intro .hint{display:none!important}
+  .hero{background:none!important;color:#000;padding:0 0 8px;border-bottom:2px solid #0891b2}
+  .hero .eyebrow{color:#0e7490}
+  .hero h1{color:#000;font-size:20px}
+  .hero h1 span{color:#0e7490}
+  .hero p{color:#333;font-size:11px}
+  .wrap{max-width:100%;padding:0}
+  .cat{box-shadow:none;break-inside:avoid;page-break-inside:avoid;margin-bottom:8px}
+  .cat-h{background:#0e7490!important;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  .item{padding:6px 8px;cursor:auto;break-inside:avoid}
+  .item .box{width:14px;height:14px}
+  .band{break-inside:avoid}
+  .band.active{box-shadow:none;transform:none}
+  .print-only{display:block;text-align:right;font-size:10px;color:#888;margin-top:8px}
+}
+@media(max-width:640px){
+  .hero h1{font-size:23px}
+  .band{grid-template-columns:1fr;gap:4px}
+  .cat-h .cnt{font-size:11.5px}
+}
+</style>
+</head>
+<body>
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-P6VNBWH3" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="wrap">
+    <div class="eyebrow">FREE CHECKSHEET ／ 5カテゴリ・25項目</div>
+    <h1>クリニック・介護のための<br><span>AI業務自動化 ムダ取りチェックシート</span></h1>
+    <p>あてはまる項目にチェックを入れるだけ。チェックの数が多いほど、AI・自動化で「本業に戻せる時間」が眠っています。最後の判定で、いま取り組むべき優先度がわかります。</p>
+    <div class="meta">
+      <span class="chip">✓ 登録不要・その場で判定</span>
+      <span class="chip">✓ 印刷してチームで使える</span>
+      <span class="chip">✓ 医療・介護の現場目線</span>
+    </div>
+  </div>
+</header>
+
+<!-- STICKY SCORE -->
+<div class="scorebar">
+  <div class="in">
+    <div class="scorenum"><b id="scoreN">0</b><small>／ 25 項目</small></div>
+    <div class="scoreband" id="scoreBand">気になる項目にチェックしてみてください。</div>
+    <div class="progress"><i id="scoreBar"></i></div>
+  </div>
+</div>
+
+<main class="wrap">
+  <section class="intro">
+    <p class="hint" id="utmNote" style="display:none"></p>
+  </section>
+
+  <!-- CATEGORIES -->
+  <section class="cats" id="cats"></section>
+
+  <!-- SCORING -->
+  <section class="scoring">
+    <h2>チェックの数で見る、自動化の余地</h2>
+    <p class="lede">いまのチェック数に応じて、下の判定がハイライトされます。</p>
+    <div class="bands" id="bands"></div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta">
+    <h2>次の一歩は、30秒の無料セルフ診断から。</h2>
+    <p>人数を選ぶだけで、記録・事務に奪われている時間と「増員せず何人分の余力が生まれるか」を即時に試算できます。医療・介護の業務改善(BPR)とAI活用を、現場目線でご提案します。</p>
+    <div class="btns">
+      <a class="btn btn-primary" href="/jidoka-shindan.html" data-cta="shindan">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="m19 9-5 5-4-4-3 3"/></svg>
+        30秒の無料セルフ診断
+      </a>
+      <a class="btn btn-ghost" href="/#contact" data-cta="soudan">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+        無料で相談する
+      </a>
+    </div>
+  </section>
+
+  <!-- TOOLBAR -->
+  <div class="toolbar">
+    <button class="tbtn" id="printBtn">
+      <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9V2h12v7"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8" rx="1"/></svg>
+      印刷 / PDF保存
+    </button>
+    <button class="tbtn" id="resetBtn">
+      <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/></svg>
+      チェックをリセット
+    </button>
+  </div>
+  <p class="print-only">© AIdealize株式会社 ｜ aidealize.com ／ AI業務自動化 ムダ取りチェックシート</p>
+</main>
+
+<footer class="foot">
+  <div class="in">
+    <div><strong>AIdealize株式会社</strong>医療・介護・クリニックの業務改善(BPR)×AI実装<br>東京都中央区日本橋3-4-15</div>
+    <div>TEL 080-5434-7500　｜　<a href="mailto:makita@aidealize.com">makita@aidealize.com</a><br><a href="https://aidealize.com">aidealize.com</a></div>
+  </div>
+</footer>
+
+<script>
+/* ===== データ（正本 = downloads/_gen_checklist.py と同一）===== */
+var ICONS={
+  fileText:'<path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/><path d="M8 13h8M8 17h8M8 9h2"/>',
+  phone:'<path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/>',
+  receipt:'<path d="M4 2v20l2-1 2 1 2-1 2 1 2-1 2 1 2-1 2 1V2l-2 1-2-1-2 1-2-1-2 1-2-1-2 1z"/><path d="M8 7h8M8 11h8M8 15h5"/>',
+  share:'<circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="m8.59 13.51 6.83 3.98M15.41 6.51l-6.82 3.98"/>',
+  calendar:'<rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18M8 15h.01M12 15h.01M16 15h.01"/>'
+};
+var CATS=[
+  {n:"01",name:"記録・カルテ業務",ic:"fileText",items:[
+    "同じ情報を複数の書類に書き写している（二重・三重の転記）",
+    "記録を帰所後・残業・持ち帰りでまとめて入力している",
+    "手書きメモを後からPCに入力し直している",
+    "記録の書き方・粒度が人によってバラついている",
+    "話した内容を文字に起こす手間が毎回発生している"]},
+  {n:"02",name:"受付・予約・電話対応",ic:"phone",items:[
+    "電話での予約・問い合わせ対応に人手を取られている",
+    "予約の変更・キャンセル連絡を手作業でさばいている",
+    "問診票を紙で運用し、あとで転記している",
+    "同じ質問への回答を毎回口頭で説明している",
+    "受付の混雑時間帯に対応しきれていない"]},
+  {n:"03",name:"レセプト・請求・会計",ic:"receipt",items:[
+    "レセプト点検・返戻対応に時間がかかっている",
+    "算定漏れ・査定が定期的に発生している",
+    "会計・請求データを別システムへ手入力している",
+    "月末・月初にレセプト業務で残業が偏っている",
+    "請求まわりの確認作業が特定の人に属人化している"]},
+  {n:"04",name:"情報共有・引き継ぎ",ic:"share",items:[
+    "申し送り・引き継ぎが口頭／属人的になっている",
+    "医師・看護・ケアマネ等への情報共有が遅れがち",
+    "必要な情報を探し出すのに時間がかかる",
+    "スタッフが交代するたびに品質が落ちる",
+    "ベテランしか知らない手順・暗黙のルールがある"]},
+  {n:"05",name:"シフト・労務・その他事務",ic:"calendar",items:[
+    "シフト作成に毎月まとまった時間を割いている",
+    "勤怠集計・給与計算を手作業でおこなっている",
+    "定型の連絡・メール作成を毎回手打ちしている",
+    "紙書類のファイリング・管理に手間がかかっている",
+    "「これ自動化できないか」と思う雑務が常にある"]}
+];
+var BANDS=[
+  {lo:0,hi:5,r:"0〜5個",d:"比較的整っています。さらに磨ける領域を見つけて、一段上の効率化へ。"},
+  {lo:6,hi:12,r:"6〜12個",d:"自動化で大きく時間を取り戻せる余地があります。効果の大きい所から着手を。"},
+  {lo:13,hi:19,r:"13〜19個",d:"業務の仕組み化が急務です。優先順位をつけて段階的に進めましょう。"},
+  {lo:20,hi:25,r:"20〜25個",d:"抜本的なBPRで、本業に時間を戻せます。まずは無料診断・相談を。"}
+];
+var BAND_LABEL=["ゆとりあり","改善の余地大","仕組み化が急務","抜本的なBPRを"];
+
+var KEY="muda_checks_v1";
+var dl=window.dataLayer=window.dataLayer||[];
+var state={};
+try{state=JSON.parse(localStorage.getItem(KEY)||"{}")}catch(e){state={}}
+var engaged=false;
+
+function svg(p){return '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">'+p+'</svg>'}
+
+/* ---- build categories ---- */
+var catsEl=document.getElementById('cats');
+CATS.forEach(function(c,ci){
+  var el=document.createElement('div');el.className='cat';
+  var items=c.items.map(function(t,ii){
+    var id=ci+'-'+ii, on=state[id]?' on':'';
+    return '<div class="item'+on+'" data-id="'+id+'">'+
+      '<span class="box">'+svg('<path d="M20 6 9 17l-5-5"/>')+'</span>'+
+      '<span class="lbl">'+t+'</span></div>';
+  }).join('');
+  el.innerHTML='<div class="cat-h"><span class="ic">'+svg(ICONS[c.ic])+'</span>'+
+    '<span class="txt"><small>CATEGORY '+c.n+'</small><strong>'+c.name+'</strong></span>'+
+    '<span class="cnt" data-cnt="'+ci+'">0 / 5</span></div>'+
+    '<div class="items">'+items+'</div>';
+  catsEl.appendChild(el);
+});
+
+/* ---- build bands ---- */
+var bandsEl=document.getElementById('bands');
+BANDS.forEach(function(b,i){
+  bandsEl.innerHTML+='<div class="band" data-band="'+i+'"><div class="r">✓ '+b.r+'</div><div class="d">'+b.d+'</div></div>';
+});
+
+/* ---- interactions ---- */
+catsEl.addEventListener('click',function(e){
+  var it=e.target.closest('.item');if(!it)return;
+  var id=it.getAttribute('data-id');
+  var now=!it.classList.contains('on');
+  it.classList.toggle('on',now);
+  if(now)state[id]=1;else delete state[id];
+  save();update();
+  if(now&&!engaged){engaged=true;dl.push({event:'checklist_engaged'});}
+  dl.push({event:'checklist_item_toggle',item_id:id,checked:now});
+});
+
+function save(){try{localStorage.setItem(KEY,JSON.stringify(state))}catch(e){}}
+
+function update(){
+  var total=Object.keys(state).length;
+  document.getElementById('scoreN').textContent=total;
+  document.getElementById('scoreBar').style.width=(total/25*100)+'%';
+  // per-category counts
+  CATS.forEach(function(c,ci){
+    var n=0;for(var ii=0;ii<5;ii++)if(state[ci+'-'+ii])n++;
+    var badge=document.querySelector('[data-cnt="'+ci+'"]');if(badge)badge.textContent=n+' / 5';
+  });
+  // band
+  var idx=-1;for(var i=0;i<BANDS.length;i++){if(total>=BANDS[i].lo&&total<=BANDS[i].hi){idx=i;break;}}
+  document.querySelectorAll('.band').forEach(function(b,i){b.classList.toggle('active',i===idx&&total>0);});
+  var sb=document.getElementById('scoreBand');
+  if(total===0){sb.innerHTML='気になる項目にチェックしてみてください。';}
+  else{sb.innerHTML='判定：<em>'+BAND_LABEL[idx]+'</em>（'+BANDS[idx].r+'）';}
+}
+
+document.getElementById('resetBtn').addEventListener('click',function(){
+  state={};save();
+  document.querySelectorAll('.item.on').forEach(function(x){x.classList.remove('on')});
+  update();dl.push({event:'checklist_reset'});
+});
+document.getElementById('printBtn').addEventListener('click',function(){
+  dl.push({event:'checklist_print',checked_count:Object.keys(state).length});
+  window.print();
+});
+document.querySelectorAll('[data-cta]').forEach(function(a){
+  a.addEventListener('click',function(){
+    dl.push({event:'checklist_cta_click',cta:a.getAttribute('data-cta'),checked_count:Object.keys(state).length});
+  });
+});
+
+/* ---- UTM capture ---- */
+(function(){
+  var q=new URLSearchParams(location.search);
+  var utm={};['utm_source','utm_medium','utm_campaign','utm_content','utm_term'].forEach(function(k){if(q.get(k))utm[k]=q.get(k)});
+  if(Object.keys(utm).length){
+    try{localStorage.setItem('muda_utm',JSON.stringify(utm))}catch(e){}
+    dl.push(Object.assign({event:'checklist_open_utm'},utm));
+    var note=document.getElementById('utmNote');
+    note.style.display='block';
+    note.textContent='ようこそ。'+(utm.utm_campaign?'（'+utm.utm_campaign+'）':'')+'このシートはチェックした状態のまま印刷・保存できます。';
+  }
+})();
+
+update();
+</script>
+</body>
+</html>
