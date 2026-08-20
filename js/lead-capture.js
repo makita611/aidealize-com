@@ -37,13 +37,13 @@
       href: '/site-check.html'
     },
     checklist: {
-      mode: 'form',
+      mode: 'link',
       accent: '#0891b2',
       icon: '🗂️',
       title: 'AI業務自動化 ムダ取りチェックシート（無料）',
-      sub: '現場のムダを5カテゴリ25項目で自己点検。会社名とメールでお送りします。',
-      btn: '無料でもらう',
-      gift: 'ムダ取りチェックシート'
+      sub: '現場のムダを5カテゴリ25項目でセルフ点検。その場で判定と優先度がわかります（登録不要）。',
+      btn: 'その場でチェック',
+      href: '/lp/muda-tori/?utm_source=lead_bar&utm_medium=bar&utm_campaign=checklist'
     }
   };
 
@@ -196,4 +196,44 @@
 
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init);
   else init();
+})();
+
+/* ── コラム記事末：ムダ取りチェックシート誘導CTA（全コラムに自動挿入・コラム別UTM）── */
+(function () {
+  var p = (location.pathname || '');
+  if (p.indexOf('/column/') === -1) return;                 // コラム以外は出さない
+  if (/\/column\/(index\.html)?$/.test(p)) return;          // 一覧ページは除外
+  if (p.indexOf('komuten') !== -1) return;                  // 工務店系コラムはサイト診断バーに委ねる
+  var m = p.match(/\/column\/([^\/]+)/);
+  var slug = m ? m[1] : 'article';
+  var href = '/lp/muda-tori/?utm_source=column&utm_medium=article&utm_campaign=' + encodeURIComponent(slug);
+
+  var st = document.createElement('style');
+  st.textContent = [
+    '.clcta{max-width:760px;margin:40px auto;background:linear-gradient(135deg,#0e2a3d,#12324a);border-radius:16px;padding:32px 28px;color:#fff;text-align:center;font-family:"Noto Sans JP",sans-serif;box-shadow:0 12px 34px rgba(8,145,178,.18)}',
+    '.clcta .e{font-size:12px;letter-spacing:.1em;font-weight:700;color:#7dd3e0;margin-bottom:8px}',
+    '.clcta h3{font-size:21px;font-weight:900;margin:0 0 10px;color:#fff;line-height:1.5;font-family:"Zen Kaku Gothic New","Noto Sans JP",sans-serif}',
+    '.clcta p{font-size:14px;color:#d8e6ec;margin:0 auto 22px;max-width:560px;line-height:1.85}',
+    '.clcta a{display:inline-flex;align-items:center;gap:8px;background:linear-gradient(90deg,#22c1c3,#0891b2);color:#fff;font-weight:700;font-size:15px;padding:14px 28px;border-radius:10px;text-decoration:none;box-shadow:0 8px 20px rgba(8,145,178,.3);transition:transform .15s}',
+    '.clcta a:hover{transform:translateY(-2px)}',
+    '@media(max-width:560px){.clcta{margin:32px 16px;padding:26px 20px}.clcta h3{font-size:18px}}'
+  ].join('');
+  document.head.appendChild(st);
+
+  var card = document.createElement('div');
+  card.className = 'clcta';
+  card.innerHTML =
+    '<div class="e">無料・登録不要・その場で判定</div>' +
+    '<h3>あなたの現場のムダ、どこに眠っていますか？</h3>' +
+    '<p>記録・受付・請求・情報共有・シフトの5分野25項目でセルフ点検。チェックするとその場で判定と、まず着手すべき「優先ムダTOP3」がわかります。</p>' +
+    '<a href="' + href + '" data-clcta="1">ムダ取りチェックシートで点検する →</a>';
+
+  var anchor = document.querySelector('.back-section') || document.querySelector('footer');
+  if (anchor && anchor.parentNode) anchor.parentNode.insertBefore(card, anchor);
+  else document.body.appendChild(card);
+
+  card.querySelector('[data-clcta]').addEventListener('click', function () {
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push({ event: 'column_checklist_cta', campaign: slug });
+  });
 })();
