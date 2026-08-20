@@ -127,12 +127,27 @@ h1,h2,h3{font-family:'Zen Kaku Gothic New','Noto Sans JP',sans-serif;color:var(-
 .foot a{color:#7dd3e0;text-decoration:none}
 .foot strong{color:#fff;font-family:'Zen Kaku Gothic New',sans-serif;font-weight:700;display:block;margin-bottom:4px}
 
+/* ---- Email capture ---- */
+.capture{background:var(--white);border:2px solid var(--cyan);border-radius:16px;padding:28px 26px;margin:22px 0 8px;box-shadow:0 10px 30px rgba(8,145,178,.14);position:relative;overflow:hidden}
+.capture::before{content:"";position:absolute;top:0;left:0;right:0;height:5px;background:linear-gradient(90deg,#22c1c3,var(--cyan))}
+.capture .eyebrow{font-size:11.5px;letter-spacing:.12em;font-weight:700;color:var(--cyan-d);margin-bottom:8px}
+.capture h2{font-size:20px;font-weight:900;margin-bottom:8px}
+.capture h2 em{font-style:normal;color:var(--cyan-d)}
+.capture .lede{font-size:13.5px;color:var(--text);margin-bottom:18px;max-width:600px}
+.capture form.gas-form{max-width:100%}
+.capture .row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.capture .gas-form-group input:focus{border-color:var(--cyan)!important}
+.capture .gas-form-btn{background:linear-gradient(90deg,#22c1c3,var(--cyan));color:#fff}
+.capture .note{font-size:11.5px;color:var(--gray);margin-top:10px;line-height:1.7}
+.capture .gas-form-thanks{display:none}
+@media(max-width:560px){.capture .row{grid-template-columns:1fr}}
+
 /* ---- Print ---- */
 .print-only{display:none}
 @media print{
   @page{margin:12mm}
   body{background:#fff;font-size:11px;line-height:1.5}
-  .scorebar,.hero .meta,.cta,.toolbar,.foot,.intro .hint{display:none!important}
+  .scorebar,.hero .meta,.cta,.toolbar,.foot,.intro .hint,.capture{display:none!important}
   .hero{background:none!important;color:#000;padding:0 0 8px;border-bottom:2px solid #0891b2}
   .hero .eyebrow{color:#0e7490}
   .hero h1{color:#000;font-size:20px}
@@ -193,6 +208,32 @@ h1,h2,h3{font-family:'Zen Kaku Gothic New','Noto Sans JP',sans-serif;color:var(-
     <h2>チェックの数で見る、自動化の余地</h2>
     <p class="lede">いまのチェック数に応じて、下の判定がハイライトされます。</p>
     <div class="bands" id="bands"></div>
+  </section>
+
+  <!-- EMAIL CAPTURE -->
+  <section class="capture" id="capture">
+    <div class="eyebrow">結果をムダにしない</div>
+    <h2 id="capH">チェック結果に合わせた<em>「次の一手」</em>を、メールでお送りします。</h2>
+    <p class="lede" id="capLede">いまのチェック内容から、どこを・どんな順番で自動化すると効果が大きいか、貴社の現場に合わせた改善のヒントをまとめてお送りします（無料・売り込みなし）。あわせて、記入済みのチェックシートPDFもお渡しします。</p>
+    <form class="gas-form" data-formtype="muda-web" data-page="ムダ取りチェックシートWeb">
+      <div class="row">
+        <div class="gas-form-group"><input type="text" name="company" placeholder="会社名・事業所名" required></div>
+        <div class="gas-form-group"><input type="email" name="email" placeholder="メールアドレス" required></div>
+      </div>
+      <div class="gas-form-group"><input type="text" name="name" placeholder="お名前（任意）"></div>
+      <input type="hidden" name="gift" value="ムダ取りチェックシートWeb">
+      <input type="hidden" name="source" value="muda-web">
+      <input type="hidden" name="score" id="fScore" value="0">
+      <input type="hidden" name="band" id="fBand" value="">
+      <input type="hidden" name="utm_source" id="fUtmS" value="">
+      <input type="hidden" name="utm_medium" id="fUtmM" value="">
+      <input type="hidden" name="utm_campaign" id="fUtmC" value="">
+      <button type="submit" class="gas-form-btn">結果と改善ヒントを受け取る</button>
+      <p class="note">ご入力内容は改善提案のご連絡にのみ使用します。しつこい営業はいたしません。</p>
+    </form>
+    <div class="gas-form-thanks">
+      <p><strong>送信ありがとうございます。</strong><br>チェック結果に合わせた改善のヒントと、記入済みチェックシートを追ってお送りします。</p>
+    </div>
   </section>
 
   <!-- CTA -->
@@ -341,6 +382,18 @@ function update(){
   var sb=document.getElementById('scoreBand');
   if(total===0){sb.innerHTML='気になる項目にチェックしてみてください。';}
   else{sb.innerHTML='判定：<em>'+BAND_LABEL[idx]+'</em>（'+BANDS[idx].r+'）';}
+  // sync hidden form fields + personalize capture
+  var fs=document.getElementById('fScore'),fb=document.getElementById('fBand');
+  if(fs)fs.value=total;
+  if(fb)fb.value=(idx>=0?BANDS[idx].r+' / '+BAND_LABEL[idx]:'');
+  var capH=document.getElementById('capH');
+  if(capH){
+    if(total>0){
+      capH.innerHTML='あなたのチェックは <em>'+total+' 項目</em>。この結果に合わせた<em>「次の一手」</em>を、メールでお送りします。';
+    }else{
+      capH.innerHTML='チェック結果に合わせた<em>「次の一手」</em>を、メールでお送りします。';
+    }
+  }
 }
 
 document.getElementById('resetBtn').addEventListener('click',function(){
@@ -362,6 +415,8 @@ document.querySelectorAll('[data-cta]').forEach(function(a){
 (function(){
   var q=new URLSearchParams(location.search);
   var utm={};['utm_source','utm_medium','utm_campaign','utm_content','utm_term'].forEach(function(k){if(q.get(k))utm[k]=q.get(k)});
+  var setf=function(id,v){var el=document.getElementById(id);if(el&&v)el.value=v};
+  setf('fUtmS',utm.utm_source);setf('fUtmM',utm.utm_medium);setf('fUtmC',utm.utm_campaign);
   if(Object.keys(utm).length){
     try{localStorage.setItem('muda_utm',JSON.stringify(utm))}catch(e){}
     dl.push(Object.assign({event:'checklist_open_utm'},utm));
@@ -373,5 +428,6 @@ document.querySelectorAll('[data-cta]').forEach(function(a){
 
 update();
 </script>
+<script src="/js/gas-forms.js" defer></script>
 </body>
 </html>
