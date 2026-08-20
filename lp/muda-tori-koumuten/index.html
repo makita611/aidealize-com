@@ -350,7 +350,7 @@ var BANDS=[
 var BAND_LABEL=["ゆとりあり","改善の余地大","仕組み化が急務","抜本的なBPRを"];
 var ITEMS=[];CATS.forEach(function(c,ci){c.items.forEach(function(it,ii){ITEMS.push({id:ci+'-'+ii,cat:c.name,t:it.t,w:it.w});});});
 
-var KEY="muda_checks_v1";
+var KEY="muda_koumuten_v1";
 var dl=window.dataLayer=window.dataLayer||[];
 var state={};
 try{state=JSON.parse(localStorage.getItem(KEY)||"{}")}catch(e){state={}}
@@ -461,7 +461,7 @@ document.querySelectorAll('[data-cta]').forEach(function(a){
   var setf=function(id,v){var el=document.getElementById(id);if(el&&v)el.value=v};
   setf('fUtmS',utm.utm_source);setf('fUtmM',utm.utm_medium);setf('fUtmC',utm.utm_campaign);
   if(Object.keys(utm).length){
-    try{localStorage.setItem('muda_utm',JSON.stringify(utm))}catch(e){}
+    try{localStorage.setItem('muda_koumuten_utm',JSON.stringify(utm))}catch(e){}
     dl.push(Object.assign({event:'checklist_open_utm'},utm));
     var note=document.getElementById('utmNote');
     note.style.display='block';

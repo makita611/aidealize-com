@@ -142,12 +142,29 @@ h1,h2,h3{font-family:'Zen Kaku Gothic New','Noto Sans JP',sans-serif;color:var(-
 .capture .gas-form-thanks{display:none}
 @media(max-width:560px){.capture .row{grid-template-columns:1fr}}
 
+/* ---- Impact badge ---- */
+.imp{display:inline-block;margin-left:8px;font-size:10.5px;font-weight:700;line-height:1;padding:3px 8px;border-radius:999px;vertical-align:middle;white-space:nowrap;transform:translateY(-1px)}
+.imp-h{background:#fdecec;color:#c0392b;border:1px solid #f4c7c3}
+.imp-m{background:#fff5e6;color:#b8790f;border:1px solid #f2ddb0}
+
+/* ---- Priority panel ---- */
+.priority{background:linear-gradient(160deg,#0e2a3d,#12324a);color:#fff;border-radius:16px;padding:26px 24px;margin:20px 0 8px;box-shadow:0 10px 30px rgba(8,145,178,.18)}
+.priority h3{color:#fff;font-size:18px;font-weight:900;margin-bottom:16px;display:flex;align-items:center;gap:9px}
+.priority h3::before{content:"";width:6px;height:22px;background:linear-gradient(#22c1c3,var(--cyan));border-radius:3px}
+.plist{display:grid;gap:10px}
+.prow{display:flex;align-items:flex-start;gap:13px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);border-radius:10px;padding:13px 15px}
+.prank{flex-shrink:0;width:26px;height:26px;border-radius:8px;background:linear-gradient(135deg,#22c1c3,var(--cyan));color:#fff;font-weight:900;font-size:14px;display:flex;align-items:center;justify-content:center;font-family:'Zen Kaku Gothic New',sans-serif}
+.pmain{flex:1}
+.pmain .pt{font-size:14px;font-weight:500;color:#fff;line-height:1.55}
+.pmain .pc{font-size:11.5px;color:#8fc7d6;margin-top:3px}
+.pnote{font-size:11.5px;color:#9fb8c4;margin-top:14px;line-height:1.7}
+
 /* ---- Print ---- */
 .print-only{display:none}
 @media print{
   @page{margin:12mm}
   body{background:#fff;font-size:11px;line-height:1.5}
-  .scorebar,.hero .meta,.cta,.toolbar,.foot,.intro .hint,.capture{display:none!important}
+  .scorebar,.hero .meta,.cta,.toolbar,.foot,.intro .hint,.capture,.priority{display:none!important}
   .hero{background:none!important;color:#000;padding:0 0 8px;border-bottom:2px solid #0891b2}
   .hero .eyebrow{color:#0e7490}
   .hero h1{color:#000;font-size:20px}
@@ -210,6 +227,13 @@ h1,h2,h3{font-family:'Zen Kaku Gothic New','Noto Sans JP',sans-serif;color:var(-
     <div class="bands" id="bands"></div>
   </section>
 
+  <!-- PRIORITY -->
+  <section class="priority" id="priority" style="display:none">
+    <h3>まず着手すると効果が大きい「優先ムダ」TOP3</h3>
+    <div class="plist" id="plist"></div>
+    <p class="pnote">※あなたがチェックした項目のうち、一般的に工数削減の効果が大きい順に表示しています。効果が大きい所から着手すると、投資対効果を実感しやすくなります。</p>
+  </section>
+
   <!-- EMAIL CAPTURE -->
   <section class="capture" id="capture">
     <div class="eyebrow">結果をムダにしない</div>
@@ -225,6 +249,8 @@ h1,h2,h3{font-family:'Zen Kaku Gothic New','Noto Sans JP',sans-serif;color:var(-
       <input type="hidden" name="source" value="muda-web">
       <input type="hidden" name="score" id="fScore" value="0">
       <input type="hidden" name="band" id="fBand" value="">
+      <input type="hidden" name="checked_items" id="fItems" value="">
+      <input type="hidden" name="priority_top3" id="fTop3" value="">
       <input type="hidden" name="utm_source" id="fUtmS" value="">
       <input type="hidden" name="utm_medium" id="fUtmM" value="">
       <input type="hidden" name="utm_campaign" id="fUtmC" value="">
@@ -282,37 +308,38 @@ var ICONS={
   share:'<circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="m8.59 13.51 6.83 3.98M15.41 6.51l-6.82 3.98"/>',
   calendar:'<rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18M8 15h.01M12 15h.01M16 15h.01"/>'
 };
+// w = 工数削減インパクト（3=大 / 2=中 / 1=小）
 var CATS=[
   {n:"01",name:"記録・カルテ業務",ic:"fileText",items:[
-    "同じ情報を複数の書類に書き写している（二重・三重の転記）",
-    "記録を帰所後・残業・持ち帰りでまとめて入力している",
-    "手書きメモを後からPCに入力し直している",
-    "記録の書き方・粒度が人によってバラついている",
-    "話した内容を文字に起こす手間が毎回発生している"]},
+    {t:"同じ情報を複数の書類に書き写している（二重・三重の転記）",w:3},
+    {t:"記録を帰所後・残業・持ち帰りでまとめて入力している",w:3},
+    {t:"手書きメモを後からPCに入力し直している",w:3},
+    {t:"記録の書き方・粒度が人によってバラついている",w:2},
+    {t:"話した内容を文字に起こす手間が毎回発生している",w:3}]},
   {n:"02",name:"受付・予約・電話対応",ic:"phone",items:[
-    "電話での予約・問い合わせ対応に人手を取られている",
-    "予約の変更・キャンセル連絡を手作業でさばいている",
-    "問診票を紙で運用し、あとで転記している",
-    "同じ質問への回答を毎回口頭で説明している",
-    "受付の混雑時間帯に対応しきれていない"]},
+    {t:"電話での予約・問い合わせ対応に人手を取られている",w:2},
+    {t:"予約の変更・キャンセル連絡を手作業でさばいている",w:2},
+    {t:"問診票を紙で運用し、あとで転記している",w:3},
+    {t:"同じ質問への回答を毎回口頭で説明している",w:2},
+    {t:"受付の混雑時間帯に対応しきれていない",w:1}]},
   {n:"03",name:"レセプト・請求・会計",ic:"receipt",items:[
-    "レセプト点検・返戻対応に時間がかかっている",
-    "算定漏れ・査定が定期的に発生している",
-    "会計・請求データを別システムへ手入力している",
-    "月末・月初にレセプト業務で残業が偏っている",
-    "請求まわりの確認作業が特定の人に属人化している"]},
+    {t:"レセプト点検・返戻対応に時間がかかっている",w:2},
+    {t:"算定漏れ・査定が定期的に発生している",w:2},
+    {t:"会計・請求データを別システムへ手入力している",w:3},
+    {t:"月末・月初にレセプト業務で残業が偏っている",w:2},
+    {t:"請求まわりの確認作業が特定の人に属人化している",w:1}]},
   {n:"04",name:"情報共有・引き継ぎ",ic:"share",items:[
-    "申し送り・引き継ぎが口頭／属人的になっている",
-    "医師・看護・ケアマネ等への情報共有が遅れがち",
-    "必要な情報を探し出すのに時間がかかる",
-    "スタッフが交代するたびに品質が落ちる",
-    "ベテランしか知らない手順・暗黙のルールがある"]},
+    {t:"申し送り・引き継ぎが口頭／属人的になっている",w:3},
+    {t:"医師・看護・ケアマネ等への情報共有が遅れがち",w:2},
+    {t:"必要な情報を探し出すのに時間がかかる",w:2},
+    {t:"スタッフが交代するたびに品質が落ちる",w:1},
+    {t:"ベテランしか知らない手順・暗黙のルールがある",w:1}]},
   {n:"05",name:"シフト・労務・その他事務",ic:"calendar",items:[
-    "シフト作成に毎月まとまった時間を割いている",
-    "勤怠集計・給与計算を手作業でおこなっている",
-    "定型の連絡・メール作成を毎回手打ちしている",
-    "紙書類のファイリング・管理に手間がかかっている",
-    "「これ自動化できないか」と思う雑務が常にある"]}
+    {t:"シフト作成に毎月まとまった時間を割いている",w:2},
+    {t:"勤怠集計・給与計算を手作業でおこなっている",w:2},
+    {t:"定型の連絡・メール作成を毎回手打ちしている",w:2},
+    {t:"紙書類のファイリング・管理に手間がかかっている",w:1},
+    {t:"「これ自動化できないか」と思う雑務が常にある",w:1}]}
 ];
 var BANDS=[
   {lo:0,hi:5,r:"0〜5個",d:"比較的整っています。さらに磨ける領域を見つけて、一段上の効率化へ。"},
@@ -321,6 +348,7 @@ var BANDS=[
   {lo:20,hi:25,r:"20〜25個",d:"抜本的なBPRで、本業に時間を戻せます。まずは無料診断・相談を。"}
 ];
 var BAND_LABEL=["ゆとりあり","改善の余地大","仕組み化が急務","抜本的なBPRを"];
+var ITEMS=[];CATS.forEach(function(c,ci){c.items.forEach(function(it,ii){ITEMS.push({id:ci+'-'+ii,cat:c.name,t:it.t,w:it.w});});});
 
 var KEY="muda_checks_v1";
 var dl=window.dataLayer=window.dataLayer||[];
@@ -334,11 +362,12 @@ function svg(p){return '<svg viewBox="0 0 24 24" fill="none" stroke="currentColo
 var catsEl=document.getElementById('cats');
 CATS.forEach(function(c,ci){
   var el=document.createElement('div');el.className='cat';
-  var items=c.items.map(function(t,ii){
+  var items=c.items.map(function(it,ii){
     var id=ci+'-'+ii, on=state[id]?' on':'';
+    var tag=it.w>=3?'<span class="imp imp-h">効果大</span>':(it.w===2?'<span class="imp imp-m">効果中</span>':'');
     return '<div class="item'+on+'" data-id="'+id+'">'+
       '<span class="box">'+svg('<path d="M20 6 9 17l-5-5"/>')+'</span>'+
-      '<span class="lbl">'+t+'</span></div>';
+      '<span class="lbl">'+it.t+tag+'</span></div>';
   }).join('');
   el.innerHTML='<div class="cat-h"><span class="ic">'+svg(ICONS[c.ic])+'</span>'+
     '<span class="txt"><small>CATEGORY '+c.n+'</small><strong>'+c.name+'</strong></span>'+
@@ -394,6 +423,20 @@ function update(){
       capH.innerHTML='チェック結果に合わせた<em>「次の一手」</em>を、メールでお送りします。';
     }
   }
+  // priority TOP3 + 送信データ生成
+  var chosen=ITEMS.filter(function(x){return state[x.id]});
+  var top3=chosen.slice().sort(function(a,b){return b.w-a.w}).slice(0,3);
+  var wlabel=function(w){return w>=3?'大':(w===2?'中':'小')};
+  var pEl=document.getElementById('priority'),pl=document.getElementById('plist');
+  if(pEl){
+    if(top3.length){
+      pEl.style.display='block';
+      pl.innerHTML=top3.map(function(x,i){return '<div class="prow"><div class="prank">'+(i+1)+'</div><div class="pmain"><div class="pt">'+x.t+'</div><div class="pc">'+x.cat+'（効果'+wlabel(x.w)+'）</div></div></div>';}).join('');
+    }else{pEl.style.display='none';pl.innerHTML='';}
+  }
+  var fi=document.getElementById('fItems'),ft=document.getElementById('fTop3');
+  if(fi)fi.value=chosen.map(function(x){return '['+x.cat+'] '+x.t+'（効果'+wlabel(x.w)+'）';}).join(' / ');
+  if(ft)ft.value=top3.map(function(x){return x.t}).join(' / ');
 }
 
 document.getElementById('resetBtn').addEventListener('click',function(){
