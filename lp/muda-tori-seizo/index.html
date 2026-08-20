@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI活用余地チェックシート｜製造業・設計開発の現場を5カテゴリ25項目で自己点検</title>
+<meta name="description" content="設計開発・調達生産・品質検査・情報共有・企画事務の「AIで効率化できる余地」を、5カテゴリ25項目でその場で自己点検。チェックするとリアルタイムで判定と優先度がわかります。印刷もOK・登録不要。製造業のBPRとAI活用ならAIdealize。">
+<link rel="canonical" href="https://aidealize.com/lp/muda-tori-seizo/">
+
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-P6VNBWH3');</script>
+<!-- End Google Tag Manager -->
+
+<!-- OGP -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="製造業・設計開発のための AI活用余地チェックシート｜5カテゴリ25項目">
+<meta property="og:description" content="設計開発・調達生産・品質・情報共有・企画事務のAI活用余地を25項目でチェック。リアルタイムで判定と優先度がわかります。印刷OK・登録不要。">
+<meta property="og:url" content="https://aidealize.com/lp/muda-tori-seizo/">
+<meta property="og:site_name" content="AIdealize株式会社">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700;900&family=Zen+Kaku+Gothic+New:wght@400;700;900&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --cyan:#0891b2; --cyan-d:#0e7490; --cyan-bg:#ecfeff;
+  --ink:#16212e; --navy:#1e293b; --text:#3f4956; --gray:#64748b; --light-gray:#94a3b8;
+  --bg:#f1f7f9; --white:#fff; --border:#d7e3e8; --border-soft:#e6eef1;
+  --shadow:0 4px 24px rgba(8,145,178,.08);
+  --gold:#b8902a;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  background:var(--bg); color:var(--text);
+  font-family:'Noto Sans JP',sans-serif; font-weight:400; line-height:1.85;
+  -webkit-font-smoothing:antialiased; overflow-x:hidden;
+}
+.wrap{max-width:960px;margin:0 auto;padding:0 20px}
+h1,h2,h3{font-family:'Zen Kaku Gothic New','Noto Sans JP',sans-serif;color:var(--ink);line-height:1.4}
+
+/* ---- Hero ---- */
+.hero{background:linear-gradient(135deg,#12324a 0%,#1e293b 60%,#0e3a47 100%);color:#fff;padding:44px 0 40px}
+.hero .eyebrow{font-size:12px;letter-spacing:.14em;font-weight:700;color:#7dd3e0;margin-bottom:14px}
+.hero h1{color:#fff;font-size:30px;font-weight:900;margin-bottom:16px;letter-spacing:.01em}
+.hero h1 span{color:#7dd3e0}
+.hero p{font-size:15px;color:#d8e6ec;max-width:660px}
+.hero .meta{margin-top:20px;display:flex;flex-wrap:wrap;gap:10px}
+.hero .chip{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.18);border-radius:999px;padding:7px 15px;font-size:12.5px;color:#eaf4f7;font-weight:500}
+
+/* ---- Scorebar (sticky) ---- */
+.scorebar{position:sticky;top:0;z-index:30;background:var(--white);border-bottom:1px solid var(--border);box-shadow:0 2px 12px rgba(8,145,178,.07)}
+.scorebar .in{max-width:960px;margin:0 auto;padding:12px 20px;display:flex;align-items:center;gap:16px;flex-wrap:wrap}
+.scorenum{display:flex;align-items:baseline;gap:6px;font-family:'Zen Kaku Gothic New',sans-serif}
+.scorenum b{font-size:30px;font-weight:900;color:var(--cyan-d);line-height:1}
+.scorenum small{font-size:13px;color:var(--gray)}
+.scoreband{font-size:13.5px;font-weight:700;color:var(--ink);flex:1;min-width:180px}
+.scoreband em{font-style:normal;color:var(--cyan-d)}
+.progress{flex-basis:100%;height:7px;background:var(--border-soft);border-radius:999px;overflow:hidden}
+.progress i{display:block;height:100%;width:0;background:linear-gradient(90deg,#22c1c3,var(--cyan));transition:width .35s ease}
+
+/* ---- Intro ---- */
+.intro{padding:26px 0 4px}
+.intro p{font-size:14.5px;color:var(--text)}
+.intro .hint{margin-top:8px;font-size:12.5px;color:var(--gray)}
+
+/* ---- Categories ---- */
+.cats{padding:18px 0 6px}
+.cat{background:var(--white);border:1px solid var(--border);border-radius:14px;overflow:hidden;margin-bottom:16px;box-shadow:var(--shadow)}
+.cat-h{display:flex;align-items:center;gap:12px;background:linear-gradient(100deg,var(--cyan),var(--cyan-d));color:#fff;padding:13px 18px}
+.cat-h .ic{width:34px;height:34px;border-radius:9px;background:rgba(255,255,255,.16);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.cat-h .ic svg{width:19px;height:19px;stroke:#fff}
+.cat-h .txt small{display:block;font-size:10.5px;letter-spacing:.12em;font-weight:700;opacity:.85}
+.cat-h .txt strong{font-family:'Zen Kaku Gothic New',sans-serif;font-size:16px;font-weight:700}
+.cat-h .cnt{margin-left:auto;font-size:13px;font-weight:700;background:rgba(255,255,255,.16);border-radius:999px;padding:4px 12px;white-space:nowrap}
+.items{padding:6px 10px 10px}
+.item{display:flex;gap:13px;align-items:flex-start;padding:13px 10px;border-bottom:1px solid var(--border-soft);cursor:pointer;transition:background .15s}
+.item:last-child{border-bottom:none}
+.item:hover{background:var(--cyan-bg)}
+.item .box{width:22px;height:22px;border:2px solid var(--cyan);border-radius:6px;flex-shrink:0;margin-top:1px;display:flex;align-items:center;justify-content:center;transition:all .15s;background:#fff}
+.item .box svg{width:14px;height:14px;stroke:#fff;stroke-width:3.2;opacity:0;transform:scale(.6);transition:all .15s}
+.item.on .box{background:var(--cyan);border-color:var(--cyan)}
+.item.on .box svg{opacity:1;transform:scale(1)}
+.item .lbl{font-size:14px;color:var(--text);line-height:1.6}
+.item.on .lbl{color:var(--ink);font-weight:500}
+
+/* ---- Scoring ---- */
+.scoring{padding:14px 0 8px}
+.scoring h2{font-size:20px;font-weight:900;margin-bottom:4px}
+.scoring .lede{font-size:13px;color:var(--gray);margin-bottom:16px}
+.bands{display:grid;gap:10px}
+.band{display:grid;grid-template-columns:118px 1fr;gap:14px;align-items:center;background:var(--white);border:1px solid var(--border);border-radius:12px;padding:15px 18px;transition:all .2s}
+.band .r{font-family:'Zen Kaku Gothic New',sans-serif;font-weight:700;color:var(--cyan-d);font-size:15px}
+.band .d{font-size:13.5px;color:var(--text)}
+.band.active{border-color:var(--cyan);background:linear-gradient(100deg,#ecfeff,#f4fbfd);box-shadow:0 6px 22px rgba(8,145,178,.16);transform:translateY(-1px)}
+.band.active .r{color:var(--cyan-d)}
+.band.active::before{content:"いまここ";position:absolute;margin-top:-30px;background:var(--cyan-d);color:#fff;font-size:10.5px;font-weight:700;padding:2px 9px;border-radius:999px}
+.band{position:relative}
+
+/* ---- CTA ---- */
+.cta{background:linear-gradient(135deg,#12324a,#1e293b);color:#fff;border-radius:16px;padding:34px 30px;margin:26px 0 10px;text-align:center}
+.cta h2{color:#fff;font-size:21px;font-weight:900;margin-bottom:10px}
+.cta p{font-size:14px;color:#d8e6ec;max-width:560px;margin:0 auto 22px}
+.cta .btns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;gap:8px;font-weight:700;font-size:15px;padding:14px 26px;border-radius:10px;text-decoration:none;transition:transform .15s,box-shadow .15s;border:none;cursor:pointer;font-family:inherit}
+.btn svg{width:18px;height:18px}
+.btn-primary{background:linear-gradient(90deg,#22c1c3,var(--cyan));color:#fff;box-shadow:0 8px 20px rgba(8,145,178,.35)}
+.btn-primary:hover{transform:translateY(-2px)}
+.btn-ghost{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.28);color:#fff}
+.btn-ghost:hover{background:rgba(255,255,255,.17)}
+
+/* ---- Toolbar ---- */
+.toolbar{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;padding:6px 0 34px}
+.tbtn{display:inline-flex;align-items:center;gap:7px;background:var(--white);border:1px solid var(--border);color:var(--cyan-d);font-weight:700;font-size:13.5px;padding:11px 20px;border-radius:9px;cursor:pointer;font-family:inherit;transition:all .15s}
+.tbtn svg{width:16px;height:16px;stroke:var(--cyan-d)}
+.tbtn:hover{background:var(--cyan-bg);border-color:var(--cyan)}
+
+/* ---- Footer ---- */
+.foot{background:var(--ink);color:#9fb0bd;padding:30px 0;font-size:12.5px}
+.foot .in{max-width:960px;margin:0 auto;padding:0 20px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
+.foot a{color:#7dd3e0;text-decoration:none}
+.foot strong{color:#fff;font-family:'Zen Kaku Gothic New',sans-serif;font-weight:700;display:block;margin-bottom:4px}
+
+/* ---- Email capture ---- */
+.capture{background:var(--white);border:2px solid var(--cyan);border-radius:16px;padding:28px 26px;margin:22px 0 8px;box-shadow:0 10px 30px rgba(8,145,178,.14);position:relative;overflow:hidden}
+.capture::before{content:"";position:absolute;top:0;left:0;right:0;height:5px;background:linear-gradient(90deg,#22c1c3,var(--cyan))}
+.capture .eyebrow{font-size:11.5px;letter-spacing:.12em;font-weight:700;color:var(--cyan-d);margin-bottom:8px}
+.capture h2{font-size:20px;font-weight:900;margin-bottom:8px}
+.capture h2 em{font-style:normal;color:var(--cyan-d)}
+.capture .lede{font-size:13.5px;color:var(--text);margin-bottom:18px;max-width:600px}
+.capture form.gas-form{max-width:100%}
+.capture .row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.capture .gas-form-group input:focus{border-color:var(--cyan)!important}
+.capture .gas-form-btn{background:linear-gradient(90deg,#22c1c3,var(--cyan));color:#fff}
+.capture .note{font-size:11.5px;color:var(--gray);margin-top:10px;line-height:1.7}
+.capture .gas-form-thanks{display:none}
+@media(max-width:560px){.capture .row{grid-template-columns:1fr}}
+
+/* ---- Impact badge ---- */
+.imp{display:inline-block;margin-left:8px;font-size:10.5px;font-weight:700;line-height:1;padding:3px 8px;border-radius:999px;vertical-align:middle;white-space:nowrap;transform:translateY(-1px)}
+.imp-h{background:#fdecec;color:#c0392b;border:1px solid #f4c7c3}
+.imp-m{background:#fff5e6;color:#b8790f;border:1px solid #f2ddb0}
+
+/* ---- Priority panel ---- */
+.priority{background:linear-gradient(160deg,#0e2a3d,#12324a);color:#fff;border-radius:16px;padding:26px 24px;margin:20px 0 8px;box-shadow:0 10px 30px rgba(8,145,178,.18)}
+.priority h3{color:#fff;font-size:18px;font-weight:900;margin-bottom:16px;display:flex;align-items:center;gap:9px}
+.priority h3::before{content:"";width:6px;height:22px;background:linear-gradient(#22c1c3,var(--cyan));border-radius:3px}
+.plist{display:grid;gap:10px}
+.prow{display:flex;align-items:flex-start;gap:13px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);border-radius:10px;padding:13px 15px}
+.prank{flex-shrink:0;width:26px;height:26px;border-radius:8px;background:linear-gradient(135deg,#22c1c3,var(--cyan));color:#fff;font-weight:900;font-size:14px;display:flex;align-items:center;justify-content:center;font-family:'Zen Kaku Gothic New',sans-serif}
+.pmain{flex:1}
+.pmain .pt{font-size:14px;font-weight:500;color:#fff;line-height:1.55}
+.pmain .pc{font-size:11.5px;color:#8fc7d6;margin-top:3px}
+.pnote{font-size:11.5px;color:#9fb8c4;margin-top:14px;line-height:1.7}
+
+/* ---- Print ---- */
+.print-only{display:none}
+@media print{
+  @page{margin:12mm}
+  body{background:#fff;font-size:11px;line-height:1.5}
+  .scorebar,.hero .meta,.cta,.toolbar,.foot,.intro .hint,.capture,.priority{display:none!important}
+  .hero{background:none!important;color:#000;padding:0 0 8px;border-bottom:2px solid #0891b2}
+  .hero .eyebrow{color:#0e7490}
+  .hero h1{color:#000;font-size:20px}
+  .hero h1 span{color:#0e7490}
+  .hero p{color:#333;font-size:11px}
+  .wrap{max-width:100%;padding:0}
+  .cat{box-shadow:none;break-inside:avoid;page-break-inside:avoid;margin-bottom:8px}
+  .cat-h{background:#0e7490!important;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  .item{padding:6px 8px;cursor:auto;break-inside:avoid}
+  .item .box{width:14px;height:14px}
+  .band{break-inside:avoid}
+  .band.active{box-shadow:none;transform:none}
+  .print-only{display:block;text-align:right;font-size:10px;color:#888;margin-top:8px}
+}
+@media(max-width:640px){
+  .hero h1{font-size:23px}
+  .band{grid-template-columns:1fr;gap:4px}
+  .cat-h .cnt{font-size:11.5px}
+}
+</style>
+</head>
+<body>
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-P6VNBWH3" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="wrap">
+    <div class="eyebrow">FREE CHECKSHEET ／ 5カテゴリ・25項目</div>
+    <h1>製造業・設計開発のための<br><span>AI活用余地チェックシート</span></h1>
+    <p>あてはまる項目にチェックを入れるだけ。「AIをどこから使えばいいか分からない」を、業務の棚卸しから解きほぐします。チェックの数が多いほど、生成AI・自動化で効率化できる余地が眠っています。最後の判定で、まず着手すべき優先度がわかります。</p>
+    <div class="meta">
+      <span class="chip">✓ 登録不要・その場で判定</span>
+      <span class="chip">✓ 印刷して部署で使える</span>
+      <span class="chip">✓ 設計開発〜品質〜企画の現場目線</span>
+    </div>
+  </div>
+</header>
+
+<!-- STICKY SCORE -->
+<div class="scorebar">
+  <div class="in">
+    <div class="scorenum"><b id="scoreN">0</b><small>／ 25 項目</small></div>
+    <div class="scoreband" id="scoreBand">気になる項目にチェックしてみてください。</div>
+    <div class="progress"><i id="scoreBar"></i></div>
+  </div>
+</div>
+
+<main class="wrap">
+  <section class="intro">
+    <p class="hint" id="utmNote" style="display:none"></p>
+  </section>
+
+  <!-- CATEGORIES -->
+  <section class="cats" id="cats"></section>
+
+  <!-- SCORING -->
+  <section class="scoring">
+    <h2>チェックの数で見る、自動化の余地</h2>
+    <p class="lede">いまのチェック数に応じて、下の判定がハイライトされます。</p>
+    <div class="bands" id="bands"></div>
+  </section>
+
+  <!-- PRIORITY -->
+  <section class="priority" id="priority" style="display:none">
+    <h3>まず着手すると効果が大きい「優先ムダ」TOP3</h3>
+    <div class="plist" id="plist"></div>
+    <p class="pnote">※あなたがチェックした項目のうち、一般的に工数削減の効果が大きい順に表示しています。効果が大きい所から着手すると、投資対効果を実感しやすくなります。</p>
+  </section>
+
+  <!-- EMAIL CAPTURE -->
+  <section class="capture" id="capture">
+    <div class="eyebrow">結果をムダにしない</div>
+    <h2 id="capH">チェック結果に合わせた<em>「次の一手」</em>を、メールでお送りします。</h2>
+    <p class="lede" id="capLede">いまのチェック内容から、どの業務に・どんなAIの使い方が効果的か、御社に合わせた活用アイデアをまとめてお送りします（無料・売り込みなし）。設計・品質・企画などの具体的なAI活用例もご案内します。あわせて、記入済みのチェックシートPDFもお渡しします。</p>
+    <form class="gas-form" data-formtype="muda-seizo-web" data-page="ムダ取りチェックシート製造Web">
+      <div class="row">
+        <div class="gas-form-group"><input type="text" name="company" placeholder="会社名・屋号" required></div>
+        <div class="gas-form-group"><input type="email" name="email" placeholder="メールアドレス" required></div>
+      </div>
+      <div class="gas-form-group"><input type="text" name="name" placeholder="お名前（任意）"></div>
+      <input type="hidden" name="gift" value="ムダ取りチェックシート製造Web">
+      <input type="hidden" name="source" value="muda-seizo-web">
+      <input type="hidden" name="score" id="fScore" value="0">
+      <input type="hidden" name="band" id="fBand" value="">
+      <input type="hidden" name="checked_items" id="fItems" value="">
+      <input type="hidden" name="priority_top3" id="fTop3" value="">
+      <input type="hidden" name="utm_source" id="fUtmS" value="">
+      <input type="hidden" name="utm_medium" id="fUtmM" value="">
+      <input type="hidden" name="utm_campaign" id="fUtmC" value="">
+      <button type="submit" class="gas-form-btn">結果と改善ヒントを受け取る</button>
+      <p class="note">ご入力内容は改善提案のご連絡にのみ使用します。しつこい営業はいたしません。</p>
+    </form>
+    <div class="gas-form-thanks">
+      <p><strong>送信ありがとうございます。</strong><br>チェック結果に合わせた改善のヒントと、記入済みチェックシートを追ってお送りします。</p>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta">
+    <h2>チェックが多かった所から、「AIの使いどころ」を一緒に見つけませんか。</h2>
+    <p>設計資料の検索・仕様書のたたき台作成・不具合ナレッジの活用・議事録や報告文の自動化など、御社の業務に合わせて「どこから・どう使うか」を具体的にご提案します。まずはAI活用の全体像を掴む勉強会・壁打ちからでもOK。売り込みはいたしません。</p>
+    <div class="btns">
+      <a class="btn btn-primary" href="/#contact" data-cta="soudan">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+        無料で相談する
+      </a>
+      <a class="btn btn-ghost" href="https://aidealize.com" data-cta="service">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 11a9 9 0 0 1 9 9M4 4a16 16 0 0 1 16 16"/><circle cx="5" cy="19" r="1"/></svg>
+        AIdealizeを見る
+      </a>
+    </div>
+  </section>
+
+  <!-- TOOLBAR -->
+  <div class="toolbar">
+    <button class="tbtn" id="printBtn">
+      <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9V2h12v7"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8" rx="1"/></svg>
+      印刷 / PDF保存
+    </button>
+    <button class="tbtn" id="resetBtn">
+      <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/></svg>
+      チェックをリセット
+    </button>
+  </div>
+  <p class="print-only">© AIdealize株式会社 ｜ aidealize.com ／ AI業務自動化 ムダ取りチェックシート</p>
+</main>
+
+<footer class="foot">
+  <div class="in">
+    <div><strong>AIdealize株式会社</strong>製造業・設計開発等の業務改善(BPR)×AI実装<br>東京都中央区日本橋3-4-15</div>
+    <div>TEL 080-5434-7500　｜　<a href="mailto:makita@aidealize.com">makita@aidealize.com</a><br><a href="https://aidealize.com">aidealize.com</a></div>
+  </div>
+</footer>
+
+<script>
+/* ===== データ（正本 = downloads/_gen_checklist.py と同一）===== */
+var ICONS={
+  fileText:'<path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/><path d="M8 13h8M8 17h8M8 9h2"/>',
+  phone:'<path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/>',
+  receipt:'<path d="M4 2v20l2-1 2 1 2-1 2 1 2-1 2 1 2-1 2 1V2l-2 1-2-1-2 1-2-1-2 1-2-1-2 1z"/><path d="M8 7h8M8 11h8M8 15h5"/>',
+  share:'<circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="m8.59 13.51 6.83 3.98M15.41 6.51l-6.82 3.98"/>',
+  calendar:'<rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18M8 15h.01M12 15h.01M16 15h.01"/>'
+};
+// w = 工数削減インパクト（3=大 / 2=中 / 1=小）
+var CATS=[
+  {n:"01",name:"設計・開発",ic:"fileText",items:[
+    {t:"過去の設計資料・仕様書が探しにくい（どこにあるか分からない）",w:3},
+    {t:"似た製品でも仕様書・設計書を毎回イチから書き起こしている",w:3},
+    {t:"設計レビューの指摘や不具合が、同じように繰り返される",w:2},
+    {t:"制御ソフト・基板設計のノウハウが特定の人に属人化している",w:3},
+    {t:"海外部品のデータシート・仕様書の読み込み／翻訳に手間がかかる",w:2}]},
+  {n:"02",name:"調達・購買・生産管理",ic:"receipt",items:[
+    {t:"部品の型番・在庫・調達先情報が台帳やExcelで散在している",w:2},
+    {t:"見積・発注・納期の管理を個別のExcel／紙でおこなっている",w:2},
+    {t:"部品の欠品・納期遅れで生産や開発が止まることがある",w:3},
+    {t:"生産計画・工程の調整が属人的で、状況が見えづらい",w:2},
+    {t:"同じ情報を複数の管理表に何度も転記している",w:3}]},
+  {n:"03",name:"品質・検査・不具合対応",ic:"calendar",items:[
+    {t:"不具合・クレームの原因調査に毎回時間がかかっている",w:3},
+    {t:"過去の不具合事例・対策がナレッジとして検索できない",w:3},
+    {t:"検査記録・報告書の作成に手間がかかっている",w:2},
+    {t:"是正処置・報告書のフォーマットが人によって異なる",w:1},
+    {t:"顧客への技術報告・回答文の作成に時間がかかる",w:2}]},
+  {n:"04",name:"情報共有・ナレッジ",ic:"share",items:[
+    {t:"技術情報・手順が個人のPCやベテランの頭の中にある",w:3},
+    {t:"議事録・打合せメモの作成／共有が後回しになっている",w:2},
+    {t:"部署をまたぐ情報共有・引き継ぎが遅れがちになる",w:2},
+    {t:"必要な資料・図面を探し出すのに時間がかかる",w:2},
+    {t:"新人・中途への技術教育に、毎回同じ説明をしている",w:2}]},
+  {n:"05",name:"企画・営業・事務",ic:"phone",items:[
+    {t:"企画書・提案資料の作成に毎回まとまった時間がかかる",w:3},
+    {t:"定型メール・見積・報告文の作成を毎回手打ちしている",w:2},
+    {t:"市場・技術動向の情報収集／整理に手が回らない",w:2},
+    {t:"各種申請・社内書類の作成に時間がかかっている",w:1},
+    {t:"「これAIで効率化できないか」と思う業務が社内に多い",w:2}]}
+];
+var BANDS=[
+  {lo:0,hi:5,r:"0〜5個",d:"比較的整っています。さらに磨ける領域を見つけて、一段上の効率化へ。"},
+  {lo:6,hi:12,r:"6〜12個",d:"自動化で大きく時間を取り戻せる余地があります。効果の大きい所から着手を。"},
+  {lo:13,hi:19,r:"13〜19個",d:"業務の仕組み化が急務です。優先順位をつけて段階的に進めましょう。"},
+  {lo:20,hi:25,r:"20〜25個",d:"抜本的なBPRで、本業に時間を戻せます。まずは無料診断・相談を。"}
+];
+var BAND_LABEL=["ゆとりあり","改善の余地大","仕組み化が急務","抜本的なBPRを"];
+var ITEMS=[];CATS.forEach(function(c,ci){c.items.forEach(function(it,ii){ITEMS.push({id:ci+'-'+ii,cat:c.name,t:it.t,w:it.w});});});
+
+var KEY="muda_seizo_v1";
+var dl=window.dataLayer=window.dataLayer||[];
+var state={};
+try{state=JSON.parse(localStorage.getItem(KEY)||"{}")}catch(e){state={}}
+var engaged=false;
+
+function svg(p){return '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">'+p+'</svg>'}
+
+/* ---- build categories ---- */
+var catsEl=document.getElementById('cats');
+CATS.forEach(function(c,ci){
+  var el=document.createElement('div');el.className='cat';
+  var items=c.items.map(function(it,ii){
+    var id=ci+'-'+ii, on=state[id]?' on':'';
+    var tag=it.w>=3?'<span class="imp imp-h">効果大</span>':(it.w===2?'<span class="imp imp-m">効果中</span>':'');
+    return '<div class="item'+on+'" data-id="'+id+'">'+
+      '<span class="box">'+svg('<path d="M20 6 9 17l-5-5"/>')+'</span>'+
+      '<span class="lbl">'+it.t+tag+'</span></div>';
+  }).join('');
+  el.innerHTML='<div class="cat-h"><span class="ic">'+svg(ICONS[c.ic])+'</span>'+
+    '<span class="txt"><small>CATEGORY '+c.n+'</small><strong>'+c.name+'</strong></span>'+
+    '<span class="cnt" data-cnt="'+ci+'">0 / 5</span></div>'+
+    '<div class="items">'+items+'</div>';
+  catsEl.appendChild(el);
+});
+
+/* ---- build bands ---- */
+var bandsEl=document.getElementById('bands');
+BANDS.forEach(function(b,i){
+  bandsEl.innerHTML+='<div class="band" data-band="'+i+'"><div class="r">✓ '+b.r+'</div><div class="d">'+b.d+'</div></div>';
+});
+
+/* ---- interactions ---- */
+catsEl.addEventListener('click',function(e){
+  var it=e.target.closest('.item');if(!it)return;
+  var id=it.getAttribute('data-id');
+  var now=!it.classList.contains('on');
+  it.classList.toggle('on',now);
+  if(now)state[id]=1;else delete state[id];
+  save();update();
+  if(now&&!engaged){engaged=true;dl.push({event:'checklist_engaged'});}
+  dl.push({event:'checklist_item_toggle',item_id:id,checked:now});
+});
+
+function save(){try{localStorage.setItem(KEY,JSON.stringify(state))}catch(e){}}
+
+function update(){
+  var total=Object.keys(state).length;
+  document.getElementById('scoreN').textContent=total;
+  document.getElementById('scoreBar').style.width=(total/25*100)+'%';
+  // per-category counts
+  CATS.forEach(function(c,ci){
+    var n=0;for(var ii=0;ii<5;ii++)if(state[ci+'-'+ii])n++;
+    var badge=document.querySelector('[data-cnt="'+ci+'"]');if(badge)badge.textContent=n+' / 5';
+  });
+  // band
+  var idx=-1;for(var i=0;i<BANDS.length;i++){if(total>=BANDS[i].lo&&total<=BANDS[i].hi){idx=i;break;}}
+  document.querySelectorAll('.band').forEach(function(b,i){b.classList.toggle('active',i===idx&&total>0);});
+  var sb=document.getElementById('scoreBand');
+  if(total===0){sb.innerHTML='気になる項目にチェックしてみてください。';}
+  else{sb.innerHTML='判定：<em>'+BAND_LABEL[idx]+'</em>（'+BANDS[idx].r+'）';}
+  // sync hidden form fields + personalize capture
+  var fs=document.getElementById('fScore'),fb=document.getElementById('fBand');
+  if(fs)fs.value=total;
+  if(fb)fb.value=(idx>=0?BANDS[idx].r+' / '+BAND_LABEL[idx]:'');
+  var capH=document.getElementById('capH');
+  if(capH){
+    if(total>0){
+      capH.innerHTML='あなたのチェックは <em>'+total+' 項目</em>。この結果に合わせた<em>「次の一手」</em>を、メールでお送りします。';
+    }else{
+      capH.innerHTML='チェック結果に合わせた<em>「次の一手」</em>を、メールでお送りします。';
+    }
+  }
+  // priority TOP3 + 送信データ生成
+  var chosen=ITEMS.filter(function(x){return state[x.id]});
+  var top3=chosen.slice().sort(function(a,b){return b.w-a.w}).slice(0,3);
+  var wlabel=function(w){return w>=3?'大':(w===2?'中':'小')};
+  var pEl=document.getElementById('priority'),pl=document.getElementById('plist');
+  if(pEl){
+    if(top3.length){
+      pEl.style.display='block';
+      pl.innerHTML=top3.map(function(x,i){return '<div class="prow"><div class="prank">'+(i+1)+'</div><div class="pmain"><div class="pt">'+x.t+'</div><div class="pc">'+x.cat+'（効果'+wlabel(x.w)+'）</div></div></div>';}).join('');
+    }else{pEl.style.display='none';pl.innerHTML='';}
+  }
+  var fi=document.getElementById('fItems'),ft=document.getElementById('fTop3');
+  if(fi)fi.value=chosen.map(function(x){return '['+x.cat+'] '+x.t+'（効果'+wlabel(x.w)+'）';}).join(' / ');
+  if(ft)ft.value=top3.map(function(x){return x.t}).join(' / ');
+}
+
+document.getElementById('resetBtn').addEventListener('click',function(){
+  state={};save();
+  document.querySelectorAll('.item.on').forEach(function(x){x.classList.remove('on')});
+  update();dl.push({event:'checklist_reset'});
+});
+document.getElementById('printBtn').addEventListener('click',function(){
+  dl.push({event:'checklist_print',checked_count:Object.keys(state).length});
+  window.print();
+});
+document.querySelectorAll('[data-cta]').forEach(function(a){
+  a.addEventListener('click',function(){
+    dl.push({event:'checklist_cta_click',cta:a.getAttribute('data-cta'),checked_count:Object.keys(state).length});
+  });
+});
+
+/* ---- UTM capture ---- */
+(function(){
+  var q=new URLSearchParams(location.search);
+  var utm={};['utm_source','utm_medium','utm_campaign','utm_content','utm_term'].forEach(function(k){if(q.get(k))utm[k]=q.get(k)});
+  var setf=function(id,v){var el=document.getElementById(id);if(el&&v)el.value=v};
+  setf('fUtmS',utm.utm_source);setf('fUtmM',utm.utm_medium);setf('fUtmC',utm.utm_campaign);
+  if(Object.keys(utm).length){
+    try{localStorage.setItem('muda_seizo_utm',JSON.stringify(utm))}catch(e){}
+    dl.push(Object.assign({event:'checklist_open_utm'},utm));
+    var note=document.getElementById('utmNote');
+    note.style.display='block';
+    note.textContent='ようこそ。'+(utm.utm_campaign?'（'+utm.utm_campaign+'）':'')+'このシートはチェックした状態のまま印刷・保存できます。';
+  }
+})();
+
+update();
+</script>
+<script src="/js/gas-forms.js" defer></script>
+</body>
+</html>
