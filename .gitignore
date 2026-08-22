@@ -23,3 +23,9 @@ Thumbs.db
 
 # Cloudflare Pages/Wrangler local cache
 .wrangler/
+
+# 工務店outreach短縮URL /k/<コード>：営業先461社のURL・攻めているサービス(cvr/prevention)・utm設計を含む。
+# 本リポはPUBLICのため追跡すると営業戦略が全世界に露出する。公開設計が固まるまで隔離。
+# 機能を本番デプロイする場合はリポをprivate化するか、マップをリポ外(Cloudflare KV等)へ移すこと。
+functions/_lib/k-links.js
+functions/k/
