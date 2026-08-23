@@ -5,6 +5,7 @@
   var s = document.createElement('style');
   s.textContent = [
     '.gas-form{max-width:480px}',
+    '.gas-hp-field{position:absolute!important;left:-9999px!important;top:-9999px!important;width:1px;height:1px;opacity:0;overflow:hidden}',
     '.gas-form-group{margin-bottom:12px}',
     '.gas-form-group input,.gas-form-group select,.gas-form-group textarea{width:100%;padding:12px 14px;border:1px solid #ddd;border-radius:6px;font-size:16px;font-family:inherit;box-sizing:border-box}',
     '.gas-form-group textarea{min-height:84px;resize:vertical;line-height:1.6}',
@@ -29,8 +30,31 @@
       if (form.dataset.gasBound) return; // 二重バインド防止
       form.dataset.gasBound = '1';
 
+      /* ── ハニーポット（ボット対策）──
+         人間には見えない隠しフィールドを注入。自動入力ボットがここを埋めたら
+         送信したフリだけして GAS には送らない（スパム弾き）。
+         併せて「表示から3秒未満の即送信」も人間離れとして弾く。 */
+      var hp = document.createElement('input');
+      hp.type = 'text';
+      hp.name = 'website_confirm';        // ボットが好む“URL/website”系の餌名
+      hp.className = 'gas-hp-field';
+      hp.tabIndex = -1;
+      hp.setAttribute('autocomplete', 'off');
+      hp.setAttribute('aria-hidden', 'true');
+      form.appendChild(hp);
+      form.dataset.gasReady = String(Date.now());
+
       form.addEventListener('submit', function (e) {
         e.preventDefault();
+
+        /* ハニーポットに文字が入っている or 表示3秒未満の即送信 → ボット判定 */
+        var elapsed = Date.now() - (parseInt(form.dataset.gasReady, 10) || 0);
+        if (hp.value || elapsed < 3000) {
+          var t = form.nextElementSibling; // 送信したフリ（ボットに気づかせない）
+          form.style.display = 'none';
+          if (t && t.classList.contains('gas-form-thanks')) t.style.display = 'block';
+          return; // GAS には送らない
+        }
 
         var btn = form.querySelector('.gas-form-btn');
         btn.disabled = true;
