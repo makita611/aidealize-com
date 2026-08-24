@@ -6,6 +6,8 @@
 // ★ 方針：すべて「公開URLへのGET」のみ。ポートスキャン・認証突破・負荷試験は一切行わない。
 //    不正アクセス禁止法の範囲内（ブラウザで普通にページを開くのと同じ行為）に限定する。
 
+import { logDiagnosis } from '../_lib/diagnosis-log.js';
+
 const UA = 'Mozilla/5.0 (compatible; PreventionSiteCheck/1.0; +https://aidealize.com)';
 
 export async function onRequestGet(context) {
@@ -177,6 +179,8 @@ export async function onRequestGet(context) {
       warn: checks.filter(c => c.status === 'warn').length,
       bad:  checks.filter(c => c.status === 'bad').length,
     };
+
+    logDiagnosis(context, 'security', finalUrl.toString(), score);
 
     return json({
       ok: true,

@@ -3,6 +3,8 @@
 // ユーザーが入力したサイトURLをサーバー側で取得し、集客の観点で自動チェックした結果をJSONで返す。
 // （静的サイトのフロント site-check.html から呼び出す）
 
+import { logDiagnosis } from '../_lib/diagnosis-log.js';
+
 export async function onRequestGet(context) {
   const { request } = context;
   const cors = {
@@ -378,6 +380,8 @@ export async function onRequestGet(context) {
       warn: checks.filter(c => c.status === 'warn').length,
       bad: checks.filter(c => c.status === 'bad').length,
     };
+
+    logDiagnosis(context, 'site', finalUrl.toString(), score);
 
     return json({
       ok: true,
