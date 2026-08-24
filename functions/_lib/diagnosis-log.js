@@ -5,7 +5,12 @@
 
 const GAS_URL = 'https://script.google.com/macros/s/AKfycbweIGAPeJwD-U8D4Cks6fjGmp5hR2kpuwCx_9janRnGq3qdUFR4DDpYGgl33-bkFr3v/exec';
 
+// GAS側（GAS form.md参照）に log_type='site_diagnosis' の分岐コードをデプロイするまでは無効化。
+// 有効化前に送ると旧doPostが「フォーム記録」シートに空行を作り、通知メールを毎回飛ばしてしまう。
+const ENABLED = false;
+
 export function logDiagnosis(context, checkType, url, score) {
+  if (!ENABLED) return;
   try {
     const { request } = context;
     const cf = request.cf || {};
