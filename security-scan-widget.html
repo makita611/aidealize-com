@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>無料セキュリティ外周点検 ―ドメインを入れるだけ</title>
+<style>
+:root {
+  --navy:     #002147;
+  --navy-mid: #0a2f5c;
+  --enji:     #7a1a1a;
+  --enji-lt:  #9e2b2b;
+  --enji-bg:  #4a0f0f;
+  --gold:     #c9a84c;
+  --text:     #e8edf4;
+  --text-sub: #9fb4cc;
+  --white:    #ffffff;
+  --border:   rgba(201,168,76,0.25);
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; }
+body {
+  font-family: "Hiragino Kaku Gothic ProN", "Hiragino Sans", "Yu Gothic", "Meiryo", sans-serif;
+  background: transparent;
+  color: var(--text);
+  line-height: 1.8;
+  font-size: 16px;
+}
+
+.widget-box {
+  background: rgba(10,47,92,0.94);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 28px 26px 24px;
+  max-width: 640px;
+  margin: 0 auto;
+}
+.sim-label {
+  font-size: 0.82rem; color: var(--gold);
+  font-weight: 700; letter-spacing: 0.1em; margin-bottom: 14px;
+}
+.sim-input-row { display: flex; gap: 10px; }
+@media (max-width: 480px) { .sim-input-row { flex-direction: column; } }
+.sim-input {
+  flex: 1;
+  background: rgba(0,21,53,0.8);
+  border: 1px solid rgba(201,168,76,0.4);
+  border-radius: 6px;
+  color: #7dffb0; font-family: "Courier New", monospace;
+  font-size: 1rem; padding: 12px 16px;
+  outline: none;
+  transition: border-color 0.2s;
+}
+.sim-input::placeholder { color: #3a5a7a; }
+.sim-input:focus { border-color: var(--gold); }
+.sim-btn {
+  background: var(--enji); color: var(--white);
+  border: none; border-radius: 6px; padding: 12px 24px;
+  font-size: 0.95rem; font-weight: 700; cursor: pointer;
+  white-space: nowrap;
+  transition: background 0.2s;
+}
+.sim-btn:hover { background: var(--enji-lt); }
+.sim-btn:disabled { opacity: 0.6; cursor: default; }
+
+#scan-result {
+  margin-top: 16px; display: none;
+  font-family: "Courier New", monospace;
+  font-size: 0.83rem; color: #7dffb0;
+  text-align: left; line-height: 1.7;
+}
+#scan-result.show { display: block; }
+.scan-line { opacity: 0; animation: fadeIn 0.3s forwards; }
+@keyframes fadeIn { to { opacity: 1; } }
+
+.hero-sub-note { font-size: 0.8rem; color: var(--text-sub); margin-top: 8px; }
+</style>
+</head>
+<body>
+
+<div class="widget-box">
+  <div class="sim-label">▶ LEVEL 1：サイトの<u>セキュリティ</u>外周点検シミュレーター（無料）</div>
+  <div class="sim-input-row">
+    <input
+      id="urlInput"
+      class="sim-input"
+      type="text"
+      placeholder="例: your-clinic.jp"
+      autocomplete="off"
+    >
+    <button class="sim-btn" onclick="runScan()">点検開始</button>
+  </div>
+  <div id="scan-result"></div>
+  <p class="hero-sub-note">※ SSL・管理画面露出など公開情報のみを確認します。不正アクセス禁止法を遵守。</p>
+  <div id="scan-lead"></div>
+</div>
+
+<script>
+function notifyHeight() {
+  var b = document.querySelector('.widget-box');
+  var h = b ? Math.ceil(b.offsetTop + b.offsetHeight) + 20 : document.body.scrollHeight;
+  window.parent.postMessage({ type: 'roiHeight', height: h }, '*');
+}
+
+async function runScan() {
+  const input = document.getElementById('urlInput').value.trim();
+  const result = document.getElementById('scan-result');
+  result.classList.add('show');
+  result.innerHTML = '';
+  const leadWrap = document.getElementById('scan-lead');
+  if (leadWrap) leadWrap.innerHTML = '';
+
+  if (!input) {
+    result.innerHTML = '<span style="color:#ff9090">⚠ ドメインを入力してください（例: your-clinic.jp）</span>';
+    notifyHeight();
+    return;
+  }
+  const domain = input.replace(/^https?:\/\//, '').replace(/\/.*$/, '');
+
+  const line = (text, color) => {
+    const d = document.createElement('div');
+    d.className = 'scan-line';
+    d.style.animationDelay = '0s';
+    d.style.color = color || '#7dffb0';
+    d.textContent = text;
+    result.appendChild(d);
+    result.scrollTop = result.scrollHeight;
+    notifyHeight();
+    return d;
+  };
+
+  line(`[Prevention] 外周目視点検 Lv.1 開始 — ${domain}`);
+  const loading = line(`[*] サーバーに問い合わせ中 ...（公開情報のみを確認します）`, '#9fb4cc');
+
+  let data;
+  try {
+    const res = await fetch('/api/security-check?url=' + encodeURIComponent(input), { headers: { 'Accept': 'application/json' } });
+    data = await res.json();
+  } catch (e) {
+    loading.textContent = '[✕] 点検サーバーに接続できませんでした。時間をおいて再度お試しください';
+    loading.style.color = '#ff9090';
+    notifyHeight();
+    return;
+  }
+  loading.remove();
+
+  if (!data || !data.ok) {
+    line(`[✕] ${(data && data.error) || 'このサイトは点検できませんでした'}`, '#ff9090');
+    line(`　ドメインをご確認ください（例: your-clinic.jp）`, '#9fb4cc');
+    notifyHeight();
+    return;
+  }
+
+  const mark = { good: '[+]', warn: '[!]', bad: '[✕]' };
+  const col  = { good: '#7dffb0', warn: '#ffb97d', bad: '#ff9090' };
+  const checks = data.checks || [];
+  checks.forEach((c, i) => {
+    setTimeout(() => {
+      line(`${mark[c.status] || '[*]'} ${c.label} … ${c.detail}`, col[c.status] || '#7dffb0');
+      if (c.status !== 'good' && c.fix) line(`    └ 対処：${c.fix}`, '#c9a84c');
+    }, i * 300);
+  });
+
+  const totalDelay = checks.length * 300 + 200;
+  setTimeout(() => {
+    const bad = data.counts.bad, warn = data.counts.warn;
+    const findings = bad + warn;
+    line('');
+    line(`[Prevention] 外周目視点検 完了 ── 要確認ポイント: ${findings}件（安全スコア ${data.score}/100）`, findings > 0 ? '#ffb97d' : '#7dffb0');
+
+    const level      = bad >= 1 ? '要注意' : (warn >= 1 ? 'やや注意' : '良好');
+    const levelColor = bad >= 1 ? '#ff9090' : (warn >= 1 ? '#ffb97d' : '#7dffb0');
+    const levelIcon  = bad >= 1 ? '⚠️' : (warn >= 1 ? '🔍' : '✅');
+    const leadMsg = findings > 0
+      ? '外から見える範囲だけで、第三者が「裏口」を探す手がかりになる弱点が見つかりました。空き巣に「ここは入りやすい家」と教えているのと同じ状態です。'
+      : '外周（入口）については、目立った弱点は見つかりませんでした。ただし、安心はまだ早いです。';
+
+    const summary = document.createElement('div');
+    summary.className = 'scan-line';
+    summary.style.cssText = 'margin-top:16px;font-family:\'Hiragino Kaku Gothic ProN\',sans-serif;';
+    summary.innerHTML =
+      '<div style="background:rgba(74,15,15,0.6);border:1px solid rgba(255,80,80,0.5);border-left:4px solid #ff5050;border-radius:8px;padding:16px 18px;">' +
+        '<div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;">' +
+          '<span style="font-size:1.3rem;">' + levelIcon + '</span>' +
+          '<span style="color:' + levelColor + ';font-weight:800;font-size:0.95rem;">危険度：' + level + ' ── 外側だけで「' + findings + '件」を検出</span>' +
+        '</div>' +
+        '<p style="color:#ffd0d0;font-size:0.84rem;line-height:1.8;margin:0 0 10px;">' + leadMsg + '</p>' +
+        '<div style="background:rgba(0,21,53,0.5);border:1px dashed rgba(201,168,76,0.5);border-radius:6px;padding:12px 14px;">' +
+          '<p style="color:#ffe2a8;font-size:0.84rem;line-height:1.8;margin:0;">' +
+            '🔴 <strong>もっと大事なこと：</strong>この点検は「建物の<u>外側</u>」を見ただけです。<br>' +
+            '外がキレイでも、<strong>中（院内ネット・スタッフのPC・電子カルテ）</strong>が安全とは限りません。<br>' +
+            '空き巣は窓やガレージからも入ります。<strong>「中」の点検をして初めて、本当に安全と言えます。</strong>' +
+          '</p>' +
+        '</div>' +
+      '</div>';
+    result.appendChild(summary);
+    result.scrollTop = result.scrollHeight;
+
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push({ event: 'security_scan_done', scan_domain: domain, scan_findings: findings, scan_score: data.score });
+
+    renderScanLeadForm(data, domain, findings);
+    notifyHeight();
+  }, totalDelay);
+}
+
+function renderScanLeadForm(data, domain, findings) {
+  var GAS_URL = 'https://script.google.com/macros/s/AKfycbweIGAPeJwD-U8D4Cks6fjGmp5hR2kpuwCx_9janRnGq3qdUFR4DDpYGgl33-bkFr3v/exec';
+  var wrap = document.getElementById('scan-lead');
+  if (!wrap) return;
+  var issues = (data.checks || []).filter(function (c) { return c.status !== 'good'; });
+  var findingsText = issues.map(function (c) { return (c.status === 'bad' ? '×' : '!') + ' ' + c.label + '：' + c.detail; }).join('\n');
+  var inputStyle = 'width:100%;padding:12px 14px;border:1px solid rgba(201,168,76,0.3);border-radius:6px;font-size:14px;font-family:inherit;box-sizing:border-box;background:rgba(0,21,53,0.6);color:#fff;';
+
+  wrap.innerHTML =
+    '<div style="margin-top:22px;background:rgba(255,255,255,0.04);border:1px solid var(--border);border-radius:12px;padding:22px;">' +
+      '<div style="font-size:0.82rem;color:var(--gold);font-weight:700;letter-spacing:0.08em;margin-bottom:6px;">▶ この結果の詳細レポートを無料で受け取る</div>' +
+      '<p style="font-size:0.84rem;color:var(--text-sub);line-height:1.8;margin-bottom:14px;">診断結果をPDFにまとめ、<strong style="color:#ffe2a8;">具体的な直し方</strong>と「中（院内）」の点検プランを添えてお送りします。担当より1〜2営業日以内にご連絡します。</p>' +
+      '<div style="font-size:0.78rem;color:var(--text-sub);background:rgba(0,21,53,0.5);border:1px dashed rgba(201,168,76,0.35);border-radius:6px;padding:8px 12px;margin-bottom:14px;">対象：<strong style="color:#fff;">' + domain + '</strong>　／　安全スコア：<strong style="color:#fff;">' + data.score + '/100</strong>　／　要確認：<strong style="color:#ffb97d;">' + findings + '件</strong></div>' +
+      '<form id="scanLeadForm" novalidate>' +
+        '<div style="margin-bottom:10px;"><input name="name" placeholder="お名前" required style="' + inputStyle + '"></div>' +
+        '<div style="margin-bottom:10px;"><input name="company" placeholder="施設名・会社名" style="' + inputStyle + '"></div>' +
+        '<div style="margin-bottom:10px;"><input name="email" type="email" placeholder="メールアドレス" required style="' + inputStyle + '"></div>' +
+        '<div style="margin-bottom:14px;"><input name="phone" type="tel" placeholder="電話番号（任意）" style="' + inputStyle + '"></div>' +
+        '<button type="submit" style="width:100%;padding:14px;border:none;border-radius:6px;font-size:15px;font-weight:700;cursor:pointer;background:#06c755;color:#fff;">詳細レポートを無料で受け取る</button>' +
+      '</form>' +
+      '<div id="scanLeadThanks" style="display:none;padding:18px;background:rgba(6,199,85,0.12);border:1px solid #06c755;border-radius:8px;text-align:center;color:#c7ffe0;line-height:1.8;">✅ 送信ありがとうございます。<br>診断結果をもとに、担当より1〜2営業日以内にご連絡します。</div>' +
+    '</div>';
+
+  var form = document.getElementById('scanLeadForm');
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    var btn = form.querySelector('button[type=submit]');
+    btn.disabled = true; btn.textContent = '送信中...';
+    var fd = new FormData(form);
+    fd.append('page', 'Prevention');
+    fd.append('form_type', '外周点検リード');
+    fd.append('request', '点検結果の詳細レポート希望');
+    fd.append('scan_url', data.url || domain);
+    fd.append('scan_score', String(data.score));
+    fd.append('scan_findings', String(findings));
+    fd.append('scan_detail', findingsText);
+    fd.append('message', '【自動点検結果】対象:' + domain + ' / スコア:' + data.score + '/100 / 要確認:' + findings + '件\n' + findingsText);
+    var done = false;
+    function showThanks() {
+      if (done) return; done = true;
+      window.dataLayer = window.dataLayer || [];
+      window.dataLayer.push({ event: 'form_submit', form_type: '外周点検リード', page_name: 'Prevention' });
+      window.dataLayer.push({ event: 'scan_lead_submit', scan_domain: domain, scan_score: data.score, scan_findings: findings });
+      form.style.display = 'none';
+      var t = document.getElementById('scanLeadThanks');
+      if (t) t.style.display = 'block';
+      notifyHeight();
+    }
+    setTimeout(showThanks, 2500);
+    fetch(GAS_URL, { method: 'POST', mode: 'no-cors', body: fd }).catch(function () {}).finally(showThanks);
+  });
+  notifyHeight();
+}
+
+document.getElementById('urlInput').addEventListener('keydown', (e) => {
+  if (e.key === 'Enter') runScan();
+});
+
+window.addEventListener('load', notifyHeight);
+window.addEventListener('resize', notifyHeight);
+</script>
+
+</body>
+</html>

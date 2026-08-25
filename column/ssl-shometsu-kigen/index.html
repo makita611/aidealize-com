@@ -258,6 +258,21 @@ footer{background:#1f1f1f;border-top:1px solid rgba(255,255,255,0.06);padding:40
   <p>問い合わせ・予約・資料請求フォームを持つサイトでは、暗号化が切れた状態で個人情報が送られると<strong>傍受のリスク</strong>が高まります。加えて、警告画面で離脱した見込み客は戻ってきません。<strong>症状が見た目に出ないまま、問い合わせだけが静かにゼロになる</strong>——これがSSL失効の最も怖いところです。</p>
 
   <div class="inline-cta reveal">
+    <div class="inline-cta-tag">無料・入力30秒・費用契約なし</div>
+    <h3>今すぐ、自社サイトを点検してみる</h3>
+    <p>ドメインを入れるだけで、SSL・管理画面の外部露出・CMSの状態など公開情報の範囲を自動で点検します。</p>
+    <iframe id="secScanFrame" src="/security-scan-widget.html" title="無料セキュリティ外周点検" width="100%" height="220" frameborder="0" scrolling="no" loading="lazy" style="display:block;border:none;border-radius:12px;overflow:hidden;max-width:640px;margin:20px auto 0;"></iframe>
+  </div>
+  <script>
+  window.addEventListener('message', function(e){
+    if (e.data && e.data.type === 'roiHeight') {
+      var f = document.getElementById('secScanFrame');
+      if (f && e.data.height) f.style.height = e.data.height + 'px';
+    }
+  });
+  </script>
+
+  <div class="inline-cta reveal">
     <div class="inline-cta-tag">無料・費用契約なし</div>
     <h3>自社サイトのSSLは切れていませんか？<br>証明書の状態を無料で点検します。</h3>
     <p>SSLの有無・証明書の有効期限・混在コンテンツ（一部http）まで、公開情報の範囲で点検し、直すべき箇所を1枚のレポートにしてお渡しします。</p>

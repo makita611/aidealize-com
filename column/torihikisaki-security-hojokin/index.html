@@ -289,6 +289,21 @@ footer{background:#1f1f1f;border-top:1px solid rgba(255,255,255,0.06);padding:40
   <p>標的型攻撃メール訓練、USBメモリの持ち出しルール、パスワードの使い回し禁止、社外持ち出しPCの暗号化、退職者アカウントの即時削除——これらを<strong>A4用紙1〜2枚の「社内セキュリティ規定」</strong>にまとめておくだけで、取引先からの信頼度は跳ね上がります。</p>
 
   <div class="inline-cta reveal">
+    <div class="inline-cta-tag">無料・入力30秒・費用契約なし</div>
+    <h3>今すぐ、自社サイトを点検してみる</h3>
+    <p>ドメインを入れるだけで、SSL・管理画面の外部露出・CMSの状態など公開情報の範囲を自動で点検します。</p>
+    <iframe id="secScanFrame" src="/security-scan-widget.html" title="無料セキュリティ外周点検" width="100%" height="220" frameborder="0" scrolling="no" loading="lazy" style="display:block;border:none;border-radius:12px;overflow:hidden;max-width:640px;margin:20px auto 0;"></iframe>
+  </div>
+  <script>
+  window.addEventListener('message', function(e){
+    if (e.data && e.data.type === 'roiHeight') {
+      var f = document.getElementById('secScanFrame');
+      if (f && e.data.height) f.style.height = e.data.height + 'px';
+    }
+  });
+  </script>
+
+  <div class="inline-cta reveal">
     <div class="inline-cta-tag">無料・費用契約なし</div>
     <h3>「うちは今、取引先に胸を張れる状態か？」<br>を、まず無料点検で知る。</h3>
     <p>攻撃者と同じ外部の視点で、自社サイト・サーバーの弱点を可視化。SECURITY ACTIONや補助金活用も含め、次の一手を1枚のレポートに整理してお渡しします。</p>

@@ -22,7 +22,7 @@
   "@type": "Article",
   "headline": "中小企業のセキュリティ対策、何から始める？IPA調査「8割が分からない」を抜け出す3ステップ",
   "description": "中小企業の約8割が「どこから始めればいいか分からない」と回答(IPA調査)。北関東2万3千社の実測データをもとに、優先順位付き3ステップと使える補助金を解説します。",
-  "datePublished": "2026-08-23",
+  "datePublished": "2026-08-03",
   "author": {"@type": "Organization", "name": "AIdealize株式会社"},
   "publisher": {"@type": "Organization", "name": "AIdealize株式会社", "url": "https://aidealize.com"}
 }
@@ -218,7 +218,7 @@ footer{background:#1f1f1f;border-top:1px solid rgba(255,255,255,0.06);padding:40
       抜け出す3ステップ。
     </h1>
     <div class="article-meta">
-      <div>📅 2026年8月23日</div>
+      <div>📅 2026年8月3日</div>
       <div>⏱ 読了約7分</div>
       <div>✍ AIdealize編集部</div>
     </div>
@@ -282,6 +282,21 @@ footer{background:#1f1f1f;border-top:1px solid rgba(255,255,255,0.06);padding:40
     <a href="/column/seizougyou-kanri-gamen-jittai/" class="industry-row"><span class="industry-row-name">製造業<span>管理画面露出</span></span><span class="industry-row-val">24.1%<span class="industry-row-arrow">→</span></span></a>
     <a href="/column/fudousan-kanri-gamen-jittai/" class="industry-row"><span class="industry-row-name">不動産会社<span>管理画面露出</span></span><span class="industry-row-val">22.8%<span class="industry-row-arrow">→</span></span></a>
   </div>
+
+  <div class="inline-cta reveal">
+    <div class="inline-cta-tag">無料・入力30秒・費用契約なし</div>
+    <h3>今すぐ、自社サイトを点検してみる</h3>
+    <p>ドメインを入れるだけで、SSL・管理画面の外部露出・CMSの状態など公開情報の範囲を自動で点検します。</p>
+    <iframe id="secScanFrame" src="/security-scan-widget.html" title="無料セキュリティ外周点検" width="100%" height="220" frameborder="0" scrolling="no" loading="lazy" style="display:block;border:none;border-radius:12px;overflow:hidden;max-width:640px;margin:20px auto 0;"></iframe>
+  </div>
+  <script>
+  window.addEventListener('message', function(e){
+    if (e.data && e.data.type === 'roiHeight') {
+      var f = document.getElementById('secScanFrame');
+      if (f && e.data.height) f.style.height = e.data.height + 'px';
+    }
+  });
+  </script>
 
   <div class="inline-cta reveal">
     <div class="inline-cta-tag">無料・費用契約なし</div>
