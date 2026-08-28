@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AIクラークとは？医療・介護現場での導入メリットと選び方【AIdealize】</title>
+<meta name="description" content="AIクラーク（AIスクライブ）とは、診察や訪問の会話をAIが自動で記録・要約するツールです。医療・介護現場での導入メリット、選び方の3つのポイント、導入時に注意すべき点を解説します。">
+<link rel="canonical" href="https://aidealize.com/column/ai-clerk-toha/">
+<meta property="og:title" content="AIクラークとは？医療・介護現場での導入メリットと選び方">
+<meta property="og:description" content="診察・訪問の会話を自動で記録・要約するAIクラーク。導入メリットと選び方の3つのポイントを解説。">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://aidealize.com/column/ai-clerk-toha/">
+<meta property="og:site_name" content="AIdealize株式会社">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700;900&family=Shippori+Mincho:wght@400;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-P6VNBWH3');</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "AIクラークとは？医療・介護現場での導入メリットと選び方",
+  "description": "診察や訪問の会話をAIが自動で記録・要約するAIクラークの仕組みと、導入メリット・選び方を解説します。",
+  "datePublished": "2026-08-28",
+  "author": {"@type": "Organization", "name": "AIdealize株式会社"},
+  "publisher": {"@type": "Organization", "name": "AIdealize株式会社", "url": "https://aidealize.com"}
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {"@type":"Question","name":"AIクラークとAIスクライブは同じものですか？","acceptedAnswer":{"@type":"Answer","text":"ほぼ同じ意味で使われます。どちらも「診察・面談の会話を音声認識し、記録として自動でまとめるAIツール」を指します。海外ではAIスクライブ、国内ではAIクラークと呼ばれることが多い傾向があります。"}},
+    {"@type":"Question","name":"AIクラークは電子カルテと連携できますか？","acceptedAnswer":{"@type":"Answer","text":"ツールによって連携範囲は異なります。既存の電子カルテにそのまま貼り付けられるテキスト出力形式のものから、API連携で直接書き込めるものまで幅があります。導入前に、自院・自事業所が使っているシステムとの連携可否を必ず確認しましょう。"}},
+    {"@type":"Question","name":"AIクラークの記録精度はどれくらいですか？","acceptedAnswer":{"@type":"Answer","text":"専門用語や固有名詞の認識精度はツールにより差があります。医療・介護分野に特化して学習させたツールの方が、汎用の文字起こしツールより専門用語の誤変換が少ない傾向があります。無料トライアルで実際の会話を試してから判断することをおすすめします。"}}
+  ]
+}
+</script>
+<style>
+:root{
+  --red:#0891b2;--red-dark:#0e7490;
+  --ink:#1e293b;--body:#4b5563;--light:#94a3b8;
+  --border:#e2e8f0;--bg:#f8fafc;--bg2:#f1f5f9;--white:#fff;
+  --tag-bg:#ecfeff;--green:#059669;--green-bg:#ecfdf5;
+  --demo-bg:#0f172a;--amber-bg:#fef3c7;--amber-tx:#92400e;--danger:#dc2626;--danger-bg:#fef2f2;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{font-family:'Noto Sans JP',sans-serif;background:var(--white);color:var(--ink);overflow-x:hidden;line-height:1.7;}
+#mainNav{position:fixed;top:0;left:0;right:0;z-index:1000;display:flex;align-items:center;justify-content:space-between;padding:0 60px;height:68px;background:rgba(255,255,255,0.97);border-bottom:1px solid var(--border);backdrop-filter:blur(12px);transition:box-shadow 0.3s;}
+#mainNav.scrolled{box-shadow:0 2px 16px rgba(0,0,0,0.06);}
+.nav-logo{display:flex;align-items:center;gap:10px;text-decoration:none;}
+.nav-logo img{height:34px;width:auto;}
+.nav-logo-text{font-family:'DM Mono',monospace;font-size:15px;font-weight:500;color:var(--ink);letter-spacing:0.02em;}
+.nav-logo-text span{color:var(--red);}
+.nav-links{display:flex;align-items:center;gap:32px;list-style:none;}
+.nav-links a{font-size:13px;font-weight:500;color:var(--body);text-decoration:none;transition:color 0.2s;}
+.nav-links a:hover{color:var(--ink);}
+.nav-cta{background:var(--red) !important;color:#fff !important;padding:9px 20px;border-radius:4px;font-size:12px !important;font-weight:700 !important;}
+.nav-cta:hover{background:var(--red-dark) !important;}
+.nav-hamburger{display:none;flex-direction:column;justify-content:center;gap:5px;width:40px;height:40px;background:none;border:none;cursor:pointer;}
+.nav-hamburger span{display:block;width:22px;height:2px;background:var(--ink);transition:all 0.3s;transform-origin:center;}
+.nav-hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg);}
+.nav-hamburger.open span:nth-child(2){opacity:0;}
+.nav-hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
+.nav-drawer{display:none;position:fixed;top:68px;left:0;right:0;background:#fff;border-bottom:2px solid var(--red);padding:20px 28px 28px;z-index:999;}
+.nav-drawer.open{display:block;}
+.nav-drawer ul{list-style:none;display:flex;flex-direction:column;}
+.nav-drawer ul li a{display:block;padding:13px 0;font-size:15px;font-weight:500;color:var(--ink);text-decoration:none;border-bottom:1px solid var(--border);}
+.nav-drawer ul li:last-child a{margin-top:16px;text-align:center;background:var(--red);color:#fff !important;padding:13px;border-radius:4px;font-weight:700 !important;border-bottom:none;}
+@media(max-width:1024px){#mainNav{padding:0 28px;}.nav-links{display:none;}.nav-hamburger{display:flex;}}
+@media(max-width:480px){#mainNav{padding:0 16px;height:60px;}.nav-drawer{top:60px;}.nav-logo-text{font-size:13px;}}
+.article-header{padding:116px 24px 52px;background:var(--bg);border-bottom:1px solid var(--border);}
+.article-header-inner{max-width:760px;margin:0 auto;}
+.breadcrumb{display:flex;align-items:center;gap:6px;font-size:12px;color:var(--light);margin-bottom:20px;flex-wrap:wrap;}
+.breadcrumb a{color:var(--light);text-decoration:none;}
+.breadcrumb a:hover{color:var(--red);}
+.breadcrumb span{color:var(--border);}
+.article-tag{display:inline-flex;align-items:center;background:var(--tag-bg);color:var(--red);font-size:11px;font-weight:700;letter-spacing:0.06em;padding:4px 12px;border-radius:100px;margin-bottom:18px;}
+.article-h1{font-family:'Shippori Mincho',serif;font-size:clamp(20px,3vw,34px);font-weight:700;color:var(--ink);line-height:1.65;margin-bottom:20px;}
+.article-meta{display:flex;align-items:center;gap:20px;flex-wrap:wrap;font-size:12px;color:var(--light);}
+.article-body{padding:72px 24px 100px;}
+.article-body-inner{max-width:760px;margin:0 auto;}
+.summary-box{background:var(--bg);border-left:4px solid var(--red);padding:24px 28px;border-radius:0 6px 6px 0;margin-bottom:52px;}
+.summary-box-title{font-size:11px;font-weight:700;color:var(--red);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:12px;}
+.summary-box ul{list-style:none;display:flex;flex-direction:column;gap:8px;}
+.summary-box ul li{display:flex;align-items:flex-start;gap:8px;font-size:14px;line-height:1.8;color:var(--ink);}
+.summary-box ul li::before{content:'✓';color:var(--red);font-weight:700;flex-shrink:0;margin-top:1px;}
+.article-body-inner h2{font-family:'Shippori Mincho',serif;font-size:clamp(17px,2.2vw,24px);font-weight:700;color:var(--ink);line-height:1.65;margin:56px 0 20px;padding-bottom:10px;border-bottom:1px solid var(--border);position:relative;}
+.article-body-inner h2::after{content:'';position:absolute;bottom:-1px;left:0;width:48px;height:2px;background:var(--red);}
+.article-body-inner h3{font-family:'Shippori Mincho',serif;font-size:clamp(15px,1.8vw,19px);font-weight:700;color:var(--ink);line-height:1.7;margin:36px 0 14px;padding-left:14px;border-left:3px solid var(--red);}
+.article-body-inner p{font-size:15px;line-height:2;color:var(--body);margin-bottom:22px;}
+.article-body-inner strong{color:var(--ink);font-weight:700;}
+.article-body-inner a{color:var(--red-dark);font-weight:700;text-decoration:underline;text-underline-offset:2px;}
+.article-body-inner ul,.article-body-inner ol{list-style:none;margin-bottom:22px;display:flex;flex-direction:column;gap:8px;}
+.article-body-inner ul li,.article-body-inner ol li{font-size:14px;line-height:1.9;color:var(--body);display:flex;align-items:flex-start;gap:10px;}
+.article-body-inner ul li::before{content:'─';color:var(--red);flex-shrink:0;margin-top:4px;font-size:12px;}
+.article-body-inner ol{counter-reset:ol;}
+.article-body-inner ol li{counter-increment:ol;}
+.article-body-inner ol li::before{content:counter(ol);background:var(--red);color:#fff;width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0;margin-top:2px;font-family:'DM Mono',monospace;}
+.point-box{background:var(--bg2);border-radius:8px;padding:20px 24px;margin:20px 0;}
+.point-box-label{font-size:10px;font-family:'DM Mono',monospace;color:var(--red);letter-spacing:0.12em;text-transform:uppercase;margin-bottom:10px;}
+.point-box p{font-size:14px;line-height:1.9;color:var(--body);margin-bottom:0;}
+.case-box{border:1px solid #cffafe;border-left:5px solid var(--red);border-radius:0 10px 10px 0;padding:24px 26px;margin:28px 0;background:linear-gradient(135deg,#ecfeff,#f0fdf4);}
+.case-box p{margin-bottom:0;font-size:14px;line-height:1.9;color:var(--body);}
+.case-honest{margin-top:16px;background:var(--amber-bg);color:var(--amber-tx);border-radius:8px;padding:14px 16px;font-size:13px;line-height:1.85;}
+.inline-cta{background:var(--bg);border:1px solid var(--border);border-top:4px solid var(--red);border-radius:10px;padding:36px;margin:52px 0;text-align:center;}
+.inline-cta-tag{font-size:11px;color:var(--red);font-weight:700;letter-spacing:0.08em;margin-bottom:12px;}
+.inline-cta h3{font-family:'Shippori Mincho',serif;font-size:clamp(16px,2vw,22px);font-weight:700;color:var(--ink);line-height:1.65;margin-bottom:12px;}
+.inline-cta p{font-size:14px;color:var(--body);line-height:1.9;margin-bottom:22px;}
+.cta-btns-pair{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;}
+.btn-cta-red{display:inline-flex;align-items:center;gap:6px;background:var(--red);color:#fff;padding:13px 28px;border-radius:4px;font-size:14px;font-weight:700;text-decoration:none;transition:background 0.2s,transform 0.2s;}
+.btn-cta-red:hover{background:var(--red-dark);transform:translateY(-2px);}
+.btn-cta-ghost{display:inline-flex;align-items:center;gap:6px;background:#fff;color:var(--red);border:1.5px solid var(--red);padding:13px 28px;border-radius:4px;font-size:14px;font-weight:700;text-decoration:none;transition:background 0.2s;}
+.btn-cta-ghost:hover{background:var(--tag-bg);}
+.btn-cta-note{display:block;margin-top:12px;font-size:11px;color:var(--light);}
+.dtable{width:100%;border-collapse:collapse;font-size:13px;margin:24px 0;}
+.dtable th,.dtable td{border:1px solid var(--border);padding:11px 13px;text-align:left;vertical-align:top;line-height:1.7;}
+.dtable th{background:var(--bg2);color:var(--ink);font-weight:700;}
+.dtable td{color:var(--body);}
+.dwrap{overflow-x:auto;}
+.related-section{padding:60px 24px;background:var(--white);border-top:1px solid var(--border);}
+.related-inner{max-width:760px;margin:0 auto;}
+.related-label{font-family:'DM Mono',monospace;font-size:11px;color:var(--red);letter-spacing:0.14em;text-transform:uppercase;margin-bottom:20px;}
+.related-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;}
+.related-card{border:1px solid var(--border);border-top:3px solid var(--red);padding:20px;text-decoration:none;color:inherit;border-radius:0 0 6px 6px;transition:box-shadow 0.2s,transform 0.2s;}
+.related-card:hover{box-shadow:0 4px 16px rgba(0,0,0,0.07);transform:translateY(-2px);}
+.related-card-tag{font-size:10px;font-family:'DM Mono',monospace;color:var(--red);letter-spacing:0.1em;margin-bottom:8px;}
+.related-card-title{font-family:'Shippori Mincho',serif;font-size:14px;font-weight:700;color:var(--ink);line-height:1.6;}
+.back-section{padding:28px 24px;background:var(--bg);border-top:1px solid var(--border);}
+.back-section-inner{max-width:760px;margin:0 auto;}
+.back-link{display:inline-flex;align-items:center;gap:6px;font-size:13px;color:var(--body);text-decoration:none;transition:color 0.2s;}
+.back-link:hover{color:var(--red);}
+footer{background:#1f1f1f;border-top:1px solid rgba(255,255,255,0.06);padding:40px 60px;display:flex;align-items:center;justify-content:space-between;}
+.footer-logo{display:flex;align-items:center;gap:10px;}
+.footer-logo-mark{width:20px;height:20px;background:var(--red);clip-path:polygon(50% 0%,0% 100%,18% 100%,50% 38%,82% 100%,100% 100%);}
+.footer-logo-text{font-family:'DM Mono',monospace;font-size:13px;color:rgba(255,255,255,0.55);}
+.footer-logo-text span{color:var(--red);}
+.footer-copy{font-size:11px;color:rgba(255,255,255,0.25);font-family:'DM Mono',monospace;}
+.reveal{opacity:0;transform:translateY(18px);transition:opacity 0.55s ease,transform 0.55s ease;}
+.reveal.visible{opacity:1;transform:translateY(0);}
+@media(max-width:768px){
+  .article-header,.article-body,.back-section,.related-section{padding-left:16px;padding-right:16px;}
+  .article-header{padding-top:88px;}
+  .related-grid{grid-template-columns:1fr !important;}
+  .cta-btns-pair{flex-direction:column;align-items:center;}
+  .inline-cta{padding:24px 18px;}
+  footer{flex-direction:column;gap:14px;text-align:center;padding:28px 16px;}
+}
+</style>
+</head>
+<body>
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-P6VNBWH3" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
+<nav id="mainNav">
+  <a href="/" class="nav-logo">
+    <img src="/images/logo.png" alt="AIdealize">
+    <span class="nav-logo-text"><span>AI</span>dealize</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="/column/">コラム</a></li>
+    <li><a href="/service/">サービス</a></li>
+    <li><a href="https://aidealize.com/bpr/">DX事例</a></li>
+    <li><a href="/works/">実績</a></li>
+    <li><a href="/company.html">会社概要</a></li>
+    <li><a href="/service/marketing/#contact" class="nav-cta">無料でサイト点検</a></li>
+  </ul>
+  <button class="nav-hamburger" id="navHamburger" aria-label="メニュー"><span></span><span></span><span></span></button>
+</nav>
+<div class="nav-drawer" id="navDrawer">
+  <ul>
+    <li><a href="/column/" class="drawer-link">コラム</a></li>
+    <li><a href="/service/" class="drawer-link">サービス</a></li>
+    <li><a href="https://aidealize.com/bpr/" class="drawer-link">DX事例</a></li>
+    <li><a href="/works/" class="drawer-link">実績</a></li>
+    <li><a href="/company.html" class="drawer-link">会社概要</a></li>
+    <li><a href="/service/marketing/#contact">無料でサイト点検</a></li>
+  </ul>
+</div>
+
+<header class="article-header">
+  <div class="article-header-inner">
+    <nav class="breadcrumb" aria-label="パンくず">
+      <a href="/">ホーム</a><span>/</span>
+      <a href="/column/">コラム</a><span>/</span>
+      <span>AIクラークとは</span>
+    </nav>
+    <div class="article-tag">AI活用 / 医療・介護</div>
+    <h1 class="article-h1">
+      AIクラークとは？<br>
+      医療・介護現場での<br>
+      導入メリットと選び方。
+    </h1>
+    <div class="article-meta">
+      <div>📅 2026年8月28日</div>
+      <div>⏱ 読了約6分</div>
+      <div>✍ AIdealize編集部</div>
+    </div>
+  </div>
+</header>
+
+<article class="article-body">
+<div class="article-body-inner">
+
+  <div class="summary-box reveal">
+    <div class="summary-box-title">この記事でわかること</div>
+    <ul>
+      <li>AIクラーク（AIスクライブ）とは何か、基本の仕組み</li>
+      <li>医療・介護現場での具体的な導入メリット</li>
+      <li>選ぶときに確認すべき3つのポイント</li>
+      <li>導入時によくある注意点</li>
+    </ul>
+  </div>
+
+  <p>「AIクラーク」という言葉を目にする機会が増えました。診察や訪問の場での会話を、AIがリアルタイムで文字起こしし、記録の下書きまで自動で作成してくれるツールの総称です。この記事では、AIクラークの基本的な仕組みと、医療・介護現場での導入メリット、選び方のポイントを解説します。</p>
+
+  <h2>AIクラークとは何か</h2>
+
+  <p>AIクラーク（AIスクライブと呼ばれることもあります）は、<strong>診察・面談・訪問時の会話を音声認識し、要点を自動でまとめて記録の下書きを作成するAIツール</strong>です。従来は医師や看護師が診察後にまとめて記録していた作業を、会話と並行して、あるいは会話終了直後に自動化します。</p>
+
+  <div class="point-box">
+    <div class="point-box-label">ここが重要</div>
+    <p>AIクラークは「記録を自動生成する」だけでなく、<strong>会話中に患者・利用者に向き合う時間を増やす</strong>ことが本来の狙いです。記録作業に気を取られず対話に集中できることが、満足度・信頼関係の面でも効果を発揮します。</p>
+  </div>
+
+  <h2>医療・介護現場での導入メリット</h2>
+
+  <ol>
+    <li><strong>記録時間の短縮</strong>：会話をそのまま下書きにできるため、記録作成にかかる時間を大幅に減らせます。</li>
+    <li><strong>記入漏れの防止</strong>：人の記憶に頼らず会話をそのまま拾うため、聞き取った内容の記入漏れが減ります。</li>
+    <li><strong>残業・持ち帰り作業の削減</strong>：診察後・訪問後にまとめて記録する時間が不要になり、当日中に業務が完結しやすくなります。</li>
+  </ol>
+
+  <p>訪問看護での具体的な活用例は<a href="/column/kaigo-kiroku-onsei-nyuryoku/">介護記録の音声入力とは？話すだけでSOAP完成</a>でも解説しています。</p>
+
+  <div class="inline-cta reveal">
+    <div class="inline-cta-tag">無料・費用契約なし</div>
+    <h3>自院・自事業所に合うか、<br>まず無料で試せます。</h3>
+    <p>実際の会話を使ったデモで、記録の精度・使い勝手を体験いただけます。お気軽にご相談ください。</p>
+    <div class="cta-btns-pair">
+      <a href="/lp/hanamaru-kango/" class="btn-cta-red">はなまるAI看護を見る →</a>
+      <a href="/service/" class="btn-cta-ghost">サービスを見る</a>
+    </div>
+    <span class="btn-cta-note">オンライン対応・押し売りなし</span>
+  </div>
+
+  <h2>選び方の3つのポイント</h2>
+
+  <h3>1. 専門用語の認識精度</h3>
+  <p>医療・介護分野の専門用語や略語を正確に拾えるかは、ツールによって差が大きい部分です。汎用の文字起こしツールでは誤変換が多くなりがちなので、分野特化型かどうかを確認しましょう。</p>
+
+  <h3>2. 既存システムとの連携</h3>
+  <p>電子カルテやレセコンにそのまま貼り付けられるか、API連携で直接書き込めるかはツールにより異なります。今使っているシステムとの連携可否を導入前に必ず確認してください。</p>
+
+  <h3>3. セキュリティ・データの扱い</h3>
+  <p>会話データや記録には個人情報が含まれます。データの保存場所、AI学習への利用有無、アクセス権限の設定などをあわせて確認することが重要です。</p>
+
+  <div class="case-box reveal">
+    <p>AIクラークは「記録を全自動化する魔法の道具」ではなく、<strong>下書きを作り、最終確認は人が行う</strong>のが現実的な運用です。専門用語の誤変換や文脈の取り違えは起こり得るため、最終チェックの工程は残すことをおすすめします。</p>
+    <div class="case-honest">⚠ <strong>正直にお伝えします。</strong>導入初期は「思ったより手直しが必要」と感じることもあります。使い始めの数週間で用語の学習が進み、精度が上がっていくケースが多いので、短期間で判断せず様子を見ることをおすすめします。</div>
+  </div>
+
+  <h2>よくある質問（FAQ）</h2>
+  <h3>AIクラークとAIスクライブは同じものですか？</h3>
+  <p>ほぼ同じ意味で使われます。どちらも「診察・面談の会話を音声認識し、記録として自動でまとめるAIツール」を指します。</p>
+  <h3>AIクラークは電子カルテと連携できますか？</h3>
+  <p>ツールによって連携範囲は異なります。テキスト出力形式のものから、API連携で直接書き込めるものまで幅があるため、導入前に確認が必要です。</p>
+  <h3>AIクラークの記録精度はどれくらいですか？</h3>
+  <p>専門用語や固有名詞の認識精度はツールにより差があります。医療・介護分野に特化して学習させたツールの方が誤変換が少ない傾向があります。</p>
+
+  <h2>まとめ｜「記録の自動化」より「対話に集中できる時間」が本質</h2>
+  <p>AIクラークの価値は、記録時間の短縮だけでなく、患者・利用者との対話に集中できる時間を作ることにあります。選ぶ際は専門用語の精度・既存システムとの連携・セキュリティの3点を必ず確認し、導入後は「下書き＋人の確認」の運用を前提に進めるのがおすすめです。</p>
+
+  <div class="inline-cta reveal">
+    <div class="inline-cta-tag">無料相談・費用契約なし</div>
+    <h3>「自院・自事業所に合うAIクラークは？」<br>プロが無料でご相談に応じます。</h3>
+    <p>現場の会話を使ったデモで、実際の精度・使い勝手を体験いただけます。押し売りはしません。</p>
+    <div class="cta-btns-pair">
+      <a href="/lp/hanamaru-kango/" class="btn-cta-red">はなまるAI看護を見る →</a>
+      <a href="/column/houkan-system-jirei/" class="btn-cta-ghost">訪問看護のシステム導入事例も読む</a>
+    </div>
+    <span class="btn-cta-note">オンライン対応・所要約30分・押し売りなし</span>
+  </div>
+
+</div>
+</article>
+
+<section class="related-section">
+  <div class="related-inner">
+    <div class="related-label">Related Articles</div>
+    <div class="related-grid">
+      <a href="/column/kaigo-kiroku-onsei-nyuryoku/" class="related-card">
+        <div class="related-card-tag">介護記録 / AI</div>
+        <div class="related-card-title">介護記録は「音声入力」で激変する。話すだけでSOAP・記録が完成するAI活用と選び方。</div>
+      </a>
+      <a href="/column/houkan-system-jirei/" class="related-card">
+        <div class="related-card-tag">システム導入 / 訪問看護</div>
+        <div class="related-card-title">訪問看護のシステム導入、何から始める？記録・請求・勤怠の選び方。</div>
+      </a>
+      <a href="/column/denshi-karte-shokibo-clinic/" class="related-card">
+        <div class="related-card-tag">電子カルテ / クリニック</div>
+        <div class="related-card-title">小規模クリニックで電子カルテの一元管理はできる？</div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<div class="back-section">
+  <div class="back-section-inner">
+    <a href="/column/" class="back-link">← コラム一覧に戻る</a>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-logo">
+    <div class="footer-logo-mark"></div>
+    <span class="footer-logo-text"><span>A</span>idealize株式会社</span>
+  </div>
+  <span class="footer-copy">© 2020–2026 AIdealize Inc. All rights reserved.</span>
+</footer>
+
+<script>
+(function(){
+  const btn=document.getElementById('navHamburger');
+  const drawer=document.getElementById('navDrawer');
+  const nav=document.getElementById('mainNav');
+  btn.addEventListener('click',function(){btn.classList.toggle('open');drawer.classList.toggle('open');});
+  drawer.querySelectorAll('.drawer-link').forEach(function(l){l.addEventListener('click',function(){btn.classList.remove('open');drawer.classList.remove('open');});});
+  window.addEventListener('scroll',function(){nav.classList.toggle('scrolled',window.scrollY>10);});
+})();
+const obs=new IntersectionObserver(function(e){e.forEach(function(x){if(x.isIntersecting)x.target.classList.add('visible');});},{threshold:0.08,rootMargin:'0px 0px -30px 0px'});
+document.querySelectorAll('.reveal').forEach(function(el){obs.observe(el);});
+</script>
+<script src="/js/lead-capture.js"></script>
+</body>
+</html>
