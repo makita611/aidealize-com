@@ -189,6 +189,9 @@ footer{background:#1f1f1f;border-top:1px solid rgba(255,255,255,0.06);padding:40
   footer{flex-direction:column;gap:14px;text-align:center;padding:28px 16px;}
 }
 </style>
+<style>
+.dwrap{overflow-x:auto;margin:24px 0}.dtable{width:100%;border-collapse:collapse;font-size:13px}.dtable th,.dtable td{border:1px solid var(--border);padding:11px 13px;text-align:left;vertical-align:top;line-height:1.7}.dtable th{background:var(--bg2);color:var(--ink);font-weight:700}.dtable td{color:var(--body)}
+</style>
 </head>
 <body>
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-P6VNBWH3" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
@@ -289,6 +292,25 @@ footer{background:#1f1f1f;border-top:1px solid rgba(255,255,255,0.06);padding:40
     </div>
   </div>
 
+  <h2>病院DX事例を課題別に見る5分類</h2>
+
+  <p>事例を製品名だけで比べると、自院に必要な範囲を見誤ります。まず課題を次の5つに分け、対象部門・必要データ・導入期間の目安を揃えて比較してください。</p>
+
+  <div class="dwrap reveal">
+  <table class="dtable">
+    <thead><tr><th>課題</th><th>主な対象</th><th>最初に必要なデータ</th><th>小さく試す目安</th></tr></thead>
+    <tbody>
+      <tr><td>記録・文書作成</td><td>看護記録、退院サマリー、申し送り</td><td>既存様式、入力例、禁止表現</td><td>1病棟・2〜4週間</td></tr>
+      <tr><td>受付・予約・電話</td><td>外来受付、予約変更、定型問合せ</td><td>予約枠、FAQ、エスカレーション条件</td><td>1診療科・4〜8週間</td></tr>
+      <tr><td>請求・レセプト</td><td>算定確認、点検、返戻分析</td><td>請求データ、点検ルール、返戻理由</td><td>対象項目限定・1〜2か月</td></tr>
+      <tr><td>部門間データ連携</td><td>電子カルテ、検査、医事、薬剤</td><td>項目定義、連携形式、更新頻度</td><td>2システム間・2〜3か月</td></tr>
+      <tr><td>経営・業務可視化</td><td>稼働、待ち時間、残業、病床</td><td>基準値、集計粒度、責任部署</td><td>1指標・4〜8週間</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <p>期間はあくまで検証開始までの一般的な目安です。電子カルテの仕様、院内審査、個人情報・医療情報の安全管理、ベンダー調整によって変わります。大規模な基幹統合が必要な案件は専門SIerの領域であり、AIdealizeではクリニック・訪問看護を中心とした記録、受付、局所連携などの小規模実装を対象としています。</p>
+
   <h2>成果が出る病院DXの3つの型</h2>
 
   <p>実際に効果が出ている病院・クリニックのDXは、おおむね次の3つの型に整理できます。自院の「いちばん手間な業務」がどれに当てはまるかで、着手すべき領域が見えてきます。</p>
@@ -352,6 +374,11 @@ footer{background:#1f1f1f;border-top:1px solid rgba(255,255,255,0.06);padding:40
     <li><strong>効果を測って次に広げる</strong>：1つの成功を横展開し、データ連携で全体最適へつなげる。</li>
   </ol>
 
+  <div class="point-box">
+    <div class="point-box-label">導入を止めるべき条件</div>
+    <p>責任者が決まっていない、現行業務の基準時間が測れていない、入力データの持ち出し可否が未確認、現場確認なしで全院展開しようとしている——いずれかに当てはまる場合は、ツール契約より先に体制と検証条件を整えてください。</p>
+  </div>
+
   <div class="effect-grid reveal">
     <div class="effect-card">
       <div class="effect-num">効果 01</div>
@@ -388,8 +415,8 @@ footer{background:#1f1f1f;border-top:1px solid rgba(255,255,255,0.06);padding:40
     <h3>自院のDX、どこから始める？<br>無料診断で業務フローを一緒に整理します。</h3>
     <p>現状の業務をヒアリングし、「どこが問題で、AI・自動化で何が解決できるか」を明確にします。費用・契約は一切不要です。</p>
     <div class="cta-btns-pair">
-      <a href="/lp/ai-lp1#contact" class="btn-cta-red">無料で相談する →</a>
-      <a href="https://aidealize.com/bpr/" class="btn-cta-ghost">事例を見る</a>
+      <a href="/lp/hanamaru-kango/" class="btn-cta-red">訪問看護・クリニックの記録AIを試す →</a>
+      <a href="https://aidealize.com/bpr/industry/%E7%97%85%E9%99%A2/" class="btn-cta-ghost">病院DX事例を見る</a>
     </div>
     <span class="btn-cta-note">オンライン対応・所要約30分・押し売りなし</span>
   </div>

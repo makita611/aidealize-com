@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url><loc>https://aidealize.com/</loc><lastmod>2026-06-13</lastmod><priority>1.0</priority></url>
-  <url><loc>https://aidealize.com/column/</loc><lastmod>2026-08-23</lastmod><priority>0.8</priority></url>
+  <url><loc>https://aidealize.com/column/</loc><lastmod>2026-09-02</lastmod><priority>0.8</priority></url>
   <url><loc>https://aidealize.com/column/caremane-nayami-ichiran/</loc><lastmod>2026-08-28</lastmod><priority>0.8</priority></url>
   <url><loc>https://aidealize.com/column/kyotaku-kaigyo-hp-junbi/</loc><lastmod>2026-08-28</lastmod><priority>0.8</priority></url>
   <url><loc>https://aidealize.com/column/kyotaku-kaigyo-kyujin/</loc><lastmod>2026-08-28</lastmod><priority>0.8</priority></url>
@@ -88,4 +88,8 @@
   <url><loc>https://aidealize.com/column/wordpress-kanri-marumie/</loc><lastmod>2026-08-25</lastmod><priority>0.8</priority></url>
   <url><loc>https://aidealize.com/column/chusho-security-hajimekata/</loc><lastmod>2026-08-25</lastmod><priority>0.8</priority></url>
   <url><loc>https://aidealize.com/column/hoshu-keiyaku-wana/</loc><lastmod>2026-08-25</lastmod><priority>0.8</priority></url>
+  <url><loc>https://aidealize.com/column/houkan-kiroku-ai-checklist/</loc><lastmod>2026-09-02</lastmod><priority>0.8</priority></url>
+  <url><loc>https://aidealize.com/column/soap-kiroku-ai-hikaku/</loc><lastmod>2026-09-02</lastmod><priority>0.8</priority></url>
+  <url><loc>https://aidealize.com/column/kaigo-bcp-kunren-jisshirei/</loc><lastmod>2026-09-02</lastmod><priority>0.8</priority></url>
+  <url><loc>https://aidealize.com/column/kaigo-bcp-nenji-koshin-checklist/</loc><lastmod>2026-09-02</lastmod><priority>0.8</priority></url>
 </urlset>
