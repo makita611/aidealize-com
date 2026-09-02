@@ -866,15 +866,18 @@ document.querySelectorAll('a[href^="#"]').forEach(function(a){
 });
 
 // GAS FORM
-const GAS_URL='https://script.google.com/macros/s/AKfycbweIGAPeJwD-U8D4Cks6fjGmp5hR2kpuwCx_9janRnGq3qdUFR4DDpYGgl33-bkFr3v/exec';
+const GAS_URL='/api/lead-submit';
 document.querySelectorAll('.gas-form').forEach(function(form){
   form.addEventListener('submit',function(e){
     e.preventDefault();
     const btn=form.querySelector('.form-btn');
     btn.disabled=true;btn.textContent='送信中...';
     const fd=new FormData(form);
+    const submissionId=crypto.randomUUID();
     fd.append('page',form.dataset.page||document.title);
     fd.append('form_type',form.dataset.formtype||'');
+    fd.append('submission_id',submissionId);
+    fd.append('page_path',location.pathname);
     // チェックボックス集約
     const issues=Array.from(form.querySelectorAll('input[name="issue"]:checked')).map(function(c){return c.value;}).join('、');
     fd.set('issue',issues);
@@ -882,12 +885,11 @@ document.querySelectorAll('.gas-form').forEach(function(form){
     const showThanks=function(){
       if(done)return;done=true;
       window.dataLayer=window.dataLayer||[];
-      window.dataLayer.push({event:'form_submit',form_type:'人材定着AI無料診断'});
+      window.dataLayer.push({event:'form_success',form_id:'jinzai-diagnosis',service_name:'人材定着AI',lead_type:'人材定着AI無料診断',page_path:location.pathname,submission_id:submissionId});
       form.style.display='none';
       document.querySelector('.form-thanks').style.display='block';
     };
-    setTimeout(showThanks,2000);
-    fetch(GAS_URL,{method:'POST',mode:'no-cors',body:fd}).catch(function(){}).finally(showThanks);
+    fetch(GAS_URL,{method:'POST',body:fd}).then(function(r){if(!r.ok)throw new Error();return r.json();}).then(function(result){if(!result.ok||result.submission_id!==submissionId)throw new Error();showThanks();}).catch(function(){btn.disabled=false;btn.textContent='送信する';alert('送信できませんでした。通信状況をご確認のうえ、もう一度お試しください。');});
   });
 });
 </script>

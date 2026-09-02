@@ -433,24 +433,26 @@ function resetAll(){
 }
 
 // ── GAS送信（既存の診断と同じスプレッドシートに記録）──
-const GAS_URL = 'https://script.google.com/macros/s/AKfycbznmcKuNRRfPrwP1Ev_alYlLIb5Z-b2fPBmNlnk-r923HibXl3OTc-tGJVP7750RgvQ/exec';
-function sendToGAS(data){ fetch(GAS_URL,{method:'POST',mode:'no-cors',headers:{'Content-Type':'application/json'},body:JSON.stringify(data)}).catch(()=>{}); }
+function newSubmissionId(){ return crypto&&crypto.randomUUID?crypto.randomUUID():Date.now().toString(36)+'-'+Math.random().toString(36).slice(2); }
+function sendToGAS(data){ return fetch('/api/lead-submit',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(data)}).then(r=>{if(!r.ok)throw new Error('submit_failed');return r.json();}); }
 
-function submitLead(){
+async function submitLead(){
   const name=document.getElementById('lead-name').value.trim();
   const company=document.getElementById('lead-company').value.trim();
   const email=document.getElementById('lead-email').value.trim();
   if(!email||!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){ document.getElementById('lead-err').style.display='block'; return; }
-  sendToGAS({ type:'sitecheck_lead', timestamp:new Date().toISOString(), name, company, email,
+  const submission_id=newSubmissionId();
+  const result=await sendToGAS({ type:'sitecheck_lead', timestamp:new Date().toISOString(), submission_id, name, company, email,
     site:(lastResult&&lastResult.url)||document.getElementById('url').value.trim(),
-    score:(lastResult&&lastResult.score) });
+    score:(lastResult&&lastResult.score) }).catch(()=>null);
+  if(!result||!result.ok||result.submission_id!==submission_id){ alert('送信できませんでした。通信状況をご確認のうえ、もう一度お試しください。'); return; }
   // 診断リードをGA4に通知（iframe埋め込み時は親のGTMへ、単体時は自身のdataLayerへ）
   try{
-    var _lead={type:'sitecheckLead',form_type:'サイト診断リード',mode:MODE,
+    var _lead={type:'sitecheckLead',form_type:'サイト診断リード',mode:MODE,submission_id:submission_id,
       score:(lastResult&&lastResult.score),
       site:(lastResult&&lastResult.url)||document.getElementById('url').value.trim()};
     if(window.parent && window.parent!==window){ window.parent.postMessage(_lead,'*'); }
-    else{ window.dataLayer=window.dataLayer||[]; window.dataLayer.push({event:'form_submit',form_type:_lead.form_type,page_name:'site-check',mode:MODE}); }
+    else{ window.dataLayer=window.dataLayer||[]; window.dataLayer.push({event:'form_success',form_id:'site-check-lead',service_name:'サイト診断',lead_type:_lead.form_type,page_path:location.pathname,submission_id:submission_id,mode:MODE}); }
   }catch(_){}
   document.getElementById('lead-form-wrap').style.display='none';
   document.getElementById('complete-msg').style.display='block';

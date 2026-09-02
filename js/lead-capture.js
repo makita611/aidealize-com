@@ -13,7 +13,7 @@
   if (window.__leadCaptureLoaded) return;
   window.__leadCaptureLoaded = true;
 
-  var GAS_URL = 'https://script.google.com/macros/s/AKfycbweIGAPeJwD-U8D4Cks6fjGmp5hR2kpuwCx_9janRnGq3qdUFR4DDpYGgl33-bkFr3v/exec';
+  var GAS_URL = '/api/lead-submit';
   var DISMISS_DAYS = 7;
 
   /* ---- オファー定義 ---- */
@@ -175,22 +175,24 @@
       e.preventDefault();
       var btn = form.querySelector('button'); btn.disabled = true; btn.textContent = '送信中...';
       var fd = new FormData(form);
+      var submissionId = window.crypto && window.crypto.randomUUID ? window.crypto.randomUUID() : Date.now().toString(36) + '-' + Math.random().toString(36).slice(2);
       fd.append('page', document.title);
       fd.append('form_type', '資料ダウンロード');
       fd.append('request', '資料ダウンロード');
       fd.append('gift', O.gift || '');
       fd.append('source', 'lead_bar');
+      fd.append('submission_id', submissionId);
+      fd.append('page_path', location.pathname);
       var done = false;
       function thanks() {
         if (done) return; done = true;
         mark('lc_done');
-        track('form_submit', { form_type: '資料ダウンロード', page_name: document.title, lead_source: 'lead_bar' });
+        track('form_success', { form_id: 'lead-bar', service_name: document.title, lead_type: '資料ダウンロード', page_path: location.pathname, submission_id: submissionId, lead_source: 'lead_bar' });
         var inner = bar.querySelector('.lcbar-inner');
         inner.innerHTML = '<div class="lcbar-ic">✅</div><div class="lcbar-thanks">受け付けました。担当より資料をメールでお送りします（迷惑メールフォルダもご確認ください）。</div><button class="lcbar-x" aria-label="閉じる">&times;</button>';
         inner.querySelector('.lcbar-x').addEventListener('click', function () { bar.classList.remove('show'); });
       }
-      setTimeout(thanks, 2000);
-      fetch(GAS_URL, { method: 'POST', mode: 'no-cors', body: fd })['catch'](function () {})['finally'](thanks);
+      fetch(GAS_URL, { method: 'POST', body: fd }).then(function(r){if(!r.ok)throw new Error();return r.json();}).then(function(result){if(!result.ok||result.submission_id!==submissionId)throw new Error();thanks();})['catch'](function(){btn.disabled=false;btn.textContent='受け取る';window.alert('送信できませんでした。通信状況をご確認のうえ、もう一度お試しください。');});
     });
   }
 

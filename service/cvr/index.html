@@ -273,7 +273,7 @@ window.addEventListener('message', function(e){
   }
   if (e.data && e.data.type === 'sitecheckLead') {
     window.dataLayer = window.dataLayer || [];
-    window.dataLayer.push({event:'form_submit', form_type:(e.data.form_type||'サイト診断リード'), page_name:'service/cvr', mode:e.data.mode, score:e.data.score});
+    window.dataLayer.push({event:'form_success', form_id:'site-check-lead', service_name:'サイト診断', lead_type:(e.data.form_type||'サイト診断リード'), page_path:location.pathname, submission_id:e.data.submission_id, mode:e.data.mode, score:e.data.score});
   }
   if (e.data && e.data.type === 'sitecheckRun') {
     window.dataLayer = window.dataLayer || [];

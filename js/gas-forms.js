@@ -1,5 +1,24 @@
 (function () {
-  var GAS_URL = 'https://script.google.com/macros/s/AKfycbweIGAPeJwD-U8D4Cks6fjGmp5hR2kpuwCx_9janRnGq3qdUFR4DDpYGgl33-bkFr3v/exec';
+  var SUBMIT_URL = '/api/lead-submit';
+
+  function submissionId() {
+    if (window.crypto && typeof window.crypto.randomUUID === 'function') return window.crypto.randomUUID();
+    return Date.now().toString(36) + '-' + Math.random().toString(36).slice(2);
+  }
+
+  function trackSuccess(form, id) {
+    if (form.dataset.formSuccessTracked === id) return;
+    form.dataset.formSuccessTracked = id;
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push({
+      event: 'form_success',
+      form_id: form.id || form.dataset.formid || form.dataset.formtype || 'gas-form',
+      service_name: form.dataset.service || form.dataset.page || document.title,
+      lead_type: form.dataset.leadtype || form.dataset.formtype || 'inquiry',
+      page_path: location.pathname,
+      submission_id: id
+    });
+  }
 
   /* ── スタイル注入 ── */
   var s = document.createElement('style');
@@ -61,25 +80,19 @@
         btn.textContent = '送信中...';
 
         var fd = new FormData(form);
+        var id = submissionId();
         fd.append('page', form.dataset.page || document.title);
         fd.append('form_type', form.dataset.formtype || '');
+        fd.append('submission_id', id);
+        fd.append('page_path', location.pathname);
 
         /* ラジオ未選択の場合 data-formtype をフォールバック */
         if (!fd.get('request')) {
           fd.append('request', form.dataset.formtype || '');
         }
 
-        /* 2秒でタイムアウト → 長い「送信中」を防止 */
-        var done = false;
         function showThanks() {
-          if (done) return;
-          done = true;
-          window.dataLayer = window.dataLayer || [];
-          window.dataLayer.push({
-            event: 'form_submit',
-            form_type: form.dataset.formtype || 'unknown',
-            page_name: form.dataset.page || ''
-          });
+          trackSuccess(form, id);
           form.style.display = 'none';
           var thanks = form.nextElementSibling;
           if (thanks && thanks.classList.contains('gas-form-thanks')) {
@@ -87,11 +100,20 @@
           }
         }
 
-        setTimeout(showThanks, 2000); /* 2秒後に強制表示 */
-
-        fetch(GAS_URL, { method: 'POST', mode: 'no-cors', body: fd })
-          .catch(function () {})
-          .finally(showThanks);
+        fetch(SUBMIT_URL, { method: 'POST', body: fd })
+          .then(function (response) {
+            if (!response.ok) throw new Error('submit_failed');
+            return response.json();
+          })
+          .then(function (result) {
+            if (!result || !result.ok || result.submission_id !== id) throw new Error('invalid_response');
+            showThanks();
+          })
+          .catch(function () {
+            btn.disabled = false;
+            btn.textContent = '送信する';
+            window.alert('送信できませんでした。通信状況をご確認のうえ、もう一度お試しください。');
+          });
       });
     });
   }

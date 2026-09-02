@@ -241,19 +241,21 @@ function renderScanLeadForm(data, domain, findings) {
     fd.append('scan_findings', String(findings));
     fd.append('scan_detail', findingsText);
     fd.append('message', '【自動点検結果】対象:' + domain + ' / スコア:' + data.score + '/100 / 要確認:' + findings + '件\n' + findingsText);
+    var submissionId = crypto.randomUUID();
+    fd.append('submission_id', submissionId);
+    fd.append('page_path', location.pathname);
     var done = false;
     function showThanks() {
       if (done) return; done = true;
       window.dataLayer = window.dataLayer || [];
-      window.dataLayer.push({ event: 'form_submit', form_type: '外周点検リード', page_name: 'Prevention' });
+      window.dataLayer.push({ event: 'form_success', form_id: 'security-scan-lead', service_name: 'Prevention', lead_type: '外周点検リード', page_path: location.pathname, submission_id: submissionId });
       window.dataLayer.push({ event: 'scan_lead_submit', scan_domain: domain, scan_score: data.score, scan_findings: findings });
       form.style.display = 'none';
       var t = document.getElementById('scanLeadThanks');
       if (t) t.style.display = 'block';
       notifyHeight();
     }
-    setTimeout(showThanks, 2500);
-    fetch(GAS_URL, { method: 'POST', mode: 'no-cors', body: fd }).catch(function () {}).finally(showThanks);
+    fetch('/api/lead-submit', { method: 'POST', body: fd }).then(function(r){if(!r.ok)throw new Error();return r.json();}).then(function(result){if(!result.ok||result.submission_id!==submissionId)throw new Error();showThanks();}).catch(function(){var b=form.querySelector('button[type="submit"]');if(b)b.disabled=false;alert('送信できませんでした。通信状況をご確認のうえ、もう一度お試しください。');});
   });
   notifyHeight();
 }
