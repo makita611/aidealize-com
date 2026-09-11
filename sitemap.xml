@@ -1,7 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url><loc>https://aidealize.com/</loc><lastmod>2026-06-13</lastmod><priority>1.0</priority></url>
-  <url><loc>https://aidealize.com/column/</loc><lastmod>2026-09-02</lastmod><priority>0.8</priority></url>
+  <url><loc>https://aidealize.com/column/</loc><lastmod>2026-09-11</lastmod><priority>0.8</priority></url>
+  <url><loc>https://aidealize.com/column/fudousan-workflow-jidoka/</loc><lastmod>2026-09-11</lastmod><priority>0.8</priority></url>
+  <url><loc>https://aidealize.com/column/houkan-vital-monitoring/</loc><lastmod>2026-09-11</lastmod><priority>0.8</priority></url>
+  <url><loc>https://aidealize.com/column/shokoukaigisho-kaiin-security/</loc><lastmod>2026-09-11</lastmod><priority>0.8</priority></url>
+  <url><loc>https://aidealize.com/column/sougi-gyomu-jidoka/</loc><lastmod>2026-09-11</lastmod><priority>0.8</priority></url>
+  <url><loc>https://aidealize.com/column/meo-tsugino-itte/</loc><lastmod>2026-09-11</lastmod><priority>0.8</priority></url>
   <url><loc>https://aidealize.com/column/caremane-nayami-ichiran/</loc><lastmod>2026-08-28</lastmod><priority>0.8</priority></url>
   <url><loc>https://aidealize.com/column/kyotaku-kaigyo-hp-junbi/</loc><lastmod>2026-08-28</lastmod><priority>0.8</priority></url>
   <url><loc>https://aidealize.com/column/kyotaku-kaigyo-kyujin/</loc><lastmod>2026-08-28</lastmod><priority>0.8</priority></url>
@@ -36,8 +41,8 @@
   <url><loc>https://aidealize.com/column/kaigo-bcp-tsukurikata/</loc><lastmod>2026-07-13</lastmod><priority>0.8</priority></url>
   <url><loc>https://aidealize.com/column/kaigo-bcp-hinagata/</loc><lastmod>2026-07-14</lastmod><priority>0.8</priority></url>
   <url><loc>https://aidealize.com/column/homon-kaigo-bcp/</loc><lastmod>2026-07-15</lastmod><priority>0.8</priority></url>
-  <url><loc>https://aidealize.com/column/kaigo-kiroku-onsei-nyuryoku/</loc><lastmod>2026-06-23</lastmod><priority>0.8</priority></url>
-  <url><loc>https://aidealize.com/column/byoin-dx-jirei/</loc><lastmod>2026-06-25</lastmod><priority>0.8</priority></url>
+  <url><loc>https://aidealize.com/column/kaigo-kiroku-onsei-nyuryoku/</loc><lastmod>2026-09-11</lastmod><priority>0.8</priority></url>
+  <url><loc>https://aidealize.com/column/byoin-dx-jirei/</loc><lastmod>2026-09-11</lastmod><priority>0.8</priority></url>
   <url><loc>https://aidealize.com/column/careplan-ai-caremane/</loc><lastmod>2026-06-22</lastmod><priority>0.8</priority></url>
   <url><loc>https://aidealize.com/column/clinic-rishoku-rule-ai/</loc><lastmod>2026-06-20</lastmod><priority>0.8</priority></url>
   <url><loc>https://aidealize.com/column/denshi-karte-shokibo-clinic/</loc><lastmod>2026-06-19</lastmod><priority>0.8</priority></url>
@@ -47,16 +52,16 @@
   <url><loc>https://aidealize.com/column/ai-anmokuchi-honyaku/</loc><lastmod>2026-06-14</lastmod><priority>0.8</priority></url>
   <url><loc>https://aidealize.com/column/houkan-jinzai-busoku/</loc><lastmod>2026-06-12</lastmod><priority>0.8</priority></url>
   <url><loc>https://aidealize.com/column/caremane-monitoring-kiroku/</loc><lastmod>2026-06-11</lastmod><priority>0.8</priority></url>
-  <url><loc>https://aidealize.com/column/houkan-ict-kasan/</loc><lastmod>2026-06-09</lastmod><priority>0.8</priority></url>
+  <url><loc>https://aidealize.com/column/houkan-ict-kasan/</loc><lastmod>2026-09-11</lastmod><priority>0.8</priority></url>
   <url><loc>https://aidealize.com/column/soap-ninchisho-bpsd/</loc><lastmod>2026-06-08</lastmod><priority>0.8</priority></url>
-  <url><loc>https://aidealize.com/column/kaigo-jinzai-teichaku/</loc><lastmod>2026-06-07</lastmod><priority>0.8</priority></url>
+  <url><loc>https://aidealize.com/column/kaigo-jinzai-teichaku/</loc><lastmod>2026-09-11</lastmod><priority>0.8</priority></url>
   <url><loc>https://aidealize.com/column/hanamaru-kango-ai/</loc><lastmod>2026-06-05</lastmod><priority>0.8</priority></url>
   <url><loc>https://aidealize.com/column/clinic-shukyaku-jirei/</loc><lastmod>2026-06-26</lastmod><priority>0.8</priority></url>
   <url><loc>https://aidealize.com/column/meo-shukyaku/</loc><lastmod>2026-06-27</lastmod><priority>0.8</priority></url>
   <url><loc>https://aidealize.com/column/kokoku-shukyaku/</loc><lastmod>2026-06-29</lastmod><priority>0.8</priority></url>
   <url><loc>https://aidealize.com/service/</loc><lastmod>2026-07-08</lastmod><priority>0.6</priority></url>
   <url><loc>https://aidealize.com/service/marketing/</loc><lastmod>2026-07-08</lastmod><priority>0.7</priority></url>
-  <url><loc>https://aidealize.com/service/clinic-marketing/</loc><lastmod>2026-07-08</lastmod><priority>0.7</priority></url>
+  <url><loc>https://aidealize.com/service/clinic-marketing/</loc><lastmod>2026-09-11</lastmod><priority>0.7</priority></url>
   <url><loc>https://aidealize.com/service/cvr/</loc><lastmod>2026-07-08</lastmod><priority>0.7</priority></url>
   <url><loc>https://aidealize.com/shukyaku-shindan</loc><lastmod>2026-07-09</lastmod><priority>0.7</priority></url>
   <url><loc>https://aidealize.com/site-check</loc><lastmod>2026-07-09</lastmod><priority>0.7</priority></url>
@@ -68,7 +73,7 @@
   <url><loc>https://aidealize.com/lp/caremane-ocr/</loc><lastmod>2026-08-08</lastmod><priority>0.8</priority></url>
   <url><loc>https://aidealize.com/lp/hanamaru-kango/</loc><lastmod>2026-06-13</lastmod><priority>0.8</priority></url>
   <url><loc>https://aidealize.com/lp/hanamaru-kaigo/</loc><lastmod>2026-06-13</lastmod><priority>0.6</priority></url>
-  <url><loc>https://aidealize.com/lp/jinzai/</loc><lastmod>2026-06-13</lastmod><priority>0.6</priority></url>
+  <url><loc>https://aidealize.com/lp/jinzai/</loc><lastmod>2026-09-11</lastmod><priority>0.6</priority></url>
   <url><loc>https://aidealize.com/lp/ai-lp1</loc><lastmod>2026-06-23</lastmod><priority>0.7</priority></url>
   <url><loc>https://aidealize.com/company</loc><lastmod>2026-06-13</lastmod><priority>0.5</priority></url>
   <url><loc>https://aidealize.com/column/ai-shukyaku-tantou-weekly/</loc><lastmod>2026-07-10</lastmod><priority>0.8</priority></url>
