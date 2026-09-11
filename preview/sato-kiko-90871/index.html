@@ -100,7 +100,10 @@ header{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.96);
 .cat{background:#fff;border:1px solid var(--line);border-radius:10px;overflow:hidden;
   transition:.2s;text-decoration:none;display:block}
 .cat:hover{transform:translateY(-3px);box-shadow:0 8px 24px rgba(21,95,168,.12);border-color:var(--blue)}
-.cat .imgslot{aspect-ratio:16/9;border-radius:0}
+.cat .icon{aspect-ratio:16/9;background:linear-gradient(135deg,#eaf2fa,#f6faff);
+  display:flex;align-items:center;justify-content:center}
+.cat .icon svg{width:44px;height:44px;stroke:var(--blue);stroke-width:1.6;fill:none;
+  stroke-linecap:round;stroke-linejoin:round}
 .cat .body{padding:18px 20px}
 .cat h3{font-size:16.5px;font-weight:800;margin-bottom:4px;color:var(--blue-deep)}
 .cat p{font-size:13.5px;color:var(--muted);line-height:1.75}
@@ -197,9 +200,9 @@ footer{background:var(--blue-deep);color:#fff;padding:46px 0 96px;font-size:13.5
 
 <div class="hero">
   <div class="wrap">
-    <div class="eyebrow">1975年創業　切削工具・工作機械・鋼材の専門商社</div>
+    <div class="eyebrow">1971年創業　切削工具・工作機械・鋼材の専門商社</div>
     <h1>ものづくりの現場に、<br><em>「今すぐ欲しい」を届ける。</em></h1>
-    <p>切削工具から工作機械、鋼材、高圧ガス、メンテナンスまで。新潟・胎内から、地域の製造業を50年支えてきました。在庫と納期のご相談は、まず一本お電話ください。</p>
+    <p>切削工具から工作機械、鋼材、高圧ガス、メンテナンスまで。新潟・胎内から、地域の製造業を55年支えてきました。在庫と納期のご相談は、まず一本お電話ください。</p>
     <div class="cta">
       <a class="btn acc" href="#quote">見積りを依頼する</a>
       <a class="btn line" href="#service">取扱い分野を見る</a>
@@ -207,9 +210,9 @@ footer{background:var(--blue-deep);color:#fff;padding:46px 0 96px;font-size:13.5
     <div class="heroph"><img src="images/honsha.jpg" alt="株式会社佐藤機工 本社入口">
       <span>新潟県胎内市・本社（写真は御社サイトより）</span></div>
     <div class="stats">
-      <div><b>1975<i>年</i></b><small>創業。地域とともに50年</small></div>
-      <div><b>◯◯<i>社</i></b><small>取扱メーカー<span class="todo">※実数に</span></small></div>
-      <div><b>◯◯<i>点</i></b><small>常時在庫<span class="todo">※実数に</span></small></div>
+      <div><b>1971<i>年</i></b><small>創業。地域とともに55年</small></div>
+      <div><b>35<i>社+</i></b><small>取扱いメーカー（主要ブランドより集計）</small></div>
+      <div><b>6<i>分野</i></b><small>工具から機械・ガスまでワンストップ</small></div>
       <div><b>ISO<i>14001</i></b><small>環境マネジメント認証</small></div>
     </div>
   </div>
@@ -222,17 +225,17 @@ footer{background:var(--blue-deep);color:#fff;padding:46px 0 96px;font-size:13.5
     <h2>工具から機械、ガス、メンテナンスまで。</h2>
     <p class="lead">「これ、どこに頼めばいい？」をまとめて引き受けるのが専門商社の仕事です。各分野の詳しい内容は、個別ページでご案内します。</p>
     <div class="cats">
-      <a class="cat" href="#"><div class="imgslot"><span class="tag">IMAGE</span><b>切削工具</b></div>
+      <a class="cat" href="#"><div class="icon"><svg viewBox="0 0 48 48"><line x1="24" y1="6" x2="24" y2="28"/><polygon points="24,28 18,40 30,40" stroke-linejoin="round"/><line x1="19" y1="12" x2="24" y2="6"/><line x1="29" y1="12" x2="24" y2="6"/></svg></div>
         <div class="body"><h3>切削工具</h3><p>エンドミル・ドリル・チップ等。国内外メーカーを横断して最適品を提案。</p></div></a>
-      <a class="cat" href="#"><div class="imgslot"><span class="tag">IMAGE</span><b>測定工具</b></div>
+      <a class="cat" href="#"><div class="icon"><svg viewBox="0 0 48 48"><rect x="8" y="19" width="32" height="9" rx="1.5"/><line x1="14" y1="19" x2="14" y2="24"/><line x1="20" y1="19" x2="20" y2="24"/><line x1="26" y1="19" x2="26" y2="24"/><line x1="32" y1="19" x2="32" y2="24"/></svg></div>
         <div class="body"><h3>測定工具</h3><p>マイクロメータ・ノギス・ゲージ類。校正のご相談も承ります。</p></div></a>
-      <a class="cat" href="#"><div class="imgslot"><span class="tag">IMAGE</span><b>工作機械</b></div>
+      <a class="cat" href="#"><div class="icon"><svg viewBox="0 0 48 48"><circle cx="24" cy="24" r="9"/><circle cx="24" cy="24" r="3"/><line x1="24" y1="9" x2="24" y2="15"/><line x1="24" y1="33" x2="24" y2="39"/><line x1="9" y1="24" x2="15" y2="24"/><line x1="33" y1="24" x2="39" y2="24"/><line x1="13" y1="13" x2="17.5" y2="17.5"/><line x1="30.5" y1="30.5" x2="35" y2="35"/><line x1="35" y1="13" x2="30.5" y2="17.5"/><line x1="17.5" y1="30.5" x2="13" y2="35"/></svg></div>
         <div class="body"><h3>工作機械・周辺機器</h3><p>選定から搬入・立ち上げまで。設備更新のご相談に対応します。</p></div></a>
-      <a class="cat" href="#"><div class="imgslot"><span class="tag">IMAGE</span><b>鋼材</b></div>
+      <a class="cat" href="#"><div class="icon"><svg viewBox="0 0 48 48"><rect x="10" y="14" width="28" height="5" rx="2.5"/><rect x="10" y="21.5" width="28" height="5" rx="2.5"/><rect x="10" y="29" width="28" height="5" rx="2.5"/></svg></div>
         <div class="body"><h3>鋼材</h3><p>在庫販売。急ぎの材料手配は納期を最優先でご案内します。</p></div></a>
-      <a class="cat" href="#"><div class="imgslot"><span class="tag">IMAGE</span><b>高圧ガス</b></div>
+      <a class="cat" href="#"><div class="icon"><svg viewBox="0 0 48 48"><rect x="17" y="14" width="14" height="26" rx="4"/><rect x="21" y="8" width="6" height="7" rx="1.5"/><line x1="24" y1="21" x2="24" y2="33"/></svg></div>
         <div class="body"><h3>高圧ガス</h3><p>溶接・切断用ガスの供給。定期配送のご相談も可能です。</p></div></a>
-      <a class="cat" href="#"><div class="imgslot"><span class="tag">IMAGE</span><b>メンテナンス</b></div>
+      <a class="cat" href="#"><div class="icon"><svg viewBox="0 0 48 48"><circle cx="15" cy="15" r="6"/><circle cx="33" cy="33" r="6"/><line x1="19.2" y1="19.2" x2="28.8" y2="28.8" stroke-width="5"/></svg></div>
         <div class="body"><h3>メンテナンス・リース</h3><p>工具の再研磨・修理・リース。買って終わりにしない体制です。</p></div></a>
     </div>
   </div>
@@ -328,7 +331,8 @@ footer{background:var(--blue-deep);color:#fff;padding:46px 0 96px;font-size:13.5
     <img class="ph-real" src="images/seizou.jpg" alt="製造部門外観" style="max-width:420px;margin-bottom:26px">
     <table>
       <tr><th>会社名</th><td>株式会社佐藤機工</td></tr>
-      <tr><th>創業</th><td>1975年</td></tr>
+      <tr><th>創業</th><td>1971年（昭和46年）</td></tr>
+      <tr><th>法人設立</th><td>1975年（昭和50年）</td></tr>
       <tr><th>所在地</th><td>〒959-2644 新潟県胎内市大川町3355-1</td></tr>
       <tr><th>事業内容</th><td>切削工具・測定工具・工作機械・鋼材の販売／高圧ガス／工具メンテナンス・リース</td></tr>
       <tr><th>電話・FAX</th><td>TEL 0254-43-3884／FAX 0254-43-3886</td></tr>
@@ -348,7 +352,8 @@ footer{background:var(--blue-deep);color:#fff;padding:46px 0 96px;font-size:13.5
     <span class="label"><i>07</i>アクセス</span>
     <h2>アクセス</h2>
     <div class="access">
-      <div class="imgslot map"><span class="tag">MAP</span><b>Googleマップ埋め込み</b></div>
+      <iframe class="map" style="width:100%;border:0" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+        src="https://www.google.com/maps?q=%E6%96%B0%E6%BD%9F%E7%9C%8C%E8%83%8E%E5%86%85%E5%B8%82%E5%A4%A7%E5%B7%9D%E7%94%BA3355-1&output=embed"></iframe>
       <div>
         <table>
           <tr><th>住所</th><td>新潟県胎内市大川町3355-1</td></tr>
