@@ -423,6 +423,21 @@ window.addEventListener('scroll', () => {
 }, {passive:true});
 window.addEventListener('resize', updateOnScroll);
 updateOnScroll();
+
+// 本番ホストのみ計測。ローカルレビューは集計しない。
+if(location.hostname==='aidealize.com'){
+  window.dataLayer=window.dataLayer||[];
+  window.dataLayer.push({'gtm.start':Date.now(),event:'gtm.js'});
+  const gtmTag=document.createElement('script');gtmTag.async=true;gtmTag.src='https://www.googletagmanager.com/gtm.js?id=GTM-P6VNBWH3';document.head.appendChild(gtmTag);
+  document.querySelectorAll('a.btn[href^="https://aidealize.com/"]').forEach(function(a){
+    const url=new URL(a.getAttribute('href'));
+    url.searchParams.set('utm_source','koumuten_portfolio');
+    url.searchParams.set('utm_medium','referral');
+    url.searchParams.set('utm_campaign','web_production');
+    a.setAttribute('href',url.toString());
+    a.addEventListener('click',function(){window.dataLayer.push({event:'portfolio_contact_click',portfolio_name:'koumuten',page_path:location.pathname});});
+  });
+}
 </script>
 </body>
 </html>

@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>【ポートフォリオ・コンセプト】鉄骨加工・組立「架」ブランドサイト案 | AIdealize</title>
+<style>
+:root{
+  --bg:#12161b;
+  --bg2:#181e25;
+  --paper:#eef1f4;
+  --steel:#232d38;
+  --spark:#c9601f;
+  --spark-soft:#e9843f;
+  --draft:#7d93a8;
+  --ink:#eef1f4;
+  --muted:#9aa8b6;
+  --line:rgba(125,147,168,.22);
+  --max:1120px;
+  --mono:"DIN Alternate","Roboto Mono",ui-monospace,"SFMono-Regular",Menlo,Consolas,monospace;
+  --sans:"Hiragino Kaku Gothic ProN","Yu Gothic",system-ui,sans-serif;
+}
+:root{color-scheme:dark}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--ink);font-family:var(--sans);line-height:1.9;
+  -webkit-text-size-adjust:100%;overflow-x:hidden;font-feature-settings:"palt"}
+img{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:var(--max);margin:0 auto;padding:0 24px}
+section{position:relative;padding:112px 0}
+.num{font-family:var(--mono);font-variant-numeric:tabular-nums;font-style:normal}
+
+.proposal{background:#0a0c0e;color:var(--spark-soft);text-align:center;font-size:12.5px;
+  padding:10px 16px;letter-spacing:.04em;line-height:1.7;border-bottom:1px solid var(--line)}
+.proposal b{color:var(--spark-soft)}
+
+.reveal{opacity:0;transform:translateY(26px);transition:opacity .8s ease,transform .8s ease}
+.reveal.in{opacity:1;transform:translateY(0)}
+.reveal2{transition-delay:.1s}
+.reveal3{transition-delay:.2s}
+.reveal4{transition-delay:.3s}
+
+header{position:sticky;top:0;left:0;right:0;z-index:50;display:flex;align-items:center;
+  justify-content:space-between;padding:20px 32px;transition:background .35s ease,padding .35s ease;
+  background:transparent}
+header.scrolled{background:rgba(18,22,27,.94);backdrop-filter:blur(8px);padding:13px 32px;
+  border-bottom:1px solid var(--line)}
+.brand{display:flex;align-items:center;gap:10px;font-weight:800;font-size:18px;
+  letter-spacing:.04em;color:var(--ink)}
+.brand .mark{width:32px;height:32px;flex:0 0 auto}
+.brand .mark rect{fill:none;stroke:var(--spark);stroke-width:1.4}
+.brand .mark text{font-family:var(--sans);font-size:15px;font-weight:800;fill:var(--spark-soft)}
+nav{display:flex;align-items:center;gap:26px}
+.navlinks{display:flex;gap:26px}
+.navlinks a{font-size:13px;letter-spacing:.05em;color:var(--muted)}
+.navlinks a:hover{color:var(--spark-soft)}
+@media(max-width:900px){.navlinks{display:none}}
+.tag-pill{font-size:10.5px;letter-spacing:.1em;color:#12161b;background:var(--spark-soft);
+  padding:5px 12px;border-radius:20px;font-weight:800;margin-left:22px}
+
+/* HERO */
+.hero{position:relative;height:100svh;min-height:620px;display:flex;align-items:flex-end;
+  overflow:hidden;background:radial-gradient(ellipse at 70% 15%,#1c2530 0%,var(--bg) 60%)}
+.hero .grid-bg{position:absolute;inset:0;z-index:0;opacity:.4;
+  background-image:linear-gradient(var(--line) 1px,transparent 1px),
+    linear-gradient(90deg,var(--line) 1px,transparent 1px);background-size:56px 56px}
+.hero .frame{position:absolute;right:-4%;bottom:0;width:min(60%,600px);z-index:1;
+  opacity:.92;pointer-events:none}
+.hero .frame line{stroke:var(--draft);stroke-width:1.3;stroke-linecap:round;
+  vector-effect:non-scaling-stroke}
+.hero .frame .hi{stroke:var(--spark-soft);stroke-width:1.8}
+.hero .frame .dim{stroke:rgba(125,147,168,.5);stroke-width:1}
+.hero-content{position:relative;z-index:2;padding:0 32px 96px;width:100%}
+.hero .eyebrow{display:inline-flex;align-items:center;gap:10px;font-size:12.5px;
+  letter-spacing:.18em;color:var(--spark-soft);margin-bottom:26px}
+.hero .eyebrow::before{content:"";width:34px;height:1px;background:var(--spark)}
+.hero h1{font-weight:800;line-height:1.5;font-size:clamp(30px,5.6vw,58px)}
+.hero h1 .ln{display:block;overflow:hidden}
+.hero h1 .ln span{display:inline-block;animation:lnup .9s cubic-bezier(.2,.8,.2,1) both}
+.hero h1 .ln:nth-child(1) span{animation-delay:.08s}
+.hero h1 .ln:nth-child(2) span{animation-delay:.24s}
+@keyframes lnup{from{transform:translateY(110%)}to{transform:translateY(0)}}
+.hero .spark{color:var(--spark-soft)}
+.hero p{margin-top:26px;max-width:34em;color:var(--muted);font-size:15px}
+.scrolldown{position:absolute;left:32px;bottom:34px;z-index:3;display:flex;align-items:center;
+  gap:12px;font-size:11px;letter-spacing:.18em;color:var(--muted)}
+.scrolldown .bar{width:1px;height:44px;background:linear-gradient(var(--spark),transparent);
+  position:relative;overflow:hidden}
+.scrolldown .bar::after{content:"";position:absolute;left:0;top:-44px;width:100%;height:44px;
+  background:linear-gradient(var(--spark-soft),transparent);animation:dn 1.8s ease-in-out infinite}
+@keyframes dn{0%{top:-44px}100%{top:44px}}
+
+.kicker{display:inline-flex;align-items:center;gap:12px;font-size:12px;letter-spacing:.18em;
+  color:var(--spark-soft);margin-bottom:26px;font-weight:800}
+.kicker i{font-style:normal;font-family:var(--mono);color:var(--draft);
+  border-right:1px solid var(--line);padding-right:12px}
+
+/* CONCEPT */
+.concept{background:var(--bg2)}
+.concept .lines{max-width:820px}
+.concept .lines p{font-size:clamp(18px,2.6vw,25px);line-height:2;color:var(--ink);font-weight:700}
+.concept .lines em{font-style:normal;color:var(--spark-soft)}
+
+/* PROCESS (製作工程) */
+.process-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);
+  border:1px solid var(--line);margin-top:52px;counter-reset:pr}
+.pstep{background:var(--bg);padding:30px 24px;counter-increment:pr;position:relative}
+.pstep::before{content:"0" counter(pr);position:absolute;top:18px;right:20px;font-family:var(--mono);
+  font-size:26px;font-weight:800;color:rgba(125,147,168,.35)}
+.pstep h3{font-size:16.5px;font-weight:800;margin:18px 0 10px}
+.pstep p{font-size:13.5px;color:var(--muted);line-height:1.85}
+@media(max-width:900px){.process-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:560px){.process-grid{grid-template-columns:1fr}}
+
+/* WORKS (制作例) */
+.works-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);
+  border:1px solid var(--line);margin-top:52px}
+.workcard{background:var(--bg)}
+.workcard .art{aspect-ratio:3/4;position:relative;overflow:hidden}
+.workcard .art svg{width:100%;height:100%;transition:transform .6s ease}
+.workcard:hover .art svg{transform:scale(1.05)}
+.workcard .body{padding:22px 20px 26px}
+.workcard .cat{font-size:11px;letter-spacing:.12em;color:var(--spark-soft);margin-bottom:8px;font-weight:800}
+.workcard h3{font-size:17px;font-weight:800;margin-bottom:8px}
+.workcard p{font-size:13px;color:var(--muted);line-height:1.85}
+@media(max-width:980px){.works-grid{grid-template-columns:repeat(2,1fr)}}
+.works-note{margin-top:24px;font-size:13px;color:var(--muted)}
+
+/* QCDS 品質への姿勢 */
+.qcds{background:linear-gradient(180deg,var(--bg2),var(--bg))}
+.qcds-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);
+  border:1px solid var(--line);margin-top:52px}
+.qcds-grid div{background:var(--bg2);padding:30px 24px}
+.qcds-grid .k{font-family:var(--mono);font-size:24px;font-weight:800;color:var(--spark-soft)}
+.qcds-grid b{display:block;font-size:14.5px;margin:10px 0 6px}
+.qcds-grid small{font-size:12.5px;color:var(--muted);line-height:1.75}
+@media(max-width:820px){.qcds-grid{grid-template-columns:1fr 1fr}}
+
+/* 働く環境（補助的） */
+.env p{max-width:44em;color:var(--muted);font-size:14.5px}
+.chips{display:flex;flex-wrap:wrap;gap:10px;margin-top:26px}
+.chips span{border:1px solid var(--line);border-radius:999px;padding:9px 17px;font-size:13px;color:var(--muted)}
+
+/* AIdealize支援 */
+.support{background:var(--bg2)}
+.support-list{max-width:760px;margin-top:40px}
+.support-list li{list-style:none;display:grid;grid-template-columns:44px 1fr;gap:20px;
+  padding-bottom:34px}
+.support-list .num{width:44px;height:44px;border:1px solid var(--spark);border-radius:50%;
+  display:flex;align-items:center;justify-content:center;font-family:var(--mono);font-size:16px;
+  color:var(--spark-soft);flex:0 0 auto}
+.support-list h3{font-size:16px;font-weight:800;margin-bottom:6px}
+.support-list p{font-size:13.5px;color:var(--muted)}
+.support-note{margin-top:8px;font-size:13px;color:var(--muted);border-left:2px solid var(--line);
+  padding-left:16px;max-width:56em}
+
+/* CTA */
+.cta{background:linear-gradient(135deg,#1a2027,#0e1116);text-align:center;border-top:1px solid var(--line)}
+.cta h2{font-size:clamp(22px,3.4vw,34px);font-weight:800;margin-bottom:18px}
+.cta p{color:var(--muted);max-width:36em;margin:0 auto 34px;font-size:14px}
+.btn{display:inline-block;background:var(--spark-soft);color:#14171b;font-weight:800;
+  padding:16px 34px;border-radius:3px;font-size:14.5px;letter-spacing:.03em;transition:.2s}
+.btn:hover{background:var(--spark)}
+.btn.ghost{background:transparent;border:1px solid var(--line);color:var(--ink);margin-left:12px}
+
+footer{background:#0a0c0e;padding:38px 0;font-size:12.5px;color:var(--muted);border-top:1px solid var(--line)}
+footer .fwrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:16px;align-items:center}
+footer .note{margin-top:16px;line-height:1.8;opacity:.85;max-width:64em}
+
+@media(max-width:820px){
+  section{padding:76px 0}
+  .works-grid,.qcds-grid{grid-template-columns:1fr 1fr}
+}
+</style>
+</head>
+<body>
+
+<div class="proposal">これは<b>AIdealize</b>の制作力を示す<b>ポートフォリオ・コンセプト作品</b>です。「架」は実在する企業ではありません。</div>
+
+<header id="hd">
+  <div class="brand">
+    <svg class="mark" viewBox="0 0 32 32"><rect x="4" y="4" width="24" height="24"/><text x="16" y="21" text-anchor="middle">架</text></svg>
+    鉄骨加工・組立　架
+  </div>
+  <nav>
+    <div class="navlinks">
+      <a href="#concept">事業と技術</a>
+      <a href="#process">製作工程</a>
+      <a href="#works">制作例</a>
+      <a href="#support">AIdealizeの支援</a>
+    </div>
+    <span class="tag-pill">PORTFOLIO CONCEPT</span>
+  </nav>
+</header>
+
+<div class="hero" id="hero">
+  <div class="grid-bg" id="parallaxGrid"></div>
+  <svg class="frame" viewBox="0 0 520 340" aria-hidden="true">
+    <line x1="20" y1="300" x2="500" y2="300"/>
+    <line x1="70" y1="300" x2="70" y2="140"/>
+    <line x1="450" y1="300" x2="450" y2="140"/>
+    <line class="hi" x1="70" y1="140" x2="260" y2="90"/>
+    <line x1="260" y1="90" x2="450" y2="140"/>
+    <line x1="70" y1="140" x2="450" y2="140"/>
+    <line x1="70" y1="176" x2="106" y2="140"/>
+    <line x1="450" y1="176" x2="414" y2="140"/>
+    <line class="dim" x1="70" y1="322" x2="450" y2="322"/>
+    <line class="dim" x1="70" y1="314" x2="70" y2="330"/>
+    <line class="dim" x1="450" y1="314" x2="450" y2="330"/>
+  </svg>
+  <div class="hero-content">
+    <div class="eyebrow">CONCEPT WORK — 鉄骨加工・組立の工業ポートフォリオ（架空）</div>
+    <h1>
+      <span class="ln"><span>図面を、鉄に。<span class="spark">鉄を</span>、</span></span>
+      <span class="ln"><span>確かな<span class="spark">骨組み</span>に。</span></span>
+    </h1>
+    <p>切る、溶接する、組み上げる、現場に立てる。ひとつずつ丁寧に積み上げる四つの工程で、
+      倉庫・工場・物流施設の骨組みをつくる。「架」は、その仕事の中身を紹介するコンセプト作品です。</p>
+  </div>
+  <div class="scrolldown"><span>SCROLL</span><div class="bar"></div></div>
+</div>
+
+<section id="concept">
+  <div class="wrap">
+    <div class="lines">
+      <span class="kicker"><i>01</i>事業と技術</span>
+      <p class="reveal">鉄骨は、完成すると壁の内側に隠れて見えなくなる。<br>
+        <em>それでも、建物が建っている限り</em>、その骨組みは働き続けている。</p>
+      <p class="reveal reveal2" style="margin-top:28px">私たちが向き合っているのは、<em>「その場しのぎの一本」ではなく</em>、
+        図面どおりの精度で、長く建物を支え続ける<em>「確かな骨組み」</em>です。</p>
+    </div>
+  </div>
+</section>
+
+<section id="process">
+  <div class="wrap">
+    <span class="kicker"><i>02</i>製作工程</span>
+    <h2 style="font-size:clamp(22px,3.2vw,32px);font-weight:800;max-width:18em">
+      図面から、建物の骨組みになるまで。</h2>
+    <div class="process-grid">
+      <div class="pstep reveal">
+        <h3>加工</h3>
+        <p>図面の寸法どおりに、鉄骨を切り、穴をあける。ここでのズレは、建物全体の強さに関わる。</p>
+      </div>
+      <div class="pstep reveal reveal2">
+        <h3>溶接</h3>
+        <p>部材と部材をつなぎ、ひとつの構造にする。資格を持つ職人が、工程ごとに手を掛ける。</p>
+      </div>
+      <div class="pstep reveal reveal3">
+        <h3>組立</h3>
+        <p>加工した部材を、工場内で骨組みの形に組み上げる。現場に出す前に、自分たちの目で確かめる。</p>
+      </div>
+      <div class="pstep reveal reveal4">
+        <h3>建て方</h3>
+        <p>クレーンで吊り上げ、現場で組み立てる。何もなかった土地に、骨組みが立ち上がる工程。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="works" class="qcds">
+  <div class="wrap">
+    <span class="kicker"><i>03</i>制作例</span>
+    <h2 style="font-size:clamp(22px,3.2vw,32px);font-weight:800;max-width:18em">
+      手がける構造物の種類。</h2>
+    <div class="works-grid">
+      <div class="workcard reveal">
+        <div class="art"><svg viewBox="0 0 200 260" preserveAspectRatio="xMidYMid slice">
+          <rect width="200" height="260" fill="#181e25"/>
+          <g stroke="#7d93a8" stroke-width="1" opacity=".55">
+            <line x1="20" y1="220" x2="20" y2="60"/><line x1="180" y1="220" x2="180" y2="60"/>
+            <line x1="20" y1="220" x2="180" y2="220"/><line x1="20" y1="60" x2="100" y2="30"/>
+            <line x1="100" y1="30" x2="180" y2="60"/>
+          </g>
+          <line x1="20" y1="140" x2="180" y2="140" stroke="#e9843f" stroke-width="1.6"/>
+        </svg></div>
+        <div class="body"><div class="cat">WAREHOUSE</div><h3>倉庫・物流施設</h3>
+          <p>大スパンの空間を、少ない柱数で確保する骨組み。短工期にも対応する。</p></div>
+      </div>
+      <div class="workcard reveal reveal2">
+        <div class="art"><svg viewBox="0 0 200 260" preserveAspectRatio="xMidYMid slice">
+          <rect width="200" height="260" fill="#181e25"/>
+          <g stroke="#7d93a8" stroke-width="1" opacity=".55">
+            <rect x="24" y="40" width="55" height="55"/><rect x="90" y="40" width="55" height="55"/>
+            <rect x="24" y="105" width="55" height="55"/><rect x="90" y="105" width="55" height="55"/>
+            <rect x="24" y="170" width="55" height="55"/><rect x="90" y="170" width="55" height="55"/>
+          </g>
+          <line x1="145" y1="40" x2="145" y2="225" stroke="#e9843f" stroke-width="1.6"/>
+        </svg></div>
+        <div class="body"><div class="cat">PLANT</div><h3>工場・プラント建屋</h3>
+          <p>設備荷重・作業動線に合わせた架構設計。増改築を見据えた計画にも対応。</p></div>
+      </div>
+      <div class="workcard reveal reveal3">
+        <div class="art"><svg viewBox="0 0 200 260" preserveAspectRatio="xMidYMid slice">
+          <rect width="200" height="260" fill="#181e25"/>
+          <g stroke="#7d93a8" stroke-width="1" opacity=".55">
+            <line x1="20" y1="200" x2="180" y2="200"/>
+            <line x1="45" y1="200" x2="45" y2="90"/><line x1="100" y1="200" x2="100" y2="60"/>
+            <line x1="155" y1="200" x2="155" y2="90"/>
+          </g>
+          <circle cx="100" cy="55" r="14" fill="none" stroke="#e9843f" stroke-width="1.6"/>
+        </svg></div>
+        <div class="body"><div class="cat">SUPPORT STRUCTURE</div><h3>特殊架台・設備架構</h3>
+          <p>タンク・配管・大型設備を支える特注の架台。個別図面での一品製作。</p></div>
+      </div>
+      <div class="workcard reveal reveal4">
+        <div class="art"><svg viewBox="0 0 200 260" preserveAspectRatio="xMidYMid slice">
+          <rect width="200" height="260" fill="#181e25"/>
+          <g stroke="#7d93a8" stroke-width="1" opacity=".55">
+            <line x1="20" y1="60" x2="180" y2="60"/><line x1="20" y1="60" x2="20" y2="220"/>
+            <line x1="180" y1="60" x2="180" y2="220"/><line x1="20" y1="220" x2="180" y2="220"/>
+            <line x1="20" y1="140" x2="180" y2="140"/>
+          </g>
+          <polygon points="80,110 100,80 120,110" fill="none" stroke="#e9843f" stroke-width="1.6"/>
+        </svg></div>
+        <div class="body"><div class="cat">SITE MANAGEMENT</div><h3>現場総合管理</h3>
+          <p>加工・組立・建て方までを自社一貫で管理し、工程間の食い違いを減らす。</p></div>
+      </div>
+    </div>
+    <p class="works-note">※このセクションは制作物の種類を示すコンセプト例です。実在する施工実績・企業名ではありません。</p>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <span class="kicker"><i>04</i>品質への姿勢</span>
+    <h2 style="font-size:clamp(22px,3.2vw,32px);font-weight:800">品質・原価・納期・安全。この4つを、揃えて考える。</h2>
+    <div class="qcds-grid" style="margin-top:52px">
+      <div class="reveal"><div class="k">Q</div><b>品質 Quality</b><small>検査は自社の目で。妥協した鉄骨は、現場に出さない。</small></div>
+      <div class="reveal reveal2"><div class="k">C</div><b>原価 Cost</b><small>無駄を削り、適正な価格で応える。</small></div>
+      <div class="reveal reveal3"><div class="k">D</div><b>納期 Delivery</b><small>約束した日を守る。守れない仕事は、最初から受けない。</small></div>
+      <div class="reveal reveal4"><div class="k">S</div><b>安全 Safety</b><small>全員が無事に帰る。現場は、安全から始まる。</small></div>
+    </div>
+  </div>
+</section>
+
+<section class="env">
+  <div class="wrap">
+    <span class="kicker"><i>05</i>働く環境</span>
+    <h2 style="font-size:clamp(20px,2.8vw,28px);font-weight:800">未経験からでも、工程をひとつずつ覚えられる環境。</h2>
+    <p class="reveal" style="margin-top:22px">加工から任され、経験を積みながら溶接・組立・建て方へ。
+      資格の取得を支援し、任せられる工程が増えるほど役割も広がる。
+      採用に関する具体的な条件・待遇は、実際の案件ごとに整理してご案内します。</p>
+    <div class="chips">
+      <span>資格取得支援</span><span>未経験からの育成体制</span><span>専任の教育担当</span>
+    </div>
+  </div>
+</section>
+
+<section id="support" class="support">
+  <div class="wrap">
+    <span class="kicker"><i>06</i>AIdealizeの制作・公開後支援</span>
+    <h2 style="font-size:clamp(22px,3.2vw,32px);font-weight:800;max-width:20em">
+      サイトは、公開して終わりにしない。</h2>
+    <p style="margin-top:22px;max-width:44em;color:var(--muted);font-size:14.5px">
+      AIdealizeが制作するのは、見た目だけのサイトではありません。公開したあとに、実際に機能しているかを確認し続けます。</p>
+    <ul class="support-list">
+      <li class="reveal"><div class="num">1</div><div><h3>表示・リンク・フォームの動作チェック</h3>
+        <p>公開後のページ表示、リンク切れ、問い合わせフォームの送信状況を確認します。</p></div></li>
+      <li class="reveal reveal2"><div class="num">2</div><div><h3>アクセス・問い合わせ数値の確認</h3>
+        <p>アクセス状況や問い合わせの発生状況を数値で確認し、変化に気づけるようにします。</p></div></li>
+      <li class="reveal reveal3"><div class="num">3</div><div><h3>保守・更新と、確認結果に基づく改善</h3>
+        <p>確認して終わりにせず、必要な保守・更新・改善につなげます。</p></div></li>
+    </ul>
+    <p class="support-note">※対応の頻度・期間・料金・範囲は案件ごとに個別にご案内します。本ページで一律の条件を確約するものではありません。</p>
+  </div>
+</section>
+
+<section class="cta">
+  <div class="wrap">
+    <span class="kicker" style="justify-content:center"><i>07</i>制作相談</span>
+    <h2>工業系ポートフォリオを見て、<br>相談する。</h2>
+    <p>本ページは、AIdealizeが制作力を示すために作成したポートフォリオ・コンセプト作品です。
+      同じ水準のサイトを、製造業・工業系の企業様向けにお作りできます。</p>
+    <a class="btn" href="https://aidealize.com/">AIdealizeに相談する</a>
+    <a class="btn ghost" href="https://aidealize.com/service/">サービス内容を見る</a>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="fwrap">
+      <div class="brand" style="font-size:15px">鉄骨加工・組立　架（コンセプト）</div>
+      <div>Produced by <a href="https://aidealize.com/" style="color:var(--spark-soft)">AIdealize</a></div>
+    </div>
+    <p class="note">本ページに登場する会社名・人物・数値・実績・認定はすべて架空のものであり、実在する企業・団体とは関係ありません。
+      AIdealizeの制作力を示すためのポートフォリオ・コンセプト作品として制作しています。検索エンジンには登録していません。</p>
+  </div>
+</footer>
+
+<script>
+const hd = document.getElementById('hd');
+
+const revealEls = document.querySelectorAll('.reveal');
+const io = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+}, {threshold:.18, rootMargin:'0px 0px -40px 0px'});
+revealEls.forEach(el => io.observe(el));
+
+const grid = document.getElementById('parallaxGrid');
+function updateOnScroll(){
+  grid.style.transform = `translateY(${window.scrollY * 0.15}px)`;
+  hd.classList.toggle('scrolled', window.scrollY > 40);
+}
+let ticking = false;
+window.addEventListener('scroll', () => {
+  if (ticking) return;
+  ticking = true;
+  requestAnimationFrame(() => { updateOnScroll(); ticking = false; });
+}, {passive:true});
+window.addEventListener('resize', updateOnScroll);
+updateOnScroll();
+
+// 本番ホストのみ計測。ローカルレビューは集計しない。
+if(location.hostname==='aidealize.com'){
+  window.dataLayer=window.dataLayer||[];
+  window.dataLayer.push({'gtm.start':Date.now(),event:'gtm.js'});
+  const gtmTag=document.createElement('script');gtmTag.async=true;gtmTag.src='https://www.googletagmanager.com/gtm.js?id=GTM-P6VNBWH3';document.head.appendChild(gtmTag);
+  document.querySelectorAll('a.btn[href^="https://aidealize.com/"]').forEach(function(a){
+    const url=new URL(a.getAttribute('href'));
+    url.searchParams.set('utm_source','kogyo_portfolio');
+    url.searchParams.set('utm_medium','referral');
+    url.searchParams.set('utm_campaign','web_production');
+    a.setAttribute('href',url.toString());
+    a.addEventListener('click',function(){window.dataLayer.push({event:'portfolio_contact_click',portfolio_name:'kogyo',page_path:location.pathname});});
+  });
+}
+</script>
+</body>
+</html>
