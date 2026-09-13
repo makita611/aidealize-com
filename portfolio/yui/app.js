@@ -16,11 +16,17 @@ document.querySelectorAll('[data-scene]').forEach(button=>button.addEventListene
   const toggle=form.querySelectorAll('.lead-toggle button'),urlField=form.querySelector('[data-field="url"]'),urlInput=form.querySelector('#currentUrl'),submit=document.getElementById('leadSubmit');
   const campaign=new URLSearchParams(location.search).get('utm_campaign')||form.dataset.campaign||'web_production';
   let kind='new';
+  function normalizedSiteUrl(){
+    const v=urlInput.value.trim();
+    if(!v)return'';
+    return/^https?:\/\//i.test(v)?v:'https://'+v;
+  }
   function updateHref(){
     const url=new URL(submit.getAttribute('href'),location.href);
     url.searchParams.set('utm_campaign',campaign);
     url.searchParams.set('inquiry_type',kind);
-    if(kind==='renovation'&&urlInput.value.trim())url.searchParams.set('current_site',urlInput.value.trim());
+    const site=kind==='renovation'?normalizedSiteUrl():'';
+    if(site)url.searchParams.set('current_site',site);
     else url.searchParams.delete('current_site');
     submit.setAttribute('href',url.toString());
   }
@@ -28,11 +34,18 @@ document.querySelectorAll('[data-scene]').forEach(button=>button.addEventListene
     toggle.forEach(b=>b.setAttribute('aria-pressed',String(b===btn)));
     kind=btn.dataset.kind;
     urlField.hidden=kind!=='renovation';
+    if(kind==='new')urlInput.value='';
     updateHref();
   }));
   urlInput.addEventListener('input',updateHref);
   submit.addEventListener('click',()=>{
-    if(location.hostname==='aidealize.com'){window.dataLayer=window.dataLayer||[];window.dataLayer.push({event:'portfolio_contact_submit',portfolio_name:'yui',inquiry_type:kind,page_path:location.pathname})}
+    if(location.hostname==='aidealize.com'){
+      window.dataLayer=window.dataLayer||[];
+      const payload={portfolio_name:'yui',inquiry_type:kind,page_path:location.pathname};
+      window.dataLayer.push({event:'portfolio_contact_submit',...payload});
+      // 相談フォームへの「移動」であり問い合わせ完了ではない。名称を明確にした新イベントを並行発火（旧イベントはGTM側の既存トリガーのため維持）。
+      window.dataLayer.push({event:'portfolio_contact_handoff',...payload});
+    }
   });
   updateHref();
 })();
