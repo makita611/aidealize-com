@@ -932,6 +932,26 @@ document.querySelectorAll('.gas-form').forEach(function(form){
     fetch(GAS_URL,{method:'POST',body:fd}).then(function(r){if(!r.ok)throw new Error();return r.json();}).then(function(result){if(!result.ok||result.submission_id!==submissionId)throw new Error();showThanks();}).catch(function(){btn.disabled=false;btn.textContent='送信する';alert('送信できませんでした。通信状況をご確認のうえ、もう一度お試しください。');});
   });
 });
+
+// ポートフォリオ経由の流入（例:「結」= yui_portfolio）から ?inquiry_type=... で来た場合、
+// ご相談内容欄と「サイト・集客の改善」チェックへ引き継ぐ
+(function(){
+  const q=new URLSearchParams(location.search);
+  const kind=q.get('inquiry_type');
+  if(!kind)return;
+  const form=document.querySelector('.gas-form');
+  if(!form)return;
+  const msg=form.querySelector('textarea[name="message"]');
+  if(msg&&!msg.value){
+    const lines=[];
+    if(q.get('utm_source')==='yui_portfolio')lines.push('「結」ポートフォリオを見てご相談。');
+    const site=q.get('current_site');
+    lines.push(kind==='renovation'?'既存サイトの改修を検討中'+(site?'（現在のサイト: '+site+'）':''):'新規サイト制作を検討中');
+    msg.value=lines.join('\n');
+  }
+  const siteIssue=form.querySelector('input[name="issue"][value="サイト・集客の改善"]');
+  if(siteIssue)siteIssue.checked=true;
+})();
 </script>
 <script src="/js/lead-capture.js"></script>
 </body>

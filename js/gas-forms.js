@@ -118,10 +118,35 @@
     });
   }
 
+  /* ── ポートフォリオ経由の流入をご相談内容へ引き継ぐ ──
+     例: 「結」(yui_portfolio) から ?inquiry_type=new|renovation&current_site=... で遷移してきた場合、
+     ご相談内容欄と「サイト・集客の改善」チェックを自動で埋める。URLにinquiry_typeが無ければ何もしない。 */
+  function prefillFromPortfolio() {
+    var q = new URLSearchParams(location.search);
+    var kind = q.get('inquiry_type');
+    if (!kind) return;
+    var form = document.querySelector('.gas-form');
+    if (!form) return;
+    var source = q.get('utm_source') || '';
+    var site = q.get('current_site') || '';
+    var msg = form.querySelector('textarea[name="message"]');
+    if (msg && !msg.value) {
+      var lines = [];
+      if (source === 'yui_portfolio') lines.push('「結」ポートフォリオを見てご相談。');
+      lines.push(kind === 'renovation'
+        ? '既存サイトの改修を検討中' + (site ? '（現在のサイト: ' + site + '）' : '')
+        : '新規サイト制作を検討中');
+      msg.value = lines.join('\n');
+    }
+    var siteIssue = form.querySelector('input[name="issue"][value="サイト・集客の改善"]');
+    if (siteIssue) siteIssue.checked = true;
+  }
+
   /* DOM ready チェック（スクリプト位置問わず確実に動作） */
   if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', bindForms);
+    document.addEventListener('DOMContentLoaded', function () { bindForms(); prefillFromPortfolio(); });
   } else {
     bindForms();
+    prefillFromPortfolio();
   }
 })();
