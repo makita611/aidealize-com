@@ -35,25 +35,24 @@
   .delta.down { color: var(--rose); }
   .delta.flat { color: var(--light); }
 
-  /* ── ファネル図 ───────────────── */
-  .funnel-card { background: #fff; border-radius: 14px; padding: 20px 22px; margin-bottom: 14px; border: 1px solid var(--border); }
-  .funnel-card h3 { margin: 0 0 4px; font-size: 15px; color: var(--ink); }
-  .funnel-card .sub { font-size: 12px; color: var(--light); margin-bottom: 16px; }
-  .fstrip { display: flex; align-items: flex-end; gap: 3px; height: 92px; }
-  .fstep {
-    background: var(--funnel-fill); border-radius: 6px 6px 4px 4px; padding: 8px 4px 6px;
-    text-align: center; position: relative; display: flex; flex-direction: column; justify-content: flex-end;
+  /* ── トラペゾイド・ファネル ───────────────── */
+  .tf-card { background: linear-gradient(135deg, var(--ink) 0%, #16233a 100%); border-radius: 14px; padding: 26px 22px 20px; color: #fff; margin-bottom: 14px; }
+  .tf-card h3 { margin: 0 0 4px; font-size: 15px; color: #fff; }
+  .tf-card .sub { font-size: 12px; color: rgba(255,255,255,0.55); margin-bottom: 16px; }
+  .tf-grid { display: grid; grid-template-columns: repeat(4, 1fr); }
+  .tf-numbers { margin-bottom: 6px; }
+  .tf-numbers div { text-align: center; font-size: 19px; font-weight: 800; }
+  .tf-shape { height: 130px; position: relative; }
+  .tf-seg { position: relative; }
+  .tf-seg .fill { position: absolute; inset: 0; }
+  .tf-pct {
+    position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+    background: rgba(255,255,255,0.92); color: var(--ink); font-size: 12px; font-weight: 800;
+    padding: 3px 11px; border-radius: 100px; white-space: nowrap;
   }
-  .fstep:nth-child(1) { flex: 1.3; height: 100%; background: #b9e2ec; }
-  .fstep:nth-child(2) { flex: 1.15; height: 82%; background: #cbe9f0; }
-  .fstep:nth-child(3) { flex: 1; height: 66%; background: #ddf0f4; }
-  .fstep:nth-child(4) { flex: 0.9; height: 42%; background: #eaf6f8; }
-  .fstep .name { font-size: 11.5px; font-weight: 700; color: var(--cyan-dark); white-space: nowrap; }
-  .fstep .num { font-size: 12px; font-weight: 700; color: var(--ink); margin-top: 3px; }
-  .fstep.blind { flex: 0.8; height: 40%; background: #f4f5f7; border: 1px dashed var(--light); }
-  .fstep.blind .name { color: var(--light); font-size: 11px; }
-  .fstep.blind .num { color: var(--light); font-weight: 500; font-size: 11px; }
-  .fchevron { display: flex; align-items: flex-end; color: var(--light); font-size: 12px; padding: 0 1px 10px; }
+  .tf-labels { margin-top: 6px; }
+  .tf-labels div { text-align: center; font-size: 12.5px; color: rgba(255,255,255,0.65); }
+  .tf-note { margin-top: 16px; font-size: 12px; color: rgba(255,255,255,0.5); border-top: 1px solid rgba(255,255,255,0.15); padding-top: 12px; }
   .fnote { background: var(--amber-bg); border: 1px solid var(--amber-border); border-left: 4px solid var(--amber); border-radius: 0 8px 8px 0; padding: 10px 14px; margin-top: 12px; font-size: 12.5px; color: var(--amber-text); }
 
   .verdict-card { background: #fff; border-radius: 14px; padding: 20px 22px; margin-bottom: 14px; border: 1px solid var(--border); }
@@ -145,38 +144,24 @@
   </div>
 
   <!-- ファネル図 -->
-  <div class="funnel-card">
-    <h3>集客のファネルで見る（<a href="https://aidealize.com/service/cvr/" style="color:var(--cyan-dark);">売上＝集めた数×各段の通過率</a>）</h3>
-    <div class="sub">今週の内枦保住建の数字を当てはめると――</div>
+  <div class="tf-card">
+    <h3>集客のファネルで見る（<a href="https://aidealize.com/service/cvr/" style="color:#bff0fb;">売上＝集めた数×各段の通過率</a>）</h3>
+    <div class="sub">今週の内枦保住建の数字を当てはめると―― <a href="funnel.html" style="color:#bff0fb;">期間を自由に選べる版はこちら</a></div>
 
-    <div class="fstrip">
-      <div class="fstep">
-        <div class="name">見つかる</div>
-        <div class="num">270回</div>
-      </div>
-      <div class="fchevron">›</div>
-      <div class="fstep">
-        <div class="name">訪れる</div>
-        <div class="num">89件</div>
-      </div>
-      <div class="fchevron">›</div>
-      <div class="fstep">
-        <div class="name">信じる</div>
-        <div class="num">59件</div>
-      </div>
-      <div class="fchevron">›</div>
-      <div class="fstep">
-        <div class="name">動く</div>
-        <div class="num">23件</div>
-      </div>
-      <div class="fchevron">›</div>
-      <div class="fstep blind">
-        <div class="name">実る</div>
-        <div class="num">？</div>
-      </div>
+    <div class="tf-grid tf-numbers">
+      <div>270</div><div>89</div><div>59</div><div>23</div>
+    </div>
+    <div class="tf-grid tf-shape">
+      <div class="tf-seg"><div class="fill" style="background:#b9e2ec; clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%);"></div><div class="tf-pct">100%</div></div>
+      <div class="tf-seg"><div class="fill" style="background:#7cc3d6; clip-path: polygon(0% 0%, 100% 33.5%, 100% 66.5%, 0% 100%);"></div><div class="tf-pct">33%</div></div>
+      <div class="tf-seg"><div class="fill" style="background:#3f9db8; clip-path: polygon(0% 33.5%, 100% 39.1%, 100% 60.9%, 0% 66.5%);"></div><div class="tf-pct">22%</div></div>
+      <div class="tf-seg"><div class="fill" style="background:#1a6f85; clip-path: polygon(0% 39.1%, 100% 45.7%, 100% 54.3%, 0% 60.9%);"></div><div class="tf-pct">9%</div></div>
+    </div>
+    <div class="tf-grid tf-labels">
+      <div>見つかる</div><div>訪れる</div><div>信じる</div><div>動く</div>
     </div>
 
-    <div class="fnote">⚠️ <b>「動く」（/contactページへの到達）までしか見えていない。</b>23件のうち何件が実際に電話・フォーム送信・来社（実る）につながったかは、GA4に成果計測（コンバージョン）イベントが設定されていないため追えていない。</div>
+    <div class="tf-note">⚠️ 「動く」（/contactページへの到達）までしか見えていない。23件のうち何件が実際に電話・フォーム送信・来社（実る）につながったかは、GA4に成果計測（コンバージョン）イベントが設定されていないため追えていない。</div>
   </div>
 
   <div class="verdict-card">

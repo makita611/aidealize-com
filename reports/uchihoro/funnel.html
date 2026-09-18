@@ -39,7 +39,15 @@
 
   /* ── スパークライン ───────────────── */
   .spark-wrap { margin-top: 14px; position: relative; }
-  .spark-wrap svg { display: block; width: 100%; height: 64px; }
+  .spark-wrap svg { display: block; width: 100%; height: 64px; cursor: crosshair; }
+  .spark-tooltip {
+    position: absolute; top: 0; transform: translate(-50%, -100%);
+    background: var(--ink); color: #fff; font-size: 11.5px; font-weight: 700;
+    padding: 6px 10px; border-radius: 8px; white-space: nowrap; pointer-events: none;
+    opacity: 0; transition: opacity 0.1s; z-index: 5;
+  }
+  .spark-tooltip .d { font-weight: 500; color: rgba(255,255,255,0.65); margin-right: 6px; }
+  .spark-tooltip.show { opacity: 1; }
 
   /* ── トラペゾイド・ファネル ───────────────── */
   .tf-card { background: linear-gradient(135deg, var(--ink) 0%, #16233a 100%); border-radius: 14px; padding: 26px 22px 20px; color: #fff; }
@@ -88,10 +96,11 @@
       <button data-days="180">直近180日</button>
       <button data-days="368">直近12ヶ月</button>
     </div>
-    <div class="spark-wrap">
+    <div class="spark-wrap" id="sparkWrap">
       <svg id="sparkSvg" viewBox="0 0 800 64" preserveAspectRatio="none"></svg>
+      <div class="spark-tooltip" id="sparkTooltip"></div>
     </div>
-    <div class="foot-note">グラフは日別セッション数の推移(直近12ヶ月)。網掛け部分が今選んでいる期間。</div>
+    <div class="foot-note">グラフは日別セッション数の推移(直近12ヶ月)。網掛け部分が今選んでいる期間。線の上でマウスを動かすと日別の数値が出ます。</div>
   </div>
 
   <div class="card tf-card">
@@ -170,26 +179,65 @@ function renderFunnel(sums) {
   });
 }
 
+const SPARK_W = 800, SPARK_H = 64;
+let sparkX = i => 0; // 直近renderSparkで作った x(i) をホバー判定用に保持
+
 function renderSpark(days) {
   const svg = document.getElementById('sparkSvg');
-  const W = 800, H = 64;
   const n = TREND.length;
   const maxSessions = Math.max(...TREND.map(d => d.sessions), 1);
-  const x = i => (i / (n - 1)) * W;
-  const y = v => H - 4 - (v / maxSessions) * (H - 8);
+  const x = i => (i / (n - 1)) * SPARK_W;
+  const y = v => SPARK_H - 4 - (v / maxSessions) * (SPARK_H - 8);
+  sparkX = x;
 
   const linePoints = TREND.map((d, i) => `${x(i)},${y(d.sessions)}`).join(' ');
-  const areaPoints = `0,${H} ${linePoints} ${W},${H}`;
+  const areaPoints = `0,${SPARK_H} ${linePoints} ${SPARK_W},${SPARK_H}`;
 
   const shadeStartIdx = n - days;
   const shadeX = x(Math.max(shadeStartIdx, 0));
 
   svg.innerHTML = `
-    <rect x="${shadeX}" y="0" width="${W - shadeX}" height="${H}" fill="#0891b2" opacity="0.12"></rect>
+    <rect x="${shadeX}" y="0" width="${SPARK_W - shadeX}" height="${SPARK_H}" fill="#0891b2" opacity="0.12"></rect>
     <polyline points="${areaPoints}" fill="#0891b2" opacity="0.10" stroke="none"></polyline>
     <polyline points="${linePoints}" fill="none" stroke="#0891b2" stroke-width="1.6"></polyline>
-    <line x1="${shadeX}" y1="0" x2="${shadeX}" y2="${H}" stroke="#0e7490" stroke-width="1.5" stroke-dasharray="3,3"></line>
+    <line x1="${shadeX}" y1="0" x2="${shadeX}" y2="${SPARK_H}" stroke="#0e7490" stroke-width="1.5" stroke-dasharray="3,3"></line>
+    <circle id="sparkDot" r="3.5" fill="#0e7490" stroke="#fff" stroke-width="1.5" style="display:none;"></circle>
+    <line id="sparkGuide" y1="0" y2="${SPARK_H}" stroke="#94a3b8" stroke-width="1" stroke-dasharray="2,2" style="display:none;"></line>
   `;
+}
+
+function setupSparkHover() {
+  const svg = document.getElementById('sparkSvg');
+  const wrap = document.getElementById('sparkWrap');
+  const tooltip = document.getElementById('sparkTooltip');
+  const n = TREND.length;
+
+  svg.addEventListener('mousemove', e => {
+    const rect = svg.getBoundingClientRect();
+    const frac = Math.min(Math.max((e.clientX - rect.left) / rect.width, 0), 1);
+    const idx = Math.round(frac * (n - 1));
+    const d = TREND[idx];
+    if (!d) return;
+
+    const dot = document.getElementById('sparkDot');
+    const guide = document.getElementById('sparkGuide');
+    const px = sparkX(idx);
+    if (dot) { dot.style.display = ''; dot.setAttribute('cx', px); dot.setAttribute('cy', SPARK_H - 4 - (d.sessions / Math.max(...TREND.map(t=>t.sessions),1)) * (SPARK_H - 8)); }
+    if (guide) { guide.style.display = ''; guide.setAttribute('x1', px); guide.setAttribute('x2', px); }
+
+    const leftPct = (px / SPARK_W) * 100;
+    tooltip.style.left = leftPct + '%';
+    tooltip.innerHTML = `<span class="d">${d.date}</span>セッション ${d.sessions}件`;
+    tooltip.classList.add('show');
+  });
+
+  svg.addEventListener('mouseleave', () => {
+    tooltip.classList.remove('show');
+    const dot = document.getElementById('sparkDot');
+    const guide = document.getElementById('sparkGuide');
+    if (dot) dot.style.display = 'none';
+    if (guide) guide.style.display = 'none';
+  });
 }
 
 function render(days) {
@@ -213,6 +261,7 @@ document.getElementById('presets').addEventListener('click', e => {
   render(days);
 });
 
+setupSparkHover();
 render(90);
 </script>
 </body>
