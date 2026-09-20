@@ -133,6 +133,7 @@
     if (msg && !msg.value) {
       var lines = [];
       if (source === 'yui_portfolio') lines.push('「結」ポートフォリオを見てご相談。');
+      if (source === 'form_works') lines.push('FORM WORKSポートフォリオを見てご相談。');
       lines.push(kind === 'renovation'
         ? '既存サイトの改修を検討中' + (site ? '（現在のサイト: ' + site + '）' : '')
         : '新規サイト制作を検討中');

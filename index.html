@@ -908,6 +908,7 @@ document.querySelectorAll('.gas-form').forEach(function(form){
   if(msg&&!msg.value){
     const lines=[];
     if(q.get('utm_source')==='yui_portfolio')lines.push('「結」ポートフォリオを見てご相談。');
+    if(q.get('utm_source')==='form_works')lines.push('FORM WORKSポートフォリオを見てご相談。');
     const site=q.get('current_site');
     lines.push(kind==='renovation'?'既存サイトの改修を検討中'+(site?'（現在のサイト: '+site+'）':''):'新規サイト制作を検討中');
     msg.value=lines.join('\n');
