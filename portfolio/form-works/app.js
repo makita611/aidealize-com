@@ -33,11 +33,22 @@ if(contact){
    choices.forEach(x=>x.setAttribute('aria-checked',String(x===b)));
    const url=new URL(contact.href);url.searchParams.set('inquiry_type',b.dataset.inquiry);contact.href=url.toString();
   });
+  b.addEventListener('keydown',event=>{
+   if(!['ArrowLeft','ArrowRight'].includes(event.key))return;
+   event.preventDefault();
+   const next=(index+(event.key==='ArrowRight'?1:choices.length-1))%choices.length;
+   choices[next].focus();choices[next].click();
+  });
  });
  const note=contact.nextElementSibling;
  if(note)note.innerHTML='AIdealizeの相談フォームが別タブで開きます。<br>作品名とご相談の種類は、内容欄へ自動で引き継がれます。';
 }
 document.querySelectorAll('.studio-teaser .btn').forEach(link=>{link.href='studio.html#contact';link.firstChild.textContent='Web制作を相談する';});
+const mobileCta=document.createElement('a');
+mobileCta.className='mobile-cta';
+mobileCta.href=contact?contact.href:'studio.html#contact';
+mobileCta.textContent='Web制作を相談する ↗';
+document.body.appendChild(mobileCta);
 window.dataLayer=window.dataLayer||[];
 window.dataLayer.push({'gtm.start':new Date().getTime(),event:'gtm.js'});
 const gtmScript=document.createElement('script');
