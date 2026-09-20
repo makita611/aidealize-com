@@ -21,8 +21,23 @@ if(journey){
 }
 const observer=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');observer.unobserve(e.target);}}),{threshold:.08});document.querySelectorAll('.reveal').forEach(e=>observer.observe(e));
 const contact=document.querySelector('#contact-link');
-if(contact){document.querySelectorAll('[data-inquiry]').forEach(b=>b.addEventListener('click',()=>{document.querySelectorAll('[data-inquiry]').forEach(x=>x.setAttribute('aria-pressed',String(x===b)));const url=new URL(contact.href);url.searchParams.set('inquiry_type',b.dataset.inquiry);contact.href=url.toString();}));}
-// Load the same tag manager used by the AIdealize corporate site.
+if(contact){
+ const choices=[...document.querySelectorAll('[data-inquiry]')];
+ const group=document.querySelector('.choices');
+ group?.setAttribute('role','radiogroup');
+ choices.forEach((b,index)=>{
+  b.setAttribute('role','radio');
+  b.setAttribute('aria-checked',String(index===0));
+  b.removeAttribute('aria-pressed');
+  b.addEventListener('click',()=>{
+   choices.forEach(x=>x.setAttribute('aria-checked',String(x===b)));
+   const url=new URL(contact.href);url.searchParams.set('inquiry_type',b.dataset.inquiry);contact.href=url.toString();
+  });
+ });
+ const note=contact.nextElementSibling;
+ if(note)note.innerHTML='AIdealizeの相談フォームが別タブで開きます。<br>作品名とご相談の種類は、内容欄へ自動で引き継がれます。';
+}
+document.querySelectorAll('.studio-teaser .btn').forEach(link=>{link.href='studio.html#contact';link.firstChild.textContent='Web制作を相談する';});
 window.dataLayer=window.dataLayer||[];
 window.dataLayer.push({'gtm.start':new Date().getTime(),event:'gtm.js'});
 const gtmScript=document.createElement('script');

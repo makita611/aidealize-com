@@ -11,3 +11,4 @@
 @media(max-width:700px) and (max-height:740px){.journey{height:auto}.scene{position:relative;top:0;height:auto;min-height:0}.scene-main{min-height:575px}.scene-art{top:255px}}
 html:not(.js) .journey{height:auto}html:not(.js) .scene{position:relative;top:0}html:not(.js) .stage-nav,html:not(.js) .scroll-note,html:not(.js) .menu{display:none}html:not(.js) .nav{display:flex;position:static;flex-wrap:wrap;padding:0;border:0}html:not(.js) .header{height:auto;min-height:88px;gap:20px;padding-top:12px;padding-bottom:12px;flex-wrap:wrap}
 @media print{.header{position:static}.journey{height:auto}.scene{position:relative;top:0;height:700px}.reveal{opacity:1!important;transform:none!important}.menu,.stage-nav{display:none}}
+.choice[aria-checked='true']{background:var(--green);color:white;border-color:var(--green)}
