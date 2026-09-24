@@ -249,6 +249,11 @@ body{font-family:'Noto Sans JP',sans-serif;background:var(--white);color:var(--i
 .column-card-title{font-family:'Shippori Mincho',serif;font-size:17px;font-weight:700;color:var(--ink);line-height:1.6;}
 .column-card-body{font-size:13px;color:var(--body);line-height:1.8;flex:1;}
 .column-card-footer{font-size:11px;color:var(--light);}
+.column-topics{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:28px 24px;margin-top:40px;padding-top:32px;border-top:1px solid var(--border);}
+.column-topic-h{font-size:12px;font-weight:700;color:var(--ink);letter-spacing:0.06em;margin-bottom:10px;}
+.column-topic ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:8px;}
+.column-topic a{font-size:13px;color:var(--body);text-decoration:none;line-height:1.6;}
+.column-topic a:hover{color:var(--red);text-decoration:underline;}
 
 /* ── CTA FORM ── */
 .cta-section{background:var(--navy);padding:100px 60px;}
@@ -728,6 +733,56 @@ window.addEventListener('message', function(e){
         <div class="column-card-footer">2026.06.05 · 読了10分 · 続きを読む →</div>
       </a>
     </div>
+    <nav class="column-topics" aria-label="テーマ別のコラム">
+      <div class="column-topic">
+        <div class="column-topic-h">訪問看護・記録</div>
+        <ul>
+          <li><a href="/column/houkan-kiroku-ai-checklist/">記録AI導入チェックリスト</a></li>
+          <li><a href="/column/soap-kiroku-ai-hikaku/">SOAP記録AIの方式比較</a></li>
+          <li><a href="/column/houkan-kaishi-shuryo-jikoku/">令和8年度改定：記録の開始・終了時刻</a></li>
+          <li><a href="/column/houkan-system-jirei/">訪問看護システムの選び方</a></li>
+          <li><a href="/column/houkan-vital-monitoring/">バイタルのICTモニタリング</a></li>
+          <li><a href="/column/houkan-kyujinhyo-kakikata/">応募が増える求人票の書き方</a></li>
+        </ul>
+      </div>
+      <div class="column-topic">
+        <div class="column-topic-h">ケアマネ・介護BCP</div>
+        <ul>
+          <li><a href="/column/caremane-nayami-ichiran/">居宅ケアマネ638件の「現場の声」</a></li>
+          <li><a href="/column/kaigo-bcp-kunren-jisshirei/">介護BCP訓練の実施例</a></li>
+          <li><a href="/column/kaigo-bcp-nenji-koshin-checklist/">介護BCP年次更新チェックリスト</a></li>
+        </ul>
+      </div>
+      <div class="column-topic">
+        <div class="column-topic-h">クリニック・集客</div>
+        <ul>
+          <li><a href="/column/clinic-shukyaku-jirei/">クリニック集客がうまくいかない原因</a></li>
+          <li><a href="/column/meo-tsugino-itte/">MEOをやり切った後の次の一手</a></li>
+          <li><a href="/column/ai-clerk-erabikata/">AIクラークの選び方</a></li>
+        </ul>
+      </div>
+      <div class="column-topic">
+        <div class="column-topic-h">サイトの安全</div>
+        <ul>
+          <li><a href="/column/komuten-site-tenken/">工務店サイト約9,000件の診断結果</a></li>
+          <li><a href="/column/iryou-clinic-security/">クリニックのホームページのセキュリティ</a></li>
+          <li><a href="/column/wordpress-zeijakusei-furui-site/">WordPressの脆弱性被害が減らない理由</a></li>
+          <li><a href="/column/hoshu-keiyaku-wana/">保守契約があっても放置される理由</a></li>
+          <li><a href="/column/torihikisaki-security-hojokin/">取引先にセキュリティを聞かれたら</a></li>
+          <li><a href="/column/shokoukaigisho-kaiin-security/">商工会議所の会員企業に多いサイトの弱点</a></li>
+        </ul>
+      </div>
+      <div class="column-topic">
+        <div class="column-topic-h">業務の効率化</div>
+        <ul>
+          <li><a href="/column/kintai-kanri-ai/">勤怠管理AIとは</a></li>
+          <li><a href="/column/ai-jinji-teichakuritsu/">AI人事活用で定着率は上がるか</a></li>
+          <li><a href="/column/fudousan-workflow-jidoka/">不動産のワークフロー自動化</a></li>
+          <li><a href="/column/sougi-gyomu-jidoka/">葬儀社の書類・顧客対応の効率化</a></li>
+          <li><a href="/column/insatsu-gyomu-rpa/">印刷業務にRPAは使えるか</a></li>
+        </ul>
+      </div>
+    </nav>
     <div style="text-align:center;margin-top:32px;">
       <a href="/column/" style="display:inline-flex;align-items:center;gap:6px;font-size:13px;font-weight:600;color:var(--red);text-decoration:none;padding:10px 24px;border:2px solid var(--red);border-radius:3px;transition:all 0.2s;" onmouseover="this.style.background='var(--red)';this.style.color='#fff'" onmouseout="this.style.background='';this.style.color='var(--red)'">コラム一覧を見る →</a>
     </div>
