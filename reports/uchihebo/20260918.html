@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex,nofollow">
+<title>週次サイトレポート｜内枦保住建(uchihebo.jp)</title>
+<style>
+  :root {
+    --cyan: #0891b2; --cyan-dark: #0e7490;
+    --ink: #1e293b; --body: #4b5563; --light: #94a3b8;
+    --border: #e2e8f0; --bg: #f8fafc; --bg2: #f1f5f9;
+    --tag-bg: #ecfeff; --funnel-fill: #e0f2f7;
+    --green: #059669; --green-bg: #ecfdf5;
+    --amber: #d97706; --amber-bg: #fffbeb; --amber-border: #fde68a; --amber-text: #7c5e1e;
+    --rose: #be123c; --rose-bg: #fff1f2; --rose-border: #e11d48;
+  }
+  * { box-sizing: border-box; }
+  body { font-family: "Hiragino Kaku Gothic ProN","Yu Gothic","Meiryo",sans-serif; background: var(--bg2); margin: 0; padding: 20px; color: var(--ink); line-height: 1.65; }
+  .sheet { max-width: 820px; margin: 0 auto; }
+
+  .top { background: linear-gradient(135deg, var(--ink) 0%, #16233a 100%); color: #fff; border-radius: 14px; padding: 22px 26px; margin-bottom: 14px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 14px; border-bottom: 3px solid var(--cyan); }
+  .top-left { display: flex; align-items: center; gap: 14px; }
+  .top-left .avatar { width: 52px; height: 52px; border-radius: 50%; background: var(--cyan); color: #fff; display: flex; align-items: center; justify-content: center; font-size: 20px; font-weight: 800; border: 2px solid rgba(255,255,255,0.5); flex-shrink: 0; }
+  .top h1 { margin: 0; font-size: 19px; font-weight: 700; }
+  .top .period { font-size: 12px; opacity: 0.7; }
+
+  .hero-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-bottom: 14px; }
+  .hero-card { background: #fff; border-radius: 14px; padding: 18px 16px; border: 1px solid var(--border); text-align: center; }
+  .hero-card .label { font-size: 12px; color: var(--light); margin-bottom: 6px; }
+  .hero-card .value { font-size: 30px; font-weight: 800; color: var(--ink); line-height: 1; }
+  .hero-card .unit { font-size: 12.5px; font-weight: 500; color: var(--light); }
+  .hero-card .delta { margin-top: 8px; font-size: 12.5px; font-weight: 700; }
+  .delta.up { color: var(--green); }
+  .delta.down { color: var(--rose); }
+  .delta.flat { color: var(--light); }
+
+  /* ── トラペゾイド・ファネル ───────────────── */
+  .tf-card { background: linear-gradient(135deg, var(--ink) 0%, #16233a 100%); border-radius: 14px; padding: 26px 22px 20px; color: #fff; margin-bottom: 14px; }
+  .tf-card h3 { margin: 0 0 4px; font-size: 15px; color: #fff; }
+  .tf-card .sub { font-size: 12px; color: rgba(255,255,255,0.55); margin-bottom: 16px; }
+  .tf-grid { display: grid; grid-template-columns: repeat(4, 1fr); }
+  .tf-numbers { margin-bottom: 6px; }
+  .tf-numbers div { text-align: center; font-size: 19px; font-weight: 800; }
+  .tf-shape { height: 130px; position: relative; }
+  .tf-seg { position: relative; }
+  .tf-seg .fill { position: absolute; inset: 0; }
+  .tf-pct {
+    position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+    background: rgba(255,255,255,0.92); color: var(--ink); font-size: 12px; font-weight: 800;
+    padding: 3px 11px; border-radius: 100px; white-space: nowrap;
+  }
+  .tf-labels { margin-top: 6px; }
+  .tf-labels div { text-align: center; font-size: 12.5px; color: rgba(255,255,255,0.65); }
+  .tf-note { margin-top: 16px; font-size: 12px; color: rgba(255,255,255,0.5); border-top: 1px solid rgba(255,255,255,0.15); padding-top: 12px; }
+  .fnote { background: var(--amber-bg); border: 1px solid var(--amber-border); border-left: 4px solid var(--amber); border-radius: 0 8px 8px 0; padding: 10px 14px; margin-top: 12px; font-size: 12.5px; color: var(--amber-text); }
+
+  .verdict-card { background: #fff; border-radius: 14px; padding: 20px 22px; margin-bottom: 14px; border: 1px solid var(--border); }
+  .verdict-good { display: flex; align-items: center; gap: 10px; font-size: 15px; font-weight: 700; color: var(--green); padding-bottom: 12px; margin-bottom: 12px; border-bottom: 1px dashed var(--border); }
+  .verdict-good .icon { font-size: 20px; }
+  .verdict-but { background: var(--amber-bg); border: 1px solid var(--amber-border); border-left: 4px solid var(--amber); border-radius: 0 8px 8px 0; padding: 14px 16px; display: flex; gap: 10px; }
+  .verdict-but .icon { font-size: 18px; flex-shrink: 0; }
+  .verdict-but .txt { font-size: 13.5px; color: var(--amber-text); }
+  .verdict-but .txt b { color: var(--amber); }
+
+  .barchart-card { background: #fff; border-radius: 14px; padding: 20px 22px; margin-bottom: 14px; border: 1px solid var(--border); }
+  .barchart-card h3 { margin: 0 0 14px; font-size: 14px; color: var(--ink); }
+  .bar-row { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; font-size: 12.5px; }
+  .bar-row .bar-label { width: 110px; flex-shrink: 0; color: var(--body); }
+  .bar-track { flex: 1; background: var(--bg2); border-radius: 6px; height: 20px; overflow: hidden; }
+  .bar-fill { height: 100%; border-radius: 6px; display: flex; align-items: center; justify-content: flex-end; padding-right: 8px; color: #fff; font-size: 11px; font-weight: 700; }
+  .bar-fill.now { background: var(--cyan); }
+  .bar-fill.prev { background: #b9c3cf; }
+  .bar-fill.warn { background: var(--rose); }
+  .bar-note { font-size: 11.5px; color: var(--light); margin-top: 4px; }
+  .bar-value { flex-shrink: 0; font-size: 11.5px; font-weight: 700; color: var(--body); width: 130px; text-align: right; }
+
+  .plain-card { background: #fff; border-radius: 14px; padding: 20px 22px; margin-bottom: 14px; border: 1px solid var(--border); }
+  .plain-card h3 { margin: 0 0 12px; font-size: 14px; color: var(--ink); }
+  .plain-list { margin: 0; padding: 0; list-style: none; }
+  .plain-list li { display: flex; gap: 10px; padding: 8px 0; font-size: 14px; border-bottom: 1px solid var(--bg2); }
+  .plain-list li:last-child { border-bottom: none; }
+  .plain-list .dot { color: var(--cyan); font-weight: 900; }
+  .term { color: var(--light); font-size: 11.5px; }
+
+  .track-head { display: flex; align-items: center; gap: 10px; margin: 22px 0 8px; }
+  .track-head .tag { font-size: 11px; font-weight: 700; padding: 4px 12px; border-radius: 100px; letter-spacing: 0.03em; }
+  .track-head.system .tag { background: var(--tag-bg); color: var(--cyan-dark); }
+  .track-head.content .tag { background: var(--amber-bg); color: var(--amber); border: 1px solid var(--amber-border); }
+  .track-head h3 { margin: 0; font-size: 14px; color: var(--ink); }
+  .track-explain { font-size: 12.5px; color: var(--body); background: var(--bg2); border-radius: 8px; padding: 10px 14px; margin-bottom: 12px; }
+
+  .action-card { background: #fff; border-radius: 12px; padding: 14px 18px; margin-bottom: 10px; border: 1px solid var(--border); display: flex; align-items: flex-start; gap: 12px; }
+  .action-card.system { border-left: 5px solid var(--cyan); }
+  .action-card.content { border-left: 5px solid var(--amber); }
+  .action-card .num { font-size: 18px; font-weight: 800; color: var(--light); flex-shrink: 0; }
+  .action-card .body { flex: 1; }
+  .action-card .body b { display: block; font-size: 13.5px; margin-bottom: 2px; }
+  .action-card .body span { font-size: 13px; color: var(--body); }
+  .who-badge { display: inline-block; font-size: 11px; font-weight: 700; padding: 3px 10px; border-radius: 100px; margin-top: 7px; }
+  .who-badge.ai { background: var(--tag-bg); color: var(--cyan-dark); }
+  .who-badge.draft { background: var(--amber-bg); color: var(--amber); }
+  .who-badge.human { background: var(--rose-bg); color: var(--rose); }
+
+  .footer { text-align: center; font-size: 11px; color: var(--light); margin-top: 18px; }
+
+  @media (max-width: 600px) { .hero-row { grid-template-columns: 1fr; } }
+  @media print { body { background: #fff; padding: 0; } }
+</style>
+</head>
+<body>
+<div class="sheet">
+
+  <div class="fnote" style="margin:0 0 14px;border-radius:8px;">9/24に、数字の期間表示と表現を訂正しました。訂正した点: (1)「都城 工務店」は1位ではなく8位(表示は週8回と少数)、(2)検索クリック+56%は10回分の増加で小さな数字、(3)採用ページの0クリックは母数が小さく断定できない、(4)お問い合わせページに直接来る訪問には機械的なアクセスが含まれる可能性がある、(5)下のファネルの割合は転換率ではない。最新の数字は<a href="20260924.html">9/24版</a>をご覧ください。</div>
+
+  <div class="top">
+    <div class="top-left">
+      <div class="avatar">内</div>
+      <div>
+        <h1>内枦保住建 週次レポート</h1>
+        <div class="period">GA4: 09/11〜09/18(当日途中まで)を前の7日(09/04〜09/10)と比較 ／ 検索データ(GSC): 09/09〜09/15を前の7日(09/02〜09/08)と比較</div>
+      </div>
+    </div>
+    <div class="period">9/18作成・9/24訂正(最新は<a href="20260924.html" style="color:#bff0fb;">9/24版</a>)</div>
+  </div>
+
+  <div class="hero-row">
+    <div class="hero-card">
+      <div class="label">サイト訪問数</div>
+      <div class="value">89</div>
+      <div class="unit">セッション</div>
+      <div class="delta down">▼ 前週比 -25%（118件）</div>
+    </div>
+    <div class="hero-card">
+      <div class="label">検索での見つかりやすさ</div>
+      <div class="value">270</div>
+      <div class="unit">Google表示回数</div>
+      <div class="delta up">▲ 前週比 +27%（212件）</div>
+    </div>
+    <div class="hero-card">
+      <div class="label">お問い合わせ・成約</div>
+      <div class="value">？</div>
+      <div class="unit">サイト分析では不明</div>
+      <div class="delta flat">成果計測（CV）が未設定</div>
+    </div>
+  </div>
+
+  <!-- ファネル図 -->
+  <div class="tf-card">
+    <h3>お客さんが集まる流れ</h3>
+    <div class="sub">検索で見つかってから、サイトに来て、興味を持って、問い合わせを考えるまでの流れを数字にしたもの（今週分）。 <a href="funnel.html" style="color:#bff0fb;">期間を自由に選べる版はこちら</a></div>
+
+    <div class="tf-grid tf-numbers">
+      <div>270</div><div>89</div><div>59</div><div>23</div>
+    </div>
+    <div class="tf-grid tf-shape">
+      <div class="tf-seg"><div class="fill" style="background:#b9e2ec; clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%);"></div><div class="tf-pct">100%</div></div>
+      <div class="tf-seg"><div class="fill" style="background:#7cc3d6; clip-path: polygon(0% 0%, 100% 33.5%, 100% 66.5%, 0% 100%);"></div><div class="tf-pct">33%</div></div>
+      <div class="tf-seg"><div class="fill" style="background:#3f9db8; clip-path: polygon(0% 33.5%, 100% 39.1%, 100% 60.9%, 0% 66.5%);"></div><div class="tf-pct">22%</div></div>
+      <div class="tf-seg"><div class="fill" style="background:#1a6f85; clip-path: polygon(0% 39.1%, 100% 45.7%, 100% 54.3%, 0% 60.9%);"></div><div class="tf-pct">9%</div></div>
+    </div>
+    <div class="tf-grid tf-labels">
+      <div>検索で見つかった回数</div><div>サイトに来た人数</div><div>しっかり読んだ人数</div><div>問い合わせを考えた人数</div>
+    </div>
+
+    <div class="tf-note">⚠️ 「問い合わせを考えた人」までしか分かりません。そこから実際に電話や来社につながったかどうかは、今のサイトの仕組みでは追跡できていません。</div>
+  </div>
+
+  <div class="verdict-card">
+    <div class="verdict-good"><span class="icon">✅</span> 会社名で検索して来る方には、きちんとたどり着けています<span style="font-weight:400;font-size:12.5px;color:#4b5563;">(「内枦保住建」は掲載1位。検索クリックは前週18→28回ですが、増えたのは10回分で小さな数字です)</span></div>
+    <div class="verdict-but">
+      <span class="icon">⚠️</span>
+      <span class="txt"><b>訪問数は前週比-25%ですが、実際のお客様の動きが減ったとは言い切れません。</b>「Direct(直接入力・ブックマーク等)」は52→31件でしたが、前週(9/4〜9/10)は9/4・9/7・9/8だけが突出していて(21・23・22件)、打ち合わせやアクセス権の設定に伴う確認のアクセスが混ざっていた可能性があります。</span>
+    </div>
+  </div>
+
+  <div class="barchart-card">
+    <h3>訪問数：今週 vs 前週</h3>
+    <div class="bar-row">
+      <div class="bar-label">今週</div>
+      <div class="bar-track"><div class="bar-fill now" style="width:75.4%">89</div></div>
+    </div>
+    <div class="bar-row">
+      <div class="bar-label">前週</div>
+      <div class="bar-track"><div class="bar-fill prev" style="width:100%">118</div></div>
+    </div>
+    <h3 style="margin-top:20px;">チャネル別セッション：今週 vs 前週</h3>
+    <div class="bar-row">
+      <div class="bar-label">Organic Search</div>
+      <div class="bar-track"><div class="bar-fill now" style="width:88.1%">52（前週59）</div></div>
+    </div>
+    <div class="bar-row">
+      <div class="bar-label">Direct</div>
+      <div class="bar-track"><div class="bar-fill warn" style="width:59.6%">31（前週52・-40%）</div></div>
+    </div>
+    <h3 style="margin-top:20px;">ページ別 直帰率</h3>
+    <div class="bar-row">
+      <div class="bar-label">トップページ</div>
+      <div class="bar-track"><div class="bar-fill now" style="width:4.9%"></div></div>
+      <div class="bar-value">4.9%（41訪問）</div>
+    </div>
+    <div class="bar-row">
+      <div class="bar-label">/contact</div>
+      <div class="bar-track"><div class="bar-fill now" style="width:30.4%"></div></div>
+      <div class="bar-value">30.4%（23訪問）</div>
+    </div>
+    <div class="bar-row">
+      <div class="bar-label">/about</div>
+      <div class="bar-track"><div class="bar-fill warn" style="width:78.6%"></div></div>
+      <div class="bar-value">78.6%（14訪問）</div>
+    </div>
+    <div class="bar-note">/aboutは訪問数の割に直帰率が高め＝会社紹介ページで離脱されがち。次のアクション（お問い合わせ等）への導線を強めると/contactへの流れが増える可能性。</div>
+  </div>
+
+  <div class="plain-card">
+    <h3>今週わかったこと</h3>
+    <ul class="plain-list">
+      <li><span class="dot">●</span> 指名検索「内枦保住建」「うちへぼ」は掲載順位1位です。一方、「都城 工務店」は8位(表示は週8回)、「工務店 都城」「都城市 工務店」「都城 注文住宅」は1位ですが表示は週1〜5回ほどです。地域×業種の検索は、表示される回数自体がとても少ない状態です<span class="term">(「都城市 建設会社」は12〜27位)</span>。</li>
+      <li><span class="dot">●</span> 「エンフェス」関連クエリ（en fes／エンフェス等）が合計22回表示されているのにクリック0件。該当と見られる<code>/archives/news/835</code>ページは69回表示・0クリック・平均順位9.4位<span class="term">（地域イベント絡みの検索意図とページ内容がズレている可能性）</span>。</li>
+      <li><span class="dot">●</span> <code>/recruit</code>(採用ページ)は16回表示・0クリック・平均順位2.7位です<span class="term">(母数が小さいため、0クリックが偶然か訴求の問題かは、この数字だけでは判断できません)</span>。9/4の打ち合わせで出ていた「求人への応募が少ない」という悩みと関連している可能性はあります。</li>
+      <li><span class="dot">●</span> GA4は「フォーム送信」を記録していますが(直近28日で5件)、成果(キーイベント)として登録されていないため、コンバージョンは0のままです<span class="term">(計測の設定の問題で、「成果ゼロ」という意味ではありません)</span>。電話タップは、電話番号がタップできるリンクになっていないため計測できません。</li>
+    </ul>
+  </div>
+
+  <div class="track-head system"><span class="tag">🖥️ システム改修</span><h3>AIが自動で調査・対応できる範囲</h3></div>
+  <div class="track-explain">計測やデータの設定まわり。エンジニアを介さずAIが原因を見つけて直せる部分です。</div>
+  <div class="action-card system">
+    <div class="num">1</div>
+    <div class="body">
+      \g<1>フォーム送信を成果として登録し、電話・地図のタップも計測できるようにします。電話のタップ計測には、サイト側で電話番号をタップできるリンクにする作業が必要です。\g<2>こちらで設定(権限の確認が必要)\g<3>
+    </div>
+  </div>
+  <div class="action-card system">
+    <div class="num">2</div>
+    <div class="body">
+      <b>「(not set)」ランディングページの原因調査</b>
+      <span>6セッション分、GA4上でページが特定できていない。計測タグの抜け漏れがないか自動診断。</span>
+      <div class="who-badge ai">AIが調査〜修正まで実施</div>
+    </div>
+  </div>
+
+  <div class="track-head content"><span class="tag">✍️ コンテンツ改修</span><h3>文章・訴求まわり</h3></div>
+  <div class="track-explain">AIが文章の下書きを作ります。ゼロから人が書く必要はありません。ただし最終的に「これで公開OK」と判断するのは経営者・現場の仕事です。</div>
+  <div class="action-card content">
+    <div class="num">1</div>
+    <div class="body">
+      <b>「エンフェス」関連ニュース記事のtitle・説明文を検索意図に合わせて改善</b>
+      <span>表示はされているのにクリックされていない状態。イベント名そのものを含んだタイトルに寄せる等、AIが改善案を下書き。</span>
+      <div class="who-badge draft">下書き：AI／最終OK：人</div>
+    </div>
+  </div>
+  <div class="action-card content">
+    <div class="num">2</div>
+    <div class="body">
+      \g<1>働く環境・雰囲気が伝わる内容と、求人情報の書き方(Googleしごと検索用)を見直す案をこちらで作成します。応募数の改善につながるかは、計測を整えてから確認します。\g<2>
+      <div class="who-badge draft">下書き：AI／最終OK：人</div>
+    </div>
+  </div>
+  <div class="action-card content">
+    <div class="num">3</div>
+    <div class="body">
+      \g<1>前週(9/4〜9/10)は9/4・9/7・9/8だけが突出しています。打ち合わせやアクセス権の設定に伴う確認のアクセスだった可能性がありますが、名刺・チラシ・LINEなど、紙やメッセージから直接来る導線に変化がなかったかも教えてください。QRや専用URLにすると、今後は「Direct」に埋もれず計測できます。\g<2>
+      <div class="who-badge human">確認は人（経営者側）</div>
+    </div>
+  </div>
+
+  <div class="footer">AI集客エージェント｜週次サイトレポート PoC ｜ 2026-09-18作成 ｜ GA4・GSC共にAPI自動取得</div>
+</div>
+</body>
+</html>

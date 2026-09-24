@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex,nofollow">
+<title>週次サイトレポート｜内枦保住建(uchihebo.jp)</title>
+<style>
+  :root {
+    --cyan: #0891b2; --cyan-dark: #0e7490;
+    --ink: #1e293b; --body: #4b5563; --light: #94a3b8;
+    --border: #e2e8f0; --bg: #f8fafc; --bg2: #f1f5f9;
+    --tag-bg: #ecfeff; --funnel-fill: #e0f2f7;
+    --green: #059669; --green-bg: #ecfdf5;
+    --amber: #d97706; --amber-bg: #fffbeb; --amber-border: #fde68a; --amber-text: #7c5e1e;
+    --rose: #be123c; --rose-bg: #fff1f2; --rose-border: #e11d48;
+  }
+  * { box-sizing: border-box; }
+  body { font-family: "Hiragino Kaku Gothic ProN","Yu Gothic","Meiryo",sans-serif; background: var(--bg2); margin: 0; padding: 20px; color: var(--ink); line-height: 1.65; }
+  .sheet { max-width: 820px; margin: 0 auto; }
+
+  .top { background: linear-gradient(135deg, var(--ink) 0%, #16233a 100%); color: #fff; border-radius: 14px; padding: 22px 26px; margin-bottom: 14px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 14px; border-bottom: 3px solid var(--cyan); }
+  .top-left { display: flex; align-items: center; gap: 14px; }
+  .top-left .avatar { width: 52px; height: 52px; border-radius: 50%; background: var(--cyan); color: #fff; display: flex; align-items: center; justify-content: center; font-size: 20px; font-weight: 800; border: 2px solid rgba(255,255,255,0.5); flex-shrink: 0; }
+  .top h1 { margin: 0; font-size: 19px; font-weight: 700; }
+  .top .period { font-size: 12px; opacity: 0.7; }
+
+  .hero-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-bottom: 14px; }
+  .hero-card { background: #fff; border-radius: 14px; padding: 18px 16px; border: 1px solid var(--border); text-align: center; }
+  .hero-card .label { font-size: 12px; color: var(--light); margin-bottom: 6px; }
+  .hero-card .value { font-size: 30px; font-weight: 800; color: var(--ink); line-height: 1; }
+  .hero-card .unit { font-size: 12.5px; font-weight: 500; color: var(--light); }
+  .hero-card .delta { margin-top: 8px; font-size: 12.5px; font-weight: 700; }
+  .delta.up { color: var(--green); }
+  .delta.down { color: var(--rose); }
+  .delta.flat { color: var(--light); }
+
+  /* ── トラペゾイド・ファネル ───────────────── */
+  .tf-card { background: linear-gradient(135deg, var(--ink) 0%, #16233a 100%); border-radius: 14px; padding: 26px 22px 20px; color: #fff; margin-bottom: 14px; }
+  .tf-card h3 { margin: 0 0 4px; font-size: 15px; color: #fff; }
+  .tf-card .sub { font-size: 12px; color: rgba(255,255,255,0.55); margin-bottom: 16px; }
+  .tf-grid { display: grid; grid-template-columns: repeat(4, 1fr); }
+  .tf-numbers { margin-bottom: 6px; }
+  .tf-numbers div { text-align: center; font-size: 19px; font-weight: 800; }
+  .tf-shape { height: 130px; position: relative; }
+  .tf-seg { position: relative; }
+  .tf-seg .fill { position: absolute; inset: 0; }
+  .tf-pct {
+    position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+    background: rgba(255,255,255,0.92); color: var(--ink); font-size: 12px; font-weight: 800;
+    padding: 3px 11px; border-radius: 100px; white-space: nowrap;
+  }
+  .tf-labels { margin-top: 6px; }
+  .tf-labels div { text-align: center; font-size: 12.5px; color: rgba(255,255,255,0.65); }
+  .tf-note { margin-top: 16px; font-size: 12px; color: rgba(255,255,255,0.5); border-top: 1px solid rgba(255,255,255,0.15); padding-top: 12px; }
+  .fnote { background: var(--amber-bg); border: 1px solid var(--amber-border); border-left: 4px solid var(--amber); border-radius: 0 8px 8px 0; padding: 10px 14px; margin-top: 12px; font-size: 12.5px; color: var(--amber-text); }
+
+  .verdict-card { background: #fff; border-radius: 14px; padding: 20px 22px; margin-bottom: 14px; border: 1px solid var(--border); }
+  .verdict-good { display: flex; align-items: center; gap: 10px; font-size: 15px; font-weight: 700; color: var(--green); padding-bottom: 12px; margin-bottom: 12px; border-bottom: 1px dashed var(--border); }
+  .verdict-good .icon { font-size: 20px; }
+  .verdict-but { background: var(--amber-bg); border: 1px solid var(--amber-border); border-left: 4px solid var(--amber); border-radius: 0 8px 8px 0; padding: 14px 16px; display: flex; gap: 10px; }
+  .verdict-but .icon { font-size: 18px; flex-shrink: 0; }
+  .verdict-but .txt { font-size: 13.5px; color: var(--amber-text); }
+  .verdict-but .txt b { color: var(--amber); }
+
+  .barchart-card { background: #fff; border-radius: 14px; padding: 20px 22px; margin-bottom: 14px; border: 1px solid var(--border); }
+  .barchart-card h3 { margin: 0 0 14px; font-size: 14px; color: var(--ink); }
+  .bar-row { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; font-size: 12.5px; }
+  .bar-row .bar-label { width: 110px; flex-shrink: 0; color: var(--body); }
+  .bar-track { flex: 1; background: var(--bg2); border-radius: 6px; height: 20px; overflow: hidden; }
+  .bar-fill { height: 100%; border-radius: 6px; display: flex; align-items: center; justify-content: flex-end; padding-right: 8px; color: #fff; font-size: 11px; font-weight: 700; }
+  .bar-fill.now { background: var(--cyan); }
+  .bar-fill.prev { background: #b9c3cf; }
+  .bar-fill.warn { background: var(--rose); }
+  .bar-note { font-size: 11.5px; color: var(--light); margin-top: 4px; }
+  .bar-value { flex-shrink: 0; font-size: 11.5px; font-weight: 700; color: var(--body); width: 130px; text-align: right; }
+
+  .plain-card { background: #fff; border-radius: 14px; padding: 20px 22px; margin-bottom: 14px; border: 1px solid var(--border); }
+  .plain-card h3 { margin: 0 0 12px; font-size: 14px; color: var(--ink); }
+  .plain-list { margin: 0; padding: 0; list-style: none; }
+  .plain-list li { display: flex; gap: 10px; padding: 8px 0; font-size: 14px; border-bottom: 1px solid var(--bg2); }
+  .plain-list li:last-child { border-bottom: none; }
+  .plain-list .dot { color: var(--cyan); font-weight: 900; }
+  .term { color: var(--light); font-size: 11.5px; }
+
+  .track-head { display: flex; align-items: center; gap: 10px; margin: 22px 0 8px; }
+  .track-head .tag { font-size: 11px; font-weight: 700; padding: 4px 12px; border-radius: 100px; letter-spacing: 0.03em; }
+  .track-head.system .tag { background: var(--tag-bg); color: var(--cyan-dark); }
+  .track-head.content .tag { background: var(--amber-bg); color: var(--amber); border: 1px solid var(--amber-border); }
+  .track-head h3 { margin: 0; font-size: 14px; color: var(--ink); }
+  .track-explain { font-size: 12.5px; color: var(--body); background: var(--bg2); border-radius: 8px; padding: 10px 14px; margin-bottom: 12px; }
+
+  .action-card { background: #fff; border-radius: 12px; padding: 14px 18px; margin-bottom: 10px; border: 1px solid var(--border); display: flex; align-items: flex-start; gap: 12px; }
+  .action-card.system { border-left: 5px solid var(--cyan); }
+  .action-card.content { border-left: 5px solid var(--amber); }
+  .action-card .num { font-size: 18px; font-weight: 800; color: var(--light); flex-shrink: 0; }
+  .action-card .body { flex: 1; }
+  .action-card .body b { display: block; font-size: 13.5px; margin-bottom: 2px; }
+  .action-card .body span { font-size: 13px; color: var(--body); }
+  .who-badge { display: inline-block; font-size: 11px; font-weight: 700; padding: 3px 10px; border-radius: 100px; margin-top: 7px; }
+  .who-badge.ai { background: var(--tag-bg); color: var(--cyan-dark); }
+  .who-badge.draft { background: var(--amber-bg); color: var(--amber); }
+  .who-badge.human { background: var(--rose-bg); color: var(--rose); }
+
+  .footer { text-align: center; font-size: 11px; color: var(--light); margin-top: 18px; }
+
+  @media (max-width: 600px) { .hero-row { grid-template-columns: 1fr; } }
+  @media print { body { background: #fff; padding: 0; } }
+</style>
+</head>
+<body>
+<div class="sheet">
+
+  <div class="top">
+    <div class="top-left">
+      <div class="avatar">内</div>
+      <div>
+        <h1>内枦保住建 週次レポート</h1>
+        <div class="period">9/14(月)〜9/20(日)を、前の週(9/7〜9/13)と比べています(サイト訪問・検索とも同じ期間)</div>
+      </div>
+    </div>
+    <div class="period">9/24作成</div>
+  </div>
+
+  <div class="hero-row">
+    <div class="hero-card">
+      <div class="label">サイト訪問数</div>
+      <div class="value">65</div>
+      <div class="unit">セッション</div>
+      <div class="delta down">▼ 前週比 -40%(109件)</div>
+    </div>
+    <div class="hero-card">
+      <div class="label">しっかり見た訪問</div>
+      <div class="value">50</div>
+      <div class="unit">セッション</div>
+      <div class="delta flat">前週とほぼ同じ(51件)</div>
+    </div>
+    <div class="hero-card">
+      <div class="label">フォーム送信</div>
+      <div class="value">1</div>
+      <div class="unit">件(1週間)</div>
+      <div class="delta flat">前週も1件。実際の問い合わせかは要確認</div>
+    </div>
+  </div>
+
+  <div class="tf-card">
+    <h3>お客さんが集まる流れ</h3>
+    <div class="sub">検索で見つかってから、サイトに来て、問い合わせが送られるまでを、今週分の数字で並べたものです。 <a href="funnel.html" style="color:#bff0fb;">期間を自由に選べる版はこちら</a></div>
+
+    <div class="tf-grid tf-numbers">
+      <div>466</div><div>65</div><div>50</div><div>1</div>
+    </div>
+    <div class="tf-grid tf-shape">
+      <div class="tf-seg"><div class="fill" style="background:#b9e2ec; clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%);"></div><div class="tf-pct">100%</div></div>
+      <div class="tf-seg"><div class="fill" style="background:#7cc3d6; clip-path: polygon(0% 0%, 100% 43.0%, 100% 57.0%, 0% 100%);"></div><div class="tf-pct">参考 14%</div></div>
+      <div class="tf-seg"><div class="fill" style="background:#3f9db8; clip-path: polygon(0% 43.0%, 100% 44.6%, 100% 55.4%, 0% 57.0%);"></div><div class="tf-pct">77%</div></div>
+      <div class="tf-seg"><div class="fill" style="background:#1a6f85; clip-path: polygon(0% 44.6%, 100% 48.0%, 100% 52.0%, 0% 55.4%);"></div><div class="tf-pct">2%</div></div>
+    </div>
+    <div class="tf-grid tf-labels">
+      <div>検索結果に出た回数</div><div>サイトへの訪問</div><div>しっかり見た訪問</div><div>フォーム送信</div>
+    </div>
+
+    <div class="tf-note">注意: 1つ目(検索の表示回数)と2つ目(訪問数)は数え方が違う別の数字なので、その間の割合は参考値です。訪問には、検索以外(直接入力など)や機械的なアクセスも含まれます。フォーム送信が実際のお問い合わせかどうかは、内容の確認が必要です。</div>
+  </div>
+
+  <div class="verdict-card">
+    <div class="verdict-good"><span class="icon">✅</span> 会社名で検索して来る方には、きちんとたどり着けています<span style="font-weight:400;font-size:12.5px;color:#4b5563;">(「内枦保住建」は掲載1位。会社名検索でのクリックは週7〜10回で安定)</span></div>
+    <div class="verdict-but">
+      <span class="icon">!</span>
+      <span class="txt"><b>訪問数は109→65に減りましたが、「しっかり見た訪問」は51→50でほぼ同じです。</b>減ったのは、短時間で離れる訪問(機械的なアクセスを含むとみられるもの)で、実際のお客様の動きが4割減ったわけではありません。数字の増減に一喜一憂せず、「しっかり見た訪問」を見ていきます。</span>
+    </div>
+  </div>
+
+  <div class="barchart-card">
+    <h3>訪問数:今週 vs 前週</h3>
+    <div class="bar-row">
+      <div class="bar-label">今週</div>
+      <div class="bar-track"><div class="bar-fill now" style="width:59.6%">65</div></div>
+    </div>
+    <div class="bar-row">
+      <div class="bar-label">前週</div>
+      <div class="bar-track"><div class="bar-fill prev" style="width:100%">109</div></div>
+    </div>
+    <h3 style="margin-top:20px;">しっかり見た訪問:今週 vs 前週</h3>
+    <div class="bar-row">
+      <div class="bar-label">今週</div>
+      <div class="bar-track"><div class="bar-fill now" style="width:98%">50</div></div>
+    </div>
+    <div class="bar-row">
+      <div class="bar-label">前週</div>
+      <div class="bar-track"><div class="bar-fill prev" style="width:100%">51</div></div>
+    </div>
+    <h3 style="margin-top:20px;">きっかけ別の訪問数:今週 vs 前週</h3>
+    <div class="bar-row">
+      <div class="bar-label">検索(Google等)</div>
+      <div class="bar-track"><div class="bar-fill now" style="width:70.9%">39(前週55)</div></div>
+    </div>
+    <div class="bar-row">
+      <div class="bar-label">直接入力など</div>
+      <div class="bar-track"><div class="bar-fill warn" style="width:41.8%">23(前週45)</div></div>
+    </div>
+    <div class="bar-note">検索のうちGoogleは31件(前週32件)で横ばい。減ったのはBing(17→4)などです。</div>
+    <h3 style="margin-top:20px;">訪問が最初に開いたページ(今週)</h3>
+    <div class="bar-row">
+      <div class="bar-label">トップページ</div>
+      <div class="bar-track"><div class="bar-fill now" style="width:100%">32</div></div>
+    </div>
+    <div class="bar-row">
+      <div class="bar-label">/contact</div>
+      <div class="bar-track"><div class="bar-fill warn" style="width:50%">16</div></div>
+    </div>
+    <div class="bar-row">
+      <div class="bar-label">(特定できず)</div>
+      <div class="bar-track"><div class="bar-fill prev" style="width:28.1%">9</div></div>
+    </div>
+    <div class="bar-row">
+      <div class="bar-label">/about</div>
+      <div class="bar-track"><div class="bar-fill now" style="width:18.8%">6</div></div>
+    </div>
+    <div class="bar-note">お問い合わせページ(/contact)に直接来た16件のうち14件は「直接入力」で、平均の滞在は10〜20秒ほどです。前週にも同じ形の訪問が20件ありました。国内とシンガポールのパソコンからで、機械的なアクセスの可能性があります(確定ではありません)。</div>
+  </div>
+
+  <div class="plain-card">
+    <h3>今週わかったこと</h3>
+    <ul class="plain-list">
+      <li><span class="dot">●</span> Googleの検索結果に出た回数は256→466回、クリックは15→23回でした。ただ、増えた表示の約半分(215回)は「エンフェス」関連の検索で、クリックは0です<span class="term">(ニュース記事 /archives/news/835 だけで292回表示)。</span>会社名の検索(「内枦保住建」)でのクリックは週7〜10回で安定しています。</li>
+      <li><span class="dot">●</span> 「都城 工務店」は表示7回・掲載7.6位(前週は3回・16.3位)、「工務店 都城」は掲載1位ですが表示7回です。地域×業種の検索は、表示される回数自体がとても少ない状態です<span class="term">(検索する人が少ないのか、ほかの会社に表示が集まっているのかは、この数字だけでは分かりません)。</span></li>
+      <li><span class="dot">●</span> お問い合わせフォームに触れた人は17人、送信まで進んだのは1件でした(前週は18人に対して1件)。機械的なアクセスなのか、入力項目が多い(住所・電話が必須)ためなのか、まだ判別できていません。フォーム送信は直近28日で5件です。</li>
+      <li><span class="dot">●</span> GA4は「フォーム送信」を記録していますが、成果(キーイベント)として登録されていないため、コンバージョンは0のままです<span class="term">(計測設定の問題で、「成果ゼロ」という意味ではありません)。</span></li>
+    </ul>
+  </div>
+
+  <div class="plain-card">
+    <h3>サイトの中を確認して分かったこと(9/24確認)</h3>
+    <ul class="plain-list">
+      <li><span class="dot">●</span> <b>全ページのタイトルが同じ</b>です(「株式会社 内枦保住建 オフィシャルサイト」)。検索結果に出るタイトルがどのページも同じになるため、探している内容と合わないとクリックされにくくなります。</li>
+      <li><span class="dot">●</span> <b>ページの説明文が無効</b>になっています。書き方に全角の引用符が使われていて、Googleが説明文として読めない形です。</li>
+      <li><span class="dot">●</span> 全ページに「トップページを正本とする」指定(canonical)が入っています。施工事例やお知らせなどの個別ページでも同じで、記事ページには自身を指す指定も二重に入っています。検索エンジンが個別ページを別のページとして扱いにくくなる可能性があります。</li>
+      <li><span class="dot">●</span> 電話番号(0986-38-2664)はトップページに文字で載っていますが、スマホでタップして電話できるリンクではありません。お問い合わせページには電話番号自体がなく、文章で「お電話にて」とあるだけです。</li>
+      <li><span class="dot">●</span> フォームの必須項目は4つ(氏名・住所・電話・メール)です。最初の問い合わせとしては、住所まで必須なのは重い可能性があります。LINEなど、気軽な連絡手段もありません。</li>
+      <li><span class="dot">●</span> 採用ページには、Googleしごと検索に出すための求人情報の記述がなく、Indeedなど外部の求人サイトへのリンクもありません。</li>
+    </ul>
+  </div>
+
+  <div class="track-head system"><span class="tag">計測・設定</span><h3>数字が見えるようにする</h3></div>
+  <div class="track-explain">問い合わせから先が見えないと、集客の良し悪しが判断できません。まずここから整えます。</div>
+  <div class="action-card system">
+    <div class="num">1</div>
+    <div class="body">
+      <b>フォーム送信を「成果」として登録</b>
+      <span>GA4はすでにフォーム送信を記録しているので、成果として登録すれば、問い合わせの数が集計されるようになります。</span>
+      <div class="who-badge ai">こちらで設定(権限の確認が必要)</div>
+    </div>
+  </div>
+  <div class="action-card system">
+    <div class="num">2</div>
+    <div class="body">
+      <b>電話・LINE・地図のタップを計測</b>
+      <span>電話番号をタップできるリンクにしてから、計測を始めます。</span>
+      <div class="who-badge human">サイトを管理されている方への依頼が必要</div>
+    </div>
+  </div>
+  <div class="action-card system">
+    <div class="num">3</div>
+    <div class="body">
+      <b>社内・関係者のアクセスを除外し、機械的なアクセスを切り分ける</b>
+      <span>内枦保さんとこちらのアクセスを集計から外し、機械的なアクセスの目印を付けて、本当のお客様の動きが見えるようにします。</span>
+      <div class="who-badge human">会社のインターネット回線のIPアドレスの確認が必要</div>
+    </div>
+  </div>
+
+  <div class="track-head content"><span class="tag">サイト改善</span><h3>見つけてもらいやすく、連絡しやすくする</h3></div>
+  <div class="track-explain">文案はこちらで用意します。サイトへの反映は、サイトを管理されている方の作業になります。</div>
+  <div class="action-card content">
+    <div class="num">4</div>
+    <div class="body">
+      <b>ページごとのタイトル・説明文・canonicalの見直し</b>
+      <span>全ページ共通になっているタイトルと説明文をページごとに書き分け、canonicalを正しい形に直します。比較的小さな修正で、検索結果での見え方が変わります。</span>
+      <div class="who-badge draft">文案:こちら／反映:サイト管理の方</div>
+    </div>
+  </div>
+  <div class="action-card content">
+    <div class="num">5</div>
+    <div class="body">
+      <b>お問い合わせページの改善</b>
+      <span>電話番号の掲載とタップ対応、必須項目を減らす、LINEなど気軽な連絡手段の追加を検討します。</span>
+      <div class="who-badge draft">案:こちら／最終OK:内枦保さん</div>
+    </div>
+  </div>
+  <div class="action-card content">
+    <div class="num">6</div>
+    <div class="body">
+      <b>採用ページ(求人)の見直し</b>
+      <span>職場の写真・社員紹介、Googleしごと検索用の求人情報の記述、Indeedなど外部サイトへの掲載を検討します。9/4にご相談いただいた「求人の問い合わせが少ない」につながる内容です。</span>
+      <div class="who-badge draft">案:こちら／最終OK:内枦保さん</div>
+    </div>
+  </div>
+  <div class="action-card content">
+    <div class="num">7</div>
+    <div class="body">
+      <b>Googleビジネスプロフィール(Googleマップの会社情報)の確認</b>
+      <span>登録の有無、住所・電話・営業時間、施工事例の写真などの状態を確認します。「都城 工務店」など地域名の検索で、地図つきで表示される場所です。</span>
+      <div class="who-badge human">登録・管理者の確認は内枦保さん</div>
+    </div>
+  </div>
+
+  <div class="plain-card" style="margin-top:14px;">
+    <h3>内枦保さんに確認したいこと</h3>
+    <ul class="plain-list">
+      <li><span class="dot">●</span> 直近28日のフォーム送信5件は、実際のお問い合わせでしたか(営業や試し送信はありましたか)。</li>
+      <li><span class="dot">●</span> 会社(事務所)のインターネット回線のIPアドレスは分かりますか(分からなければ、確認の仕方をお伝えします)。</li>
+      <li><span class="dot">●</span> Googleビジネスプロフィールは登録されていますか。管理されているのはどなたですか。</li>
+      <li><span class="dot">●</span> 名刺・チラシ・LINEなど、サイトのアドレスを紙やメッセージで配っているものはありますか。</li>
+    </ul>
+  </div>
+
+  <div class="footer">AI集客エージェント｜週次サイトレポート ｜ 2026-09-24作成 ｜ 訪問データ(GA4)・検索データ(GSC)ともAPI自動取得、同じ期間で比較</div>
+</div>
+</body>
+</html>
