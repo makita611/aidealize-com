@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex,nofollow">
+<meta name="color-scheme" content="light">
+<title>接客の進め方(たたき台)｜内枦保住建</title>
+<style>
+  :root { color-scheme: light; --cyan: #0891b2; --cyan-dark: #0e7490; --ink: #1e293b; --body: #4b5563; --light: #94a3b8; --border: #e2e8f0; --bg: #f8fafc; --bg2: #f1f5f9; --tag-bg: #ecfeff; --amber: #d97706; --amber-bg: #fffbeb; --amber-border: #fde68a; --amber-text: #7c5e1e; --green: #059669; --green-bg: #ecfdf5; --rose: #be123c; --rose-bg: #fff1f2; }
+  * { box-sizing: border-box; }
+  html { background: #f1f5f9; }
+  body { font-family: "Hiragino Kaku Gothic ProN","Yu Gothic","Meiryo",sans-serif; background: #f1f5f9; margin: 0; padding: 20px 16px; color: #1e293b; line-height: 1.7; }
+  .sheet { max-width: 860px; margin: 0 auto; }
+  .top { background: linear-gradient(135deg, #1e293b 0%, #16233a 100%); color: #fff; border-radius: 14px; padding: 22px 26px; margin-bottom: 14px; border-bottom: 3px solid var(--cyan); }
+  .top h1 { margin: 0 0 4px; font-size: 20px; font-weight: 700; }
+  .top .sub { font-size: 12.5px; opacity: 0.8; }
+  .note { background: var(--amber-bg); border: 1px solid var(--amber-border); border-left: 4px solid var(--amber); border-radius: 0 8px 8px 0; padding: 10px 14px; margin-bottom: 14px; font-size: 13px; color: var(--amber-text); }
+  .card { background: #fff; border: 1px solid var(--border); border-radius: 14px; padding: 20px 22px; margin-bottom: 14px; }
+  .card h2 { margin: 0 0 4px; font-size: 16px; color: #1e293b; }
+  .card .lead { font-size: 13px; color: var(--body); margin: 0 0 14px; }
+  .steps { list-style: none; margin: 0; padding: 0; }
+  .steps li { display: flex; gap: 12px; padding: 11px 0; border-bottom: 1px dashed var(--border); }
+  .steps li:last-child { border-bottom: none; }
+  .steps .tag { flex-shrink: 0; width: 84px; font-size: 12px; font-weight: 700; color: var(--cyan-dark); background: var(--tag-bg); border-radius: 100px; padding: 3px 0; text-align: center; height: 24px; }
+  .steps .tag.a { color: var(--amber); background: var(--amber-bg); }
+  .steps b { display: block; font-size: 14px; }
+  .steps span { font-size: 13px; color: var(--body); }
+  .two { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  .type { border: 1px solid var(--border); border-radius: 12px; padding: 14px 16px; background: #fff; }
+  .type.a { border-top: 4px solid var(--amber); }
+  .type.b { border-top: 4px solid var(--cyan); }
+  .type h3 { margin: 0 0 6px; font-size: 14px; }
+  .type dl { margin: 0; font-size: 13px; }
+  .type dt { font-weight: 700; color: var(--body); margin-top: 6px; font-size: 12px; }
+  .type dd { margin: 0; }
+  details { border: 1px solid var(--border); border-radius: 10px; margin-bottom: 8px; background: #fff; }
+  summary { cursor: pointer; padding: 11px 14px; font-weight: 700; font-size: 14px; list-style: none; }
+  summary::-webkit-details-marker { display: none; }
+  summary::before { content: "＋ "; color: var(--cyan-dark); }
+  details[open] summary::before { content: "－ "; }
+  details[open] summary { border-bottom: 1px solid var(--border); }
+  .qtable { width: 100%; border-collapse: collapse; font-size: 13px; }
+  .qtable th { text-align: left; background: var(--bg2); color: var(--body); font-size: 12px; padding: 8px 12px; }
+  .qtable td { padding: 9px 12px; border-top: 1px solid var(--border); vertical-align: top; }
+  .qtable td:first-child { width: 46%; font-weight: 600; }
+  .quote { background: var(--tag-bg); border-left: 4px solid var(--cyan); border-radius: 0 8px 8px 0; padding: 10px 14px; font-size: 13.5px; margin-top: 10px; }
+  .list { margin: 8px 0 0; padding-left: 20px; font-size: 13.5px; }
+  .list li { margin-bottom: 4px; }
+  .abc { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
+  .abc div { border-radius: 10px; padding: 12px 14px; font-size: 13px; }
+  .abc b { display: block; font-size: 14px; margin-bottom: 4px; }
+  .abc .ra { background: var(--rose-bg); } .abc .ra b { color: var(--rose); }
+  .abc .rb { background: var(--amber-bg); } .abc .rb b { color: var(--amber); }
+  .abc .rc { background: var(--green-bg); } .abc .rc b { color: var(--green); }
+  .flow { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; align-items: stretch; }
+  .flow div { background: var(--bg2); border-radius: 10px; padding: 10px 12px; font-size: 12.5px; text-align: center; position: relative; }
+  .flow div b { display: block; font-size: 13px; color: var(--cyan-dark); margin-bottom: 2px; }
+  .sample { margin-top: 14px; }
+  .sample .cap { font-size: 12px; color: var(--amber); font-weight: 700; margin-bottom: 6px; }
+  .st-ok { color: var(--green); font-weight: 700; } .st-mid { color: var(--amber); font-weight: 700; } .st-no { color: var(--rose); font-weight: 700; }
+  .decide { margin: 0; padding: 0; list-style: none; counter-reset: d; }
+  .decide li { counter-increment: d; padding: 10px 0 10px 34px; position: relative; border-bottom: 1px dashed var(--border); font-size: 14px; }
+  .decide li:last-child { border-bottom: none; }
+  .decide li::before { content: counter(d); position: absolute; left: 0; top: 10px; width: 24px; height: 24px; border-radius: 50%; background: var(--cyan); color: #fff; font-size: 12px; font-weight: 700; text-align: center; line-height: 24px; }
+  .decide small { display: block; color: var(--body); font-size: 12.5px; }
+  .footer { text-align: center; font-size: 11px; color: var(--light); margin-top: 18px; }
+  .print-btn { display: inline-block; margin-top: 10px; background: #fff; color: var(--cyan-dark); border: 1px solid var(--cyan); border-radius: 100px; padding: 6px 16px; font-size: 12.5px; cursor: pointer; font-family: inherit; }
+  @media (max-width: 640px) {
+    .two, .abc, .flow { grid-template-columns: 1fr; }
+    .steps .tag { width: 64px; font-size: 11px; }
+    .qtable thead { display: none; }
+    .qtable tr, .qtable td { display: block; width: 100% !important; }
+    .qtable td { border-top: none; padding: 4px 12px; }
+    .qtable tr { border-top: 1px solid var(--border); padding: 6px 0; }
+    .qtable td:nth-child(2)::before { content: "聞く理由: "; color: var(--light); font-weight: 400; }
+    .qtable td:nth-child(3)::before { content: "深掘り: "; color: var(--light); font-weight: 400; }
+    .qtable td:nth-child(2), .qtable td:nth-child(3) { font-size: 12.5px; color: var(--body); }
+  }
+  @media print {
+    html, body { background: #fff; padding: 0; }
+    .print-btn { display: none; }
+    .card, details { break-inside: avoid; }
+    details > *:not(summary) { display: block; }
+  }
+</style>
+</head>
+<body>
+<div class="sheet">
+
+  <div class="top">
+    <h1>接客の進め方(たたき台)</h1>
+    <div class="sub">誰が対応しても、同じ質・同じ順番で聞けるように ／ 内枦保住建 ／ 2026-09-25作成</div>
+  </div>
+
+  <div class="note">これは叩き台です。質問の順番や言い回しは、実際の打ち合わせの録音(Plaud)と、大磯さんとのロールプレイで確かめながら、一緒に直していきます。</div>
+
+  <div class="card">
+    <h2>1. 全体の流れ</h2>
+    <p class="lead">初回のご来社から、約3週間後の間取り・概算の提示までです。</p>
+    <ol class="steps">
+      <li><span class="tag">事前</span><div><b>事前記入シートを送る(意欲の高いお客様)</b><span>5〜10分・選択式が中心。今の「基本情報アンケート」の置き換えを想定しています。</span></div></li>
+      <li><span class="tag">冒頭</span><div><b>録音の許可をいただく</b><span>「ご要望を聞き漏らさないよう、記録のために録音させてください」とお伝えします。許可がなければ録音せず、手書きのメモにします。</span></div></li>
+      <li><span class="tag">分岐</span><div><b>お客様のタイプを見分ける</b><span>雰囲気を見に来られた方(A)か、意欲の高い方(B)かで、進め方を変えます。</span></div></li>
+      <li><span class="tag a">A の方</span><div><b>動画・完成写真と3Dパースで、世界観を見ていただく</b><span>条件は深追いせず、次の相談の日を決めます。</span></div></li>
+      <li><span class="tag">B の方</span><div><b>ヒアリングブックの順番で聞く</b><span>課題 → 予算・決裁者 → 時期・他社 → 要望の優先順位 → 土地 → 締め、の順です(下の3)。</span></div></li>
+      <li><span class="tag">事後</span><div><b>録音をAIで整理し、聞き漏れを確認する</b><span>熟練の方が10分ほど見て、足りない点は電話やLINEで補います。</span></div></li>
+      <li><span class="tag">3週間後</span><div><b>間取りの絵と、総額の概算をお持ちする</b><span>要望のA/B/Cを使って、予算に合わせて調整します。</span></div></li>
+    </ol>
+  </div>
+
+  <div class="card">
+    <h2>2. お客様は2つのタイプ</h2>
+    <p class="lead">9/18に伺った「初めて見に来られる方」と「紹介などで意欲の高い方」の分け方です。</p>
+    <div class="two">
+      <div class="type a">
+        <h3>A: 雰囲気を見に来られる方</h3>
+        <dl>
+          <dt>目的</dt><dd>内枦保住建に共感してもらい、次の相談につなぐ</dd>
+          <dt>使うもの</dt><dd>動画・完成写真・3Dパース</dd>
+          <dt>担当</dt><dd>誰でも(3Dパースの説明は、少しずつ動画に置き換えていく)</dd>
+        </dl>
+      </div>
+      <div class="type b">
+        <h3>B: 紹介などで意欲の高い方</h3>
+        <dl>
+          <dt>目的</dt><dd>予算・要望・条件を、漏れなく聞く</dd>
+          <dt>使うもの</dt><dd>ヒアリングブック・A/B/Cカード</dd>
+          <dt>担当</dt><dd>誰でも(最初は熟練の方が同席し、少しずつ減らす)</dd>
+        </dl>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>3. ヒアリングブック(Bの方に、この順番で聞きます)</h2>
+    <p class="lead">間取りの話から入らず、先に「課題」と「予算」を聞きます。要望が広がって予算を超えるのを防ぐためです。各項目は「聞けた・曖昧・未確認」で記録します。</p>
+
+    <details open>
+      <summary>1. 課題(なぜ家を建てたいか)</summary>
+      <table class="qtable"><thead><tr><th>質問(そのまま読めます)</th><th>聞く理由</th><th>深掘りの例</th></tr></thead><tbody>
+        <tr><td>家づくりを考え始めたのは、どんなきっかけでしたか</td><td>本当の目的を知る</td><td>いつ頃から/誰が言い出しましたか</td></tr>
+        <tr><td>今のお住まいで、一番困っていることは何ですか</td><td>課題をはっきりさせる</td><td>それはいつ・どんな時に/放っておくとどうなりますか</td></tr>
+        <tr><td>新しい家では、どんな毎日を送りたいですか</td><td>理想の暮らしを知る</td><td>誰と・どこで・どのくらいの頻度で</td></tr>
+      </tbody></table>
+    </details>
+
+    <details open>
+      <summary>2. 予算・決裁者(間取りより先に聞きます)</summary>
+      <table class="qtable"><thead><tr><th>質問(そのまま読めます)</th><th>聞く理由</th><th>深掘りの例</th></tr></thead><tbody>
+        <tr><td>総額のご予算の目安は、土地代を含めていくらくらいでしょうか</td><td>総予算を知る</td><td>建物だけ/土地込みのどちらですか</td></tr>
+        <tr><td>自己資金とローンは、どのくらいのご予定ですか。事前審査はお済みですか</td><td>資金計画を知る</td><td>頭金はいくらくらい/借入先は決まっていますか</td></tr>
+        <tr><td>月々のお支払いは、無理のない範囲でいくらまでですか</td><td>無理のない支払額を知る</td><td>ボーナス払いは使いますか</td></tr>
+        <tr><td>最終的にはどなたが決められますか。ご両親のご意見や援助はありますか</td><td>決める方を知る</td><td>その方は次回いらっしゃいますか</td></tr>
+        <tr><td>打ち合わせで要望が増えて予算を超えそうな時、どこまで動かせますか</td><td>予算超過への備え</td><td>上限は動かせますか</td></tr>
+      </tbody></table>
+    </details>
+
+    <details open>
+      <summary>3. 時期・他社</summary>
+      <table class="qtable"><thead><tr><th>質問(そのまま読めます)</th><th>聞く理由</th><th>深掘りの例</th></tr></thead><tbody>
+        <tr><td>入居はいつ頃をご希望ですか。その理由はありますか</td><td>時期と制約を知る</td><td>お子さんの入学/賃貸の更新など</td></tr>
+        <tr><td>他にも検討されている会社はありますか</td><td>比較の状況を知る</td><td>どこまで話が進んでいますか</td></tr>
+        <tr><td>会社を選ぶ時に、一番大事にしていることは何ですか</td><td>選ぶ基準を知る</td><td>価格・デザイン・人柄のどれが上ですか</td></tr>
+      </tbody></table>
+    </details>
+
+    <details open>
+      <summary>4. 要望の優先順位(A/B/Cに分けていただきます)</summary>
+      <table class="qtable"><thead><tr><th>質問(そのまま読めます)</th><th>聞く理由</th><th>深掘りの例</th></tr></thead><tbody>
+        <tr><td>これだけは絶対に、というものを3つまで教えてください</td><td>絶対に外せないこと(A)</td><td>なぜそれが大事ですか/どなたのご希望ですか</td></tr>
+        <tr><td>できれば叶えたいことは何ですか</td><td>できればのこと(B)</td><td>予算が合えば入れたいですか</td></tr>
+        <tr><td>予算次第で、後からでもいい・諦められるものは何ですか</td><td>後回しにできること(C)</td><td>将来のDIYや追加でも大丈夫ですか</td></tr>
+      </tbody></table>
+    </details>
+
+    <details open>
+      <summary>5. 土地</summary>
+      <table class="qtable"><thead><tr><th>質問(そのまま読めます)</th><th>聞く理由</th><th>深掘りの例</th></tr></thead><tbody>
+        <tr><td>土地は、すでにお持ちですか、これから探されますか</td><td>土地の有無を知る</td><td>所在地は/ご実家の土地ですか</td></tr>
+        <tr><td>面積と、道路との接し方は分かりますか(測った数字か、聞いた数字か)</td><td>敷地の条件を知る</td><td>間口・奥行/道路の幅</td></tr>
+        <tr><td>上下水の引き込みや、名義・相続の手続きは済んでいますか</td><td>手続きの見通しを知る</td><td>未了なら、いつ頃終わりそうですか</td></tr>
+      </tbody></table>
+    </details>
+
+    <details open>
+      <summary>6. 締め(まとめと、次の約束)</summary>
+      <table class="qtable"><thead><tr><th>質問(そのまま読めます)</th><th>聞く理由</th><th>深掘りの例</th></tr></thead><tbody>
+        <tr><td>今日伺った内容をまとめます。〜〜という理解で合っていますか</td><td>認識を合わせる</td><td>違いがあれば、その場で直す</td></tr>
+        <tr><td>次回は約3週間後に、間取りと総額の概算をお持ちします。○月○日はいかがですか</td><td>次の約束をする</td><td>準備していただくものがあればお願いする</td></tr>
+        <tr><td>図面をお持ちする前に、他社さんとの比較は済んでいる状態でよろしいですか</td><td>次に進む条件の確認</td><td>まだなら、いつ頃までにお決めになりそうですか</td></tr>
+      </tbody></table>
+    </details>
+
+    <p class="lead" style="margin-top:10px;">このほか、聞かずに記録するものがあります: 同じ言葉を繰り返した話題、「絶対」「どうしても」と言った話題、ご夫婦で反応が違った点(「温度感メモ」)。文字にならない雰囲気を残すためです。</p>
+  </div>
+
+  <div class="card">
+    <h2>4. 初回では聞かないこと</h2>
+    <p class="lead">次のことは、家の大きさと総額が決まってから、契約後の詳細設計で決めます。</p>
+    <ul class="list">
+      <li>キッチン・浴室のメーカーとグレード</li>
+      <li>壁紙(クロス)・床材の種類と色</li>
+      <li>スイッチ・コンセントの位置、設備の型番</li>
+    </ul>
+    <div class="quote">話が細かくなった時の言い方:<br>「そこは、家の大きさと総額が決まってから、詳細設計の打ち合わせで担当と一緒に決めていきますね。今日は、いちばん大事な『ご要望の優先順位』を先に伺ってもいいですか」</div>
+  </div>
+
+  <div class="card">
+    <h2>5. 要望の優先順位カード(A / B / C)</h2>
+    <p class="lead">熟練の方が肌感覚で行っている「絶対に外せないものを残す」判断を、誰でもできる形にします。予算に合わせる時は、Cから調整します。</p>
+    <div class="abc">
+      <div class="ra"><b>A: 絶対に外せない</b>3つまで。ここは削らない。</div>
+      <div class="rb"><b>B: できれば叶えたい</b>予算に余裕があれば入れる。</div>
+      <div class="rc"><b>C: 後回しにできる</b>予算が足りない時は、ここから外す。後からの追加やDIYに回せるもの。</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>6. AIでできること</h2>
+    <p class="lead">録音した打ち合わせを、「読むしかない文章」から、探せて比べられる記録に変えます。</p>
+    <div class="flow">
+      <div><b>録音</b>Plaud</div>
+      <div><b>文字起こし</b>自動</div>
+      <div><b>AIが整理</b>聞き漏れ・予算・A/B/C・追加で聞くこと</div>
+      <div><b>熟練の方が確認</b>10分ほど</div>
+    </div>
+    <div class="sample">
+      <div class="cap">結果のイメージ(架空の例です)</div>
+      <table class="qtable"><thead><tr><th>項目</th><th>状態</th><th>根拠の一言</th></tr></thead><tbody>
+        <tr><td>家づくりのきっかけ</td><td><span class="st-ok">聞けた</span></td><td>「子どもが小学校に上がる前に」</td></tr>
+        <tr><td>総予算</td><td><span class="st-ok">聞けた</span></td><td>「土地込みで3,000万円くらい」</td></tr>
+        <tr><td>決めるのは誰か</td><td><span class="st-mid">曖昧</span></td><td>「親にも相談する」だけで、決める方が不明</td></tr>
+        <tr><td>他社との比較</td><td><span class="st-no">未確認</span></td><td>話題に出ていない → 追加で聞く</td></tr>
+      </tbody></table>
+      <p class="lead" style="margin:8px 0 0;">「熱量の高い話題」も、繰り返しや強調した言葉から拾います(声のトーンそのものではなく、文字からの目安です)。</p>
+    </div>
+    <p class="lead" style="margin-top:12px;">お客様の会話を外部のAIで処理するため、録音の許可の取り方と、記録の使い道の説明文を先に決めてから使います。</p>
+  </div>
+
+  <div class="card">
+    <h2>7. 一緒に決めたいこと</h2>
+    <ol class="decide">
+      <li>概算の伝え方<small>坪単価ではなく、付帯工事・諸経費まで入れた「総額」を、幅をつけてお伝えする形にしてよいか</small></li>
+      <li>図面をお持ちする前の確認<small>「他社さんとの比較は済んでいるか」を確認して記録する(手付金なしの、今の運用のままでできます)</small></li>
+      <li>録音の許可の取り方と、説明の文言<small>Plaudの設定(AIの学習に使われない設定など)も、一緒に確認します</small></li>
+      <li>今の「基本情報アンケート」の中身<small>事前記入シートに置き換えるために、現在の内容を教えてください</small></li>
+    </ol>
+  </div>
+
+  <div class="card">
+    <h2>8. これからの進め方</h2>
+    <ol class="steps">
+      <li><span class="tag">今</span><div><b>Plaudの音声を、追加でいただく</b><span>実際の会話で、質問の順番が合っているか確かめます。</span></div></li>
+      <li><span class="tag">10/12以降</span><div><b>ロールプレイの録音</b><span>大磯さんに説明役、こちらがお客様役になり、熟練の方の聞き方を記録します(日程は大磯さんのご都合に合わせます)。</span></div></li>
+      <li><span class="tag">10/16</span><div><b>定例で確認・修正</b><span>この内容と、上の「一緒に決めたいこと」を確認します。</span></div></li>
+      <li><span class="tag">その後</span><div><b>事前記入フォームと記録シートを共有</b><span>使ってみて、聞きにくい所や足りない所を直していきます。</span></div></li>
+    </ol>
+  </div>
+
+  <div class="footer">AI集客エージェント｜接客の進め方(たたき台)｜2026-09-25作成<br><button class="print-btn" onclick="window.print()">この画面を印刷する</button></div>
+</div>
+</body>
+</html>
