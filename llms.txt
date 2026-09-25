@@ -1,0 +1,46 @@
+# AIdealize株式会社
+
+> 医療・介護・地域の中小企業向けに、業務改善（BPR）×AI実装と、Web集客・サイト運営を支援する会社。代表は元消防士の眞貴田正博。介護・訪問看護の記録AI「はなまるAI」、認定調査票の転記支援、介護BCPの無料作成、北関東約2万3千社の実測にもとづくサイト点検を提供している。
+
+- 会社名: AIdealize株式会社（設立2020年）
+- 所在地: 東京都中央区日本橋3-4-15（群馬事業所: 群馬県伊勢崎市）
+- 対象: 訪問看護・介護事業所・居宅介護支援（ケアマネ）・クリニック・工務店などの中小事業者
+- お問い合わせ: https://aidealize.com/#contact
+
+## サービス
+
+- [はなまるAI 看護版](https://aidealize.com/lp/hanamaru-kango/): 訪問看護記録書Ⅱ（SOAP）の下書きを、LINEで話すだけで作成する記録AI
+- [はなまるAI 介護版](https://aidealize.com/lp/hanamaru-kaigo/): ケアマネ・訪問介護員の経過記録を音声から作成する記録AI
+- [認定調査票 特記事項の転記支援](https://aidealize.com/lp/caremane-ocr/): 紙・PDFの認定調査票（特記事項）をAIでテキスト化し、ケアマネの手入力を確認作業だけにする
+- [介護施設のBCP無料作成](https://aidealize.com/service/bcp/): 介護・訪問看護のBCP（業務継続計画）を元消防士とAIで作成。義務化・減算に対応
+- [AIデジタル査察 Prevention](https://aidealize.com/service/prevention/): 医療・介護施設や中小企業のWebサイトのセキュリティ点検
+- [集客・サイト運営支援](https://aidealize.com/service/marketing/): Googleマップ（MEO）・SEO・サイト・口コミをまとめて改善
+- [成約率アップ（ファネル改善）](https://aidealize.com/service/cvr/): 集めた見込み客が予約・成約まで進まない原因を段階ごとに改善
+- [クリニックの集客支援](https://aidealize.com/service/clinic-marketing/): クリニック向けのMEO・口コミ・商圏データ分析
+- [居宅介護支援事業所の開業スタートパック](https://aidealize.com/lp/kyotaku-kaigyo/): 独立開業するケアマネ向けのホームページ・採用ページ準備
+- [BPR・DX導入事例データベース](https://aidealize.com/bpr/): 業種別の業務改善・DX導入事例
+
+## 解説記事（介護・訪問看護）
+
+- [認定調査票の特記事項とは？書き方・記入例](https://aidealize.com/column/ninteichosahyo-tokki-kakikata/)
+- [認定調査票OCRとは？介護ソフトへ転記するときの注意点](https://aidealize.com/column/ninteichosahyo-ocr-toha/)
+- [ICT加算とは？訪問看護の算定要件](https://aidealize.com/column/houkan-ict-kasan/)
+- [ケアプランの「軽微な変更」とは？担当者会議を省略できる例](https://aidealize.com/column/keibi-henko-tantosha-kaigi/)
+- [ケアマネのモニタリング記録の効率化](https://aidealize.com/column/caremane-monitoring-kiroku/)
+- [介護記録の音声入力の仕組みと選び方](https://aidealize.com/column/kaigo-kiroku-onsei-nyuryoku/)
+- [介護・訪問看護のBCP義務化とは？](https://aidealize.com/column/kaigo-bcp-gimuka/)
+- [介護BCPの作り方](https://aidealize.com/column/kaigo-bcp-tsukurikata/)
+- [訪問介護・デイサービスのBCP](https://aidealize.com/column/homon-kaigo-bcp/)
+- [居宅介護支援事業所の独立開業とホームページ準備](https://aidealize.com/column/kyotaku-kaigyo-hp-junbi/)
+
+## 解説記事（サイト点検・集客）
+
+- [地方の工務店サイト約9,000件を診断してわかった実態](https://aidealize.com/column/komuten-site-tenken/)
+- [医療・介護1,767件を診断してわかったクリニックサイトのセキュリティ](https://aidealize.com/column/iryou-clinic-security/)
+- [クリニックの集客がうまくいかない原因と改善方法](https://aidealize.com/column/clinic-shukyaku-jirei/)
+- [WordPressの脆弱性被害が減らない理由](https://aidealize.com/column/wordpress-zeijakusei-furui-site/)
+
+## その他
+
+- [会社概要](https://aidealize.com/company.html)
+- [コラム一覧](https://aidealize.com/column/)
