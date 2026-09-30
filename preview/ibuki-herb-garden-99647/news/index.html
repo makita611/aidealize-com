@@ -347,6 +347,33 @@ footer .ridge-line{max-width:var(--max);margin:0 auto 34px}
 .notice{background:var(--kinari);border-radius:14px;padding:22px 24px;margin-top:26px;font-size:14px;line-height:1.95}
 .notice b{display:block;font-family:var(--serif);font-size:17px;margin-bottom:6px}
 
+
+/* ===== 伊吹山の演出：線だった伊吹山が、スクロールすると実景になる（2026-10-01） ===== */
+/* ヒーロー：実写＋ごく薄い稜線（背景） */
+.hero{position:relative;overflow:hidden}
+.hero-ridge{position:absolute;left:0;right:0;bottom:0;width:100%;height:46%;pointer-events:none}
+.hero-ridge path{fill:none;stroke:rgba(52,80,47,.10);stroke-width:1.2;vector-effect:non-scaling-stroke}
+.hero .wrap{position:relative}
+/* 引用文区間：生成り背景に透けた大きな稜線。スクロールで少しだけ下へ */
+.statement{background:var(--kinari);overflow:hidden;padding:110px 0 120px}
+.statement .wrap{position:relative}
+.big-ridge{position:absolute;left:-5%;width:110%;bottom:-40px;height:78%;pointer-events:none;will-change:transform}
+.big-ridge path{fill:rgba(52,80,47,.06);stroke:rgba(52,80,47,.14);stroke-width:1.2;vector-effect:non-scaling-stroke}
+/* 伊吹山の写真帯：稜線が写真の山頂とぴたり重なり、線→実写へ */
+.ibuki{background:var(--kinari);padding:40px 0 0}
+.ibuki-text{padding-bottom:26px}
+.ibuki-text .alt{font-family:var(--serif);font-size:13px;letter-spacing:.3em;color:var(--moss)}
+.ibuki-text h2{margin:8px 0 8px}
+.ibuki-text p{color:var(--sub);max-width:34em}
+.ibuki-stage{position:relative;height:min(78vh,720px);overflow:hidden;background:var(--kinari)}
+.ibuki-photo{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 50%;
+  opacity:var(--p);transform:scale(calc(1.06 - var(--p) * .06))}
+.ibuki-line{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
+.ibuki-line path{fill:none;stroke:var(--forest);stroke-width:1.6;vector-effect:non-scaling-stroke;
+  opacity:calc(1 - var(--p) * .75)}
+.ibuki-credit{position:absolute;right:14px;bottom:10px;font-size:10.5px;color:#fff;text-shadow:0 1px 6px rgba(0,0,0,.5);opacity:var(--p)}
+@media(max-width:860px){.ibuki-stage{height:62vh}.hero-ridge{height:30%}}
+
 @media(max-width:860px){
   .visit-sum{grid-template-columns:1fr;gap:36px}
   .news-list li{grid-template-columns:1fr;gap:4px}
@@ -392,7 +419,7 @@ footer .ridge-line{max-width:var(--max);margin:0 auto 34px}
 </section>
 
 <footer>
-  <svg class="ridge-line on-dark" viewBox="0 0 1440 200" preserveAspectRatio="none" aria-hidden="true"><path d="M0 170 C120 162 220 152 320 138 C420 122 500 104 580 82 C640 64 690 46 740 37 C790 30 840 32 880 40 C930 50 980 72 1040 94 C1120 122 1220 142 1320 154 C1380 160 1420 163 1440 165"/></svg>
+  <svg class="ridge-line on-dark" viewBox="0 200 720 200" preserveAspectRatio="none" aria-hidden="true"><path d="M0 228 C6.7 230.0 25.8 234.8 40 240 C54.2 245.2 71.7 258.0 85 259 C98.3 260.0 107.5 249.5 120 246 C132.5 242.5 146.7 240.3 160 238 C173.3 235.7 186.7 234.3 200 232 C213.3 229.7 228.3 226.0 240 224 C251.7 222.0 260.0 220.5 270 220 C280.0 219.5 292.5 220.0 300 221 C307.5 222.0 308.3 222.2 315 226 C321.7 229.8 332.5 240.0 340 244 C347.5 248.0 350.0 247.0 360 250 C370.0 253.0 383.3 256.2 400 262 C416.7 267.8 440.0 276.3 460 285 C480.0 293.7 503.3 305.2 520 314 C536.7 322.8 546.7 329.0 560 338 C573.3 347.0 586.7 361.3 600 368 C613.3 374.7 620.0 375.0 640 378 C660.0 381.0 706.7 384.7 720 386"/></svg>
   <div class="fname">いぶきハーブ・ガーデン</div>
   滋賀県米原市上板並1759-1　TEL 0749-56-2790<br>
   <a href="../lunch/" style="color:inherit">ランチ・ご予約</a>　<a href="../shop/" style="color:inherit">ショップ</a>　<a href="../access/" style="color:inherit">アクセス</a>　<a href="../news/" style="color:inherit">お知らせ</a><br>
@@ -408,6 +435,22 @@ footer .ridge-line{max-width:var(--max);margin:0 auto 34px}
 <script>
 // 今いるページのメニューに印をつける
 (function(){var c=document.body.dataset.page;var a=document.querySelector('.nav a[data-nav="'+c+'"]');if(a)a.classList.add("current");})();
+// 伊吹山の演出：写真帯が画面に入るにつれて、線 → 実写に切り替える／引用文の稜線を少しだけ下へ
+(function(){
+  var reduce=window.matchMedia&&matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var stage=document.querySelector(".ibuki-stage"),big=document.querySelector("[data-parallax]");
+  if(!stage&&!big)return;
+  if(reduce){if(stage)stage.style.setProperty("--p",1);return;}
+  function tick(){
+    var vh=innerHeight;
+    if(stage){var r=stage.getBoundingClientRect();
+      var p=Math.min(1,Math.max(0,(vh*0.9-r.top)/(vh*0.55)));stage.style.setProperty("--p",p.toFixed(3));}
+    if(big){var b=big.parentNode.getBoundingClientRect();
+      var y=Math.min(40,Math.max(0,(vh-b.top)*0.06));big.style.transform="translateY("+y.toFixed(1)+"px)";}
+  }
+  var raf=0;addEventListener("scroll",function(){if(!raf)raf=requestAnimationFrame(function(){raf=0;tick();});},{passive:true});
+  addEventListener("resize",tick);tick();
+})();
 // 計測の下準備：data-track のついたボタンのクリックを GA4 のイベントとして送る（GA4未設置なら何もしない）
 document.addEventListener("click",function(e){var a=e.target.closest("[data-track]");if(!a)return;
 if(typeof gtag==="function")gtag("event","cta_click",{cta:a.dataset.track,page:document.body.dataset.page});});
