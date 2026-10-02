@@ -36,6 +36,7 @@
 ## 解説記事（サイト点検・集客）
 
 - [地方の工務店サイト約9,000件を診断してわかった実態](https://aidealize.com/column/komuten-site-tenken/)
+- [工務店のOB客掘り起こしは補助金の案内から（住宅省エネ2026）](https://aidealize.com/column/komuten-ob-hojokin/)
 - [医療・介護1,767件を診断してわかったクリニックサイトのセキュリティ](https://aidealize.com/column/iryou-clinic-security/)
 - [クリニックの集客がうまくいかない原因と改善方法](https://aidealize.com/column/clinic-shukyaku-jirei/)
 - [WordPressの脆弱性被害が減らない理由](https://aidealize.com/column/wordpress-zeijakusei-furui-site/)
