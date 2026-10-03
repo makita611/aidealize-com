@@ -25,12 +25,19 @@ export async function onRequestPost(context) {
   if (!submissionId) return json({ ok: false, error: 'missing_submission_id' }, 400);
 
   try {
-    const upstream = await fetch(target, {
+    // GAS は doPost 実行後に script.googleusercontent.com/macros/echo へ 302 する。
+    // Workers の自動追従だと echo 側が 400 を返すため、Location へは素の GET を自前で投げる。
+    let upstream = await fetch(target, {
       method: 'POST',
       headers: isJson ? { 'content-type': 'application/json' } : undefined,
       body: isJson ? JSON.stringify(body) : body,
-      redirect: 'follow'
+      redirect: 'manual'
     });
+    if (upstream.status >= 300 && upstream.status < 400) {
+      const location = upstream.headers.get('location');
+      if (!location) return json({ ok: false, error: 'upstream_error' }, 502);
+      upstream = await fetch(location, { method: 'GET', redirect: 'follow' });
+    }
     if (!upstream.ok) return json({ ok: false, error: 'upstream_error' }, 502);
     return json({ ok: true, submission_id: submissionId });
   } catch (_) {
