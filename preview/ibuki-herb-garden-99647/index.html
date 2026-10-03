@@ -379,6 +379,30 @@ footer .ridge-line{max-width:var(--max);margin:0 auto 34px}
 .ibuki-credit{position:absolute;right:14px;bottom:10px;font-size:10.5px;color:#fff;text-shadow:0 1px 6px rgba(0,0,0,.5);opacity:var(--p)}
 @media(max-width:860px){.ibuki-stage{border-radius:0}.ibuki{padding-bottom:60px}.hero .sub.sub-ibuki{left:auto;right:-6px;width:44%}}
 
+
+/* ===== 再設計（2026-10-03）：ヘッダー直下に営業日と予約／ランチ比較／営業日・予約・アクセスの3ブロック ===== */
+.quick{background:var(--forest-deep);color:#e9eee0}
+.quick .wrap{display:flex;align-items:center;gap:10px 18px;flex-wrap:wrap;padding-top:10px;padding-bottom:10px;font-size:13px}
+.quick .q-note{margin-right:auto}
+.quick .q-note b{color:#fff;margin-right:8px}
+.quick a{display:inline-flex;align-items:center;gap:6px;text-decoration:none;font-weight:700;border-radius:999px;padding:7px 16px;font-size:13px}
+.quick .q-cal{background:var(--kinari);color:var(--forest-deep)}
+.quick .q-res{border:1px solid rgba(255,255,255,.6);color:#fff}
+.plans{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:22px}
+.plan-card{background:#fff;border:1px solid var(--line);border-radius:14px;padding:16px 18px}
+.plan-card h3{font-family:var(--serif);font-size:17px;margin:0}
+.plan-card .yen{font-family:var(--serif);font-size:24px;font-weight:700;margin:4px 0 2px}
+.plan-card .yen small{font-family:var(--sans);font-size:11.5px;color:var(--sub);margin-left:6px;font-weight:500}
+.plan-card ul{list-style:none;margin:8px 0 0;padding:0;font-size:13px;color:var(--sub);line-height:1.8}
+.trio{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.trio > div{background:var(--kinari);border-radius:18px;padding:24px 22px}
+.trio h3{font-family:var(--serif);font-size:20px;margin:6px 0 8px}
+.trio p{font-size:13.5px;color:var(--sub);margin:0 0 12px;line-height:1.9}
+.trio .btn{width:100%;margin-top:6px}
+.final .row3{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+.two{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+@media(max-width:860px){.plans{grid-template-columns:1fr}.trio{grid-template-columns:1fr}.two{grid-template-columns:1fr}.quick .q-note{flex-basis:100%}}
+
 @media(max-width:860px){
   .visit-sum{grid-template-columns:1fr;gap:36px}
   .news-list li{grid-template-columns:1fr;gap:4px}
@@ -397,27 +421,35 @@ footer .ridge-line{max-width:var(--max);margin:0 auto 34px}
       <a href="lunch/" data-nav="lunch">ランチ・ご予約</a>
       <a href="shop/" data-nav="shop">ショップ</a>
       <a href="access/" data-nav="access">アクセス</a>
-      <a href="news/" data-nav="news">お知らせ</a>
+      <a href="news/" data-nav="news">営業日・お知らせ</a>
     </nav>
     <a class="btn" href="lunch/#reserve" data-track="line">LINEで予約</a>
   </div>
 </header>
+
+<div class="quick">
+  <div class="wrap">
+    <div class="q-note"><b>営業日は月ごとに変わります</b>ご来店前に今月の営業日をご確認ください。</div>
+    <a class="q-cal" href="news/#calendar" data-track="calendar">今月の営業日</a>
+    <a class="q-res" href="lunch/#reserve" data-track="line">ランチを予約</a>
+  </div>
+</div>
 
 <section class="hero" id="top">
   <svg class="hero-ridge" viewBox="0 125 586 120" preserveAspectRatio="xMidYMax meet" aria-hidden="true"><path d="M0 187 C2.3 186.7 9.3 185.8 14 185 C18.7 184.2 23.3 182.8 28 182 C32.7 181.2 37.3 180.5 42 180 C46.7 179.5 51.3 178.3 56 179 C60.7 179.7 65.3 183.3 70 184 C74.7 184.7 79.3 183.7 84 183 C88.7 182.3 93.3 180.8 98 180 C102.7 179.2 107.3 179.3 112 178 C116.7 176.7 121.3 173.5 126 172 C130.7 170.5 135.3 170.2 140 169 C144.7 167.8 149.3 166.3 154 165 C158.7 163.7 163.3 162.5 168 161 C172.7 159.5 177.3 157.8 182 156 C186.7 154.2 191.3 151.5 196 150 C200.7 148.5 205.3 147.8 210 147 C214.7 146.2 219.3 145.8 224 145 C228.7 144.2 233.3 142.8 238 142 C242.7 141.2 247.3 140.5 252 140 C256.7 139.5 261.3 139.3 266 139 C270.7 138.7 275.3 138.2 280 138 C284.7 137.8 289.3 138.3 294 138 C298.7 137.7 303.3 136.2 308 136 C312.7 135.8 317.3 135.8 322 137 C326.7 138.2 331.3 140.3 336 143 C340.7 145.7 345.3 150.2 350 153 C354.7 155.8 359.3 157.5 364 160 C368.7 162.5 373.3 165.3 378 168 C382.7 170.7 387.3 173.3 392 176 C396.7 178.7 401.3 182.5 406 184 C410.7 185.5 415.3 184.8 420 185 C424.7 185.2 429.3 184.7 434 185 C438.7 185.3 443.3 186.3 448 187 C452.7 187.7 457.3 188.3 462 189 C466.7 189.7 471.3 190.2 476 191 C480.7 191.8 485.3 192.8 490 194 C494.7 195.2 499.3 196.7 504 198 C508.7 199.3 513.3 200.5 518 202 C522.7 203.5 527.3 205.5 532 207 C536.7 208.5 541.3 209.3 546 211 C550.7 212.7 555.3 214.8 560 217 C564.7 219.2 569.7 222.5 574 224 C578.3 225.5 584.0 225.7 586 226"/></svg>
   <div class="wrap grid">
     <div>
       <span class="eyebrow">滋賀県米原市・伊吹山のふもと</span>
-      <h1><span>薬草の山のふもとで、</span><span>ハーブと野菜の</span><span>ビュッフェを。</span></h1>
+      <h1><span>伊吹山のふもとで、</span><span>季節の野菜と</span><span>ハーブのビュッフェを。</span></h1>
       <div class="name">農家レストラン＆ハーブスキンケア　いぶきハーブ・ガーデン</div>
       <p class="desc">都会をはなれて、伊吹山のふもとへ。昔から「薬草の山」として知られてきたこの地で、滋賀の野菜とハーブを使った料理を、好きなだけ。食後はハーブのスキンケアや無添加ソフトクリームを、お土産にどうぞ。</p>
       <div class="cta">
-        <a class="btn" href="lunch/#reserve" data-track="line">LINEで席を予約する</a>
-        <a class="btn line" href="access/#calendar" data-track="calendar">今月の営業日を見る</a>
+        <a class="btn" href="lunch/#reserve" data-track="line">LINEでランチを予約</a>
+        <a class="btn line" href="news/#calendar" data-track="calendar">今月の営業日を見る</a>
       </div>
       <div class="facts">
         <div><b>3,300円</b>ランチビュッフェ<br>（大人）</div>
-        <div><b>11:30 / 13:00</b>1部・2部<br>各70分</div>
+        <div><b>11:30 / 13:00</b>1部・2部制<br>ご予約優先</div>
         <div><b>約30分</b>米原ICから<br>お車で</div>
       </div>
     </div>
@@ -430,21 +462,10 @@ footer .ridge-line{max-width:var(--max);margin:0 auto 34px}
   </div>
 </section>
 
-<div class="today">
-  <div class="wrap">
-    <div class="t-date"><b>営業案内</b><span>OPENING HOURS</span></div>
-    <div class="t-status"><span class="open">営業日を確認</span>10:00〜18:00</div>
-    <div class="t-lunch">ランチビュッフェ　1部 11:30／2部 13:00</div>
-    <a class="t-cal" href="news/" data-track="news">お知らせを見る</a>
-    <a class="t-cal" style="margin-left:0" href="access/#calendar" data-track="calendar">営業カレンダーを見る</a>
-    <div class="t-note">※定休日・冬季の営業は変動します。ご来店前に営業カレンダーまたはお知らせでご確認ください。</div>
-  </div>
-</div>
-
 <div class="statement">
   <svg class="big-ridge" data-parallax viewBox="0 125 586 120" preserveAspectRatio="xMidYMax meet" aria-hidden="true"><path d="M0 187 C2.3 186.7 9.3 185.8 14 185 C18.7 184.2 23.3 182.8 28 182 C32.7 181.2 37.3 180.5 42 180 C46.7 179.5 51.3 178.3 56 179 C60.7 179.7 65.3 183.3 70 184 C74.7 184.7 79.3 183.7 84 183 C88.7 182.3 93.3 180.8 98 180 C102.7 179.2 107.3 179.3 112 178 C116.7 176.7 121.3 173.5 126 172 C130.7 170.5 135.3 170.2 140 169 C144.7 167.8 149.3 166.3 154 165 C158.7 163.7 163.3 162.5 168 161 C172.7 159.5 177.3 157.8 182 156 C186.7 154.2 191.3 151.5 196 150 C200.7 148.5 205.3 147.8 210 147 C214.7 146.2 219.3 145.8 224 145 C228.7 144.2 233.3 142.8 238 142 C242.7 141.2 247.3 140.5 252 140 C256.7 139.5 261.3 139.3 266 139 C270.7 138.7 275.3 138.2 280 138 C284.7 137.8 289.3 138.3 294 138 C298.7 137.7 303.3 136.2 308 136 C312.7 135.8 317.3 135.8 322 137 C326.7 138.2 331.3 140.3 336 143 C340.7 145.7 345.3 150.2 350 153 C354.7 155.8 359.3 157.5 364 160 C368.7 162.5 373.3 165.3 378 168 C382.7 170.7 387.3 173.3 392 176 C396.7 178.7 401.3 182.5 406 184 C410.7 185.5 415.3 184.8 420 185 C424.7 185.2 429.3 184.7 434 185 C438.7 185.3 443.3 186.3 448 187 C452.7 187.7 457.3 188.3 462 189 C466.7 189.7 471.3 190.2 476 191 C480.7 191.8 485.3 192.8 490 194 C494.7 195.2 499.3 196.7 504 198 C508.7 199.3 513.3 200.5 518 202 C522.7 203.5 527.3 205.5 532 207 C536.7 208.5 541.3 209.3 546 211 C550.7 212.7 555.3 214.8 560 217 C564.7 219.2 569.7 222.5 574 224 C578.3 225.5 584.0 225.7 586 226 V245 H0Z"/></svg>
   <div class="wrap">
-    <p>「こんな場所に、こんなお店があったなんて。」<span>はじめて来られた方から、よくいただく言葉です。<br>まわりにあるのは、山と空と緑だけ。<br>心とからだをゆるめに来てください。</span></p>
+    <p>「こんな場所に、こんなお店があったなんて。」<span>はじめて来られた方から、よくいただく言葉です。<br>まわりにあるのは、山と空と緑だけ。<br>ゆっくり過ごしに来てください。</span></p>
   </div>
 </div>
 
@@ -460,10 +481,12 @@ footer .ridge-line{max-width:var(--max);margin:0 auto 34px}
     <div>
       <span class="label">LUNCH</span>
       <h2>その日の畑と、<br>伊吹山のハーブから。</h2>
-      <p class="lead">並ぶのは、地元・滋賀で採れた野菜を中心にした料理です。ハーブの香りを生かしたデザートやドリンクまで、からだにやさしい味をゆっくり楽しんでいただけます。</p>
-      <div class="times">
-        <div><b>3,300円</b>ランチビュッフェ（大人・税込）</div>
-        <div><b>11:30／13:00</b>1部・2部（各70分）・ご予約優先</div>
+      <p class="lead">並ぶのは、地元・滋賀で採れた野菜を中心にした料理です。ハーブの香りを生かしたデザートやドリンクまで、季節ごとに変わる味をゆっくり楽しんでいただけます。</p>
+      <div class="plans">
+        <div class="plan-card"><h3>ランチビュッフェ</h3><div class="yen">3,300円<small>大人・税込</small></div>
+          <ul><li>小学生 1,650円／幼児（3〜6歳）600円／3歳未満 無料</li><li>1部 11:30〜／2部 13:00〜（ご予約優先）</li><li>デザートまで約20種類（日によって変わります）</li></ul></div>
+        <div class="plan-card"><h3>ワンプレートランチ</h3><div class="yen">2,300円<small>デザート付き・税込</small></div>
+          <ul><li>11:30〜14:00（L.O. 13:30）</li><li>ビュッフェより軽めに楽しみたい方に</li></ul></div>
       </div>
       <div class="btnrow">
         <a class="btn" href="lunch/#reserve" data-track="line">LINEで予約する</a>
@@ -556,12 +579,7 @@ footer .ridge-line{max-width:var(--max);margin:0 auto 34px}
       <blockquote>使われなくなった建物に、<br>もう一度、人が集まる場所を。</blockquote>
       <p>いぶきハーブ・ガーデンは、使われなくなっていた公共施設を生かして生まれたお店です。薬草の山・伊吹山の麓だからこそできる料理と、ハーブの商品を届けたい。その想いから始まりました。</p>
       <p>開業にあたってはクラウドファンディングを行い、地域の内からも外からも、たくさんの方に応援していただきました。</p>
-      <ul class="timeline">
-        <li><b>2024年</b>クラウドファンディングで開業への支援を募る</li>
-        <li><b>2025年9月</b>いぶきハーブ・ガーデン オープン</li>
-        <li><b>いま</b>季節ごとの料理とハーブの商品を、麓から発信中</li>
-      </ul>
-      <div class="sign">※代表者のことばは、お話をうかがったうえで実際の言葉に差し替えます</div>
+            <div class="sign">※代表者のことばは、お話をうかがったうえで実際の言葉に差し替えます</div>
     </div>
   </div>
 </section>
@@ -578,35 +596,38 @@ footer .ridge-line{max-width:var(--max);margin:0 auto 34px}
 </section>
 
 <section id="visit" style="background:#fff">
-  <div class="wrap visit-sum">
-    <div class="reserve" id="reserve">
-      <span class="label">RESERVATION</span>
-      <h3>ご予約は、LINEがかんたん</h3>
-      <p class="why">日付・1部か2部か・人数を送るだけ。お電話・InstagramのDMでも承ります。</p>
-      <a class="btn" href="lunch/#reserve" data-track="line"><span class="dot"></span>LINEで予約する</a>
-      <ul class="ways">
-        <li><b>お電話</b><a href="tel:0749562790" data-track="tel">0749-56-2790</a></li>
-        <li><b>InstagramのDM</b><a href="https://www.instagram.com/ibuki_herbs/" target="_blank" rel="noopener" data-track="instagram_dm">@ibuki_herbs</a></li>
-      </ul>
-      <a class="more" href="lunch/#reserve">ご予約の流れ・よくある質問</a>
-    </div>
-    <div>
-      <span class="label">ACCESS</span>
-      <h2 style="font-size:clamp(23px,3vw,30px)">アクセス</h2>
-      <ul class="info">
-        <li><b>住所</b>滋賀県米原市上板並1759-1</li>
-        <li><b>営業時間</b>10:00〜18:00（定休日は月によって変わります）</li>
-        <li><b>お車</b>米原ICから約30分（関ケ原IC・長浜ICから約25分）／駐車場 約30台</li>
-      </ul>
-      <a class="more" href="access/">地図・駐車場・営業カレンダー</a>
+  <div class="wrap">
+    <span class="label">VISIT</span>
+    <h2>ご来店の前に</h2>
+    <div class="trio">
+      <div>
+        <span class="label">OPEN</span>
+        <h3>営業日</h3>
+        <p>営業日は月ごとに変わります。営業時間 10:00〜18:00（ランチは1部11:30〜・2部13:00〜）。冬の営業もこちらでお知らせします。</p>
+        <a class="btn line" href="news/#calendar" data-track="calendar">今月の営業日を見る</a>
+      </div>
+      <div id="reserve">
+        <span class="label">RESERVATION</span>
+        <h3>ご予約</h3>
+        <p>公式LINEかお電話で。日付・1部か2部か・人数をお知らせください。InstagramのDMでも承ります。</p>
+        <a class="btn" href="lunch/#reserve" data-track="line"><span class="dot"></span>LINEで予約する</a>
+        <a class="btn line" href="tel:0749562790" data-track="tel">0749-56-2790</a>
+      </div>
+      <div>
+        <span class="label">ACCESS</span>
+        <h3>アクセス</h3>
+        <p>滋賀県米原市上板並1759-1。米原ICから約30分（関ケ原IC・長浜ICから約25分）。駐車場 約30台。</p>
+        <a class="btn line" href="access/" data-track="map">地図・道順を見る</a>
+      </div>
     </div>
   </div>
 </section>
 
 <div class="final">
   <h2>伊吹山のふもとで、<br>ゆっくりランチを。</h2>
-  <p>ビュッフェは1部・2部とも、ご予約の方を優先してご案内しています。<br>LINE・お電話・InstagramのDMでどうぞ。</p>
-  <div class="row">
+  <p>ビュッフェは1部・2部とも、ご予約の方を優先してご案内しています。<br>公式LINE・お電話でどうぞ。</p>
+  <div class="row3">
+    <a class="btn line-w" href="news/#calendar" data-track="calendar">今月の営業日</a>
     <a class="btn" href="lunch/#reserve" data-track="line">LINEで予約する</a>
     <a class="btn line-w" href="tel:0749562790" data-track="tel">0749-56-2790</a>
   </div>
@@ -616,7 +637,7 @@ footer .ridge-line{max-width:var(--max);margin:0 auto 34px}
   <svg class="ridge-line on-dark" viewBox="0 125 586 120" preserveAspectRatio="xMidYMax meet" aria-hidden="true"><path d="M0 187 C2.3 186.7 9.3 185.8 14 185 C18.7 184.2 23.3 182.8 28 182 C32.7 181.2 37.3 180.5 42 180 C46.7 179.5 51.3 178.3 56 179 C60.7 179.7 65.3 183.3 70 184 C74.7 184.7 79.3 183.7 84 183 C88.7 182.3 93.3 180.8 98 180 C102.7 179.2 107.3 179.3 112 178 C116.7 176.7 121.3 173.5 126 172 C130.7 170.5 135.3 170.2 140 169 C144.7 167.8 149.3 166.3 154 165 C158.7 163.7 163.3 162.5 168 161 C172.7 159.5 177.3 157.8 182 156 C186.7 154.2 191.3 151.5 196 150 C200.7 148.5 205.3 147.8 210 147 C214.7 146.2 219.3 145.8 224 145 C228.7 144.2 233.3 142.8 238 142 C242.7 141.2 247.3 140.5 252 140 C256.7 139.5 261.3 139.3 266 139 C270.7 138.7 275.3 138.2 280 138 C284.7 137.8 289.3 138.3 294 138 C298.7 137.7 303.3 136.2 308 136 C312.7 135.8 317.3 135.8 322 137 C326.7 138.2 331.3 140.3 336 143 C340.7 145.7 345.3 150.2 350 153 C354.7 155.8 359.3 157.5 364 160 C368.7 162.5 373.3 165.3 378 168 C382.7 170.7 387.3 173.3 392 176 C396.7 178.7 401.3 182.5 406 184 C410.7 185.5 415.3 184.8 420 185 C424.7 185.2 429.3 184.7 434 185 C438.7 185.3 443.3 186.3 448 187 C452.7 187.7 457.3 188.3 462 189 C466.7 189.7 471.3 190.2 476 191 C480.7 191.8 485.3 192.8 490 194 C494.7 195.2 499.3 196.7 504 198 C508.7 199.3 513.3 200.5 518 202 C522.7 203.5 527.3 205.5 532 207 C536.7 208.5 541.3 209.3 546 211 C550.7 212.7 555.3 214.8 560 217 C564.7 219.2 569.7 222.5 574 224 C578.3 225.5 584.0 225.7 586 226"/></svg>
   <div class="fname">いぶきハーブ・ガーデン</div>
   滋賀県米原市上板並1759-1　TEL 0749-56-2790<br>
-  <a href="lunch/" style="color:inherit">ランチ・ご予約</a>　<a href="shop/" style="color:inherit">ショップ</a>　<a href="access/" style="color:inherit">アクセス</a>　<a href="news/" style="color:inherit">お知らせ</a><br>
+  <a href="lunch/" style="color:inherit">ランチ・ご予約</a>　<a href="shop/" style="color:inherit">ショップ</a>　<a href="access/" style="color:inherit">アクセス</a>　<a href="news/" style="color:inherit">営業日・お知らせ</a><br>
   提案イメージ（noindex,nofollow）／料理写真：Instagram(@ibuki_herbs)より提案用にお借りしています<br>
   制作のご提案：眞貴田 正博（makita@aidealize.com）
 </footer>
