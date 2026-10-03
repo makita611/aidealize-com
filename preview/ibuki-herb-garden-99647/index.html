@@ -401,7 +401,12 @@ footer .ridge-line{max-width:var(--max);margin:0 auto 34px}
 .trio .btn{width:100%;margin-top:6px}
 .final .row3{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
 .two{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
-@media(max-width:860px){.plans{grid-template-columns:1fr}.trio{grid-template-columns:1fr}.two{grid-template-columns:1fr}.quick .q-note{flex-basis:100%}}
+/* ある日のビュッフェ */
+.menu-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:20px}
+.menu-grid figure{margin:0}
+.menu-grid .photo{aspect-ratio:1/1}
+.menu-grid figcaption{font-size:13px;margin-top:8px;font-family:var(--serif)}
+@media(max-width:860px){.menu-grid{grid-template-columns:1fr 1fr}.plans{grid-template-columns:1fr}.trio{grid-template-columns:1fr}.two{grid-template-columns:1fr}.quick .q-note{flex-basis:100%}}
 
 @media(max-width:860px){
   .visit-sum{grid-template-columns:1fr;gap:36px}
@@ -474,7 +479,7 @@ footer .ridge-line{max-width:var(--max);margin:0 auto 34px}
     <div>
       <div class="photo big"><img src="assets/buffet-baguette.jpg" alt="トマトのブルスケッタ"></div>
       <div class="row2">
-        <div><div class="photo"><img src="assets/dessert-herb.jpg" alt="ハーブを使った冷たいデザート"></div><div class="cap">ハーブのデザート</div></div>
+        <div><div class="photo"><img src="assets/dessert-herb.jpg" alt="ズッキーニの冷製スープ"></div><div class="cap">ズッキーニの冷製スープ</div></div>
         <div><div class="photo"><img src="assets/food-rose.jpg" alt="ハーブを添えた揚げ物"></div><div class="cap">季節の一皿</div></div>
       </div>
     </div>
@@ -573,7 +578,7 @@ footer .ridge-line{max-width:var(--max);margin:0 auto 34px}
 
 <section id="story">
   <div class="wrap grid">
-    <div class="shot"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M6 42V22L24 8l18 14v20Z"/><path d="M19 42V30h10v12"/></svg><b>PHOTO</b><small>建物の外観・スタッフ<br>（撮影予定）</small></div>
+    <div class="photo" style="aspect-ratio:4/5"><img src="assets/garden-new.jpg" alt="新しくなった庭と建物" style="object-position:50% 50%"></div>
     <div>
       <span class="label">OUR STORY</span>
       <blockquote>かつてにぎわった場所に、<br>もう一度、人の集まる時間を。</blockquote>

@@ -401,7 +401,12 @@ footer .ridge-line{max-width:var(--max);margin:0 auto 34px}
 .trio .btn{width:100%;margin-top:6px}
 .final .row3{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
 .two{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
-@media(max-width:860px){.plans{grid-template-columns:1fr}.trio{grid-template-columns:1fr}.two{grid-template-columns:1fr}.quick .q-note{flex-basis:100%}}
+/* ある日のビュッフェ */
+.menu-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:20px}
+.menu-grid figure{margin:0}
+.menu-grid .photo{aspect-ratio:1/1}
+.menu-grid figcaption{font-size:13px;margin-top:8px;font-family:var(--serif)}
+@media(max-width:860px){.menu-grid{grid-template-columns:1fr 1fr}.plans{grid-template-columns:1fr}.trio{grid-template-columns:1fr}.two{grid-template-columns:1fr}.quick .q-note{flex-basis:100%}}
 
 @media(max-width:860px){
   .visit-sum{grid-template-columns:1fr;gap:36px}
@@ -441,7 +446,7 @@ footer .ridge-line{max-width:var(--max);margin:0 auto 34px}
     <div>
       <div class="photo big"><img src="../assets/buffet-line.jpg" alt="野菜の料理が並ぶビュッフェ台" style="object-position:50% 45%"></div>
       <div class="row2">
-        <div><div class="photo"><img src="../assets/dessert-herb.jpg" alt="ハーブを使った冷たいデザート"></div><div class="cap">ハーブのデザート</div></div>
+        <div><div class="photo"><img src="../assets/dessert-herb.jpg" alt="ズッキーニの冷製スープ"></div><div class="cap">ズッキーニの冷製スープ</div></div>
         <div><div class="photo"><img src="../assets/buffet-croquette.jpg" alt="ワンプレートランチ"></div><div class="cap">ワンプレートランチ</div></div>
       </div>
     </div>
@@ -467,6 +472,21 @@ footer .ridge-line{max-width:var(--max);margin:0 auto 34px}
       <p class="hint"><b>ご予約がおすすめです。</b>1部・2部とも、ご予約の方を優先してご案内しています。</p>
       <div class="notice"><b>メニューについて</b>その日の野菜の入り方によって、並ぶ料理が変わります。<br>◯◯（アレルギー対応・食材の考え方など、ヒアリング後に記入）</div>
     </div>
+  </div>
+</section>
+
+<section id="menu-ex">
+  <div class="wrap">
+    <span class="label">MENU</span>
+    <h2>ある日のビュッフェ</h2>
+    <p class="lead">並ぶ料理は季節や日によって変わります。2026年7月の例をご紹介します。</p>
+    <div class="menu-grid">
+      <figure><div class="photo"><img src="../assets/buffet-baguette.jpg" alt="トマトステーキとバゲット"></div><figcaption>トマトステーキとバゲット</figcaption></figure>
+      <figure><div class="photo"><img src="../assets/dessert-herb.jpg" alt="ズッキーニの冷製スープ"></div><figcaption>ズッキーニの冷製スープ</figcaption></figure>
+      <figure><div class="photo"><img src="../assets/somen.jpg" alt="和風素麺"></div><figcaption>和風素麺（3種のアレンジ）</figcaption></figure>
+      <figure><div class="photo"><img src="../assets/mini-tomato.jpg" alt="ミディトマトのサラダ"></div><figcaption>ミディトマトのサラダ</figcaption></figure>
+    </div>
+    <p class="cap" style="margin-top:10px">写真：Instagram(@ibuki_herbs)より・提案用</p>
   </div>
 </section>
 
