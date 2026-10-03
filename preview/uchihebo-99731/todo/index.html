@@ -63,8 +63,7 @@ function text(){
   T.forEach((t,i)=>{const s=st[i]||{};if(s.c||s.m){lines.push((s.c?"✔ ":"・ ")+t+(s.m?"："+s.m:""))}});
   const rest=T.filter((t,i)=>!(st[i]||{}).c);
   if(rest.length)lines.push("（まだ：" + rest.length + "件）");
-  return lines.join("
-");
+  return lines.join(String.fromCharCode(10));
 }
 function refresh(){
   let n=0;T.forEach((t,i)=>{const s=st[i]||{};document.getElementById("c"+i).checked=!!s.c;
