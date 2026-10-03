@@ -8,6 +8,8 @@
 - お問い合わせ: https://aidealize.com/#contact
 
 ## サービス
+- [地方の会社とお店のWeb集客 伴走支援](https://aidealize.com/service/chiho-shukyaku/): ホームページ・Googleマップ・SNS・アクセス解析をもとに集客を伴走支援。料金の目安：伴走支援 月5万円〜（税別）
+- [集客の事例：アートメイクサロン](https://aidealize.com/works/artmake-komi/): 検索クリックが5か月で月2回→178回、平均掲載順位33.8位→11.3位
 
 - [はなまるAI 看護版](https://aidealize.com/lp/hanamaru-kango/): 訪問看護記録書Ⅱ（SOAP）の下書きを、LINEで話すだけで作成する記録AI
 - [はなまるAI 介護版](https://aidealize.com/lp/hanamaru-kaigo/): ケアマネ・訪問介護員の経過記録を音声から作成する記録AI
