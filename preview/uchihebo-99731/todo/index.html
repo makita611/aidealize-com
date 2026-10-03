@@ -27,12 +27,60 @@ ol{list-style:none;margin:0;padding:0;display:grid;gap:10px;counter-reset:n}
 .doing span{color:var(--muted);font-size:14px;word-break:break-all}
 .plan li{display:grid;grid-template-columns:170px 1fr;gap:10px}
 .foot{margin-top:34px;font-size:12.5px;color:var(--muted);border-top:1px solid var(--line);padding-top:12px}
-@media(max-width:520px){.plan li{grid-template-columns:1fr;gap:0}}
+.how{background:var(--soft);border-radius:12px;padding:12px 14px;font-size:14px;margin:0 0 6px}
+.how b{color:var(--ink)}
+.ask li{grid-template-columns:30px 1fr auto}
+.ask .d,.ask .m{grid-column:2/4}
+.ck{display:flex;align-items:center;gap:6px;font-size:13px;font-weight:700;color:var(--muted);cursor:pointer;white-space:nowrap;grid-row:1;grid-column:3}
+.ck input{width:22px;height:22px;accent-color:#2d7a4c;cursor:pointer}
+.ask li.on{background:#f1f8f3;border-color:#bfe0c9}
+.ask li.on .t{color:var(--muted)}
+.m textarea{width:100%;min-height:44px;font:inherit;font-size:14px;border:1px solid var(--line);border-radius:8px;padding:6px 8px;resize:vertical;background:#fff;color:var(--ink)}
+.prog{font-size:13px;color:var(--muted)}
+.prog b{color:#2d7a4c;font-size:16px}
+.send{position:sticky;bottom:0;background:#fff;border-top:1px solid var(--line);padding:12px 0;margin-top:18px;display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.send a,.send button{border:0;border-radius:99px;padding:11px 20px;font:inherit;font-weight:700;cursor:pointer;text-decoration:none}
+.line{background:#06c755;color:#fff}
+.copy{background:var(--soft);color:var(--ink)}
+.send small{color:var(--muted);font-size:12px;flex-basis:100%}
+@media(max-width:520px){.plan li{grid-template-columns:1fr;gap:0}.ask li{grid-template-columns:30px 1fr}.ck{grid-column:2;grid-row:auto}}
 </style></head><body><div class="wrap">
-<h1>内枦保住建様 進行チェックリスト</h1><div class="upd">最終更新：2026年10月3日　／　眞貴田 正博</div>
-<p class="lead">いま止まっていること・お願いしたいことを一覧にしました。上から順に、分かるものだけで大丈夫です。お返事はLINEでいただければ、こちらで更新します。</p>
-<h2>お願いしたいこと<small>7件</small></h2><ol class="ask"><li><div class="t">構造図一式・展開図一式のご送付 <span class="pill p-ask">お願い中</span> <span class="pill top">最優先</span></div><div class="d">9/20にご了承いただいた件です。木材・鉄筋・壁の数量の検証が、この図面待ちで止まっています。ご用意が難しい場合は「ある／ない」だけ教えてください。</div></li><li><div class="t">フローリングの数量の確認 <span class="pill p-ask">お願い中</span></div><div class="d">図面上の42坪＋23坪が「仕上げ材だけ」か「下地込み」かを教えてください。計算との差（約2.3〜2.6倍）の理由を確かめたいためです。</div></li><li><div class="t">Plaudの音声の追加（初回来店のお客様） <span class="pill p-ask">お願い中</span></div><div class="d">接客の進め方（ヒアリングブック）を、実際の会話と照らし合わせて仕上げるために使います。1〜2件でも助かります。</div></li><li><div class="t">大磯さんとの「お客様役」ロールプレイの日程 <span class="pill p-wait">日程調整</span></div><div class="d">大磯さんが10/12以降お戻りとのことでしたので、30分ほど録音させていただける日を教えてください。</div></li><li><div class="t">お使いのツールの確認 <span class="pill p-ask">お願い中</span></div><div class="d">PlaudのAutoFlowの設定、Zapierのアカウント、見積項目の一覧表（マスター）があるかどうか。「ある／ない」だけで大丈夫です。</div></li><li><div class="t">概算をお伝えするときの考え方 <span class="pill p-meet">10/16に相談</span></div><div class="d">最初に高めに伝えるか、低めに抑えて設計で調整するか。いまの社内の考え方を、10/16までに軽く整理しておいていただけると話が早いです。</div></li><li><div class="t">先に取り組むテーマを1〜2つ選ぶ <span class="pill p-meet">10/16に相談</span></div><div class="d">採用、LINE、Instagram、Googleマップなど「やりたいこと」を一覧でお見せしますので、優先するものを選んでください。</div></li></ol>
+<h1>内枦保住建様 進行チェックリスト</h1><div class="upd">最終更新：2026年10月4日　／　眞貴田 正博</div>
+<p class="lead">いま止まっていること・お願いしたいことを一覧にしました。上から順に、分かるものだけで大丈夫です。</p>
+<p class="how"><b>使い方：</b>終わったものに「対応した」のチェックを入れ、必要ならメモを書いてください。最後に下の<b>「LINEで送る」</b>を押すと、チェックとメモがまとめて眞貴田に届きます。チェックはこの端末に残ります。</p>
+<h2>お願いしたいこと<small class="prog" id="prog"></small></h2><ol class="ask"><li data-i="0"><div class="t">構造図一式・展開図一式のご送付 <span class="pill p-ask">お願い中</span> <span class="pill top">最優先</span></div><label class="ck"><input type="checkbox" id="c0">対応した</label><div class="d">9/20にご了承いただいた件です。木材・鉄筋・壁の数量の検証が、この図面待ちで止まっています。ご用意が難しい場合は「ある／ない」だけ教えてください。</div><div class="m"><textarea id="m0" placeholder="お返事・メモ（例：図面は月曜に送ります／ありません）"></textarea></div></li><li data-i="1"><div class="t">フローリングの数量の確認 <span class="pill p-ask">お願い中</span></div><label class="ck"><input type="checkbox" id="c1">対応した</label><div class="d">図面上の42坪＋23坪が「仕上げ材だけ」か「下地込み」かを教えてください。計算との差（約2.3〜2.6倍）の理由を確かめたいためです。</div><div class="m"><textarea id="m1" placeholder="お返事・メモ（例：図面は月曜に送ります／ありません）"></textarea></div></li><li data-i="2"><div class="t">Plaudの音声の追加（初回来店のお客様） <span class="pill p-ask">お願い中</span></div><label class="ck"><input type="checkbox" id="c2">対応した</label><div class="d">接客の進め方（ヒアリングブック）を、実際の会話と照らし合わせて仕上げるために使います。1〜2件でも助かります。</div><div class="m"><textarea id="m2" placeholder="お返事・メモ（例：図面は月曜に送ります／ありません）"></textarea></div></li><li data-i="3"><div class="t">大磯さんとの「お客様役」ロールプレイの日程 <span class="pill p-wait">日程調整</span></div><label class="ck"><input type="checkbox" id="c3">対応した</label><div class="d">大磯さんが10/12以降お戻りとのことでしたので、30分ほど録音させていただける日を教えてください。</div><div class="m"><textarea id="m3" placeholder="お返事・メモ（例：図面は月曜に送ります／ありません）"></textarea></div></li><li data-i="4"><div class="t">お使いのツールの確認 <span class="pill p-ask">お願い中</span></div><label class="ck"><input type="checkbox" id="c4">対応した</label><div class="d">PlaudのAutoFlowの設定、Zapierのアカウント、見積項目の一覧表（マスター）があるかどうか。「ある／ない」だけで大丈夫です。</div><div class="m"><textarea id="m4" placeholder="お返事・メモ（例：図面は月曜に送ります／ありません）"></textarea></div></li><li data-i="5"><div class="t">概算をお伝えするときの考え方 <span class="pill p-meet">10/16に相談</span></div><label class="ck"><input type="checkbox" id="c5">対応した</label><div class="d">最初に高めに伝えるか、低めに抑えて設計で調整するか。いまの社内の考え方を、10/16までに軽く整理しておいていただけると話が早いです。</div><div class="m"><textarea id="m5" placeholder="お返事・メモ（例：図面は月曜に送ります／ありません）"></textarea></div></li><li data-i="6"><div class="t">先に取り組むテーマを1〜2つ選ぶ <span class="pill p-meet">10/16に相談</span></div><label class="ck"><input type="checkbox" id="c6">対応した</label><div class="d">採用、LINE、Instagram、Googleマップなど「やりたいこと」を一覧でお見せしますので、優先するものを選んでください。</div><div class="m"><textarea id="m6" placeholder="お返事・メモ（例：図面は月曜に送ります／ありません）"></textarea></div></li></ol>
+<div class="send"><a class="line" id="line" href="#" target="_blank" rel="noopener">LINEで送る</a><button class="copy" id="copy" type="button">文章をコピー</button><small id="msg">LINEが開かないときは「文章をコピー」してLINEに貼り付けてください。</small></div>
 <h2>こちらで進めていること</h2><ol class="doing"><li><b>接客の進め方（ヒアリングブック）</b><span>誰が担当しても同じ質問ができる型です。近日中にLINEでお送りします。</span></li><li><b>問い合わせ〜ご契約の数字を記録するシート</b><span>問い合わせ→来社→概算提示→ご契約の件数を、毎月数えるための簡単な表です。</span></li><li><b>ホームページのアクセスのまとめ</b><span>Googleの分析データを、分かりやすい形にまとめ直しています。</span></li><li><b>初めてのお客様向け説明動画の構成</b><span>完成写真→3Dパースの流れを動画にする案です。</span></li><li><b>数量の自動計算の検証</b><span>届いている図面で、屋根・樋・外構などを先に確かめています。</span></li></ol>
 <h2>予定</h2><ol class="plan"><li><b>10月16日（金）10:00</b><span>定例ミーティング</span></li><li><b>10月12日以降</b><span>大磯さんとのロールプレイ録音（日程調整中）</span></li><li><b>11月以降</b><span>都城への訪問（日程調整中）</span></li><li><b>12月2日（水）10:00</b><span>3か月の振り返り</span></li></ol>
 <p class="foot">このページは関係者の方だけにお送りしているURLです（検索には出ません）。内容は随時更新します。</p>
-</div></body></html>
+</div>
+<script>
+const T=["構造図一式・展開図一式のご送付", "フローリングの数量の確認", "Plaudの音声の追加（初回来店のお客様）", "大磯さんとの「お客様役」ロールプレイの日程", "お使いのツールの確認", "概算をお伝えするときの考え方", "先に取り組むテーマを1〜2つ選ぶ"], K="todo-uchihebo-99731", NAME="内枦保住建様";
+let st={};try{st=JSON.parse(localStorage.getItem(K)||"{}")}catch(e){}
+const save=()=>{try{localStorage.setItem(K,JSON.stringify(st))}catch(e){}};
+function text(){
+  const lines=["【"+NAME+"】進行チェックリストのお返事"];
+  T.forEach((t,i)=>{const s=st[i]||{};if(s.c||s.m){lines.push((s.c?"✔ ":"・ ")+t+(s.m?"："+s.m:""))}});
+  const rest=T.filter((t,i)=>!(st[i]||{}).c);
+  if(rest.length)lines.push("（まだ：" + rest.length + "件）");
+  return lines.join("
+");
+}
+function refresh(){
+  let n=0;T.forEach((t,i)=>{const s=st[i]||{};document.getElementById("c"+i).checked=!!s.c;
+    document.querySelector('li[data-i="'+i+'"]').classList.toggle("on",!!s.c);if(s.c)n++;});
+  document.getElementById("prog").innerHTML="対応済み <b>"+n+"</b> / "+T.length+"件";
+  document.getElementById("line").href="https://line.me/R/msg/text/?"+encodeURIComponent(text());
+}
+T.forEach((t,i)=>{
+  const c=document.getElementById("c"+i), m=document.getElementById("m"+i);
+  m.value=(st[i]||{}).m||"";
+  c.addEventListener("change",()=>{st[i]=Object.assign({},st[i],{c:c.checked});save();refresh();});
+  m.addEventListener("input",()=>{st[i]=Object.assign({},st[i],{m:m.value.trim()});save();refresh();});
+});
+document.getElementById("copy").addEventListener("click",async()=>{
+  const t=text();try{await navigator.clipboard.writeText(t);document.getElementById("msg").textContent="コピーしました。LINEに貼り付けて送ってください。";}
+  catch(e){const ta=document.createElement("textarea");ta.value=t;document.body.appendChild(ta);ta.select();try{document.execCommand("copy");document.getElementById("msg").textContent="コピーしました。LINEに貼り付けて送ってください。";}catch(_){}ta.remove();}
+});
+refresh();
+</script></body></html>

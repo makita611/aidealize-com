@@ -27,12 +27,60 @@ ol{list-style:none;margin:0;padding:0;display:grid;gap:10px;counter-reset:n}
 .doing span{color:var(--muted);font-size:14px;word-break:break-all}
 .plan li{display:grid;grid-template-columns:170px 1fr;gap:10px}
 .foot{margin-top:34px;font-size:12.5px;color:var(--muted);border-top:1px solid var(--line);padding-top:12px}
-@media(max-width:520px){.plan li{grid-template-columns:1fr;gap:0}}
+.how{background:var(--soft);border-radius:12px;padding:12px 14px;font-size:14px;margin:0 0 6px}
+.how b{color:var(--ink)}
+.ask li{grid-template-columns:30px 1fr auto}
+.ask .d,.ask .m{grid-column:2/4}
+.ck{display:flex;align-items:center;gap:6px;font-size:13px;font-weight:700;color:var(--muted);cursor:pointer;white-space:nowrap;grid-row:1;grid-column:3}
+.ck input{width:22px;height:22px;accent-color:#2d7a4c;cursor:pointer}
+.ask li.on{background:#f1f8f3;border-color:#bfe0c9}
+.ask li.on .t{color:var(--muted)}
+.m textarea{width:100%;min-height:44px;font:inherit;font-size:14px;border:1px solid var(--line);border-radius:8px;padding:6px 8px;resize:vertical;background:#fff;color:var(--ink)}
+.prog{font-size:13px;color:var(--muted)}
+.prog b{color:#2d7a4c;font-size:16px}
+.send{position:sticky;bottom:0;background:#fff;border-top:1px solid var(--line);padding:12px 0;margin-top:18px;display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.send a,.send button{border:0;border-radius:99px;padding:11px 20px;font:inherit;font-weight:700;cursor:pointer;text-decoration:none}
+.line{background:#06c755;color:#fff}
+.copy{background:var(--soft);color:var(--ink)}
+.send small{color:var(--muted);font-size:12px;flex-basis:100%}
+@media(max-width:520px){.plan li{grid-template-columns:1fr;gap:0}.ask li{grid-template-columns:30px 1fr}.ck{grid-column:2;grid-row:auto}}
 </style></head><body><div class="wrap">
-<h1>いぶきハーブ・ガーデン様 進行チェックリスト</h1><div class="upd">最終更新：2026年10月3日　／　眞貴田 正博</div>
-<p class="lead">ホームページ公開（11月目標）に向けて、お願いしたいことを一覧にしました。分かるものからで大丈夫です。お返事はLINEでいただければ、こちらで更新します。</p>
-<h2>お願いしたいこと<small>8件</small></h2><ol class="ask"><li><div class="t">写真を共有フォルダへ <span class="pill p-ask">お願い中</span> <span class="pill top">最優先</span></div><div class="d">伊吹山の写真（季節を問わず）、料理・ビュッフェ・店内・外観・商品・スタッフの写真をお願いします。フォルダのURLはLINEでお送りしています。</div></li><li><div class="t">キックオフ打ち合わせの日程 <span class="pill p-wait">日程調整</span> <span class="pill top">最優先</span></div><div class="d">オンラインで1時間ほど。ホームページの作り方、URL（ドメイン）、撮影日などを決めます。</div></li><li><div class="t">Instagramの写真を仮に使ってよいか <span class="pill p-ask">お願い中</span></div><div class="d">撮影の日まで、Instagramの写真をホームページの見本に使わせてください。</div></li><li><div class="t">ご予約の受け方の確認 <span class="pill p-meet">打ち合わせで確認</span></div><div class="d">Googleマップの「席を予約する」は、LINEの予約カレンダーにつながっています。今もこちらでご予約を受けていますか。</div></li><li><div class="t">お店の情報 <span class="pill p-meet">打ち合わせで確認</span></div><div class="d">幼児の料金、ビュッフェの品数（だいたい）、ワンプレートの料金、1部・2部の席数、米原ICからの時間、駐車場の台数。</div></li><li><div class="t">「名物」にしたい料理 <span class="pill p-meet">打ち合わせで確認</span></div><div class="d">ホームページで写真と一言を添えてご紹介したい料理を教えてください。（例：卵かけご飯のタレ、季節のごはん）</div></li><li><div class="t">冬（1〜2月）の営業 <span class="pill p-wait">決まり次第</span></div><div class="d">決まりましたら教えてください。ホームページ・Instagram・LINEで同時にお知らせします。</div></li><li><div class="t">営業日のお知らせの更新担当 <span class="pill p-meet">打ち合わせで確認</span></div><div class="d">定休日などを、どなたがどこで更新されるのがやりやすいか。</div></li></ol>
+<h1>いぶきハーブ・ガーデン様 進行チェックリスト</h1><div class="upd">最終更新：2026年10月4日　／　眞貴田 正博</div>
+<p class="lead">ホームページ公開（11月目標）に向けて、お願いしたいことを一覧にしました。分かるものからで大丈夫です。</p>
+<p class="how"><b>使い方：</b>終わったものに「対応した」のチェックを入れ、必要ならメモを書いてください。最後に下の<b>「LINEで送る」</b>を押すと、チェックとメモがまとめて眞貴田に届きます。チェックはこの端末に残ります。</p>
+<h2>お願いしたいこと<small class="prog" id="prog"></small></h2><ol class="ask"><li data-i="0"><div class="t">写真を共有フォルダへ <span class="pill p-ask">お願い中</span> <span class="pill top">最優先</span></div><label class="ck"><input type="checkbox" id="c0">対応した</label><div class="d">伊吹山の写真（季節を問わず）、料理・ビュッフェ・店内・外観・商品・スタッフの写真をお願いします。フォルダのURLはLINEでお送りしています。</div><div class="m"><textarea id="m0" placeholder="お返事・メモ（例：図面は月曜に送ります／ありません）"></textarea></div></li><li data-i="1"><div class="t">キックオフ打ち合わせの日程 <span class="pill p-wait">日程調整</span> <span class="pill top">最優先</span></div><label class="ck"><input type="checkbox" id="c1">対応した</label><div class="d">オンラインで1時間ほど。ホームページの作り方、URL（ドメイン）、撮影日などを決めます。</div><div class="m"><textarea id="m1" placeholder="お返事・メモ（例：図面は月曜に送ります／ありません）"></textarea></div></li><li data-i="2"><div class="t">Instagramの写真を仮に使ってよいか <span class="pill p-ask">お願い中</span></div><label class="ck"><input type="checkbox" id="c2">対応した</label><div class="d">撮影の日まで、Instagramの写真をホームページの見本に使わせてください。</div><div class="m"><textarea id="m2" placeholder="お返事・メモ（例：図面は月曜に送ります／ありません）"></textarea></div></li><li data-i="3"><div class="t">ご予約の受け方の確認 <span class="pill p-meet">打ち合わせで確認</span></div><label class="ck"><input type="checkbox" id="c3">対応した</label><div class="d">Googleマップの「席を予約する」は、LINEの予約カレンダーにつながっています。今もこちらでご予約を受けていますか。</div><div class="m"><textarea id="m3" placeholder="お返事・メモ（例：図面は月曜に送ります／ありません）"></textarea></div></li><li data-i="4"><div class="t">お店の情報 <span class="pill p-meet">打ち合わせで確認</span></div><label class="ck"><input type="checkbox" id="c4">対応した</label><div class="d">幼児の料金、ビュッフェの品数（だいたい）、ワンプレートの料金、1部・2部の席数、米原ICからの時間、駐車場の台数。</div><div class="m"><textarea id="m4" placeholder="お返事・メモ（例：図面は月曜に送ります／ありません）"></textarea></div></li><li data-i="5"><div class="t">「名物」にしたい料理 <span class="pill p-meet">打ち合わせで確認</span></div><label class="ck"><input type="checkbox" id="c5">対応した</label><div class="d">ホームページで写真と一言を添えてご紹介したい料理を教えてください。（例：卵かけご飯のタレ、季節のごはん）</div><div class="m"><textarea id="m5" placeholder="お返事・メモ（例：図面は月曜に送ります／ありません）"></textarea></div></li><li data-i="6"><div class="t">冬（1〜2月）の営業 <span class="pill p-wait">決まり次第</span></div><label class="ck"><input type="checkbox" id="c6">対応した</label><div class="d">決まりましたら教えてください。ホームページ・Instagram・LINEで同時にお知らせします。</div><div class="m"><textarea id="m6" placeholder="お返事・メモ（例：図面は月曜に送ります／ありません）"></textarea></div></li><li data-i="7"><div class="t">営業日のお知らせの更新担当 <span class="pill p-meet">打ち合わせで確認</span></div><label class="ck"><input type="checkbox" id="c7">対応した</label><div class="d">定休日などを、どなたがどこで更新されるのがやりやすいか。</div><div class="m"><textarea id="m7" placeholder="お返事・メモ（例：図面は月曜に送ります／ありません）"></textarea></div></li><li data-i="8"><div class="t">ドメイン（ibuki-herbs.com）とサーバーの管理 <span class="pill p-meet">打ち合わせで確認</span></div><label class="ck"><input type="checkbox" id="c8">対応した</label><div class="d">お名前.comのアカウントをどなたがお持ちか、レンタルサーバーのご契約があるか。メール（corp@）は今のまま使えるように進めます。</div><div class="m"><textarea id="m8" placeholder="お返事・メモ（例：図面は月曜に送ります／ありません）"></textarea></div></li></ol>
+<div class="send"><a class="line" id="line" href="#" target="_blank" rel="noopener">LINEで送る</a><button class="copy" id="copy" type="button">文章をコピー</button><small id="msg">LINEが開かないときは「文章をコピー」してLINEに貼り付けてください。</small></div>
 <h2>こちらで進めていること</h2><ol class="doing"><li><b>ホームページの見本</b><span>https://aidealize.com/preview/ibuki-herb-garden-99647/ を更新しています。</span></li><li><b>参考になるお店のInstagramのまとめ</b><span>似た業態のお店の投稿の工夫を整理しました。</span></li><li><b>ホームページの作り方・URLの比較</b><span>打ち合わせでご説明する資料を準備しています。</span></li><li><b>撮影の準備</b><span>撮りたい写真のリストを作っています。</span></li></ol>
 <h2>予定</h2><ol class="plan"><li><b>10月上旬</b><span>キックオフ打ち合わせ（日程調整中）</span></li><li><b>10月中旬〜11月上旬</b><span>撮影（近江長岡駅からの送迎ありがとうございます）</span></li><li><b>11月</b><span>ホームページ公開（目標）</span></li><li><b>12月〜1月</b><span>Instagram・LINEの運用の型づくり、運用マニュアル</span></li></ol>
 <p class="foot">このページは関係者の方だけにお送りしているURLです（検索には出ません）。内容は随時更新します。</p>
-</div></body></html>
+</div>
+<script>
+const T=["写真を共有フォルダへ", "キックオフ打ち合わせの日程", "Instagramの写真を仮に使ってよいか", "ご予約の受け方の確認", "お店の情報", "「名物」にしたい料理", "冬（1〜2月）の営業", "営業日のお知らせの更新担当", "ドメイン（ibuki-herbs.com）とサーバーの管理"], K="todo-ibuki-herb-garden-99647", NAME="いぶきハーブ・ガーデン様";
+let st={};try{st=JSON.parse(localStorage.getItem(K)||"{}")}catch(e){}
+const save=()=>{try{localStorage.setItem(K,JSON.stringify(st))}catch(e){}};
+function text(){
+  const lines=["【"+NAME+"】進行チェックリストのお返事"];
+  T.forEach((t,i)=>{const s=st[i]||{};if(s.c||s.m){lines.push((s.c?"✔ ":"・ ")+t+(s.m?"："+s.m:""))}});
+  const rest=T.filter((t,i)=>!(st[i]||{}).c);
+  if(rest.length)lines.push("（まだ：" + rest.length + "件）");
+  return lines.join("
+");
+}
+function refresh(){
+  let n=0;T.forEach((t,i)=>{const s=st[i]||{};document.getElementById("c"+i).checked=!!s.c;
+    document.querySelector('li[data-i="'+i+'"]').classList.toggle("on",!!s.c);if(s.c)n++;});
+  document.getElementById("prog").innerHTML="対応済み <b>"+n+"</b> / "+T.length+"件";
+  document.getElementById("line").href="https://line.me/R/msg/text/?"+encodeURIComponent(text());
+}
+T.forEach((t,i)=>{
+  const c=document.getElementById("c"+i), m=document.getElementById("m"+i);
+  m.value=(st[i]||{}).m||"";
+  c.addEventListener("change",()=>{st[i]=Object.assign({},st[i],{c:c.checked});save();refresh();});
+  m.addEventListener("input",()=>{st[i]=Object.assign({},st[i],{m:m.value.trim()});save();refresh();});
+});
+document.getElementById("copy").addEventListener("click",async()=>{
+  const t=text();try{await navigator.clipboard.writeText(t);document.getElementById("msg").textContent="コピーしました。LINEに貼り付けて送ってください。";}
+  catch(e){const ta=document.createElement("textarea");ta.value=t;document.body.appendChild(ta);ta.select();try{document.execCommand("copy");document.getElementById("msg").textContent="コピーしました。LINEに貼り付けて送ってください。";}catch(_){}ta.remove();}
+});
+refresh();
+</script></body></html>
