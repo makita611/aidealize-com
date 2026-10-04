@@ -367,7 +367,16 @@ footer .ridge-line{max-width:var(--max);margin:0 auto 34px}
 .ibuki-text p{color:var(--sub);max-width:34em}
 .ibuki{padding-bottom:90px}
 /* ヒーローの小さい写真：伊吹山（横長） */
-.hero .sub.sub-ibuki{aspect-ratio:4/3;width:46%;left:-48px}
+.hero .sub.sub-lunch{aspect-ratio:4/3;width:46%;left:-48px}
+/* アクセス：お店の目印（外観・入口・駐車場） */
+.entry{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:22px}
+.entry figure{margin:0}.entry .photo{aspect-ratio:1/1}
+.entry figcaption{font-size:13.5px;color:var(--sub);line-height:1.8;margin-top:10px}
+.entry figcaption b{display:block;font-family:var(--serif);font-size:16px;color:var(--forest);letter-spacing:.06em}
+.entry figcaption small{display:block;font-size:11.5px;color:#9a9282}
+@media(max-width:860px){.entry{grid-template-columns:1fr;gap:26px}.entry .photo,.entry .shot{aspect-ratio:4/3!important}}
+/* 伊吹山の一日：到着から食後まで5ステップ */
+.day.day5{grid-template-columns:repeat(5,1fr);gap:16px}
 .sub-cap{position:absolute;left:10px;bottom:8px;font-family:var(--serif);font-size:11px;letter-spacing:.24em;color:#fff;text-shadow:0 1px 6px rgba(0,0,0,.45)}
 /* 季節の窓：PC＝大きな写真1枚＋右に季節の一覧（選ぶとフェードで切替）／スマホ＝横スワイプのカード */
 .season-window{display:grid;grid-template-columns:minmax(0,1fr) 190px;gap:14px;align-items:stretch}
@@ -391,7 +400,8 @@ footer .ridge-line{max-width:var(--max);margin:0 auto 34px}
 .sw-hint{display:none}
 .sw-credit{margin:10px 0 0;font-size:11px;color:var(--sub)}
 @media(max-width:860px){
-  .ibuki{padding-bottom:60px}.hero .sub.sub-ibuki{left:auto;right:-6px;width:44%}
+  .ibuki{padding-bottom:60px}.hero .sub.sub-lunch{left:auto;right:-6px;width:44%}
+  .day.day5{grid-template-columns:1fr 1fr}.day5 .step:last-child{grid-column:1/-1}.day5 .step:last-child .photo{aspect-ratio:16/9}
   .season-window{display:block;margin:0 -24px}
   .sw-main{aspect-ratio:auto;border-radius:0;background:none;display:flex;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;
     padding:0 24px 6px;scroll-padding:0 24px;-webkit-overflow-scrolling:touch;scrollbar-width:none}
@@ -443,7 +453,7 @@ footer .ridge-line{max-width:var(--max);margin:0 auto 34px}
 </head>
 <body data-page="top">
 
-<div class="proposal"><b>【提案イメージ】</b>面談用のご提案サンプルです（実際のホームページではありません）。料理写真はInstagram(@ibuki_herbs)の投稿からお借りし、色味のみ調整しています。「◯◯」や点線の枠は、ヒアリング・撮影後に差し替えます。</div>
+<div class="proposal"><b>【提案イメージ】</b>面談用のご提案サンプルです（実際のホームページではありません）。写真はInstagram(@ibuki_herbs)の投稿からお借りしています（料理写真は色味のみ調整）。「◯◯」や点線の枠は、ヒアリング・撮影後に差し替えます。</div>
 
 <header>
   <div class="hd">
@@ -485,9 +495,9 @@ footer .ridge-line{max-width:var(--max);margin:0 auto 34px}
       </div>
     </div>
     <div class="visual">
-      <div class="photo main"><img src="assets/buffet-croquette.jpg" alt="木のテーブルに並んだランチプレートと野菜のサラダ"></div>
-      <div class="photo sub sub-ibuki"><img src="assets/ibuki-sakura-hd.jpg" alt="桜の向こうに見える伊吹山" style="object-position:54% 50%"><span class="sub-cap">MT. IBUKI</span></div>
-      <span class="tag">ある日のランチ</span>
+      <div class="photo main"><img src="assets/season-04-sakura.jpg" alt="敷地内の桜の向こうに見える伊吹山（4月）" style="object-position:50% 55%"></div>
+      <div class="photo sub sub-lunch"><img src="assets/buffet-croquette.jpg" alt="木のテーブルに並んだランチプレートと野菜のサラダ"><span class="sub-cap">LUNCH</span></div>
+      <span class="tag">MT. IBUKI 1,377m</span>
       <div class="credit">写真：Instagram(@ibuki_herbs)より・提案用</div>
     </div>
   </div>
@@ -586,34 +596,41 @@ footer .ridge-line{max-width:var(--max);margin:0 auto 34px}
     <div class="head">
       <span class="label">A DAY IN IBUKI</span>
       <h2>山を眺めて、<br>ゆっくり過ごす一日。</h2>
-      <p class="lead">観光地をめぐる旅ではなく、大自然の中でただゆっくりする旅を。山を眺めて、野菜とハーブの料理を食べて、ハーブの香りにふれる。</p>
+      <p class="lead">観光地をめぐる旅ではなく、大自然の中でただゆっくりする旅を。到着してから食後のお土産まで、お店での過ごし方をご紹介します。</p>
     </div>
-    <div class="day">
+    <div class="day day5">
       <div class="step">
-        <div class="photo"><img src="assets/ibuki-sakura-hd.jpg" alt="伊吹山" style="object-position:40% 45%"></div>
+        <div class="photo"><img src="assets/garden-seat.jpg" alt="伊吹山を望む庭のテーブルとパラソル" style="object-position:45% 50%" loading="lazy"></div>
         <span class="time">MOUNTAIN</span>
-        <h3>伊吹山を見上げる</h3>
-        <p>滋賀県最高峰の山を、ふもとから大きく。</p>
+        <h3>伊吹山と、庭</h3>
+        <p>庭のテーブルから、滋賀県最高峰の山を見上げて。</p>
       </div>
       <div class="step">
-        <div class="photo"><img src="assets/buffet-line.jpg" alt="野菜の料理が並ぶビュッフェ台" style="object-position:50% 40%"></div>
+        <div class="photo"><img src="assets/arrival-exterior.jpg" alt="カモミールの花畑の向こうに建つお店と伊吹山（5月）" style="object-position:62% 50%" loading="lazy"></div>
+        <span class="time">ARRIVAL</span>
+        <h3>木の建物に到着</h3>
+        <p>山のふもとに建つ、木造のレストランです。</p>
+      </div>
+      <div class="step">
+        <div class="photo"><img src="assets/interior-seats.jpg" alt="大きな窓から緑が見える客席" style="object-position:55% 50%" loading="lazy"></div>
+        <span class="time">SEAT</span>
+        <h3>窓の外に緑を見ながら</h3>
+        <p>大きな窓のある、明るい客席でゆっくり。</p>
+      </div>
+      <div class="step">
+        <div class="photo"><img src="assets/interior-buffet-window.jpg" alt="窓ぎわのビュッフェ台に並ぶ野菜の料理" style="object-position:40% 50%" loading="lazy"></div>
         <span class="time">LUNCH</span>
         <h3>野菜とハーブの料理</h3>
-        <p>山のふもとで、ビュッフェをゆっくり。</p>
+        <p>地元の野菜を中心にしたビュッフェを。</p>
       </div>
       <div class="step">
-        <div class="photo"><img src="assets/garden-seat.jpg" alt="伊吹山を望む庭のテーブルとパラソル" style="object-position:45% 50%"></div>
-        <span class="time">HERB</span>
-        <h3>庭でひと休み</h3>
-        <p>食後は、伊吹山を眺める庭のテーブルで。</p>
-      </div>
-      <div class="step">
-        <div class="shot"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M16 22h16l-3 22H19Z"/><path d="M24 4c-6 0-9 5-9 10 0 3 2 6 5 7h8c3-1 5-4 5-7 0-5-3-10-9-10Z"/></svg><b>PHOTO</b><small>ソフトクリーム・ショップ<br>（撮影予定）</small></div>
-        <span class="time">SOUVENIR</span>
-        <h3>お土産をえらぶ</h3>
-        <p>無添加ソフトクリームと、ハーブのスキンケアを。</p>
+        <div class="photo"><img src="assets/shop-shelf.jpg" alt="ハーブのスキンケア商品が並ぶショップの棚" style="object-position:50% 50%" loading="lazy"></div>
+        <span class="time">SHOP</span>
+        <h3>ハーブのお土産を</h3>
+        <p>ハーブのスキンケアや、無添加ソフトクリームを。</p>
       </div>
     </div>
+    <p class="credit" style="text-align:left">写真：Instagram(@ibuki_herbs)より・提案用（店内はオープン前の撮影のため、今の配置と異なる場合があります）</p>
   </div>
 </section>
 
@@ -710,7 +727,7 @@ footer .ridge-line{max-width:var(--max);margin:0 auto 34px}
   <div class="fname">いぶきハーブ・ガーデン</div>
   滋賀県米原市上板並1759-1　TEL 0749-56-2790<br>
   <a href="lunch/" style="color:inherit">ランチ・ご予約</a>　<a href="shop/" style="color:inherit">ショップ</a>　<a href="access/" style="color:inherit">アクセス</a>　<a href="news/" style="color:inherit">営業日・お知らせ</a><br>
-  提案イメージ（noindex,nofollow）／料理写真：Instagram(@ibuki_herbs)より提案用にお借りしています<br>
+  提案イメージ（noindex,nofollow）／写真：Instagram(@ibuki_herbs)より提案用にお借りしています<br>
   制作のご提案：眞貴田 正博（makita@aidealize.com）
 </footer>
 

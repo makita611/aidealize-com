@@ -367,7 +367,16 @@ footer .ridge-line{max-width:var(--max);margin:0 auto 34px}
 .ibuki-text p{color:var(--sub);max-width:34em}
 .ibuki{padding-bottom:90px}
 /* ヒーローの小さい写真：伊吹山（横長） */
-.hero .sub.sub-ibuki{aspect-ratio:4/3;width:46%;left:-48px}
+.hero .sub.sub-lunch{aspect-ratio:4/3;width:46%;left:-48px}
+/* アクセス：お店の目印（外観・入口・駐車場） */
+.entry{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:22px}
+.entry figure{margin:0}.entry .photo{aspect-ratio:1/1}
+.entry figcaption{font-size:13.5px;color:var(--sub);line-height:1.8;margin-top:10px}
+.entry figcaption b{display:block;font-family:var(--serif);font-size:16px;color:var(--forest);letter-spacing:.06em}
+.entry figcaption small{display:block;font-size:11.5px;color:#9a9282}
+@media(max-width:860px){.entry{grid-template-columns:1fr;gap:26px}.entry .photo,.entry .shot{aspect-ratio:4/3!important}}
+/* 伊吹山の一日：到着から食後まで5ステップ */
+.day.day5{grid-template-columns:repeat(5,1fr);gap:16px}
 .sub-cap{position:absolute;left:10px;bottom:8px;font-family:var(--serif);font-size:11px;letter-spacing:.24em;color:#fff;text-shadow:0 1px 6px rgba(0,0,0,.45)}
 /* 季節の窓：PC＝大きな写真1枚＋右に季節の一覧（選ぶとフェードで切替）／スマホ＝横スワイプのカード */
 .season-window{display:grid;grid-template-columns:minmax(0,1fr) 190px;gap:14px;align-items:stretch}
@@ -391,7 +400,8 @@ footer .ridge-line{max-width:var(--max);margin:0 auto 34px}
 .sw-hint{display:none}
 .sw-credit{margin:10px 0 0;font-size:11px;color:var(--sub)}
 @media(max-width:860px){
-  .ibuki{padding-bottom:60px}.hero .sub.sub-ibuki{left:auto;right:-6px;width:44%}
+  .ibuki{padding-bottom:60px}.hero .sub.sub-lunch{left:auto;right:-6px;width:44%}
+  .day.day5{grid-template-columns:1fr 1fr}.day5 .step:last-child{grid-column:1/-1}.day5 .step:last-child .photo{aspect-ratio:16/9}
   .season-window{display:block;margin:0 -24px}
   .sw-main{aspect-ratio:auto;border-radius:0;background:none;display:flex;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;
     padding:0 24px 6px;scroll-padding:0 24px;-webkit-overflow-scrolling:touch;scrollbar-width:none}
@@ -443,7 +453,7 @@ footer .ridge-line{max-width:var(--max);margin:0 auto 34px}
 </head>
 <body data-page="news">
 
-<div class="proposal"><b>【提案イメージ】</b>面談用のご提案サンプルです（実際のホームページではありません）。料理写真はInstagram(@ibuki_herbs)の投稿からお借りし、色味のみ調整しています。「◯◯」や点線の枠は、ヒアリング・撮影後に差し替えます。</div>
+<div class="proposal"><b>【提案イメージ】</b>面談用のご提案サンプルです（実際のホームページではありません）。写真はInstagram(@ibuki_herbs)の投稿からお借りしています（料理写真は色味のみ調整）。「◯◯」や点線の枠は、ヒアリング・撮影後に差し替えます。</div>
 
 <header>
   <div class="hd">
@@ -497,7 +507,7 @@ footer .ridge-line{max-width:var(--max);margin:0 auto 34px}
   <div class="fname">いぶきハーブ・ガーデン</div>
   滋賀県米原市上板並1759-1　TEL 0749-56-2790<br>
   <a href="../lunch/" style="color:inherit">ランチ・ご予約</a>　<a href="../shop/" style="color:inherit">ショップ</a>　<a href="../access/" style="color:inherit">アクセス</a>　<a href="../news/" style="color:inherit">営業日・お知らせ</a><br>
-  提案イメージ（noindex,nofollow）／料理写真：Instagram(@ibuki_herbs)より提案用にお借りしています<br>
+  提案イメージ（noindex,nofollow）／写真：Instagram(@ibuki_herbs)より提案用にお借りしています<br>
   制作のご提案：眞貴田 正博（makita@aidealize.com）
 </footer>
 
