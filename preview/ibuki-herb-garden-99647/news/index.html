@@ -11,7 +11,7 @@
 <title>【提案イメージ】営業日・お知らせ｜いぶきハーブ・ガーデン</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@500;700&family=Zen+Kaku+Gothic+New:wght@400;500;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@500;700&family=Zen+Kaku+Gothic+New:wght@400;500;700&family=Cormorant+Garamond:wght@500;600&family=Pinyon+Script&display=swap" rel="stylesheet">
 <style>
 /*
   色の役割（2026-09-25 改訂）
@@ -373,6 +373,37 @@ footer .ridge-line{max-width:var(--max);margin:0 auto 34px}
 .hero-video{width:100%;height:100%;object-fit:cover;object-position:50% 50%;display:block;background:#e8e3d6}
 .hero-still{display:none;object-position:50% 55%}
 @media(prefers-reduced-motion:reduce){.hero-video{display:none}.hero-still{display:block}}
+/* 営業カレンダー：Instagramの「営業日のお知らせ」と同じ見た目（生成り・大きな月の数字・筆記体・緑と灰色の丸） */
+.sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.ibcal{--g:#8a9a85;--p:#d9d9dc;--hd:#cfc5b9;max-width:760px;margin:0 auto;padding:clamp(18px,4vw,40px);border-radius:18px;color:#5d564c;
+  background:linear-gradient(160deg,#f5efe7 0%,#efe6dc 45%,#f6f1ea 100%);box-shadow:0 10px 30px rgba(80,60,40,.08)}
+.ibcal-top{display:flex;justify-content:space-between;align-items:flex-end;gap:18px;flex-wrap:wrap;margin-bottom:18px}
+.ibcal-month{display:flex;align-items:center;gap:14px}
+.ibcal-num{font-family:"Cormorant Garamond",serif;font-weight:600;font-size:clamp(72px,14vw,128px);line-height:.85;color:#6f665a}
+.ibcal-ym{display:flex;flex-direction:column}
+.ibcal-y{font-family:"Cormorant Garamond",serif;font-size:clamp(20px,3.6vw,30px);letter-spacing:.12em}
+.ibcal-en{font-family:"Pinyon Script",cursive;font-size:clamp(26px,5vw,42px);line-height:1;color:#7a7064}
+.ibcal-hours{margin:0;text-align:right;font-size:13px;line-height:1.6;letter-spacing:.06em}
+.ibcal-hours div{margin-top:4px}.ibcal-hours dt{font-weight:700;display:inline-flex;align-items:center;gap:6px}
+.ibcal-hours dd{margin:0;font-family:"Cormorant Garamond",serif;font-size:15px;letter-spacing:.08em}
+.ibcal-table{width:100%;border-collapse:separate;border-spacing:4px;table-layout:fixed}
+.ibcal-table th{background:var(--hd);font-family:"Cormorant Garamond",serif;font-weight:600;font-size:13px;letter-spacing:.2em;padding:8px 0;color:#7a7064}
+.ibcal-table th.sun,.cal-d.sun{color:#b2453c}.ibcal-table th.sat,.cal-d.sat{color:#3d6596}
+.ibcal-table td{background:rgba(255,255,255,.82);height:clamp(54px,10vw,88px);vertical-align:top;padding:6px 7px;position:relative}
+.ibcal-table td.empty{background:rgba(255,255,255,.45)}
+.cal-d{font-family:"Cormorant Garamond",serif;font-size:clamp(14px,2.4vw,19px);font-weight:500;color:#7a7064;display:block;line-height:1}
+.cal-dot{display:block;width:clamp(18px,4vw,34px);aspect-ratio:1;border-radius:50%;margin:clamp(4px,1.4vw,12px) auto 0}
+.cal-dot.buffet{background:var(--g)}.cal-dot.plate{background:var(--p)}
+.cal-dot.sm{display:inline-block;width:12px;margin:0;vertical-align:middle}
+.cal-note{display:block;text-align:center;font-size:clamp(9.5px,1.8vw,13px);line-height:1.4;margin-top:clamp(2px,1vw,8px);letter-spacing:.05em;font-weight:500}
+.ibcal-legend{display:flex;gap:18px;flex-wrap:wrap;font-size:12.5px;margin-top:12px}
+.ibcal-legend>span{display:inline-flex;align-items:center;gap:6px}
+.cal-blank{display:inline-block;width:12px;height:12px;border-radius:3px;background:rgba(255,255,255,.9);border:1px solid #ddd2c6}
+.ibcal-upd{font-size:11.5px;color:#9a9282;margin:6px 0 0;text-align:right}
+.ibcal-ask{max-width:760px;margin:16px auto 0;padding:14px 18px;border:1px dashed rgba(52,80,47,.45);border-radius:12px;background:#fff;font-size:13.5px;line-height:1.9;color:var(--sub)}
+.ibcal-ask b{display:block;color:var(--forest);margin-bottom:2px}
+@media(max-width:560px){.ibcal-top{display:block}.ibcal-hours{text-align:left;margin-top:12px;display:grid;grid-template-columns:1fr;gap:2px}
+  .ibcal-table{border-spacing:2px}.ibcal-table th{font-size:10px;letter-spacing:.08em;padding:6px 0}.ibcal-table td{padding:4px 2px}.cal-note{font-size:9px;letter-spacing:0;word-break:keep-all}}
 /* ランチ：ヒーロー直後で「何を食べに行く場所か」を見せる。全景を大きく、料理は小さく並べ、そのすぐ後に料金と予約 */
 .lunch-head{max-width:44em}
 .feast{margin:30px 0 0}.feast .photo{aspect-ratio:16/9;border-radius:20px}
@@ -500,10 +531,23 @@ footer .ridge-line{max-width:var(--max);margin:0 auto 34px}
   <div class="wrap">
     <span class="label">CALENDAR</span>
     <h2>今月の営業日</h2>
-    <p class="lead">営業日は月ごとに変わります。営業時間 10:00〜18:00／ランチビュッフェ 1部 11:30〜・2部 13:00〜。<br>最終更新：◯月◯日（お店がスマホで更新する想定）</p>
+    <p class="lead">営業日は月ごとに変わります。ご来店前にご確認ください。ランチはご予約優先です。</p>
     <div class="cal" id="calendar">
-      <div class="shot"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="6" y="10" width="36" height="32" rx="3"/><path d="M6 18h36M16 6v8M32 6v8"/></svg><b>CALENDAR</b><small>今月の営業カレンダー<br>（更新方法は打ち合わせで決定：Googleカレンダー等をスマホで更新）</small></div>
+      <div class="ibcal">
+      <div class="ibcal-top">
+        <div class="ibcal-month"><span class="ibcal-num">10</span><span class="ibcal-ym"><span class="ibcal-y">2026</span><span class="ibcal-en">October</span></span></div>
+        <dl class="ibcal-hours">
+          <div><dt>営業時間</dt><dd>10:00〜18:00</dd></div>
+          <div><dt>ビュッフェランチ <span class="cal-dot buffet sm"></span></dt><dd>1部 11:30〜12:40<br>2部 13:00〜14:10</dd></div>
+          <div><dt>ワンプレートランチ <span class="cal-dot plate sm"></span></dt><dd>11:30〜14:00（LO 13:30）</dd></div>
+        </dl>
+      </div>
+      <table class="ibcal-table"><caption class="sr-only">2026年10月の営業日</caption><thead><tr><th scope="col" class="sun">SUN</th><th scope="col" class="">MON</th><th scope="col" class="">TUE</th><th scope="col" class="">WED</th><th scope="col" class="">THU</th><th scope="col" class="">FRI</th><th scope="col" class="sat">SAT</th></tr></thead><tbody><tr><td class="empty"></td><td class="empty"></td><td class="empty"></td><td class="empty"></td><td aria-label="10月1日（木） ワンプレートランチ"><span class="cal-d ">1</span><span class="cal-dot plate"></span></td><td aria-label="10月2日（金） ビュッフェランチ"><span class="cal-d ">2</span><span class="cal-dot buffet"></span></td><td aria-label="10月3日（土） ビュッフェランチ"><span class="cal-d sat">3</span><span class="cal-dot buffet"></span></td></tr><tr><td aria-label="10月4日（日） 臨時休業"><span class="cal-d sun">4</span><span class="cal-note">臨時休業</span></td><td aria-label="10月5日（月） ビュッフェランチ"><span class="cal-d ">5</span><span class="cal-dot buffet"></span></td><td aria-label="10月6日（火） 定休日"><span class="cal-d ">6</span></td><td aria-label="10月7日（水） 定休日"><span class="cal-d ">7</span></td><td aria-label="10月8日（木） ワンプレートランチ"><span class="cal-d ">8</span><span class="cal-dot plate"></span></td><td aria-label="10月9日（金） ビュッフェランチ"><span class="cal-d ">9</span><span class="cal-dot buffet"></span></td><td aria-label="10月10日（土） ビュッフェランチ"><span class="cal-d sat">10</span><span class="cal-dot buffet"></span></td></tr><tr><td aria-label="10月11日（日） ビュッフェランチ"><span class="cal-d sun">11</span><span class="cal-dot buffet"></span></td><td aria-label="10月12日（月） ビュッフェランチ"><span class="cal-d sun">12</span><span class="cal-dot buffet"></span></td><td aria-label="10月13日（火） 定休日"><span class="cal-d ">13</span></td><td aria-label="10月14日（水） 定休日"><span class="cal-d ">14</span></td><td aria-label="10月15日（木） ワンプレートランチ"><span class="cal-d ">15</span><span class="cal-dot plate"></span></td><td aria-label="10月16日（金） ビュッフェランチ"><span class="cal-d ">16</span><span class="cal-dot buffet"></span></td><td aria-label="10月17日（土） ビュッフェランチ"><span class="cal-d sat">17</span><span class="cal-dot buffet"></span></td></tr><tr><td aria-label="10月18日（日） ビュッフェランチ"><span class="cal-d sun">18</span><span class="cal-dot buffet"></span></td><td aria-label="10月19日（月） ビュッフェランチ"><span class="cal-d ">19</span><span class="cal-dot buffet"></span></td><td aria-label="10月20日（火） 定休日"><span class="cal-d ">20</span></td><td aria-label="10月21日（水） 定休日"><span class="cal-d ">21</span></td><td aria-label="10月22日（木） 団体様貸切"><span class="cal-d ">22</span><span class="cal-note">団体様<br>貸切</span></td><td aria-label="10月23日（金） ビュッフェランチ"><span class="cal-d ">23</span><span class="cal-dot buffet"></span></td><td aria-label="10月24日（土） ビュッフェランチ"><span class="cal-d sat">24</span><span class="cal-dot buffet"></span></td></tr><tr><td aria-label="10月25日（日） ビュッフェランチ"><span class="cal-d sun">25</span><span class="cal-dot buffet"></span></td><td aria-label="10月26日（月） ビュッフェランチ"><span class="cal-d ">26</span><span class="cal-dot buffet"></span></td><td aria-label="10月27日（火） 定休日"><span class="cal-d ">27</span></td><td aria-label="10月28日（水） 定休日"><span class="cal-d ">28</span></td><td aria-label="10月29日（木） ワンプレートランチ"><span class="cal-d ">29</span><span class="cal-dot plate"></span></td><td aria-label="10月30日（金） ビュッフェランチ"><span class="cal-d ">30</span><span class="cal-dot buffet"></span></td><td aria-label="10月31日（土） ビュッフェランチ"><span class="cal-d sat">31</span><span class="cal-dot buffet"></span></td></tr></tbody></table>
+      <div class="ibcal-legend"><span><span class="cal-dot buffet sm"></span>ビュッフェランチ</span><span><span class="cal-dot plate sm"></span>ワンプレートランチ</span><span><span class="cal-blank"></span>定休日</span></div>
+      <p class="ibcal-upd">最終更新：10月1日</p>
     </div>
+    </div>
+    <div class="ibcal-ask"><b>【ご相談】カレンダーの更新方法</b>このカレンダーは、Instagramの「営業日のお知らせ」と同じ見た目で作っています。今はこちらで手入力していますが、お店のGoogleカレンダーに「ビュッフェ」「ワンプレート」「臨時休業」などの予定を入れるだけで、サイトのカレンダーが自動で切り替わるようにもできます。どちらがよいか、打ち合わせでご相談させてください。</div>
     <div class="btnrow"><a class="btn" href="../lunch/#reserve" data-track="line">ランチを予約する</a><a class="btn line" href="tel:0749562790" data-track="tel">0749-56-2790</a></div>
   </div>
 </section>

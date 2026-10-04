@@ -11,7 +11,7 @@
 <title>【提案イメージ】ランチ・ご予約｜いぶきハーブ・ガーデン（米原・伊吹山）</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@500;700&family=Zen+Kaku+Gothic+New:wght@400;500;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@500;700&family=Zen+Kaku+Gothic+New:wght@400;500;700&family=Cormorant+Garamond:wght@500;600&family=Pinyon+Script&display=swap" rel="stylesheet">
 <style>
 /*
   色の役割（2026-09-25 改訂）
@@ -373,6 +373,37 @@ footer .ridge-line{max-width:var(--max);margin:0 auto 34px}
 .hero-video{width:100%;height:100%;object-fit:cover;object-position:50% 50%;display:block;background:#e8e3d6}
 .hero-still{display:none;object-position:50% 55%}
 @media(prefers-reduced-motion:reduce){.hero-video{display:none}.hero-still{display:block}}
+/* 営業カレンダー：Instagramの「営業日のお知らせ」と同じ見た目（生成り・大きな月の数字・筆記体・緑と灰色の丸） */
+.sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.ibcal{--g:#8a9a85;--p:#d9d9dc;--hd:#cfc5b9;max-width:760px;margin:0 auto;padding:clamp(18px,4vw,40px);border-radius:18px;color:#5d564c;
+  background:linear-gradient(160deg,#f5efe7 0%,#efe6dc 45%,#f6f1ea 100%);box-shadow:0 10px 30px rgba(80,60,40,.08)}
+.ibcal-top{display:flex;justify-content:space-between;align-items:flex-end;gap:18px;flex-wrap:wrap;margin-bottom:18px}
+.ibcal-month{display:flex;align-items:center;gap:14px}
+.ibcal-num{font-family:"Cormorant Garamond",serif;font-weight:600;font-size:clamp(72px,14vw,128px);line-height:.85;color:#6f665a}
+.ibcal-ym{display:flex;flex-direction:column}
+.ibcal-y{font-family:"Cormorant Garamond",serif;font-size:clamp(20px,3.6vw,30px);letter-spacing:.12em}
+.ibcal-en{font-family:"Pinyon Script",cursive;font-size:clamp(26px,5vw,42px);line-height:1;color:#7a7064}
+.ibcal-hours{margin:0;text-align:right;font-size:13px;line-height:1.6;letter-spacing:.06em}
+.ibcal-hours div{margin-top:4px}.ibcal-hours dt{font-weight:700;display:inline-flex;align-items:center;gap:6px}
+.ibcal-hours dd{margin:0;font-family:"Cormorant Garamond",serif;font-size:15px;letter-spacing:.08em}
+.ibcal-table{width:100%;border-collapse:separate;border-spacing:4px;table-layout:fixed}
+.ibcal-table th{background:var(--hd);font-family:"Cormorant Garamond",serif;font-weight:600;font-size:13px;letter-spacing:.2em;padding:8px 0;color:#7a7064}
+.ibcal-table th.sun,.cal-d.sun{color:#b2453c}.ibcal-table th.sat,.cal-d.sat{color:#3d6596}
+.ibcal-table td{background:rgba(255,255,255,.82);height:clamp(54px,10vw,88px);vertical-align:top;padding:6px 7px;position:relative}
+.ibcal-table td.empty{background:rgba(255,255,255,.45)}
+.cal-d{font-family:"Cormorant Garamond",serif;font-size:clamp(14px,2.4vw,19px);font-weight:500;color:#7a7064;display:block;line-height:1}
+.cal-dot{display:block;width:clamp(18px,4vw,34px);aspect-ratio:1;border-radius:50%;margin:clamp(4px,1.4vw,12px) auto 0}
+.cal-dot.buffet{background:var(--g)}.cal-dot.plate{background:var(--p)}
+.cal-dot.sm{display:inline-block;width:12px;margin:0;vertical-align:middle}
+.cal-note{display:block;text-align:center;font-size:clamp(9.5px,1.8vw,13px);line-height:1.4;margin-top:clamp(2px,1vw,8px);letter-spacing:.05em;font-weight:500}
+.ibcal-legend{display:flex;gap:18px;flex-wrap:wrap;font-size:12.5px;margin-top:12px}
+.ibcal-legend>span{display:inline-flex;align-items:center;gap:6px}
+.cal-blank{display:inline-block;width:12px;height:12px;border-radius:3px;background:rgba(255,255,255,.9);border:1px solid #ddd2c6}
+.ibcal-upd{font-size:11.5px;color:#9a9282;margin:6px 0 0;text-align:right}
+.ibcal-ask{max-width:760px;margin:16px auto 0;padding:14px 18px;border:1px dashed rgba(52,80,47,.45);border-radius:12px;background:#fff;font-size:13.5px;line-height:1.9;color:var(--sub)}
+.ibcal-ask b{display:block;color:var(--forest);margin-bottom:2px}
+@media(max-width:560px){.ibcal-top{display:block}.ibcal-hours{text-align:left;margin-top:12px;display:grid;grid-template-columns:1fr;gap:2px}
+  .ibcal-table{border-spacing:2px}.ibcal-table th{font-size:10px;letter-spacing:.08em;padding:6px 0}.ibcal-table td{padding:4px 2px}.cal-note{font-size:9px;letter-spacing:0;word-break:keep-all}}
 /* ランチ：ヒーロー直後で「何を食べに行く場所か」を見せる。全景を大きく、料理は小さく並べ、そのすぐ後に料金と予約 */
 .lunch-head{max-width:44em}
 .feast{margin:30px 0 0}.feast .photo{aspect-ratio:16/9;border-radius:20px}
