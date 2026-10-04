@@ -365,19 +365,45 @@ footer .ridge-line{max-width:var(--max);margin:0 auto 34px}
 .ibuki-text .alt{font-family:var(--serif);font-size:13px;letter-spacing:.3em;color:var(--moss)}
 .ibuki-text h2{margin:8px 0 8px}
 .ibuki-text p{color:var(--sub);max-width:34em}
-/* 高解像度の写真が届くまでは本文幅に収めて、引き伸ばしの粗さを目立たせない */
-.ibuki-stage{position:relative;max-width:var(--max);margin:0 auto;aspect-ratio:586/349;border-radius:20px;overflow:hidden;background:var(--kinari)}
 .ibuki{padding-bottom:90px}
 /* ヒーローの小さい写真：伊吹山（横長） */
 .hero .sub.sub-ibuki{aspect-ratio:4/3;width:46%;left:-48px}
 .sub-cap{position:absolute;left:10px;bottom:8px;font-family:var(--serif);font-size:11px;letter-spacing:.24em;color:#fff;text-shadow:0 1px 6px rgba(0,0,0,.45)}
-.ibuki-photo{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 50%;
-  opacity:var(--p)}
-.ibuki-line{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
-.ibuki-line path{fill:none;stroke:var(--forest);stroke-width:1.6;vector-effect:non-scaling-stroke;
-  opacity:calc(1 - var(--p) * .75)}
-.ibuki-credit{position:absolute;right:14px;bottom:10px;font-size:10.5px;color:#fff;text-shadow:0 1px 6px rgba(0,0,0,.5);opacity:var(--p)}
-@media(max-width:860px){.ibuki-stage{border-radius:0}.ibuki{padding-bottom:60px}.hero .sub.sub-ibuki{left:auto;right:-6px;width:44%}}
+/* 季節の窓：PC＝大きな写真1枚＋右に季節の一覧（選ぶとフェードで切替）／スマホ＝横スワイプのカード */
+.season-window{display:grid;grid-template-columns:minmax(0,1fr) 190px;gap:14px;align-items:stretch}
+.sw-main{position:relative;aspect-ratio:3/2;border-radius:20px;overflow:hidden;background:#e8e3d6}
+.sw-slide{position:absolute;inset:0;margin:0;opacity:0;transition:opacity 450ms ease;pointer-events:none}
+.sw-slide.is-active,.season-window:not(.is-ready) .sw-slide:first-child{opacity:1;pointer-events:auto}
+.sw-slide img{width:100%;height:100%;object-fit:cover;object-position:var(--pos,50% 50%);display:block}
+.sw-slide figcaption{position:absolute;left:0;right:0;bottom:0;padding:40px 22px 16px;color:#fff;
+  background:linear-gradient(to top,rgba(20,30,18,.55),rgba(20,30,18,0))}
+.sw-when{display:block;font-family:var(--serif);font-size:18px;letter-spacing:.12em}
+.sw-line{display:block;font-size:13.5px;margin-top:2px;opacity:.92}
+.sw-tabs{display:flex;flex-direction:column;gap:8px}
+.sw-tab{flex:1;display:flex;align-items:center;gap:10px;padding:6px;border:1px solid rgba(52,80,47,.18);border-radius:12px;
+  background:#fff;cursor:pointer;text-align:left;font:inherit;color:var(--ink,#2b2b2b);transition:border-color .2s,background .2s}
+.sw-tab img{width:64px;height:100%;min-height:48px;max-height:72px;object-fit:cover;object-position:var(--pos,50% 50%);border-radius:8px;flex:none}
+.sw-tab span{font-family:var(--serif);font-size:15px;letter-spacing:.1em;line-height:1.3}
+.sw-tab small{display:block;font-family:inherit;font-size:11.5px;letter-spacing:.05em;color:var(--sub)}
+.sw-tab:hover{border-color:rgba(52,80,47,.45)}
+.sw-tab[aria-selected="true"]{border-color:var(--forest);background:#eef1e8;box-shadow:inset 3px 0 0 var(--forest)}
+.sw-tab:focus-visible{outline:2px solid var(--forest);outline-offset:2px}
+.sw-hint{display:none}
+.sw-credit{margin:10px 0 0;font-size:11px;color:var(--sub)}
+@media(max-width:860px){
+  .ibuki{padding-bottom:60px}.hero .sub.sub-ibuki{left:auto;right:-6px;width:44%}
+  .season-window{display:block;margin:0 -24px}
+  .sw-main{aspect-ratio:auto;border-radius:0;background:none;display:flex;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;
+    padding:0 24px 6px;scroll-padding:0 24px;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+  .sw-main::-webkit-scrollbar{display:none}
+  .sw-slide,.season-window:not(.is-ready) .sw-slide:first-child{position:relative;inset:auto;flex:0 0 84%;opacity:1;pointer-events:auto;scroll-snap-align:start;transition:none}
+  .sw-slide img{aspect-ratio:1/1;height:auto;border-radius:16px;object-position:50% 50%}
+  .sw-slide figcaption{position:static;padding:10px 2px 0;color:inherit;background:none}
+  .sw-when{font-size:16px;color:var(--forest)}.sw-line{font-size:13px;color:var(--sub)}
+  .sw-tabs{display:none}
+  .sw-hint{display:block;margin:10px 0 0;font-size:12px;color:var(--moss);letter-spacing:.08em}
+}
+@media(prefers-reduced-motion:reduce){.sw-slide,.sw-tab{transition:none}}
 
 
 /* ===== 再設計（2026-10-03）：ヘッダー直下に営業日と予約／ランチ比較／営業日・予約・アクセスの3ブロック ===== */
@@ -460,7 +486,7 @@ footer .ridge-line{max-width:var(--max);margin:0 auto 34px}
     </div>
     <div class="visual">
       <div class="photo main"><img src="assets/buffet-croquette.jpg" alt="木のテーブルに並んだランチプレートと野菜のサラダ"></div>
-      <div class="photo sub sub-ibuki"><img src="assets/ibuki-sakura.jpg" alt="桜の向こうに見える伊吹山" style="object-position:54% 50%"><span class="sub-cap">MT. IBUKI</span></div>
+      <div class="photo sub sub-ibuki"><img src="assets/ibuki-sakura-hd.jpg" alt="桜の向こうに見える伊吹山" style="object-position:54% 50%"><span class="sub-cap">MT. IBUKI</span></div>
       <span class="tag">ある日のランチ</span>
       <div class="credit">写真：Instagram(@ibuki_herbs)より・提案用</div>
     </div>
@@ -504,13 +530,54 @@ footer .ridge-line{max-width:var(--max);margin:0 auto 34px}
 <section class="ibuki" id="ibuki">
   <div class="wrap ibuki-text">
     <div class="alt">MT. IBUKI　1,377m</div>
-    <h2>滋賀県でいちばん高い山の、ふもとで。</h2>
+    <h2>伊吹山のふもとで、季節に出会う。</h2>
     <p>昔から「薬草の山」として知られてきた伊吹山。季節ごとに表情を変える姿を、ふもとから見上げられます。</p>
   </div>
-  <div class="ibuki-stage" style="--p:1">
-    <img class="ibuki-photo" src="assets/ibuki-sakura.jpg" alt="桜の向こうに見える伊吹山">
-    <svg class="ibuki-line" viewBox="0 0 586 349" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><path d="M0 187 C2.3 186.7 9.3 185.8 14 185 C18.7 184.2 23.3 182.8 28 182 C32.7 181.2 37.3 180.5 42 180 C46.7 179.5 51.3 178.3 56 179 C60.7 179.7 65.3 183.3 70 184 C74.7 184.7 79.3 183.7 84 183 C88.7 182.3 93.3 180.8 98 180 C102.7 179.2 107.3 179.3 112 178 C116.7 176.7 121.3 173.5 126 172 C130.7 170.5 135.3 170.2 140 169 C144.7 167.8 149.3 166.3 154 165 C158.7 163.7 163.3 162.5 168 161 C172.7 159.5 177.3 157.8 182 156 C186.7 154.2 191.3 151.5 196 150 C200.7 148.5 205.3 147.8 210 147 C214.7 146.2 219.3 145.8 224 145 C228.7 144.2 233.3 142.8 238 142 C242.7 141.2 247.3 140.5 252 140 C256.7 139.5 261.3 139.3 266 139 C270.7 138.7 275.3 138.2 280 138 C284.7 137.8 289.3 138.3 294 138 C298.7 137.7 303.3 136.2 308 136 C312.7 135.8 317.3 135.8 322 137 C326.7 138.2 331.3 140.3 336 143 C340.7 145.7 345.3 150.2 350 153 C354.7 155.8 359.3 157.5 364 160 C368.7 162.5 373.3 165.3 378 168 C382.7 170.7 387.3 173.3 392 176 C396.7 178.7 401.3 182.5 406 184 C410.7 185.5 415.3 184.8 420 185 C424.7 185.2 429.3 184.7 434 185 C438.7 185.3 443.3 186.3 448 187 C452.7 187.7 457.3 188.3 462 189 C466.7 189.7 471.3 190.2 476 191 C480.7 191.8 485.3 192.8 490 194 C494.7 195.2 499.3 196.7 504 198 C508.7 199.3 513.3 200.5 518 202 C522.7 203.5 527.3 205.5 532 207 C536.7 208.5 541.3 209.3 546 211 C550.7 212.7 555.3 214.8 560 217 C564.7 219.2 569.7 222.5 574 224 C578.3 225.5 584.0 225.7 586 226"/></svg>
-    <span class="ibuki-credit">写真：Instagram(@ibuki_herbs)より・提案用（撮影後に横長の高解像度写真へ差し替え）</span>
+  <!-- 季節の窓：写真ごとに撮った場所・向きが違うので、位置合わせはせず1枚ずつ額縁で見せる（PC=大きな写真＋季節の一覧／スマホ=横にスワイプ） -->
+  <div class="wrap">
+    <div class="season-window" data-season-window>
+      <div class="sw-main">
+      <figure class="sw-slide" id="sw-snow" role="tabpanel" aria-labelledby="sw-tab-snow" data-i="0">
+        <img src="assets/season-03-snow.jpg" alt="雪をかぶった伊吹山と、改装前のお店の建物（2025年3月）" width="1200" height="1200" loading="eager" style="--pos:50% 18%">
+        <figcaption><span class="sw-when">3月・雪をかぶった伊吹山</span><span class="sw-line">春先の山頂には、まだ雪が残ります。</span></figcaption>
+      </figure>
+      <figure class="sw-slide" id="sw-spring" role="tabpanel" aria-labelledby="sw-tab-spring" data-i="1">
+        <img src="assets/season-04-sakura.jpg" alt="敷地内の満開の桜と、その向こうの伊吹山（2026年4月）" width="1200" height="1200" loading="lazy" style="--pos:50% 45%">
+        <figcaption><span class="sw-when">4月・敷地内の桜と伊吹山</span><span class="sw-line">敷地内の桜の向こうに、伊吹山が見えます。</span></figcaption>
+      </figure>
+      <figure class="sw-slide" id="sw-early" role="tabpanel" aria-labelledby="sw-tab-early" data-i="2">
+        <img src="assets/season-05-chamomile.jpg" alt="白いカモミールの花畑と、新緑の伊吹山（2025年5月）" width="1200" height="1200" loading="lazy" style="--pos:50% 28%">
+        <figcaption><span class="sw-when">5月・カモミールの花畑</span><span class="sw-line">カモミールの白い花が、山のふもとに広がります。</span></figcaption>
+      </figure>
+      <figure class="sw-slide" id="sw-summer" role="tabpanel" aria-labelledby="sw-tab-summer" data-i="3">
+        <img src="assets/season-07-summer.jpg" alt="青空の下、緑におおわれた夏の伊吹山（2025年7月）" width="1200" height="1200" loading="lazy" style="--pos:50% 42%">
+        <figcaption><span class="sw-when">7月・夏の緑</span><span class="sw-line">青空と、緑におおわれた山肌。</span></figcaption>
+      </figure>
+      <figure class="sw-slide" id="sw-autumn" role="tabpanel" aria-labelledby="sw-tab-autumn" data-i="4">
+        <img src="assets/season-11-autumn.jpg" alt="赤く色づいた葉の向こうに見える伊吹山（2025年11月）" width="1200" height="1200" loading="lazy" style="--pos:50% 72%">
+        <figcaption><span class="sw-when">11月・色づく木々</span><span class="sw-line">お店の木々が色づき、山も秋の色に。</span></figcaption>
+      </figure>
+      </div>
+      <div class="sw-tabs" role="tablist" aria-label="伊吹山の季節">
+      <button type="button" class="sw-tab" id="sw-tab-snow" role="tab" aria-controls="sw-snow" aria-selected="false" tabindex="-1" data-i="0">
+        <img src="assets/season-03-snow.jpg" alt="" width="1200" height="1200" loading="lazy" style="--pos:50% 18%"><span>雪<small>3月</small></span>
+      </button>
+      <button type="button" class="sw-tab" id="sw-tab-spring" role="tab" aria-controls="sw-spring" aria-selected="false" tabindex="-1" data-i="1">
+        <img src="assets/season-04-sakura.jpg" alt="" width="1200" height="1200" loading="lazy" style="--pos:50% 45%"><span>春<small>4月</small></span>
+      </button>
+      <button type="button" class="sw-tab" id="sw-tab-early" role="tab" aria-controls="sw-early" aria-selected="false" tabindex="-1" data-i="2">
+        <img src="assets/season-05-chamomile.jpg" alt="" width="1200" height="1200" loading="lazy" style="--pos:50% 28%"><span>初夏<small>5月</small></span>
+      </button>
+      <button type="button" class="sw-tab" id="sw-tab-summer" role="tab" aria-controls="sw-summer" aria-selected="false" tabindex="-1" data-i="3">
+        <img src="assets/season-07-summer.jpg" alt="" width="1200" height="1200" loading="lazy" style="--pos:50% 42%"><span>夏<small>7月</small></span>
+      </button>
+      <button type="button" class="sw-tab" id="sw-tab-autumn" role="tab" aria-controls="sw-autumn" aria-selected="false" tabindex="-1" data-i="4">
+        <img src="assets/season-11-autumn.jpg" alt="" width="1200" height="1200" loading="lazy" style="--pos:50% 72%"><span>晩秋<small>11月</small></span>
+      </button>
+      </div>
+    </div>
+    <p class="sw-hint" aria-hidden="true">横にスワイプして季節をめくる →</p>
+    <p class="sw-credit">写真：Instagram(@ibuki_herbs)より・提案用（撮影した月を表示しています）</p>
   </div>
 </section>
 
@@ -523,7 +590,7 @@ footer .ridge-line{max-width:var(--max);margin:0 auto 34px}
     </div>
     <div class="day">
       <div class="step">
-        <div class="photo"><img src="assets/ibuki-sakura.jpg" alt="伊吹山" style="object-position:40% 45%"></div>
+        <div class="photo"><img src="assets/ibuki-sakura-hd.jpg" alt="伊吹山" style="object-position:40% 45%"></div>
         <span class="time">MOUNTAIN</span>
         <h3>伊吹山を見上げる</h3>
         <p>滋賀県最高峰の山を、ふもとから大きく。</p>
@@ -655,21 +722,36 @@ footer .ridge-line{max-width:var(--max);margin:0 auto 34px}
 <script>
 // 今いるページのメニューに印をつける
 (function(){var c=document.body.dataset.page;var a=document.querySelector('.nav a[data-nav="'+c+'"]');if(a)a.classList.add("current");})();
-// 伊吹山の演出：写真帯が画面に入るにつれて、線 → 実写に切り替える／引用文の稜線を少しだけ下へ
+// 引用文の稜線を少しだけ下へ（動きを減らす設定では止める）
 (function(){
-  var reduce=window.matchMedia&&matchMedia("(prefers-reduced-motion: reduce)").matches;
-  var stage=document.querySelector(".ibuki-stage"),big=document.querySelector("[data-parallax]");
-  if(!stage&&!big)return;
-  if(reduce){if(stage)stage.style.setProperty("--p",1);return;}
-  function tick(){
-    var vh=innerHeight;
-    if(stage){var r=stage.getBoundingClientRect();
-      var p=Math.min(1,Math.max(0,(vh*0.9-r.top)/(vh*0.55)));stage.style.setProperty("--p",p.toFixed(3));}
-    if(big){var b=big.parentNode.getBoundingClientRect();
-      var y=Math.min(40,Math.max(0,(vh-b.top)*0.06));big.style.transform="translateY("+y.toFixed(1)+"px)";}
-  }
+  var big=document.querySelector("[data-parallax]");
+  if(!big||(window.matchMedia&&matchMedia("(prefers-reduced-motion: reduce)").matches))return;
+  function tick(){var b=big.parentNode.getBoundingClientRect();
+    var y=Math.min(40,Math.max(0,(innerHeight-b.top)*0.06));big.style.transform="translateY("+y.toFixed(1)+"px)";}
   var raf=0;addEventListener("scroll",function(){if(!raf)raf=requestAnimationFrame(function(){raf=0;tick();});},{passive:true});
   addEventListener("resize",tick);tick();
+})();
+// 季節の窓：季節の一覧を選ぶと写真を切り替える（自動送りなし）。最初は今の月に近い季節を表示
+(function(){
+  var w=document.querySelector("[data-season-window]");if(!w)return;
+  var slides=w.querySelectorAll(".sw-slide"),tabs=w.querySelectorAll(".sw-tab");
+  function show(i,focus){
+    for(var k=0;k<slides.length;k++){var on=k===i;slides[k].classList.toggle("is-active",on);
+      tabs[k].setAttribute("aria-selected",on?"true":"false");tabs[k].tabIndex=on?0:-1;}
+    var img=slides[i].querySelector("img");if(img.loading==="lazy")img.loading="eager";
+    if(focus)tabs[i].focus();
+  }
+  // 月 → 季節（12〜3月=雪／4月=春／5〜6月=初夏／7〜9月=夏／10〜11月=晩秋）
+  var m=new Date().getMonth()+1,start=[0,0,0,0,1,2,2,3,3,3,4,4,0][m];
+  for(var k=0;k<tabs.length;k++)(function(k){
+    tabs[k].addEventListener("click",function(){show(k);});
+    tabs[k].addEventListener("keydown",function(e){
+      var n={ArrowDown:1,ArrowRight:1,ArrowUp:-1,ArrowLeft:-1}[e.key];
+      if(e.key==="Home")n=-k;if(e.key==="End")n=tabs.length-1-k;
+      if(n===undefined)return;e.preventDefault();show((k+n+tabs.length)%tabs.length,true);});
+  })(k);
+  show(start);w.classList.add("is-ready");
+  // スマホ（横スワイプ）は 3月→11月 の順に左から見せる（最初のカードの「スワイプ →」の案内と向きをそろえる）
 })();
 // 計測の下準備：data-track のついたボタンのクリックを GA4 のイベントとして送る（GA4未設置なら何もしない）
 document.addEventListener("click",function(e){var a=e.target.closest("[data-track]");if(!a)return;
