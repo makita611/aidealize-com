@@ -368,6 +368,18 @@ footer .ridge-line{max-width:var(--max);margin:0 auto 34px}
 .ibuki{padding-bottom:90px}
 /* ヒーローの小さい写真：伊吹山（横長） */
 .hero .sub.sub-lunch{aspect-ratio:4/3;width:46%;left:-48px}
+/* ランチ：ヒーロー直後で「何を食べに行く場所か」を見せる。全景を大きく、料理は小さく並べ、そのすぐ後に料金と予約 */
+.lunch-head{max-width:44em}
+.feast{margin:30px 0 0}.feast .photo{aspect-ratio:16/9;border-radius:20px}
+.feast figcaption,.dishes figcaption{font-size:12.5px;color:var(--sub);margin-top:7px;letter-spacing:.04em}
+.dishes{display:grid;grid-template-columns:repeat(6,1fr);gap:12px;margin-top:16px}
+.dishes figure{margin:0}.dishes .photo{aspect-ratio:1/1}
+#lunch .plans{margin-top:30px}
+.plan-card.op{display:grid;grid-template-columns:96px 1fr;column-gap:14px}
+.plan-card.op .op-photo{grid-row:1/span 3;aspect-ratio:1/1;border-radius:10px}
+.more-row{display:flex;gap:22px;flex-wrap:wrap}
+@media(max-width:860px){.dishes{grid-template-columns:repeat(3,1fr);gap:8px}.dishes figcaption{font-size:11px}.feast .photo{border-radius:14px}
+  .plan-card.op{grid-template-columns:80px 1fr}}
 /* アクセス：お店の目印（外観・入口・駐車場） */
 .entry{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:22px}
 .entry figure{margin:0}.entry .photo{aspect-ratio:1/1}
@@ -402,9 +414,9 @@ footer .ridge-line{max-width:var(--max);margin:0 auto 34px}
 @media(max-width:860px){
   .ibuki{padding-bottom:60px}.hero .sub.sub-lunch{left:auto;right:-6px;width:44%}
   .day.day5{grid-template-columns:1fr 1fr}.day5 .step:last-child{grid-column:1/-1}.day5 .step:last-child .photo{aspect-ratio:16/9}
-  .season-window{display:block;margin:0 -24px}
+  .season-window{display:block;margin:0 calc(-1 * var(--gutter, 24px))}
   .sw-main{aspect-ratio:auto;border-radius:0;background:none;display:flex;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;
-    padding:0 24px 6px;scroll-padding:0 24px;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+    padding:0 var(--gutter, 24px) 6px;scroll-padding:0 var(--gutter, 24px);-webkit-overflow-scrolling:touch;scrollbar-width:none}
   .sw-main::-webkit-scrollbar{display:none}
   .sw-slide,.season-window:not(.is-ready) .sw-slide:first-child{position:relative;inset:auto;flex:0 0 84%;opacity:1;pointer-events:auto;scroll-snap-align:start;transition:none}
   .sw-slide img{aspect-ratio:1/1;height:auto;border-radius:16px;object-position:50% 50%}
@@ -414,6 +426,8 @@ footer .ridge-line{max-width:var(--max);margin:0 auto 34px}
   .sw-hint{display:block;margin:10px 0 0;font-size:12px;color:var(--moss);letter-spacing:.08em}
 }
 @media(prefers-reduced-motion:reduce){.sw-slide,.sw-tab{transition:none}}
+#ibuki{--gutter:24px}
+@media(max-width:420px){#ibuki{--gutter:16px}}
 
 
 /* ===== 再設計（2026-10-03）：ヘッダー直下に営業日と予約／ランチ比較／営業日・予約・アクセスの3ブロック ===== */
@@ -503,14 +517,14 @@ footer .ridge-line{max-width:var(--max);margin:0 auto 34px}
   <div class="wrap">
     <span class="label">ENTRANCE</span>
     <h2>駐車場と入口</h2>
-    <p class="lead">はじめての方が迷わないように、お店の目印をご紹介します。</p>
+    <p class="lead">はじめての方が迷わないように、駐車場から入口までの順にご案内します。</p>
     <div class="entry">
-      <figure><div class="photo"><img src="../assets/exterior-front.jpg" alt="木造の建物の正面。壁に「IBUKI HERB GARDEN」の看板" loading="lazy"></div>
-        <figcaption><b>目印は木の建物と看板</b>壁に「IBUKI HERB GARDEN」の文字があります。</figcaption></figure>
-      <figure><div class="photo"><img src="../assets/entrance-porch.jpg" alt="屋根の下の入口と、入口までの石畳" style="object-position:50% 60%" loading="lazy"></div>
-        <figcaption><b>入口</b>石畳を進んだ先、屋根の下が入口です（◯◯ 現地で確認）。<small>※写真はオープン前（お祓いの日）の撮影です</small></figcaption></figure>
       <figure><div class="shot" style="aspect-ratio:1/1"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="6" y="14" width="36" height="22" rx="4"/><circle cx="15" cy="36" r="4"/><circle cx="33" cy="36" r="4"/></svg><b>PHOTO</b><small>駐車場の入口・駐車場から入口まで<br>（撮影予定）</small></div>
-        <figcaption><b>駐車場</b>約30台。◯◯（駐車場の入口の目印を現地で確認して記入）</figcaption></figure>
+        <figcaption><b>① 駐車場に入る目印</b>約30台。◯◯（駐車場の入口の目印を現地で確認して記入）</figcaption></figure>
+      <figure><div class="photo"><img src="../assets/exterior-front.jpg" alt="木造の建物の正面。壁に「IBUKI HERB GARDEN」の看板" loading="lazy"></div>
+        <figcaption><b>② 建物の正面</b>木の建物の壁に「IBUKI HERB GARDEN」の文字があります。<small>※駐車位置から見た写真に、撮影日に撮り直します</small></figcaption></figure>
+      <figure><div class="photo"><img src="../assets/entrance-porch.jpg" alt="屋根の下の入口と、入口までの石畳" style="object-position:50% 60%" loading="lazy"></div>
+        <figcaption><b>③ 入口</b>石畳を進んだ先、屋根の下が入口です（◯◯ 現地で確認）。<small>※写真はオープン前（お祓いの日）の撮影です</small></figcaption></figure>
     </div>
     <p class="credit" style="text-align:left">写真：Instagram(@ibuki_herbs)より・提案用</p>
     <p class="lead" style="margin-top:16px">営業日は月ごとに変わります。<a href="../news/#calendar">今月の営業日</a>をご確認のうえお越しください。</p>

@@ -368,6 +368,18 @@ footer .ridge-line{max-width:var(--max);margin:0 auto 34px}
 .ibuki{padding-bottom:90px}
 /* ヒーローの小さい写真：伊吹山（横長） */
 .hero .sub.sub-lunch{aspect-ratio:4/3;width:46%;left:-48px}
+/* ランチ：ヒーロー直後で「何を食べに行く場所か」を見せる。全景を大きく、料理は小さく並べ、そのすぐ後に料金と予約 */
+.lunch-head{max-width:44em}
+.feast{margin:30px 0 0}.feast .photo{aspect-ratio:16/9;border-radius:20px}
+.feast figcaption,.dishes figcaption{font-size:12.5px;color:var(--sub);margin-top:7px;letter-spacing:.04em}
+.dishes{display:grid;grid-template-columns:repeat(6,1fr);gap:12px;margin-top:16px}
+.dishes figure{margin:0}.dishes .photo{aspect-ratio:1/1}
+#lunch .plans{margin-top:30px}
+.plan-card.op{display:grid;grid-template-columns:96px 1fr;column-gap:14px}
+.plan-card.op .op-photo{grid-row:1/span 3;aspect-ratio:1/1;border-radius:10px}
+.more-row{display:flex;gap:22px;flex-wrap:wrap}
+@media(max-width:860px){.dishes{grid-template-columns:repeat(3,1fr);gap:8px}.dishes figcaption{font-size:11px}.feast .photo{border-radius:14px}
+  .plan-card.op{grid-template-columns:80px 1fr}}
 /* アクセス：お店の目印（外観・入口・駐車場） */
 .entry{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:22px}
 .entry figure{margin:0}.entry .photo{aspect-ratio:1/1}
@@ -402,9 +414,9 @@ footer .ridge-line{max-width:var(--max);margin:0 auto 34px}
 @media(max-width:860px){
   .ibuki{padding-bottom:60px}.hero .sub.sub-lunch{left:auto;right:-6px;width:44%}
   .day.day5{grid-template-columns:1fr 1fr}.day5 .step:last-child{grid-column:1/-1}.day5 .step:last-child .photo{aspect-ratio:16/9}
-  .season-window{display:block;margin:0 -24px}
+  .season-window{display:block;margin:0 calc(-1 * var(--gutter, 24px))}
   .sw-main{aspect-ratio:auto;border-radius:0;background:none;display:flex;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;
-    padding:0 24px 6px;scroll-padding:0 24px;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+    padding:0 var(--gutter, 24px) 6px;scroll-padding:0 var(--gutter, 24px);-webkit-overflow-scrolling:touch;scrollbar-width:none}
   .sw-main::-webkit-scrollbar{display:none}
   .sw-slide,.season-window:not(.is-ready) .sw-slide:first-child{position:relative;inset:auto;flex:0 0 84%;opacity:1;pointer-events:auto;scroll-snap-align:start;transition:none}
   .sw-slide img{aspect-ratio:1/1;height:auto;border-radius:16px;object-position:50% 50%}
@@ -414,6 +426,8 @@ footer .ridge-line{max-width:var(--max);margin:0 auto 34px}
   .sw-hint{display:block;margin:10px 0 0;font-size:12px;color:var(--moss);letter-spacing:.08em}
 }
 @media(prefers-reduced-motion:reduce){.sw-slide,.sw-tab{transition:none}}
+#ibuki{--gutter:24px}
+@media(max-width:420px){#ibuki{--gutter:16px}}
 
 
 /* ===== 再設計（2026-10-03）：ヘッダー直下に営業日と予約／ランチ比較／営業日・予約・アクセスの3ブロック ===== */
@@ -483,7 +497,7 @@ footer .ridge-line{max-width:var(--max);margin:0 auto 34px}
       <span class="eyebrow">滋賀県米原市・伊吹山のふもと</span>
       <h1><span>伊吹山のふもとで、</span><span>季節の野菜と</span><span>ハーブのビュッフェを。</span></h1>
       <div class="name">農家レストラン＆ハーブスキンケア　いぶきハーブ・ガーデン</div>
-      <p class="desc">都会をはなれて、伊吹山のふもとへ。昔から「薬草の山」として知られてきたこの地で、滋賀の野菜とハーブを使った料理を、好きなだけ。食後はハーブのスキンケアや無添加ソフトクリームを、お土産にどうぞ。</p>
+      <p class="desc">伊吹山のふもとで、季節の野菜とハーブを味わい、ゆっくり過ごす農家レストランです。昔から「薬草の山」として知られてきたこの地で、滋賀の野菜とハーブを使った料理を、好きなだけ。食後はハーブのスキンケアや無添加ソフトクリームを、お土産にどうぞ。</p>
       <div class="cta">
         <a class="btn" href="lunch/#reserve" data-track="line">LINEでランチを予約</a>
         <a class="btn line" href="news/#calendar" data-track="calendar">今月の営業日を見る</a>
@@ -503,6 +517,37 @@ footer .ridge-line{max-width:var(--max);margin:0 auto 34px}
   </div>
 </section>
 
+<section id="lunch">
+  <div class="wrap">
+    <div class="lunch-head">
+      <span class="label">LUNCH</span>
+      <h2>その日の畑と、<br>伊吹山のハーブから。</h2>
+      <p class="lead">並ぶのは、地元・滋賀で採れた野菜を中心にした料理です。ハーブの香りを生かしたデザートやドリンクまで、デザートを含めて約20種類。季節ごとに変わる味を、好きなだけ選んで楽しんでいただけます。</p>
+    </div>
+    <figure class="feast"><div class="photo"><img src="assets/buffet-wide.jpg" alt="野菜のサラダや料理、ドリンクが並ぶビュッフェ台" width="1440" height="810"></div><figcaption>ある日のビュッフェ</figcaption></figure>
+    <div class="dishes">
+      <figure><div class="photo"><img src="assets/buffet-croquette.jpg" alt="料理を盛りつけたランチのお皿" loading="lazy"></div><figcaption>盛りつけ例</figcaption></figure>
+      <figure><div class="photo"><img src="assets/dish-potato.jpg" alt="ローズマリーをのせたじゃがいもの料理" loading="lazy"></div><figcaption>季節の一皿</figcaption></figure>
+      <figure><div class="photo"><img src="assets/dish-quiche.jpg" alt="ハーブをのせたキッシュ" loading="lazy"></div><figcaption>季節の一皿</figcaption></figure>
+      <figure><div class="photo"><img src="assets/dish-tkg.jpg" alt="ビュッフェ台の卵とごはん" loading="lazy"></div><figcaption>ある日のビュッフェより</figcaption></figure>
+      <figure><div class="photo"><img src="assets/dish-dessert.jpg" alt="お皿に並んだ焼き菓子のデザート" loading="lazy"></div><figcaption>デザート（ある日）</figcaption></figure>
+      <figure><div class="photo"><img src="assets/dish-drink.jpg" alt="グラスに入ったピンク色のドリンク" loading="lazy"></div><figcaption>ドリンク（ある日）</figcaption></figure>
+    </div>
+    <p class="credit" style="text-align:left">写真：Instagram(@ibuki_herbs)より・提案用。料理は日によって変わります。</p>
+    <div class="plans">
+        <div class="plan-card"><h3>ランチビュッフェ</h3><div class="yen">3,300円<small>大人・税込</small></div>
+          <ul><li>小学生 1,650円／幼児（3〜6歳）600円／3歳未満 無料</li><li>1部 11:30〜／2部 13:00〜（ご予約優先）</li><li>デザートまで約20種類（日によって変わります）</li></ul></div>
+        <div class="plan-card op"><div class="photo op-photo"><img src="assets/oneplate.jpg" alt="ハンバーグと野菜のワンプレートランチ（ある日）" loading="lazy"></div><h3>ワンプレートランチ</h3><div class="yen">2,300円<small>デザート付き・税込</small></div>
+          <ul><li>11:30〜14:00（L.O. 13:30）</li><li>ビュッフェより軽めに楽しみたい方に</li></ul></div>
+      </div>
+    <div class="btnrow">
+      <a class="btn" href="lunch/#reserve" data-track="line">LINEで予約する</a>
+      <a class="btn line" href="lunch/">料金・メニュー・ご予約方法</a>
+    </div>
+  </div>
+</section>
+
+
 <div class="statement">
   <svg class="big-ridge" data-parallax viewBox="0 125 586 120" preserveAspectRatio="xMidYMax meet" aria-hidden="true"><path d="M0 187 C2.3 186.7 9.3 185.8 14 185 C18.7 184.2 23.3 182.8 28 182 C32.7 181.2 37.3 180.5 42 180 C46.7 179.5 51.3 178.3 56 179 C60.7 179.7 65.3 183.3 70 184 C74.7 184.7 79.3 183.7 84 183 C88.7 182.3 93.3 180.8 98 180 C102.7 179.2 107.3 179.3 112 178 C116.7 176.7 121.3 173.5 126 172 C130.7 170.5 135.3 170.2 140 169 C144.7 167.8 149.3 166.3 154 165 C158.7 163.7 163.3 162.5 168 161 C172.7 159.5 177.3 157.8 182 156 C186.7 154.2 191.3 151.5 196 150 C200.7 148.5 205.3 147.8 210 147 C214.7 146.2 219.3 145.8 224 145 C228.7 144.2 233.3 142.8 238 142 C242.7 141.2 247.3 140.5 252 140 C256.7 139.5 261.3 139.3 266 139 C270.7 138.7 275.3 138.2 280 138 C284.7 137.8 289.3 138.3 294 138 C298.7 137.7 303.3 136.2 308 136 C312.7 135.8 317.3 135.8 322 137 C326.7 138.2 331.3 140.3 336 143 C340.7 145.7 345.3 150.2 350 153 C354.7 155.8 359.3 157.5 364 160 C368.7 162.5 373.3 165.3 378 168 C382.7 170.7 387.3 173.3 392 176 C396.7 178.7 401.3 182.5 406 184 C410.7 185.5 415.3 184.8 420 185 C424.7 185.2 429.3 184.7 434 185 C438.7 185.3 443.3 186.3 448 187 C452.7 187.7 457.3 188.3 462 189 C466.7 189.7 471.3 190.2 476 191 C480.7 191.8 485.3 192.8 490 194 C494.7 195.2 499.3 196.7 504 198 C508.7 199.3 513.3 200.5 518 202 C522.7 203.5 527.3 205.5 532 207 C536.7 208.5 541.3 209.3 546 211 C550.7 212.7 555.3 214.8 560 217 C564.7 219.2 569.7 222.5 574 224 C578.3 225.5 584.0 225.7 586 226 V245 H0Z"/></svg>
   <div class="wrap">
@@ -510,32 +555,6 @@ footer .ridge-line{max-width:var(--max);margin:0 auto 34px}
   </div>
 </div>
 
-<section id="lunch">
-  <div class="wrap grid">
-    <div>
-      <div class="photo big"><img src="assets/buffet-baguette.jpg" alt="トマトのブルスケッタ"></div>
-      <div class="row2">
-        <div><div class="photo"><img src="assets/dessert-herb.jpg" alt="ズッキーニの冷製スープ"></div><div class="cap">ズッキーニの冷製スープ</div></div>
-        <div><div class="photo"><img src="assets/food-rose.jpg" alt="ハーブを添えた揚げ物"></div><div class="cap">季節の一皿</div></div>
-      </div>
-    </div>
-    <div>
-      <span class="label">LUNCH</span>
-      <h2>その日の畑と、<br>伊吹山のハーブから。</h2>
-      <p class="lead">並ぶのは、地元・滋賀で採れた野菜を中心にした料理です。ハーブの香りを生かしたデザートやドリンクまで、季節ごとに変わる味をゆっくり楽しんでいただけます。</p>
-      <div class="plans">
-        <div class="plan-card"><h3>ランチビュッフェ</h3><div class="yen">3,300円<small>大人・税込</small></div>
-          <ul><li>小学生 1,650円／幼児（3〜6歳）600円／3歳未満 無料</li><li>1部 11:30〜／2部 13:00〜（ご予約優先）</li><li>デザートまで約20種類（日によって変わります）</li></ul></div>
-        <div class="plan-card"><h3>ワンプレートランチ</h3><div class="yen">2,300円<small>デザート付き・税込</small></div>
-          <ul><li>11:30〜14:00（L.O. 13:30）</li><li>ビュッフェより軽めに楽しみたい方に</li></ul></div>
-      </div>
-      <div class="btnrow">
-        <a class="btn" href="lunch/#reserve" data-track="line">LINEで予約する</a>
-        <a class="btn line" href="lunch/">料金・メニュー・ご予約方法</a>
-      </div>
-    </div>
-  </div>
-</section>
 
 <section class="ibuki" id="ibuki">
   <div class="wrap ibuki-text">
@@ -631,6 +650,7 @@ footer .ridge-line{max-width:var(--max);margin:0 auto 34px}
       </div>
     </div>
     <p class="credit" style="text-align:left">写真：Instagram(@ibuki_herbs)より・提案用（店内はオープン前の撮影のため、今の配置と異なる場合があります）</p>
+    <a class="more" href="#lunch">ランチを見る</a>
   </div>
 </section>
 
@@ -641,7 +661,7 @@ footer .ridge-line{max-width:var(--max);margin:0 auto 34px}
     <p class="lead">レストランに併設したショップでは、天然素材100％のハーブスキンケアや、ハーブを使ったドリンク、無添加のソフトクリームを販売しています。</p>
     <div class="grid">
       <div>
-        <div class="shot"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="16" y="14" width="16" height="30" rx="3"/><path d="M20 14V8h8v6"/><path d="M20 26c3-3 5-3 8 0"/></svg><b>PHOTO</b><small>スキンケア商品<br>（撮影予定）</small></div>
+        <div class="photo"><img src="assets/shop-shelf.jpg" alt="ハーブのスキンケア商品が並ぶショップの棚" loading="lazy"></div>
         <h3>ハーブスキンケア</h3>
         <p>天然素材100％でつくった、ハーブのスキンケア。</p>
       </div>
@@ -656,7 +676,7 @@ footer .ridge-line{max-width:var(--max);margin:0 auto 34px}
         <p>ハーブの香りを、すっきりしたドリンクで。</p>
       </div>
     </div>
-    <a class="more" href="shop/">ショップを見る</a>
+    <div class="more-row"><a class="more" href="shop/">ショップを見る</a><a class="more" href="access/">アクセスを見る</a></div>
   </div>
 </section>
 
