@@ -1,0 +1,93 @@
+<!DOCTYPE html><html lang="ja"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow">
+<title>大森大工 山下様 進行チェックリスト</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@400;700&display=swap">
+<style>
+:root{--ink:#22302b;--muted:#5f6b66;--line:#dfe3dd;--bg:#ffffff;--soft:#f4f6f2;--accent:#27466b;
+--ask:#9a5a12;--ask-bg:#fbf0de;--wait:#2a5fb0;--wait-bg:#e8eefb;--meet:#5b4a9e;--meet-bg:#eeebf8;
+--body:"Zen Kaku Gothic New","Hiragino Kaku Gothic ProN","Yu Gothic",system-ui,sans-serif}
+*{box-sizing:border-box}html,body{background:#fff;color:var(--ink);color-scheme:light}
+body{margin:0;font-family:var(--body);font-size:15px;line-height:1.85}
+.wrap{max-width:760px;margin:0 auto;padding-inline:16px;padding-block:28px 64px}
+h1{font-size:22px;margin:0 0 4px;letter-spacing:.04em;text-wrap:balance}
+.upd{font-size:12.5px;color:var(--muted)}
+.lead{margin:14px 0 24px;color:var(--muted)}
+h2{font-size:15px;margin:30px 0 10px;padding-bottom:6px;border-bottom:2px solid var(--ink);display:flex;justify-content:space-between;align-items:baseline}
+h2 small{font-weight:400;color:var(--muted);font-size:12.5px}
+ol{list-style:none;margin:0;padding:0;display:grid;gap:10px;counter-reset:n}
+.ask li{counter-increment:n;border:1px solid var(--line);border-radius:12px;padding:12px 14px;display:grid;grid-template-columns:30px 1fr;gap:4px 10px}
+.ask li::before{content:counter(n);width:26px;height:26px;border-radius:50%;background:var(--ink);color:#fff;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;grid-row:span 2;margin-top:2px}
+.ask .t{font-weight:700;display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.ask .d{grid-column:2;color:var(--muted);font-size:14px}
+.pill{font-size:11.5px;font-weight:700;border-radius:99px;padding:1px 10px;white-space:nowrap}
+.p-ask{background:var(--ask-bg);color:var(--ask)}.p-done{background:#e3f2e8;color:#2d7a4c}.p-wait{background:var(--wait-bg);color:var(--wait)}.p-meet{background:var(--meet-bg);color:var(--meet)}
+.top{background:var(--ink);color:#fff}
+.doing li,.plan li{background:var(--soft);border-radius:10px;padding:10px 14px}
+.doing b,.plan b{display:block}
+.doing span{color:var(--muted);font-size:14px;word-break:break-all}
+.plan li{display:grid;grid-template-columns:170px 1fr;gap:10px}
+.foot{margin-top:34px;font-size:12.5px;color:var(--muted);border-top:1px solid var(--line);padding-top:12px}
+.how{background:var(--soft);border-radius:12px;padding:12px 14px;font-size:14px;margin:0 0 6px}
+.how b{color:var(--ink)}
+.ask li{grid-template-columns:30px 1fr auto}
+.ask .d,.ask .m{grid-column:2/4}
+.ck{display:flex;align-items:center;gap:6px;font-size:13px;font-weight:700;color:var(--muted);cursor:pointer;white-space:nowrap;grid-row:1;grid-column:3}
+.ck input{width:22px;height:22px;accent-color:#2d7a4c;cursor:pointer}
+.ask li.on{background:#f1f8f3;border-color:#bfe0c9}
+.ask li.on .t{color:var(--muted)}
+.m textarea{width:100%;min-height:44px;font:inherit;font-size:14px;border:1px solid var(--line);border-radius:8px;padding:6px 8px;resize:vertical;background:#fff;color:var(--ink)}
+.prog{font-size:13px;color:var(--muted)}
+.prog b{color:#2d7a4c;font-size:16px}
+.send{position:sticky;bottom:0;background:#fff;border-top:1px solid var(--line);padding:12px 0;margin-top:18px;display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.send a,.send button{border:0;border-radius:99px;padding:11px 20px;font:inherit;font-weight:700;cursor:pointer;text-decoration:none}
+.save{background:#27466b;color:#fff}.save:disabled{opacity:.6}
+.line{background:#06c755;color:#fff}
+.unsent{color:#9a5a12;font-weight:700}
+.sent{color:#2d7a4c;font-weight:700}
+.copy{background:var(--soft);color:var(--ink)}
+.send small{color:var(--muted);font-size:12px;flex-basis:100%}
+@media(max-width:520px){.plan li{grid-template-columns:1fr;gap:0}.ask li{grid-template-columns:30px 1fr}.ck{grid-column:2;grid-row:auto}}
+</style></head><body><div class="wrap">
+<h1>大森大工 山下様 進行チェックリスト</h1><div class="upd">最終更新：2026年10月7日　／　眞貴田 正博（AIdealize）</div>
+<p class="lead">10月中旬からのご一緒に向けて、お願いしたいことを一覧にしました。分かるものからで大丈夫です。</p>
+<p class="how"><b>使い方：</b>終わったものに「対応した」のチェックを入れ、必要ならメモを書いてください。書き終わったら、下の<b>「LINEで送る」</b>を押して、LINEの送信まで済ませてください。<b>押すまで眞貴田には届きません</b>（何度送っても大丈夫です）。</p>
+<h2>お願いしたいこと<small class="prog" id="prog"></small></h2><ol class="ask"><li data-i="0"><div class="t">失注リスト（5年分）・OB様名簿の整理 <span class="pill p-wait">整理中</span> <span class="pill top">最優先</span></div><label class="ck"><input type="checkbox" id="c0">対応した</label><div class="d">ありがとうございます。形式は問いません（手書き・コピー・写真でも大丈夫です）。お客様のお名前・ご住所は、このページには書かないでください。受け渡しの方法は、キックオフでご相談します。</div><div class="m"><textarea id="m0" placeholder="お返事・メモ（例：来週お送りします／まだです）"></textarea></div></li><li data-i="1"><div class="t">HiProでの条件合意のご承認 <span class="pill p-done">回答済み・ありがとうございます</span></div><label class="ck"><input type="checkbox" id="c1">対応した</label><div class="d">→ ご承認いただきました。契約書に沿って進めます。</div><div class="m"><textarea id="m1" placeholder="お返事・メモ（例：来週お送りします／まだです）"></textarea></div></li><li data-i="2"><div class="t">日々のご連絡はLINEで <span class="pill p-ask">お願い</span></div><label class="ck"><input type="checkbox" id="c2">対応した</label><div class="d">LINEで進めます。QRコード（またはID）をお送りしますので、追加をお願いします。</div><div class="m"><textarea id="m2" placeholder="お返事・メモ（例：来週お送りします／まだです）"></textarea></div></li><li data-i="3"><div class="t">補助金の申請 <span class="pill p-ask">お願い</span></div><label class="ck"><input type="checkbox" id="c3">対応した</label><div class="d">提出と、結果が分かった時期を教えてください。契約開始日の目安（10月15日〜20日ごろ）に合わせて確定します。</div><div class="m"><textarea id="m3" placeholder="お返事・メモ（例：来週お送りします／まだです）"></textarea></div></li><li data-i="4"><div class="t">営業時間 <span class="pill p-meet">打ち合わせで確認</span></div><label class="ck"><input type="checkbox" id="c4">対応した</label><div class="d">ホームページのトップは「9:00〜18:00」、会社概要は「9:00〜17:00」と表記が分かれています。どちらが正しいか教えてください（公式LINEの営業時間にも使います）。</div><div class="m"><textarea id="m4" placeholder="お返事・メモ（例：来週お送りします／まだです）"></textarea></div></li><li data-i="5"><div class="t">公式LINEについて <span class="pill p-meet">打ち合わせで確認</span></div><label class="ck"><input type="checkbox" id="c5">対応した</label><div class="d">窓口をどなたが見るか（山下様・奥様ほか）／すでに公式LINEを作っていないか／個人LINEの友だちはおおよそ何人か／夜・休日の緊急時はどうされているか、を教えてください。</div><div class="m"><textarea id="m5" placeholder="お返事・メモ（例：来週お送りします／まだです）"></textarea></div></li><li data-i="6"><div class="t">無料点検の範囲 <span class="pill p-meet">打ち合わせで確認</span></div><label class="ck"><input type="checkbox" id="c6">対応した</label><div class="d">ご案内に書くため、どこまで無料で見て、どこからご相談・有料になるかを教えてください。</div><div class="m"><textarea id="m6" placeholder="お返事・メモ（例：来週お送りします／まだです）"></textarea></div></li><li data-i="7"><div class="t">現場の写真 <span class="pill p-ask">お願い</span></div><label class="ck"><input type="checkbox" id="c7">対応した</label><div class="d">スマホで撮った写真で大丈夫です。施工事例に使えるもの（お顔は写さなくて大丈夫です）をお願いします。公開してよいか（施主様の許可があるか）も教えてください。</div><div class="m"><textarea id="m7" placeholder="お返事・メモ（例：来週お送りします／まだです）"></textarea></div></li><li data-i="8"><div class="t">Googleマップ（ビジネスプロフィール） <span class="pill p-meet">打ち合わせで確認</span></div><label class="ck"><input type="checkbox" id="c8">対応した</label><div class="d">どなたのGoogleアカウントで登録されているか、分かる範囲で教えてください。分からない場合は、こちらで状況を調べます。</div><div class="m"><textarea id="m8" placeholder="お返事・メモ（例：来週お送りします／まだです）"></textarea></div></li><li data-i="9"><div class="t">ホームページの管理 <span class="pill p-meet">打ち合わせで確認</span></div><label class="ck"><input type="checkbox" id="c9">対応した</label><div class="d">今の管理（外注先）の方と、一緒に作業できるか／管理画面の権限をいただけるか、ご相談させてください。</div><div class="m"><textarea id="m9" placeholder="お返事・メモ（例：来週お送りします／まだです）"></textarea></div></li><li data-i="10"><div class="t">窓の断熱の補助金（先進的窓リノベ） <span class="pill p-meet">打ち合わせで確認</span></div><label class="ck"><input type="checkbox" id="c10">対応した</label><div class="d">工事は2026年12月末までに完了が必要です。登録事業者になっているか、分かる範囲で教えてください。</div><div class="m"><textarea id="m10" placeholder="お返事・メモ（例：来週お送りします／まだです）"></textarea></div></li></ol>
+<div class="send"><a class="line" id="line" href="#" target="_blank" rel="noopener">LINEで送る</a><button class="copy" id="copy" type="button">文章をコピー</button><small id="msg">書き終わったら「LINEで送る」を押してください。押すまで眞貴田には届きません。</small></div>
+<h2>こちらで進めていること</h2><ol class="doing"><li><b>点検のご案内リストの整え方</b><span>失注リスト・OB様名簿を、ご案内に使いやすい形にする方法を考えています。</span></li><li><b>公式LINEの設計案</b><span>メニュー・あいさつ・営業時間外の自動返信・お客様の分け方を準備しています。</span></li><li><b>ご相談の記録（相談台帳）の雛形</b><span>どこから来たご相談で、工事につながったかを数える表です。</span></li></ol>
+<h2>予定（目安）</h2><ol class="plan"><li><b>10月15日〜20日ごろ</b><span>開始（契約書に合わせて確定）</span></li><li><b>10月末まで</b><span>キックオフ打ち合わせ／データの受け渡し方法／公式LINEの開設／Googleマップの確認</span></li><li><b>11月</b><span>点検のご案内（第1弾）／公式LINEの運用開始／Googleマップの整備</span></li><li><b>12月〜1月</b><span>反応のまとめ／見積に添える説明シート／通信第2号／ホームページの小さな手直し</span></li><li><b>2月</b><span>振り返りと、御社で続けられる手順書のお渡し（終了：2月末）</span></li></ol>
+<p class="foot">このページは関係者の方だけにお送りしているURLです（検索には出ません）。お客様のお名前・ご住所などの個人情報は、このページに書かないでください。内容は随時更新します。</p>
+</div>
+<script>
+const T=["失注リスト（5年分）・OB様名簿の整理", "HiProでの条件合意のご承認", "日々のご連絡はLINEで", "補助金の申請", "営業時間", "公式LINEについて", "無料点検の範囲", "現場の写真", "Googleマップ（ビジネスプロフィール）", "ホームページの管理", "窓の断熱の補助金（先進的窓リノベ）"], K="todo-oomori-daiku-99812", NAME="大森大工";
+const DEF={"1": {"c": true, "m": ""}};
+let st=Object.assign({},DEF);try{Object.assign(st,JSON.parse(localStorage.getItem(K)||"{}"))}catch(e){}
+const save=()=>{try{localStorage.setItem(K,JSON.stringify(st))}catch(e){}};
+function text(){
+  const lines=["【"+NAME+"】進行チェックリストのお返事"];
+  T.forEach((t,i)=>{const s=st[i]||{};if(s.c||s.m){lines.push((s.c?"✔ ":"・ ")+t+(s.m?"："+s.m:""))}});
+  const rest=T.filter((t,i)=>!(st[i]||{}).c);
+  if(rest.length)lines.push("（まだ：" + rest.length + "件）");
+  return lines.join(String.fromCharCode(10));
+}
+function refresh(){
+  let n=0;T.forEach((t,i)=>{const s=st[i]||{};document.getElementById("c"+i).checked=!!s.c;
+    document.querySelector('li[data-i="'+i+'"]').classList.toggle("on",!!s.c);if(s.c)n++;});
+  document.getElementById("prog").innerHTML="対応済み <b>"+n+"</b> / "+T.length+"件";
+  document.getElementById("line").href="https://line.me/R/msg/text/?"+encodeURIComponent(text());
+}
+T.forEach((t,i)=>{
+  const c=document.getElementById("c"+i), m=document.getElementById("m"+i);
+  m.value=(st[i]||{}).m||"";
+  c.addEventListener("change",()=>{st[i]=Object.assign({},st[i],{c:c.checked});save();refresh();mark();});
+  m.addEventListener("input",()=>{st[i]=Object.assign({},st[i],{m:m.value.trim()});save();refresh();mark();});
+});
+let dirty=false;
+function mark(){dirty=true;const m=document.getElementById("msg");m.className="unsent";m.textContent="まだ送っていない変更があります。「LINEで送る」を押して、LINEで送信してください。";}
+window.addEventListener("beforeunload",e=>{if(dirty){e.preventDefault();e.returnValue="";}});
+document.getElementById("line").addEventListener("click",()=>{dirty=false;const m=document.getElementById("msg");m.className="sent";m.textContent="LINEが開きます。トーク画面で送信まで押してください。";});
+document.getElementById("copy").addEventListener("click",async()=>{
+  const t=text();try{await navigator.clipboard.writeText(t);document.getElementById("msg").textContent="コピーしました。LINEに貼り付けて送ってください。";}
+  catch(e){const ta=document.createElement("textarea");ta.value=t;document.body.appendChild(ta);ta.select();try{document.execCommand("copy");document.getElementById("msg").textContent="コピーしました。LINEに貼り付けて送ってください。";}catch(_){}ta.remove();}
+});
+refresh();
+</script></body></html>
