@@ -91,7 +91,7 @@ dialog input[type=text]{font:inherit;font-size:17px;padding:10px 12px;border:1px
 <body>
 <header>
   <h1>営業日カレンダー管理（試作）</h1>
-  <p>日付を押すと「定休日 → ビュッフェ → ワンプレート → 文字 → 定休日」と切り替わります。右に仕上がりが出ます。</p>
+  <p>最初から「火水＝休み／木＝ワンプレート／祝日＝ビュッフェ」が入っています。違う日だけ押して直してください（押すと「定休日 → ビュッフェ → ワンプレート → 文字 → 定休日」と切り替わります）。</p>
 </header>
 <main>
   <section class="panel" aria-label="入力">
@@ -113,6 +113,7 @@ dialog input[type=text]{font:inherit;font-size:17px;padding:10px 12px;border:1px
       <button class="btn main" id="btnImg" type="button">Instagram用の画像を保存</button>
     </div>
     <div class="actions">
+      <button class="btn" id="btnReset" type="button">この月を初期値に戻す</button>
       <button class="btn" id="btnSave" type="button">保存（このパソコン）</button>
       <button class="btn" id="btnExport" type="button">データを書き出す</button>
       <button class="btn" id="btnImport" type="button">データを読み込む</button>
@@ -194,10 +195,21 @@ async function saveData(data){
   try{ localStorage.setItem(STORE_KEY+ymKey(data.year,data.month), JSON.stringify(data)); return true; }
   catch(e){ return false; }
 }
+/* 新しい月の初期値：火・水＝定休日、木＝ワンプレート、それ以外＝ビュッフェ、祝日＝ビュッフェ */
+function defaultDays(y,m){
+  const days={}, red=redDays(y,m), n=new Date(y,m,0).getDate();
+  for(let d=1;d<=n;d++){
+    const w=new Date(y,m-1,d).getDay();
+    if(red.includes(d)) days[d]="buffet";
+    else if(w===2||w===3) continue;
+    else days[d]= w===4 ? "plate" : "buffet";
+  }
+  return days;
+}
 function loadData(y,m){
   try{ const s = localStorage.getItem(STORE_KEY+ymKey(y,m)); if(s) return JSON.parse(s); }catch(e){}
   if(y===2026 && m===10) return JSON.parse(JSON.stringify(OCT2026));
-  return {year:y,month:m,updated:isoToday(),season:"auto",days:{}};
+  return {year:y,month:m,updated:isoToday(),season:"auto",days:defaultDays(y,m)};
 }
 function exportJson(){
   const o = {year:st.year,month:st.month,updated:st.updated,red_days:redDays(st.year,st.month),season:st.season,days:st.days};
@@ -319,6 +331,7 @@ $("noteFree").onkeydown = e=>{ if(e.key==="Enter") $("noteOk").click(); };
 $("noteCancel").onclick = ()=>{ pendingDay=null; $("notedlg").close(); };
 
 /* ===== 保存・書き出し・読み込み ===== */
+$("btnReset").onclick = ()=>{ if(confirm(`${st.month}月を初期値（火水＝休み／木＝ワンプレート／祝日＝ビュッフェ）に戻しますか？`)){ st.days=defaultDays(st.year,st.month); touched(); say("初期値に戻しました。"); } };
 $("btnSave").onclick = async ()=>{ st.updated=isoToday(); render(); say((await saveData(st)) ? `${st.month}月分を保存しました（このパソコンの中）。` : "保存できませんでした。"); };
 function download(name,blob){ const a=document.createElement("a"); a.href=URL.createObjectURL(blob); a.download=name; document.body.appendChild(a); a.click(); a.remove(); setTimeout(()=>URL.revokeObjectURL(a.href),4000); }
 $("btnExport").onclick = ()=>{ download("calendar.json", new Blob([exportJson()],{type:"application/json"})); say("calendar.json を書き出しました。"); };
