@@ -11,7 +11,7 @@
 <title>【提案イメージ】いぶきハーブ・ガーデン｜伊吹山のふもとの農家レストラン</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@500;700&family=Zen+Kaku+Gothic+New:wght@400;500;700&family=Cormorant+Garamond:wght@500;600&family=Pinyon+Script&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@500;700&family=Zen+Kaku+Gothic+New:wght@400;500;700&family=Cormorant+Garamond:wght@500;600&family=Cormorant+Infant:wght@500;600&family=Pinyon+Script&display=swap" rel="stylesheet">
 <style>
 /*
   色の役割（2026-09-25 改訂）
@@ -375,23 +375,30 @@ footer .ridge-line{max-width:var(--max);margin:0 auto 34px}
 @media(prefers-reduced-motion:reduce){.hero-video{display:none}.hero-still{display:block}}
 /* 営業カレンダー：Instagramの「営業日のお知らせ」と同じ見た目（生成り・大きな月の数字・筆記体・緑と灰色の丸） */
 .sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
-.ibcal{--g:#8a9a85;--p:#d9d9dc;--hd:#cfc5b9;max-width:760px;margin:0 auto;padding:clamp(18px,4vw,40px);border-radius:18px;color:#5d564c;
-  background:linear-gradient(160deg,#f5efe7 0%,#efe6dc 45%,#f6f1ea 100%);box-shadow:0 10px 30px rgba(80,60,40,.08)}
+.ibcal{--g:#8a9a85;--p:#d9d9dc;--hd:#cfc5b9;--bg1:#f5efe7;--bg2:#efe6dc;--bg3:#f6f1ea;max-width:760px;margin:0 auto;padding:clamp(18px,4vw,40px);border-radius:18px;color:#5d564c;position:relative;overflow:hidden;
+  background:linear-gradient(160deg,var(--bg1) 0%,var(--bg2) 45%,var(--bg3) 100%);box-shadow:0 10px 30px rgba(80,60,40,.08)}
+/* 季節の色味（calendar.json の season: auto/none）。丸の色・文字配置は変えない。管理画面とInstagram画像も同じ色 */
+.ibcal.s-spring{--bg1:#f9eeee;--bg2:#f4e2e2;--bg3:#faf1ef;--hd:#dcc9c6}
+.ibcal.s-summer{--bg1:#f0f3e8;--bg2:#e4ebd8;--bg3:#f3f6ec;--hd:#c5cfb8}
+.ibcal.s-autumn{--bg1:#f6ebdc;--bg2:#f0dcc4;--bg3:#f7eee2;--hd:#d6bfa3}
+.ibcal.s-winter{--bg1:#f1f4f8;--bg2:#e5eaf1;--bg3:#f6f8fb;--hd:#c8cfd9}
+.ibcal-deco{position:absolute;pointer-events:none;z-index:0;height:auto;transform:translate(-50%,-50%)}
+.ibcal>:not(.ibcal-deco){position:relative;z-index:1}
 .ibcal-top{display:flex;justify-content:space-between;align-items:flex-end;gap:18px;flex-wrap:wrap;margin-bottom:18px}
 .ibcal-month{display:flex;align-items:center;gap:14px}
-.ibcal-num{font-family:"Cormorant Garamond",serif;font-weight:600;font-size:clamp(72px,14vw,128px);line-height:.85;color:#6f665a}
+.ibcal-num{font-family:"Cormorant Infant",serif;font-weight:600;font-size:clamp(72px,14vw,128px);line-height:.85;color:#6f665a}
 .ibcal-ym{display:flex;flex-direction:column}
-.ibcal-y{font-family:"Cormorant Garamond",serif;font-size:clamp(20px,3.6vw,30px);letter-spacing:.12em}
+.ibcal-y{font-family:"Cormorant Infant",serif;font-size:clamp(20px,3.6vw,30px);letter-spacing:.12em}
 .ibcal-en{font-family:"Pinyon Script",cursive;font-size:clamp(26px,5vw,42px);line-height:1;color:#7a7064}
 .ibcal-hours{margin:0;text-align:right;font-size:13px;line-height:1.6;letter-spacing:.06em}
 .ibcal-hours div{margin-top:4px}.ibcal-hours dt{font-weight:700;display:inline-flex;align-items:center;gap:6px}
-.ibcal-hours dd{margin:0;font-family:"Cormorant Garamond",serif;font-size:15px;letter-spacing:.08em}
+.ibcal-hours dd{margin:0;font-family:"Cormorant Infant",serif;font-size:15px;letter-spacing:.08em}
 .ibcal-table{width:100%;border-collapse:separate;border-spacing:4px;table-layout:fixed}
-.ibcal-table th{background:var(--hd);font-family:"Cormorant Garamond",serif;font-weight:600;font-size:13px;letter-spacing:.2em;padding:8px 0;color:#7a7064}
+.ibcal-table th{background:var(--hd);font-family:"Cormorant Infant",serif;font-weight:600;font-size:13px;letter-spacing:.2em;padding:8px 0;color:#7a7064}
 .ibcal-table th.sun,.cal-d.sun{color:#b2453c}.ibcal-table th.sat,.cal-d.sat{color:#3d6596}
 .ibcal-table td{background:rgba(255,255,255,.82);height:clamp(54px,10vw,88px);vertical-align:top;padding:6px 7px;position:relative}
 .ibcal-table td.empty{background:rgba(255,255,255,.45)}
-.cal-d{font-family:"Cormorant Garamond",serif;font-size:clamp(14px,2.4vw,19px);font-weight:500;color:#7a7064;display:block;line-height:1}
+.cal-d{font-family:"Cormorant Infant",serif;font-size:clamp(14px,2.4vw,19px);font-weight:500;color:#7a7064;display:block;line-height:1}
 .cal-dot{display:block;width:clamp(18px,4vw,34px);aspect-ratio:1;border-radius:50%;margin:clamp(4px,1.4vw,12px) auto 0}
 .cal-dot.buffet{background:var(--g)}.cal-dot.plate{background:var(--p)}
 .cal-dot.sm{display:inline-block;width:12px;margin:0;vertical-align:middle}

@@ -1,0 +1,416 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>営業日カレンダー管理（試作）｜いぶきハーブ・ガーデン</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@400;500;700&family=Cormorant+Infant:wght@500;600&family=Pinyon+Script&display=swap" rel="stylesheet">
+<link rel="icon" href="data:,">
+<style>
+:root{--forest:#34502f;--sub:#6b665c;--line:#e3dccf;--g:#8a9a85;--p:#d9d9dc}
+*{box-sizing:border-box}
+body{margin:0;background:#faf8f3;color:#3b3a35;font-family:"Zen Kaku Gothic New",sans-serif;font-size:16px;line-height:1.7}
+header{background:#fff;border-bottom:1px solid var(--line);padding:16px 24px}
+header h1{margin:0;font-size:22px;color:var(--forest);letter-spacing:.04em}
+header p{margin:2px 0 0;color:var(--sub);font-size:15px}
+main{max-width:1280px;margin:0 auto;padding:22px 24px 60px;display:grid;grid-template-columns:minmax(380px,520px) 1fr;gap:28px;align-items:start}
+@media(max-width:960px){main{grid-template-columns:1fr;padding:16px 14px 50px}}
+.panel{background:#fff;border:1px solid var(--line);border-radius:16px;padding:18px}
+.panel h2{margin:0 0 10px;font-size:17px;color:var(--forest)}
+.row{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-bottom:12px}
+button,select{font:inherit;cursor:pointer}
+.btn{border:1px solid #cfc6b6;background:#fff;border-radius:10px;padding:10px 16px;font-size:16px;color:#3b3a35}
+.btn:hover{background:#f4f0e8}
+.btn.on{background:var(--forest);border-color:var(--forest);color:#fff;font-weight:700}
+.btn.main{background:var(--forest);border-color:var(--forest);color:#fff;font-weight:700;font-size:18px;padding:14px 22px}
+.btn.main:hover{background:#2a4126}
+select{border:1px solid #cfc6b6;border-radius:10px;padding:10px 12px;background:#fff;font-size:16px}
+.lbl{font-size:14px;color:var(--sub)}
+.edit-head,.edit-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:6px}
+.edit-head div{text-align:center;font-weight:700;font-size:14px;color:#7a7064;padding:4px 0}
+.edit-head .sun,.d.sun{color:#b2453c}.edit-head .sat,.d.sat{color:#3d6596}
+.cell{border:1px solid var(--line);background:#fffdf9;border-radius:10px;min-height:76px;padding:6px 4px;display:flex;flex-direction:column;align-items:center;gap:4px;font:inherit}
+.cell:hover{border-color:var(--forest);box-shadow:0 0 0 2px rgba(52,80,47,.18)}
+.cell.blank{visibility:hidden}
+.cell .d{font-family:"Cormorant Infant",serif;font-weight:600;font-size:20px;line-height:1;align-self:flex-start;margin-left:4px;color:#7a7064}
+.cell .t{font-size:12px;color:var(--sub);line-height:1.2;text-align:center}
+.cell.buffet{background:#eef2ec}.cell.plate{background:#f1f1f3}.cell.note{background:#fbf3e6}
+.dot{display:inline-block;width:22px;height:22px;border-radius:50%}
+.dot.buffet{background:var(--g)}.dot.plate{background:var(--p)}.dot.sm{width:12px;height:12px;vertical-align:middle}
+.hint{font-size:14px;color:var(--sub);margin:10px 0 0}
+.hint b{color:var(--forest)}
+.actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:16px}
+.msg{min-height:1.6em;font-size:15px;color:var(--forest);margin:8px 0 0}
+.preview-wrap{position:sticky;top:12px}
+/* ここから下は本番サイトの src/_layout.html の .ibcal と同じ（見た目を一致させる） */
+.sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.ibcal{--g:#8a9a85;--p:#d9d9dc;--hd:#cfc5b9;--bg1:#f5efe7;--bg2:#efe6dc;--bg3:#f6f1ea;max-width:760px;margin:0 auto;padding:clamp(18px,4vw,40px);border-radius:18px;color:#5d564c;position:relative;overflow:hidden;
+  background:linear-gradient(160deg,var(--bg1) 0%,var(--bg2) 45%,var(--bg3) 100%);box-shadow:0 10px 30px rgba(80,60,40,.08)}
+.ibcal.s-spring{--bg1:#f9eeee;--bg2:#f4e2e2;--bg3:#faf1ef;--hd:#dcc9c6}
+.ibcal.s-summer{--bg1:#f0f3e8;--bg2:#e4ebd8;--bg3:#f3f6ec;--hd:#c5cfb8}
+.ibcal.s-autumn{--bg1:#f6ebdc;--bg2:#f0dcc4;--bg3:#f7eee2;--hd:#d6bfa3}
+.ibcal.s-winter{--bg1:#f1f4f8;--bg2:#e5eaf1;--bg3:#f6f8fb;--hd:#c8cfd9}
+.ibcal-deco{position:absolute;pointer-events:none;z-index:0;height:auto;transform:translate(-50%,-50%)}
+.ibcal>:not(.ibcal-deco){position:relative;z-index:1}
+.ibcal-top{display:flex;justify-content:space-between;align-items:flex-end;gap:18px;flex-wrap:wrap;margin-bottom:18px}
+.ibcal-month{display:flex;align-items:center;gap:14px}
+.ibcal-num{font-family:"Cormorant Infant",serif;font-weight:600;font-size:clamp(72px,14vw,128px);line-height:.85;color:#6f665a}
+.ibcal-ym{display:flex;flex-direction:column}
+.ibcal-y{font-family:"Cormorant Infant",serif;font-size:clamp(20px,3.6vw,30px);letter-spacing:.12em}
+.ibcal-en{font-family:"Pinyon Script",cursive;font-size:clamp(26px,5vw,42px);line-height:1;color:#7a7064}
+.ibcal-hours{margin:0;text-align:right;font-size:13px;line-height:1.6;letter-spacing:.06em}
+.ibcal-hours div{margin-top:4px}.ibcal-hours dt{font-weight:700;display:inline-flex;align-items:center;gap:6px}
+.ibcal-hours dd{margin:0;font-family:"Cormorant Infant",serif;font-size:15px;letter-spacing:.08em}
+.ibcal-table{width:100%;border-collapse:separate;border-spacing:4px;table-layout:fixed}
+.ibcal-table th{background:var(--hd);font-family:"Cormorant Infant",serif;font-weight:600;font-size:13px;letter-spacing:.2em;padding:8px 0;color:#7a7064}
+.ibcal-table th.sun,.cal-d.sun{color:#b2453c}.ibcal-table th.sat,.cal-d.sat{color:#3d6596}
+.ibcal-table td{background:rgba(255,255,255,.82);height:clamp(54px,10vw,88px);vertical-align:top;padding:6px 7px;position:relative}
+.ibcal-table td.empty{background:rgba(255,255,255,.45)}
+.cal-d{font-family:"Cormorant Infant",serif;font-size:clamp(14px,2.4vw,19px);font-weight:500;color:#7a7064;display:block;line-height:1}
+.cal-dot{display:block;width:clamp(18px,4vw,34px);aspect-ratio:1;border-radius:50%;margin:clamp(4px,1.4vw,12px) auto 0}
+.cal-dot.buffet{background:var(--g)}.cal-dot.plate{background:var(--p)}
+.cal-dot.sm{display:inline-block;width:12px;margin:0;vertical-align:middle}
+.cal-note{display:block;text-align:center;font-size:clamp(9.5px,1.8vw,13px);line-height:1.4;margin-top:clamp(2px,1vw,8px);letter-spacing:.05em;font-weight:500}
+.ibcal-legend{display:flex;gap:18px;flex-wrap:wrap;font-size:12.5px;margin-top:12px}
+.ibcal-legend>span{display:inline-flex;align-items:center;gap:6px}
+.cal-blank{display:inline-block;width:12px;height:12px;border-radius:3px;background:rgba(255,255,255,.9);border:1px solid #ddd2c6}
+.ibcal-upd{font-size:11.5px;color:#9a9282;margin:6px 0 0;text-align:right}
+@media(max-width:560px){.ibcal-top{display:block}.ibcal-hours{text-align:left;margin-top:12px;display:grid;grid-template-columns:1fr;gap:2px}
+  .ibcal-table{border-spacing:2px}.ibcal-table th{font-size:10px;letter-spacing:.08em;padding:6px 0}.ibcal-table td{padding:4px 2px}.cal-note{font-size:9px;letter-spacing:0;word-break:keep-all}}
+dialog{border:none;border-radius:16px;padding:22px;max-width:92vw;box-shadow:0 20px 60px rgba(0,0,0,.25)}
+dialog::backdrop{background:rgba(40,36,30,.45)}
+dialog h3{margin:0 0 12px;font-size:18px;color:var(--forest)}
+.choices{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:12px}
+dialog input[type=text]{font:inherit;font-size:17px;padding:10px 12px;border:1px solid #cfc6b6;border-radius:10px;width:100%}
+#igdlg img{max-width:min(78vw,540px);max-height:72vh;display:block;border-radius:8px}
+</style>
+</head>
+<body>
+<header>
+  <h1>営業日カレンダー管理（試作）</h1>
+  <p>日付を押すと「定休日 → ビュッフェ → ワンプレート → 文字 → 定休日」と切り替わります。右に仕上がりが出ます。</p>
+</header>
+<main>
+  <section class="panel" aria-label="入力">
+    <h2>1. 月を選ぶ</h2>
+    <div class="row">
+      <button class="btn" id="btnThis" type="button">今月</button>
+      <button class="btn" id="btnNext" type="button">来月</button>
+      <select id="monthSel" aria-label="ほかの月"></select>
+    </div>
+    <div class="row"><span class="lbl">季節の色：</span>
+      <button class="btn" id="seaAuto" type="button">自動</button>
+      <button class="btn" id="seaNone" type="button">なし</button>
+    </div>
+    <h2>2. 日付を押して営業日を入れる</h2>
+    <div class="edit-head" id="editHead"></div>
+    <div class="edit-grid" id="editGrid"></div>
+    <p class="hint"><span class="dot sm buffet"></span> ビュッフェ　<span class="dot sm plate"></span> ワンプレート　空白＝定休日　祝日は自動で赤文字です。</p>
+    <div class="actions">
+      <button class="btn main" id="btnImg" type="button">Instagram用の画像を保存</button>
+    </div>
+    <div class="actions">
+      <button class="btn" id="btnSave" type="button">保存（このパソコン）</button>
+      <button class="btn" id="btnExport" type="button">データを書き出す</button>
+      <button class="btn" id="btnImport" type="button">データを読み込む</button>
+      <input type="file" id="fileIn" accept=".json,application/json" hidden>
+    </div>
+    <p class="msg" id="msg" role="status"></p>
+  </section>
+
+  <section class="preview-wrap" aria-label="サイトの見た目">
+    <div id="preview"></div>
+  </section>
+</main>
+
+<dialog id="notedlg">
+  <h3>どんな文字を入れますか？</h3>
+  <div class="choices" id="noteChoices"></div>
+  <input type="text" id="noteFree" placeholder="自由に入力（例：研修のため休み）" maxlength="20">
+  <div class="row" style="margin:12px 0 0">
+    <button class="btn on" id="noteOk" type="button">入力した文字にする</button>
+    <button class="btn" id="noteCancel" type="button">やめる</button>
+  </div>
+</dialog>
+
+<dialog id="igdlg">
+  <h3>画像を保存しました（確認用）</h3>
+  <img id="igimg" alt="Instagram用のカレンダー画像">
+  <div class="row" style="margin:12px 0 0"><button class="btn on" id="igClose" type="button">閉じる</button></div>
+</dialog>
+
+<script>
+/* ===== 定数 ===== */
+const STORE_KEY = "ibuki_cal_v1_";           // + YYYY-MM
+const WD = "日月火水木金土";
+const EN = ["January","February","March","April","May","June","July","August","September","October","November","December"];
+const HOLIDAYS = { /* 内閣府の祝日（2026-2027年） */
+  2026:["1-1","1-12","2-11","2-23","3-20","4-29","5-3","5-4","5-5","5-6","7-20","8-11","9-21","9-22","9-23","10-12","11-3","11-23"],
+  2027:["1-1","1-11","2-11","2-23","3-21","3-22","4-29","5-3","5-4","5-5","7-19","8-11","9-20","9-23","10-11","11-3","11-23"]
+};
+/* 10月の初期データ（Instagram 10/1投稿の転記。src/calendar.json と同じ） */
+const OCT2026 = {year:2026,month:10,updated:"2026-10-01",season:"auto",days:{
+  "1":"plate","2":"buffet","3":"buffet","4":{note:"臨時休業"},"5":"buffet","8":"plate","9":"buffet","10":"buffet",
+  "11":"buffet","12":"buffet","15":"plate","16":"buffet","17":"buffet","18":"buffet","19":"buffet",
+  "22":{note:"団体様\n貸切"},"23":"buffet","24":"buffet","25":"buffet","26":"buffet","29":"plate","30":"buffet","31":"buffet"}};
+const NOTE_PRESETS = ["臨時休業","貸切","団体様\n貸切"];
+/* 季節の飾り（build.py の SEASON_POS / SEASON_SHAPE と同じ内容にすること） */
+const DECO_POS = [[.05,.03,40,20],[.30,.025,28,-30],[.44,.075,34,60],[.58,.03,26,10],[.97,.02,36,40],
+                  [.015,.985,34,-20],[.36,.975,28,50],[.5,.958,40,15],[.66,.98,32,-45],[.985,.985,26,0]];
+const SEASONS = {
+  spring:{bg:["#f9eeee","#f4e2e2","#faf1ef"],hd:"#dcc9c6",d:"M0,-12 C10,-9 11,4 0,12 C-11,4 -10,-9 0,-12Z",fill:"rgba(232,180,184,.6)"},
+  summer:{bg:["#f0f3e8","#e4ebd8","#f3f6ec"],hd:"#c5cfb8",d:"M0,-13 C11,-6 10,7 0,13 C-10,7 -11,-6 0,-13Z",fill:"rgba(138,163,122,.5)"},
+  autumn:{bg:["#f6ebdc","#f0dcc4","#f7eee2"],hd:"#d6bfa3",d:"M0,-12 L3,-5 L11,-8 L7,-1 L12,3 L4,4 L3,12 L0,6 L-3,12 L-4,4 L-12,3 L-7,-1 L-11,-8 L-3,-5Z",fill:"rgba(201,119,47,.5)"},
+  winter:{bg:["#f1f4f8","#e5eaf1","#f6f8fb"],hd:"#c8cfd9",d:"M0,-10 L0,10 M-10,0 L10,0 M-7,-7 L7,7 M-7,7 L7,-7",stroke:"#b7c4d6"}
+};
+const SVG_ATTR = {spring:'fill="#e8b4b8" fill-opacity=".6"',summer:'fill="#8aa37a" fill-opacity=".5"',autumn:'fill="#c9772f" fill-opacity=".5"',
+                  winter:'fill="none" stroke="#b7c4d6" stroke-width="2" stroke-linecap="round"'};
+const DEFAULT_BG = ["#f5efe7","#efe6dc","#f6f1ea"], DEFAULT_HD = "#cfc5b9";
+
+/* ===== 状態 ===== */
+const today = new Date();
+let st = null;   // {year,month,updated,season,days}
+const $ = id => document.getElementById(id);
+const pad = n => String(n).padStart(2,"0");
+const ymKey = (y,m) => y+"-"+pad(m);
+const isoToday = () => today.getFullYear()+"-"+pad(today.getMonth()+1)+"-"+pad(today.getDate());
+const redDays = (y,m) => (HOLIDAYS[y]||[]).filter(s=>+s.split("-")[0]===m).map(s=>+s.split("-")[1]);
+const seasonOf = (m,setting) => setting==="none" ? null : ([3,4,5].includes(m)?"spring":[6,7,8].includes(m)?"summer":[9,10,11].includes(m)?"autumn":"winter");
+const esc = s => String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+function say(t){ $("msg").textContent = t; }
+
+/* ===== 保存（試作はlocalStorage。本番は save.php への POST に差し替える。保存処理はこの1か所だけ） ===== */
+async function saveData(data){
+  /* 本番： const r = await fetch("save.php",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(data)}); return r.ok; */
+  try{ localStorage.setItem(STORE_KEY+ymKey(data.year,data.month), JSON.stringify(data)); return true; }
+  catch(e){ return false; }
+}
+function loadData(y,m){
+  try{ const s = localStorage.getItem(STORE_KEY+ymKey(y,m)); if(s) return JSON.parse(s); }catch(e){}
+  if(y===2026 && m===10) return JSON.parse(JSON.stringify(OCT2026));
+  return {year:y,month:m,updated:isoToday(),season:"auto",days:{}};
+}
+function exportJson(){
+  const o = {year:st.year,month:st.month,updated:st.updated,red_days:redDays(st.year,st.month),season:st.season,days:st.days};
+  return JSON.stringify(o,null,1).replace(/\n\s+("\d+":)/g,"\n  $1");
+}
+
+/* ===== 画面：入力グリッド ===== */
+function weeks(y,m){
+  const first = new Date(y,m-1,1).getDay(), n = new Date(y,m,0).getDate(), cells = [];
+  for(let i=0;i<first;i++) cells.push(0);
+  for(let d=1;d<=n;d++) cells.push(d);
+  while(cells.length%7) cells.push(0);
+  const w=[]; for(let i=0;i<cells.length;i+=7) w.push(cells.slice(i,i+7));
+  return w;
+}
+function renderEdit(){
+  $("editHead").innerHTML = "日月火水木金土".split("").map((c,i)=>`<div class="${i===0?"sun":i===6?"sat":""}">${c}</div>`).join("");
+  const red = redDays(st.year,st.month);
+  $("editGrid").innerHTML = weeks(st.year,st.month).flat().map((d,i)=>{
+    if(!d) return '<div class="cell blank"></div>';
+    const v = st.days[d], col = i%7;
+    const dc = (col===0||red.includes(d))?"sun":col===6?"sat":"";
+    let cls="", inner="", label="定休日";
+    if(v && typeof v==="object"){ cls="note"; inner=`<span class="t">${esc(v.note).replace(/\n/g,"<br>")}</span>`; label=v.note.replace(/\n/g,""); }
+    else if(v==="buffet"){ cls="buffet"; inner='<span class="dot buffet"></span>'; label="ビュッフェ"; }
+    else if(v==="plate"){ cls="plate"; inner='<span class="dot plate"></span>'; label="ワンプレート"; }
+    else inner='<span class="t">休</span>';
+    return `<button type="button" class="cell ${cls}" data-d="${d}" aria-label="${st.month}月${d}日 ${label}"><span class="d ${dc}">${d}</span>${inner}</button>`;
+  }).join("");
+}
+
+/* ===== 画面：サイトと同じ見た目のプレビュー ===== */
+function decoSvg(sea){
+  return DECO_POS.map(([x,y,sz,r])=>`<svg class="ibcal-deco" style="left:${(x*100).toFixed(1)}%;top:${(y*100).toFixed(1)}%;width:${(sz/10.8).toFixed(2)}%" viewBox="-14 -14 28 28" aria-hidden="true"><path d="${SEASONS[sea].d}" ${SVG_ATTR[sea]} transform="rotate(${r})"/></svg>`).join("");
+}
+function previewHtml(){
+  const {year:y,month:m,days} = st, red = redDays(y,m), sea = seasonOf(m,st.season);
+  const label = {buffet:"ビュッフェランチ",plate:"ワンプレートランチ"};
+  const rows = weeks(y,m).map(w=>"<tr>"+w.map((d,i)=>{
+    if(!d) return '<td class="empty"></td>';
+    const v = days[d], dcls = (i===0||red.includes(d))?"sun":(i===6?"sat":"");
+    const aria = `${m}月${d}日（${WD[i]}）`;
+    let body="", a=aria+" 定休日";
+    if(v && typeof v==="object"){ body='<span class="cal-note">'+esc(v.note).replace(/\n/g,"<br>")+"</span>"; a=aria+" "+v.note.replace(/\n/g,""); }
+    else if(label[v]){ body=`<span class="cal-dot ${v}"></span>`; a=aria+" "+label[v]; }
+    return `<td aria-label="${a}"><span class="cal-d ${dcls}">${d}</span>${body}</td>`;
+  }).join("")+"</tr>").join("");
+  const head = ["SUN","MON","TUE","WED","THU","FRI","SAT"].map((n,k)=>`<th scope="col" class="${k===0?"sun":k===6?"sat":""}">${n}</th>`).join("");
+  const up = st.updated.split("-");
+  return `<div class="ibcal${sea?" s-"+sea:""}">${sea?decoSvg(sea):""}
+      <div class="ibcal-top">
+        <div class="ibcal-month"><span class="ibcal-num">${m}</span><span class="ibcal-ym"><span class="ibcal-y">${y}</span><span class="ibcal-en">${EN[m-1]}</span></span></div>
+        <dl class="ibcal-hours">
+          <div><dt>営業時間</dt><dd>10:00〜18:00</dd></div>
+          <div><dt>ビュッフェランチ <span class="cal-dot buffet sm"></span></dt><dd>1部 11:30〜12:40<br>2部 13:00〜14:10</dd></div>
+          <div><dt>ワンプレートランチ <span class="cal-dot plate sm"></span></dt><dd>11:30〜14:00（LO 13:30）</dd></div>
+        </dl>
+      </div>
+      <table class="ibcal-table"><caption class="sr-only">${y}年${m}月の営業日</caption><thead><tr>${head}</tr></thead><tbody>${rows}</tbody></table>
+      <div class="ibcal-legend"><span><span class="cal-dot buffet sm"></span>ビュッフェランチ</span><span><span class="cal-dot plate sm"></span>ワンプレートランチ</span><span><span class="cal-blank"></span>定休日</span></div>
+      <p class="ibcal-upd">最終更新：${+up[1]}月${+up[2]}日</p>
+    </div>`;
+}
+function render(){
+  renderEdit();
+  $("preview").innerHTML = previewHtml();
+  $("seaAuto").classList.toggle("on", st.season!=="none");
+  $("seaNone").classList.toggle("on", st.season==="none");
+  const k = ymKey(st.year,st.month);
+  $("monthSel").value = k;
+  $("btnThis").classList.toggle("on", k===ymKey(today.getFullYear(),today.getMonth()+1));
+  const nx = new Date(today.getFullYear(),today.getMonth()+1,1);
+  $("btnNext").classList.toggle("on", k===ymKey(nx.getFullYear(),nx.getMonth()+1));
+}
+function touched(){ st.updated = isoToday(); render(); }
+
+/* ===== 月の切り替え ===== */
+function gotoMonth(y,m){ st = loadData(y,m); say(""); render(); }
+(function initMonths(){
+  const opts=[];
+  for(let i=-1;i<=11;i++){ const d=new Date(today.getFullYear(),today.getMonth()+i,1); opts.push(`<option value="${ymKey(d.getFullYear(),d.getMonth()+1)}">${d.getFullYear()}年${d.getMonth()+1}月</option>`); }
+  $("monthSel").innerHTML = opts.join("");
+})();
+$("btnThis").onclick = ()=>gotoMonth(today.getFullYear(),today.getMonth()+1);
+$("btnNext").onclick = ()=>{ const d=new Date(today.getFullYear(),today.getMonth()+1,1); gotoMonth(d.getFullYear(),d.getMonth()+1); };
+$("monthSel").onchange = e=>{ const [y,m]=e.target.value.split("-"); gotoMonth(+y,+m); };
+$("seaAuto").onclick = ()=>{ st.season="auto"; touched(); };
+$("seaNone").onclick = ()=>{ st.season="none"; touched(); };
+
+/* ===== 日付を押すたびに切り替え：定休日 → ビュッフェ → ワンプレート → 文字 → 定休日 ===== */
+let pendingDay = null;
+$("editGrid").addEventListener("click",e=>{
+  const b = e.target.closest("[data-d]"); if(!b) return;
+  const d = b.dataset.d, v = st.days[d];
+  if(!v) st.days[d]="buffet";
+  else if(v==="buffet") st.days[d]="plate";
+  else if(v==="plate"){ pendingDay=d; openNote(); return; }
+  else delete st.days[d];
+  touched();
+});
+function openNote(){
+  $("noteChoices").innerHTML = NOTE_PRESETS.map((n,i)=>`<button type="button" class="btn" data-i="${i}">${esc(n).replace(/\n/g,"")}</button>`).join("");
+  $("noteFree").value="";
+  $("notedlg").showModal();
+}
+function setNote(text){
+  if(text && pendingDay){ st.days[pendingDay]={note:text}; touched(); }
+  pendingDay=null; $("notedlg").close();
+}
+$("noteChoices").onclick = e=>{ const b=e.target.closest("[data-i]"); if(b) setNote(NOTE_PRESETS[+b.dataset.i]); };
+$("noteOk").onclick = ()=>{ const t=$("noteFree").value.trim(); if(t) setNote(t); else $("noteFree").focus(); };
+$("noteFree").onkeydown = e=>{ if(e.key==="Enter") $("noteOk").click(); };
+$("noteCancel").onclick = ()=>{ pendingDay=null; $("notedlg").close(); };
+
+/* ===== 保存・書き出し・読み込み ===== */
+$("btnSave").onclick = async ()=>{ st.updated=isoToday(); render(); say((await saveData(st)) ? `${st.month}月分を保存しました（このパソコンの中）。` : "保存できませんでした。"); };
+function download(name,blob){ const a=document.createElement("a"); a.href=URL.createObjectURL(blob); a.download=name; document.body.appendChild(a); a.click(); a.remove(); setTimeout(()=>URL.revokeObjectURL(a.href),4000); }
+$("btnExport").onclick = ()=>{ download("calendar.json", new Blob([exportJson()],{type:"application/json"})); say("calendar.json を書き出しました。"); };
+$("btnImport").onclick = ()=>$("fileIn").click();
+$("fileIn").onchange = async e=>{
+  const f=e.target.files[0]; if(!f) return;
+  try{
+    const o=JSON.parse(await f.text());
+    if(!o.year||!o.month||!o.days) throw 0;
+    st={year:+o.year,month:+o.month,updated:o.updated||isoToday(),season:o.season==="none"?"none":"auto",days:o.days};
+    render(); say(`${st.year}年${st.month}月のデータを読み込みました。`);
+  }catch(err){ say("読み込めませんでした（calendar.json を選んでください）。"); }
+  e.target.value="";
+};
+
+/* ===== Instagram用画像（1080×1350）。canvasで描く。基準は見本画像 1440×1800 ===== */
+const SERIF = '"Cormorant Infant", serif', SCRIPT = '"Pinyon Script", cursive', GOTHIC = '"Zen Kaku Gothic New", sans-serif';
+async function loadFonts(){
+  const txt = "営業時間ビュッフェランチワンプレート部LO臨時休業貸切団体様定休日最終更新年月日0123456789:~() 〜";
+  try{
+    await Promise.all([
+      document.fonts.load(`600 100px ${SERIF}`,"0123456789"), document.fonts.load(`500 40px ${SERIF}`,"0123456789SUNMOTEWHFRA"),
+      document.fonts.load(`400 80px ${SCRIPT}`,"JanuaryFebMchpilyOctNvDs"),
+      document.fonts.load(`400 30px ${GOTHIC}`,txt), document.fonts.load(`500 30px ${GOTHIC}`,txt)]);
+    await document.fonts.ready;
+  }catch(e){}
+}
+function txt(c,s,x,y,{font,color,align="left",ls=0}){ c.font=font; c.fillStyle=color; c.textAlign=align; c.letterSpacing=ls+"px"; c.fillText(s,x,y); }
+async function renderImage(){
+  await loadFonts();
+  const cv = document.createElement("canvas"); cv.width=1080; cv.height=1350;
+  const c = cv.getContext("2d"), {year:y,month:m,days} = st, sea = seasonOf(m,st.season);
+  const bg = sea?SEASONS[sea].bg:DEFAULT_BG, hd = sea?SEASONS[sea].hd:DEFAULT_HD, red = redDays(y,m);
+  const g = c.createLinearGradient(0,0,1080,1350);   // CSS 160deg に近い斜めグラデ
+  g.addColorStop(0,bg[0]); g.addColorStop(.45,bg[1]); g.addColorStop(1,bg[2]);
+  c.fillStyle=g; c.fillRect(0,0,1080,1350);
+  if(sea){   // 季節の飾り（文字や丸の後ろ）
+    const S=SEASONS[sea];
+    for(const [x,yy,sz,r] of DECO_POS){
+      c.save(); c.translate(x*1080,yy*1350); c.rotate(r*Math.PI/180); c.scale(sz/28,sz/28);
+      const p=new Path2D(S.d);
+      if(S.stroke){ c.strokeStyle=S.stroke; c.lineWidth=2; c.lineCap="round"; c.stroke(p); } else { c.fillStyle=S.fill; c.fill(p); }
+      c.restore();
+    }
+  }
+  c.scale(.75,.75);   // 以降は 1440×1800 の座標
+  const INK="#6f665a", SUB="#7a7064", TXT="#5d564c";
+  txt(c,String(m),70,415,{font:`600 300px ${SERIF}`,color:INK});
+  txt(c,String(y),382,303,{font:`500 56px ${SERIF}`,color:TXT,ls:8});
+  txt(c,EN[m-1],380,388,{font:`400 104px ${SCRIPT}`,color:SUB});
+  // 営業時間（右上）
+  const R=1365, lab=`500 38px ${GOTHIC}`, val=`500 40px ${SERIF}`;
+  txt(c,"営業時間",898,146,{font:`700 38px ${GOTHIC}`,color:TXT,ls:6});   txt(c,"10:00~18:00",R,146,{font:val,color:TXT,align:"right",ls:4});
+  txt(c,"ビュッフェランチ",898,215,{font:`700 38px ${GOTHIC}`,color:TXT,ls:6});
+  dot(c,1331,203,19,"#8a9a85");
+  txt(c,"1部",R-300,274,{font:lab,color:TXT,align:"right",ls:4});  txt(c,"11:30~12:40",R,274,{font:val,color:TXT,align:"right",ls:4});
+  txt(c,"2部",R-300,320,{font:lab,color:TXT,align:"right",ls:4});  txt(c,"13:00~14:10",R,320,{font:val,color:TXT,align:"right",ls:4});
+  txt(c,"ワンプレートランチ",898,375,{font:`700 38px ${GOTHIC}`,color:TXT,ls:6});
+  dot(c,1331,361,19,"#d9d9dc");
+  txt(c,"11:30~14:00",R,428,{font:val,color:TXT,align:"right",ls:4});
+  txt(c,"(LO 13:30)",R,488,{font:val,color:TXT,align:"right",ls:4});
+  // 表
+  const X0=76, CW=178, GAP=7.5, HT=505, HH=83;
+  ["SUN","MON","TUE","WED","THU","FRI","SAT"].forEach((n,i)=>{
+    const x=X0+i*(CW+GAP); c.fillStyle=hd; c.fillRect(x,HT,CW,HH);
+    txt(c,n,x+CW/2,HT+54,{font:`600 29px ${SERIF}`,color:i===0?"#b2453c":i===6?"#3d6596":SUB,align:"center",ls:6});
+  });
+  const ws = weeks(y,m), TOP=HT+HH+7, BOT=1605, RG=6, RH=(BOT-TOP-RG*(ws.length-1))/ws.length;
+  ws.forEach((w,r)=>w.forEach((d,i)=>{
+    const x=X0+i*(CW+GAP), top=TOP+r*(RH+RG);
+    c.fillStyle = d ? "rgba(255,255,255,.82)" : "rgba(255,255,255,.45)"; c.fillRect(x,top,CW,RH);
+    if(!d) return;
+    const dc = (i===0||red.includes(d))?"#b2453c":i===6?"#3d6596":SUB;
+    txt(c,String(d),x+14,top+(RH>185?40:38),{font:`500 36px ${SERIF}`,color:dc,ls:1});
+    const v=days[d];
+    if(v==="buffet"||v==="plate") dot(c,x+CW/2,top+RH*.56,34,v==="buffet"?"#8a9a85":"#d9d9dc");
+    else if(v&&typeof v==="object"){
+      const ls=v.note.split("\n"), cy=top+RH*.63;
+      ls.forEach((t,k)=>txt(c,t,x+CW/2,cy+(k-(ls.length-1)/2)*45+11,{font:`500 31px ${GOTHIC}`,color:INK,align:"center",ls:3}));
+    }
+  }));
+  // 凡例・最終更新
+  dot(c,134,1688,16,"#8a9a85"); txt(c,"ビュッフェランチ",164,1699,{font:`500 28px ${GOTHIC}`,color:TXT,ls:3});
+  dot(c,560,1688,16,"#d9d9dc"); txt(c,"ワンプレートランチ",590,1699,{font:`500 28px ${GOTHIC}`,color:TXT,ls:3});
+  const up=st.updated.split("-");
+  txt(c,`最終更新：${+up[1]}月${+up[2]}日`,R,1740,{font:`400 24px ${GOTHIC}`,color:"#9a9282",align:"right",ls:2});
+  txt(c,"空白の日は定休日です",76,1740,{font:`400 24px ${GOTHIC}`,color:"#9a9282",ls:2});
+  return cv;
+}
+function dot(c,x,y,r,col){ c.beginPath(); c.arc(x,y,r,0,Math.PI*2); c.fillStyle=col; c.fill(); }
+$("btnImg").onclick = async ()=>{
+  say("画像を作っています…");
+  const cv = await renderImage();
+  cv.toBlob(b=>{
+    download(`ibuki_calendar_${ymKey(st.year,st.month)}.png`, b);
+    $("igimg").src = cv.toDataURL("image/png"); $("igdlg").showModal();
+    say(`${st.month}月の画像（1080×1350）を保存しました。ダウンロードフォルダを見てください。`);
+  },"image/png");
+};
+$("igClose").onclick = ()=>$("igdlg").close();
+
+/* ===== 起動：今月を開く（2026年10月は見本データ入り） ===== */
+gotoMonth(today.getFullYear(),today.getMonth()+1);
+window.__ibuki = {renderImage, get st(){return st;}, gotoMonth};
+</script>
+</body>
+</html>
