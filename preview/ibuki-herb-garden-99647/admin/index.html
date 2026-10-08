@@ -44,6 +44,25 @@ select{border:1px solid #cfc6b6;border-radius:10px;padding:10px 12px;background:
 .hint b{color:var(--forest)}
 .actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:16px}
 .msg{min-height:1.6em;font-size:15px;color:var(--forest);margin:8px 0 0}
+.tabs{display:flex;gap:10px;max-width:1280px;margin:0 auto;padding:16px 24px 0}
+.tab{border:1px solid #cfc6b6;background:#fff;border-radius:12px 12px 0 0;padding:14px 28px;font-size:18px;font-weight:700;color:var(--sub)}
+.tab.on{background:var(--forest);border-color:var(--forest);color:#fff}
+#paneNews{grid-template-columns:minmax(380px,520px) 1fr}
+#paneNews[hidden],#paneCal[hidden]{display:none}
+@media(max-width:960px){#paneNews{grid-template-columns:1fr}.tabs{padding:12px 14px 0}}
+.field{margin-bottom:14px}.field label,.flabel{display:block;font-size:14px;color:var(--sub);margin-bottom:4px}
+.field input[type=text],.field input[type=date],.field textarea{font:inherit;font-size:17px;width:100%;padding:10px 12px;border:1px solid #cfc6b6;border-radius:10px;background:#fff;color:#3b3a35}
+.field textarea{line-height:1.7;resize:vertical}
+.nlist{list-style:none;margin:0;padding:0}
+.nitem{border-top:1px solid var(--line);padding:14px 0;display:grid;grid-template-columns:1fr auto;gap:8px 14px;align-items:start}
+.nitem:first-child{border-top:none}
+.nmeta{font-size:13px;color:var(--sub)}.ncat{display:inline-block;border:1px solid var(--line);border-radius:999px;padding:0 10px;margin-left:8px;color:var(--forest);font-size:12px}
+.ntitle{font-weight:700;font-size:17px;margin:2px 0}.nbody{font-size:14px;color:var(--sub);white-space:pre-wrap}
+.nact{display:flex;gap:6px;flex-wrap:wrap;justify-content:flex-end}
+.nact .btn{padding:8px 14px;font-size:15px}
+.nconfirm{grid-column:1/-1;background:#fbf3e6;border-radius:10px;padding:10px 14px;display:flex;gap:10px;align-items:center;flex-wrap:wrap;font-weight:700}
+.nitem.editing{background:#f3f7f1;margin:0 -8px;padding:14px 8px;border-radius:10px}
+.btn.danger{background:#b2453c;border-color:#b2453c;color:#fff;font-weight:700}
 .preview-wrap{position:sticky;top:12px}
 /* ここから下は本番サイトの src/_layout.html の .ibcal と同じ（見た目を一致させる） */
 .sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
@@ -91,9 +110,14 @@ dialog input[type=text]{font:inherit;font-size:17px;padding:10px 12px;border:1px
 <body>
 <header>
   <h1>営業日カレンダー管理（試作）</h1>
-  <p>最初から「火水＝休み／木＝ワンプレート／祝日＝ビュッフェ」が入っています。違う日だけ押して直してください（押すと「定休日 → ビュッフェ → ワンプレート → 文字 → 定休日」と切り替わります）。</p>
+  <p id="headCal">最初から「火水＝休み／木＝ワンプレート／祝日＝ビュッフェ」が入っています。違う日だけ押して直してください（押すと「定休日 → ビュッフェ → ワンプレート → 文字 → 定休日」と切り替わります）。</p>
+  <p id="headNews" hidden>お知らせを入れて「追加する」を押すと、サイトの「お知らせ」に新しい順で出ます。</p>
 </header>
-<main>
+<nav class="tabs" aria-label="画面の切り替え">
+  <button type="button" class="tab on" id="tabCal">営業日カレンダー</button>
+  <button type="button" class="tab" id="tabNews">お知らせ</button>
+</nav>
+<main id="paneCal">
   <section class="panel" aria-label="入力">
     <h2>1. 月を選ぶ</h2>
     <div class="row">
@@ -124,6 +148,30 @@ dialog input[type=text]{font:inherit;font-size:17px;padding:10px 12px;border:1px
 
   <section class="preview-wrap" aria-label="サイトの見た目">
     <div id="preview"></div>
+  </section>
+</main>
+
+<main id="paneNews" hidden>
+  <section class="panel" aria-label="お知らせを入れる">
+    <h2 id="newsFormTitle">お知らせを入れる</h2>
+    <div class="field"><label for="nDate">日付</label><input type="date" id="nDate"></div>
+    <div class="field"><span class="flabel">種類</span><div class="row" id="nTypes"></div></div>
+    <div class="field"><label for="nTitle">タイトル（1行）</label><input type="text" id="nTitle" maxlength="60" placeholder="例：11月の営業日を更新しました"></div>
+    <div class="field"><label for="nBody">本文（数行）</label><textarea id="nBody" rows="5" placeholder="例：11月の営業日をカレンダーに載せました。ご来店前にご確認ください。"></textarea></div>
+    <div class="actions" style="margin-top:6px">
+      <button class="btn main" id="nAdd" type="button">追加する</button>
+      <button class="btn" id="nCancel" type="button" hidden>やめる</button>
+    </div>
+    <p class="msg" id="nMsg" role="status"></p>
+    <div class="actions">
+      <button class="btn" id="nExport" type="button">データを書き出す</button>
+      <button class="btn" id="nImport" type="button">データを読み込む</button>
+      <input type="file" id="nFile" accept=".json,application/json" hidden>
+    </div>
+    <p class="hint">入れた内容はこのパソコンに自動で保存されます。サイトに出すには「データを書き出す」→ 制作側で反映します（試作）。</p>
+  </section>
+  <section aria-label="お知らせの一覧">
+    <div class="panel"><h2>いまのお知らせ（新しい順）</h2><ul class="nlist" id="nList"></ul></div>
   </section>
 </main>
 
@@ -435,7 +483,84 @@ $("igClose").onclick = ()=>$("igdlg").close();
 
 /* ===== 起動：今月を開く（2026年10月は見本データ入り） ===== */
 gotoMonth(today.getFullYear(),today.getMonth()+1);
-window.__ibuki = {renderImage, get st(){return st;}, gotoMonth};
+
+/* ===== お知らせタブ ===== */
+const NEWS_KEY = "ibuki_news_v1";
+const NEWS_TYPES = ["お知らせ","営業日の変更","イベント","メニュー"];
+const NEWS_DEFAULT = {"updated": "2026-10-01", "items": [{"id": "n20261001a", "date": "2026-10-01", "type": "営業日の変更", "title": "10月22日（木）は団体様貸切です", "body": "10月22日（木）は団体様の貸切のため、一般のご来店はできません。ご迷惑をおかけしますが、よろしくお願いいたします。"}, {"id": "n20261001b", "date": "2026-10-01", "type": "営業日の変更", "title": "10月4日（日）は臨時休業です", "body": "10月4日（日）は臨時休業とさせていただきます。"}, {"id": "n20261001c", "date": "2026-10-01", "type": "お知らせ", "title": "10月の営業日をお知らせします", "body": "営業時間は10:00〜18:00です。ビュッフェランチは1部 11:30〜12:40／2部 13:00〜14:10、ワンプレートランチは11:30〜14:00（LO 13:30）です。営業日は上の「今月の営業日」をご覧ください。"}]};
+let news = null, nType = NEWS_TYPES[0], editId = null, delId = null;
+/* 保存はこの1関数だけ。本番は save.php への POST に差し替える */
+async function saveNews(data){
+  /* 本番： const r = await fetch("save.php",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({kind:"news",data})}); return r.ok; */
+  try{ localStorage.setItem(NEWS_KEY, JSON.stringify(data)); return true; }catch(e){ return false; }
+}
+function loadNews(){
+  try{ const s=localStorage.getItem(NEWS_KEY); if(s){ const o=JSON.parse(s); if(o&&Array.isArray(o.items)) return o; } }catch(e){}
+  return JSON.parse(JSON.stringify(NEWS_DEFAULT));
+}
+function nmsg(t){ $("nMsg").textContent=t; }
+function renderTypes(){
+  $("nTypes").innerHTML = NEWS_TYPES.map(t=>`<button type="button" class="btn${t===nType?" on":""}" data-t="${t}">${t}</button>`).join("");
+}
+function renderNews(){
+  renderTypes();
+  const items = [...news.items].sort((a,b)=> (b.date+b.id).localeCompare(a.date+a.id));
+  $("nList").innerHTML = items.length ? items.map(it=>{
+    const dd = it.date.replace(/-/g,".");
+    const conf = delId===it.id ? `<div class="nconfirm">本当に消しますか？<button class="btn danger" data-act="delyes" data-id="${it.id}" type="button">消す</button><button class="btn" data-act="delno" type="button">やめる</button></div>` : "";
+    return `<li class="nitem${editId===it.id?" editing":""}"><div><div class="nmeta">${dd}<span class="ncat">${esc(it.type)}</span></div>
+      <div class="ntitle">${esc(it.title)}</div><div class="nbody">${esc(it.body||"")}</div></div>
+      <div class="nact"><button class="btn" data-act="edit" data-id="${it.id}" type="button">直す</button><button class="btn" data-act="del" data-id="${it.id}" type="button">消す</button></div>${conf}</li>`;
+  }).join("") : '<li class="nbody">お知らせはまだありません。</li>';
+  $("newsFormTitle").textContent = editId ? "お知らせを直す" : "お知らせを入れる";
+  $("nAdd").textContent = editId ? "直した内容で保存する" : "追加する";
+  $("nCancel").hidden = !editId;
+}
+function resetNewsForm(){ editId=null; $("nDate").value=isoToday(); $("nTitle").value=""; $("nBody").value=""; nType=NEWS_TYPES[0]; }
+async function commitNews(m){
+  news.updated = isoToday();
+  const ok = await saveNews(news); renderNews(); nmsg(ok ? m : "保存できませんでした。");
+}
+$("nTypes").onclick = e=>{ const b=e.target.closest("[data-t]"); if(b){ nType=b.dataset.t; renderTypes(); } };
+$("nAdd").onclick = async ()=>{
+  const title=$("nTitle").value.trim(), date=$("nDate").value||isoToday();
+  if(!title){ nmsg("タイトルを入れてください。"); $("nTitle").focus(); return; }
+  const body=$("nBody").value.trim();
+  if(editId){
+    const it=news.items.find(x=>x.id===editId); if(it){ Object.assign(it,{date,type:nType,title,body}); }
+    resetNewsForm(); await commitNews("直しました。");
+  }else{
+    const id="n"+date.replace(/-/g,"")+Math.random().toString(36).slice(2,6);
+    news.items.push({id,date,type:nType,title,body});
+    resetNewsForm(); await commitNews("追加しました。右の一覧に出ています。");
+  }
+};
+$("nCancel").onclick = ()=>{ resetNewsForm(); nmsg(""); renderNews(); };
+$("nList").onclick = async e=>{
+  const b=e.target.closest("[data-act]"); if(!b) return; const id=b.dataset.id, a=b.dataset.act;
+  if(a==="edit"){ const it=news.items.find(x=>x.id===id); if(!it) return; editId=id; delId=null; nType=it.type; $("nDate").value=it.date; $("nTitle").value=it.title; $("nBody").value=it.body||""; nmsg("左の欄で直して、「直した内容で保存する」を押してください。"); renderNews(); $("nTitle").scrollIntoView({block:"center"}); }
+  else if(a==="del"){ delId=id; renderNews(); }
+  else if(a==="delno"){ delId=null; renderNews(); }
+  else if(a==="delyes"){ news.items=news.items.filter(x=>x.id!==id); delId=null; if(editId===id) resetNewsForm(); await commitNews("消しました。"); }
+};
+$("nExport").onclick = ()=>{ download("news.json", new Blob([JSON.stringify(news,null,1)],{type:"application/json"})); nmsg("news.json を書き出しました。"); };
+$("nImport").onclick = ()=>$("nFile").click();
+$("nFile").onchange = async e=>{
+  const f=e.target.files[0]; if(!f) return;
+  try{ const o=JSON.parse(await f.text()); if(!Array.isArray(o.items)) throw 0; news={updated:o.updated||isoToday(),items:o.items}; resetNewsForm(); await commitNews("読み込みました。"); }
+  catch(err){ nmsg("読み込めませんでした（news.json を選んでください）。"); }
+  e.target.value="";
+};
+/* タブ切り替え */
+function showTab(n){
+  $("paneCal").hidden = n!=="cal"; $("paneNews").hidden = n!=="news";
+  $("headCal").hidden = n!=="cal"; $("headNews").hidden = n!=="news";
+  $("tabCal").classList.toggle("on",n==="cal"); $("tabNews").classList.toggle("on",n==="news");
+}
+$("tabCal").onclick=()=>showTab("cal"); $("tabNews").onclick=()=>showTab("news");
+news = loadNews(); resetNewsForm(); renderNews();
+
+window.__ibuki = {get news(){return news;}, renderImage, get st(){return st;}, gotoMonth};
 </script>
 </body>
 </html>
