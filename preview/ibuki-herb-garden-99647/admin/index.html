@@ -53,6 +53,7 @@ select{border:1px solid #cfc6b6;border-radius:10px;padding:10px 12px;background:
 .field{margin-bottom:14px}.field label,.flabel{display:block;font-size:14px;color:var(--sub);margin-bottom:4px}
 .field input[type=text],.field input[type=date],.field textarea{font:inherit;font-size:17px;width:100%;padding:10px 12px;border:1px solid #cfc6b6;border-radius:10px;background:#fff;color:#3b3a35}
 .field textarea{line-height:1.7;resize:vertical}
+.nthumb{display:block;max-width:200px;max-height:200px;border-radius:8px;margin-top:6px;border:1px solid var(--line)}
 .nlist{list-style:none;margin:0;padding:0}
 .nitem{border-top:1px solid var(--line);padding:14px 0;display:grid;grid-template-columns:1fr auto;gap:8px 14px;align-items:start}
 .nitem:first-child{border-top:none}
@@ -158,6 +159,9 @@ dialog input[type=text]{font:inherit;font-size:17px;padding:10px 12px;border:1px
     <div class="field"><span class="flabel">種類</span><div class="row" id="nTypes"></div></div>
     <div class="field"><label for="nTitle">タイトル（1行）</label><input type="text" id="nTitle" maxlength="60" placeholder="例：11月の営業日を更新しました"></div>
     <div class="field"><label for="nBody">本文（数行）</label><textarea id="nBody" rows="5" placeholder="例：11月の営業日をカレンダーに載せました。ご来店前にご確認ください。"></textarea></div>
+    <div class="field"><span class="flabel">写真（なくてもOK・1枚）</span>
+      <div class="row"><button class="btn" id="nPhotoBtn" type="button">写真を選ぶ</button><button class="btn" id="nPhotoDel" type="button" hidden>写真をはずす</button><input type="file" id="nPhoto" accept="image/*" hidden></div>
+      <img id="nPhotoPrev" class="nthumb" alt="選んだ写真" hidden></div>
     <div class="actions" style="margin-top:6px">
       <button class="btn main" id="nAdd" type="button">追加する</button>
       <button class="btn" id="nCancel" type="button" hidden>やめる</button>
@@ -168,7 +172,7 @@ dialog input[type=text]{font:inherit;font-size:17px;padding:10px 12px;border:1px
       <button class="btn" id="nImport" type="button">データを読み込む</button>
       <input type="file" id="nFile" accept=".json,application/json" hidden>
     </div>
-    <p class="hint">入れた内容はこのパソコンに自動で保存されます。サイトに出すには「データを書き出す」→ 制作側で反映します（試作）。</p>
+    <p class="hint">入れた内容はこのパソコンに自動で保存されます。サイトに出すには「データを書き出す」（news.json と写真が出ます）→ 制作側で反映します（試作）。</p>
   </section>
   <section aria-label="お知らせの一覧">
     <div class="panel"><h2>いまのお知らせ（新しい順）</h2><ul class="nlist" id="nList"></ul></div>
@@ -488,7 +492,7 @@ gotoMonth(today.getFullYear(),today.getMonth()+1);
 const NEWS_KEY = "ibuki_news_v1";
 const NEWS_TYPES = ["お知らせ","営業日の変更","イベント","メニュー"];
 const NEWS_DEFAULT = {"updated": "2026-10-01", "items": [{"id": "n20261001a", "date": "2026-10-01", "type": "営業日の変更", "title": "10月22日（木）は団体様貸切です", "body": "10月22日（木）は団体様の貸切のため、一般のご来店はできません。ご迷惑をおかけしますが、よろしくお願いいたします。"}, {"id": "n20261001b", "date": "2026-10-01", "type": "営業日の変更", "title": "10月4日（日）は臨時休業です", "body": "10月4日（日）は臨時休業とさせていただきます。"}, {"id": "n20261001c", "date": "2026-10-01", "type": "お知らせ", "title": "10月の営業日をお知らせします", "body": "営業時間は10:00〜18:00です。ビュッフェランチは1部 11:30〜12:40／2部 13:00〜14:10、ワンプレートランチは11:30〜14:00（LO 13:30）です。営業日は上の「今月の営業日」をご覧ください。"}]};
-let news = null, nType = NEWS_TYPES[0], editId = null, delId = null;
+let news = null, nType = NEWS_TYPES[0], editId = null, delId = null, nImg = null;   // nImg = {image, imageData}
 /* 保存はこの1関数だけ。本番は save.php への POST に差し替える */
 async function saveNews(data){
   /* 本番： const r = await fetch("save.php",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({kind:"news",data})}); return r.ok; */
@@ -509,41 +513,63 @@ function renderNews(){
     const dd = it.date.replace(/-/g,".");
     const conf = delId===it.id ? `<div class="nconfirm">本当に消しますか？<button class="btn danger" data-act="delyes" data-id="${it.id}" type="button">消す</button><button class="btn" data-act="delno" type="button">やめる</button></div>` : "";
     return `<li class="nitem${editId===it.id?" editing":""}"><div><div class="nmeta">${dd}<span class="ncat">${esc(it.type)}</span></div>
-      <div class="ntitle">${esc(it.title)}</div><div class="nbody">${esc(it.body||"")}</div></div>
+      <div class="ntitle">${esc(it.title)}</div><div class="nbody">${esc(it.body||"")}</div>${it.imageData?`<img class="nthumb" src="${it.imageData}" alt="">`:(it.image?'<div class="nbody">（写真あり）</div>':"")}</div>
       <div class="nact"><button class="btn" data-act="edit" data-id="${it.id}" type="button">直す</button><button class="btn" data-act="del" data-id="${it.id}" type="button">消す</button></div>${conf}</li>`;
   }).join("") : '<li class="nbody">お知らせはまだありません。</li>';
   $("newsFormTitle").textContent = editId ? "お知らせを直す" : "お知らせを入れる";
   $("nAdd").textContent = editId ? "直した内容で保存する" : "追加する";
   $("nCancel").hidden = !editId;
 }
-function resetNewsForm(){ editId=null; $("nDate").value=isoToday(); $("nTitle").value=""; $("nBody").value=""; nType=NEWS_TYPES[0]; }
+function showPhoto(){ $("nPhotoPrev").hidden=!(nImg&&nImg.imageData); if(nImg&&nImg.imageData) $("nPhotoPrev").src=nImg.imageData; $("nPhotoDel").hidden=!nImg; $("nPhotoBtn").textContent = nImg?"写真を選び直す":"写真を選ぶ"; }
+function resetNewsForm(){ nImg=null; showPhoto(); editId=null; $("nDate").value=isoToday(); $("nTitle").value=""; $("nBody").value=""; nType=NEWS_TYPES[0]; }
 async function commitNews(m){
   news.updated = isoToday();
-  const ok = await saveNews(news); renderNews(); nmsg(ok ? m : "保存できませんでした。");
+  const ok = await saveNews(news); renderNews(); nmsg(ok ? m : "保存できませんでした（写真が多すぎるかもしれません。古いお知らせの写真をはずしてください）。");
 }
+$("nPhotoBtn").onclick = ()=>$("nPhoto").click();
+$("nPhotoDel").onclick = ()=>{ nImg=null; showPhoto(); };
+$("nPhoto").onchange = e=>{
+  const f=e.target.files[0]; e.target.value=""; if(!f) return;
+  const img=new Image(), url=URL.createObjectURL(f);
+  img.onload=()=>{
+    const k=Math.min(1,1200/Math.max(img.width,img.height)), cv=document.createElement("canvas");
+    cv.width=Math.round(img.width*k); cv.height=Math.round(img.height*k);
+    const c=cv.getContext("2d"); c.fillStyle="#fff"; c.fillRect(0,0,cv.width,cv.height); c.drawImage(img,0,0,cv.width,cv.height);
+    URL.revokeObjectURL(url);
+    nImg={image:null,imageData:cv.toDataURL("image/jpeg",.85)}; showPhoto(); nmsg("写真を選びました。タイトルと本文を入れて「追加する」を押してください。");
+  };
+  img.onerror=()=>{ URL.revokeObjectURL(url); nmsg("この写真は読み込めませんでした（JPEG/PNGを選んでください）。"); };
+  img.src=url;
+};
 $("nTypes").onclick = e=>{ const b=e.target.closest("[data-t]"); if(b){ nType=b.dataset.t; renderTypes(); } };
 $("nAdd").onclick = async ()=>{
   const title=$("nTitle").value.trim(), date=$("nDate").value||isoToday();
   if(!title){ nmsg("タイトルを入れてください。"); $("nTitle").focus(); return; }
   const body=$("nBody").value.trim();
   if(editId){
-    const it=news.items.find(x=>x.id===editId); if(it){ Object.assign(it,{date,type:nType,title,body}); }
+    const it=news.items.find(x=>x.id===editId); if(it){ Object.assign(it,{date,type:nType,title,body}); if(nImg){ it.image=nImg.image||("news-"+it.id+".jpg"); it.imageData=nImg.imageData; } else { delete it.image; delete it.imageData; } }
     resetNewsForm(); await commitNews("直しました。");
   }else{
     const id="n"+date.replace(/-/g,"")+Math.random().toString(36).slice(2,6);
-    news.items.push({id,date,type:nType,title,body});
+    const item={id,date,type:nType,title,body}; if(nImg){ item.image="news-"+id+".jpg"; item.imageData=nImg.imageData; } news.items.push(item);
     resetNewsForm(); await commitNews("追加しました。右の一覧に出ています。");
   }
 };
 $("nCancel").onclick = ()=>{ resetNewsForm(); nmsg(""); renderNews(); };
 $("nList").onclick = async e=>{
   const b=e.target.closest("[data-act]"); if(!b) return; const id=b.dataset.id, a=b.dataset.act;
-  if(a==="edit"){ const it=news.items.find(x=>x.id===id); if(!it) return; editId=id; delId=null; nType=it.type; $("nDate").value=it.date; $("nTitle").value=it.title; $("nBody").value=it.body||""; nmsg("左の欄で直して、「直した内容で保存する」を押してください。"); renderNews(); $("nTitle").scrollIntoView({block:"center"}); }
+  if(a==="edit"){ const it=news.items.find(x=>x.id===id); if(!it) return; editId=id; delId=null; nType=it.type; nImg=it.imageData?{image:it.image,imageData:it.imageData}:null; showPhoto(); $("nDate").value=it.date; $("nTitle").value=it.title; $("nBody").value=it.body||""; nmsg("左の欄で直して、「直した内容で保存する」を押してください。"); renderNews(); $("nTitle").scrollIntoView({block:"center"}); }
   else if(a==="del"){ delId=id; renderNews(); }
   else if(a==="delno"){ delId=null; renderNews(); }
   else if(a==="delyes"){ news.items=news.items.filter(x=>x.id!==id); delId=null; if(editId===id) resetNewsForm(); await commitNews("消しました。"); }
 };
-$("nExport").onclick = ()=>{ download("news.json", new Blob([JSON.stringify(news,null,1)],{type:"application/json"})); nmsg("news.json を書き出しました。"); };
+$("nExport").onclick = ()=>{
+  const out={updated:news.updated,items:news.items.map(({imageData,...rest})=>rest)};
+  download("news.json", new Blob([JSON.stringify(out,null,1)],{type:"application/json"}));
+  const withImg=news.items.filter(x=>x.imageData&&x.image);
+  withImg.forEach((x,i)=>setTimeout(async()=>{ download(x.image, await (await fetch(x.imageData)).blob()); }, 400*(i+1)));
+  nmsg(withImg.length ? `news.json と写真${withImg.length}枚を書き出しました（ダウンロードの許可を聞かれたら「許可」）。` : "news.json を書き出しました。");
+};
 $("nImport").onclick = ()=>$("nFile").click();
 $("nFile").onchange = async e=>{
   const f=e.target.files[0]; if(!f) return;
