@@ -44,6 +44,7 @@
 - [GA4の「AI Assistant」チャネルの見方](https://aidealize.com/column/ga4-ai-assistant/)
 - [医療・介護1,767件を診断してわかったクリニックサイトのセキュリティ](https://aidealize.com/column/iryou-clinic-security/)
 - [クリニックの集客がうまくいかない原因と改善方法](https://aidealize.com/column/clinic-shukyaku-jirei/)
+- [クリニックの集客が急に落ちた。最初に見る5つの数字](https://aidealize.com/column/clinic-shukyaku-ochita/)
 - [WordPressの脆弱性被害が減らない理由](https://aidealize.com/column/wordpress-zeijakusei-furui-site/)
 
 ## その他

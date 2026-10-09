@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>クリニックの集客が急に落ちた。最初に見る5つの数字【AIdealize】</title>
+<meta name="description" content="来院数が急に減ったとき、広告やMEOをいじる前に確認したい5つの数字を整理。検索での表示、クリック率、サイトへの訪問、予約ボタンと予約完了、口コミを順に見れば、落ちた場所がどこかが絞り込めます。">
+<link rel="canonical" href="https://aidealize.com/column/clinic-shukyaku-ochita/">
+<meta property="og:title" content="クリニックの集客が急に落ちた。最初に見る5つの数字">
+<meta property="og:description" content="新患が急に減ったら、対策の前に「どの段で落ちたか」を特定する。検索表示・クリック率・訪問・予約完了・口コミの5つの数字の見方を解説。">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://aidealize.com/column/clinic-shukyaku-ochita/">
+<meta property="og:site_name" content="AIdealize株式会社">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700;900&family=Shippori+Mincho:wght@400;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-P6VNBWH3');</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "クリニックの集客が急に落ちた。最初に見る5つの数字",
+  "description": "来院数が急に減ったとき、広告やMEOをいじる前に確認したい5つの数字を整理。検索での表示、クリック率、サイトへの訪問、予約ボタンと予約完了、口コミを順に見れば、落ちた場所がどこかが絞り込めます。",
+  "datePublished": "2026-10-09",
+  "author": {
+    "@type": "Organization",
+    "name": "AIdealize株式会社"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "AIdealize株式会社",
+    "url": "https://aidealize.com"
+  }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "対策の前に、そもそも「落ちた」のか確認する方法は？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "前年の同じ月と比べるのが確実です。クリニックは季節や休診日の並び、花粉やインフルエンザの時期で来院数が自然に動きます。直前の月とだけ比べず、前年同月と、直近3か月の推移の両方を見て、本当に平常の波を外れているかを確かめます。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Search ConsoleやGA4が入っていない場合はどうすればいいですか？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "まず予約システムの管理画面にある「予約完了数」だけでも、週単位で数えてください。Search ConsoleとGA4はどちらも無料で、あとから設定しても過去のデータは遡れないため、入っていなければ今日から入れておくのがおすすめです。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "数字を見ても原因が分かりません。",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "落ちた段が特定できれば十分です。原因まで院内で突き止める必要はありません。「検索の表示は落ちていないのに予約完了だけ減っている」のように段が分かれば、専門家に相談するときも、確認する範囲が大きく絞れます。"
+      }
+    }
+  ]
+}
+</script>
+<style>
+:root{
+  --red:#0891b2;--red-dark:#0e7490;
+  --ink:#1e293b;--body:#4b5563;--light:#94a3b8;
+  --border:#e2e8f0;--bg:#f8fafc;--bg2:#f1f5f9;--white:#fff;
+  --tag-bg:#ecfeff;--green:#059669;--green-bg:#ecfdf5;
+  --demo-bg:#0f172a;--amber-bg:#fef3c7;--amber-tx:#92400e;--danger:#dc2626;--danger-bg:#fef2f2;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{font-family:'Noto Sans JP',sans-serif;background:var(--white);color:var(--ink);overflow-x:hidden;line-height:1.7;}
+#mainNav{position:fixed;top:0;left:0;right:0;z-index:1000;display:flex;align-items:center;justify-content:space-between;padding:0 60px;height:68px;background:rgba(255,255,255,0.97);border-bottom:1px solid var(--border);backdrop-filter:blur(12px);transition:box-shadow 0.3s;}
+#mainNav.scrolled{box-shadow:0 2px 16px rgba(0,0,0,0.06);}
+.nav-logo{display:flex;align-items:center;gap:10px;text-decoration:none;}
+.nav-logo img{height:34px;width:auto;}
+.nav-logo-text{font-family:'DM Mono',monospace;font-size:15px;font-weight:500;color:var(--ink);letter-spacing:0.02em;}
+.nav-logo-text span{color:var(--red);}
+.nav-links{display:flex;align-items:center;gap:32px;list-style:none;}
+.nav-links a{font-size:13px;font-weight:500;color:var(--body);text-decoration:none;transition:color 0.2s;}
+.nav-links a:hover{color:var(--ink);}
+.nav-cta{background:var(--red) !important;color:#fff !important;padding:9px 20px;border-radius:4px;font-size:12px !important;font-weight:700 !important;}
+.nav-cta:hover{background:var(--red-dark) !important;}
+.nav-hamburger{display:none;flex-direction:column;justify-content:center;gap:5px;width:40px;height:40px;background:none;border:none;cursor:pointer;}
+.nav-hamburger span{display:block;width:22px;height:2px;background:var(--ink);transition:all 0.3s;transform-origin:center;}
+.nav-hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg);}
+.nav-hamburger.open span:nth-child(2){opacity:0;}
+.nav-hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
+.nav-drawer{display:none;position:fixed;top:68px;left:0;right:0;background:#fff;border-bottom:2px solid var(--red);padding:20px 28px 28px;z-index:999;}
+.nav-drawer.open{display:block;}
+.nav-drawer ul{list-style:none;display:flex;flex-direction:column;}
+.nav-drawer ul li a{display:block;padding:13px 0;font-size:15px;font-weight:500;color:var(--ink);text-decoration:none;border-bottom:1px solid var(--border);}
+.nav-drawer ul li:last-child a{margin-top:16px;text-align:center;background:var(--red);color:#fff !important;padding:13px;border-radius:4px;font-weight:700 !important;border-bottom:none;}
+@media(max-width:1024px){#mainNav{padding:0 28px;}.nav-links{display:none;}.nav-hamburger{display:flex;}}
+@media(max-width:480px){#mainNav{padding:0 16px;height:60px;}.nav-drawer{top:60px;}.nav-logo-text{font-size:13px;}}
+.article-header{padding:116px 24px 52px;background:var(--bg);border-bottom:1px solid var(--border);}
+.article-header-inner{max-width:760px;margin:0 auto;}
+.breadcrumb{display:flex;align-items:center;gap:6px;font-size:12px;color:var(--light);margin-bottom:20px;flex-wrap:wrap;}
+.breadcrumb a{color:var(--light);text-decoration:none;}
+.breadcrumb a:hover{color:var(--red);}
+.breadcrumb span{color:var(--border);}
+.article-tag{display:inline-flex;align-items:center;background:var(--tag-bg);color:var(--red);font-size:11px;font-weight:700;letter-spacing:0.06em;padding:4px 12px;border-radius:100px;margin-bottom:18px;}
+.article-h1{font-family:'Shippori Mincho',serif;font-size:clamp(20px,3vw,34px);font-weight:700;color:var(--ink);line-height:1.65;margin-bottom:20px;}
+.article-meta{display:flex;align-items:center;gap:20px;flex-wrap:wrap;font-size:12px;color:var(--light);}
+.article-body{padding:72px 24px 100px;}
+.article-body-inner{max-width:760px;margin:0 auto;}
+.summary-box{background:var(--bg);border-left:4px solid var(--red);padding:24px 28px;border-radius:0 6px 6px 0;margin-bottom:52px;}
+.summary-box-title{font-size:11px;font-weight:700;color:var(--red);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:12px;}
+.summary-box ul{list-style:none;display:flex;flex-direction:column;gap:8px;}
+.summary-box ul li{display:flex;align-items:flex-start;gap:8px;font-size:14px;line-height:1.8;color:var(--ink);}
+.summary-box ul li::before{content:'✓';color:var(--red);font-weight:700;flex-shrink:0;margin-top:1px;}
+.article-body-inner h2{font-family:'Shippori Mincho',serif;font-size:clamp(17px,2.2vw,24px);font-weight:700;color:var(--ink);line-height:1.65;margin:56px 0 20px;padding-bottom:10px;border-bottom:1px solid var(--border);position:relative;}
+.article-body-inner h2::after{content:'';position:absolute;bottom:-1px;left:0;width:48px;height:2px;background:var(--red);}
+.article-body-inner h3{font-family:'Shippori Mincho',serif;font-size:clamp(15px,1.8vw,19px);font-weight:700;color:var(--ink);line-height:1.7;margin:36px 0 14px;padding-left:14px;border-left:3px solid var(--red);}
+.article-body-inner p{font-size:15px;line-height:2;color:var(--body);margin-bottom:22px;}
+.article-body-inner strong{color:var(--ink);font-weight:700;}
+.article-body-inner a{color:var(--red-dark);font-weight:700;text-decoration:underline;text-underline-offset:2px;}
+.article-body-inner ul,.article-body-inner ol{list-style:none;margin-bottom:22px;display:flex;flex-direction:column;gap:8px;}
+.article-body-inner ul li,.article-body-inner ol li{font-size:14px;line-height:1.9;color:var(--body);display:flex;align-items:flex-start;gap:10px;}
+.article-body-inner ul li::before{content:'─';color:var(--red);flex-shrink:0;margin-top:4px;font-size:12px;}
+.article-body-inner ol{counter-reset:ol;}
+.article-body-inner ol li{counter-increment:ol;}
+.article-body-inner ol li::before{content:counter(ol);background:var(--red);color:#fff;width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0;margin-top:2px;font-family:'DM Mono',monospace;}
+.pain-cards{display:flex;flex-direction:column;gap:12px;margin:24px 0;}
+.pain-card{background:var(--bg);border-left:4px solid var(--red);border-radius:0 8px 8px 0;padding:18px 20px;display:flex;align-items:flex-start;gap:12px;}
+.pain-card-icon{font-size:22px;flex-shrink:0;margin-top:2px;}
+.pain-card-body{font-size:14px;line-height:1.85;color:var(--body);}
+.pain-card-body strong{color:var(--ink);}
+.point-box{background:var(--bg2);border-radius:8px;padding:20px 24px;margin:20px 0;}
+.point-box-label{font-size:10px;font-family:'DM Mono',monospace;color:var(--red);letter-spacing:0.12em;text-transform:uppercase;margin-bottom:10px;}
+.point-box p{font-size:14px;line-height:1.9;color:var(--body);margin-bottom:0;}
+.case-box{border:1px solid #cffafe;border-left:5px solid var(--red);border-radius:0 10px 10px 0;padding:24px 26px;margin:28px 0;background:linear-gradient(135deg,#ecfeff,#f0fdf4);}
+.case-box p{margin-bottom:0;font-size:14px;line-height:1.9;color:var(--body);}
+.case-honest{margin-top:16px;background:var(--amber-bg);color:var(--amber-tx);border-radius:8px;padding:14px 16px;font-size:13px;line-height:1.85;}
+.inline-cta{background:var(--bg);border:1px solid var(--border);border-top:4px solid var(--red);border-radius:10px;padding:36px;margin:52px 0;text-align:center;}
+.inline-cta-tag{font-size:11px;color:var(--red);font-weight:700;letter-spacing:0.08em;margin-bottom:12px;}
+.inline-cta h3{font-family:'Shippori Mincho',serif;font-size:clamp(16px,2vw,22px);font-weight:700;color:var(--ink);line-height:1.65;margin-bottom:12px;}
+.inline-cta p{font-size:14px;color:var(--body);line-height:1.9;margin-bottom:22px;}
+.cta-btns-pair{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;}
+.btn-cta-red{display:inline-flex;align-items:center;gap:6px;background:var(--red);color:#fff;padding:13px 28px;border-radius:4px;font-size:14px;font-weight:700;text-decoration:none;transition:background 0.2s,transform 0.2s;}
+.btn-cta-red:hover{background:var(--red-dark);transform:translateY(-2px);}
+.btn-cta-ghost{display:inline-flex;align-items:center;gap:6px;background:#fff;color:var(--red);border:1.5px solid var(--red);padding:13px 28px;border-radius:4px;font-size:14px;font-weight:700;text-decoration:none;transition:background 0.2s;}
+.btn-cta-ghost:hover{background:var(--tag-bg);}
+.btn-cta-note{display:block;margin-top:12px;font-size:11px;color:var(--light);}
+.effect-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:24px 0;}
+.effect-card{background:#fff;border:1px solid var(--border);border-top:3px solid var(--red);border-radius:6px;padding:20px 16px;text-align:center;}
+.effect-num{font-family:'DM Mono',monospace;font-size:10px;color:var(--red);letter-spacing:0.12em;margin-bottom:8px;}
+.effect-title{font-size:12px;color:var(--body);line-height:1.6;margin-bottom:8px;}
+.effect-val{font-family:'Shippori Mincho',serif;font-size:22px;font-weight:700;color:var(--ink);}
+.effect-val em{font-style:normal;color:var(--red-dark);}
+.flow{background:var(--demo-bg);color:#cbd5e1;border-radius:8px;padding:20px 22px;font-family:'DM Mono',monospace;font-size:12.5px;line-height:1.9;white-space:pre-wrap;margin:24px 0;overflow-x:auto;}
+.flow .a{color:#f87171;}
+.flow .c{color:#67e8f9;}
+.dtable{width:100%;border-collapse:collapse;font-size:13px;margin:24px 0;}
+.dtable th,.dtable td{border:1px solid var(--border);padding:11px 13px;text-align:left;vertical-align:top;line-height:1.7;}
+.dtable th{background:var(--bg2);color:var(--ink);font-weight:700;}
+.dtable td{color:var(--body);}
+.dtable .hl{color:var(--danger);font-weight:700;white-space:nowrap;}
+.dwrap{overflow-x:auto;}
+code{font-family:'DM Mono',monospace;background:var(--bg2);border:1px solid var(--border);border-radius:4px;padding:2px 7px;font-size:0.9em;color:var(--red-dark);word-break:break-all;}
+.note{font-size:12px;color:var(--light);margin-top:-12px;margin-bottom:22px;}
+.related-section{padding:60px 24px;background:var(--white);border-top:1px solid var(--border);}
+.related-inner{max-width:760px;margin:0 auto;}
+.related-label{font-family:'DM Mono',monospace;font-size:11px;color:var(--red);letter-spacing:0.14em;text-transform:uppercase;margin-bottom:20px;}
+.related-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;}
+.related-card{border:1px solid var(--border);border-top:3px solid var(--red);padding:20px;text-decoration:none;color:inherit;border-radius:0 0 6px 6px;transition:box-shadow 0.2s,transform 0.2s;}
+.related-card:hover{box-shadow:0 4px 16px rgba(0,0,0,0.07);transform:translateY(-2px);}
+.related-card-tag{font-size:10px;font-family:'DM Mono',monospace;color:var(--red);letter-spacing:0.1em;margin-bottom:8px;}
+.related-card-title{font-family:'Shippori Mincho',serif;font-size:14px;font-weight:700;color:var(--ink);line-height:1.6;}
+.back-section{padding:28px 24px;background:var(--bg);border-top:1px solid var(--border);}
+.back-section-inner{max-width:760px;margin:0 auto;}
+.back-link{display:inline-flex;align-items:center;gap:6px;font-size:13px;color:var(--body);text-decoration:none;transition:color 0.2s;}
+.back-link:hover{color:var(--red);}
+footer{background:#1f1f1f;border-top:1px solid rgba(255,255,255,0.06);padding:40px 60px;display:flex;align-items:center;justify-content:space-between;}
+.footer-logo{display:flex;align-items:center;gap:10px;}
+.footer-logo-mark{width:20px;height:20px;background:var(--red);clip-path:polygon(50% 0%,0% 100%,18% 100%,50% 38%,82% 100%,100% 100%);}
+.footer-logo-text{font-family:'DM Mono',monospace;font-size:13px;color:rgba(255,255,255,0.55);}
+.footer-logo-text span{color:var(--red);}
+.footer-copy{font-size:11px;color:rgba(255,255,255,0.25);font-family:'DM Mono',monospace;}
+.reveal{opacity:0;transform:translateY(18px);transition:opacity 0.55s ease,transform 0.55s ease;}
+.reveal.visible{opacity:1;transform:translateY(0);}
+@media(max-width:768px){
+  .article-header,.article-body,.back-section,.related-section{padding-left:16px;padding-right:16px;}
+  .article-header{padding-top:88px;}
+  .effect-grid{grid-template-columns:1fr;}
+  .related-grid{grid-template-columns:1fr !important;}
+  .cta-btns-pair{flex-direction:column;align-items:center;}
+  .inline-cta{padding:24px 18px;}
+  footer{flex-direction:column;gap:14px;text-align:center;padding:28px 16px;}
+}
+</style>
+</head>
+<body>
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-P6VNBWH3" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
+<nav id="mainNav">
+  <a href="/" class="nav-logo">
+    <img src="/images/logo.png" alt="AIdealize">
+    <span class="nav-logo-text"><span>AI</span>dealize</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="/column/">コラム</a></li>
+    <li><a href="/service/">サービス</a></li>
+    <li><a href="https://aidealize.com/bpr/">DX事例</a></li>
+    <li><a href="/works/">実績</a></li>
+    <li><a href="/company.html">会社概要</a></li>
+    <li><a href="/service/prevention/#contact" class="nav-cta">無料でサイト点検</a></li>
+  </ul>
+  <button class="nav-hamburger" id="navHamburger" aria-label="メニュー"><span></span><span></span><span></span></button>
+</nav>
+<div class="nav-drawer" id="navDrawer">
+  <ul>
+    <li><a href="/column/" class="drawer-link">コラム</a></li>
+    <li><a href="/service/" class="drawer-link">サービス</a></li>
+    <li><a href="https://aidealize.com/bpr/" class="drawer-link">DX事例</a></li>
+    <li><a href="/works/" class="drawer-link">実績</a></li>
+    <li><a href="/company.html" class="drawer-link">会社概要</a></li>
+    <li><a href="/service/prevention/#contact">無料でサイト点検</a></li>
+  </ul>
+</div>
+
+<header class="article-header">
+  <div class="article-header-inner">
+    <nav class="breadcrumb" aria-label="パンくず">
+      <a href="/">ホーム</a><span>/</span>
+      <a href="/column/">コラム</a><span>/</span>
+      <span>クリニックの集客が落ちたとき</span>
+    </nav>
+    <div class="article-tag">クリニック集客 / 原因の切り分け</div>
+    <h1 class="article-h1">
+      クリニックの集客が急に落ちた。<br>最初に見る5つの数字と、<br>落ちた場所の見つけ方。
+    </h1>
+    <div class="article-meta">
+      <div>2026年10月9日</div>
+      <div>読了約6分</div>
+      <div>AIdealize編集部</div>
+    </div>
+  </div>
+</header>
+
+<article class="article-body">
+<div class="article-body-inner">
+
+  <div class="summary-box reveal">
+    <div class="summary-box-title">この記事でわかること</div>
+    <ul>
+      <li>集客が落ちたとき、対策より先に「どの段で落ちたか」を特定する理由</li>
+      <li>Search Console・GA4・予約システム・Googleマップで確認する5つの数字</li>
+      <li>落ちた場所ごとに、まず疑うこと</li>
+    </ul>
+  </div>
+
+  <p>先月まで順調だった新患が、今月になって明らかに減った。こういうとき、多くの医院が最初に広告の追加やMEOの手直しに手を出します。ただ、どこで落ちたのかが分からないまま対策を打つと、お金と時間だけが出ていきます。</p>
+  <p>先に確認したいのは、<strong>患者さんが来院するまでの道筋のどこで減ったか</strong>です。この記事では、1時間ほどで落ちた場所を絞り込むための5つの数字を、見る順に紹介します。</p>
+
+  <h2>まず前提：落ちた場所は4つのどれか</h2>
+  <p>患者さんが来院するまでの流れは、大きく4段に分けられます。</p>
+  <ol>
+    <li>検索結果やマップに、医院が表示される（表示回数）</li>
+    <li>表示された中から選ばれて、サイトに来る（クリック数・訪問数）</li>
+    <li>サイトで予約や電話のボタンが押される（行動数）</li>
+    <li>予約が完了し、来院する（完了数）</li>
+  </ol>
+  <p>落ちた段が分かれば、打つ手はほぼ決まります。段を特定する前の対策は、当てずっぽうになりがちです。なお、クリニックは季節や休診日の並びで来院数が自然に動くため、<strong>前年の同じ月と比べて</strong>本当に落ちているかを先に確認してください。</p>
+
+  <h2>数字1：検索での表示回数（Search Console）</h2>
+  <p>Googleが無料で提供しているSearch Consoleで、過去3か月の「表示回数」の推移を見ます。</p>
+  <ul>
+    <li>表示回数そのものが落ちている → 検索順位が下がった、または検索される言葉が減った</li>
+    <li>表示回数は変わらないのにクリックが減っている → 数字2へ</li>
+  </ul>
+  <p>表示回数が落ちている場合は、直近でサイトを作り替えた、URLを変えた、スマホでの表示が崩れた、といった変更がなかったかを確認します。サイト改修の直後に順位が動くのは珍しくありません。</p>
+
+  <h2>数字2：クリック率（表示された中で選ばれた割合）</h2>
+  <p>同じSearch Consoleで、順位は上のほうなのにクリック率が極端に低い検索語がないかを見ます。当社のサイトでも、3位台で表示されていながらクリックが0という検索語が実際にあります。この場合、原因は順位ではなく、<strong>タイトルと説明文が、検索した人の知りたいことと合っていない</strong>可能性が高いです。</p>
+  <p>クリニックなら、診療科名・地域名・「予約」「初診」などの語が、タイトルの前半に入っているかを見直します。</p>
+
+  <h2>数字3：サイトへの訪問数と、その入口（GA4）</h2>
+  <p>GA4で、検索経由（Organic Search）の訪問数を前月・前年同月と比べます。次に、訪問の入口になったページ（ランディングページ）を見ます。</p>
+  <ul>
+    <li>診療案内や予約のページが入口になっているか</li>
+    <li>院長あいさつやブログ記事ばかりが入口になっていないか</li>
+  </ul>
+  <p>入口が記事ばかりだと、見に来た人は増えても予約には結びつきません。訪問数が横ばいなのに来院が減っているときは、この入口の偏りが原因のことがあります。</p>
+
+  <h2>数字4：予約ボタンのクリックと、予約の完了数</h2>
+  <p>ここが最も見落とされやすい箇所です。「予約ボタンのクリック数」と「予約完了数」は別の数字です。<strong>クリックは多いのに完了が少ないなら、予約フォームの手前で離脱しています。</strong></p>
+  <ul>
+    <li>スマホで実際に予約の最後まで進んでみる（自分の端末で、Wi-Fiを切った状態でも）</li>
+    <li>予約システムの入力項目が増えていないか</li>
+    <li>予約システム側のエラーやメンテナンスで、完了しない状態が続いていないか</li>
+  </ul>
+  <p>サイトが見えなくなる、フォームが送れなくなる、といった事故は、気づかないまま数週間続くことがあります。証明書の期限切れなどの運用上の見落としも、ここで合わせて確認します。</p>
+
+  <h2>数字5：口コミの件数と、直近の評価</h2>
+  <p>最後に、Googleマップの口コミを見ます。件数が止まっていないか、直近の評価が急に下がっていないか。口コミは比較検討の最後に見られる情報なので、ここが弱いと、サイトまで来た人が他院を選びます。</p>
+  <p>ただし口コミは、集まるのを待つものではなく、患者さんに案内する導線を整えるものです。口コミ対応までやり切ったのに伸びない場合は、予約導線や商圏データの見直しに進みます。詳しくは<a href="/column/meo-tsugino-itte/">MEO対策をやり切ったのに伸び悩む。次の一手は何をすべきか</a>で解説しています。</p>
+
+  <h2>5つの数字から、次の手を決める</h2>
+  <div class="dwrap">
+  <table class="dtable">
+    <thead><tr><th>落ちた場所</th><th>見る数字</th><th>まず疑うこと</th></tr></thead>
+    <tbody>
+      <tr><td>表示される前</td><td>数字1</td><td>順位低下、サイト改修の影響</td></tr>
+      <tr><td>表示はされるが選ばれない</td><td>数字2</td><td>タイトル・説明文のズレ</td></tr>
+      <tr><td>来るが予約に向かわない</td><td>数字3・4</td><td>入口ページの偏り、ボタンの位置</td></tr>
+      <tr><td>押すが完了しない</td><td>数字4</td><td>フォーム・予約システムの不具合</td></tr>
+      <tr><td>比較で負ける</td><td>数字5</td><td>口コミの件数・評価</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <div class="inline-cta reveal">
+    <div class="inline-cta-tag">無料・費用契約なし</div>
+    <h3>どの段で落ちているか、<br>数字を一緒に見ます。</h3>
+    <p>Search Console・GA4などの数字を見ながら、取りこぼしている場所を優先度順にお伝えします。</p>
+    <div class="cta-btns-pair">
+      <a href="/service/clinic-marketing/#contact" class="btn-cta-red">無料でサイトを分析してもらう →</a>
+      <a href="/column/clinic-shukyaku-jirei/" class="btn-cta-ghost">集客がうまくいかない原因と改善事例を読む</a>
+    </div>
+    <span class="btn-cta-note">オンライン対応・押し売りなし</span>
+  </div>
+
+  <h2>よくある質問（FAQ）</h2>
+  <h3>対策の前に、そもそも「落ちた」のか確認する方法は？</h3>
+  <p>前年の同じ月と比べるのが確実です。クリニックは季節や休診日の並び、花粉やインフルエンザの時期で来院数が自然に動きます。直前の月とだけ比べず、前年同月と、直近3か月の推移の両方を見て、本当に平常の波を外れているかを確かめます。</p>
+  <h3>Search ConsoleやGA4が入っていない場合はどうすればいいですか？</h3>
+  <p>まず予約システムの管理画面にある「予約完了数」だけでも、週単位で数えてください。Search ConsoleとGA4はどちらも無料で、あとから設定しても過去のデータは遡れないため、入っていなければ今日から入れておくのがおすすめです。</p>
+  <h3>数字を見ても原因が分かりません。</h3>
+  <p>落ちた段が特定できれば十分です。原因まで院内で突き止める必要はありません。「検索の表示は落ちていないのに予約完了だけ減っている」のように段が分かれば、専門家に相談するときも、確認する範囲が大きく絞れます。</p>
+
+  <h2>まとめ｜対策の前に、落ちた段を特定する</h2>
+  <p>集客が落ちたときの最初の仕事は、対策を打つことではなく、<strong>落ちた段を特定すること</strong>です。5つの数字は、Search Console・GA4・予約システム・Googleマップを見るだけで揃います。</p>
+  <p>数字を見る作業を毎月続けるのは、院内だけでは負担になりがちです。AIdealizeでは、クリニックの集客でどこに取りこぼしがあるかを点検する、無料の分析を行っています。</p>
+
+</div>
+</article>
+
+<section class="related-section">
+  <div class="related-inner">
+    <div class="related-label">Related Articles</div>
+    <div class="related-grid">
+      <a href="/column/clinic-shukyaku-jirei/" class="related-card">
+        <div class="related-card-tag">クリニック集客</div>
+        <div class="related-card-title">クリニックの集客がうまくいかない原因と、改善した方法。</div>
+      </a>
+      <a href="/column/meo-tsugino-itte/" class="related-card">
+        <div class="related-card-tag">MEO / Googleマップ集客</div>
+        <div class="related-card-title">MEO対策をやり切ったのに伸び悩む。次の一手は何をすべきか。</div>
+      </a>
+      <a href="/column/ssl-shometsu-kigen/" class="related-card">
+        <div class="related-card-tag">Webサイト / セキュリティ</div>
+        <div class="related-card-title">SSL証明書の期限切れでサイトが見えなくなる前に。</div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<div class="back-section">
+  <div class="back-section-inner">
+    <a href="/column/" class="back-link">← コラム一覧に戻る</a>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-logo">
+    <div class="footer-logo-mark"></div>
+    <span class="footer-logo-text"><span>A</span>idealize株式会社</span>
+  </div>
+  <span class="footer-copy">© 2020–2026 AIdealize Inc. All rights reserved.</span>
+</footer>
+
+<script>
+(function(){
+  const btn=document.getElementById('navHamburger');
+  const drawer=document.getElementById('navDrawer');
+  const nav=document.getElementById('mainNav');
+  btn.addEventListener('click',function(){btn.classList.toggle('open');drawer.classList.toggle('open');});
+  drawer.querySelectorAll('.drawer-link').forEach(function(l){l.addEventListener('click',function(){btn.classList.remove('open');drawer.classList.remove('open');});});
+  window.addEventListener('scroll',function(){nav.classList.toggle('scrolled',window.scrollY>10);});
+})();
+const obs=new IntersectionObserver(function(e){e.forEach(function(x){if(x.isIntersecting)x.target.classList.add('visible');});},{threshold:0.08,rootMargin:'0px 0px -30px 0px'});
+document.querySelectorAll('.reveal').forEach(function(el){obs.observe(el);});
+</script>
+<script src="/js/lead-capture.js"></script>
+</body>
+</html>
