@@ -385,6 +385,7 @@ $("noteCancel").onclick = ()=>{ pendingDay=null; $("notedlg").close(); };
 /* ===== 保存・書き出し・読み込み ===== */
 $("btnReset").onclick = ()=>{ if(confirm(`${st.month}月を初期値（火水＝休み／木＝ワンプレート／祝日＝ビュッフェ）に戻しますか？`)){ st.days=defaultDays(st.year,st.month); touched(); say("初期値に戻しました。"); } };
 $("btnSave").onclick = async ()=>{ st.updated=isoToday(); render(); say((await saveData(st)) ? `${st.month}月分を保存しました（このパソコンの中）。` : "保存できませんでした。"); };
+function dataUrlToBlob(u){ const p=u.split(","), bin=atob(p[1]), a=new Uint8Array(bin.length); for(let i=0;i<bin.length;i++) a[i]=bin.charCodeAt(i); return new Blob([a],{type:p[0].replace("data:","").replace(";base64","")}); }   /* fetch(data:) はCSPのconnect-srcで止まるため自前で変換 */
 function download(name,blob){ const a=document.createElement("a"); a.href=URL.createObjectURL(blob); a.download=name; document.body.appendChild(a); a.click(); a.remove(); setTimeout(()=>URL.revokeObjectURL(a.href),4000); }
 $("btnExport").onclick = ()=>{ download("calendar.json", new Blob([exportJson()],{type:"application/json"})); say("calendar.json を書き出しました。"); };
 $("btnImport").onclick = ()=>$("fileIn").click();
@@ -530,16 +531,20 @@ $("nPhotoBtn").onclick = ()=>$("nPhoto").click();
 $("nPhotoDel").onclick = ()=>{ nImg=null; showPhoto(); };
 $("nPhoto").onchange = e=>{
   const f=e.target.files[0]; e.target.value=""; if(!f) return;
-  const img=new Image(), url=URL.createObjectURL(f);
-  img.onload=()=>{
-    const k=Math.min(1,1200/Math.max(img.width,img.height)), cv=document.createElement("canvas");
-    cv.width=Math.round(img.width*k); cv.height=Math.round(img.height*k);
-    const c=cv.getContext("2d"); c.fillStyle="#fff"; c.fillRect(0,0,cv.width,cv.height); c.drawImage(img,0,0,cv.width,cv.height);
-    URL.revokeObjectURL(url);
-    nImg={image:null,imageData:cv.toDataURL("image/jpeg",.85)}; showPhoto(); nmsg("写真を選びました。タイトルと本文を入れて「追加する」を押してください。");
+  /* 本番のCSPは img-src に blob: を許可していないため、FileReader→data: URL で読み込む */
+  const fr=new FileReader();
+  fr.onload=()=>{
+    const img=new Image();
+    img.onload=()=>{
+      const k=Math.min(1,1200/Math.max(img.width,img.height)), cv=document.createElement("canvas");
+      cv.width=Math.round(img.width*k); cv.height=Math.round(img.height*k);
+      const c=cv.getContext("2d"); c.fillStyle="#fff"; c.fillRect(0,0,cv.width,cv.height); c.drawImage(img,0,0,cv.width,cv.height);
+      nImg={image:null,imageData:cv.toDataURL("image/jpeg",.85)}; showPhoto(); nmsg("写真を選びました。タイトルと本文を入れて「追加する」を押してください。");
+    };
+    img.onerror=()=>{ nmsg("この写真は読み込めませんでした（JPEG/PNGを選んでください）。"); };
+    img.src=fr.result;
   };
-  img.onerror=()=>{ URL.revokeObjectURL(url); nmsg("この写真は読み込めませんでした（JPEG/PNGを選んでください）。"); };
-  img.src=url;
+  fr.readAsDataURL(f);
 };
 $("nTypes").onclick = e=>{ const b=e.target.closest("[data-t]"); if(b){ nType=b.dataset.t; renderTypes(); } };
 $("nAdd").onclick = async ()=>{
@@ -567,7 +572,7 @@ $("nExport").onclick = ()=>{
   const out={updated:news.updated,items:news.items.map(({imageData,...rest})=>rest)};
   download("news.json", new Blob([JSON.stringify(out,null,1)],{type:"application/json"}));
   const withImg=news.items.filter(x=>x.imageData&&x.image);
-  withImg.forEach((x,i)=>setTimeout(async()=>{ download(x.image, await (await fetch(x.imageData)).blob()); }, 400*(i+1)));
+  withImg.forEach((x,i)=>setTimeout(async()=>{ download(x.image, dataUrlToBlob(x.imageData)); }, 400*(i+1)));
   nmsg(withImg.length ? `news.json と写真${withImg.length}枚を書き出しました（ダウンロードの許可を聞かれたら「許可」）。` : "news.json を書き出しました。");
 };
 $("nImport").onclick = ()=>$("nFile").click();

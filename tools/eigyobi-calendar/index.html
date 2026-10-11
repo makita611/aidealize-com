@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>営業日カレンダー作成ツール【無料・Instagram用画像】日付を押すだけ｜AIdealize</title>
+<meta name="description" content="営業日カレンダーを、日付を押すだけで作れる無料ツール。定休日・祝日は自動、好きな写真を背景にできて、Instagram・LINE・店頭掲示に使える画像(PNG)をその場で保存。登録不要。">
+<link rel="canonical" href="https://aidealize.com/tools/eigyobi-calendar/">
+<meta property="og:title" content="営業日カレンダー作成ツール【無料】日付を押すだけでInstagram用画像に">
+<meta property="og:description" content="定休日・祝日は自動。好きな写真を背景に、Instagram用の営業日カレンダー画像を1〜2分で。登録不要・無料。">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://aidealize.com/tools/eigyobi-calendar/">
+<meta property="og:site_name" content="AIdealize株式会社">
+<meta property="og:image" content="https://aidealize.com/images/jinzaitop1.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&family=Zen+Kaku+Gothic+New:wght@400;500;700&family=Cormorant+Infant:wght@500;600&family=Pinyon+Script&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-P6VNBWH3');</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebApplication","name":"営業日カレンダー作成ツール","url":"https://aidealize.com/tools/eigyobi-calendar/","applicationCategory":"BusinessApplication","operatingSystem":"Any (Web browser)","offers":{"@type":"Offer","price":"0","priceCurrency":"JPY"},"description":"定休日・祝日を反映した営業日カレンダーを、日付を押すだけで作り、Instagram用などの画像(PNG)として保存できる無料ツール。","publisher":{"@type":"Organization","name":"AIdealize株式会社","url":"https://aidealize.com"}}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+{"@type":"Question","name":"無料で使えますか？登録は必要ですか？","acceptedAnswer":{"@type":"Answer","text":"無料で、会員登録やログインも不要です。画像の保存にも制限はありません。"}},
+{"@type":"Question","name":"入力した内容や写真はサーバーに送られますか？","acceptedAnswer":{"@type":"Answer","text":"カレンダーの入力内容や選んだ写真は、お使いのブラウザの中だけで処理され、サーバーには送られません。次回も続きから使えるよう、同じパソコン・ブラウザの中に保存されます。"}},
+{"@type":"Question","name":"Instagramに投稿できるサイズですか？","acceptedAnswer":{"@type":"Answer","text":"1080×1350ピクセル（縦長4:5）のPNG画像で保存されます。Instagramのフィード投稿にそのまま使えます。LINEや店頭掲示にも使えます。"}},
+{"@type":"Question","name":"祝日は自動で反映されますか？","acceptedAnswer":{"@type":"Answer","text":"はい。日本の祝日（振替休日・国民の休日を含む）を自動で赤字にします。祝日を営業日にするか休みにするかも選べます。"}},
+{"@type":"Question","name":"自分で撮った写真を背景にできますか？","acceptedAnswer":{"@type":"Answer","text":"できます。写真を選ぶと背景になり、文字が読みやすいように白のうすさを調整できます。他人が撮影した写真や著作物は、権利をお持ちのものだけをお使いください。"}},
+{"@type":"Question","name":"スマホでも使えますか？","acceptedAnswer":{"@type":"Answer","text":"スマホでも動きますが、日付をたくさん押すためパソコンやタブレットのほうが操作しやすいです。"}}
+]}
+</script>
+<style>
+:root{--ink:#1e293b;--body:#475569;--light:#94a3b8;--border:#e2e8f0;--bg:#f8fafc;--accent:#0891b2;--accent-d:#0e7490;--forest:#2f4a2a;--line:#e6dfd2}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;color-scheme:light}
+body{font-family:'Noto Sans JP',sans-serif;background:#fff;color:var(--ink);line-height:1.8;overflow-x:hidden}
+a{color:var(--accent-d)}
+/* NAV（サイト共通） */
+#mainNav{position:fixed;top:0;left:0;right:0;z-index:1000;display:flex;align-items:center;justify-content:space-between;padding:0 60px;height:68px;background:rgba(255,255,255,.97);border-bottom:1px solid var(--border)}
+.nav-logo{display:flex;align-items:center;gap:10px;text-decoration:none}.nav-logo img{height:34px;width:auto}
+.nav-logo-text{font-family:'DM Mono',monospace;font-size:15px;font-weight:500;color:var(--ink)}.nav-logo-text span{color:var(--accent)}
+.nav-links{display:flex;align-items:center;gap:32px;list-style:none}.nav-links a{font-size:13px;font-weight:500;color:var(--body);text-decoration:none}
+.nav-cta{background:var(--accent);color:#fff!important;padding:9px 20px;border-radius:4px;font-weight:700!important}
+@media(max-width:1024px){#mainNav{padding:0 20px}.nav-links li:not(:last-child){display:none}}
+/* HERO */
+.hero{padding:104px 24px 30px;background:var(--bg);border-bottom:1px solid var(--border)}
+.hero-in{max-width:1180px;margin:0 auto}
+.crumb{font-size:12px;color:var(--light);margin-bottom:10px}.crumb a{color:var(--light);text-decoration:none}
+.hero h1{font-size:clamp(24px,3.6vw,36px);font-weight:900;line-height:1.4}
+.hero p{margin-top:10px;color:var(--body);max-width:760px;font-size:15px}
+.badges{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}.badges span{font-size:12.5px;font-weight:700;color:var(--accent-d);background:#ecfeff;border:1px solid #bae6fd;border-radius:999px;padding:3px 12px}
+/* APP */
+.app{max-width:1180px;margin:0 auto;padding:26px 24px 40px;display:grid;grid-template-columns:minmax(0,560px) minmax(0,1fr);gap:30px;align-items:start}
+@media(max-width:980px){.app{grid-template-columns:1fr;padding:18px 14px 30px}}
+.card{border:1px solid var(--border);border-radius:14px;padding:18px;background:#fff;margin-bottom:16px}
+.card h2{font-size:16px;font-weight:900;margin-bottom:10px;display:flex;align-items:center;gap:8px}
+.card h2 i{font-style:normal;background:var(--accent);color:#fff;border-radius:50%;width:24px;height:24px;display:inline-flex;align-items:center;justify-content:center;font-size:13px}
+.row{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-bottom:10px}
+.btn,select,input[type=text],textarea,input[type=number]{font:inherit}
+.btn{border:1px solid #cbd5e1;background:#fff;border-radius:10px;padding:9px 14px;font-size:15px;cursor:pointer;color:var(--ink)}
+.btn:hover{background:#f1f5f9}.btn.on{background:var(--accent);border-color:var(--accent);color:#fff;font-weight:700}
+.btn.main{background:var(--accent);border-color:var(--accent);color:#fff;font-weight:900;font-size:18px;padding:14px 24px;width:100%}.btn.main:hover{background:var(--accent-d)}
+.btn.sm{padding:6px 12px;font-size:13.5px}
+select,input[type=text],textarea{border:1px solid #cbd5e1;border-radius:10px;padding:9px 12px;background:#fff;font-size:15px;color:var(--ink);width:auto}
+textarea{width:100%;line-height:1.7;resize:vertical}
+label.fl{display:block;font-size:13px;color:var(--body);margin:8px 0 3px}
+.wd{display:flex;gap:6px;flex-wrap:wrap}
+.wd button{width:42px;height:42px;border-radius:50%;border:1px solid #cbd5e1;background:#fff;font-size:15px;cursor:pointer}
+.wd button.on{background:#64748b;border-color:#64748b;color:#fff;font-weight:700}
+.hint{font-size:12.5px;color:var(--body);margin-top:6px}
+.eh,.eg{display:grid;grid-template-columns:repeat(7,1fr);gap:5px}
+.eh div{text-align:center;font-size:13px;font-weight:700;color:#64748b}.eh .su,.cell .d.su{color:#b2453c}.eh .sa,.cell .d.sa{color:#3d6596}
+.cell{border:1px solid var(--line);background:#fffdf9;border-radius:10px;min-height:68px;padding:5px 3px;display:flex;flex-direction:column;align-items:center;gap:3px;font:inherit;cursor:pointer;color:var(--ink)}
+.cell:hover{border-color:var(--accent);box-shadow:0 0 0 2px rgba(8,145,178,.2)}.cell.blank{visibility:hidden}
+.cell .d{font-family:'Cormorant Infant',serif;font-weight:600;font-size:19px;line-height:1;align-self:flex-start;margin-left:4px;color:#7a7064}
+.cell .t{font-size:11.5px;color:var(--body);line-height:1.2;text-align:center}
+.dot{display:inline-block;width:22px;height:22px;border-radius:50%}.dot.sm{width:12px;height:12px;vertical-align:middle}
+.tp{display:grid;grid-template-columns:36px 1fr;gap:8px;align-items:center;margin-bottom:6px}
+.tp input[type=color]{width:36px;height:36px;border:1px solid #cbd5e1;border-radius:8px;padding:2px;background:#fff;cursor:pointer}
+.tp input[type=text]{width:100%}
+.prev{position:sticky;top:84px}
+.prev canvas{width:100%;max-width:520px;height:auto;display:block;border:1px solid var(--border);border-radius:10px;box-shadow:0 8px 28px rgba(15,23,42,.1);margin:0 auto}
+.msg{min-height:1.6em;font-size:14px;color:var(--accent-d);margin-top:8px;text-align:center}
+.prev .cap{font-size:12px;color:var(--light);text-align:center;margin-top:8px}
+dialog{border:none;border-radius:16px;padding:22px;max-width:92vw;box-shadow:0 20px 60px rgba(0,0,0,.25);margin:auto}dialog::backdrop{background:rgba(15,23,42,.45)}
+dialog h3{font-size:17px;margin-bottom:10px}.choices{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:10px}
+/* CTA・本文 */
+.cta{max-width:1180px;margin:0 auto 10px;padding:0 24px}
+.cta-box{background:#0f172a;color:#fff;border-radius:16px;padding:26px 28px;display:flex;gap:20px;align-items:center;justify-content:space-between;flex-wrap:wrap}
+.cta-box h2{font-size:19px;font-weight:900;line-height:1.5}.cta-box p{font-size:13.5px;color:#cbd5e1;margin-top:6px;max-width:640px}
+.cta-box .bt{display:flex;gap:10px;flex-wrap:wrap}.cta-box a{display:inline-block;text-decoration:none;font-weight:700;font-size:14px;padding:12px 20px;border-radius:8px}
+.cta-box a.p{background:var(--accent);color:#fff}.cta-box a.s{background:transparent;border:1px solid #64748b;color:#fff}
+.doc{max-width:860px;margin:0 auto;padding:36px 24px 60px}
+.doc h2{font-size:22px;font-weight:900;margin:34px 0 10px}.doc h3{font-size:16px;margin:18px 0 4px}.doc p,.doc li{color:var(--body);font-size:15px}
+.doc ol,.doc ul{padding-left:1.4em}.doc li{margin:4px 0}
+.doc .qa{border-top:1px solid var(--border);padding:14px 0}.doc .qa b{display:block;color:var(--ink);margin-bottom:3px}
+.maker{background:var(--bg);border:1px solid var(--border);border-radius:12px;padding:16px 18px;margin-top:26px;font-size:14px;color:var(--body)}
+footer{background:#1f1f1f;padding:34px 60px;display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.fl-t{font-family:'DM Mono',monospace;font-size:13px;color:rgba(255,255,255,.55)}.fl-t span{color:var(--accent)}.fc{font-size:11px;color:rgba(255,255,255,.3);font-family:'DM Mono',monospace}
+@media(max-width:600px){footer{padding:28px 20px}}
+</style>
+</head>
+<body>
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-P6VNBWH3" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<nav id="mainNav">
+  <a href="/" class="nav-logo"><img src="/images/logo.png" alt="AIdealize"><span class="nav-logo-text"><span>AI</span>dealize</span></a>
+  <ul class="nav-links">
+    <li><a href="/column/">コラム</a></li><li><a href="/service/">サービス</a></li><li><a href="/works/">実績</a></li><li><a href="/company.html">会社概要</a></li>
+    <li><a href="/lp/ai-lp1#contact" class="nav-cta">無料相談</a></li>
+  </ul>
+</nav>
+
+<header class="hero"><div class="hero-in">
+  <div class="crumb"><a href="/">ホーム</a> / 無料ツール / 営業日カレンダー作成</div>
+  <h1>営業日カレンダーを、日付を押すだけで画像に。</h1>
+  <p>お店の営業日のお知らせを、毎月つくり直していませんか。定休日と祝日は最初から入っているので、いつもと違う日だけ押して直せば、Instagram・LINE・店頭に使える画像が1〜2分でできあがります。</p>
+  <div class="badges"><span>無料・登録不要</span><span>祝日は自動</span><span>好きな写真を背景に</span><span>入力内容は端末内だけで処理</span></div>
+</div></header>
+
+<main>
+<div class="app">
+  <section aria-label="設定">
+    <div class="card">
+      <h2><i>1</i>月を選ぶ</h2>
+      <div class="row">
+        <button class="btn" id="bThis" type="button">今月</button>
+        <button class="btn" id="bNext" type="button">来月</button>
+        <select id="selY" aria-label="年"></select><select id="selM" aria-label="月"></select>
+      </div>
+      <label class="fl">毎週の定休日</label>
+      <div class="wd" id="wd"></div>
+      <div class="row" style="margin-top:10px">
+        <button class="btn sm" id="hOpen" type="button"></button>
+        <button class="btn sm" id="bRebuild" type="button">この設定で月を作り直す</button>
+      </div>
+      <p class="hint">定休日・祝日を変えたら「作り直す」を押すと、下のカレンダーに反映されます（手で直した内容は消えます）。</p>
+    </div>
+
+    <div class="card">
+      <h2><i>2</i>いつもと違う日だけ押して直す</h2>
+      <div class="eh" id="eh"></div><div class="eg" id="eg"></div>
+      <p class="hint">日付を押すたびに「休み → <span id="cycTxt"></span> → 文字（臨時休業など）→ 休み」と切り替わります。</p>
+    </div>
+
+    <div class="card">
+      <h2><i>3</i>見た目を整える</h2>
+      <label class="fl">営業の種類（名前と色。空にすると使いません）</label>
+      <div id="tpWrap"></div>
+      <label class="fl" for="hours">営業時間などの文（右上に出ます・最大6行）</label>
+      <textarea id="hours" rows="3" maxlength="200"></textarea>
+      <label class="fl" for="shop">お店の名前（下に小さく出ます・なくてもOK）</label>
+      <input type="text" id="shop" maxlength="30" style="width:100%" placeholder="例：〇〇食堂">
+      <label class="fl">背景の写真（なくてもOK）</label>
+      <div class="row">
+        <button class="btn sm" id="bgBtn" type="button">写真を選ぶ</button><button class="btn sm" id="bgDel" type="button" hidden>写真をはずす</button>
+        <input type="file" id="bgFile" accept="image/*" hidden>
+      </div>
+      <div id="veilWrap" hidden><label class="fl" for="veil">文字の読みやすさ（白いうすいベールの濃さ）：<b id="veilV"></b>%</label><input type="range" id="veil" min="0" max="90" step="5" style="width:100%"></div>
+      <label class="fl">季節の色味と飾り</label>
+      <div class="row"><button class="btn sm" id="seaA" type="button">自動（月で変わる）</button><button class="btn sm" id="seaN" type="button">なし</button></div>
+      <p class="hint">写真は、ご自身で撮影したもの・使用の権利があるものをお使いください。</p>
+    </div>
+  </section>
+
+  <aside class="prev" aria-label="できあがり">
+    <canvas id="cv" width="1080" height="1350" role="img" aria-label="作成中の営業日カレンダー画像"></canvas>
+    <div class="card" style="margin-top:14px;border:none;padding:0"><button class="btn main" id="bSave" type="button">画像を保存する（PNG）</button><p class="msg" id="msg" role="status"></p></div>
+    <p class="cap">1080×1350px（Instagramのフィード投稿サイズ）／ 保存した画像は自由にお使いいただけます</p>
+  </aside>
+</div>
+
+<div class="cta"><div class="cta-box">
+  <div><h2>サイトの更新も、毎月の手間もまとめて任せたい方へ</h2>
+  <p>営業日をカレンダー画像にするだけでなく、ホームページの営業日表示・お知らせ・写真の差し替えまで、入力は1回で済む形をつくっています。お店のサイトがいま古いままでも、まずは無料でサイトの状態を診断できます。</p></div>
+  <div class="bt"><a class="p" href="/site-check.html" data-track="site-check">サイトを無料診断する</a><a class="s" href="/lp/ai-lp1#contact" data-track="consult">相談してみる</a></div>
+</div></div>
+
+<article class="doc">
+  <h2>使い方（3ステップ）</h2>
+  <ol>
+    <li><b>月と、毎週の定休日を選ぶ。</b>火曜・水曜など、お店のお休みの曜日を押します。日本の祝日は自動で赤字になります。</li>
+    <li><b>いつもと違う日だけ押す。</b>臨時休業の日、貸切の日、時短の日など。日付を押すたびに切り替わります。</li>
+    <li><b>「画像を保存する」を押す。</b>Instagramやlineに、そのまま使えるPNG画像が手に入ります。</li>
+  </ol>
+  <h2>こんなお店に</h2>
+  <p>飲食店・カフェ・美容室・サロン・整体院・雑貨店など、毎月「今月の営業日」をお知らせしているお店。毎月ゼロからデザインアプリで作り直している、営業日を毎回手で打ち直している、という方に向いています。</p>
+  <h2>よくある質問</h2>
+  <div class="qa"><b>無料ですか？登録は必要ですか？</b>無料で、会員登録やログインは不要です。画像の保存にも制限はありません。</div>
+  <div class="qa"><b>入力した内容や写真はサーバーに送られますか？</b>カレンダーの入力内容や選んだ写真は、お使いのブラウザの中だけで処理され、サーバーには送られません（アクセス状況の統計は取得しています）。次回も続きから使えるよう、同じパソコン・ブラウザの中に保存されます。</div>
+  <div class="qa"><b>どのサイズの画像ができますか？</b>1080×1350ピクセル（縦長4:5）のPNG画像です。Instagramのフィード投稿にそのまま使えます。</div>
+  <div class="qa"><b>祝日は自動で反映されますか？</b>はい。振替休日・国民の休日を含めて自動で赤字にします。祝日を営業にするか休みにするかは選べます。</div>
+  <div class="qa"><b>自分の写真を背景にできますか？</b>できます。「写真を選ぶ」で背景になり、白いベールの濃さで文字の読みやすさを調整できます。</div>
+  <div class="qa"><b>スマホでも使えますか？</b>動きますが、日付をたくさん押すため、パソコンやタブレットのほうが操作しやすいです。</div>
+  <div class="maker"><b>このツールをつくった人</b><br>AIdealize株式会社（群馬・東京）。地方の会社やお店のホームページ・集客の運営を支援しています。このツールは、実際のお店の「毎月のカレンダー作りが面倒」という声から作りました。使い心地のご意見は、<a href="/lp/ai-lp1#contact">こちら</a>からお寄せください。</div>
+</article>
+</main>
+
+<dialog id="dlg">
+  <h3 id="dlgT">この日をどうしますか？</h3>
+  <div class="choices" id="dlgK"></div>
+  <p class="hint" style="margin:0 0 6px">または、文字を入れる：</p>
+  <div class="choices" id="dlgN"></div>
+  <input type="text" id="dlgF" maxlength="20" placeholder="自由に入力（例：研修のため休み）" style="width:100%">
+  <div class="row" style="margin:12px 0 0"><button class="btn on" id="dlgOk" type="button">入力した文字にする</button><button class="btn" id="dlgNo" type="button">やめる</button></div>
+</dialog>
+
+<footer><span class="fl-t"><span>A</span>idealize株式会社</span><span class="fc">© 2020–2026 AIdealize Inc. All rights reserved.</span></footer>
+
+<script>
+/* ===== 共通 ===== */
+var $=function(id){return document.getElementById(id)};
+var WD="日月火水木金土", EN=["January","February","March","April","May","June","July","August","September","October","November","December"];
+var SK="eigyobi_cal_settings_v1", MK="eigyobi_cal_m_v1_", BK="eigyobi_cal_bg_v1";
+var now=new Date(), pad=function(n){return String(n).padStart(2,"0")};
+var isoToday=function(){return now.getFullYear()+"-"+pad(now.getMonth()+1)+"-"+pad(now.getDate())};
+var esc=function(s){return String(s).replace(/[&<>"]/g,function(c){return{"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]})};
+function track(ev,p){try{(window.dataLayer=window.dataLayer||[]).push(Object.assign({event:ev},p||{}))}catch(e){}}
+function lsGet(k){try{var s=localStorage.getItem(k);return s?JSON.parse(s):null}catch(e){return null}}
+function lsSet(k,v){try{localStorage.setItem(k,JSON.stringify(v));return true}catch(e){return false}}
+
+/* ===== 日本の祝日（2020年〜2099年）：固定日＋ハッピーマンデー＋春分/秋分＋振替休日＋国民の休日 ===== */
+var HCACHE={};
+function holidays(y){
+  if(HCACHE[y]) return HCACHE[y];
+  var h={}, key=function(m,d){return m+"-"+d};
+  var add=function(m,d){h[key(m,d)]=1};
+  var nthMon=function(m,n){var f=new Date(y,m-1,1).getDay(); return 1+((8-f)%7)+(n-1)*7};
+  var k=y-1980, spring=Math.floor(20.8431+0.242194*k-Math.floor(k/4)), autumn=Math.floor(23.2488+0.242194*k-Math.floor(k/4));
+  add(1,1); add(1,nthMon(1,2)); add(2,11); if(y>=2020) add(2,23); add(3,spring); add(4,29); add(5,3); add(5,4); add(5,5);
+  add(7,nthMon(7,3)); add(8,11); add(9,nthMon(9,3)); add(9,autumn); add(10,nthMon(10,2)); add(11,3); add(11,23);
+  var dow=function(m,d){return new Date(y,m-1,d).getDay()};
+  Object.keys(h).slice().forEach(function(s){ var p=s.split("-"),m=+p[0],d=+p[1];
+    if(dow(m,d)===0){ var dd=d+1; while(h[key(m,dd)]) dd++; h[key(m,dd)]=1; } });
+  for(var m=1;m<=12;m++){ var n=new Date(y,m,0).getDate();
+    for(var d=2;d<n;d++){ if(!h[key(m,d)] && h[key(m,d-1)] && h[key(m,d+1)] && dow(m,d)!==0) h[key(m,d)]=1; } }
+  return HCACHE[y]=h;
+}
+var isHoliday=function(y,m,d){return !!holidays(y)[m+"-"+d]};
+
+/* ===== 設定と月データ ===== */
+var DEF={types:[{name:"営業",color:"#8a9a85"},{name:"時短営業",color:"#d9d9dc"},{name:"",color:"#c9b38a"}],
+  hours:"営業時間 10:00〜18:00",shop:"",season:"auto",closedWd:[3],holidayOpen:true,veil:55};
+var S=Object.assign({},DEF,lsGet(SK)||{}); if(!S.types||S.types.length!==3) S.types=DEF.types;
+var Y=now.getFullYear(), M=now.getMonth()+1, D={days:{},updated:isoToday()};
+var bgImg=null, bgData=null;
+function saveS(){lsSet(SK,S)}
+function saveM(){D.updated=isoToday(); lsSet(MK+Y+"-"+pad(M),D)}
+function activeTypes(){var a=[];S.types.forEach(function(t,i){if(t.name.trim()) a.push(i+1)});return a}
+function defaultDays(y,m){
+  var days={}, n=new Date(y,m,0).getDate(), first=activeTypes()[0]||1;
+  for(var d=1;d<=n;d++){ var w=new Date(y,m-1,d).getDay();
+    if(isHoliday(y,m,d)){ if(S.holidayOpen) days[d]=first; }
+    else if(S.closedWd.indexOf(w)<0) days[d]=first; }
+  return days;
+}
+function loadMonth(y,m){Y=y;M=m;var s=lsGet(MK+y+"-"+pad(m));D=s&&s.days?s:{days:defaultDays(y,m),updated:isoToday()};renderAll()}
+function weeks(y,m){var f=new Date(y,m-1,1).getDay(),n=new Date(y,m,0).getDate(),c=[],i;for(i=0;i<f;i++)c.push(0);for(i=1;i<=n;i++)c.push(i);while(c.length%7)c.push(0);var w=[];for(i=0;i<c.length;i+=7)w.push(c.slice(i,i+7));return w}
+var seasonOf=function(m){return S.season==="none"?null:([3,4,5].indexOf(m)>=0?"spring":[6,7,8].indexOf(m)>=0?"summer":[9,10,11].indexOf(m)>=0?"autumn":"winter")};
+
+/* ===== 画面：設定UI ===== */
+function renderControls(){
+  var ys="",y0=now.getFullYear(); for(var y=y0-1;y<=y0+2;y++) ys+='<option value="'+y+'"'+(y===Y?" selected":"")+'>'+y+'年</option>'; $("selY").innerHTML=ys;
+  var ms=""; for(var m=1;m<=12;m++) ms+='<option value="'+m+'"'+(m===M?" selected":"")+'>'+m+'月</option>'; $("selM").innerHTML=ms;
+  var nx=new Date(now.getFullYear(),now.getMonth()+1,1);
+  $("bThis").classList.toggle("on",Y===now.getFullYear()&&M===now.getMonth()+1);
+  $("bNext").classList.toggle("on",Y===nx.getFullYear()&&M===nx.getMonth()+1);
+  $("wd").innerHTML=WD.split("").map(function(c,i){return '<button type="button" data-w="'+i+'" class="'+(S.closedWd.indexOf(i)>=0?"on":"")+'" aria-pressed="'+(S.closedWd.indexOf(i)>=0)+'">'+c+'</button>'}).join("");
+  $("hOpen").textContent=S.holidayOpen?"祝日：営業する":"祝日：休みにする";
+  $("tpWrap").innerHTML=S.types.map(function(t,i){return '<div class="tp"><input type="color" data-c="'+i+'" value="'+t.color+'" aria-label="色'+(i+1)+'"><input type="text" data-n="'+i+'" value="'+esc(t.name)+'" maxlength="12" placeholder="'+(i===2?"（3つ目・使わなければ空）":"営業の種類の名前")+'"></div>'}).join("");
+  if(document.activeElement!==$("hours")) $("hours").value=S.hours;
+  if(document.activeElement!==$("shop")) $("shop").value=S.shop;
+  $("seaA").classList.toggle("on",S.season!=="none"); $("seaN").classList.toggle("on",S.season==="none");
+  $("bgDel").hidden=!bgImg; $("veilWrap").hidden=!bgImg; $("bgBtn").textContent=bgImg?"写真を選び直す":"写真を選ぶ"; $("veil").value=S.veil; $("veilV").textContent=S.veil;
+  var a=activeTypes(); $("cycTxt").textContent=a.map(function(i){return S.types[i-1].name}).join(" → ");
+}
+function renderGrid(){
+  $("eh").innerHTML=WD.split("").map(function(c,i){return '<div class="'+(i===0?"su":i===6?"sa":"")+'">'+c+'</div>'}).join("");
+  $("eg").innerHTML=weeks(Y,M).reduce(function(a,b){return a.concat(b)},[]).map(function(d,i){
+    if(!d) return '<div class="cell blank"></div>';
+    var v=D.days[d], col=i%7, dc=(col===0||isHoliday(Y,M,d))?"su":col===6?"sa":"", inner='<span class="t">休</span>', lab="休み";
+    if(v&&typeof v==="object"){inner='<span class="t">'+esc(v.note).replace(/\n/g,"<br>")+'</span>';lab=v.note}
+    else if(v&&S.types[v-1]&&S.types[v-1].name.trim()){inner='<span class="dot" style="background:'+S.types[v-1].color+'"></span>';lab=S.types[v-1].name}
+    return '<button type="button" class="cell" data-d="'+d+'" aria-label="'+M+'月'+d+'日 '+esc(lab)+'"><span class="d '+dc+'">'+d+'</span>'+inner+'</button>';
+  }).join("");
+}
+function renderAll(){renderControls();renderGrid();draw()}
+
+/* ===== 日付を押す：休み → 種類1 → 種類2 → (種類3) → 文字 → 休み ===== */
+var pend=null;
+$("eg").addEventListener("click",function(e){
+  var b=e.target.closest("[data-d]"); if(!b) return; var d=b.dataset.d, v=D.days[d], a=activeTypes();
+  if(!v){ if(a.length) D.days[d]=a[0]; else { pend=d; openDlg(); return; } }
+  else if(typeof v==="number"){ var i=a.indexOf(v); if(i>=0&&i<a.length-1) D.days[d]=a[i+1]; else { pend=d; openDlg(); return; } }
+  else delete D.days[d];
+  saveM(); renderGrid(); draw();
+});
+function openDlg(){
+  $("dlgT").textContent=M+"月"+pend+"日をどうしますか？";
+  $("dlgK").innerHTML=activeTypes().map(function(i){return '<button type="button" class="btn" data-k="'+i+'"><span class="dot sm" style="background:'+S.types[i-1].color+'"></span> '+esc(S.types[i-1].name)+'</button>'}).join("")+'<button type="button" class="btn" data-k="0">休み（空白）</button>';
+  $("dlgN").innerHTML=["臨時休業","貸切","団体様\n貸切","お休み"].map(function(n,i){return '<button type="button" class="btn" data-i="'+i+'">'+esc(n).replace(/\n/g,"")+'</button>'}).join("");
+  $("dlgF").value=""; $("dlg").showModal();
+}
+var PRE=["臨時休業","貸切","団体様\n貸切","お休み"];
+function setNote(t){ if(t&&pend){D.days[pend]={note:t};saveM();renderGrid();draw()} pend=null; $("dlg").close() }
+$("dlgK").onclick=function(e){var b=e.target.closest("[data-k]");if(!b||!pend)return;var k=+b.dataset.k;if(k===0)delete D.days[pend];else D.days[pend]=k;pend=null;$("dlg").close();saveM();renderGrid();draw()};
+$("dlgN").onclick=function(e){var b=e.target.closest("[data-i]");if(b)setNote(PRE[+b.dataset.i])};
+$("dlgOk").onclick=function(){var t=$("dlgF").value.trim();if(t)setNote(t);else $("dlgF").focus()};
+$("dlgF").onkeydown=function(e){if(e.key==="Enter")$("dlgOk").click()};
+$("dlgNo").onclick=function(){pend=null;$("dlg").close()};
+
+/* ===== 設定の操作 ===== */
+$("bThis").onclick=function(){loadMonth(now.getFullYear(),now.getMonth()+1)};
+$("bNext").onclick=function(){var n=new Date(now.getFullYear(),now.getMonth()+1,1);loadMonth(n.getFullYear(),n.getMonth()+1)};
+$("selY").onchange=$("selM").onchange=function(){loadMonth(+$("selY").value,+$("selM").value)};
+$("wd").onclick=function(e){var b=e.target.closest("[data-w]");if(!b)return;var w=+b.dataset.w,i=S.closedWd.indexOf(w);if(i>=0)S.closedWd.splice(i,1);else S.closedWd.push(w);saveS();renderControls()};
+$("hOpen").onclick=function(){S.holidayOpen=!S.holidayOpen;saveS();renderControls()};
+$("bRebuild").onclick=function(){D.days=defaultDays(Y,M);saveM();renderAll();$("msg").textContent=M+"月を、毎週の定休日と祝日の設定で作り直しました。"};
+$("tpWrap").oninput=function(e){var t=e.target;if(t.dataset.n!==undefined)S.types[+t.dataset.n].name=t.value;if(t.dataset.c!==undefined)S.types[+t.dataset.c].color=t.value;saveS();renderGrid();$("cycTxt").textContent=activeTypes().map(function(i){return S.types[i-1].name}).join(" → ");draw()};
+$("hours").oninput=function(){S.hours=$("hours").value;saveS();draw()};
+$("shop").oninput=function(){S.shop=$("shop").value;saveS();draw()};
+$("seaA").onclick=function(){S.season="auto";saveS();renderControls();draw()};
+$("seaN").onclick=function(){S.season="none";saveS();renderControls();draw()};
+$("veil").oninput=function(){S.veil=+$("veil").value;$("veilV").textContent=S.veil;saveS();draw()};
+
+/* ===== 背景写真（FileReader→縮小。サーバーには送らない） ===== */
+function setBg(data){
+  if(!data){bgImg=null;bgData=null;try{localStorage.removeItem(BK)}catch(e){}renderControls();draw();return}
+  var im=new Image(); im.onload=function(){bgImg=im;bgData=data;renderControls();draw()}; im.src=data;
+}
+$("bgBtn").onclick=function(){$("bgFile").click()};
+$("bgDel").onclick=function(){setBg(null)};
+$("bgFile").onchange=function(e){
+  var f=e.target.files[0]; e.target.value=""; if(!f) return;
+  var fr=new FileReader();
+  fr.onload=function(){
+    var im=new Image();
+    im.onload=function(){
+      var k=Math.min(1,1600/Math.max(im.width,im.height)),c=document.createElement("canvas");c.width=Math.round(im.width*k);c.height=Math.round(im.height*k);
+      c.getContext("2d").drawImage(im,0,0,c.width,c.height);
+      var data=c.toDataURL("image/jpeg",.85); lsSet(BK,data); setBg(data); track("eigyobi_cal_bg");
+    };
+    im.onerror=function(){$("msg").textContent="この写真は読み込めませんでした（JPEG・PNGを選んでください）。"};
+    im.src=fr.result;
+  };
+  fr.readAsDataURL(f);
+};
+
+/* ===== 画像を描く（基準は 1440×1800。実寸 1080×1350 に 0.75 倍） ===== */
+var SERIF='"Cormorant Infant", serif', SCRIPT='"Pinyon Script", cursive', GOTHIC='"Zen Kaku Gothic New","Noto Sans JP", sans-serif';
+var SEA={spring:{bg:["#f9eeee","#f4e2e2","#faf1ef"],hd:"#dcc9c6",d:"M0,-12 C10,-9 11,4 0,12 C-11,4 -10,-9 0,-12Z",fill:"rgba(232,180,184,.6)"},
+ summer:{bg:["#f0f3e8","#e4ebd8","#f3f6ec"],hd:"#c5cfb8",d:"M0,-13 C11,-6 10,7 0,13 C-10,7 -11,-6 0,-13Z",fill:"rgba(138,163,122,.5)"},
+ autumn:{bg:["#f6ebdc","#f0dcc4","#f7eee2"],hd:"#d6bfa3",d:"M0,-12 L3,-5 L11,-8 L7,-1 L12,3 L4,4 L3,12 L0,6 L-3,12 L-4,4 L-12,3 L-7,-1 L-11,-8 L-3,-5Z",fill:"rgba(201,119,47,.5)"},
+ winter:{bg:["#f1f4f8","#e5eaf1","#f6f8fb"],hd:"#c8cfd9",d:"M0,-10 L0,10 M-10,0 L10,0 M-7,-7 L7,7 M-7,7 L7,-7",stroke:"#b7c4d6"}};
+var DECO=[[.05,.03,40,20],[.30,.025,28,-30],[.44,.075,34,60],[.58,.03,26,10],[.97,.02,36,40],[.015,.985,34,-20],[.36,.975,28,50],[.5,.958,40,15],[.66,.98,32,-45],[.985,.985,26,0]];
+var fontOK={};
+function loadFonts(){
+  var all=S.hours+S.shop+S.types.map(function(t){return t.name}).join("")+"営業日休臨時貸切団体様お空白＝定最終更新年月：0123456789:~()";
+  Object.keys(D.days).forEach(function(k){var v=D.days[k];if(v&&v.note)all+=v.note});
+  var jobs=[document.fonts.load("600 100px "+SERIF,"0123456789"),document.fonts.load("500 40px "+SERIF,"0123456789SUNMOTEWHFRA"),document.fonts.load("400 80px "+SCRIPT,"JanuaryFebMchpilyOctNvDs"),
+    document.fonts.load("500 30px "+GOTHIC,all),document.fonts.load("700 30px "+GOTHIC,all)];
+  return Promise.all(jobs).catch(function(){});
+}
+function T(c,s,x,y,o){c.font=o.font;c.fillStyle=o.color;c.textAlign=o.align||"left";c.letterSpacing=(o.ls||0)+"px";c.fillText(s,x,y)}
+function dot(c,x,y,r,col){c.beginPath();c.arc(x,y,r,0,Math.PI*2);c.fillStyle=col;c.fill()}
+function fitFont(c,s,w,w0,size,ls){var f;do{f=w0+" "+size+"px "+GOTHIC;c.font=f;c.letterSpacing=ls+"px";if(c.measureText(s).width<=w||size<=22)break;size-=2}while(true);return f}
+function paint(cv){
+  var c=cv.getContext("2d"), W=1080,H=1350, sea=seasonOf(M), th=sea?SEA[sea]:null;
+  var bg=th?th.bg:["#f5efe7","#efe6dc","#f6f1ea"], hd=th?th.hd:"#cfc5b9", photo=!!bgImg;
+  c.setTransform(1,0,0,1,0,0); c.clearRect(0,0,W,H);
+  if(photo){
+    var k=Math.max(W/bgImg.width,H/bgImg.height), w=bgImg.width*k, h=bgImg.height*k; c.drawImage(bgImg,(W-w)/2,(H-h)/2,w,h);
+    c.fillStyle="rgba(255,255,255,"+(S.veil/100)+")"; c.fillRect(0,0,W,H);
+  }else{
+    var g=c.createLinearGradient(0,0,W,H); g.addColorStop(0,bg[0]);g.addColorStop(.45,bg[1]);g.addColorStop(1,bg[2]); c.fillStyle=g; c.fillRect(0,0,W,H);
+    if(th) DECO.forEach(function(p){c.save();c.translate(p[0]*W,p[1]*H);c.rotate(p[3]*Math.PI/180);c.scale(p[2]/28,p[2]/28);var path=new Path2D(th.d);
+      if(th.stroke){c.strokeStyle=th.stroke;c.lineWidth=2;c.lineCap="round";c.stroke(path)}else{c.fillStyle=th.fill;c.fill(path)}c.restore()});
+  }
+  c.scale(.75,.75);
+  var INK="#5f574b", SUB="#6f665a", TX="#4f483e", red="#b2453c", blue="#3d6596";
+  var ms=String(M); c.font="600 300px "+SERIF; c.letterSpacing="0px"; var mw=c.measureText(ms).width;
+  T(c,ms,70,415,{font:"600 300px "+SERIF,color:INK});
+  var nx=70+mw+40;
+  T(c,String(Y),nx,303,{font:"500 56px "+SERIF,color:TX,ls:8});
+  T(c,EN[M-1],nx-2,388,{font:"400 104px "+SCRIPT,color:SUB});
+  var lines=S.hours.split("\n").filter(function(s){return s.trim()}).slice(0,6);
+  lines.forEach(function(s,i){var f=fitFont(c,s,560,"500",38,4); T(c,s,1365,146+i*62,{font:f,color:TX,align:"right",ls:4})});
+  var X0=76,CW=178,GAP=7.5,HT=505,HH=83;
+  ["SUN","MON","TUE","WED","THU","FRI","SAT"].forEach(function(n,i){var x=X0+i*(CW+GAP);c.fillStyle=photo?"rgba(214,200,186,.92)":hd;c.fillRect(x,HT,CW,HH);T(c,n,x+CW/2,HT+54,{font:"600 29px "+SERIF,color:i===0?red:i===6?blue:SUB,align:"center",ls:6})});
+  var ws=weeks(Y,M), TOP=HT+HH+7, BOT=1605, RG=6, RH=(BOT-TOP-RG*(ws.length-1))/ws.length;
+  ws.forEach(function(w,r){w.forEach(function(d,i){
+    var x=X0+i*(CW+GAP), top=TOP+r*(RH+RG);
+    c.fillStyle=d?"rgba(255,255,255,.84)":"rgba(255,255,255,.4)"; c.fillRect(x,top,CW,RH); if(!d) return;
+    var dc=(i===0||isHoliday(Y,M,d))?red:i===6?blue:SUB;
+    T(c,String(d),x+14,top+(RH>185?40:38),{font:"500 36px "+SERIF,color:dc,ls:1});
+    var v=D.days[d];
+    if(typeof v==="number"&&S.types[v-1]&&S.types[v-1].name.trim()) dot(c,x+CW/2,top+RH*.56,34,S.types[v-1].color);
+    else if(v&&typeof v==="object"){var ls=v.note.split("\n");ls.forEach(function(t,k){T(c,t,x+CW/2,top+RH*.63+(k-(ls.length-1)/2)*45+11,{font:"500 31px "+GOTHIC,color:INK,align:"center",ls:3})})}
+  })});
+  var lx=100, ly=1699;
+  activeTypes().forEach(function(i){var t=S.types[i-1];dot(c,lx,ly-11,16,t.color);c.font="500 28px "+GOTHIC;c.letterSpacing="3px";var tw=c.measureText(t.name).width;T(c,t.name,lx+30,ly,{font:"500 28px "+GOTHIC,color:TX,ls:3});lx+=30+tw+56});
+  T(c,"空白＝定休日",lx,ly,{font:"500 28px "+GOTHIC,color:photo?TX:"#8f8777",ls:3});
+  if(S.shop.trim()) T(c,S.shop.trim(),76,1747,{font:"500 26px "+GOTHIC,color:TX,ls:3});
+  var up=D.updated.split("-"); T(c,"最終更新："+(+up[1])+"月"+(+up[2])+"日",1365,1747,{font:"400 24px "+GOTHIC,color:photo?TX:"#8f8777",align:"right",ls:2});
+}
+var drawT=null;
+function draw(){ clearTimeout(drawT); drawT=setTimeout(function(){loadFonts().then(function(){paint($("cv"))})},60) }
+
+/* ===== 保存 ===== */
+$("bSave").onclick=function(){
+  $("msg").textContent="画像を作っています…";
+  loadFonts().then(function(){
+    paint($("cv"));
+    $("cv").toBlob(function(b){
+      var a=document.createElement("a"); a.href=URL.createObjectURL(b); a.download="eigyobi_calendar_"+Y+"-"+pad(M)+".png"; document.body.appendChild(a); a.click(); a.remove(); setTimeout(function(){URL.revokeObjectURL(a.href)},4000);
+      $("msg").textContent=M+"月の画像を保存しました。ダウンロードフォルダ（スマホは写真アプリ）を見てください。";
+      track("eigyobi_cal_save",{cal_month:Y+"-"+pad(M),cal_bg:bgImg?1:0});
+    },"image/png");
+  });
+};
+
+/* ===== 起動 ===== */
+(function(){var d=lsGet(BK); if(d){var im=new Image();im.onload=function(){bgImg=im;bgData=d;renderControls();draw()};im.src=d}})();
+loadMonth(now.getFullYear(),now.getMonth()+1);
+window.__cal={get S(){return S},get D(){return D},holidays:holidays,paint:paint,loadFonts:loadFonts};
+</script>
+<script src="/js/lead-capture.js" data-offer="sitecheck"></script>
+</body>
+</html>

@@ -51,3 +51,4 @@
 
 - [会社概要](https://aidealize.com/company.html)
 - [コラム一覧](https://aidealize.com/column/)
+- [営業日カレンダー作成ツール（無料）](https://aidealize.com/tools/eigyobi-calendar/): 定休日・祝日を反映し、日付を押すだけでInstagram用の営業日カレンダー画像(PNG)を作る無料ツール。背景に好きな写真を使える。登録不要
