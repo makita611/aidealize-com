@@ -333,7 +333,20 @@ footer .ridge-line{max-width:var(--max);margin:0 auto 34px}
 .visit-sum{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:start}
 .nav a.current{color:var(--ink);border-bottom:1px solid var(--ink)}
 .nav a{white-space:nowrap}
-@media(max-width:1240px){.nav{gap:16px;font-size:12.8px}}
+.logo{white-space:nowrap}
+.aerial-grid{display:grid;grid-template-columns:1fr 1fr;gap:22px;margin-top:26px;align-items:start}
+.aerial-grid svg{width:100%;height:auto;display:block;border-radius:14px}
+.aerial-grid .map-embed{aspect-ratio:4/3}
+@media(max-width:860px){.aerial-grid{grid-template-columns:1fr}}
+.nav{align-items:center}
+.nav-dd{position:relative}
+.nav-dd>a::after{content:" ▾";font-size:10px;color:var(--moss)}
+.dd-menu{display:none;position:absolute;top:100%;left:-14px;min-width:12em;background:#fff;border:1px solid var(--line);border-radius:12px;padding:8px 6px;box-shadow:0 10px 28px rgba(36,58,33,.12);flex-direction:column;z-index:60}
+.nav-dd:hover .dd-menu,.nav-dd:focus-within .dd-menu{display:flex}
+.dd-menu a{padding:9px 14px;border-radius:8px;white-space:nowrap}
+.dd-menu a:hover{background:var(--kinari)}
+.nav-dd::after{content:"";position:absolute;left:0;right:0;top:100%;height:10px}
+@media(max-width:1240px){.nav{gap:18px;font-size:13px}}
 
 /* お知らせ一覧 */
 .news-list{list-style:none;border-top:1px solid var(--ink)}
@@ -524,10 +537,15 @@ footer .ridge-line{max-width:var(--max);margin:0 auto 34px}
       <a href="../lunch/" data-nav="lunch">ランチ・ご予約</a>
       <a href="../menu/" data-nav="menu">季節のメニュー</a>
       <a href="../group/" data-nav="group">団体・女子会</a>
-      <a href="../gallery/" data-nav="gallery">ギャラリー</a>
       <a href="../shop/" data-nav="shop">ショップ</a>
-      <a href="../access/" data-nav="access">アクセス</a>
-      <a href="../news/" data-nav="news">営業日・お知らせ</a>
+      <div class="nav-dd">
+        <a href="../access/" data-nav="access">お店のご案内</a>
+        <div class="dd-menu">
+          <a href="../gallery/" data-nav="gallery">ギャラリー</a>
+          <a href="../access/" data-nav="access">アクセス・駐車場</a>
+          <a href="../news/" data-nav="news">営業日・お知らせ</a>
+        </div>
+      </div>
     </nav>
     <a class="btn" href="../lunch/#reserve" data-track="line">LINEで予約</a>
   </div>
@@ -621,7 +639,7 @@ footer .ridge-line{max-width:var(--max);margin:0 auto 34px}
 
 <script>
 // 今いるページのメニューに印をつける
-(function(){var c=document.body.dataset.page;var a=document.querySelector('.nav a[data-nav="'+c+'"]');if(a)a.classList.add("current");})();
+(function(){var c=document.body.dataset.page;var a=document.querySelector('.nav a[data-nav="'+c+'"]');if(a){a.classList.add("current");var d=a.closest('.nav-dd');if(d)d.firstElementChild.classList.add("current");}})();
 // 引用文の稜線を少しだけ下へ（動きを減らす設定では止める）
 (function(){
   var big=document.querySelector("[data-parallax]");

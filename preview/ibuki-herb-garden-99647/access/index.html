@@ -333,7 +333,20 @@ footer .ridge-line{max-width:var(--max);margin:0 auto 34px}
 .visit-sum{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:start}
 .nav a.current{color:var(--ink);border-bottom:1px solid var(--ink)}
 .nav a{white-space:nowrap}
-@media(max-width:1240px){.nav{gap:16px;font-size:12.8px}}
+.logo{white-space:nowrap}
+.aerial-grid{display:grid;grid-template-columns:1fr 1fr;gap:22px;margin-top:26px;align-items:start}
+.aerial-grid svg{width:100%;height:auto;display:block;border-radius:14px}
+.aerial-grid .map-embed{aspect-ratio:4/3}
+@media(max-width:860px){.aerial-grid{grid-template-columns:1fr}}
+.nav{align-items:center}
+.nav-dd{position:relative}
+.nav-dd>a::after{content:" ▾";font-size:10px;color:var(--moss)}
+.dd-menu{display:none;position:absolute;top:100%;left:-14px;min-width:12em;background:#fff;border:1px solid var(--line);border-radius:12px;padding:8px 6px;box-shadow:0 10px 28px rgba(36,58,33,.12);flex-direction:column;z-index:60}
+.nav-dd:hover .dd-menu,.nav-dd:focus-within .dd-menu{display:flex}
+.dd-menu a{padding:9px 14px;border-radius:8px;white-space:nowrap}
+.dd-menu a:hover{background:var(--kinari)}
+.nav-dd::after{content:"";position:absolute;left:0;right:0;top:100%;height:10px}
+@media(max-width:1240px){.nav{gap:18px;font-size:13px}}
 
 /* お知らせ一覧 */
 .news-list{list-style:none;border-top:1px solid var(--ink)}
@@ -524,10 +537,15 @@ footer .ridge-line{max-width:var(--max);margin:0 auto 34px}
       <a href="../lunch/" data-nav="lunch">ランチ・ご予約</a>
       <a href="../menu/" data-nav="menu">季節のメニュー</a>
       <a href="../group/" data-nav="group">団体・女子会</a>
-      <a href="../gallery/" data-nav="gallery">ギャラリー</a>
       <a href="../shop/" data-nav="shop">ショップ</a>
-      <a href="../access/" data-nav="access">アクセス</a>
-      <a href="../news/" data-nav="news">営業日・お知らせ</a>
+      <div class="nav-dd">
+        <a href="../access/" data-nav="access">お店のご案内</a>
+        <div class="dd-menu">
+          <a href="../gallery/" data-nav="gallery">ギャラリー</a>
+          <a href="../access/" data-nav="access">アクセス・駐車場</a>
+          <a href="../news/" data-nav="news">営業日・お知らせ</a>
+        </div>
+      </div>
     </nav>
     <a class="btn" href="../lunch/#reserve" data-track="line">LINEで予約</a>
   </div>
@@ -569,16 +587,56 @@ footer .ridge-line{max-width:var(--max);margin:0 auto 34px}
     <span class="label">ENTRANCE</span>
     <h2>駐車場と入口</h2>
     <p class="lead">はじめての方が迷わないように、駐車場から入口までの順にご案内します。</p>
-    <div class="entry">
+    <div class="entry" style="grid-template-columns:1fr 1fr">
       <figure><div class="photo" style="aspect-ratio:1/1"><img src="../assets/p-roadsign.jpg" alt="「いぶきハーブ・ガーデン」の矢印つき看板" loading="lazy"></div>
         <figcaption><b>① 道沿いの看板</b>この看板が目印です。駐車場は約30台。◯◯（看板の場所と駐車場の入口を現地で確認して記入）</figcaption></figure>
-      <figure><div class="photo"><img src="../assets/p-front-autumn.jpg" alt="木造の建物の正面。壁に「IBUKI HERB GARDEN」の看板" loading="lazy"></div>
-        <figcaption><b>② 建物の正面</b>木の建物の壁に「IBUKI HERB GARDEN」の文字があります。</figcaption></figure>
-      <figure><div class="photo"><img src="../assets/entrance-porch.jpg" alt="屋根の下の入口と、入口までの石畳" style="object-position:50% 60%" loading="lazy"></div>
-        <figcaption><b>③ 入口</b>石畳を進んだ先、屋根の下が入口です（◯◯ 現地で確認）。<small>※写真はオープン前（お祓いの日）の撮影です</small></figcaption></figure>
+      <figure><div class="photo"><img src="../assets/p-entrance-patio.jpg" alt="屋根のある入口の前に石畳とパラソル、奥に木造の建物" loading="lazy"></div>
+        <figcaption><b>② 建物と入口</b>木の建物の壁に「IBUKI HERB GARDEN」の文字があります。◯◯（入口の位置を現地で確認して記入。写真の屋根の下が入口と思われます）</figcaption></figure>
     </div>
     <p class="credit" style="text-align:left">写真：いぶきハーブ・ガーデン提供・提案用</p>
     <p class="lead" style="margin-top:16px">営業日は月ごとに変わります。<a href="../news/#calendar">今月の営業日</a>をご確認のうえお越しください。</p>
+  </div>
+</section>
+
+<section id="aerial" style="background:var(--kinari)">
+  <div class="wrap">
+    <span class="label">MAP</span>
+    <h2>上から見た、お店のまわり</h2>
+    <p class="lead">道路から橋を渡ると、駐車場と建物があります。航空写真と、わかりやすくしたイラストの2つで、位置をご確認いただけます。</p>
+    <div class="aerial-grid">
+      <div>
+        <div class="map-embed" style="margin-top:0"><iframe src="https://www.google.com/maps?q=%E6%BB%8B%E8%B3%80%E7%9C%8C%E7%B1%B3%E5%8E%9F%E5%B8%82%E4%B8%8A%E6%9D%BF%E4%B8%A61759-1&amp;t=k&amp;z=19&amp;output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="お店のまわりの航空写真"></iframe></div>
+        <p class="cap">航空写真（Googleマップ）。拡大・移動ができます</p>
+      </div>
+      <div>
+        <svg viewBox="0 0 640 480" role="img" aria-label="お店のまわりのイラストマップ。右に道路、川を渡る橋、駐車場、建物の位置を示しています" xmlns="http://www.w3.org/2000/svg" font-family="'Zen Kaku Gothic New','Yu Gothic',sans-serif">
+  <rect width="640" height="480" rx="14" fill="#efe8d8"/>
+  <path d="M0 330 C80 300 150 360 230 420 L250 480 L0 480Z" fill="#cfdcc0"/>
+  <path d="M0 200 C60 190 80 230 60 290 L0 300Z" fill="#cfdcc0"/>
+  <path d="M440 0 L522 0 C500 120 430 300 352 480 L250 480 C330 320 410 150 440 0Z" fill="#bcd0d4"/>
+  <path d="M452 60 q18 -10 36 0 M432 150 q18 -10 36 0 M400 250 q18 -10 36 0 M360 350 q18 -10 36 0 M330 430 q14 -8 28 0" fill="none" stroke="#9fb7bc" stroke-width="2" stroke-linecap="round"/>
+  <path d="M556 0 C546 160 510 340 478 480" fill="none" stroke="#cfc8b6" stroke-width="26" stroke-linecap="round"/>
+  <path d="M556 0 C546 160 510 340 478 480" fill="none" stroke="#e8e1cf" stroke-width="2" stroke-dasharray="10 10"/>
+  <path d="M384 112 L516 178" stroke="#a9a08c" stroke-width="18" stroke-linecap="butt"/>
+  <path d="M384 112 L516 178" stroke="#c9c2ae" stroke-width="12" stroke-linecap="butt"/>
+  <rect x="256" y="88" width="132" height="76" rx="8" fill="#ddd7c6"/>
+  <g fill="#fff" stroke="#b9b29e"><rect x="270" y="102" width="18" height="9" rx="2"/><rect x="296" y="102" width="18" height="9" rx="2"/><rect x="322" y="102" width="18" height="9" rx="2"/><rect x="348" y="102" width="18" height="9" rx="2"/><rect x="270" y="124" width="18" height="9" rx="2"/><rect x="296" y="124" width="18" height="9" rx="2"/><rect x="322" y="124" width="18" height="9" rx="2"/><rect x="348" y="124" width="18" height="9" rx="2"/></g>
+  <text x="322" y="154" font-size="13" fill="#5d6553" text-anchor="middle">駐車場（約30台）</text>
+  <path d="M96 66 L214 66 L236 86 L236 150 L96 150Z" fill="#b99a74"/>
+  <path d="M88 62 L222 62 L246 86 L88 86Z" fill="#7a5238"/>
+  <text x="166" y="118" font-size="13" font-weight="700" fill="#fff" text-anchor="middle">いぶきハーブ・</text>
+  <text x="166" y="136" font-size="13" font-weight="700" fill="#fff" text-anchor="middle">ガーデン</text>
+  <circle cx="242" cy="150" r="9" fill="#fff" stroke="#34502f" stroke-width="3"/>
+  <text x="242" y="186" font-size="13" font-weight="700" fill="#34502f" text-anchor="middle">入口（◯◯）</text>
+  <text x="438" y="214" font-size="13" fill="#4d6a70" transform="rotate(-62 438 214)" text-anchor="middle">川</text>
+  <text x="450" y="104" font-size="13" font-weight="700" fill="#5d6553" text-anchor="middle">橋（◯◯）</text>
+  <text x="520" y="330" font-size="13" fill="#7a735f" transform="rotate(-78 520 330)" text-anchor="middle">道路</text>
+  <text x="96" y="396" font-size="14" fill="#4d6a3a" text-anchor="middle">庭・散歩道</text>
+  <g transform="translate(40 40)"><circle r="16" fill="#fff" stroke="#bdb59f"/><path d="M0 -10 L5 4 L0 1 L-5 4Z" fill="#34502f"/><text y="30" font-size="11" fill="#5d6553" text-anchor="middle">北</text></g>
+</svg>
+        <p class="cap">イラストは、位置のめやすです。◯◯（橋の名前・入口の位置・駐車場の入口は、現地で確認して直します）</p>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -607,7 +665,7 @@ footer .ridge-line{max-width:var(--max);margin:0 auto 34px}
 
 <script>
 // 今いるページのメニューに印をつける
-(function(){var c=document.body.dataset.page;var a=document.querySelector('.nav a[data-nav="'+c+'"]');if(a)a.classList.add("current");})();
+(function(){var c=document.body.dataset.page;var a=document.querySelector('.nav a[data-nav="'+c+'"]');if(a){a.classList.add("current");var d=a.closest('.nav-dd');if(d)d.firstElementChild.classList.add("current");}})();
 // 引用文の稜線を少しだけ下へ（動きを減らす設定では止める）
 (function(){
   var big=document.querySelector("[data-parallax]");

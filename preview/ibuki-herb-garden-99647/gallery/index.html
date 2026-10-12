@@ -333,7 +333,20 @@ footer .ridge-line{max-width:var(--max);margin:0 auto 34px}
 .visit-sum{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:start}
 .nav a.current{color:var(--ink);border-bottom:1px solid var(--ink)}
 .nav a{white-space:nowrap}
-@media(max-width:1240px){.nav{gap:16px;font-size:12.8px}}
+.logo{white-space:nowrap}
+.aerial-grid{display:grid;grid-template-columns:1fr 1fr;gap:22px;margin-top:26px;align-items:start}
+.aerial-grid svg{width:100%;height:auto;display:block;border-radius:14px}
+.aerial-grid .map-embed{aspect-ratio:4/3}
+@media(max-width:860px){.aerial-grid{grid-template-columns:1fr}}
+.nav{align-items:center}
+.nav-dd{position:relative}
+.nav-dd>a::after{content:" ▾";font-size:10px;color:var(--moss)}
+.dd-menu{display:none;position:absolute;top:100%;left:-14px;min-width:12em;background:#fff;border:1px solid var(--line);border-radius:12px;padding:8px 6px;box-shadow:0 10px 28px rgba(36,58,33,.12);flex-direction:column;z-index:60}
+.nav-dd:hover .dd-menu,.nav-dd:focus-within .dd-menu{display:flex}
+.dd-menu a{padding:9px 14px;border-radius:8px;white-space:nowrap}
+.dd-menu a:hover{background:var(--kinari)}
+.nav-dd::after{content:"";position:absolute;left:0;right:0;top:100%;height:10px}
+@media(max-width:1240px){.nav{gap:18px;font-size:13px}}
 
 /* お知らせ一覧 */
 .news-list{list-style:none;border-top:1px solid var(--ink)}
@@ -524,10 +537,15 @@ footer .ridge-line{max-width:var(--max);margin:0 auto 34px}
       <a href="../lunch/" data-nav="lunch">ランチ・ご予約</a>
       <a href="../menu/" data-nav="menu">季節のメニュー</a>
       <a href="../group/" data-nav="group">団体・女子会</a>
-      <a href="../gallery/" data-nav="gallery">ギャラリー</a>
       <a href="../shop/" data-nav="shop">ショップ</a>
-      <a href="../access/" data-nav="access">アクセス</a>
-      <a href="../news/" data-nav="news">営業日・お知らせ</a>
+      <div class="nav-dd">
+        <a href="../access/" data-nav="access">お店のご案内</a>
+        <div class="dd-menu">
+          <a href="../gallery/" data-nav="gallery">ギャラリー</a>
+          <a href="../access/" data-nav="access">アクセス・駐車場</a>
+          <a href="../news/" data-nav="news">営業日・お知らせ</a>
+        </div>
+      </div>
     </nav>
     <a class="btn" href="../lunch/#reserve" data-track="line">LINEで予約</a>
   </div>
@@ -542,6 +560,7 @@ footer .ridge-line{max-width:var(--max);margin:0 auto 34px}
     <div class="btnrow">
       <a class="more" href="#inside" style="margin-top:0">店内</a>
       <a class="more" href="#outside" style="margin-top:0">外観・庭</a>
+      <a class="more" href="#facility" style="margin-top:0">お手洗い・設備</a>
       <a class="more" href="#season" style="margin-top:0">四季</a>
       <a class="more" href="#dish" style="margin-top:0">お料理</a>
       <a class="more" href="#cafe" style="margin-top:0">ソフトクリーム</a>
@@ -560,8 +579,9 @@ footer .ridge-line{max-width:var(--max);margin:0 auto 34px}
       <figure><button type="button" class="gal-btn" data-full="../assets/g-35-l.jpg" data-cap="ビュッフェ台のある広い店内"><span class="photo"><img src="../assets/g-35-s.jpg" alt="ビュッフェ台のある広い店内" loading="lazy"></span></button><figcaption>ビュッフェ台のある広い店内</figcaption></figure>
       <figure><button type="button" class="gal-btn" data-full="../assets/g-42-l.jpg" data-cap="窓の外に緑が広がる、大きなテーブル席"><span class="photo"><img src="../assets/g-42-s.jpg" alt="窓の外に緑が広がる、大きなテーブル席" loading="lazy"></span></button><figcaption>窓の外に緑が広がる、大きなテーブル席</figcaption></figure>
       <figure><button type="button" class="gal-btn" data-full="../assets/g-43-l.jpg" data-cap="テーブル席"><span class="photo"><img src="../assets/g-43-s.jpg" alt="テーブル席" loading="lazy"></span></button><figcaption>テーブル席</figcaption></figure>
-      <figure><button type="button" class="gal-btn" data-full="../assets/g-41-l.jpg" data-cap="ソファ席のコーナー"><span class="photo"><img src="../assets/g-41-s.jpg" alt="ソファ席のコーナー" loading="lazy"></span></button><figcaption>ソファ席のコーナー</figcaption></figure>
+      <figure><button type="button" class="gal-btn" data-full="../assets/g-41-l.jpg" data-cap="ソファ席（ゆったりした座席）"><span class="photo"><img src="../assets/g-41-s.jpg" alt="ソファ席（ゆったりした座席）" loading="lazy"></span></button><figcaption>ソファ席（ゆったりした座席）</figcaption></figure>
       <figure><button type="button" class="gal-btn" data-full="../assets/g-40-l.jpg" data-cap="やわらかな灯りのランプ"><span class="photo"><img src="../assets/g-40-s.jpg" alt="やわらかな灯りのランプ" loading="lazy"></span></button><figcaption>やわらかな灯りのランプ</figcaption></figure>
+      <figure><button type="button" class="gal-btn" data-full="../assets/g-46-l.jpg" data-cap="銅色のペンダントライト"><span class="photo"><img src="../assets/g-46-s.jpg" alt="銅色のペンダントライト" loading="lazy"></span></button><figcaption>銅色のペンダントライト</figcaption></figure>
       <figure><button type="button" class="gal-btn" data-full="../assets/g-30-l.jpg" data-cap="入口の丸いカウンターと花"><span class="photo"><img src="../assets/g-30-s.jpg" alt="入口の丸いカウンターと花" loading="lazy"></span></button><figcaption>入口の丸いカウンターと花</figcaption></figure>
       <figure><button type="button" class="gal-btn" data-full="../assets/g-33-l.jpg" data-cap="ハーブの商品が並ぶショップの棚"><span class="photo"><img src="../assets/g-33-s.jpg" alt="ハーブの商品が並ぶショップの棚" loading="lazy"></span></button><figcaption>ハーブの商品が並ぶショップの棚</figcaption></figure>
       <figure><button type="button" class="gal-btn" data-full="../assets/g-34-l.jpg" data-cap="ハーブティーの袋"><span class="photo"><img src="../assets/g-34-s.jpg" alt="ハーブティーの袋" loading="lazy"></span></button><figcaption>ハーブティーの袋</figcaption></figure>
@@ -592,7 +612,19 @@ footer .ridge-line{max-width:var(--max);margin:0 auto 34px}
   </div>
 </section>
 
-<section id="season">
+<section id="facility">
+  <div class="wrap">
+    <span class="label">FACILITY</span>
+    <h2>お手洗い・設備</h2>
+    <p class="lead">ご家族でも、安心してお過ごしいただけるように。お手洗いと、おむつ替えのスペースです。</p>
+    <div class="gal-grid">
+      <figure><button type="button" class="gal-btn" data-full="../assets/g-44-l.jpg" data-cap="お手洗い（洗面台）"><span class="photo"><img src="../assets/g-44-s.jpg" alt="お手洗い（洗面台）" loading="lazy"></span></button><figcaption>お手洗い（洗面台）</figcaption></figure>
+      <figure><button type="button" class="gal-btn" data-full="../assets/g-45-l.jpg" data-cap="おむつ替えのスペース"><span class="photo"><img src="../assets/g-45-s.jpg" alt="おむつ替えのスペース" loading="lazy"></span></button><figcaption>おむつ替えのスペース</figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<section id="season" style="background:var(--kinari)">
   <div class="wrap">
     <span class="label">SEASON</span>
     <h2>四季の伊吹山</h2>
@@ -612,7 +644,7 @@ footer .ridge-line{max-width:var(--max);margin:0 auto 34px}
   </div>
 </section>
 
-<section id="dish" style="background:var(--kinari)">
+<section id="dish">
   <div class="wrap">
     <span class="label">DISH</span>
     <h2>お料理</h2>
@@ -632,7 +664,7 @@ footer .ridge-line{max-width:var(--max);margin:0 auto 34px}
   </div>
 </section>
 
-<section id="cafe">
+<section id="cafe" style="background:var(--kinari)">
   <div class="wrap">
     <span class="label">CAFE</span>
     <h2>ソフトクリーム・コーヒー</h2>
@@ -703,7 +735,7 @@ footer .ridge-line{max-width:var(--max);margin:0 auto 34px}
 
 <script>
 // 今いるページのメニューに印をつける
-(function(){var c=document.body.dataset.page;var a=document.querySelector('.nav a[data-nav="'+c+'"]');if(a)a.classList.add("current");})();
+(function(){var c=document.body.dataset.page;var a=document.querySelector('.nav a[data-nav="'+c+'"]');if(a){a.classList.add("current");var d=a.closest('.nav-dd');if(d)d.firstElementChild.classList.add("current");}})();
 // 引用文の稜線を少しだけ下へ（動きを減らす設定では止める）
 (function(){
   var big=document.querySelector("[data-parallax]");
