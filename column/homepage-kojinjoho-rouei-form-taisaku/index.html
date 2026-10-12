@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ホームページから個人情報が漏れる原因と、お問い合わせフォームの5つの確認ポイント【AIdealize】</title>
+<meta name="description" content="お問い合わせフォームや予約フォームから個人情報が漏れる、よくある3つの原因と、確認したい5つのポイント。漏えいしたときの法律上の流れ（概要）も中小企業向けに解説します。">
+<link rel="canonical" href="https://aidealize.com/column/homepage-kojinjoho-rouei-form-taisaku/">
+<meta property="og:title" content="ホームページから個人情報が漏れる原因と、お問い合わせフォームの5つの確認ポイント">
+<meta property="og:description" content="ホームページからの個人情報漏えいの原因と、お問い合わせフォームの5つの確認ポイント。">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://aidealize.com/column/homepage-kojinjoho-rouei-form-taisaku/">
+<meta property="og:site_name" content="AIdealize株式会社">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700;900&family=Shippori+Mincho:wght@400;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-P6VNBWH3');</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "ホームページから個人情報が漏れる原因と、お問い合わせフォームの5つの確認ポイント",
+  "description": "お問い合わせフォームや予約フォームから個人情報が漏れる、よくある3つの原因と、確認したい5つのポイント。漏えいしたときの法律上の流れ（概要）も中小企業向けに解説します。",
+  "datePublished": "2026-10-13",
+  "dateModified": "2026-10-13",
+  "author": {
+    "@type": "Organization",
+    "name": "AIdealize株式会社"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "AIdealize株式会社",
+    "url": "https://aidealize.com"
+  },
+  "mainEntityOfPage": "https://aidealize.com/column/homepage-kojinjoho-rouei-form-taisaku/"
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "お問い合わせフォームの内容が漏れたら、報告は必要ですか？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "個人情報保護法では、一定の条件（要配慮個人情報が含まれる、不正アクセスによる、財産的被害のおそれ、1,000人を超える、など）に当てはまる漏えいが生じた場合、個人情報保護委員会への報告と本人への通知が義務になります。該当するかは状況によるため、早めに専門家へ確認してください。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "フォームのデータは、サーバーに残さないほうが安全ですか？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "不要になった問い合わせデータを保存し続けないことは、漏えい時の被害を小さくします。メール送信のみで運用する、一定期間で削除する、といったルールを決めておくと有効です。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "SSL（https）化していれば、フォームは安全ですか？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "通信の暗号化にはなりますが、それだけでは足りません。管理画面の保護、CMSの更新、保存データの管理も同時に必要です。"
+      }
+    }
+  ]
+}
+</script>
+<style>
+:root{
+  --red:#0891b2;--red-dark:#0e7490;
+  --ink:#1e293b;--body:#4b5563;--light:#94a3b8;
+  --border:#e2e8f0;--bg:#f8fafc;--bg2:#f1f5f9;--white:#fff;
+  --tag-bg:#ecfeff;--green:#059669;--green-bg:#ecfdf5;
+  --demo-bg:#0f172a;--amber-bg:#fef3c7;--amber-tx:#92400e;--danger:#dc2626;--danger-bg:#fef2f2;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{font-family:'Noto Sans JP',sans-serif;background:var(--white);color:var(--ink);overflow-x:hidden;line-height:1.7;}
+#mainNav{position:fixed;top:0;left:0;right:0;z-index:1000;display:flex;align-items:center;justify-content:space-between;padding:0 60px;height:68px;background:rgba(255,255,255,0.97);border-bottom:1px solid var(--border);backdrop-filter:blur(12px);transition:box-shadow 0.3s;}
+#mainNav.scrolled{box-shadow:0 2px 16px rgba(0,0,0,0.06);}
+.nav-logo{display:flex;align-items:center;gap:10px;text-decoration:none;}
+.nav-logo img{height:34px;width:auto;}
+.nav-logo-text{font-family:'DM Mono',monospace;font-size:15px;font-weight:500;color:var(--ink);letter-spacing:0.02em;}
+.nav-logo-text span{color:var(--red);}
+.nav-links{display:flex;align-items:center;gap:32px;list-style:none;}
+.nav-links a{font-size:13px;font-weight:500;color:var(--body);text-decoration:none;transition:color 0.2s;}
+.nav-links a:hover{color:var(--ink);}
+.nav-cta{background:var(--red) !important;color:#fff !important;padding:9px 20px;border-radius:4px;font-size:12px !important;font-weight:700 !important;}
+.nav-cta:hover{background:var(--red-dark) !important;}
+.nav-hamburger{display:none;flex-direction:column;justify-content:center;gap:5px;width:40px;height:40px;background:none;border:none;cursor:pointer;}
+.nav-hamburger span{display:block;width:22px;height:2px;background:var(--ink);transition:all 0.3s;transform-origin:center;}
+.nav-hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg);}
+.nav-hamburger.open span:nth-child(2){opacity:0;}
+.nav-hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
+.nav-drawer{display:none;position:fixed;top:68px;left:0;right:0;background:#fff;border-bottom:2px solid var(--red);padding:20px 28px 28px;z-index:999;}
+.nav-drawer.open{display:block;}
+.nav-drawer ul{list-style:none;display:flex;flex-direction:column;}
+.nav-drawer ul li a{display:block;padding:13px 0;font-size:15px;font-weight:500;color:var(--ink);text-decoration:none;border-bottom:1px solid var(--border);}
+.nav-drawer ul li:last-child a{margin-top:16px;text-align:center;background:var(--red);color:#fff !important;padding:13px;border-radius:4px;font-weight:700 !important;border-bottom:none;}
+@media(max-width:1024px){#mainNav{padding:0 28px;}.nav-links{display:none;}.nav-hamburger{display:flex;}}
+@media(max-width:480px){#mainNav{padding:0 16px;height:60px;}.nav-drawer{top:60px;}.nav-logo-text{font-size:13px;}}
+.article-header{padding:116px 24px 52px;background:var(--bg);border-bottom:1px solid var(--border);}
+.article-header-inner{max-width:760px;margin:0 auto;}
+.breadcrumb{display:flex;align-items:center;gap:6px;font-size:12px;color:var(--light);margin-bottom:20px;flex-wrap:wrap;}
+.breadcrumb a{color:var(--light);text-decoration:none;}
+.breadcrumb a:hover{color:var(--red);}
+.breadcrumb span{color:var(--border);}
+.article-tag{display:inline-flex;align-items:center;background:var(--tag-bg);color:var(--red);font-size:11px;font-weight:700;letter-spacing:0.06em;padding:4px 12px;border-radius:100px;margin-bottom:18px;}
+.article-h1{font-family:'Shippori Mincho',serif;font-size:clamp(20px,3vw,34px);font-weight:700;color:var(--ink);line-height:1.65;margin-bottom:20px;}
+.article-meta{display:flex;align-items:center;gap:20px;flex-wrap:wrap;font-size:12px;color:var(--light);}
+.article-body{padding:72px 24px 100px;}
+.article-body-inner{max-width:760px;margin:0 auto;}
+.summary-box{background:var(--bg);border-left:4px solid var(--red);padding:24px 28px;border-radius:0 6px 6px 0;margin-bottom:52px;}
+.summary-box-title{font-size:11px;font-weight:700;color:var(--red);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:12px;}
+.summary-box ul{list-style:none;display:flex;flex-direction:column;gap:8px;}
+.summary-box ul li{display:flex;align-items:flex-start;gap:8px;font-size:14px;line-height:1.8;color:var(--ink);}
+.summary-box ul li::before{content:'✓';color:var(--red);font-weight:700;flex-shrink:0;margin-top:1px;}
+.article-body-inner h2{font-family:'Shippori Mincho',serif;font-size:clamp(17px,2.2vw,24px);font-weight:700;color:var(--ink);line-height:1.65;margin:56px 0 20px;padding-bottom:10px;border-bottom:1px solid var(--border);position:relative;}
+.article-body-inner h2::after{content:'';position:absolute;bottom:-1px;left:0;width:48px;height:2px;background:var(--red);}
+.article-body-inner h3{font-family:'Shippori Mincho',serif;font-size:clamp(15px,1.8vw,19px);font-weight:700;color:var(--ink);line-height:1.7;margin:36px 0 14px;padding-left:14px;border-left:3px solid var(--red);}
+.article-body-inner p{font-size:15px;line-height:2;color:var(--body);margin-bottom:22px;}
+.article-body-inner strong{color:var(--ink);font-weight:700;}
+.article-body-inner a{color:var(--red-dark);font-weight:700;text-decoration:underline;text-underline-offset:2px;}
+.article-body-inner ul,.article-body-inner ol{list-style:none;margin-bottom:22px;display:flex;flex-direction:column;gap:8px;}
+.article-body-inner ul li,.article-body-inner ol li{font-size:14px;line-height:1.9;color:var(--body);display:flex;align-items:flex-start;gap:10px;}
+.article-body-inner ul li::before{content:'─';color:var(--red);flex-shrink:0;margin-top:4px;font-size:12px;}
+.article-body-inner ol{counter-reset:ol;}
+.article-body-inner ol li{counter-increment:ol;}
+.article-body-inner ol li::before{content:counter(ol);background:var(--red);color:#fff;width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0;margin-top:2px;font-family:'DM Mono',monospace;}
+.pain-cards{display:flex;flex-direction:column;gap:12px;margin:24px 0;}
+.pain-card{background:var(--bg);border-left:4px solid var(--red);border-radius:0 8px 8px 0;padding:18px 20px;display:flex;align-items:flex-start;gap:12px;}
+.pain-card-icon{font-size:22px;flex-shrink:0;margin-top:2px;}
+.pain-card-body{font-size:14px;line-height:1.85;color:var(--body);}
+.pain-card-body strong{color:var(--ink);}
+.point-box{background:var(--bg2);border-radius:8px;padding:20px 24px;margin:20px 0;}
+.point-box-label{font-size:10px;font-family:'DM Mono',monospace;color:var(--red);letter-spacing:0.12em;text-transform:uppercase;margin-bottom:10px;}
+.point-box p{font-size:14px;line-height:1.9;color:var(--body);margin-bottom:0;}
+.case-box{border:1px solid #cffafe;border-left:5px solid var(--red);border-radius:0 10px 10px 0;padding:24px 26px;margin:28px 0;background:linear-gradient(135deg,#ecfeff,#f0fdf4);}
+.case-box p{margin-bottom:0;font-size:14px;line-height:1.9;color:var(--body);}
+.case-honest{margin-top:16px;background:var(--amber-bg);color:var(--amber-tx);border-radius:8px;padding:14px 16px;font-size:13px;line-height:1.85;}
+.inline-cta{background:var(--bg);border:1px solid var(--border);border-top:4px solid var(--red);border-radius:10px;padding:36px;margin:52px 0;text-align:center;}
+.inline-cta-tag{font-size:11px;color:var(--red);font-weight:700;letter-spacing:0.08em;margin-bottom:12px;}
+.inline-cta h3{font-family:'Shippori Mincho',serif;font-size:clamp(16px,2vw,22px);font-weight:700;color:var(--ink);line-height:1.65;margin-bottom:12px;}
+.inline-cta p{font-size:14px;color:var(--body);line-height:1.9;margin-bottom:22px;}
+.cta-btns-pair{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;}
+.btn-cta-red{display:inline-flex;align-items:center;gap:6px;background:var(--red);color:#fff;padding:13px 28px;border-radius:4px;font-size:14px;font-weight:700;text-decoration:none;transition:background 0.2s,transform 0.2s;}
+.btn-cta-red:hover{background:var(--red-dark);transform:translateY(-2px);}
+.btn-cta-ghost{display:inline-flex;align-items:center;gap:6px;background:#fff;color:var(--red);border:1.5px solid var(--red);padding:13px 28px;border-radius:4px;font-size:14px;font-weight:700;text-decoration:none;transition:background 0.2s;}
+.btn-cta-ghost:hover{background:var(--tag-bg);}
+.btn-cta-note{display:block;margin-top:12px;font-size:11px;color:var(--light);}
+.effect-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:24px 0;}
+.effect-card{background:#fff;border:1px solid var(--border);border-top:3px solid var(--red);border-radius:6px;padding:20px 16px;text-align:center;}
+.effect-num{font-family:'DM Mono',monospace;font-size:10px;color:var(--red);letter-spacing:0.12em;margin-bottom:8px;}
+.effect-title{font-size:12px;color:var(--body);line-height:1.6;margin-bottom:8px;}
+.effect-val{font-family:'Shippori Mincho',serif;font-size:22px;font-weight:700;color:var(--ink);}
+.effect-val em{font-style:normal;color:var(--red-dark);}
+.dtable{width:100%;border-collapse:collapse;font-size:13px;margin:24px 0;}
+.dtable th,.dtable td{border:1px solid var(--border);padding:11px 13px;text-align:left;vertical-align:top;line-height:1.7;}
+.dtable th{background:var(--bg2);color:var(--ink);font-weight:700;}
+.dtable td{color:var(--body);}
+.dtable .hl{color:var(--danger);font-weight:700;white-space:nowrap;}
+.dwrap{overflow-x:auto;}
+code{font-family:'DM Mono',monospace;background:var(--bg2);border:1px solid var(--border);border-radius:4px;padding:2px 7px;font-size:0.9em;color:var(--red-dark);word-break:break-all;}
+.note{font-size:12px;color:var(--light);margin-top:-12px;margin-bottom:22px;}
+.related-section{padding:60px 24px;background:var(--white);border-top:1px solid var(--border);}
+.related-inner{max-width:760px;margin:0 auto;}
+.related-label{font-family:'DM Mono',monospace;font-size:11px;color:var(--red);letter-spacing:0.14em;text-transform:uppercase;margin-bottom:20px;}
+.related-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;}
+.related-card{border:1px solid var(--border);border-top:3px solid var(--red);padding:20px;text-decoration:none;color:inherit;border-radius:0 0 6px 6px;transition:box-shadow 0.2s,transform 0.2s;}
+.related-card:hover{box-shadow:0 4px 16px rgba(0,0,0,0.07);transform:translateY(-2px);}
+.related-card-tag{font-size:10px;font-family:'DM Mono',monospace;color:var(--red);letter-spacing:0.1em;margin-bottom:8px;}
+.related-card-title{font-family:'Shippori Mincho',serif;font-size:14px;font-weight:700;color:var(--ink);line-height:1.6;}
+.back-section{padding:28px 24px;background:var(--bg);border-top:1px solid var(--border);}
+.back-section-inner{max-width:760px;margin:0 auto;}
+.back-link{display:inline-flex;align-items:center;gap:6px;font-size:13px;color:var(--body);text-decoration:none;transition:color 0.2s;}
+.back-link:hover{color:var(--red);}
+footer{background:#1f1f1f;border-top:1px solid rgba(255,255,255,0.06);padding:40px 60px;display:flex;align-items:center;justify-content:space-between;}
+.footer-logo{display:flex;align-items:center;gap:10px;}
+.footer-logo-mark{width:20px;height:20px;background:var(--red);clip-path:polygon(50% 0%,0% 100%,18% 100%,50% 38%,82% 100%,100% 100%);}
+.footer-logo-text{font-family:'DM Mono',monospace;font-size:13px;color:rgba(255,255,255,0.55);}
+.footer-logo-text span{color:var(--red);}
+.footer-copy{font-size:11px;color:rgba(255,255,255,0.25);font-family:'DM Mono',monospace;}
+.reveal{opacity:0;transform:translateY(18px);transition:opacity 0.55s ease,transform 0.55s ease;}
+.reveal.visible{opacity:1;transform:translateY(0);}
+@media(max-width:768px){
+  .article-header,.article-body,.back-section,.related-section{padding-left:16px;padding-right:16px;}
+  .article-header{padding-top:88px;}
+  .effect-grid{grid-template-columns:1fr;}
+  .related-grid{grid-template-columns:1fr !important;}
+  .cta-btns-pair{flex-direction:column;align-items:center;}
+  .inline-cta{padding:24px 18px;}
+  footer{flex-direction:column;gap:14px;text-align:center;padding:28px 16px;}
+}
+</style>
+</head>
+<body>
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-P6VNBWH3" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
+<nav id="mainNav">
+  <a href="/" class="nav-logo">
+    <img src="/images/logo.png" alt="AIdealize">
+    <span class="nav-logo-text"><span>AI</span>dealize</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="/column/">コラム</a></li>
+    <li><a href="/service/">サービス</a></li>
+    <li><a href="https://aidealize.com/bpr/">DX事例</a></li>
+    <li><a href="/works/">実績</a></li>
+    <li><a href="/company.html">会社概要</a></li>
+    <li><a href="/service/prevention/#contact" class="nav-cta">無料でサイト点検</a></li>
+  </ul>
+  <button class="nav-hamburger" id="navHamburger" aria-label="メニュー"><span></span><span></span><span></span></button>
+</nav>
+<div class="nav-drawer" id="navDrawer">
+  <ul>
+    <li><a href="/column/" class="drawer-link">コラム</a></li>
+    <li><a href="/service/" class="drawer-link">サービス</a></li>
+    <li><a href="https://aidealize.com/bpr/" class="drawer-link">DX事例</a></li>
+    <li><a href="/works/" class="drawer-link">実績</a></li>
+    <li><a href="/company.html" class="drawer-link">会社概要</a></li>
+    <li><a href="/service/prevention/#contact">無料でサイト点検</a></li>
+  </ul>
+</div>
+
+<header class="article-header">
+  <div class="article-header-inner">
+    <nav class="breadcrumb" aria-label="パンくず">
+      <a href="/">ホーム</a><span>/</span>
+      <a href="/column/">コラム</a><span>/</span>
+      <span>ホームページの個人情報漏えい対策</span>
+    </nav>
+    <div class="article-tag">Webセキュリティ / 個人情報</div>
+    <h1 class="article-h1">
+      ホームページから、<br>個人情報が漏れる原因は？<br>フォームで確認したい5つのポイント。
+    </h1>
+    <div class="article-meta">
+      <div>📅 2026年10月13日</div>
+      <div>⏱ 読了約6分</div>
+      <div>✍ AIdealize編集部</div>
+    </div>
+  </div>
+</header>
+
+<article class="article-body">
+<div class="article-body-inner">
+
+  
+  <div class="summary-box reveal">
+    <div class="summary-box-title">この記事でわかること</div>
+    <ul>
+      <li>ホームページから個人情報が漏れる、よくある原因</li>
+      <li>お問い合わせフォームで確認したい5つのポイント</li>
+      <li>もし漏えいしたときの、法律上の流れ（概要）</li>
+    </ul>
+  </div>
+
+  <p>お問い合わせフォームや予約フォームには、<strong>氏名・電話番号・メールアドレス、場合によっては症状や相談内容</strong>が入力されます。ホームページは「会社の顔」であると同時に、個人情報を預かる窓口でもあります。</p>
+
+  <h2>ホームページから個人情報が漏れる、よくある原因</h2>
+  <div class="pain-cards">
+    <div class="pain-card reveal"><div class="pain-card-icon">🚪</div><div class="pain-card-body"><strong>① 管理画面への不正ログイン</strong><br>弱いパスワードや、開いたままのログイン画面から侵入され、フォームの送信履歴（データベース）を取られる。</div></div>
+    <div class="pain-card reveal"><div class="pain-card-icon">🧩</div><div class="pain-card-body"><strong>② フォーム用プラグインの弱点</strong><br>古いプラグインの既知の弱点から、保存されたデータが読み取られる。</div></div>
+    <div class="pain-card reveal"><div class="pain-card-icon">📂</div><div class="pain-card-body"><strong>③ 不要なデータの保存し過ぎ</strong><br>何年も前の問い合わせデータが、サーバーにそのまま残っている。漏えい時の被害が大きくなります。</div></div>
+  </div>
+
+  <h2>お問い合わせフォームで確認したい5つのポイント</h2>
+  <ul>
+    <li><strong>SSL（https）で送信されているか</strong>（URL欄の鍵マーク）</li>
+    <li><strong>管理画面が外から開けないか</strong>（<code>/wp-login.php</code> を確認）</li>
+    <li><strong>フォームのプラグインが最新か</strong></li>
+    <li><strong>データの保存期間を決めているか</strong>（不要なものは削除）</li>
+    <li><strong>プライバシーポリシーに、取得・利用目的が書かれているか</strong></li>
+  </ul>
+
+  <div class="inline-cta reveal">
+    <div class="inline-cta-tag">無料・入力30秒・費用契約なし</div>
+    <h3>今すぐ、自社サイトの危険性をチェック</h3>
+    <p>ドメインを入れるだけで、「誰でも管理画面に入れる状態になっていないか」「サイトの鍵（暗号化）が切れていないか」「古いシステムのまま放置されていないか」を、誰でも見られる情報の範囲で自動チェックします。</p>
+    <iframe id="secScanFrame" src="/security-scan-widget.html" title="無料セキュリティ外周点検" width="100%" height="220" frameborder="0" scrolling="no" loading="lazy" style="display:block;border:none;border-radius:12px;overflow:hidden;max-width:640px;margin:20px auto 0;"></iframe>
+  </div>
+  <script>
+  window.addEventListener('message', function(e){
+    if (e.data && e.data.type === 'roiHeight') {
+      var f = document.getElementById('secScanFrame');
+      if (f && e.data.height) f.style.height = e.data.height + 'px';
+    }
+  });
+  </script>
+
+  <h2>もし漏えいしたときの流れ（概要）</h2>
+  <ol>
+    <li>被害の拡大を止める（管理画面の停止・パスワード変更・サイトの一時停止）</li>
+    <li>何が、いつ、何件漏れたかを把握（ログの保全）</li>
+    <li>個人情報保護法に基づく報告・本人通知の要否を確認</li>
+    <li>原因を特定し、再発防止策を実施</li>
+  </ol>
+  <div class="note">※個人情報保護法では、要配慮個人情報が含まれる漏えい、不正アクセスによる漏えいなどの場合に、個人情報保護委員会への報告と本人通知が義務づけられています（速報・確報の期限があります）。該当の判断と期限は、個人情報保護委員会の案内でご確認のうえ、専門家にもご相談ください。</div>
+  <div class="case-box reveal">
+    <p>医療・介護や士業のように、<strong>相談内容そのものが機微</strong>な業種では、フォームの設計と保存ルールがとくに重要です。私たちの診断では、医療・介護分野でも管理画面の露出が28.7%ありました。</p>
+    <div class="case-honest">⚠ <strong>正直にお伝えします。</strong>この記事は一般的な情報です。個別の事案では、必ず専門家（弁護士・個人情報保護委員会の窓口など）にご確認ください。</div>
+  </div>
+
+  <h2>よくある質問（FAQ）</h2>
+  <h3>お問い合わせフォームの内容が漏れたら、報告は必要ですか？</h3>
+  <p>個人情報保護法では、一定の条件（要配慮個人情報が含まれる、不正アクセスによる、財産的被害のおそれ、1,000人を超える、など）に当てはまる漏えいが生じた場合、個人情報保護委員会への報告と本人への通知が義務になります。該当するかは状況によるため、早めに専門家へ確認してください。</p>
+  <h3>フォームのデータは、サーバーに残さないほうが安全ですか？</h3>
+  <p>不要になった問い合わせデータを保存し続けないことは、漏えい時の被害を小さくします。メール送信のみで運用する、一定期間で削除する、といったルールを決めておくと有効です。</p>
+  <h3>SSL（https）化していれば、フォームは安全ですか？</h3>
+  <p>通信の暗号化にはなりますが、それだけでは足りません。管理画面の保護、CMSの更新、保存データの管理も同時に必要です。</p>
+
+  <h2>まとめ｜フォームは「預かる窓口」。入口と保存の両方を守る</h2>
+  <p>ホームページからの個人情報漏えいは、管理画面・プラグイン・保存データの3点で多くが防げます。まずは今日、フォームのSSLと、管理画面の露出を確認してみてください。</p>
+
+  <div class="inline-cta reveal">
+    <div class="inline-cta-tag">無料・費用契約なし</div>
+    <h3>フォームを置いているサイトの弱点を、無料で点検します。</h3>
+    <p>SSL・管理画面の露出・CMSの状態を点検し、優先度順にお伝えします。</p>
+    <div class="cta-btns-pair">
+      <a href="/service/prevention/#contact" class="btn-cta-red">無料でサイト点検を受ける →</a>
+      <a href="/column/iryou-clinic-security/" class="btn-cta-ghost">クリニックのWebセキュリティ実態を読む</a>
+    </div>
+    <span class="btn-cta-note">オンライン対応・所要約30分・押し売りなし</span>
+  </div>
+
+
+</div>
+</article>
+
+<section style="padding:0 24px 40px;background:#fff;">
+  <div style="max-width:760px;margin:0 auto;padding:20px 22px;border:1px solid #e2e8f0;border-left:4px solid #0891b2;border-radius:6px;background:#f8fafc;font-size:14px;line-height:2;">
+    <strong style="color:#0e7490;">あわせて読みたい</strong><br>
+    <a href="/column/chusho-cyber-attack-higai-taisaku/" style="color:#1e293b;">中小企業のサイバー攻撃被害、実は約6割。入口は「放置された設定」</a><br>
+    <a href="/column/homepage-kaizan-genin-taisaku/" style="color:#1e293b;">ホームページが改ざんされた？原因・見つけ方・初動対応</a><br>
+    <a href="/column/byoin-clinic-ransomware-jirei/" style="color:#1e293b;">病院ランサムウェア事例に学ぶ、クリニックの備え</a><br>
+    <a href="/column/wordpress-nottori-taisaku/" style="color:#1e293b;">WordPressが乗っ取られる3つの経路と、今日からできる7つの対策</a><br>
+    <a href="/column/security-action-sengen-tejun/" style="color:#1e293b;">SECURITY ACTION（IPA）とは？一つ星・二つ星の違いと宣言の手順</a><br>
+    <a href="/column/homepage-kojinjoho-rouei-form-taisaku/" style="color:#1e293b;">ホームページから個人情報が漏れる原因と、フォームの5つの確認ポイント</a><br>
+    <a href="/column/ransomware-kansen-shodo-chusho/" style="color:#1e293b;">ランサムウェアに感染したら？最初の30分の初動</a>
+  </div>
+</section>
+
+<section class="related-section">
+  <div class="related-inner">
+    <div class="related-label">Related Articles</div>
+    <div class="related-grid">
+            <a href="/column/hokukanto-2man-site-jittai/" class="related-card">
+        <div class="related-card-tag">独自調査レポート</div>
+        <div class="related-card-title">北関東2万3千社のサイトを調べたら、3社に1社が「裏口」を開けたままだった【2026年8月実測】</div>
+      </a>
+      <a href="/column/wordpress-nottori-taisaku/" class="related-card">
+        <div class="related-card-tag">Webセキュリティ / WordPress</div>
+        <div class="related-card-title">WordPressが乗っ取られる3つの経路と、今日からできる7つの対策【中小企業向け】</div>
+      </a>
+      <a href="/column/security-action-sengen-tejun/" class="related-card">
+        <div class="related-card-tag">セキュリティ / 取引先・補助金</div>
+        <div class="related-card-title">SECURITY ACTION（IPA）とは？一つ星・二つ星の違いと宣言の手順【中小企業向け】</div>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+<div class="back-section">
+  <div class="back-section-inner">
+    <a href="/column/" class="back-link">← コラム一覧に戻る</a>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-logo">
+    <div class="footer-logo-mark"></div>
+    <span class="footer-logo-text"><span>A</span>idealize株式会社</span>
+  </div>
+  <span class="footer-copy">© 2020–2026 AIdealize Inc. All rights reserved.</span>
+</footer>
+
+<script>
+(function(){
+  const btn=document.getElementById('navHamburger');
+  const drawer=document.getElementById('navDrawer');
+  const nav=document.getElementById('mainNav');
+  btn.addEventListener('click',function(){btn.classList.toggle('open');drawer.classList.toggle('open');});
+  drawer.querySelectorAll('.drawer-link').forEach(function(l){l.addEventListener('click',function(){btn.classList.remove('open');drawer.classList.remove('open');});});
+  window.addEventListener('scroll',function(){nav.classList.toggle('scrolled',window.scrollY>10);});
+})();
+const obs=new IntersectionObserver(function(e){e.forEach(function(x){if(x.isIntersecting)x.target.classList.add('visible');});},{threshold:0.08,rootMargin:'0px 0px -30px 0px'});
+document.querySelectorAll('.reveal').forEach(function(el){obs.observe(el);});
+</script>
+<script src="/js/lead-capture.js"></script>
+</body>
+</html>
