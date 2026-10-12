@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>病院ランサムウェア事例に学ぶ、クリニックの備え｜半田病院・大阪急性期の「入口」と対策【AIdealize】</title>
+<meta name="description" content="半田病院（2021年）・大阪急性期・総合医療センター（2022年）のランサムウェア事例を整理。共通する入口（VPN機器の脆弱性・取引先経由）と、小規模クリニックが今日からできる5つの備えを解説します。">
+<link rel="canonical" href="https://aidealize.com/column/byoin-clinic-ransomware-jirei/">
+<meta property="og:title" content="病院ランサムウェア事例に学ぶ、クリニックの備え｜半田病院・大阪急性期の「入口」と対策">
+<meta property="og:description" content="半田病院・大阪急性期のランサムウェア事例から、クリニックにも当てはまる入口と5つの備えを解説。">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://aidealize.com/column/byoin-clinic-ransomware-jirei/">
+<meta property="og:site_name" content="AIdealize株式会社">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700;900&family=Shippori+Mincho:wght@400;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-P6VNBWH3');</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "病院ランサムウェア事例に学ぶ、クリニックの備え｜半田病院・大阪急性期の「入口」と対策",
+  "description": "半田病院（2021年）・大阪急性期・総合医療センター（2022年）のランサムウェア事例を整理。共通する入口（VPN機器の脆弱性・取引先経由）と、小規模クリニックが今日からできる5つの備えを解説します。",
+  "datePublished": "2026-10-12",
+  "dateModified": "2026-10-12",
+  "author": {
+    "@type": "Organization",
+    "name": "AIdealize株式会社"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "AIdealize株式会社",
+    "url": "https://aidealize.com"
+  },
+  "mainEntityOfPage": "https://aidealize.com/column/byoin-clinic-ransomware-jirei/"
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "病院ではなく小さなクリニックでも対象になりますか？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "なります。攻撃は規模で相手を選ばず、弱点のある機器を機械的に探します。むしろ小規模な医療機関ほど、専任のIT担当がいないため入口（VPN機器・リモート保守回線など）が放置されやすい傾向があります。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "電子カルテが止まったら、まず何をすべきですか？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "(1) 感染が疑われる端末をネットワークから切り離す（電源は切らない）、(2) 保守業者・厚労省の相談窓口・警察へ連絡、(3) 紙運用に切り替える、が基本です。普段から『紙運用の手順書』と連絡先を1枚にまとめておくと初動が大きく変わります。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "ホームページと電子カルテは別物ですよね？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "システムとしては別ですが、同じ事業者が管理していたり、同じパスワードを使い回していたりすると、ホームページの弱点が入口になることがあります。外から見えるホームページの状態は、その医療機関の『管理の習慣』を映す鏡でもあります。"
+      }
+    }
+  ]
+}
+</script>
+<style>
+:root{
+  --red:#0891b2;--red-dark:#0e7490;
+  --ink:#1e293b;--body:#4b5563;--light:#94a3b8;
+  --border:#e2e8f0;--bg:#f8fafc;--bg2:#f1f5f9;--white:#fff;
+  --tag-bg:#ecfeff;--green:#059669;--green-bg:#ecfdf5;
+  --demo-bg:#0f172a;--amber-bg:#fef3c7;--amber-tx:#92400e;--danger:#dc2626;--danger-bg:#fef2f2;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{font-family:'Noto Sans JP',sans-serif;background:var(--white);color:var(--ink);overflow-x:hidden;line-height:1.7;}
+#mainNav{position:fixed;top:0;left:0;right:0;z-index:1000;display:flex;align-items:center;justify-content:space-between;padding:0 60px;height:68px;background:rgba(255,255,255,0.97);border-bottom:1px solid var(--border);backdrop-filter:blur(12px);transition:box-shadow 0.3s;}
+#mainNav.scrolled{box-shadow:0 2px 16px rgba(0,0,0,0.06);}
+.nav-logo{display:flex;align-items:center;gap:10px;text-decoration:none;}
+.nav-logo img{height:34px;width:auto;}
+.nav-logo-text{font-family:'DM Mono',monospace;font-size:15px;font-weight:500;color:var(--ink);letter-spacing:0.02em;}
+.nav-logo-text span{color:var(--red);}
+.nav-links{display:flex;align-items:center;gap:32px;list-style:none;}
+.nav-links a{font-size:13px;font-weight:500;color:var(--body);text-decoration:none;transition:color 0.2s;}
+.nav-links a:hover{color:var(--ink);}
+.nav-cta{background:var(--red) !important;color:#fff !important;padding:9px 20px;border-radius:4px;font-size:12px !important;font-weight:700 !important;}
+.nav-cta:hover{background:var(--red-dark) !important;}
+.nav-hamburger{display:none;flex-direction:column;justify-content:center;gap:5px;width:40px;height:40px;background:none;border:none;cursor:pointer;}
+.nav-hamburger span{display:block;width:22px;height:2px;background:var(--ink);transition:all 0.3s;transform-origin:center;}
+.nav-hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg);}
+.nav-hamburger.open span:nth-child(2){opacity:0;}
+.nav-hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
+.nav-drawer{display:none;position:fixed;top:68px;left:0;right:0;background:#fff;border-bottom:2px solid var(--red);padding:20px 28px 28px;z-index:999;}
+.nav-drawer.open{display:block;}
+.nav-drawer ul{list-style:none;display:flex;flex-direction:column;}
+.nav-drawer ul li a{display:block;padding:13px 0;font-size:15px;font-weight:500;color:var(--ink);text-decoration:none;border-bottom:1px solid var(--border);}
+.nav-drawer ul li:last-child a{margin-top:16px;text-align:center;background:var(--red);color:#fff !important;padding:13px;border-radius:4px;font-weight:700 !important;border-bottom:none;}
+@media(max-width:1024px){#mainNav{padding:0 28px;}.nav-links{display:none;}.nav-hamburger{display:flex;}}
+@media(max-width:480px){#mainNav{padding:0 16px;height:60px;}.nav-drawer{top:60px;}.nav-logo-text{font-size:13px;}}
+.article-header{padding:116px 24px 52px;background:var(--bg);border-bottom:1px solid var(--border);}
+.article-header-inner{max-width:760px;margin:0 auto;}
+.breadcrumb{display:flex;align-items:center;gap:6px;font-size:12px;color:var(--light);margin-bottom:20px;flex-wrap:wrap;}
+.breadcrumb a{color:var(--light);text-decoration:none;}
+.breadcrumb a:hover{color:var(--red);}
+.breadcrumb span{color:var(--border);}
+.article-tag{display:inline-flex;align-items:center;background:var(--tag-bg);color:var(--red);font-size:11px;font-weight:700;letter-spacing:0.06em;padding:4px 12px;border-radius:100px;margin-bottom:18px;}
+.article-h1{font-family:'Shippori Mincho',serif;font-size:clamp(20px,3vw,34px);font-weight:700;color:var(--ink);line-height:1.65;margin-bottom:20px;}
+.article-meta{display:flex;align-items:center;gap:20px;flex-wrap:wrap;font-size:12px;color:var(--light);}
+.article-body{padding:72px 24px 100px;}
+.article-body-inner{max-width:760px;margin:0 auto;}
+.summary-box{background:var(--bg);border-left:4px solid var(--red);padding:24px 28px;border-radius:0 6px 6px 0;margin-bottom:52px;}
+.summary-box-title{font-size:11px;font-weight:700;color:var(--red);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:12px;}
+.summary-box ul{list-style:none;display:flex;flex-direction:column;gap:8px;}
+.summary-box ul li{display:flex;align-items:flex-start;gap:8px;font-size:14px;line-height:1.8;color:var(--ink);}
+.summary-box ul li::before{content:'✓';color:var(--red);font-weight:700;flex-shrink:0;margin-top:1px;}
+.article-body-inner h2{font-family:'Shippori Mincho',serif;font-size:clamp(17px,2.2vw,24px);font-weight:700;color:var(--ink);line-height:1.65;margin:56px 0 20px;padding-bottom:10px;border-bottom:1px solid var(--border);position:relative;}
+.article-body-inner h2::after{content:'';position:absolute;bottom:-1px;left:0;width:48px;height:2px;background:var(--red);}
+.article-body-inner h3{font-family:'Shippori Mincho',serif;font-size:clamp(15px,1.8vw,19px);font-weight:700;color:var(--ink);line-height:1.7;margin:36px 0 14px;padding-left:14px;border-left:3px solid var(--red);}
+.article-body-inner p{font-size:15px;line-height:2;color:var(--body);margin-bottom:22px;}
+.article-body-inner strong{color:var(--ink);font-weight:700;}
+.article-body-inner a{color:var(--red-dark);font-weight:700;text-decoration:underline;text-underline-offset:2px;}
+.article-body-inner ul,.article-body-inner ol{list-style:none;margin-bottom:22px;display:flex;flex-direction:column;gap:8px;}
+.article-body-inner ul li,.article-body-inner ol li{font-size:14px;line-height:1.9;color:var(--body);display:flex;align-items:flex-start;gap:10px;}
+.article-body-inner ul li::before{content:'─';color:var(--red);flex-shrink:0;margin-top:4px;font-size:12px;}
+.article-body-inner ol{counter-reset:ol;}
+.article-body-inner ol li{counter-increment:ol;}
+.article-body-inner ol li::before{content:counter(ol);background:var(--red);color:#fff;width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0;margin-top:2px;font-family:'DM Mono',monospace;}
+.pain-cards{display:flex;flex-direction:column;gap:12px;margin:24px 0;}
+.pain-card{background:var(--bg);border-left:4px solid var(--red);border-radius:0 8px 8px 0;padding:18px 20px;display:flex;align-items:flex-start;gap:12px;}
+.pain-card-icon{font-size:22px;flex-shrink:0;margin-top:2px;}
+.pain-card-body{font-size:14px;line-height:1.85;color:var(--body);}
+.pain-card-body strong{color:var(--ink);}
+.point-box{background:var(--bg2);border-radius:8px;padding:20px 24px;margin:20px 0;}
+.point-box-label{font-size:10px;font-family:'DM Mono',monospace;color:var(--red);letter-spacing:0.12em;text-transform:uppercase;margin-bottom:10px;}
+.point-box p{font-size:14px;line-height:1.9;color:var(--body);margin-bottom:0;}
+.case-box{border:1px solid #cffafe;border-left:5px solid var(--red);border-radius:0 10px 10px 0;padding:24px 26px;margin:28px 0;background:linear-gradient(135deg,#ecfeff,#f0fdf4);}
+.case-box p{margin-bottom:0;font-size:14px;line-height:1.9;color:var(--body);}
+.case-honest{margin-top:16px;background:var(--amber-bg);color:var(--amber-tx);border-radius:8px;padding:14px 16px;font-size:13px;line-height:1.85;}
+.inline-cta{background:var(--bg);border:1px solid var(--border);border-top:4px solid var(--red);border-radius:10px;padding:36px;margin:52px 0;text-align:center;}
+.inline-cta-tag{font-size:11px;color:var(--red);font-weight:700;letter-spacing:0.08em;margin-bottom:12px;}
+.inline-cta h3{font-family:'Shippori Mincho',serif;font-size:clamp(16px,2vw,22px);font-weight:700;color:var(--ink);line-height:1.65;margin-bottom:12px;}
+.inline-cta p{font-size:14px;color:var(--body);line-height:1.9;margin-bottom:22px;}
+.cta-btns-pair{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;}
+.btn-cta-red{display:inline-flex;align-items:center;gap:6px;background:var(--red);color:#fff;padding:13px 28px;border-radius:4px;font-size:14px;font-weight:700;text-decoration:none;transition:background 0.2s,transform 0.2s;}
+.btn-cta-red:hover{background:var(--red-dark);transform:translateY(-2px);}
+.btn-cta-ghost{display:inline-flex;align-items:center;gap:6px;background:#fff;color:var(--red);border:1.5px solid var(--red);padding:13px 28px;border-radius:4px;font-size:14px;font-weight:700;text-decoration:none;transition:background 0.2s;}
+.btn-cta-ghost:hover{background:var(--tag-bg);}
+.btn-cta-note{display:block;margin-top:12px;font-size:11px;color:var(--light);}
+.effect-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:24px 0;}
+.effect-card{background:#fff;border:1px solid var(--border);border-top:3px solid var(--red);border-radius:6px;padding:20px 16px;text-align:center;}
+.effect-num{font-family:'DM Mono',monospace;font-size:10px;color:var(--red);letter-spacing:0.12em;margin-bottom:8px;}
+.effect-title{font-size:12px;color:var(--body);line-height:1.6;margin-bottom:8px;}
+.effect-val{font-family:'Shippori Mincho',serif;font-size:22px;font-weight:700;color:var(--ink);}
+.effect-val em{font-style:normal;color:var(--red-dark);}
+.dtable{width:100%;border-collapse:collapse;font-size:13px;margin:24px 0;}
+.dtable th,.dtable td{border:1px solid var(--border);padding:11px 13px;text-align:left;vertical-align:top;line-height:1.7;}
+.dtable th{background:var(--bg2);color:var(--ink);font-weight:700;}
+.dtable td{color:var(--body);}
+.dtable .hl{color:var(--danger);font-weight:700;white-space:nowrap;}
+.dwrap{overflow-x:auto;}
+code{font-family:'DM Mono',monospace;background:var(--bg2);border:1px solid var(--border);border-radius:4px;padding:2px 7px;font-size:0.9em;color:var(--red-dark);word-break:break-all;}
+.note{font-size:12px;color:var(--light);margin-top:-12px;margin-bottom:22px;}
+.related-section{padding:60px 24px;background:var(--white);border-top:1px solid var(--border);}
+.related-inner{max-width:760px;margin:0 auto;}
+.related-label{font-family:'DM Mono',monospace;font-size:11px;color:var(--red);letter-spacing:0.14em;text-transform:uppercase;margin-bottom:20px;}
+.related-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;}
+.related-card{border:1px solid var(--border);border-top:3px solid var(--red);padding:20px;text-decoration:none;color:inherit;border-radius:0 0 6px 6px;transition:box-shadow 0.2s,transform 0.2s;}
+.related-card:hover{box-shadow:0 4px 16px rgba(0,0,0,0.07);transform:translateY(-2px);}
+.related-card-tag{font-size:10px;font-family:'DM Mono',monospace;color:var(--red);letter-spacing:0.1em;margin-bottom:8px;}
+.related-card-title{font-family:'Shippori Mincho',serif;font-size:14px;font-weight:700;color:var(--ink);line-height:1.6;}
+.back-section{padding:28px 24px;background:var(--bg);border-top:1px solid var(--border);}
+.back-section-inner{max-width:760px;margin:0 auto;}
+.back-link{display:inline-flex;align-items:center;gap:6px;font-size:13px;color:var(--body);text-decoration:none;transition:color 0.2s;}
+.back-link:hover{color:var(--red);}
+footer{background:#1f1f1f;border-top:1px solid rgba(255,255,255,0.06);padding:40px 60px;display:flex;align-items:center;justify-content:space-between;}
+.footer-logo{display:flex;align-items:center;gap:10px;}
+.footer-logo-mark{width:20px;height:20px;background:var(--red);clip-path:polygon(50% 0%,0% 100%,18% 100%,50% 38%,82% 100%,100% 100%);}
+.footer-logo-text{font-family:'DM Mono',monospace;font-size:13px;color:rgba(255,255,255,0.55);}
+.footer-logo-text span{color:var(--red);}
+.footer-copy{font-size:11px;color:rgba(255,255,255,0.25);font-family:'DM Mono',monospace;}
+.reveal{opacity:0;transform:translateY(18px);transition:opacity 0.55s ease,transform 0.55s ease;}
+.reveal.visible{opacity:1;transform:translateY(0);}
+@media(max-width:768px){
+  .article-header,.article-body,.back-section,.related-section{padding-left:16px;padding-right:16px;}
+  .article-header{padding-top:88px;}
+  .effect-grid{grid-template-columns:1fr;}
+  .related-grid{grid-template-columns:1fr !important;}
+  .cta-btns-pair{flex-direction:column;align-items:center;}
+  .inline-cta{padding:24px 18px;}
+  footer{flex-direction:column;gap:14px;text-align:center;padding:28px 16px;}
+}
+</style>
+</head>
+<body>
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-P6VNBWH3" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
+<nav id="mainNav">
+  <a href="/" class="nav-logo">
+    <img src="/images/logo.png" alt="AIdealize">
+    <span class="nav-logo-text"><span>AI</span>dealize</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="/column/">コラム</a></li>
+    <li><a href="/service/">サービス</a></li>
+    <li><a href="https://aidealize.com/bpr/">DX事例</a></li>
+    <li><a href="/works/">実績</a></li>
+    <li><a href="/company.html">会社概要</a></li>
+    <li><a href="/service/prevention/#contact" class="nav-cta">無料でサイト点検</a></li>
+  </ul>
+  <button class="nav-hamburger" id="navHamburger" aria-label="メニュー"><span></span><span></span><span></span></button>
+</nav>
+<div class="nav-drawer" id="navDrawer">
+  <ul>
+    <li><a href="/column/" class="drawer-link">コラム</a></li>
+    <li><a href="/service/" class="drawer-link">サービス</a></li>
+    <li><a href="https://aidealize.com/bpr/" class="drawer-link">DX事例</a></li>
+    <li><a href="/works/" class="drawer-link">実績</a></li>
+    <li><a href="/company.html" class="drawer-link">会社概要</a></li>
+    <li><a href="/service/prevention/#contact">無料でサイト点検</a></li>
+  </ul>
+</div>
+
+<header class="article-header">
+  <div class="article-header-inner">
+    <nav class="breadcrumb" aria-label="パンくず">
+      <a href="/">ホーム</a><span>/</span>
+      <a href="/column/">コラム</a><span>/</span>
+      <span>病院ランサムウェア事例と備え</span>
+    </nav>
+    <div class="article-tag">Webセキュリティ / 医療・クリニック</div>
+    <h1 class="article-h1">
+      病院のランサムウェア被害、<br>クリニックにも当てはまる<br>「入口」と今日からの備え。
+    </h1>
+    <div class="article-meta">
+      <div>📅 2026年10月12日</div>
+      <div>⏱ 読了約7分</div>
+      <div>✍ AIdealize編集部</div>
+    </div>
+  </div>
+</header>
+
+<article class="article-body">
+<div class="article-body-inner">
+
+  
+  <div class="summary-box reveal">
+    <div class="summary-box-title">この記事でわかること</div>
+    <ul>
+      <li>2021年・2022年の病院ランサムウェア事例で何が起きたか</li>
+      <li>共通していた「入口」と、診療が約2か月影響を受けた理由</li>
+      <li>クリニックなど小規模医療機関が今日からできる備え</li>
+    </ul>
+  </div>
+
+  <p>病院へのランサムウェア攻撃は、ニュースで見るたびに「大きな病院の話」と感じるかもしれません。しかし、<strong>被害の原因を見ていくと、クリニックにもそのまま当てはまる“入口”</strong>が見えてきます。代表的な2件を整理します。</p>
+
+  <h2>事例1：徳島県つるぎ町立半田病院（2021年10月）</h2>
+  <ul>
+    <li>2021年10月31日未明、院内のプリンターから脅迫文が出力され、電子カルテを含むシステムが利用不能に。</li>
+    <li>ランサムウェア（LockBitとされる）による被害で、病院は身代金に応じず復旧を選択。</li>
+    <li>通常診療の再開までに<strong>約2か月</strong>を要したと報じられています。</li>
+    <li>侵入の入口として、外部との接続に使われていた<strong>VPN機器の脆弱性</strong>が指摘されています。</li>
+  </ul>
+
+  <h2>事例2：大阪急性期・総合医療センター（2022年10月）</h2>
+  <ul>
+    <li>2022年10月31日、電子カルテが使えなくなり、緊急以外の手術・外来診療が一時停止。</li>
+    <li>給食業者のシステムを経由し、<strong>VPN機器の脆弱性</strong>を突かれたとされています。</li>
+    <li>厚生労働省の資料でも、両病院とも<strong>約2か月間、電子カルテから紙カルテへ切り替えて診療</strong>を続けたと整理されています。</li>
+  </ul>
+  <div class="note">※事例の詳細は、病院の公表資料・厚生労働省の注意喚起・報道に基づく要約です。事実関係の正確な内容は各公表資料をご確認ください。</div>
+
+  <h2>2つの事例に共通する「入口」</h2>
+  <div class="dwrap">
+  <table class="dtable">
+    <thead><tr><th>共通点</th><th>クリニックに置き換えると</th></tr></thead>
+    <tbody>
+      <tr><td class="hl">VPN機器の脆弱性（更新放置）</td><td>電子カルテ業者の保守回線・リモート接続機器が、何年も更新されていない</td></tr>
+      <tr><td class="hl">取引先・委託先を経由した侵入</td><td>給食・検査・会計・保守会社などの“つながり”が入口になる</td></tr>
+      <tr><td class="hl">復旧に約2か月（紙運用）</td><td>電子カルテ停止＝予約・会計・処方がすべて手作業に</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <p>警察庁の集計でも、ランサムウェアの<strong>主な侵入経路はVPN機器の脆弱性</strong>とされています。小規模なクリニックは、機器の管理を保守業者に任せきりで、<strong>誰も更新状況を把握していない</strong>ことが少なくありません。</p>
+
+  <div class="inline-cta reveal">
+    <div class="inline-cta-tag">無料・入力30秒・費用契約なし</div>
+    <h3>今すぐ、自社サイトの危険性をチェック</h3>
+    <p>ドメインを入れるだけで、「誰でも管理画面に入れる状態になっていないか」「サイトの鍵（暗号化）が切れていないか」「古いシステムのまま放置されていないか」を、誰でも見られる情報の範囲で自動チェックします。</p>
+    <iframe id="secScanFrame" src="/security-scan-widget.html" title="無料セキュリティ外周点検" width="100%" height="220" frameborder="0" scrolling="no" loading="lazy" style="display:block;border:none;border-radius:12px;overflow:hidden;max-width:640px;margin:20px auto 0;"></iframe>
+  </div>
+  <script>
+  window.addEventListener('message', function(e){
+    if (e.data && e.data.type === 'roiHeight') {
+      var f = document.getElementById('secScanFrame');
+      if (f && e.data.height) f.style.height = e.data.height + 'px';
+    }
+  });
+  </script>
+
+  <h2>クリニックが今日からできる5つの備え</h2>
+  <ol>
+    <li><strong>保守業者に確認</strong>：「VPN・ルーターのファームウェアは最新か」「リモート保守の回線は常時開いていないか」を書面で確認</li>
+    <li><strong>バックアップを切り離す</strong>：電子カルテのバックアップが、常時つながった場所だけだと一緒に暗号化されます。オフラインのコピーを</li>
+    <li><strong>二段階認証</strong>：メール・クラウド・ホームページ管理画面に設定</li>
+    <li><strong>紙運用の手順書</strong>：停止時に予約・会計・処方をどう回すか、連絡先とあわせて1枚に</li>
+    <li><strong>ホームページの外周点検</strong>：管理画面の露出・古いCMS・SSLを確認。これは今日、無料でできます</li>
+  </ol>
+  <div class="case-box reveal">
+    <p>医療機関のBCP（事業継続計画）では、「災害」だけでなく<strong>「システムが止まったら」</strong>の想定が求められる時代です。大規模な投資より先に、<strong>入口の更新と、止まったときの手順</strong>を決めることが現実的な第一歩です。</p>
+    <div class="case-honest">⚠ <strong>正直にお伝えします。</strong>ホームページの点検だけで電子カルテの安全が保証されるわけではありません。院内システムは別途、保守業者や専門家による確認が必要です。ホームページの点検は「管理の習慣」を測る最初のチェックとして位置づけてください。</div>
+  </div>
+
+  <h2>よくある質問（FAQ）</h2>
+  <h3>病院ではなく小さなクリニックでも対象になりますか？</h3>
+  <p>なります。攻撃は規模で相手を選ばず、弱点のある機器を機械的に探します。むしろ小規模な医療機関ほど、専任のIT担当がいないため入口（VPN機器・リモート保守回線など）が放置されやすい傾向があります。</p>
+  <h3>電子カルテが止まったら、まず何をすべきですか？</h3>
+  <p>(1) 感染が疑われる端末をネットワークから切り離す（電源は切らない）、(2) 保守業者・厚労省の相談窓口・警察へ連絡、(3) 紙運用に切り替える、が基本です。普段から『紙運用の手順書』と連絡先を1枚にまとめておくと初動が大きく変わります。</p>
+  <h3>ホームページと電子カルテは別物ですよね？</h3>
+  <p>システムとしては別ですが、同じ事業者が管理していたり、同じパスワードを使い回していたりすると、ホームページの弱点が入口になることがあります。外から見えるホームページの状態は、その医療機関の『管理の習慣』を映す鏡でもあります。</p>
+
+  <h2>まとめ｜「止まる前」に確認できることがある</h2>
+  <p>2つの病院事例が教えてくれるのは、<strong>被害のきっかけが「放置された入口」だった</strong>ということです。まずは保守業者への確認と、バックアップの切り離し、そしてホームページの外周点検から始めてみてください。</p>
+
+  <div class="inline-cta reveal">
+    <div class="inline-cta-tag">無料・費用契約なし</div>
+    <h3>クリニックのホームページ、無料で点検します。</h3>
+    <p>SSL・管理画面の露出・CMSの状態を点検し、優先順位つきでお伝えします。医療・介護分野の実測データも踏まえてご説明します。</p>
+    <div class="cta-btns-pair">
+      <a href="/service/prevention/#contact" class="btn-cta-red">無料でサイト点検を受ける →</a>
+      <a href="/column/iryou-clinic-security/" class="btn-cta-ghost">クリニックのWebセキュリティ実態を読む</a>
+    </div>
+    <span class="btn-cta-note">オンライン対応・所要約30分・押し売りなし</span>
+  </div>
+
+
+</div>
+</article>
+
+<section class="related-section">
+  <div class="related-inner">
+    <div class="related-label">Related Articles</div>
+    <div class="related-grid">
+            <a href="/column/hokukanto-2man-site-jittai/" class="related-card">
+        <div class="related-card-tag">独自調査レポート</div>
+        <div class="related-card-title">北関東2万3千社のサイトを調べたら、3社に1社が「裏口」を開けたままだった【2026年8月実測】</div>
+      </a>
+      <a href="/column/chusho-cyber-attack-higai-taisaku/" class="related-card">
+        <div class="related-card-tag">Webセキュリティ / 中小企業</div>
+        <div class="related-card-title">中小企業のサイバー攻撃被害、実は約6割。入口は「放置された設定」だった【対策と実測データ】</div>
+      </a>
+      <a href="/column/homepage-kaizan-genin-taisaku/" class="related-card">
+        <div class="related-card-tag">Webセキュリティ / 改ざん対策</div>
+        <div class="related-card-title">ホームページが改ざんされた？原因・見つけ方・初動対応と再発防止【5分チェック付き】</div>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+<div class="back-section">
+  <div class="back-section-inner">
+    <a href="/column/" class="back-link">← コラム一覧に戻る</a>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-logo">
+    <div class="footer-logo-mark"></div>
+    <span class="footer-logo-text"><span>A</span>idealize株式会社</span>
+  </div>
+  <span class="footer-copy">© 2020–2026 AIdealize Inc. All rights reserved.</span>
+</footer>
+
+<script>
+(function(){
+  const btn=document.getElementById('navHamburger');
+  const drawer=document.getElementById('navDrawer');
+  const nav=document.getElementById('mainNav');
+  btn.addEventListener('click',function(){btn.classList.toggle('open');drawer.classList.toggle('open');});
+  drawer.querySelectorAll('.drawer-link').forEach(function(l){l.addEventListener('click',function(){btn.classList.remove('open');drawer.classList.remove('open');});});
+  window.addEventListener('scroll',function(){nav.classList.toggle('scrolled',window.scrollY>10);});
+})();
+const obs=new IntersectionObserver(function(e){e.forEach(function(x){if(x.isIntersecting)x.target.classList.add('visible');});},{threshold:0.08,rootMargin:'0px 0px -30px 0px'});
+document.querySelectorAll('.reveal').forEach(function(el){obs.observe(el);});
+</script>
+<script src="/js/lead-capture.js"></script>
+</body>
+</html>
