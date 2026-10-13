@@ -36,6 +36,24 @@
       btn: '無料でサイト診断',
       href: '/site-check.html'
     },
+    bcp: {
+      mode: 'link',
+      accent: '#7a1a1a',
+      icon: '🛟',
+      title: '介護BCP、元消防士とAIが30分で無料作成。',
+      sub: 'お名前とメールだけで申込OK。減算リスクの対策に、確認事項リストを折り返しお送りします。',
+      btn: '無料でBCPを作る',
+      href: '/service/bcp/?utm_source=lead_bar&utm_medium=bar&utm_campaign=bcp#contact'
+    },
+    hanamaru: {
+      mode: 'link',
+      accent: '#0891b2',
+      icon: '🩺',
+      title: '訪問看護の記録・報告書、AIで下書きを無料体験。',
+      sub: '実際の記録で試せます。ご契約前に使い心地をご確認ください。',
+      btn: '無料トライアルを見る',
+      href: '/lp/hanamaru-kango/?utm_source=lead_bar&utm_medium=bar&utm_campaign=hanamaru'
+    },
     checklist: {
       mode: 'link',
       accent: '#0891b2',
@@ -54,6 +72,8 @@
     if (forced && OFFERS[forced]) return forced;
     var p = (location.pathname || '').toLowerCase();
     var has = function (arr) { for (var i = 0; i < arr.length; i++) { if (p.indexOf(arr[i]) !== -1) return true; } return false; };
+    if (has(['bcp'])) return 'bcp';
+    if (has(['houkan-', 'homon-kango', 'hanamaru'])) return 'hanamaru';
     if (has(['ninteichosahyo', 'caremane', 'careplan', 'tokki'])) return 'ocr';
     if (has(['komuten', 'wordpress', 'ssl-', 'reform', 'kokoku', 'meo-', 'tenken', 'site-check', 'saiyo-site'])) return 'sitecheck';
     return 'checklist';
@@ -110,6 +130,8 @@
 
   function init() {
     if (suppressed()) return;
+    var here = location.pathname.replace(/\/$/, '');
+    if (O.href && O.href.split(/[?#]/)[0].replace(/\/$/, '') === here) return; // 誘導先ページ自身では出さない
     var style = document.createElement('style');
     style.textContent = css;
     document.head.appendChild(style);
