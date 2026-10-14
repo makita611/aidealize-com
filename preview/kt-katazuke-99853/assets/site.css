@@ -323,3 +323,6 @@ section[id],[id=line],[id=contact]{scroll-margin-top:72px}
 .voice{background:#fff;border:1px solid var(--line);border-radius:14px;padding:18px}
 .voice .who{font-size:14px;color:var(--muted);margin:0 0 6px}
 .faq-cat{font-size:16px;color:var(--brand-ink);margin:26px 0 10px;padding-left:10px;border-left:4px solid var(--brand)}
+.todo{white-space:normal}
+.info-table td:nth-child(2){white-space:normal!important;font-size:15px}
+.info-table th{white-space:nowrap;width:7.5em}
