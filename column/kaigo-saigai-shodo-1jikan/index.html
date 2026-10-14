@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>災害発生から1時間、介護施設は何から動くか｜初動の優先順位と判断表｜AIdealize</title>
+<meta name="description" content="地震・火災・水害の直後、介護施設の職員が最初の1時間に何を、誰が、どの順で行うかを整理。指揮者の決め方、安否確認、情報の集約、記録の取り方を元消防士の視点で解説します。">
+<link rel="canonical" href="https://aidealize.com/column/kaigo-saigai-shodo-1jikan/">
+<meta property="og:title" content="災害発生から1時間、介護施設は何から動くか｜初動の優先順位と判断表">
+<meta property="og:description" content="地震・火災・水害の直後、介護施設の職員が最初の1時間に何を、誰が、どの順で行うかを整理。指揮者の決め方、安否確認、情報の集約、記録の取り方を元消防士の視点で解説します。">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://aidealize.com/column/kaigo-saigai-shodo-1jikan/">
+<meta property="og:site_name" content="AIdealize株式会社">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700;900&family=Shippori+Mincho:wght@400;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-P6VNBWH3');</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "災害発生から1時間、介護施設は何から動くか｜初動の優先順位と判断表", "description": "地震・火災・水害の直後、介護施設の職員が最初の1時間に何を、誰が、どの順で行うかを整理。指揮者の決め方、安否確認、情報の集約、記録の取り方を元消防士の視点で解説します。", "datePublished": "2026-10-14", "dateModified": "2026-10-14", "author": {"@type": "Organization", "name": "AIdealize株式会社"}, "publisher": {"@type": "Organization", "name": "AIdealize株式会社", "url": "https://aidealize.com"}, "mainEntityOfPage": "https://aidealize.com/column/kaigo-saigai-shodo-1jikan/"}</script>
+<style>
+:root{
+  --red:#0891b2;--red-dark:#0e7490;
+  --ink:#1e293b;--body:#4b5563;--light:#94a3b8;
+  --border:#e2e8f0;--bg:#f8fafc;--bg2:#f1f5f9;--white:#fff;
+  --tag-bg:#ecfeff;--green:#059669;--green-bg:#ecfdf5;
+  --demo-bg:#0f172a;--amber-bg:#fef3c7;--amber-tx:#92400e;--danger:#dc2626;--danger-bg:#fef2f2;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{font-family:'Noto Sans JP',sans-serif;background:var(--white);color:var(--ink);overflow-x:hidden;line-height:1.7;}
+#mainNav{position:fixed;top:0;left:0;right:0;z-index:1000;display:flex;align-items:center;justify-content:space-between;padding:0 60px;height:68px;background:rgba(255,255,255,0.97);border-bottom:1px solid var(--border);backdrop-filter:blur(12px);transition:box-shadow 0.3s;}
+#mainNav.scrolled{box-shadow:0 2px 16px rgba(0,0,0,0.06);}
+.nav-logo{display:flex;align-items:center;gap:10px;text-decoration:none;}
+.nav-logo img{height:34px;width:auto;}
+.nav-logo-text{font-family:'DM Mono',monospace;font-size:15px;font-weight:500;color:var(--ink);letter-spacing:0.02em;}
+.nav-logo-text span{color:var(--red);}
+.nav-links{display:flex;align-items:center;gap:32px;list-style:none;}
+.nav-links a{font-size:13px;font-weight:500;color:var(--body);text-decoration:none;transition:color 0.2s;}
+.nav-links a:hover{color:var(--ink);}
+.nav-cta{background:var(--red) !important;color:#fff !important;padding:9px 20px;border-radius:4px;font-size:12px !important;font-weight:700 !important;}
+.nav-cta:hover{background:var(--red-dark) !important;}
+.nav-hamburger{display:none;flex-direction:column;justify-content:center;gap:5px;width:40px;height:40px;background:none;border:none;cursor:pointer;}
+.nav-hamburger span{display:block;width:22px;height:2px;background:var(--ink);transition:all 0.3s;transform-origin:center;}
+.nav-hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg);}
+.nav-hamburger.open span:nth-child(2){opacity:0;}
+.nav-hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
+.nav-drawer{display:none;position:fixed;top:68px;left:0;right:0;background:#fff;border-bottom:2px solid var(--red);padding:20px 28px 28px;z-index:999;}
+.nav-drawer.open{display:block;}
+.nav-drawer ul{list-style:none;display:flex;flex-direction:column;}
+.nav-drawer ul li a{display:block;padding:13px 0;font-size:15px;font-weight:500;color:var(--ink);text-decoration:none;border-bottom:1px solid var(--border);}
+.nav-drawer ul li:last-child a{margin-top:16px;text-align:center;background:var(--red);color:#fff !important;padding:13px;border-radius:4px;font-weight:700 !important;border-bottom:none;}
+@media(max-width:1024px){#mainNav{padding:0 28px;}.nav-links{display:none;}.nav-hamburger{display:flex;}}
+@media(max-width:480px){#mainNav{padding:0 16px;height:60px;}.nav-drawer{top:60px;}.nav-logo-text{font-size:13px;}}
+.article-header{padding:116px 24px 52px;background:var(--bg);border-bottom:1px solid var(--border);}
+.article-header-inner{max-width:760px;margin:0 auto;}
+.breadcrumb{display:flex;align-items:center;gap:6px;font-size:12px;color:var(--light);margin-bottom:20px;flex-wrap:wrap;}
+.breadcrumb a{color:var(--light);text-decoration:none;}
+.breadcrumb a:hover{color:var(--red);}
+.breadcrumb span{color:var(--border);}
+.article-tag{display:inline-flex;align-items:center;background:var(--tag-bg);color:var(--red);font-size:11px;font-weight:700;letter-spacing:0.06em;padding:4px 12px;border-radius:100px;margin-bottom:18px;}
+.article-h1{font-family:'Shippori Mincho',serif;font-size:clamp(20px,3vw,34px);font-weight:700;color:var(--ink);line-height:1.65;margin-bottom:20px;}
+.article-meta{display:flex;align-items:center;gap:20px;flex-wrap:wrap;font-size:12px;color:var(--light);}
+.article-body{padding:72px 24px 100px;}
+.article-body-inner{max-width:760px;margin:0 auto;}
+.summary-box{background:var(--bg);border-left:4px solid var(--red);padding:24px 28px;border-radius:0 6px 6px 0;margin-bottom:52px;}
+.summary-box-title{font-size:11px;font-weight:700;color:var(--red);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:12px;}
+.summary-box ul{list-style:none;display:flex;flex-direction:column;gap:8px;}
+.summary-box ul li{display:flex;align-items:flex-start;gap:8px;font-size:14px;line-height:1.8;color:var(--ink);}
+.summary-box ul li::before{content:'✓';color:var(--red);font-weight:700;flex-shrink:0;margin-top:1px;}
+.article-body-inner h2{font-family:'Shippori Mincho',serif;font-size:clamp(17px,2.2vw,24px);font-weight:700;color:var(--ink);line-height:1.65;margin:56px 0 20px;padding-bottom:10px;border-bottom:1px solid var(--border);position:relative;}
+.article-body-inner h2::after{content:'';position:absolute;bottom:-1px;left:0;width:48px;height:2px;background:var(--red);}
+.article-body-inner h3{font-family:'Shippori Mincho',serif;font-size:clamp(15px,1.8vw,19px);font-weight:700;color:var(--ink);line-height:1.7;margin:36px 0 14px;padding-left:14px;border-left:3px solid var(--red);}
+.article-body-inner p{font-size:15px;line-height:2;color:var(--body);margin-bottom:22px;}
+.article-body-inner strong{color:var(--ink);font-weight:700;}
+.article-body-inner a{color:var(--red-dark);font-weight:700;text-decoration:underline;text-underline-offset:2px;}
+.article-body-inner ul,.article-body-inner ol{list-style:none;margin-bottom:22px;display:flex;flex-direction:column;gap:8px;}
+.article-body-inner ul li,.article-body-inner ol li{font-size:14px;line-height:1.9;color:var(--body);display:flex;align-items:flex-start;gap:10px;}
+.article-body-inner ul li::before{content:'─';color:var(--red);flex-shrink:0;margin-top:4px;font-size:12px;}
+.article-body-inner ol{counter-reset:ol;}
+.article-body-inner ol li{counter-increment:ol;}
+.article-body-inner ol li::before{content:counter(ol);background:var(--red);color:#fff;width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0;margin-top:2px;font-family:'DM Mono',monospace;}
+.point-box{background:var(--bg2);border-radius:8px;padding:20px 24px;margin:20px 0;}
+.point-box-label{font-size:10px;font-family:'DM Mono',monospace;color:var(--red);letter-spacing:0.12em;text-transform:uppercase;margin-bottom:10px;}
+.point-box p{font-size:14px;line-height:1.9;color:var(--body);margin-bottom:0;}
+.case-box{border:1px solid #cffafe;border-left:5px solid var(--red);border-radius:0 10px 10px 0;padding:24px 26px;margin:28px 0;background:linear-gradient(135deg,#ecfeff,#f0fdf4);}
+.case-box p{margin-bottom:0;font-size:14px;line-height:1.9;color:var(--body);}
+.case-honest{margin-top:16px;background:var(--amber-bg);color:var(--amber-tx);border-radius:8px;padding:14px 16px;font-size:13px;line-height:1.85;}
+.inline-cta{background:var(--bg);border:1px solid var(--border);border-top:4px solid var(--red);border-radius:10px;padding:36px;margin:52px 0;text-align:center;}
+.inline-cta-tag{font-size:11px;color:var(--red);font-weight:700;letter-spacing:0.08em;margin-bottom:12px;}
+.inline-cta h3{font-family:'Shippori Mincho',serif;font-size:clamp(16px,2vw,22px);font-weight:700;color:var(--ink);line-height:1.65;margin-bottom:12px;}
+.inline-cta p{font-size:14px;color:var(--body);line-height:1.9;margin-bottom:22px;}
+.cta-btns-pair{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;}
+.btn-cta-red{display:inline-flex;align-items:center;gap:6px;background:var(--red);color:#fff;padding:13px 28px;border-radius:4px;font-size:14px;font-weight:700;text-decoration:none;transition:background 0.2s,transform 0.2s;}
+.btn-cta-red:hover{background:var(--red-dark);transform:translateY(-2px);}
+.btn-cta-ghost{display:inline-flex;align-items:center;gap:6px;background:#fff;color:var(--red);border:1.5px solid var(--red);padding:13px 28px;border-radius:4px;font-size:14px;font-weight:700;text-decoration:none;transition:background 0.2s;}
+.btn-cta-ghost:hover{background:var(--tag-bg);}
+.btn-cta-note{display:block;margin-top:12px;font-size:11px;color:var(--light);}
+.dtable{width:100%;border-collapse:collapse;font-size:13px;margin:24px 0;}
+.dtable th,.dtable td{border:1px solid var(--border);padding:11px 13px;text-align:left;vertical-align:top;line-height:1.7;}
+.dtable th{background:var(--bg2);color:var(--ink);font-weight:700;}
+.dtable td{color:var(--body);}
+.dwrap{overflow-x:auto;}
+.related-section{padding:60px 24px;background:var(--white);border-top:1px solid var(--border);}
+.related-inner{max-width:760px;margin:0 auto;}
+.related-label{font-family:'DM Mono',monospace;font-size:11px;color:var(--red);letter-spacing:0.14em;text-transform:uppercase;margin-bottom:20px;}
+.related-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;}
+.related-card{border:1px solid var(--border);border-top:3px solid var(--red);padding:20px;text-decoration:none;color:inherit;border-radius:0 0 6px 6px;transition:box-shadow 0.2s,transform 0.2s;}
+.related-card:hover{box-shadow:0 4px 16px rgba(0,0,0,0.07);transform:translateY(-2px);}
+.related-card-tag{font-size:10px;font-family:'DM Mono',monospace;color:var(--red);letter-spacing:0.1em;margin-bottom:8px;}
+.related-card-title{font-family:'Shippori Mincho',serif;font-size:14px;font-weight:700;color:var(--ink);line-height:1.6;}
+.back-section{padding:28px 24px;background:var(--bg);border-top:1px solid var(--border);}
+.back-section-inner{max-width:760px;margin:0 auto;}
+.back-link{display:inline-flex;align-items:center;gap:6px;font-size:13px;color:var(--body);text-decoration:none;transition:color 0.2s;}
+.back-link:hover{color:var(--red);}
+footer{background:#1f1f1f;border-top:1px solid rgba(255,255,255,0.06);padding:40px 60px;display:flex;align-items:center;justify-content:space-between;}
+.footer-logo{display:flex;align-items:center;gap:10px;}
+.footer-logo-mark{width:20px;height:20px;background:var(--red);clip-path:polygon(50% 0%,0% 100%,18% 100%,50% 38%,82% 100%,100% 100%);}
+.footer-logo-text{font-family:'DM Mono',monospace;font-size:13px;color:rgba(255,255,255,0.55);}
+.footer-logo-text span{color:var(--red);}
+.footer-copy{font-size:11px;color:rgba(255,255,255,0.25);font-family:'DM Mono',monospace;}
+.reveal{opacity:0;transform:translateY(18px);transition:opacity 0.55s ease,transform 0.55s ease;}
+.reveal.visible{opacity:1;transform:translateY(0);}
+@media(max-width:768px){
+  .article-header,.article-body,.back-section,.related-section{padding-left:16px;padding-right:16px;}
+  .article-header{padding-top:88px;}
+  .related-grid{grid-template-columns:1fr !important;}
+  .cta-btns-pair{flex-direction:column;align-items:center;}
+  .inline-cta{padding:24px 18px;}
+  footer{flex-direction:column;gap:14px;text-align:center;padding:28px 16px;}
+}
+</style>
+</head>
+<body>
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-P6VNBWH3" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
+<nav id="mainNav">
+  <a href="/" class="nav-logo">
+    <img src="/images/logo.png" alt="AIdealize">
+    <span class="nav-logo-text"><span>AI</span>dealize</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="/column/">コラム</a></li>
+    <li><a href="/service/">サービス</a></li>
+    <li><a href="https://aidealize.com/bpr/">DX事例</a></li>
+    <li><a href="/works/">実績</a></li>
+    <li><a href="/company.html">会社概要</a></li>
+    <li><a href="/service/bcp/" class="nav-cta">BCPを無料で作成</a></li>
+  </ul>
+  <button class="nav-hamburger" id="navHamburger" aria-label="メニュー"><span></span><span></span><span></span></button>
+</nav>
+<div class="nav-drawer" id="navDrawer">
+  <ul>
+    <li><a href="/column/" class="drawer-link">コラム</a></li>
+    <li><a href="/service/" class="drawer-link">サービス</a></li>
+    <li><a href="https://aidealize.com/bpr/" class="drawer-link">DX事例</a></li>
+    <li><a href="/works/" class="drawer-link">実績</a></li>
+    <li><a href="/company.html" class="drawer-link">会社概要</a></li>
+    <li><a href="/service/bcp/">BCPを無料で作成</a></li>
+  </ul>
+</div>
+
+<header class="article-header">
+  <div class="article-header-inner">
+    <nav class="breadcrumb" aria-label="パンくず">
+      <a href="/">ホーム</a><span>/</span>
+      <a href="/column/">コラム</a><span>/</span>
+      <span>災害発生から1時間、介護施設は何から動くか｜初動の優先順位と判断表</span>
+    </nav>
+    <div class="article-tag">BCP / 初動対応</div><h1 class="article-h1">災害発生から1時間、介護施設は何から動くか。<br>初動の優先順位と判断表。</h1><div class="article-meta"><div>📅 2026年10月14日</div><div>⏱ 読了約8分</div><div>✍ AIdealize編集部（元消防士の視点）</div></div></div></header>
+
+<article class="article-body"><div class="article-body-inner"><div class="summary-box reveal"><div class="summary-box-title">要点</div><p>初動で大事なのは、立派な計画書より<strong>「誰が指揮を執るか」「情報をどこに集めるか」「何を優先するか」</strong>が決まっていることです。この3つが揺らぐと、人が足りなくても現場が動けます。</p></div>
+<!-- early-offer:start --><aside class="early-offer" data-offer="bcp" style="margin:-28px 0 44px;padding:18px 22px;border:1px solid #e5e5e5;border-left:4px solid var(--red,#b3261e);border-radius:0 8px 8px 0;background:#fff;display:flex;gap:16px;align-items:center;flex-wrap:wrap;"><div style="flex:1;min-width:220px;"><div style="font-size:11px;font-weight:700;color:var(--red,#b3261e);letter-spacing:0.06em;margin-bottom:4px;">介護施設・事業所の方へ</div><div style="font-size:15px;font-weight:700;color:#1f2937;line-height:1.6;">初動の動きを、事業所のBCPに落とし込みませんか</div><div style="font-size:13px;color:#555;line-height:1.8;margin-top:2px;">指揮者・連絡・記録の型を、事業所に合わせて整理します。BCPは無料で作成しています。</div></div><a href="/service/bcp/?utm_source=column&utm_medium=cta&utm_campaign=kaigo-saigai-shodo-1jikan" style="display:inline-block;background:var(--red,#b3261e);color:#fff;padding:11px 20px;border-radius:4px;font-size:13px;font-weight:700;text-decoration:none;white-space:nowrap;">BCPを無料で作成する →</a></aside><!-- early-offer:end -->
+<p>災害の直後は、普段できていることもできなくなります。電話はつながらず、人員は不足し、利用者の状態も把握しきれません。だからこそ、<strong>最初の1時間の動きは考えなくても動ける形</strong>にしておく必要があります。</p><div class="case-box"><p><strong>この記事を書いた人の立場</strong><br>AIdealize株式会社 代表・眞貴田 正博。元消防士（約8年・現場4年／本部4年）。大学在学中に新潟県で中越地震を経験し、東日本大震災では支援隊として大規模災害の現場に参加しました。制度の細部は施設の種別・自治体で異なるため、断定できない点は「確認先」を明記しています。</p></div><h2>初動の3原則</h2><ol><li><strong>指揮者を最初に決める</strong>：施設長が不在でも動けるよう、代行順位（第1・第2・第3）を決めておく</li><li><strong>情報を一か所に集める</strong>：ホワイトボードや模造紙など、見える形で「利用者の状態」「職員の出勤」「被害状況」を集約する</li><li><strong>優先順位は命→人員→設備の順</strong>：建物の片づけより先に、人の安全と人員の把握を行う</li></ol><p>災害対応の現場では、指揮と情報の集約が曖昧だと、同じ確認を何度も繰り返したり、必要な連絡が抜けたりします。人手が少ない介護施設ほど、この2つを先に決めておく価値があります。</p><h2>最初の1時間の判断表（目安）</h2><div class="dwrap"><table class="dtable"><thead><tr><th>時間</th><th>やること</th><th>ポイント</th></tr></thead><tbody><tr><td>0〜5分</td><td>身の安全の確保、揺れ・火災の確認</td><td>職員自身の安全が先。火気の停止、出口の確保</td></tr><tr><td>5〜15分</td><td>利用者の安全確認、指揮者の確認</td><td>居室・フロアごとに担当を決め、声かけと目視で確認。状態を一覧に書く</td></tr><tr><td>15〜30分</td><td>人員の把握、避難の要否判断</td><td>出勤者・不在者を確認。建物の損傷・火災・浸水の状況で、屋内待機か避難かを判断</td></tr><tr><td>30〜60分</td><td>連絡と記録</td><td>家族・協力医療機関・自治体・法人本部へ。つながらない場合の手段（代替）も試す。時系列で記録</td></tr></tbody></table></div><div class="point-box"><div class="point-box-label">夜間・少人数のとき</div><p>夜勤や少人数の時間帯は、同じ表を「一人でも動ける形」に縮める必要があります。たとえば、確認は「まず呼吸・意識が必要な方」から、連絡は「最優先の1か所」から、という優先順位を事前に決めておきます。</p></div><h2>つまずきやすい4つのポイント</h2><h3>1. 施設長が不在で、誰も判断できない</h3><p>代行順位を決め、名簿に書いて見える場所に貼ります。判断してよい範囲（避難するかどうか等）も、あらかじめ文書化しておくと迷いません。</p><h3>2. 家族への連絡が殺到・つながらない</h3><p>個別に電話するのではなく、メール・一斉連絡ツール・掲示など、まとめて伝える手段を決めておきます。安否の「状況報告」を定期的に出すと、問い合わせも減ります。</p><h3>3. 記録が後回しになる</h3><p>記録は後の判断（行政への報告、家族への説明、減算・報酬の確認）に使われます。時刻・判断・指示者の3点だけでも、その場で書いておきます。</p><h3>4. 避難するか留まるかで迷う</h3><p>建物の被害、火災・浸水の有無、ライフラインの状態に応じた判断基準を、事前に表にしておきます。基準が曖昧なまま現場で決めようとすると、判断が遅れやすくなります。</p><h2>訓練で確かめること</h2><p>初動は「知っている」だけでは動けません。机上訓練で、①指揮者が不在のとき誰が代行するか、②情報をどこに集めるか、③連絡がつながらないとき何で代替するか、の3点を声に出して確認します。30分の訓練の進め方は<a href="/column/kaigo-bcp-kunren-jisshirei/">BCP訓練の実施例</a>で解説しています。</p><div class="point-box"><div class="point-box-label">一次資料</div><p><a href="https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/hukushi_kaigo/kaigo_koureisha/douga_00002.html" target="_blank" rel="noopener noreferrer">厚生労働省：介護施設・事業所におけるBCP作成支援研修</a>には、入所・通所・訪問・居宅別の作成資料と机上訓練動画があります。施設の種別によって必要な項目が異なるため、自事業所に該当するものを確認してください。</p></div><div class="inline-cta reveal"><div class="inline-cta-tag">BCP運用支援</div><h3>初動の型を、事業所のBCPに。</h3><p>指揮者の代行順位、連絡網、記録様式まで事業所に合わせて整理します。</p><div class="cta-btns-pair"><a href="/service/bcp/?utm_source=column&utm_medium=cta&utm_campaign=kaigo-saigai-shodo-1jikan" class="btn-cta-red">介護BCPの無料作成・相談 →</a></div></div><h2>FAQ</h2><h3>初動の判断表は誰が作りますか？</h3><p>施設長・管理者が中心になり、現場の職員（夜勤を含む）と一緒に作ると実態に合います。作ったあと、必ず机上訓練で確かめます。</p><h3>小規模・訪問系でも同じ考え方ですか？</h3><p>訪問系は「利用者宅にいる職員」と「事務所に残る職員」で動きが違います。安否確認の優先順位や連絡手段を別に整理する必要があります。<a href="/column/homon-kaigo-bcp/">訪問介護のBCP</a>も参考にしてください。</p></div></article>
+
+<section class="related-section">
+  <div class="related-inner">
+    <div class="related-label">Related Articles</div>
+    <div class="related-grid">
+      <a href="/column/kaigo-bcp-kunren-jisshirei/" class="related-card">
+        <div class="related-card-tag">BCP訓練 / 介護</div>
+        <div class="related-card-title">介護BCP訓練の実施例｜30分でできる机上訓練</div>
+      </a>
+      <a href="/column/kaigo-bcp-shobo-hinan-chigai/" class="related-card">
+        <div class="related-card-tag">BCP / 防災</div>
+        <div class="related-card-title">消防計画・避難確保計画・BCPの違い</div>
+      </a>
+      <a href="/column/homon-kaigo-bcp/" class="related-card">
+        <div class="related-card-tag">BCP / 訪問</div>
+        <div class="related-card-title">訪問介護のBCP</div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<div class="back-section">
+  <div class="back-section-inner">
+    <a href="/column/" class="back-link">← コラム一覧に戻る</a>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-logo">
+    <div class="footer-logo-mark"></div>
+    <span class="footer-logo-text"><span>A</span>idealize株式会社</span>
+  </div>
+  <span class="footer-copy">© 2020–2026 AIdealize Inc. All rights reserved.</span>
+</footer>
+
+<script>
+(function(){
+  const btn=document.getElementById('navHamburger');
+  const drawer=document.getElementById('navDrawer');
+  const nav=document.getElementById('mainNav');
+  btn.addEventListener('click',function(){btn.classList.toggle('open');drawer.classList.toggle('open');});
+  drawer.querySelectorAll('.drawer-link').forEach(function(l){l.addEventListener('click',function(){btn.classList.remove('open');drawer.classList.remove('open');});});
+  window.addEventListener('scroll',function(){nav.classList.toggle('scrolled',window.scrollY>10);});
+})();
+const obs=new IntersectionObserver(function(e){e.forEach(function(x){if(x.isIntersecting)x.target.classList.add('visible');});},{threshold:0.08,rootMargin:'0px 0px -30px 0px'});
+document.querySelectorAll('.reveal').forEach(function(el){obs.observe(el);});
+</script>
+<script src="/js/lead-capture.js"></script>
+</body>
+</html>
