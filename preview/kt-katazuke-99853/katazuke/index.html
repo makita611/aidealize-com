@@ -365,6 +365,7 @@
     </ol>
     <h3 style="margin:28px 0 0;font-size:18px">買取の対象になりやすい物</h3>
     <ul class="item-chips"><li>年式の新しい家電</li><li>まだ使える家具</li><li>着物・和装小物</li><li>骨董品・美術品</li><li>食器・茶道具</li><li>ブランド品・時計</li><li>工具・農機具</li><li>カメラ・オーディオ</li><li>切手・古銭</li></ul>
+    <p style="margin:14px 0 0"><a href="/preview/kt-katazuke-99853/column/jikka-katazuke-ureru-mono/">売れるもの・買取に出す前に気をつけることを読む <svg class="icon"><use href="/preview/kt-katazuke-99853/assets/icons.svg#arrow"/></svg></a></p>
     <p class="note">※状態によっては買取できない場合があります。 <span class="todo">対象品目 買取業者に確認</span></p>
   </div>
 </section>
@@ -524,6 +525,9 @@
       <a class="card mini" href="/preview/kt-katazuke-99853/column/ihin-seiri-hiyou-sagamihara/" style="flex-direction:column;align-items:flex-start"><b>遺品整理の費用相場は？間取り別の目安と、費用を抑えるコツ</b><span>見積りで確認したいことも</span></a>
       <a class="card mini" href="/preview/kt-katazuke-99853/column/jikka-katazuke-junban/" style="flex-direction:column;align-items:flex-start"><b>実家の片付けは何から始める？順番・費用の目安</b><span>始める前に決める3つのこと</span></a>
       <a class="card mini" href="/preview/kt-katazuke-99853/column/shisetsu-nyukyo-oya-no-ie/" style="flex-direction:column;align-items:flex-start"><b>親が施設に入ったら、家の片付けはいつ・何をする？</b><span>入居前後の段取り</span></a>
+      <a class="card mini" href="/preview/kt-katazuke-99853/column/jikka-katazuke-ureru-mono/" style="flex-direction:column;align-items:flex-start"><b>実家の片付けで売れるもの・買取に出せるものは？</b><span>費用を下げるコツ</span></a>
+      <a class="card mini" href="/preview/kt-katazuke-99853/column/oya-no-ie-katazuke-kyoudai/" style="flex-direction:column;align-items:flex-start"><b>親の家の片付けで兄弟ともめないために</b><span>決めておく5つのこと</span></a>
+      <a class="card mini" href="/preview/kt-katazuke-99853/column/seizen-seiri-itsukara/" style="flex-direction:column;align-items:flex-start"><b>生前整理はいつから・何から始める？</b><span>無理なく進める5つのステップ</span></a>
       <a class="card mini" href="/preview/kt-katazuke-99853/column/sagamihara-akiya-hojokin/" style="flex-direction:column;align-items:flex-start"><b>相模原市の空き家の片付けに補助金は使える？</b><span>使える制度と費用を抑えるコツ</span></a>
     </div>
   </div>
@@ -546,7 +550,9 @@
 <section class="sec soft" id="contact">
   <div class="wrap narrow">
     <div class="sec-head center"><p class="kicker">CONTACT</p><h2>メールでのお問い合わせ</h2><p>2営業日以内にご連絡します。 <span class="todo">要確認</span></p></div>
-    <form class="form" action="#" method="post" onsubmit="alert('下書きのため送信されません');return false;">
+    <form class="form" action="#" method="post" onsubmit="alert('確認用のページのため送信されません');return false;">
+      <div style="position:absolute;left:-9999px" aria-hidden="true"><label>ウェブサイト<input name="website" tabindex="-1" autocomplete="off"></label></div>
+      <input type="hidden" name="ts" id="f-ts" value="">
       <div class="two">
         <div><label for="f-name">お名前<span class="req">必須</span></label><input id="f-name" name="name" autocomplete="name" required></div>
         <div><label for="f-tel">お電話番号<span class="req">必須</span></label><input id="f-tel" name="tel" type="tel" autocomplete="tel" required></div>
@@ -563,8 +569,10 @@
           <select id="f-when" name="when"><option value="">選んでください</option><option>できるだけ早く</option><option>1か月以内</option><option>2〜3か月以内</option><option>まだ決めていない</option></select></div>
       </div>
       <div><label for="f-msg">ご相談内容</label><textarea id="f-msg" name="message" placeholder="例：母が来月施設に入るので、実家（一軒家・4LDK）を片付けたい。物置にも物が多い。"></textarea></div>
+      <p class="note" style="margin:0">送信いただいた内容は、お問い合わせへの返信のためだけに使います。</p>
       <button class="btn btn-tel" type="submit">この内容で送信する</button>
     </form>
+    <script>document.getElementById("f-ts").value=Math.floor(Date.now()/1000);if(/[?&]error=/.test(location.search)){var e=document.createElement("p");e.className="warn-box";e.textContent="送信できませんでした。お名前とお電話番号をご確認のうえ、もう一度お試しいただくか、お電話（080-3586-2566）でご連絡ください。";document.getElementById("contact").querySelector(".form").before(e);}</script>
   </div>
 </section>
 </main>
