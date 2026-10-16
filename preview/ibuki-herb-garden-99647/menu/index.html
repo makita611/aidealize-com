@@ -333,7 +333,7 @@ footer .ridge-line{max-width:var(--max);margin:0 auto 34px}
 .visit-sum{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:start}
 .nav a.current{color:var(--ink);border-bottom:1px solid var(--ink)}
 .nav a{white-space:nowrap}
-.logo{white-space:nowrap}
+.logo{white-space:nowrap;display:inline-flex;align-items:center;gap:10px}.logo-mark{width:40px;height:40px;display:block;flex:none}.logo .logo-text{display:block;font-family:var(--serif);font-size:18px;color:inherit;letter-spacing:.1em;font-weight:700;line-height:1.3}@media(max-width:560px){.logo-mark{width:32px;height:32px}}
 .aerial-grid{display:grid;grid-template-columns:1fr 1fr;gap:22px;margin-top:26px;align-items:start}
 .aerial-grid svg{width:100%;height:auto;display:block;border-radius:14px}
 .aerial-grid .map-embed{aspect-ratio:4/3}
@@ -532,7 +532,7 @@ footer .ridge-line{max-width:var(--max);margin:0 auto 34px}
 
 <header>
   <div class="hd">
-    <a class="logo" href="../">いぶきハーブ・ガーデン<span>IBUKI HERB GARDEN</span></a>
+    <a class="logo" href="../"><img class="logo-mark" src="../assets/logo-irodori.png" alt="" width="40" height="40"><span class="logo-text">いぶきハーブ・ガーデン<span>IBUKI HERB GARDEN</span></span></a>
     <nav class="nav">
       <a href="../lunch/" data-nav="lunch">ランチ・ご予約</a>
       <a href="../menu/" data-nav="menu">季節のメニュー</a>
@@ -565,6 +565,26 @@ footer .ridge-line{max-width:var(--max);margin:0 auto 34px}
     </div>
   </div>
 </div>
+
+<section id="buffet-now" style="padding:56px 0;background:#fff">
+  <div class="wrap">
+    <span class="label">THE BUFFET</span>
+    <h2>ある日のビュッフェ（10月）</h2>
+    <p class="lead">窓の外の庭を眺めながら、季節の野菜をたっぷりと。10月に撮影した、実際のビュッフェの様子です。料理は日によって変わります。</p>
+    <div class="entry" style="grid-template-columns:1fr 1fr">
+      <figure><div class="photo" style="aspect-ratio:4/3"><img src="../assets/b-buffet-all.jpg" alt="窓辺のテーブルに並んだ、季節の野菜料理のビュッフェ" loading="lazy"></div></figure>
+      <figure><div class="photo" style="aspect-ratio:4/3"><img src="../assets/b-buffet-front.jpg" alt="なすの照り焼き、春巻き、メンチカツなど手前に並ぶビュッフェ料理" loading="lazy"></div></figure>
+    </div>
+    <h3 style="font-family:var(--serif);color:var(--forest);margin-top:30px;letter-spacing:.06em">デザート</h3>
+    <p class="lead" style="margin-top:8px">デザートは、お食事を楽しんでいただいたころに、時間をおいてお出しします。</p>
+    <div class="entry" style="grid-template-columns:repeat(auto-fit,minmax(210px,1fr))">
+      <figure><div class="photo" style="aspect-ratio:3/4"><img src="../assets/d-mochirin.jpg" alt="器に盛られた、もちもち食感のドーナツ「伊吹もっちりん」" loading="lazy"></div><figcaption><b>伊吹もっちりん</b>おもち？ドーナツ？　ここでしか味わえない、もちもちの食感です。</figcaption></figure>
+      <figure><div class="photo" style="aspect-ratio:3/4"><img src="../assets/d-pudding.jpg" alt="ミントとクリームをのせた豆乳プリン" loading="lazy"></div><figcaption><b>豆乳プリン</b>身体にやさしい豆乳と、おいしい伊吹牛乳で作ります。</figcaption></figure>
+      <figure><div class="photo" style="aspect-ratio:3/4"><img src="../assets/d-imo.jpg" alt="ガラスの器に盛られたいもようかん" loading="lazy"></div><figcaption><b>いもようかん</b>みずみずしく、口の中でスッとほどける優しい味わい。甘さ控えめの、お食事後の和スイーツです。</figcaption></figure>
+    </div>
+    <p class="credit" style="text-align:left">写真：いぶきハーブ・ガーデン提供（2026年10月16日撮影）。デザートの内容は日によって変わります。</p>
+  </div>
+</section>
 
 <section id="thismonth" style="padding:56px 0">
   <div class="wrap">
@@ -663,6 +683,7 @@ footer .ridge-line{max-width:var(--max);margin:0 auto 34px}
 
 <footer>
   <svg class="ridge-line on-dark" viewBox="0 125 586 120" preserveAspectRatio="xMidYMax meet" aria-hidden="true"><path d="M0 187 C2.3 186.7 9.3 185.8 14 185 C18.7 184.2 23.3 182.8 28 182 C32.7 181.2 37.3 180.5 42 180 C46.7 179.5 51.3 178.3 56 179 C60.7 179.7 65.3 183.3 70 184 C74.7 184.7 79.3 183.7 84 183 C88.7 182.3 93.3 180.8 98 180 C102.7 179.2 107.3 179.3 112 178 C116.7 176.7 121.3 173.5 126 172 C130.7 170.5 135.3 170.2 140 169 C144.7 167.8 149.3 166.3 154 165 C158.7 163.7 163.3 162.5 168 161 C172.7 159.5 177.3 157.8 182 156 C186.7 154.2 191.3 151.5 196 150 C200.7 148.5 205.3 147.8 210 147 C214.7 146.2 219.3 145.8 224 145 C228.7 144.2 233.3 142.8 238 142 C242.7 141.2 247.3 140.5 252 140 C256.7 139.5 261.3 139.3 266 139 C270.7 138.7 275.3 138.2 280 138 C284.7 137.8 289.3 138.3 294 138 C298.7 137.7 303.3 136.2 308 136 C312.7 135.8 317.3 135.8 322 137 C326.7 138.2 331.3 140.3 336 143 C340.7 145.7 345.3 150.2 350 153 C354.7 155.8 359.3 157.5 364 160 C368.7 162.5 373.3 165.3 378 168 C382.7 170.7 387.3 173.3 392 176 C396.7 178.7 401.3 182.5 406 184 C410.7 185.5 415.3 184.8 420 185 C424.7 185.2 429.3 184.7 434 185 C438.7 185.3 443.3 186.3 448 187 C452.7 187.7 457.3 188.3 462 189 C466.7 189.7 471.3 190.2 476 191 C480.7 191.8 485.3 192.8 490 194 C494.7 195.2 499.3 196.7 504 198 C508.7 199.3 513.3 200.5 518 202 C522.7 203.5 527.3 205.5 532 207 C536.7 208.5 541.3 209.3 546 211 C550.7 212.7 555.3 214.8 560 217 C564.7 219.2 569.7 222.5 574 224 C578.3 225.5 584.0 225.7 586 226"/></svg>
+  <img src="../assets/logo-irodori.png" alt="" width="56" height="56" style="display:block;margin:0 auto 10px">
   <div class="fname">いぶきハーブ・ガーデン</div>
   滋賀県米原市上板並1759-1　TEL 0749-56-2790<br>
   <a href="../lunch/" style="color:inherit">ランチ・ご予約</a>　<a href="../menu/" style="color:inherit">季節のメニュー</a>　<a href="../group/" style="color:inherit">団体・女子会・法事</a>　<a href="../gallery/" style="color:inherit">ギャラリー</a>　<a href="../shop/" style="color:inherit">ショップ</a>　<a href="../access/" style="color:inherit">アクセス</a>　<a href="../news/" style="color:inherit">営業日・お知らせ</a><br>
