@@ -304,6 +304,12 @@ footer .fname{font-family:var(--serif);color:#fff;font-size:17px;letter-spacing:
   .hero .facts b{font-size:14.5px}
   .hero .facts div{font-size:11px}
 }
+/* 日本語の改行：語の途中で折り返さない（文節単位）。未対応ブラウザは従来どおり */
+h1,h2,h3,h4,p,li,dt,dd,figcaption,summary,.cap,.lead,.desc,.notice,.label,.btn,.more,.hint,.credit{word-break:auto-phrase;line-break:strict;overflow-wrap:anywhere}
+h1,h2,h3{text-wrap:balance}
+p,li,figcaption,.lead{text-wrap:pretty}
+@media(max-width:560px){.mui-row{grid-template-columns:1fr!important}.mui-row figure{max-width:130px}}
+.menu .item h3 small{display:block;margin-top:2px;font-family:var(--sans);font-size:12.5px;font-weight:500;letter-spacing:.04em;color:var(--sub)}
 </style>
 <style>
 /* ===== 複数ページ化・伊吹山演出（2026-09-30） ===== */
@@ -537,7 +543,7 @@ footer .ridge-line{max-width:var(--max);margin:0 auto 34px}
       <a href="../lunch/" data-nav="lunch">ランチ・ご予約</a>
       <a href="../menu/" data-nav="menu">季節のメニュー</a>
       <a href="../group/" data-nav="group">団体・女子会</a>
-      <a href="../shop/" data-nav="shop">ショップ</a>
+      <a href="../shop/" data-nav="shop">ショップ・テイクアウト</a>
       <div class="nav-dd">
         <a href="../access/" data-nav="access">お店のご案内</a>
         <div class="dd-menu">
@@ -724,7 +730,7 @@ footer .ridge-line{max-width:var(--max);margin:0 auto 34px}
   <img src="../assets/logo-irodori.png" alt="" width="56" height="56" style="display:block;margin:0 auto 10px">
   <div class="fname">いぶきハーブ・ガーデン</div>
   滋賀県米原市上板並1759-1　TEL 0749-56-2790<br>
-  <a href="../lunch/" style="color:inherit">ランチ・ご予約</a>　<a href="../menu/" style="color:inherit">季節のメニュー</a>　<a href="../group/" style="color:inherit">団体・女子会・法事</a>　<a href="../gallery/" style="color:inherit">ギャラリー</a>　<a href="../shop/" style="color:inherit">ショップ</a>　<a href="../access/" style="color:inherit">アクセス</a>　<a href="../news/" style="color:inherit">営業日・お知らせ</a><br>
+  <a href="../lunch/" style="color:inherit">ランチ・ご予約</a>　<a href="../menu/" style="color:inherit">季節のメニュー</a>　<a href="../group/" style="color:inherit">団体・女子会・法事</a>　<a href="../gallery/" style="color:inherit">ギャラリー</a>　<a href="../shop/" style="color:inherit">ショップ・テイクアウト</a>　<a href="../access/" style="color:inherit">アクセス</a>　<a href="../news/" style="color:inherit">営業日・お知らせ</a><br>
   提案イメージ（noindex,nofollow）／写真：いぶきハーブ・ガーデン提供、一部Instagram(@ibuki_herbs)より提案用にお借りしています<br>
   制作のご提案：眞貴田 正博（makita@aidealize.com）
 </footer>

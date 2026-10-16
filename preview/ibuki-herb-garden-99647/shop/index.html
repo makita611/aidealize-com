@@ -4,11 +4,11 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex, nofollow">
-<meta name="description" content="伊吹山のふもとのショップ。天然素材100％のハーブスキンケア、無添加ソフトクリーム、瀬戸内レモンライムスカッシュ。店頭で香りや使い心地を確かめて選べます。">
-<meta property="og:title" content="【提案イメージ】ショップ｜いぶきハーブ・ガーデン（ハーブスキンケア・無添加ソフトクリーム）">
-<meta property="og:description" content="伊吹山のふもとのショップ。天然素材100％のハーブスキンケア、無添加ソフトクリーム、瀬戸内レモンライムスカッシュ。店頭で香りや使い心地を確かめて選べます。">
+<meta name="description" content="伊吹山のふもとのショップ・テイクアウト。島根・Muiの無添加ソフトクリーム、コーヒー、瀬戸内レモンライムスカッシュ、天然素材100％のハーブスキンケア。10:00〜18:00の営業時間内にどうぞ。">
+<meta property="og:title" content="【提案イメージ】ショップ・テイクアウト｜いぶきハーブ・ガーデン（ソフトクリーム・ドリンク・ハーブスキンケア）">
+<meta property="og:description" content="伊吹山のふもとのショップ・テイクアウト。島根・Muiの無添加ソフトクリーム、コーヒー、瀬戸内レモンライムスカッシュ、天然素材100％のハーブスキンケア。10:00〜18:00の営業時間内にどうぞ。">
 <meta property="og:type" content="website">
-<title>【提案イメージ】ショップ｜いぶきハーブ・ガーデン（ハーブスキンケア・無添加ソフトクリーム）</title>
+<title>【提案イメージ】ショップ・テイクアウト｜いぶきハーブ・ガーデン（ソフトクリーム・ドリンク・ハーブスキンケア）</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@500;700&family=Zen+Kaku+Gothic+New:wght@400;500;700&family=Cormorant+Garamond:wght@500;600&family=Cormorant+Infant:wght@500;600&family=Pinyon+Script&display=swap" rel="stylesheet">
@@ -304,6 +304,12 @@ footer .fname{font-family:var(--serif);color:#fff;font-size:17px;letter-spacing:
   .hero .facts b{font-size:14.5px}
   .hero .facts div{font-size:11px}
 }
+/* 日本語の改行：語の途中で折り返さない（文節単位）。未対応ブラウザは従来どおり */
+h1,h2,h3,h4,p,li,dt,dd,figcaption,summary,.cap,.lead,.desc,.notice,.label,.btn,.more,.hint,.credit{word-break:auto-phrase;line-break:strict;overflow-wrap:anywhere}
+h1,h2,h3{text-wrap:balance}
+p,li,figcaption,.lead{text-wrap:pretty}
+@media(max-width:560px){.mui-row{grid-template-columns:1fr!important}.mui-row figure{max-width:130px}}
+.menu .item h3 small{display:block;margin-top:2px;font-family:var(--sans);font-size:12.5px;font-weight:500;letter-spacing:.04em;color:var(--sub)}
 </style>
 <style>
 /* ===== 複数ページ化・伊吹山演出（2026-09-30） ===== */
@@ -537,7 +543,7 @@ footer .ridge-line{max-width:var(--max);margin:0 auto 34px}
       <a href="../lunch/" data-nav="lunch">ランチ・ご予約</a>
       <a href="../menu/" data-nav="menu">季節のメニュー</a>
       <a href="../group/" data-nav="group">団体・女子会</a>
-      <a href="../shop/" data-nav="shop">ショップ</a>
+      <a href="../shop/" data-nav="shop">ショップ・テイクアウト</a>
       <div class="nav-dd">
         <a href="../access/" data-nav="access">お店のご案内</a>
         <div class="dd-menu">
@@ -553,16 +559,42 @@ footer .ridge-line{max-width:var(--max);margin:0 auto 34px}
 
 <div class="page-head">
   <div class="wrap">
-    <div class="crumb"><a href="../">トップ</a>　／　ショップ</div>
-    <span class="label">SHOP</span>
-    <h1>ショップ</h1>
-    <p>レストランに併設したショップでは、ハーブのスキンケアやドリンク、無添加のソフトクリームを販売しています。お店は10:00からお入りいただけます。ご来店が少し早かったときも、ショップをごゆっくりご覧ください。香りや手ざわりを確かめて選べるのも、お店ならではです。</p>
+    <div class="crumb"><a href="../">トップ</a>　／　ショップ・テイクアウト</div>
+    <span class="label">SHOP &amp; TAKE OUT</span>
+    <h1>ショップ・<wbr>テイクアウト</h1>
+    <p>ソフトクリームやコーヒーは、お持ち帰りも店内でも。ハーブのスキンケアは、香りや手ざわりを確かめて選べます。お店は10:00から開いています。ランチの前後にも、ドライブの途中にも、気軽にお立ち寄りください。</p>
+    <div class="btnrow">
+      <a class="more" href="#takeout" style="margin-top:0">ソフトクリーム・ドリンク</a>
+      <a class="more" href="#soft" style="margin-top:0">ソフトクリームのこと</a>
+      <a class="more" href="#skincare" style="margin-top:0">ハーブスキンケア</a>
+    </div>
   </div>
 </div>
 
+<section id="takeout" style="background:#fff">
+  <div class="wrap">
+    <span class="label">TAKE OUT</span>
+    <h2>ソフトクリーム・ドリンク</h2>
+    <p class="lead">お持ち帰りも、お店で召し上がるのも。<b>10:00〜18:00</b>の営業時間内でしたら、いつでもどうぞ。お持ち帰りは、お声がけください。</p>
+    <div class="menu-grid">
+      <figure><div class="photo" style="aspect-ratio:3/4"><img src="../assets/t-soft2.jpg" alt="無添加ソフトクリーム" loading="lazy"></div><figcaption><b>無添加ソフトクリーム</b><br>440円（店内447円）</figcaption></figure>
+      <figure><div class="photo" style="aspect-ratio:3/4"><img src="../assets/t-hot-lid.jpg" alt="ふたつきのホットコーヒー" loading="lazy"></div><figcaption><b>ホットコーヒー</b><br>350円（店内356円）</figcaption></figure>
+      <figure><div class="photo" style="aspect-ratio:3/4"><img src="../assets/t-iced.jpg" alt="ストローつきのアイスコーヒー" loading="lazy"></div><figcaption><b>アイスコーヒー</b><br>350円（店内356円）</figcaption></figure>
+      <figure><div class="photo" style="aspect-ratio:3/4"><img src="../assets/m-summer-drink.jpg" alt="ストローを差したレモン入りの冷たいスカッシュ" style="object-position:50% 40%" loading="lazy"></div><figcaption><b>瀬戸内レモンライムスカッシュ</b><br>◯◯円（確認中）</figcaption></figure>
+    </div>
+    <div class="notice" style="margin-top:22px"><b>お食事をされた方は、ソフトクリームが50円引き</b>テイクアウト・店内どちらも対象です。お値段はすべて税込で、テイクアウトと店内（イートイン）で少し違います。</div>
+    <ul class="item-meta" style="margin-top:18px;max-width:36em">
+      <li>「ここのソフトクリームがおいしいと聞いて」と、お立ち寄りくださる方もいらっしゃいます。</li>
+      <li>そのほかのテイクアウト：◯◯（焼き菓子などの有無を確認して記入）</li>
+      <li>お支払い：◯◯（確認中）</li>
+    </ul>
+    <p class="note" style="font-size:13px;color:#8c8473;margin-top:12px">写真：いぶきハーブ・ガーデン提供・提案用。お値段・内容は確認でき次第、差し替えます。</p>
+  </div>
+</section>
+
 <section id="soft" style="background:#fff">
   <div class="wrap">
-    <span class="label">SOFT CREAM</span>
+    <span class="label">ABOUT THE SOFT CREAM</span>
     <h2>島根のこだわりの味を、<br>伊吹山のふもとで。</h2>
     <p class="lead">いぶきハーブ・ガーデンのソフトクリームは<b>無添加</b>。島根県の乳製品メーカー「Milk &amp; Beans Mui（ミューイ）」から仕入れています。ランチのあとにも、ドライブの途中にも。</p>
     <div class="entry" style="grid-template-columns:repeat(auto-fit,minmax(260px,1fr))">
@@ -571,85 +603,41 @@ footer .ridge-line{max-width:var(--max);margin:0 auto 34px}
     </div>
 
     <h3 style="font-family:var(--serif);color:var(--forest);font-size:19px;letter-spacing:.06em;margin-top:34px">Muiって、どんなところ？</h3>
-    <div class="entry" style="grid-template-columns:150px 1fr;align-items:start;margin-top:14px">
+    <div class="entry mui-row" style="grid-template-columns:150px 1fr;align-items:start;margin-top:14px">
       <figure><div class="photo" style="aspect-ratio:3/4;background:#fff"><img src="../assets/s-mui-logo.jpg" alt="Milk &amp; Beans Mui のロゴ（牛のイラスト）" loading="lazy" style="object-fit:contain"></div></figure>
       <div style="font-size:14.5px;line-height:2;color:var(--sub)">
         <p style="margin:0 0 10px"><b style="color:var(--forest)">自然と向き合う牛乳づくり。</b>「一次産業を営むことは、森や海を守り、自然との架け橋を担うこと」という考えで、島根県の牧場の生乳を使った乳製品をつくっています。放牧で育った牛の牛乳にこだわり、島根県・邑南町（おおなんちょう）に本店があります。</p>
-        <p style="margin:0 0 10px"><b style="color:var(--forest)">テレビや雑誌でたびたび紹介。</b>NHK「プロフェッショナル 仕事の流儀」、テレビ朝日「ザワつく！金曜日」、テレビ東京「先生のおとりよせ」などで取り上げられています。</p>
-        <p style="margin:0"><b style="color:var(--forest)">受賞も多数。</b>ご当地牛乳グランプリで金賞（2017年）、農林水産省「フードアクション・ニッポン・アワード2017」で金賞などを受賞しています。</p>
+        <p style="margin:0 0 10px"><b style="color:var(--forest)">テレビや雑誌でたびたび紹介。</b>NHK「プロフェッショナル 仕事の流儀」（2016年）、テレビ東京「先生のおとりよせ」（2022年）、テレビ朝日「ザワつく！金曜日」（2026年3月）のほか、「anan」「クロワッサン」「dancyu」などの雑誌でも取り上げられています。</p>
+        <p style="margin:0"><b style="color:var(--forest)">受賞も多数。</b>ご当地牛乳グランプリで金賞・ビジュアル賞（2017年）、農林水産省「フードアクション・ニッポン・アワード2017」で金賞、ご当地ヨーグルトグランプリで金賞（2018年）などを受賞しています。</p>
       </div>
     </div>
     <ul class="item-meta" style="margin-top:18px;max-width:40em">
-      <li>これまでの主な紹介：NHK「プロフェッショナル 仕事の流儀」（2016年）／テレビ東京「先生のおとりよせ」（2022年）／テレビ朝日「ザワつく！金曜日」（2026年3月）／雑誌「anan」「クロワッサン」「dancyu」ほか</li>
-      <li>受賞：ご当地牛乳グランプリ 金賞・ビジュアル賞（2017年）／フードアクション・ニッポン・アワード2017 金賞／ご当地ヨーグルトグランプリ 金賞（2018年）</li>
       <li>上記はMui公式サイトの掲載にもとづく、Muiという会社の実績です。<a href="https://mui-milk.com/support/" target="_blank" rel="noopener">掲載の一覧（Mui公式）</a>　／　<a href="https://mui-milk.com/brand/" target="_blank" rel="noopener">Muiのこだわり（Mui公式）</a></li>
     </ul>
-
-    <div class="notice" style="margin-top:22px"><b>お値段</b>440円（テイクアウト）／447円（店内）・税込。お食事をされた方は<span style="font-weight:700;color:var(--forest)">50円引き</span>（テイクアウト・店内どちらも）。テイクアウトは営業時間（10:00〜18:00）内でしたらいつでも。</div>
     <p class="credit" style="text-align:left">写真・ロゴ：株式会社Mui提供（掲載の了承を得ています）</p>
   </div>
 </section>
 
-<section id="shop">
+<section id="skincare" style="background:var(--kinari)">
   <div class="wrap">
-    <div class="grid">
-      <div>
-        <div class="shot"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="16" y="14" width="16" height="30" rx="3"/><path d="M20 14V8h8v6"/><path d="M20 26c3-3 5-3 8 0"/></svg><b>PHOTO</b><small>スキンケア商品を生成りの背景に<br>（撮影予定）</small></div>
-        <h3>ハーブスキンケア</h3>
-        <p>天然素材100％でつくった、ハーブのスキンケア。</p>
-        <ul class="item-meta">
-          <li>商品のラインナップ：◯◯（確認中）</li>
-          <li>使われているハーブ：◯◯（事実を確認して記入）</li>
-          <li>ギフト対応：◯◯（確認中）</li>
-        </ul>
-      </div>
-      <div>
-        <div class="photo"><img src="../assets/s-mui3.jpg" alt="コーンにのった白いソフトクリーム" style="object-position:50% 40%"></div>
-        <h3>無添加ソフトクリーム</h3>
-        <p>ランチのあとにも、ドライブの途中にも。</p>
-        <ul class="item-meta">
-          <li>価格：440円（テイクアウト）／447円（店内・イートイン）。税込。お食事をされた方は50円引き</li>
-          <li>島根県の「Milk &amp; Beans Mui」の無添加ソフトクリームです（<a href="#soft">くわしくは上</a>）</li>
-        </ul>
-      </div>
-      <div>
-        <div class="photo"><img src="../assets/m-summer-drink.jpg" alt="ストローを差したレモン入りの冷たいスカッシュ" style="object-position:50% 40%"></div>
-        <h3>瀬戸内レモンライムスカッシュ</h3>
-        <p>すっきり冷たい、レモンとライムのスカッシュ。お店でも、お持ち帰りでも。</p>
-        <ul class="item-meta">
-          <li>価格：◯◯円（確認中）</li>
-          <li>お持ち帰り：ご希望の方にお出しします（営業時間内）</li>
-        </ul>
-      </div>
+    <span class="label">HERB SKINCARE</span>
+    <h2>ハーブスキンケア</h2>
+    <p class="lead">天然素材100％でつくった、ハーブのスキンケア。香りや手ざわりを確かめて選べるのは、お店ならではです。ランチのあとのお土産にも。</p>
+    <div class="entry" style="grid-template-columns:repeat(auto-fit,minmax(260px,1fr));align-items:start">
+      <figure><div class="photo" style="aspect-ratio:4/3"><img src="../assets/c-shop.jpg" alt="ハーブのスキンケア商品が並ぶショップの棚" loading="lazy"></div></figure>
+      <ul class="item-meta" style="margin:0">
+        <li>商品のラインナップ：◯◯（確認中）</li>
+        <li>使われているハーブ：◯◯（事実を確認して記入）</li>
+        <li>ギフト対応：◯◯（確認中）</li>
+      </ul>
     </div>
-    <div class="notice"><b>お買いものについて</b>商品はショップの店頭で販売しています。オンライン販売：◯◯（予定の有無を確認中）<br>※商品の説明には、効能・効果をうたう表現は使いません。</div>
-  </div>
-</section>
-
-<section id="takeout" style="background:var(--kinari)">
-  <div class="wrap">
-    <span class="label">TAKE OUT</span>
-    <h2>テイクアウトメニュー</h2>
-    <p class="lead">お店は<b>10:00から</b>お入りいただけます。ソフトクリームとコーヒーなどのテイクアウトは、<b>10:00〜18:00</b>の営業時間内でしたら、いつでもどうぞ。ドライブの途中に、散歩のお供に。</p>
-    <div class="menu-grid" style="grid-template-columns:repeat(3,1fr)">
-      <figure><div class="photo" style="aspect-ratio:3/4"><img src="../assets/t-soft2.jpg" alt="無添加ソフトクリーム" loading="lazy"></div><figcaption>無添加ソフトクリーム　440円（店内447円）</figcaption></figure>
-      <figure><div class="photo" style="aspect-ratio:3/4"><img src="../assets/t-hot-lid.jpg" alt="ふたつきのホットコーヒー" loading="lazy"></div><figcaption>ホットコーヒー　350円（店内356円）</figcaption></figure>
-      <figure><div class="photo" style="aspect-ratio:3/4"><img src="../assets/t-iced.jpg" alt="ストローつきのアイスコーヒー" loading="lazy"></div><figcaption>アイスコーヒー　350円（店内356円）</figcaption></figure>
-    </div>
-    <ul class="item-meta" style="margin-top:22px;max-width:36em">
-      <li>お持ち帰りは、営業時間（10:00〜18:00）内にお声がけください。</li>
-      <li>「ここのソフトクリームがおいしいと聞いて」と、お立ち寄りくださる方もいらっしゃいます。</li>
-      <li>お値段は税込です。テイクアウトと店内（イートイン）で、お値段が少し違います。ソフトクリームは、お食事をされた方は50円引きです（テイクアウト・店内どちらも）。</li>
-      <li>そのほかのテイクアウト：◯◯（ドリンク・焼き菓子などの有無を確認して記入）</li>
-      <li>お支払い：◯◯（確認中）</li>
-    </ul>
-    <p class="note" style="font-size:13px;color:#8c8473;margin-top:12px">写真：いぶきハーブ・ガーデン提供・提案用。お値段・内容は確認でき次第、差し替えます。</p>
+    <div class="notice" style="margin-top:22px"><b>お買いものについて</b>商品はショップの店頭で販売しています。オンライン販売：◯◯（予定の有無を確認中）<br>※商品の説明には、効能・効果をうたう表現は使いません。</div>
   </div>
 </section>
 
 <div class="final">
   <h2>ランチのあとに、<br>ショップへもどうぞ。</h2>
-  <p>ショップの営業日は、営業カレンダーでご確認ください。</p>
+  <p>お店の営業日は、営業カレンダーでご確認ください。</p>
   <div class="row">
     <a class="btn" href="../news/#calendar" data-track="calendar">営業カレンダーを見る</a>
     <a class="btn line-w" href="../lunch/">ランチ・ご予約</a>
@@ -661,7 +649,7 @@ footer .ridge-line{max-width:var(--max);margin:0 auto 34px}
   <img src="../assets/logo-irodori.png" alt="" width="56" height="56" style="display:block;margin:0 auto 10px">
   <div class="fname">いぶきハーブ・ガーデン</div>
   滋賀県米原市上板並1759-1　TEL 0749-56-2790<br>
-  <a href="../lunch/" style="color:inherit">ランチ・ご予約</a>　<a href="../menu/" style="color:inherit">季節のメニュー</a>　<a href="../group/" style="color:inherit">団体・女子会・法事</a>　<a href="../gallery/" style="color:inherit">ギャラリー</a>　<a href="../shop/" style="color:inherit">ショップ</a>　<a href="../access/" style="color:inherit">アクセス</a>　<a href="../news/" style="color:inherit">営業日・お知らせ</a><br>
+  <a href="../lunch/" style="color:inherit">ランチ・ご予約</a>　<a href="../menu/" style="color:inherit">季節のメニュー</a>　<a href="../group/" style="color:inherit">団体・女子会・法事</a>　<a href="../gallery/" style="color:inherit">ギャラリー</a>　<a href="../shop/" style="color:inherit">ショップ・テイクアウト</a>　<a href="../access/" style="color:inherit">アクセス</a>　<a href="../news/" style="color:inherit">営業日・お知らせ</a><br>
   提案イメージ（noindex,nofollow）／写真：いぶきハーブ・ガーデン提供、一部Instagram(@ibuki_herbs)より提案用にお借りしています<br>
   制作のご提案：眞貴田 正博（makita@aidealize.com）
 </footer>

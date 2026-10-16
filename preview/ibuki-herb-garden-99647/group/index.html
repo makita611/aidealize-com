@@ -4,9 +4,9 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex, nofollow">
-<meta name="description" content="米原市・伊吹山のふもとの農家レストラン。女子会・ママ会、法事のあとのお食事、団体・婦人会のランチのご予約を承ります。ビュッフェ大人3,300円、お子様料金あり。人数・日時はお電話か公式LINEでご相談ください。">
+<meta name="description" content="米原市・伊吹山のふもとの農家レストラン。女子会・ママ会・婦人会などの集まり、法事のあとのお食事、立食・イベントのご予約を承ります。ビュッフェ大人3,300円、お子様料金あり。人数・日時はお電話か公式LINEでご相談ください。">
 <meta property="og:title" content="【提案イメージ】団体・女子会・法事のご予約｜いぶきハーブ・ガーデン（米原・伊吹山）">
-<meta property="og:description" content="米原市・伊吹山のふもとの農家レストラン。女子会・ママ会、法事のあとのお食事、団体・婦人会のランチのご予約を承ります。ビュッフェ大人3,300円、お子様料金あり。人数・日時はお電話か公式LINEでご相談ください。">
+<meta property="og:description" content="米原市・伊吹山のふもとの農家レストラン。女子会・ママ会・婦人会などの集まり、法事のあとのお食事、立食・イベントのご予約を承ります。ビュッフェ大人3,300円、お子様料金あり。人数・日時はお電話か公式LINEでご相談ください。">
 <meta property="og:type" content="website">
 <title>【提案イメージ】団体・女子会・法事のご予約｜いぶきハーブ・ガーデン（米原・伊吹山）</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -304,6 +304,12 @@ footer .fname{font-family:var(--serif);color:#fff;font-size:17px;letter-spacing:
   .hero .facts b{font-size:14.5px}
   .hero .facts div{font-size:11px}
 }
+/* 日本語の改行：語の途中で折り返さない（文節単位）。未対応ブラウザは従来どおり */
+h1,h2,h3,h4,p,li,dt,dd,figcaption,summary,.cap,.lead,.desc,.notice,.label,.btn,.more,.hint,.credit{word-break:auto-phrase;line-break:strict;overflow-wrap:anywhere}
+h1,h2,h3{text-wrap:balance}
+p,li,figcaption,.lead{text-wrap:pretty}
+@media(max-width:560px){.mui-row{grid-template-columns:1fr!important}.mui-row figure{max-width:130px}}
+.menu .item h3 small{display:block;margin-top:2px;font-family:var(--sans);font-size:12.5px;font-weight:500;letter-spacing:.04em;color:var(--sub)}
 </style>
 <style>
 /* ===== 複数ページ化・伊吹山演出（2026-09-30） ===== */
@@ -537,7 +543,7 @@ footer .ridge-line{max-width:var(--max);margin:0 auto 34px}
       <a href="../lunch/" data-nav="lunch">ランチ・ご予約</a>
       <a href="../menu/" data-nav="menu">季節のメニュー</a>
       <a href="../group/" data-nav="group">団体・女子会</a>
-      <a href="../shop/" data-nav="shop">ショップ</a>
+      <a href="../shop/" data-nav="shop">ショップ・テイクアウト</a>
       <div class="nav-dd">
         <a href="../access/" data-nav="access">お店のご案内</a>
         <div class="dd-menu">
@@ -556,24 +562,25 @@ footer .ridge-line{max-width:var(--max);margin:0 auto 34px}
     <div class="crumb"><a href="../">トップ</a>　／　団体・女子会・法事</div>
     <span class="label">GROUP &amp; PARTY</span>
     <h1>団体・女子会・法事のご予約</h1>
-    <p>伊吹山のふもとで、ゆっくりご一緒に。ご友人どうしの女子会やママ会、法事のあとのお食事、婦人会やサークルのランチを承ります。人数と日にちが決まる前の、ご相談だけでも歓迎です。</p>
+    <p>伊吹山のふもとで、ゆっくりご一緒に。ご友人や地域の仲間の集まり、法事のあとのお食事、立食のお集まりを承ります。人数と日にちが決まる前の、ご相談だけでも歓迎です。</p>
   </div>
 </div>
 
 <section id="plans">
   <div class="wrap">
     <span class="label">PLAN</span>
-    <h2>ご利用に合わせて、3つのご案内</h2>
-    <p class="lead">女子会・団体・法事のあとのお食事は、いまのところ専用のメニューはなく、ランチビュッフェ（大人3,300円・小学生1,650円・幼児600円・3歳未満無料）でご案内しています。ご人数が多い日は、日にちと「1部・2部」を一緒に決めさせてください。</p>
+    <h2>ご利用のしかたは、3つ</h2>
+    <p class="lead">仲間の集まりも、法事のあとのお食事も、いまのところ専用のメニューはなく、ランチビュッフェ（大人3,300円・小学生1,650円・幼児600円・3歳未満無料）でご案内しています。ご人数が多い日は、日にちと「1部・2部」を一緒に決めさせてください。</p>
     <div class="menu-grid" style="grid-template-columns:repeat(2,1fr);margin-bottom:26px">
       <figure><div class="photo" style="aspect-ratio:3/2"><img src="../assets/p-seats-window.jpg" alt="窓の外に緑が広がる、大きなテーブルの席" loading="lazy"></div><figcaption>窓の外に緑が広がる大きなテーブル席</figcaption></figure>
       <figure><div class="photo" style="aspect-ratio:3/2"><img src="../assets/p-hall.jpg" alt="広い店内とビュッフェ台" loading="lazy"></div><figcaption>広い店内とビュッフェ台</figcaption></figure>
     </div>
     <div class="menu">
       <div class="item" id="joshikai">
-        <h3>女子会・ママ会</h3>
-        <p>女子会でご利用のお客様も多くいらっしゃいます。気の合う仲間と、野菜たっぷりのビュッフェを。おしゃべりしながら、好きなものを好きなだけ。小学生・幼児のお料金もありますので、お子様連れのママ会にも。</p>
-        <p class="hint">◯名以上のご予約の特典：◯◯（内容は店舗と相談して決定）</p>
+        <h3>仲間の集まり<small>女子会・ママ会・婦人会・サークル</small></h3>
+        <p>気の合う仲間と、野菜たっぷりのビュッフェを。おしゃべりしながら、好きなものを好きなだけ。女子会でご利用のお客様も多くいらっしゃいます。小学生・幼児のお料金もありますので、お子様連れのママ会にも。</p>
+        <p>婦人会やサークル、ご旅行のお昼など、30〜40名のご相談も承ります。ご人数・ご到着の時間・お支払いのまとめ方は、事前にお電話で打ち合わせできます。</p>
+        <p class="hint">特典・ご予約の締切・最少人数：◯◯（店舗と確認して記入）</p>
       </div>
       <div class="item" id="houji">
         <h3>法事・お祝いのあとのお食事</h3>
@@ -584,11 +591,6 @@ footer .ridge-line{max-width:var(--max);margin:0 auto 34px}
         <h3>立食・パーティー・イベント</h3>
         <p>広い店内や庭を使った、立食のお集まりやイベントのご相談も承ります。人数・お時間・お料理のご希望をお知らせください。</p>
         <p class="hint">できること・人数・料金：◯◯（店舗と相談して決定。庭の利用の可否も確認して記入）</p>
-      </div>
-      <div class="item" id="dantai">
-        <h3>団体・婦人会・サークル</h3>
-        <p>地域の集まりやご旅行の昼食に。30〜40名のご利用のご相談も承ります。ご人数・ご到着の時間・お支払いのまとめ方など、事前にお電話で打ち合わせできます。</p>
-        <p class="hint">ご予約の締切・最少人数：◯◯（店舗と確認して記入）</p>
       </div>
     </div>
   </div>
@@ -640,7 +642,7 @@ footer .ridge-line{max-width:var(--max);margin:0 auto 34px}
   <img src="../assets/logo-irodori.png" alt="" width="56" height="56" style="display:block;margin:0 auto 10px">
   <div class="fname">いぶきハーブ・ガーデン</div>
   滋賀県米原市上板並1759-1　TEL 0749-56-2790<br>
-  <a href="../lunch/" style="color:inherit">ランチ・ご予約</a>　<a href="../menu/" style="color:inherit">季節のメニュー</a>　<a href="../group/" style="color:inherit">団体・女子会・法事</a>　<a href="../gallery/" style="color:inherit">ギャラリー</a>　<a href="../shop/" style="color:inherit">ショップ</a>　<a href="../access/" style="color:inherit">アクセス</a>　<a href="../news/" style="color:inherit">営業日・お知らせ</a><br>
+  <a href="../lunch/" style="color:inherit">ランチ・ご予約</a>　<a href="../menu/" style="color:inherit">季節のメニュー</a>　<a href="../group/" style="color:inherit">団体・女子会・法事</a>　<a href="../gallery/" style="color:inherit">ギャラリー</a>　<a href="../shop/" style="color:inherit">ショップ・テイクアウト</a>　<a href="../access/" style="color:inherit">アクセス</a>　<a href="../news/" style="color:inherit">営業日・お知らせ</a><br>
   提案イメージ（noindex,nofollow）／写真：いぶきハーブ・ガーデン提供、一部Instagram(@ibuki_herbs)より提案用にお借りしています<br>
   制作のご提案：眞貴田 正博（makita@aidealize.com）
 </footer>
