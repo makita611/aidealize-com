@@ -148,8 +148,17 @@ export async function onRequestGet(context) {
       '万一の改ざん時に被害を最小化する設定',
       'Content-Security-Policy を導入し、読み込み元を制限（当社で対応可）');
 
-    add('version', 'サーバー・システム情報の露出', versionLeaks.length ? 'warn' : 'good',
-      versionLeaks.length ? `バージョン情報が外から見えています（${versionLeaks.join(' / ')}）。古い版だと既知の弱点を狙われます` : 'サーバーの詳細バージョンは隠されています',
+    // PHPのバージョンが見えている場合は、2026-10公表の重大脆弱性（CVE-2026-109618/109619）に絡めて案内
+    const phpM = poweredBy.match(/PHP\/(\d+)\.(\d+)(?:\.(\d+))?/i);
+    const phpOld = !!phpM && (+phpM[1] < 8 || (+phpM[1] === 8 && +phpM[2] <= 1));
+    const phpNote = phpM
+      ? (phpOld
+          ? `PHP ${phpM[0].slice(4)} が見えています。PHP 8.1以前は、2026年10月公表の重大な脆弱性（CVE-2026-109618/109619）にPHP公式の修正版がありません。サーバー会社へ対応状況の確認が必要です。`
+          : `PHP ${phpM[0].slice(4)} が見えています。2026年10月公表の重大な脆弱性（CVE-2026-109618/109619）の修正版（8.2.35 / 8.3.36 / 8.4.27 / 8.5.12）に更新済みか確認してください。`)
+      : '';
+
+    add('version', 'サーバー・システム情報の露出', phpOld ? 'bad' : (versionLeaks.length ? 'warn' : 'good'),
+      versionLeaks.length ? `バージョン情報が外から見えています（${versionLeaks.join(' / ')}）。古い版だと既知の弱点を狙われます${phpNote ? '。' + phpNote : ''}` : 'サーバーの詳細バージョンは隠されています（隠れていても、中身が最新とは限りません）',
       '「鍵の型番」を攻撃者に教えないための基本',
       'サーバー設定で Server / X-Powered-By のバージョン表記を隠す（当社で対応可）');
 
