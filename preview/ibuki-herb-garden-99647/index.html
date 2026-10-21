@@ -530,6 +530,33 @@ footer .ridge-line{max-width:var(--max);margin:0 auto 34px}
   .news-list li{grid-template-columns:1fr;gap:4px}
   .page-head{padding:40px 0 28px}
 }
+/* スマホ・タブレットのメニュー */
+.hd .btn{white-space:nowrap}
+.menu-btn{display:none;flex:none;white-space:nowrap;align-items:center;gap:8px;border:1px solid var(--forest);background:transparent;color:var(--forest-deep);border-radius:999px;padding:9px 16px;font:700 14px var(--sans);cursor:pointer;min-height:44px}
+.menu-btn .bars{width:16px;height:2px;background:currentColor;position:relative;display:inline-block}
+.menu-btn .bars::before,.menu-btn .bars::after{content:"";position:absolute;left:0;width:16px;height:2px;background:currentColor}
+.menu-btn .bars::before{top:-5px}.menu-btn .bars::after{top:5px}
+.mnav{position:absolute;left:0;right:0;top:100%;background:#fff;border-bottom:1px solid var(--line);box-shadow:0 14px 30px rgba(36,58,33,.14);padding:6px 20px 14px;display:grid;max-height:calc(100vh - 70px);overflow:auto}
+.mnav[hidden]{display:none}
+.mnav a{padding:15px 4px;border-bottom:1px solid var(--line);font-size:16px;color:var(--ink);text-decoration:none;min-height:48px;display:flex;align-items:center}
+.mnav a.current{font-weight:700;color:var(--forest-deep)}
+.mnav a:last-child{border-bottom:0}
+@media(max-width:1080px){.nav{display:none}.menu-btn{display:inline-flex}.hd{gap:10px}}
+@media(max-width:430px){.logo{gap:8px}.logo .logo-text{font-size:15px;letter-spacing:.06em}.menu-btn{padding:8px 12px;font-size:13px}}
+@media(min-width:1081px){.mnav{display:none!important}}
+.m-summary{display:none}
+@media(max-width:860px){.m-summary{display:block;order:-2;margin:0;padding:14px 16px;background:#fff;border:1px solid var(--line);border-radius:12px;line-height:1.7}.m-summary b{display:block;font-family:var(--serif);font-size:18px;color:var(--forest-deep);letter-spacing:.04em}.m-summary span{display:block;font-size:14px;color:var(--ink)}}
+/* 営業カレンダー：色だけに頼らず文字も付ける・見出しがヘッダーに隠れない */
+#calendar{scroll-margin-top:96px}
+.cal-dot i{font-style:normal;display:grid;place-items:center;width:100%;height:100%;font-size:clamp(9px,2.3vw,14px);font-weight:700;color:#fff;line-height:1}
+.cal-dot.plate i{color:#5d564c}
+.cal-dot.sm i{display:none}
+.cal-off{display:block;text-align:center;font-size:clamp(10px,2.4vw,13px);color:#9b9183;margin-top:clamp(4px,1.4vw,12px)}
+.ibcal-list{margin-top:14px;font-size:13.5px}
+.ibcal-list summary{cursor:pointer;font-weight:700;padding:8px 0;min-height:44px;display:flex;align-items:center}
+.ibcal-list ul{margin:6px 0 0;padding:0;list-style:none;columns:2;column-gap:24px}
+.ibcal-list li{padding:3px 0;break-inside:avoid}
+@media(max-width:520px){.ibcal-list ul{columns:1}}
 </style>
 </head>
 <body data-page="top">
@@ -554,7 +581,17 @@ footer .ridge-line{max-width:var(--max);margin:0 auto 34px}
       </div>
     </nav>
     <a class="btn" href="lunch/#reserve" data-track="line">LINEで予約</a>
+    <button class="menu-btn" type="button" aria-expanded="false" aria-controls="mnav"><span class="bars" aria-hidden="true"></span>メニュー</button>
   </div>
+  <nav id="mnav" class="mnav" aria-label="サイト内メニュー" hidden>
+    <a href="lunch/" data-nav="lunch">ランチ・ご予約</a>
+    <a href="menu/" data-nav="menu">季節のメニュー</a>
+    <a href="group/" data-nav="group">団体・女子会・法事</a>
+    <a href="shop/" data-nav="shop">ショップ・テイクアウト</a>
+    <a href="access/" data-nav="access">アクセス・駐車場</a>
+    <a href="news/" data-nav="news">営業日・お知らせ</a>
+    <a href="gallery/" data-nav="gallery">ギャラリー</a>
+  </nav>
 </header>
 
 <div class="quick">
@@ -568,11 +605,12 @@ footer .ridge-line{max-width:var(--max);margin:0 auto 34px}
 <section class="hero" id="top">
   <svg class="hero-ridge" viewBox="0 125 586 120" preserveAspectRatio="xMidYMax meet" aria-hidden="true"><path d="M0 187 C2.3 186.7 9.3 185.8 14 185 C18.7 184.2 23.3 182.8 28 182 C32.7 181.2 37.3 180.5 42 180 C46.7 179.5 51.3 178.3 56 179 C60.7 179.7 65.3 183.3 70 184 C74.7 184.7 79.3 183.7 84 183 C88.7 182.3 93.3 180.8 98 180 C102.7 179.2 107.3 179.3 112 178 C116.7 176.7 121.3 173.5 126 172 C130.7 170.5 135.3 170.2 140 169 C144.7 167.8 149.3 166.3 154 165 C158.7 163.7 163.3 162.5 168 161 C172.7 159.5 177.3 157.8 182 156 C186.7 154.2 191.3 151.5 196 150 C200.7 148.5 205.3 147.8 210 147 C214.7 146.2 219.3 145.8 224 145 C228.7 144.2 233.3 142.8 238 142 C242.7 141.2 247.3 140.5 252 140 C256.7 139.5 261.3 139.3 266 139 C270.7 138.7 275.3 138.2 280 138 C284.7 137.8 289.3 138.3 294 138 C298.7 137.7 303.3 136.2 308 136 C312.7 135.8 317.3 135.8 322 137 C326.7 138.2 331.3 140.3 336 143 C340.7 145.7 345.3 150.2 350 153 C354.7 155.8 359.3 157.5 364 160 C368.7 162.5 373.3 165.3 378 168 C382.7 170.7 387.3 173.3 392 176 C396.7 178.7 401.3 182.5 406 184 C410.7 185.5 415.3 184.8 420 185 C424.7 185.2 429.3 184.7 434 185 C438.7 185.3 443.3 186.3 448 187 C452.7 187.7 457.3 188.3 462 189 C466.7 189.7 471.3 190.2 476 191 C480.7 191.8 485.3 192.8 490 194 C494.7 195.2 499.3 196.7 504 198 C508.7 199.3 513.3 200.5 518 202 C522.7 203.5 527.3 205.5 532 207 C536.7 208.5 541.3 209.3 546 211 C550.7 212.7 555.3 214.8 560 217 C564.7 219.2 569.7 222.5 574 224 C578.3 225.5 584.0 225.7 586 226"/></svg>
   <div class="wrap grid">
+    <p class="m-summary"><b>伊吹山のふもとの農家レストラン</b><span>ランチビュッフェ 3,300円（大人・税込）／料理とデザートで約20種類</span></p>
     <div>
       <span class="eyebrow">滋賀県米原市・伊吹山のふもと</span>
       <h1><span>伊吹山のふもとで、</span><span>季節の野菜と</span><span>ハーブのビュッフェを。</span></h1>
       <div class="name">農家レストラン＆ハーブスキンケア　いぶきハーブ・ガーデン</div>
-      <p class="desc">伊吹山のふもとで、季節の野菜とハーブを味わい、ゆっくり過ごす農家レストランです。昔から「薬草の山」として知られてきたこの地で、滋賀の野菜とハーブを使った料理を、好きなだけ。食後はハーブのスキンケアや無添加ソフトクリームを、お土産にどうぞ。</p>
+      <p class="desc">伊吹山のふもとで、季節の野菜とハーブを味わい、ゆっくり過ごす農家レストランです。昔から「薬草の山」として知られてきたこの地で、滋賀の野菜とハーブを使った料理を、好きなだけ。食後は、無添加ソフトクリームや、ハーブのスキンケアのお土産もどうぞ。</p>
       <div class="cta">
         <a class="btn" href="lunch/#reserve" data-track="line">LINEでランチを予約</a>
         <a class="btn line" href="news/#calendar" data-track="calendar">今月の営業日を見る</a>
@@ -603,7 +641,7 @@ footer .ridge-line{max-width:var(--max);margin:0 auto 34px}
     <div class="lunch-head">
       <span class="label">LUNCH</span>
       <h2>その日の畑と、<br>伊吹山のハーブから。</h2>
-      <p class="lead">並ぶのは、地元・滋賀で採れた野菜を中心にした料理です。ハーブの香りを生かしたデザートやドリンクまで、デザートを含めて約20種類。季節ごとに変わる味を、好きなだけ選んで楽しんでいただけます。</p>
+      <p class="lead">並ぶのは、地元・滋賀で採れた野菜を中心にした料理です。料理とデザートを合わせて約20種類。季節ごとに変わる味を、好きなだけ選んで楽しんでいただけます。ドリンクは別途ご注文いただけます。</p>
     </div>
     <figure class="feast"><div class="photo"><img src="assets/c-buffet-hall.jpg" alt="大きな窓のある店内と、料理が並ぶビュッフェ台" width="1600" height="1200" style="object-position:50% 55%"></div><figcaption>ビュッフェ台と店内</figcaption></figure>
     <div class="dishes">
@@ -612,12 +650,12 @@ footer .ridge-line{max-width:var(--max);margin:0 auto 34px}
       <figure><div class="photo"><img src="assets/c-dish-tempura.jpg" alt="揚げたての天ぷら" loading="lazy"></div><figcaption>揚げたての天ぷら（ある日）</figcaption></figure>
       <figure><div class="photo"><img src="assets/c-dish-donabe.jpg" alt="土鍋で炊いたごはん" loading="lazy"></div><figcaption>土鍋ごはん</figcaption></figure>
       <figure><div class="photo"><img src="assets/c-dish-lemoncake.jpg" alt="ひとつずつ包まれたレモンケーキ" loading="lazy"></div><figcaption>レモンケーキ（ある日）</figcaption></figure>
-      <figure><div class="photo"><img src="assets/c-dish-drink.jpg" alt="レモンを添えた冷たいドリンク" loading="lazy"></div><figcaption>ドリンク（別料金）</figcaption></figure>
+      <figure><div class="photo"><img src="assets/c-dish-drink.jpg" alt="レモンを添えた冷たいドリンク" loading="lazy"></div><figcaption>ドリンク（別料金・ビュッフェには含まれません）</figcaption></figure>
     </div>
     <p class="credit" style="text-align:left">写真：いぶきハーブ・ガーデン提供・提案用。料理は日によって変わります。</p>
     <div class="plans">
         <div class="plan-card"><h3>ランチビュッフェ</h3><div class="yen">3,300円<small>大人・税込</small></div>
-          <ul><li>小学生 1,650円／幼児（3〜6歳）600円／3歳未満 無料</li><li>1部 11:30〜／2部 13:00〜（ご予約優先）</li><li>デザートまで約20種類（日によって変わります）</li></ul></div>
+          <ul><li>小学生 1,650円／幼児（3〜6歳）600円／3歳未満 無料</li><li>1部 11:30〜／2部 13:00〜（ご予約優先）</li><li>料理・デザートで約20種類（日によって変わります）。ドリンクは別料金</li><li>お席は各回70分の入替制</li></ul></div>
         <div class="plan-card op"><div class="photo op-photo"><img src="assets/oneplate.jpg" alt="ハンバーグと野菜のワンプレートランチ（ある日）" loading="lazy"></div><h3>ワンプレートランチ</h3><div class="yen">2,300円<small>デザート付き・税込</small></div>
           <ul><li>毎週木曜日のみ</li><li>11:30〜14:00（L.O. 13:30）</li><li>ビュッフェより軽めに楽しみたい方に</li></ul></div>
       </div>
@@ -695,8 +733,8 @@ footer .ridge-line{max-width:var(--max);margin:0 auto 34px}
   <div class="wrap">
     <div class="head">
       <span class="label">A DAY IN IBUKI</span>
-      <h2>山を眺めて、<br>ゆっくり過ごす一日。</h2>
-      <p class="lead">観光地をめぐる旅ではなく、大自然の中でただゆっくりする旅を。到着してから食後のお土産まで、お店での過ごし方をご紹介します。</p>
+      <h2>山を眺めて、<br>ひと息つくひととき。</h2>
+      <p class="lead">観光地をめぐるのではなく、山のふもとでひと息つく時間を。到着から食後のお土産まで、お店での流れをご紹介します。お食事のお席は各回70分の入替制です。</p>
     </div>
     <div class="day day5">
       <div class="step">
@@ -839,6 +877,16 @@ footer .ridge-line{max-width:var(--max);margin:0 auto 34px}
 </div>
 
 <script>
+// スマホ・タブレットのメニュー（開閉・Escで閉じる・閉じたらボタンへフォーカスを戻す）
+(function(){var b=document.querySelector('.menu-btn'),n=document.getElementById('mnav');if(!b||!n)return;
+var c=document.body.dataset.page;var a=n.querySelector('a[data-nav="'+c+'"]');if(a){a.classList.add('current');a.setAttribute('aria-current','page');}
+function set(o,back){b.setAttribute('aria-expanded',o?'true':'false');b.lastChild.textContent=o?'閉じる':'メニュー';if(o){n.hidden=false;}else{n.hidden=true;if(back)b.focus();}}
+b.addEventListener('click',function(){set(n.hidden);});
+document.addEventListener('keydown',function(e){if(e.key==='Escape'&&!n.hidden)set(false,true);});
+n.addEventListener('click',function(e){if(e.target.closest('a'))set(false,false);});
+document.addEventListener('click',function(e){if(!n.hidden&&!e.target.closest('header'))set(false,false);});
+window.addEventListener('resize',function(){if(innerWidth>1080&&!n.hidden)set(false,false);});
+})();
 // 今いるページのメニューに印をつける
 (function(){var c=document.body.dataset.page;var a=document.querySelector('.nav a[data-nav="'+c+'"]');if(a){a.classList.add("current");var d=a.closest('.nav-dd');if(d)d.firstElementChild.classList.add("current");}})();
 // 引用文の稜線を少しだけ下へ（動きを減らす設定では止める）

@@ -530,6 +530,33 @@ footer .ridge-line{max-width:var(--max);margin:0 auto 34px}
   .news-list li{grid-template-columns:1fr;gap:4px}
   .page-head{padding:40px 0 28px}
 }
+/* スマホ・タブレットのメニュー */
+.hd .btn{white-space:nowrap}
+.menu-btn{display:none;flex:none;white-space:nowrap;align-items:center;gap:8px;border:1px solid var(--forest);background:transparent;color:var(--forest-deep);border-radius:999px;padding:9px 16px;font:700 14px var(--sans);cursor:pointer;min-height:44px}
+.menu-btn .bars{width:16px;height:2px;background:currentColor;position:relative;display:inline-block}
+.menu-btn .bars::before,.menu-btn .bars::after{content:"";position:absolute;left:0;width:16px;height:2px;background:currentColor}
+.menu-btn .bars::before{top:-5px}.menu-btn .bars::after{top:5px}
+.mnav{position:absolute;left:0;right:0;top:100%;background:#fff;border-bottom:1px solid var(--line);box-shadow:0 14px 30px rgba(36,58,33,.14);padding:6px 20px 14px;display:grid;max-height:calc(100vh - 70px);overflow:auto}
+.mnav[hidden]{display:none}
+.mnav a{padding:15px 4px;border-bottom:1px solid var(--line);font-size:16px;color:var(--ink);text-decoration:none;min-height:48px;display:flex;align-items:center}
+.mnav a.current{font-weight:700;color:var(--forest-deep)}
+.mnav a:last-child{border-bottom:0}
+@media(max-width:1080px){.nav{display:none}.menu-btn{display:inline-flex}.hd{gap:10px}}
+@media(max-width:430px){.logo{gap:8px}.logo .logo-text{font-size:15px;letter-spacing:.06em}.menu-btn{padding:8px 12px;font-size:13px}}
+@media(min-width:1081px){.mnav{display:none!important}}
+.m-summary{display:none}
+@media(max-width:860px){.m-summary{display:block;order:-2;margin:0;padding:14px 16px;background:#fff;border:1px solid var(--line);border-radius:12px;line-height:1.7}.m-summary b{display:block;font-family:var(--serif);font-size:18px;color:var(--forest-deep);letter-spacing:.04em}.m-summary span{display:block;font-size:14px;color:var(--ink)}}
+/* 営業カレンダー：色だけに頼らず文字も付ける・見出しがヘッダーに隠れない */
+#calendar{scroll-margin-top:96px}
+.cal-dot i{font-style:normal;display:grid;place-items:center;width:100%;height:100%;font-size:clamp(9px,2.3vw,14px);font-weight:700;color:#fff;line-height:1}
+.cal-dot.plate i{color:#5d564c}
+.cal-dot.sm i{display:none}
+.cal-off{display:block;text-align:center;font-size:clamp(10px,2.4vw,13px);color:#9b9183;margin-top:clamp(4px,1.4vw,12px)}
+.ibcal-list{margin-top:14px;font-size:13.5px}
+.ibcal-list summary{cursor:pointer;font-weight:700;padding:8px 0;min-height:44px;display:flex;align-items:center}
+.ibcal-list ul{margin:6px 0 0;padding:0;list-style:none;columns:2;column-gap:24px}
+.ibcal-list li{padding:3px 0;break-inside:avoid}
+@media(max-width:520px){.ibcal-list ul{columns:1}}
 </style>
 </head>
 <body data-page="gallery">
@@ -554,7 +581,17 @@ footer .ridge-line{max-width:var(--max);margin:0 auto 34px}
       </div>
     </nav>
     <a class="btn" href="../lunch/#reserve" data-track="line">LINEで予約</a>
+    <button class="menu-btn" type="button" aria-expanded="false" aria-controls="mnav"><span class="bars" aria-hidden="true"></span>メニュー</button>
   </div>
+  <nav id="mnav" class="mnav" aria-label="サイト内メニュー" hidden>
+    <a href="../lunch/" data-nav="lunch">ランチ・ご予約</a>
+    <a href="../menu/" data-nav="menu">季節のメニュー</a>
+    <a href="../group/" data-nav="group">団体・女子会・法事</a>
+    <a href="../shop/" data-nav="shop">ショップ・テイクアウト</a>
+    <a href="../access/" data-nav="access">アクセス・駐車場</a>
+    <a href="../news/" data-nav="news">営業日・お知らせ</a>
+    <a href="../gallery/" data-nav="gallery">ギャラリー</a>
+  </nav>
 </header>
 
 <div class="page-head">
@@ -579,6 +616,7 @@ footer .ridge-line{max-width:var(--max);margin:0 auto 34px}
     <span class="label">INSIDE</span>
     <h2>店内</h2>
     <p class="lead">広い窓と、木のぬくもり。ビュッフェ台のある、ゆったりした店内です。</p>
+    <p style="margin:6px 0 0"><a class="more" style="margin-top:0" href="../group/">団体・女子会のご相談</a></p>
     <div class="gal-grid">
       <figure><button type="button" class="gal-btn" data-full="../assets/g-36-l.jpg" data-cap="広い窓の店内とビュッフェ台"><span class="photo"><img src="../assets/g-36-s.jpg" alt="広い窓の店内とビュッフェ台" loading="lazy"></span></button><figcaption>広い窓の店内とビュッフェ台</figcaption></figure>
       <figure><button type="button" class="gal-btn" data-full="../assets/g-38-l.jpg" data-cap="ビュッフェ台と店内"><span class="photo"><img src="../assets/g-38-s.jpg" alt="ビュッフェ台と店内" loading="lazy"></span></button><figcaption>ビュッフェ台と店内</figcaption></figure>
@@ -600,6 +638,7 @@ footer .ridge-line{max-width:var(--max);margin:0 auto 34px}
     <span class="label">OUTSIDE</span>
     <h2>外観・入口・庭</h2>
     <p class="lead">伊吹山のふもと。建物の正面、入口、庭の散歩道です。</p>
+    <p style="margin:6px 0 0"><a class="more" style="margin-top:0" href="../access/">アクセス・駐車場を見る</a></p>
     <div class="gal-grid">
       <figure><button type="button" class="gal-btn" data-full="../assets/g-26-l.jpg" data-cap="建物の正面（秋）"><span class="photo"><img src="../assets/g-26-s.jpg" alt="建物の正面（秋）" loading="lazy"></span></button><figcaption>建物の正面（秋）</figcaption></figure>
       <figure><button type="button" class="gal-btn" data-full="../assets/g-28-l.jpg" data-cap="緑の山を背にした建物"><span class="photo"><img src="../assets/g-28-s.jpg" alt="緑の山を背にした建物" loading="lazy"></span></button><figcaption>緑の山を背にした建物</figcaption></figure>
@@ -655,6 +694,7 @@ footer .ridge-line{max-width:var(--max);margin:0 auto 34px}
     <span class="label">DISH</span>
     <h2>お料理</h2>
     <p class="lead">季節の野菜とハーブのお料理です。料理名は確認でき次第、差し替えます。</p>
+    <p style="margin:6px 0 0"><a class="more" style="margin-top:0" href="../lunch/">ランチの料金と時間を見る</a></p>
     <div class="gal-grid">
       <figure><button type="button" class="gal-btn" data-full="../assets/g-59-l.jpg" data-cap="春爛漫スペシャルちらし寿司（春）"><span class="photo"><img src="../assets/g-59-s.jpg" alt="春爛漫スペシャルちらし寿司（春）" loading="lazy"></span></button><figcaption>春爛漫スペシャルちらし寿司（春）</figcaption></figure>
       <figure><button type="button" class="gal-btn" data-full="../assets/g-68-l.jpg" data-cap="ワンプレートランチ（夏）"><span class="photo"><img src="../assets/g-68-s.jpg" alt="ワンプレートランチ（夏）" loading="lazy"></span></button><figcaption>ワンプレートランチ（夏）</figcaption></figure>
@@ -675,6 +715,7 @@ footer .ridge-line{max-width:var(--max);margin:0 auto 34px}
     <span class="label">CAFE</span>
     <h2>ソフトクリーム・コーヒー</h2>
     <p class="lead">テイクアウトもできる、無添加ソフトクリームとコーヒーです。</p>
+    <p style="margin:6px 0 0"><a class="more" style="margin-top:0" href="../shop/">価格・テイクアウトを見る</a></p>
     <div class="gal-grid">
       <figure><button type="button" class="gal-btn" data-full="../assets/g-t-soft1-l.jpg" data-cap="無添加ソフトクリーム"><span class="photo"><img src="../assets/g-t-soft1-s.jpg" alt="無添加ソフトクリーム" loading="lazy"></span></button><figcaption>無添加ソフトクリーム</figcaption></figure>
       <figure><button type="button" class="gal-btn" data-full="../assets/g-t-soft2-l.jpg" data-cap="ソフトクリーム"><span class="photo"><img src="../assets/g-t-soft2-s.jpg" alt="ソフトクリーム" loading="lazy"></span></button><figcaption>ソフトクリーム</figcaption></figure>
@@ -741,6 +782,16 @@ footer .ridge-line{max-width:var(--max);margin:0 auto 34px}
 </div>
 
 <script>
+// スマホ・タブレットのメニュー（開閉・Escで閉じる・閉じたらボタンへフォーカスを戻す）
+(function(){var b=document.querySelector('.menu-btn'),n=document.getElementById('mnav');if(!b||!n)return;
+var c=document.body.dataset.page;var a=n.querySelector('a[data-nav="'+c+'"]');if(a){a.classList.add('current');a.setAttribute('aria-current','page');}
+function set(o,back){b.setAttribute('aria-expanded',o?'true':'false');b.lastChild.textContent=o?'閉じる':'メニュー';if(o){n.hidden=false;}else{n.hidden=true;if(back)b.focus();}}
+b.addEventListener('click',function(){set(n.hidden);});
+document.addEventListener('keydown',function(e){if(e.key==='Escape'&&!n.hidden)set(false,true);});
+n.addEventListener('click',function(e){if(e.target.closest('a'))set(false,false);});
+document.addEventListener('click',function(e){if(!n.hidden&&!e.target.closest('header'))set(false,false);});
+window.addEventListener('resize',function(){if(innerWidth>1080&&!n.hidden)set(false,false);});
+})();
 // 今いるページのメニューに印をつける
 (function(){var c=document.body.dataset.page;var a=document.querySelector('.nav a[data-nav="'+c+'"]');if(a){a.classList.add("current");var d=a.closest('.nav-dd');if(d)d.firstElementChild.classList.add("current");}})();
 // 引用文の稜線を少しだけ下へ（動きを減らす設定では止める）
