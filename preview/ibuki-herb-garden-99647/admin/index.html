@@ -93,6 +93,9 @@ select{border:1px solid #cfc6b6;border-radius:10px;padding:10px 12px;background:
 .cal-dot{display:block;width:clamp(18px,4vw,34px);aspect-ratio:1;border-radius:50%;margin:clamp(4px,1.4vw,12px) auto 0}
 .cal-dot.buffet{background:var(--g)}.cal-dot.plate{background:var(--p)}
 .cal-dot.sm{display:inline-block;width:12px;margin:0;vertical-align:middle}
+.cal-fill{display:block;text-align:center;font-size:clamp(9px,2.1vw,13px);color:#a8562a;font-weight:700;margin-top:2px;line-height:1.2}
+.cal-fill-key{color:#a8562a;margin-right:4px}
+.cell .fm{display:block;font-size:11px;font-weight:700;color:#a8562a;margin-top:1px}
 .cal-note{display:block;text-align:center;font-size:clamp(9.5px,1.8vw,13px);line-height:1.4;margin-top:clamp(2px,1vw,8px);letter-spacing:.05em;font-weight:500}
 .ibcal-legend{display:flex;gap:18px;flex-wrap:wrap;font-size:12.5px;margin-top:12px}
 .ibcal-legend>span{display:inline-flex;align-items:center;gap:6px}
@@ -131,9 +134,13 @@ dialog input[type=text]{font:inherit;font-size:17px;padding:10px 12px;border:1px
       <button class="btn" id="seaNone" type="button">なし</button>
     </div>
     <h2>2. 日付を押して営業日を入れる</h2>
+    <div class="row"><span class="lbl">押したときの動き：</span>
+      <button class="btn on" id="modeDay" type="button">営業日を入れる</button>
+      <button class="btn" id="modeFill" type="button">満席の表示を付ける（△など）</button>
+    </div>
     <div class="edit-head" id="editHead"></div>
     <div class="edit-grid" id="editGrid"></div>
-    <p class="hint"><span class="dot sm buffet"></span> ビュッフェ　<span class="dot sm plate"></span> ワンプレート　空白＝定休日　祝日は自動で赤文字です。</p>
+    <p class="hint"><span class="dot sm buffet"></span> ビュッフェ　<span class="dot sm plate"></span> ワンプレート　空白＝定休日　祝日は自動で赤文字です。<br>「満席の表示を付ける」にして日付を押すと、△（残りわずか）→ 1部満 → 2部満 → 満席 → なし の順に変わります。</p>
     <div class="actions">
       <button class="btn main" id="btnImg" type="button">Instagram用の画像を保存</button>
     </div>
@@ -231,6 +238,9 @@ const DEFAULT_BG = ["#f5efe7","#efe6dc","#f6f1ea"], DEFAULT_HD = "#cfc5b9";
 
 /* ===== 状態 ===== */
 const today = new Date();
+const FILL_ORDER = ["few","p1","p2","full"];
+const FILL = {few:{m:"△",t:"残りわずか"},p1:{m:"1部満",t:"1部満席"},p2:{m:"2部満",t:"2部満席"},full:{m:"満席",t:"満席"}};
+let mode = "day";
 let st = null;   // {year,month,updated,season,days}
 const $ = id => document.getElementById(id);
 const pad = n => String(n).padStart(2,"0");
@@ -261,10 +271,11 @@ function defaultDays(y,m){
 function loadData(y,m){
   try{ const s = localStorage.getItem(STORE_KEY+ymKey(y,m)); if(s) return JSON.parse(s); }catch(e){}
   if(y===2026 && m===10) return JSON.parse(JSON.stringify(OCT2026));
-  return {year:y,month:m,updated:isoToday(),season:"auto",days:defaultDays(y,m)};
+  return {year:y,month:m,updated:isoToday(),season:"auto",days:defaultDays(y,m),fill:{}};
 }
 function exportJson(){
   const o = {year:st.year,month:st.month,updated:st.updated,red_days:redDays(st.year,st.month),season:st.season,days:st.days};
+  if(st.fill && Object.keys(st.fill).length) o.fill = st.fill;
   return JSON.stringify(o,null,1).replace(/\n\s+("\d+":)/g,"\n  $1");
 }
 
@@ -289,7 +300,9 @@ function renderEdit(){
     else if(v==="buffet"){ cls="buffet"; inner='<span class="dot buffet"></span>'; label="ビュッフェ"; }
     else if(v==="plate"){ cls="plate"; inner='<span class="dot plate"></span>'; label="ワンプレート"; }
     else inner='<span class="t">休</span>';
-    return `<button type="button" class="cell ${cls}" data-d="${d}" aria-label="${st.month}月${d}日 ${label}"><span class="d ${dc}">${d}</span>${inner}</button>`;
+    const fl = st.fill && st.fill[d] && FILL[st.fill[d]];
+    if(fl) label += " " + fl.t;
+    return `<button type="button" class="cell ${cls}" data-d="${d}" aria-label="${st.month}月${d}日 ${label}"><span class="d ${dc}">${d}</span>${inner}${fl?`<span class="fm">${fl.m}</span>`:""}</button>`;
   }).join("");
 }
 
@@ -307,6 +320,8 @@ function previewHtml(){
     let body="", a=aria+" 定休日";
     if(v && typeof v==="object"){ body='<span class="cal-note">'+esc(v.note).replace(/\n/g,"<br>")+"</span>"; a=aria+" "+v.note.replace(/\n/g,""); }
     else if(label[v]){ body=`<span class="cal-dot ${v}"></span>`; a=aria+" "+label[v]; }
+    const fl = st.fill && st.fill[d] && FILL[st.fill[d]];
+    if(fl && v){ a += " " + fl.t; body += `<span class="cal-fill" aria-hidden="true">${fl.m}</span>`; }
     return `<td aria-label="${a}"><span class="cal-d ${dcls}">${d}</span>${body}</td>`;
   }).join("")+"</tr>").join("");
   const head = ["SUN","MON","TUE","WED","THU","FRI","SAT"].map((n,k)=>`<th scope="col" class="${k===0?"sun":k===6?"sat":""}">${n}</th>`).join("");
@@ -321,7 +336,7 @@ function previewHtml(){
         </dl>
       </div>
       <table class="ibcal-table"><caption class="sr-only">${y}年${m}月の営業日</caption><thead><tr>${head}</tr></thead><tbody>${rows}</tbody></table>
-      <div class="ibcal-legend"><span><span class="cal-dot buffet sm"></span>ビュッフェランチ</span><span><span class="cal-dot plate sm"></span>ワンプレートランチ</span><span><span class="cal-blank"></span>定休日</span></div>
+      <div class="ibcal-legend"><span><span class="cal-dot buffet sm"></span>ビュッフェランチ</span><span><span class="cal-dot plate sm"></span>ワンプレートランチ</span><span><span class="cal-blank"></span>定休日</span><span><b class="cal-fill-key">△</b>残りわずか／満＝満席</span></div>
       <p class="ibcal-upd">最終更新：${+up[1]}月${+up[2]}日</p>
     </div>`;
 }
@@ -348,6 +363,8 @@ function gotoMonth(y,m){ st = loadData(y,m); say(""); render(); }
 $("btnThis").onclick = ()=>gotoMonth(today.getFullYear(),today.getMonth()+1);
 $("btnNext").onclick = ()=>{ const d=new Date(today.getFullYear(),today.getMonth()+1,1); gotoMonth(d.getFullYear(),d.getMonth()+1); };
 $("monthSel").onchange = e=>{ const [y,m]=e.target.value.split("-"); gotoMonth(+y,+m); };
+$("modeDay").onclick = ()=>{ mode="day"; $("modeDay").classList.add("on"); $("modeFill").classList.remove("on"); say(""); };
+$("modeFill").onclick = ()=>{ mode="fill"; $("modeFill").classList.add("on"); $("modeDay").classList.remove("on"); say("満席の表示：日付を押すたびに △ → 1部満 → 2部満 → 満席 → なし"); };
 $("seaAuto").onclick = ()=>{ st.season="auto"; touched(); };
 $("seaNone").onclick = ()=>{ st.season="none"; touched(); };
 
@@ -356,6 +373,13 @@ let pendingDay = null;
 $("editGrid").addEventListener("click",e=>{
   const b = e.target.closest("[data-d]"); if(!b) return;
   const d = b.dataset.d, v = st.days[d];
+  if(mode==="fill"){
+    if(!v){ say("定休日には満席の表示は付けられません。先に営業日にしてください。"); return; }
+    st.fill = st.fill || {};
+    const cur = st.fill[d], idx = cur ? FILL_ORDER.indexOf(cur) : -1;
+    if(idx+1 >= FILL_ORDER.length) delete st.fill[d]; else st.fill[d] = FILL_ORDER[idx+1];
+    touched(); return;
+  }
   if(!v) st.days[d]="buffet";
   else if(v==="buffet") st.days[d]="plate";
   else if(v==="plate"){ pendingDay=d; openNote(); return; }
@@ -383,7 +407,7 @@ $("noteFree").onkeydown = e=>{ if(e.key==="Enter") $("noteOk").click(); };
 $("noteCancel").onclick = ()=>{ pendingDay=null; $("notedlg").close(); };
 
 /* ===== 保存・書き出し・読み込み ===== */
-$("btnReset").onclick = ()=>{ if(confirm(`${st.month}月を初期値（火水＝休み／木＝ワンプレート／祝日＝ビュッフェ）に戻しますか？`)){ st.days=defaultDays(st.year,st.month); touched(); say("初期値に戻しました。"); } };
+$("btnReset").onclick = ()=>{ if(confirm(`${st.month}月を初期値（火水＝休み／木＝ワンプレート／祝日＝ビュッフェ）に戻しますか？`)){ st.days=defaultDays(st.year,st.month); st.fill={}; touched(); say("初期値に戻しました。"); } };
 $("btnSave").onclick = async ()=>{ st.updated=isoToday(); render(); say((await saveData(st)) ? `${st.month}月分を保存しました（このパソコンの中）。` : "保存できませんでした。"); };
 function dataUrlToBlob(u){ const p=u.split(","), bin=atob(p[1]), a=new Uint8Array(bin.length); for(let i=0;i<bin.length;i++) a[i]=bin.charCodeAt(i); return new Blob([a],{type:p[0].replace("data:","").replace(";base64","")}); }   /* fetch(data:) はCSPのconnect-srcで止まるため自前で変換 */
 function download(name,blob){ const a=document.createElement("a"); a.href=URL.createObjectURL(blob); a.download=name; document.body.appendChild(a); a.click(); a.remove(); setTimeout(()=>URL.revokeObjectURL(a.href),4000); }
@@ -394,7 +418,7 @@ $("fileIn").onchange = async e=>{
   try{
     const o=JSON.parse(await f.text());
     if(!o.year||!o.month||!o.days) throw 0;
-    st={year:+o.year,month:+o.month,updated:o.updated||isoToday(),season:o.season==="none"?"none":"auto",days:o.days};
+    st={year:+o.year,month:+o.month,updated:o.updated||isoToday(),season:o.season==="none"?"none":"auto",days:o.days,fill:o.fill||{}};
     render(); say(`${st.year}年${st.month}月のデータを読み込みました。`);
   }catch(err){ say("読み込めませんでした（calendar.json を選んでください）。"); }
   e.target.value="";
@@ -461,7 +485,9 @@ async function renderImage(){
     txt(c,String(d),x+14,top+(RH>185?40:38),{font:`500 36px ${SERIF}`,color:dc,ls:1});
     const v=days[d];
     if(v==="buffet"||v==="plate") dot(c,x+CW/2,top+RH*.56,34,v==="buffet"?"#8a9a85":"#d9d9dc");
-    else if(v&&typeof v==="object"){
+    const flm = st.fill && st.fill[d] && FILL[st.fill[d]];
+    if(flm && v) txt(c,flm.m,x+CW/2,top+RH*.9,{font:`700 30px ${GOTHIC}`,color:"#a8562a",align:"center",ls:2});
+    if(v&&typeof v==="object"){
       const ls=v.note.split("\n"), cy=top+RH*.63;
       ls.forEach((t,k)=>txt(c,t,x+CW/2,cy+(k-(ls.length-1)/2)*45+11,{font:`500 31px ${GOTHIC}`,color:INK,align:"center",ls:3}));
     }
@@ -471,7 +497,7 @@ async function renderImage(){
   dot(c,560,1688,16,"#d9d9dc"); txt(c,"ワンプレートランチ",590,1699,{font:`500 28px ${GOTHIC}`,color:TXT,ls:3});
   const up=st.updated.split("-");
   txt(c,`最終更新：${+up[1]}月${+up[2]}日`,R,1740,{font:`400 24px ${GOTHIC}`,color:"#9a9282",align:"right",ls:2});
-  txt(c,"空白の日は定休日です",76,1740,{font:`400 24px ${GOTHIC}`,color:"#9a9282",ls:2});
+  txt(c,"空白の日は定休日です　△＝残りわずか　満＝満席",76,1740,{font:`400 24px ${GOTHIC}`,color:"#9a9282",ls:2});
   return cv;
 }
 function dot(c,x,y,r,col){ c.beginPath(); c.arc(x,y,r,0,Math.PI*2); c.fillStyle=col; c.fill(); }
