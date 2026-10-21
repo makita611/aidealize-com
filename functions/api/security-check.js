@@ -157,7 +157,7 @@ export async function onRequestGet(context) {
           : `PHP ${phpM[0].slice(4)} が見えています。2026年10月公表の重大な脆弱性（CVE-2026-109618/109619）の修正版（8.2.35 / 8.3.36 / 8.4.27 / 8.5.12）に更新済みか確認してください。`)
       : '';
 
-    add('version', 'サーバー・システム情報の露出', phpOld ? 'bad' : (versionLeaks.length ? 'warn' : 'good'),
+    add('version', phpM ? 'PHPのバージョン露出（2026年10月の重大な脆弱性に関係）' : 'サーバー・システム情報の露出', phpOld ? 'bad' : (versionLeaks.length ? 'warn' : 'good'),
       versionLeaks.length ? `バージョン情報が外から見えています（${versionLeaks.join(' / ')}）。古い版だと既知の弱点を狙われます${phpNote ? '。' + phpNote : ''}` : 'サーバーの詳細バージョンは隠されています（隠れていても、中身が最新とは限りません）',
       '「鍵の型番」を攻撃者に教えないための基本',
       'サーバー設定で Server / X-Powered-By のバージョン表記を隠す（当社で対応可）');
@@ -179,6 +179,10 @@ export async function onRequestGet(context) {
         : '一般的な管理画面URLは、外からは見えませんでした',
       '「裏口」が見えていると総当たり攻撃の的になる',
       '管理画面をIP制限・Basic認証・URL変更で隠し、2段階認証を有効化（当社で対応可）');
+
+    // --- 表示順：PHPバージョン露出を最上段 → 危険(bad) → 注意(warn) → 良好(good)。同順位は元の並びを維持 ---
+    const rank = c => (c.key === 'version' && phpM) ? 0 : ({ bad: 1, warn: 2, good: 3 }[c.status] ?? 3);
+    checks.map((c, i) => [c, i]).sort((x, y) => rank(x[0]) - rank(y[0]) || x[1] - y[1]).forEach(([c], i) => { checks[i] = c; });
 
     // --- スコア（good=1, warn=0.5, bad=0）---
     const w = { good: 1, warn: 0.5, bad: 0 };
