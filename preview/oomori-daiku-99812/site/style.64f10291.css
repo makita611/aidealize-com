@@ -141,8 +141,8 @@ footer p { opacity:.7; margin-top:8px }
 .hero .fvs img:nth-child(2) { animation-delay:6s }
 .hero .fvs img:nth-child(3) { animation-delay:12s }
 .hero .fvs img:nth-child(4) { animation-delay:18s }
-@keyframes fvk  { 0% { opacity:0; transform:scale(1) } 6% { opacity:1 } 25% { opacity:1 } 31% { opacity:0; transform:scale(1.1) } 100% { opacity:0; transform:scale(1.1) } }
-@keyframes fvk1 { 0% { opacity:1; transform:scale(1) } 25% { opacity:1 } 31% { opacity:0; transform:scale(1.1) } 100% { opacity:0; transform:scale(1.1) } }
+@keyframes fvk  { 0% { opacity:0; transform:scale(1) } 6% { opacity:1 } 25% { opacity:1 } 31% { opacity:0; transform:scale(1.05) } 100% { opacity:0; transform:scale(1.05) } }
+@keyframes fvk1 { 0% { opacity:1; transform:scale(1) } 25% { opacity:1 } 31% { opacity:0; transform:scale(1.05) } 100% { opacity:0; transform:scale(1.05) } }
 @media (prefers-reduced-motion:reduce) { .hero .fvs img { animation:none } .hero .fvs img:nth-child(1) { opacity:1 } .hero .fvs img:nth-child(n+2) { display:none } }
 .hero .dots { position:absolute; right:clamp(16px,4vw,48px); bottom:clamp(20px,4vw,40px); z-index:3; display:flex; gap:8px }
 .hero .dots i { width:26px; height:2px; background:rgba(255,255,255,.35); display:block; position:relative; overflow:hidden }
@@ -247,3 +247,64 @@ h2.sec { font-size:clamp(23px,2.4vw,30px) }
 .ph-box { aspect-ratio:16/4 !important; padding:10px !important }
 .wrap > .check { margin-bottom:96px }
 .facts { margin:26px 0 }
+
+
+/* v6 FVを「左に文字・右に引きの写真」に／拡大表示／ご相談の流れ */
+.hero.split { display:grid; grid-template-columns:minmax(340px,36%) 1fr; min-height:0; background:#111; align-items:stretch; padding:0 }
+.hero.split::after { display:none }
+.hero.split .hero-text { display:flex; flex-direction:column; justify-content:center; padding:clamp(28px,4.4vw,72px) clamp(24px,4vw,64px) clamp(28px,4.4vw,72px) max(4vw, calc((100vw - 1120px) / 2)) }
+.hero.split h1 { font-size:clamp(28px,3vw,44px); text-shadow:none; margin:12px 0 16px }
+.hero.split p { font-size:16px; text-shadow:none; max-width:26em; color:#eee }
+.hero.split .label { text-shadow:none; color:#ccc }
+.hero.split .hero-photo { position:relative; aspect-ratio:4/3; overflow:hidden; background:#111; min-width:0 }
+.hero.split .fvs { position:absolute; inset:0 }
+.hero.split .dots { right:16px; bottom:14px }
+@media (max-width:860px) { .hero.split { grid-template-columns:1fr } .hero.split .hero-photo { order:-1; aspect-ratio:4/3 } .hero.split .hero-text { padding:26px 22px 34px } .hero.split h1 { font-size:30px } }
+
+.zoomable { cursor:zoom-in }
+.zoomhint { font-size:13px; color:#555; margin-top:10px }
+.lb { position:fixed; inset:0; background:rgba(0,0,0,.88); z-index:100; display:none; align-items:center; justify-content:center; padding:20px; cursor:zoom-out }
+.lb.on { display:flex } .lb img { max-width:min(92vw,900px); max-height:92vh; width:auto; height:auto; object-fit:contain }
+.lb .cp { position:absolute; left:0; right:0; bottom:14px; text-align:center; color:#fff; font-size:15px }
+
+/* ご相談の流れ */
+.fl-lead { max-width:40em; font-size:18px; color:#333 }
+.fl-phase { margin-top:46px }
+.fl-phase h2 { display:flex; align-items:baseline; gap:14px; font-size:22px; border-bottom:2px solid #111; padding-bottom:10px }
+.fl-phase h2 small { font-size:13px; color:#444; font-weight:500; letter-spacing:.06em }
+.fl-grid { display:grid; gap:18px; margin-top:20px }
+.fl-grid.c2 { grid-template-columns:repeat(2,1fr) } .fl-grid.c3 { grid-template-columns:repeat(3,1fr) }
+.fl-card { border:1.5px solid #111; background:#fff; display:flex; flex-direction:column; overflow:hidden }
+.fl-card img { width:100%; aspect-ratio:16/9; object-fit:cover }
+.fl-card .bd { padding:20px 22px 24px; position:relative }
+.fl-card .no { font-size:44px; line-height:1; font-weight:800; color:transparent; -webkit-text-stroke:1.5px #111; letter-spacing:.02em }
+.fl-card svg { position:absolute; right:20px; top:20px; width:38px; height:38px; stroke:#111; fill:none; stroke-width:1.6; stroke-linecap:round; stroke-linejoin:round }
+.fl-card h3 { font-size:20px; margin:12px 0 6px } .fl-card p { font-size:15px; color:#333; line-height:1.7 }
+.fl-points { display:grid; grid-template-columns:repeat(3,1fr); gap:0; margin-top:46px; border:1.5px solid #111 }
+.fl-points div { padding:22px 22px; border-right:1px solid #ccc } .fl-points div:last-child { border-right:0 }
+.fl-points b { display:block; font-size:17px; margin-bottom:4px } .fl-points span { font-size:14.5px; color:#333; line-height:1.7; display:block }
+@media (max-width:860px) { .fl-grid.c2, .fl-grid.c3, .fl-points { grid-template-columns:1fr } .fl-points div { border-right:0; border-bottom:1px solid #ccc } }
+
+
+/* v7 blog */
+.postlist { display:grid; grid-template-columns:repeat(2,1fr); gap:0 36px; margin-top:34px; border-top:1.5px solid #111 }
+.postcard { display:block; text-decoration:none; padding:22px 0 24px; border-bottom:1px solid #ccc }
+.postcard .n { font-size:13px; color:#444; letter-spacing:.08em } .postcard b { display:block; font-size:20px; margin:4px 0 6px; line-height:1.5 } .postcard span { font-size:15px; color:#333; line-height:1.7; display:block }
+.postcard:hover b { text-decoration:underline }
+.post { max-width:40em; margin-top:26px } .post p { font-size:17px; line-height:2; margin:0 0 18px; color:#222 }
+.post h2 { font-size:23px; margin:40px 0 12px; padding-left:14px; border-left:4px solid #111 }
+.post ul { margin:0 0 18px 1.4em } .post li { font-size:17px; line-height:1.9 }
+.post figure { margin:24px 0 } .post figure img { width:100%; max-width:720px } .post figcaption { font-size:13.5px; color:#444; margin-top:6px }
+@media (max-width:860px) { .postlist { grid-template-columns:1fr } }
+
+
+/* v8 */
+.nw { display:inline-block }
+.hero.split { grid-template-columns:minmax(360px,40%) 1fr }
+.hero.split h1 { font-size:clamp(26px,2.5vw,40px); line-height:1.4 }
+.fl-card .art { aspect-ratio:16/9; background:#f1f1f1; display:flex; align-items:center; justify-content:center; border-bottom:1px solid #ddd }
+.fl-card .art svg { position:static; width:72px; height:72px; stroke-width:1.2 }
+
+/* v9 小さな工事の写真を一回り大きく（クリックでさらに拡大） */
+.smallba { max-width:1120px; gap:44px 56px }
+.smallba .pr { gap:10px }
