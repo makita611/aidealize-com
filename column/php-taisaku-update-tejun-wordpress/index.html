@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PHPの脆弱性、自分でできる対策は？バージョン確認・更新・やってはいけないこと｜WordPress向け手順ガイド【AIdealize】</title>
+<meta name="description" content="PHPの重大な脆弱性（CVE-2026-109618/109619）への対策手順。自社サイトのPHPバージョンの確認方法、レンタルサーバーでの更新の流れ、更新後に確認する5か所、すぐに更新できないときの対応、制作会社に送れる確認依頼文までを解説します。">
+<link rel="canonical" href="https://aidealize.com/column/php-taisaku-update-tejun-wordpress/">
+<meta property="og:title" content="PHPの脆弱性、自分でできる対策は？バージョン確認・更新・やってはいけないこと｜WordPress向け手順ガイド">
+<meta property="og:description" content="PHPの重大な脆弱性への対策手順。バージョン確認・更新の流れ・更新後の確認・すぐに更新できないときの対応を解説。">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://aidealize.com/column/php-taisaku-update-tejun-wordpress/">
+<meta property="og:site_name" content="AIdealize株式会社">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700;900&family=Shippori+Mincho:wght@400;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-P6VNBWH3');</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "PHPの脆弱性、自分でできる対策は？バージョン確認・更新・やってはいけないこと",
+  "description": "PHPの重大な脆弱性（CVE-2026-109618/109619）への対策手順ガイド。",
+  "datePublished": "2026-10-23",
+  "dateModified": "2026-10-23",
+  "author": {"@type": "Organization", "name": "AIdealize株式会社"},
+  "publisher": {"@type": "Organization", "name": "AIdealize株式会社", "url": "https://aidealize.com"}
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {"@type":"Question","name":"PHPを更新すると、サイトは壊れませんか？","acceptedAnswer":{"@type":"Answer","text":"古いテーマやプラグインを使っている場合、動かなくなることがあります。更新前にバックアップを取り、WordPress本体・テーマ・プラグインを先に最新にしてから、PHPを更新してください。"}},
+    {"@type":"Question","name":"PHP 8.1以前を使っています。いまからどうすればいいですか？","acceptedAnswer":{"@type":"Answer","text":"PHP公式は8.1以前に修正版を出していません。サーバー会社が独自に修正を提供している場合もあるので、まず契約先に確認してください。提供がなければ、8.2以降への移行が必要です。"}},
+    {"@type":"Question","name":"設定を変えるだけでは、対策になりませんか？","acceptedAnswer":{"@type":"Answer","text":"設定の変更は、部分的な緩和にとどまると報告されています。根本的な解決は、PHPを修正版に更新することです。"}},
+    {"@type":"Question","name":"自分では難しいです。依頼できますか？","acceptedAnswer":{"@type":"Answer","text":"当社では、PHPとサーバーの状態確認、更新と動作確認、バージョン表記の非表示などをお受けしています。まず無料チェックで現状を確認し、必要な対策とお見積りをご案内します。"}}
+  ]
+}
+</script>
+<style>
+:root{
+  --red:#0891b2;--red-dark:#0e7490;
+  --ink:#1e293b;--body:#4b5563;--light:#94a3b8;
+  --border:#e2e8f0;--bg:#f8fafc;--bg2:#f1f5f9;--white:#fff;
+  --tag-bg:#ecfeff;--green:#059669;--green-bg:#ecfdf5;
+  --demo-bg:#0f172a;--amber-bg:#fef3c7;--amber-tx:#92400e;--danger:#dc2626;--danger-bg:#fef2f2;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{font-family:'Noto Sans JP',sans-serif;background:var(--white);color:var(--ink);overflow-x:hidden;line-height:1.7;}
+#mainNav{position:fixed;top:0;left:0;right:0;z-index:1000;display:flex;align-items:center;justify-content:space-between;padding:0 60px;height:68px;background:rgba(255,255,255,0.97);border-bottom:1px solid var(--border);backdrop-filter:blur(12px);transition:box-shadow 0.3s;}
+#mainNav.scrolled{box-shadow:0 2px 16px rgba(0,0,0,0.06);}
+.nav-logo{display:flex;align-items:center;gap:10px;text-decoration:none;}
+.nav-logo img{height:34px;width:auto;}
+.nav-logo-text{font-family:'DM Mono',monospace;font-size:15px;font-weight:500;color:var(--ink);letter-spacing:0.02em;}
+.nav-logo-text span{color:var(--red);}
+.nav-links{display:flex;align-items:center;gap:32px;list-style:none;}
+.nav-links a{font-size:13px;font-weight:500;color:var(--body);text-decoration:none;transition:color 0.2s;}
+.nav-links a:hover{color:var(--ink);}
+.nav-cta{background:var(--red) !important;color:#fff !important;padding:9px 20px;border-radius:4px;font-size:12px !important;font-weight:700 !important;}
+.nav-cta:hover{background:var(--red-dark) !important;}
+.nav-hamburger{display:none;flex-direction:column;justify-content:center;gap:5px;width:40px;height:40px;background:none;border:none;cursor:pointer;}
+.nav-hamburger span{display:block;width:22px;height:2px;background:var(--ink);transition:all 0.3s;transform-origin:center;}
+.nav-hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg);}
+.nav-hamburger.open span:nth-child(2){opacity:0;}
+.nav-hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
+.nav-drawer{display:none;position:fixed;top:68px;left:0;right:0;background:#fff;border-bottom:2px solid var(--red);padding:20px 28px 28px;z-index:999;}
+.nav-drawer.open{display:block;}
+.nav-drawer ul{list-style:none;display:flex;flex-direction:column;}
+.nav-drawer ul li a{display:block;padding:13px 0;font-size:15px;font-weight:500;color:var(--ink);text-decoration:none;border-bottom:1px solid var(--border);}
+.nav-drawer ul li:last-child a{margin-top:16px;text-align:center;background:var(--red);color:#fff !important;padding:13px;border-radius:4px;font-weight:700 !important;border-bottom:none;}
+@media(max-width:1024px){#mainNav{padding:0 28px;}.nav-links{display:none;}.nav-hamburger{display:flex;}}
+@media(max-width:480px){#mainNav{padding:0 16px;height:60px;}.nav-drawer{top:60px;}.nav-logo-text{font-size:13px;}}
+.article-header{padding:116px 24px 52px;background:var(--bg);border-bottom:1px solid var(--border);}
+.article-header-inner{max-width:760px;margin:0 auto;}
+.breadcrumb{display:flex;align-items:center;gap:6px;font-size:12px;color:var(--light);margin-bottom:20px;flex-wrap:wrap;}
+.breadcrumb a{color:var(--light);text-decoration:none;}
+.breadcrumb a:hover{color:var(--red);}
+.breadcrumb span{color:var(--border);}
+.article-tag{display:inline-flex;align-items:center;background:var(--tag-bg);color:var(--red);font-size:11px;font-weight:700;letter-spacing:0.06em;padding:4px 12px;border-radius:100px;margin-bottom:18px;}
+.article-h1{font-family:'Shippori Mincho',serif;font-size:clamp(20px,3vw,34px);font-weight:700;color:var(--ink);line-height:1.65;margin-bottom:20px;}
+.article-meta{display:flex;align-items:center;gap:20px;flex-wrap:wrap;font-size:12px;color:var(--light);}
+.article-body{padding:72px 24px 100px;}
+.article-body-inner{max-width:760px;margin:0 auto;}
+.summary-box{background:var(--bg);border-left:4px solid var(--red);padding:24px 28px;border-radius:0 6px 6px 0;margin-bottom:52px;}
+.summary-box-title{font-size:11px;font-weight:700;color:var(--red);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:12px;}
+.summary-box ul{list-style:none;display:flex;flex-direction:column;gap:8px;}
+.summary-box ul li{display:flex;align-items:flex-start;gap:8px;font-size:14px;line-height:1.8;color:var(--ink);}
+.summary-box ul li::before{content:'✓';color:var(--red);font-weight:700;flex-shrink:0;margin-top:1px;}
+.article-body-inner h2{font-family:'Shippori Mincho',serif;font-size:clamp(17px,2.2vw,24px);font-weight:700;color:var(--ink);line-height:1.65;margin:56px 0 20px;padding-bottom:10px;border-bottom:1px solid var(--border);position:relative;}
+.article-body-inner h2::after{content:'';position:absolute;bottom:-1px;left:0;width:48px;height:2px;background:var(--red);}
+.article-body-inner h3{font-family:'Shippori Mincho',serif;font-size:clamp(15px,1.8vw,19px);font-weight:700;color:var(--ink);line-height:1.7;margin:36px 0 14px;padding-left:14px;border-left:3px solid var(--red);}
+.article-body-inner p{font-size:15px;line-height:2;color:var(--body);margin-bottom:22px;}
+.article-body-inner strong{color:var(--ink);font-weight:700;}
+.article-body-inner a{color:var(--red-dark);font-weight:700;text-decoration:underline;text-underline-offset:2px;}
+.article-body-inner ul,.article-body-inner ol{list-style:none;margin-bottom:22px;display:flex;flex-direction:column;gap:8px;}
+.article-body-inner ul li,.article-body-inner ol li{font-size:14px;line-height:1.9;color:var(--body);display:flex;align-items:flex-start;gap:10px;}
+.article-body-inner ul li::before{content:'─';color:var(--red);flex-shrink:0;margin-top:4px;font-size:12px;}
+.article-body-inner ol{counter-reset:ol;}
+.article-body-inner ol li{counter-increment:ol;}
+.article-body-inner ol li::before{content:counter(ol);background:var(--red);color:#fff;width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0;margin-top:2px;font-family:'DM Mono',monospace;}
+.pain-cards{display:flex;flex-direction:column;gap:12px;margin:24px 0;}
+.pain-card{background:var(--bg);border-left:4px solid var(--red);border-radius:0 8px 8px 0;padding:18px 20px;display:flex;align-items:flex-start;gap:12px;}
+.pain-card-icon{font-size:22px;flex-shrink:0;margin-top:2px;}
+.pain-card-body{font-size:14px;line-height:1.85;color:var(--body);}
+.pain-card-body strong{color:var(--ink);}
+.point-box{background:var(--bg2);border-radius:8px;padding:20px 24px;margin:20px 0;}
+.point-box-label{font-size:10px;font-family:'DM Mono',monospace;color:var(--red);letter-spacing:0.12em;text-transform:uppercase;margin-bottom:10px;}
+.point-box p{font-size:14px;line-height:1.9;color:var(--body);margin-bottom:0;}
+.case-box{border:1px solid #cffafe;border-left:5px solid var(--red);border-radius:0 10px 10px 0;padding:24px 26px;margin:28px 0;background:linear-gradient(135deg,#ecfeff,#f0fdf4);}
+.case-box p{margin-bottom:0;font-size:14px;line-height:1.9;color:var(--body);}
+.stat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:24px 0;}
+.stat-card{background:#fff;border:1px solid var(--border);border-top:3px solid var(--danger);border-radius:6px;padding:22px 16px;text-align:center;}
+.stat-card .v{font-family:'Shippori Mincho',serif;font-size:30px;font-weight:700;color:var(--danger);line-height:1;}
+.stat-card .l{font-size:11.5px;color:var(--body);line-height:1.6;margin-top:10px;}
+.inline-cta{background:var(--bg);border:1px solid var(--border);border-top:4px solid var(--red);border-radius:10px;padding:36px;margin:52px 0;text-align:center;}
+.inline-cta-tag{font-size:11px;color:var(--red);font-weight:700;letter-spacing:0.08em;margin-bottom:12px;}
+.inline-cta h3{font-family:'Shippori Mincho',serif;font-size:clamp(16px,2vw,22px);font-weight:700;color:var(--ink);line-height:1.65;margin-bottom:12px;}
+.inline-cta p{font-size:14px;color:var(--body);line-height:1.9;margin-bottom:22px;}
+.cta-btns-pair{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;}
+.btn-cta-red{display:inline-flex;align-items:center;gap:6px;background:var(--red);color:#fff;padding:13px 28px;border-radius:4px;font-size:14px;font-weight:700;text-decoration:none;transition:background 0.2s,transform 0.2s;}
+.btn-cta-red:hover{background:var(--red-dark);transform:translateY(-2px);}
+.btn-cta-ghost{display:inline-flex;align-items:center;gap:6px;background:#fff;color:var(--red);border:1.5px solid var(--red);padding:13px 28px;border-radius:4px;font-size:14px;font-weight:700;text-decoration:none;transition:background 0.2s;}
+.btn-cta-ghost:hover{background:var(--tag-bg);}
+.btn-cta-note{display:block;margin-top:12px;font-size:11px;color:var(--light);}
+.flow{background:var(--demo-bg);color:#cbd5e1;border-radius:8px;padding:20px 22px;font-family:'DM Mono',monospace;font-size:12.5px;line-height:1.9;white-space:pre-wrap;margin:24px 0;overflow-x:auto;}
+.flow .a{color:#f87171;}
+.flow .c{color:#67e8f9;}
+code{font-family:'DM Mono',monospace;background:var(--bg2);border:1px solid var(--border);border-radius:4px;padding:2px 7px;font-size:0.9em;color:var(--red-dark);word-break:break-all;}
+.note{font-size:12px;color:var(--light);margin-top:-12px;margin-bottom:22px;}
+.related-section{padding:60px 24px;background:var(--white);border-top:1px solid var(--border);}
+.related-inner{max-width:760px;margin:0 auto;}
+.related-label{font-family:'DM Mono',monospace;font-size:11px;color:var(--red);letter-spacing:0.14em;text-transform:uppercase;margin-bottom:20px;}
+.related-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;}
+.related-card{border:1px solid var(--border);border-top:3px solid var(--red);padding:20px;text-decoration:none;color:inherit;border-radius:0 0 6px 6px;transition:box-shadow 0.2s,transform 0.2s;}
+.related-card:hover{box-shadow:0 4px 16px rgba(0,0,0,0.07);transform:translateY(-2px);}
+.related-card-tag{font-size:10px;font-family:'DM Mono',monospace;color:var(--red);letter-spacing:0.1em;margin-bottom:8px;}
+.related-card-title{font-family:'Shippori Mincho',serif;font-size:14px;font-weight:700;color:var(--ink);line-height:1.6;}
+.back-section{padding:28px 24px;background:var(--bg);border-top:1px solid var(--border);}
+.back-section-inner{max-width:760px;margin:0 auto;}
+.back-link{display:inline-flex;align-items:center;gap:6px;font-size:13px;color:var(--body);text-decoration:none;transition:color 0.2s;}
+.back-link:hover{color:var(--red);}
+footer{background:#1f1f1f;border-top:1px solid rgba(255,255,255,0.06);padding:40px 60px;display:flex;align-items:center;justify-content:space-between;}
+.footer-logo{display:flex;align-items:center;gap:10px;}
+.footer-logo-mark{width:20px;height:20px;background:var(--red);clip-path:polygon(50% 0%,0% 100%,18% 100%,50% 38%,82% 100%,100% 100%);}
+.footer-logo-text{font-family:'DM Mono',monospace;font-size:13px;color:rgba(255,255,255,0.55);}
+.footer-logo-text span{color:var(--red);}
+.footer-copy{font-size:11px;color:rgba(255,255,255,0.25);font-family:'DM Mono',monospace;}
+.reveal{opacity:0;transform:translateY(18px);transition:opacity 0.55s ease,transform 0.55s ease;}
+.reveal.visible{opacity:1;transform:translateY(0);}
+@media(max-width:768px){
+  .article-header,.article-body,.back-section,.related-section{padding-left:16px;padding-right:16px;}
+  .article-header{padding-top:88px;}
+  .stat-grid{grid-template-columns:1fr;}
+  .related-grid{grid-template-columns:1fr !important;}
+  .cta-btns-pair{flex-direction:column;align-items:center;}
+  .inline-cta{padding:24px 18px;}
+  footer{flex-direction:column;gap:14px;text-align:center;padding:28px 16px;}
+}
+</style>
+</head>
+<body>
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-P6VNBWH3" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
+<nav id="mainNav">
+  <a href="/" class="nav-logo">
+    <img src="/images/logo.png" alt="AIdealize">
+    <span class="nav-logo-text"><span>AI</span>dealize</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="/column/">コラム</a></li>
+    <li><a href="/service/">サービス</a></li>
+    <li><a href="https://aidealize.com/bpr/">DX事例</a></li>
+    <li><a href="/works/">実績</a></li>
+    <li><a href="/company.html">会社概要</a></li>
+    <li><a href="/service/prevention/#contact" class="nav-cta">無料でサイト点検</a></li>
+  </ul>
+  <button class="nav-hamburger" id="navHamburger" aria-label="メニュー"><span></span><span></span><span></span></button>
+</nav>
+<div class="nav-drawer" id="navDrawer">
+  <ul>
+    <li><a href="/column/" class="drawer-link">コラム</a></li>
+    <li><a href="/service/" class="drawer-link">サービス</a></li>
+    <li><a href="https://aidealize.com/bpr/" class="drawer-link">DX事例</a></li>
+    <li><a href="/works/" class="drawer-link">実績</a></li>
+    <li><a href="/company.html" class="drawer-link">会社概要</a></li>
+    <li><a href="/service/prevention/#contact">無料でサイト点検</a></li>
+  </ul>
+</div>
+
+<header class="article-header">
+  <div class="article-header-inner">
+    <nav class="breadcrumb" aria-label="パンくず">
+      <a href="/">ホーム</a><span>/</span>
+      <a href="/column/">コラム</a><span>/</span>
+      <span>PHP脆弱性の対策手順</span>
+    </nav>
+    <div class="article-tag">Webセキュリティ / 対策ガイド</div>
+    <h1 class="article-h1">
+      PHPの脆弱性、自分でできる対策は？<br>
+      バージョン確認・更新・やってはいけないこと<br>
+      WordPressサイト向けの手順ガイド。
+    </h1>
+    <div class="article-meta">
+      <div>📅 2026年10月23日</div>
+      <div>⏱ 読了約10分</div>
+      <div>✍ AIdealize編集部</div>
+    </div>
+  </div>
+</header>
+
+<article class="article-body">
+<div class="article-body-inner">
+
+  <div class="summary-box reveal">
+    <div class="summary-box-title">この記事でわかること</div>
+    <ul>
+      <li>自社サイトのPHPバージョンを、3つの方法で確認するやり方</li>
+      <li>レンタルサーバーでPHPを更新する流れと、更新後に必ず確認する5か所</li>
+      <li>すぐに更新できないとき、やってよいこと・やってはいけないこと</li>
+      <li>制作会社・サーバー会社にそのまま送れる、確認依頼の文面</li>
+    </ul>
+  </div>
+
+  <p>2026年10月21日に公表された<strong>PHPの重大な脆弱性（CVE-2026-109618／109619）</strong>について、「結局、何をすればいいのか」という声を多くいただきます。この記事は、ニュースの解説ではなく、<strong>対策の手順そのもの</strong>に絞ったガイドです。ニュースの全体像は<a href="/column/php-kinkyu-vulnerability-chusho-kakunin/">こちらの記事</a>にまとめています。</p>
+
+  <div class="point-box">
+    <div class="point-box-label">先に結論</div>
+    <p><strong>①PHPのバージョンを確認する → ②修正版（8.2以降）へ更新する → ③更新後の動作と、外から見える情報を確認する。</strong>この3つだけです。設定変更だけの対策は部分的な緩和にとどまり、根本的にはPHP本体の更新が必要です。</p>
+  </div>
+
+  <h2>ステップ1：自社サイトのPHPバージョンを確認する</h2>
+
+  <p>確認方法は3つあります。いちばん確実なのは①です。</p>
+
+  <ol>
+    <li><strong>サーバーの管理画面で見る</strong>：レンタルサーバーなら、管理画面（サーバーパネル）に「PHPバージョン」「PHP設定」といった項目があります。項目名はサービスによって異なります。</li>
+    <li><strong>WordPressの管理画面で見る</strong>：「ツール」→「サイトヘルス」→「情報」→「サーバー」を開くと、PHPのバージョンが表示されます。</li>
+    <li><strong>外から見える情報を調べる</strong>：下の無料チェックにURLを入れると、PHPのバージョンが外から見えていないかを確認できます。ただし、<strong>見えなかった場合は「分からない」であって、「安全」ではありません</strong>。</li>
+  </ol>
+
+  <div class="inline-cta reveal">
+    <div class="inline-cta-tag">無料・入力30秒・費用契約なし</div>
+    <h3>外から見えているPHPのバージョンを確認</h3>
+    <p>ドメインを入れるだけで、PHPなどのバージョン情報が外から見えていないかを、公開情報の範囲で自動チェックします。</p>
+    <iframe id="secScanFrame" src="/security-scan-widget.html" title="無料セキュリティ外周点検" width="100%" height="220" frameborder="0" scrolling="no" loading="lazy" style="display:block;border:none;border-radius:12px;overflow:hidden;max-width:640px;margin:20px auto 0;"></iframe>
+  </div>
+  <script>
+  window.addEventListener('message', function(e){
+    if (e.data && e.data.type === 'roiHeight') {
+      var f = document.getElementById('secScanFrame');
+      if (f && e.data.height) f.style.height = e.data.height + 'px';
+    }
+  });
+  </script>
+
+  <h3>確認できたバージョンの見方</h3>
+  <ul>
+    <li><strong>8.2.35／8.3.36／8.4.27／8.5.12 以降</strong>：今回の修正が入った版です。対応済みです。</li>
+    <li><strong>8.2〜8.5で、上の番号より古い</strong>：修正版へ更新が必要です。</li>
+    <li><strong>8.1以前（7.4・5.6など）</strong>：PHP公式の修正版はありません。サーバー会社が独自に修正を提供しているか、確認してください。提供がなければ、8.2以降への移行が必要です。</li>
+  </ul>
+
+  <h2>ステップ2：PHPを更新する</h2>
+
+  <h3>更新の前に：バックアップを取る</h3>
+  <p>PHPの更新で、古いテーマやプラグインが動かなくなることがあります。更新前に、サイトのファイルとデータベースのバックアップを取っておけば、何かあっても元に戻せます。サーバーの自動バックアップ機能や、バックアップ用プラグインを使ってください。</p>
+
+  <h3>更新の流れ（エックスサーバーの例）</h3>
+  <p>エックスサーバーの場合、サーバーパネルの「PHP Ver.切替」から、対象のドメインを選んでバージョンを変更します。他のサービスでも、管理画面の「PHPバージョン」「PHP設定」といった項目から、同じような流れで変更できます。見つからない場合は、各社の公式ヘルプで「PHP バージョン 変更」を検索してください。</p>
+
+  <div class="flow">① バックアップを取る
+   ↓
+② WordPress本体・テーマ・プラグインを先に最新へ
+   ↓
+③ 管理画面でPHPのバージョンを<span class="c">8.2以降</span>に変更
+   ↓
+④ サイトの表示と動作を<span class="c">5か所</span>確認
+   ↓
+⑤ 問題があれば原因を調べる（または制作会社へ）</div>
+
+  <h3>更新後に確認する5か所</h3>
+  <ol>
+    <li><strong>トップページと主要ページ</strong>が、崩れずに表示される。</li>
+    <li><strong>問い合わせフォーム</strong>から、テスト送信して届く。</li>
+    <li><strong>WordPressの管理画面</strong>にログインできる。</li>
+    <li><strong>画面が真っ白</strong>になっているページがない。</li>
+    <li><strong>予約・決済・会員など</strong>、サイト固有の機能が動く。</li>
+  </ol>
+
+  <div class="case-box reveal">
+    <p><strong>よくある詰まりどころ：</strong>古いテーマやプラグインは、新しいPHPで動かないことがあります。その場合、「古いPHPに戻す」のは最後の手段にしてください。戻すと、今回の脆弱性の対象に戻ってしまいます。まず、動かないプラグインを更新するか、代わりのものに置き換える、制作会社に相談する、のどれかを検討してください。なお、古い版に戻せるかどうかはサーバー会社によって異なります。</p>
+  </div>
+
+  <h2>すぐに更新できないとき：やってよいこと・いけないこと</h2>
+
+  <p>「担当者が不在」「制作会社と連絡が取れない」など、すぐに更新できない場合もあります。その間の考え方を整理します。</p>
+
+  <div class="pain-cards">
+    <div class="pain-card reveal"><div class="pain-card-icon">⏸</div><div class="pain-card-body"><strong>サイトの一時停止（有効）</strong><br>国家サイバー統括室も、修正をすぐに適用できない場合は、ウェブサイトを一時的に止めることを有効な策の一つとしています。売上や予約に直結しないサイトなら、まず検討してください。</div></div>
+    <div class="pain-card reveal"><div class="pain-card-icon">📝</div><div class="pain-card-body"><strong>問い合わせフォームなどの受付停止（有効）</strong><br>ファイルのアップロードや、データの送信を受け付ける機能は、停止か、メール・電話での受付に切り替えるのが安全です。</div></div>
+    <div class="pain-card reveal"><div class="pain-card-icon">🛡</div><div class="pain-card-body"><strong>サーバー会社のセキュリティ機能を有効にする（補助）</strong><br>WAFなどの機能がある場合は、有効にしておいてください。ただし、これだけで十分とは言えません。</div></div>
+    <div class="pain-card reveal"><div class="pain-card-icon">⚠</div><div class="pain-card-body"><strong>設定変更だけで済ませる（不十分）</strong><br>一部で紹介されている設定の変更は、部分的な緩和にとどまります。根本的な解決は、PHPの更新です。</div></div>
+  </div>
+
+  <h2>ステップ3：外から見える情報を減らし、異常がないか確認する</h2>
+
+  <h3>バージョン情報を隠す</h3>
+  <p>サーバーの応答には、PHPのバージョンが含まれていることがあります。攻撃者に「この版には、この弱点が効く」と教えてしまうため、<strong>非表示にしておく</strong>のが基本です。サーバーの設定やPHPの設定で変更できますが、方法はサーバーによって異なります。分からなければ、サーバー会社か制作会社に依頼してください。なお、<strong>隠すこと自体は、安全にはなりません。PHPの更新が先です。</strong></p>
+
+  <h3>異常がないか確認する</h3>
+  <p>修正前の期間に、すでに不正なアクセスを受けていないかも、念のため確認します。</p>
+  <ul>
+    <li><strong>身に覚えのないファイル</strong>が、サイトのフォルダに増えていないか。</li>
+    <li><strong>サイトの表示</strong>が、急におかしくなっていないか（不審なリンク、別サイトへの転送など）。</li>
+    <li><strong>WordPressの管理者アカウント</strong>に、知らないユーザーがいないか。</li>
+    <li><strong>アクセスログ</strong>に、見慣れない大量のアクセスがないか（サーバー会社に依頼できます）。</li>
+  </ul>
+  <p>不審な点があれば、パスワードの変更と、専門家への相談をお勧めします。</p>
+
+  <h2>制作会社・サーバー会社に送れる、確認依頼の文面</h2>
+
+  <p>自分での対応が難しい場合は、次の文面をそのまま使って、確認を依頼してください。</p>
+
+  <div class="point-box">
+    <div class="point-box-label">コピーして使えます</div>
+    <p>〇〇様<br><br>お世話になっております。2026年10月21日に公表されたPHPの重大な脆弱性（CVE-2026-109618／109619）について、弊社のサイト（https://〇〇〇）への対応状況を教えてください。<br><br>1. 現在のPHPのバージョン<br>2. 上記の脆弱性への対応状況（修正済みか、いつ対応するか）<br>3. PHP 8.1以前の場合、サポート中のバージョンへの移行の可否と時期<br>4. 更新時の動作確認の担当（どなたが行うか）<br><br>お忙しいところ恐れ入りますが、ご返信をお願いいたします。</p>
+  </div>
+
+  <h2>よくある質問（FAQ）</h2>
+  <h3>PHPを更新すると、サイトは壊れませんか？</h3>
+  <p>古いテーマやプラグインを使っている場合、動かなくなることがあります。更新前にバックアップを取り、WordPress本体・テーマ・プラグインを先に最新にしてから、PHPを更新してください。</p>
+  <h3>PHP 8.1以前を使っています。いまからどうすればいいですか？</h3>
+  <p>PHP公式は8.1以前に修正版を出していません。サーバー会社が独自に修正を提供している場合もあるので、まず契約先に確認してください。提供がなければ、8.2以降への移行が必要です。</p>
+  <h3>設定を変えるだけでは、対策になりませんか？</h3>
+  <p>設定の変更は、部分的な緩和にとどまると報告されています。根本的な解決は、PHPを修正版に更新することです。</p>
+  <h3>自分では難しいです。依頼できますか？</h3>
+  <p>当社では、PHPとサーバーの状態確認、更新と動作確認、バージョン表記の非表示などをお受けしています。まず無料チェックで現状を確認し、必要な対策とお見積りをご案内します。</p>
+
+  <h2>まとめ｜まず「バージョンを知る」ことから</h2>
+  <p>対策の最初の一歩は、<strong>自社サイトのPHPが、いま何のバージョンなのかを知る</strong>ことです。分かれば、やることは決まります。分からなければ、制作会社かサーバー会社に聞いてください。それも難しければ、私たちにご相談ください。</p>
+
+  <div class="inline-cta reveal">
+    <div class="inline-cta-tag">PHP対策のご相談・ご依頼</div>
+    <h3>「確認だけ」「更新まで丸ごと」、<br>どちらも承ります。</h3>
+    <p>PHP・サーバーの状態確認、修正版への更新と動作確認、バージョン表記の非表示などを、まとめて対応します。まずは無料チェックで現状をご確認ください。無理な営業はしません。</p>
+    <div class="cta-btns-pair">
+      <a href="/service/prevention/#php" class="btn-cta-red">PHP対策を相談・依頼する →</a>
+      <a href="/service/prevention/" class="btn-cta-ghost">無料チェックを受ける</a>
+    </div>
+    <span class="btn-cta-note">オンライン対応・費用は状況により異なります（先にお見積り）</span>
+  </div>
+
+  <p class="note">参考：<a href="https://www.ipa.go.jp/security/security-alert/2026/pre-alert20261021.html" rel="noopener">IPA「【事前準備のお願い】PHPのセキュリティリリース公開予定について」</a>、<a href="https://www.cisa.gov/news-events/alerts/2026/10/21/critical-vulnerabilities-php-require-immediate-patching" rel="noopener">CISA</a>、<a href="https://www.xserver.ne.jp/manual/man_program_php_ver.php" rel="noopener">エックスサーバー「PHP Ver.切替」マニュアル</a>。状況は日々更新されます。最新情報は各機関の発表をご確認ください。</p>
+
+</div>
+</article>
+
+<section style="padding:0 24px 40px;background:#fff;">
+  <div style="max-width:760px;margin:0 auto;padding:20px 22px;border:1px solid #e2e8f0;border-left:4px solid #0891b2;border-radius:6px;background:#f8fafc;font-size:14px;line-height:2;">
+    <strong style="color:#0e7490;">あわせて読みたい</strong><br>
+    <a href="/column/php-kinkyu-vulnerability-chusho-kakunin/" style="color:#1e293b;">PHPの重大な脆弱性、うちのサイトは大丈夫？中小企業が今日確認すべき3つのこと</a><br>
+    <a href="/column/wordpress-zeijakusei-furui-site/" style="color:#1e293b;">なぜWordPressの脆弱性被害は減らないのか？「古いサイト」放置の現実</a><br>
+    <a href="/column/wordpress-kanri-marumie/" style="color:#1e293b;">WordPressの管理画面、丸見えになっていませんか？5分でできる自己チェック</a>
+  </div>
+</section>
+
+
+<section class="related-section">
+  <div class="related-inner">
+    <div class="related-label">Related Articles</div>
+    <div class="related-grid">
+      <a href="/column/hoshu-keiyaku-wana/" class="related-card">
+        <div class="related-card-tag">Webセキュリティ / 保守契約</div>
+        <div class="related-card-title">「保守契約」を結んでいるのに、なぜサイトは古いままなのか？制作会社との見えない溝の正体。</div>
+      </a>
+      <a href="/column/ssl-shometsu-kigen/" class="related-card">
+        <div class="related-card-tag">Webセキュリティ / 保守</div>
+        <div class="related-card-title">SSL証明書の「期限切れ・失効」で何が起きる？「保護されていない通信」警告の正体と対処。</div>
+      </a>
+      <a href="/column/wordpress-kanri-marumie/" class="related-card">
+        <div class="related-card-tag">Webセキュリティ / WordPress</div>
+        <div class="related-card-title">WordPressの管理画面、丸見えになっていませんか？5分でできる自己チェック。</div>
+      </a>
+      <a href="/column/torihikisaki-security-hojokin/" class="related-card">
+        <div class="related-card-tag">Webセキュリティ / 補助金</div>
+        <div class="related-card-title">取引先に「セキュリティ大丈夫？」と聞かれたら？IPA「42.1%」と補助金活用術。</div>
+      </a>
+      <a href="/column/komuten-site-tenken/" class="related-card">
+        <div class="related-card-tag">工務店Web集客 / 実態調査</div>
+        <div class="related-card-title">地方の工務店サイトを点検してわかった「放置サイト」の実態と脱出策。</div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<div class="back-section">
+  <div class="back-section-inner">
+    <a href="/column/" class="back-link">← コラム一覧に戻る</a>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-logo">
+    <div class="footer-logo-mark"></div>
+    <span class="footer-logo-text"><span>A</span>idealize株式会社</span>
+  </div>
+  <span class="footer-copy">© 2020–2026 AIdealize Inc. All rights reserved.</span>
+</footer>
+
+<script>
+(function(){
+  const btn=document.getElementById('navHamburger');
+  const drawer=document.getElementById('navDrawer');
+  const nav=document.getElementById('mainNav');
+  btn.addEventListener('click',function(){btn.classList.toggle('open');drawer.classList.toggle('open');});
+  drawer.querySelectorAll('.drawer-link').forEach(function(l){l.addEventListener('click',function(){btn.classList.remove('open');drawer.classList.remove('open');});});
+  window.addEventListener('scroll',function(){nav.classList.toggle('scrolled',window.scrollY>10);});
+})();
+const obs=new IntersectionObserver(function(e){e.forEach(function(x){if(x.isIntersecting)x.target.classList.add('visible');});},{threshold:0.08,rootMargin:'0px 0px -30px 0px'});
+document.querySelectorAll('.reveal').forEach(function(el){obs.observe(el);});
+</script>
+<script src="/js/lead-capture.js"></script>
+</body>
+</html>
