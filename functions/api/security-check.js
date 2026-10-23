@@ -148,17 +148,42 @@ export async function onRequestGet(context) {
       '万一の改ざん時に被害を最小化する設定',
       'Content-Security-Policy を導入し、読み込み元を制限（当社で対応可）');
 
-    // PHPのバージョンが見えている場合は、2026-10公表の重大脆弱性（CVE-2026-109618/109619）に絡めて案内
+    // --- PHP：2026-10公表の重大脆弱性（CVE-2026-109618/109619）に絡め、4段階で必ず表示する ---
+    //   見えていて危険 / 見えている / 見えない（検査できず安全かは不明） / PHPの形跡なし
+    const FIXED = { 2: 35, 3: 36, 4: 27, 5: 12 }; // 修正版の最低パッチ番号（8.2.35 / 8.3.36 / 8.4.27 / 8.5.12）
     const phpM = poweredBy.match(/PHP\/(\d+)\.(\d+)(?:\.(\d+))?/i);
-    const phpOld = !!phpM && (+phpM[1] < 8 || (+phpM[1] === 8 && +phpM[2] <= 1));
-    const phpNote = phpM
-      ? (phpOld
-          ? `PHP ${phpM[0].slice(4)} が見えています。PHP 8.1以前は、2026年10月公表の重大な脆弱性（CVE-2026-109618/109619）にPHP公式の修正版がありません。サーバー会社へ対応状況の確認が必要です。`
-          : `PHP ${phpM[0].slice(4)} が見えています。2026年10月公表の重大な脆弱性（CVE-2026-109618/109619）の修正版（8.2.35 / 8.3.36 / 8.4.27 / 8.5.12）に更新済みか確認してください。`)
-      : '';
+    const setCookie = (res.headers.get('set-cookie') || '');
+    const phpTrace = /PHPSESSID/i.test(setCookie) || /\.php[\s"'?#]/i.test(html) || looksWordPress;
+    const phpFix = '各社の最新PHPへ更新（8.2.35 / 8.3.36 / 8.4.27 / 8.5.12 以上）し、X-Powered-By のバージョン表記は隠す。レンタルサーバーなら管理画面でPHPバージョンを切替（当社で対応可）';
+    const phpWhy = '重大な脆弱性が2026年10月に公表されたばかりで、古い版は狙われやすい';
+    let phpStatus, phpLabel, phpDetail;
+    if (phpM) {
+      const maj = +phpM[1], min = +phpM[2], pat = phpM[3] === undefined ? null : +phpM[3];
+      const v = phpM[0].slice(4);
+      if (maj < 8 || (maj === 8 && min <= 1)) {
+        phpStatus = 'bad'; phpLabel = 'PHP：見えていて危険';
+        phpDetail = `PHP ${v} が外から見えています。PHP 8.1以前は、2026年10月公表の重大な脆弱性（CVE-2026-109618/109619）にPHP公式の修正版がありません。サーバー会社へ至急、対応状況の確認が必要です。`;
+      } else if (FIXED[min] && pat !== null && pat < FIXED[min]) {
+        phpStatus = 'bad'; phpLabel = 'PHP：見えていて危険';
+        phpDetail = `PHP ${v} が外から見えています。2026年10月公表の重大な脆弱性（CVE-2026-109618/109619）の修正版 8.${min}.${FIXED[min]} より古い版です。更新が必要です。`;
+      } else if (FIXED[min] && pat !== null) {
+        phpStatus = 'warn'; phpLabel = 'PHP：バージョンが見えている';
+        phpDetail = `PHP ${v} が外から見えています。修正版以降の版ですが、バージョンが丸見えなので隠すのがおすすめです。`;
+      } else {
+        phpStatus = 'warn'; phpLabel = 'PHP：バージョンが見えている';
+        phpDetail = `PHP ${v} が外から見えています（細かい版まで判別できませんでした）。2026年10月の重大な脆弱性の修正版（8.2.35 / 8.3.36 / 8.4.27 / 8.5.12）に更新済みか確認してください。`;
+      }
+    } else if (phpTrace) {
+      phpStatus = 'warn'; phpLabel = 'PHP：バージョンは見えない（安全かは不明）';
+      phpDetail = 'PHPで動いているサイトとみられますが、バージョンは隠されていて外からは検査できませんでした。隠せているのは良いことですが、検査できなかっただけで、最新かどうか・安全かどうかは分かりません。2026年10月公表の重大な脆弱性の修正版（8.2.35 / 8.3.36 / 8.4.27 / 8.5.12 以上）かどうか、サーバー管理者へ確認をおすすめします。';
+    } else {
+      phpStatus = 'good'; phpLabel = 'PHP：使用の形跡なし';
+      phpDetail = '外から見える範囲では、PHPを使っている形跡はありませんでした（見えない部分で使われている可能性は残ります）。';
+    }
+    add('php', phpLabel, phpStatus, phpDetail, phpWhy, phpFix);
 
-    add('version', phpM ? 'PHPのバージョン露出（2026年10月の重大な脆弱性に関係）' : 'サーバー・システム情報の露出', phpOld ? 'bad' : (versionLeaks.length ? 'warn' : 'good'),
-      versionLeaks.length ? `バージョン情報が外から見えています（${versionLeaks.join(' / ')}）。古い版だと既知の弱点を狙われます${phpNote ? '。' + phpNote : ''}` : 'サーバーの詳細バージョンは隠されています（隠れていても、中身が最新とは限りません）',
+    add('version', 'サーバー・システム情報の露出', versionLeaks.length ? 'warn' : 'good',
+      versionLeaks.length ? `バージョン情報が外から見えています（${versionLeaks.join(' / ')}）。古い版だと既知の弱点を狙われます` : 'サーバーの詳細バージョンは隠されています（隠れていても、中身が最新とは限りません）',
       '「鍵の型番」を攻撃者に教えないための基本',
       'サーバー設定で Server / X-Powered-By のバージョン表記を隠す（当社で対応可）');
 
@@ -180,8 +205,8 @@ export async function onRequestGet(context) {
       '「裏口」が見えていると総当たり攻撃の的になる',
       '管理画面をIP制限・Basic認証・URL変更で隠し、2段階認証を有効化（当社で対応可）');
 
-    // --- 表示順：PHPバージョン露出を最上段 → 危険(bad) → 注意(warn) → 良好(good)。同順位は元の並びを維持 ---
-    const rank = c => (c.key === 'version' && phpM) ? 0 : ({ bad: 1, warn: 2, good: 3 }[c.status] ?? 3);
+    // --- 表示順：PHPを最上段 → 危険(bad) → 注意(warn) → 良好(good)。同順位は元の並びを維持 ---
+    const rank = c => (c.key === 'php') ? 0 :({ bad: 1, warn: 2, good: 3 }[c.status] ?? 3);
     checks.map((c, i) => [c, i]).sort((x, y) => rank(x[0]) - rank(y[0]) || x[1] - y[1]).forEach(([c], i) => { checks[i] = c; });
 
     // --- スコア（good=1, warn=0.5, bad=0）---
