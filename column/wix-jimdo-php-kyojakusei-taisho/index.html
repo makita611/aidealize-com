@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Wix・Jimdo・STUDIOのサイトでも、PHPの脆弱性は関係ある？確認したい3つのこと【AIdealize】</title>
+<meta name="description" content="Wix・Jimdo・STUDIOなどのサービス型サイトは、PHPの重大な脆弱性（CVE-2026-109618/109619）の対象になる？ 基本的には対象外ですが、同じドメインに別のシステムが混ざっていないか、運営会社の案内、制作会社への確認など、確認したい3つのことを整理します。">
+<link rel="canonical" href="https://aidealize.com/column/wix-jimdo-php-kyojakusei-taisho/">
+<meta property="og:title" content="Wix・Jimdo・STUDIOのサイトでも、PHPの脆弱性は関係ある？確認したい3つのこと">
+<meta property="og:description" content="Wix・Jimdo・STUDIOなどのサービス型サイトとPHPの脆弱性の関係と、サービス型でも確認したい3つのこと。">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://aidealize.com/column/wix-jimdo-php-kyojakusei-taisho/">
+<meta property="og:site_name" content="AIdealize株式会社">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700;900&family=Shippori+Mincho:wght@400;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-P6VNBWH3');</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Wix・Jimdo・STUDIOのサイトでも、PHPの脆弱性は関係ある？確認したい3つのこと",
+  "description": "Wix・Jimdo・STUDIOなどのサービス型サイトとPHPの脆弱性の関係と、サービス型でも確認したい3つのこと。",
+  "datePublished": "2026-10-24",
+  "dateModified": "2026-10-24",
+  "author": {"@type": "Organization", "name": "AIdealize株式会社"},
+  "publisher": {"@type": "Organization", "name": "AIdealize株式会社", "url": "https://aidealize.com"}
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {"@type":"Question","name":"Wixで作ったサイトは、PHPの脆弱性の対象になりますか？","acceptedAnswer":{"@type":"Answer","text":"サービス型のサイトは、サーバー側の環境を運営会社が管理しており、お客様がPHPを更新する作業はありません。そのため基本的には対象外です。ただし、同じドメインの中に別のシステム（お知らせだけWordPress、予約フォームだけ別サービスなど）が混ざっている場合は、そちらを確認してください。"}},
+    {"@type":"Question","name":"JimdoやSTUDIOも同じ考え方でよいですか？","acceptedAnswer":{"@type":"Answer","text":"はい。Wix・Jimdo・STUDIOのようにサービス側でサイトを運営する仕組みは、同じ考え方で確認できます。運営会社の公式のお知らせやヘルプに、今回の件についての案内が出ていないかを確認すると安心です。"}},
+    {"@type":"Question","name":"独自ドメインを使っていても、同じですか？","acceptedAnswer":{"@type":"Answer","text":"独自ドメインは、サイトの「住所」にあたります。住所がサービス型のサイトを指している間は、中身の管理は運営会社が行います。一方、住所がレンタルサーバーなどを指している場合は、そのサーバーのPHPを確認する必要があります。契約書や請求書で、どこにサイトを置いているかを確かめてください。"}},
+    {"@type":"Question","name":"自分のサイトがどのタイプか分かりません。どうすればよいですか？","acceptedAnswer":{"@type":"Answer","text":"まず、毎月の請求書を見て、Wixなどのサービスへの支払いか、レンタルサーバーへの支払いかを確認します。それでも分からない場合は、サイトを作った制作会社に「使っているサービスやサーバー」と「今回のPHPの脆弱性への対応状況」を問い合わせるのが確実です。"}},
+    {"@type":"Question","name":"サービス型なら、何もしなくてよいですか？","acceptedAnswer":{"@type":"Answer","text":"PHPの更新作業という意味では、お客様側でやることはありません。ただ、運営会社からのお知らせの確認と、同じ会社が運用している別のシステムの確認は、この機会にしておくと安心です。"}}
+  ]
+}
+</script>
+<style>
+:root{
+  --red:#0891b2;--red-dark:#0e7490;
+  --ink:#1e293b;--body:#4b5563;--light:#94a3b8;
+  --border:#e2e8f0;--bg:#f8fafc;--bg2:#f1f5f9;--white:#fff;
+  --tag-bg:#ecfeff;--green:#059669;--green-bg:#ecfdf5;
+  --demo-bg:#0f172a;--amber-bg:#fef3c7;--amber-tx:#92400e;--danger:#dc2626;--danger-bg:#fef2f2;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{font-family:'Noto Sans JP',sans-serif;background:var(--white);color:var(--ink);overflow-x:hidden;line-height:1.7;}
+#mainNav{position:fixed;top:0;left:0;right:0;z-index:1000;display:flex;align-items:center;justify-content:space-between;padding:0 60px;height:68px;background:rgba(255,255,255,0.97);border-bottom:1px solid var(--border);backdrop-filter:blur(12px);transition:box-shadow 0.3s;}
+#mainNav.scrolled{box-shadow:0 2px 16px rgba(0,0,0,0.06);}
+.nav-logo{display:flex;align-items:center;gap:10px;text-decoration:none;}
+.nav-logo img{height:34px;width:auto;}
+.nav-logo-text{font-family:'DM Mono',monospace;font-size:15px;font-weight:500;color:var(--ink);letter-spacing:0.02em;}
+.nav-logo-text span{color:var(--red);}
+.nav-links{display:flex;align-items:center;gap:32px;list-style:none;}
+.nav-links a{font-size:13px;font-weight:500;color:var(--body);text-decoration:none;transition:color 0.2s;}
+.nav-links a:hover{color:var(--ink);}
+.nav-cta{background:var(--red) !important;color:#fff !important;padding:9px 20px;border-radius:4px;font-size:12px !important;font-weight:700 !important;}
+.nav-cta:hover{background:var(--red-dark) !important;}
+.nav-hamburger{display:none;flex-direction:column;justify-content:center;gap:5px;width:40px;height:40px;background:none;border:none;cursor:pointer;}
+.nav-hamburger span{display:block;width:22px;height:2px;background:var(--ink);transition:all 0.3s;transform-origin:center;}
+.nav-hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg);}
+.nav-hamburger.open span:nth-child(2){opacity:0;}
+.nav-hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
+.nav-drawer{display:none;position:fixed;top:68px;left:0;right:0;background:#fff;border-bottom:2px solid var(--red);padding:20px 28px 28px;z-index:999;}
+.nav-drawer.open{display:block;}
+.nav-drawer ul{list-style:none;display:flex;flex-direction:column;}
+.nav-drawer ul li a{display:block;padding:13px 0;font-size:15px;font-weight:500;color:var(--ink);text-decoration:none;border-bottom:1px solid var(--border);}
+.nav-drawer ul li:last-child a{margin-top:16px;text-align:center;background:var(--red);color:#fff !important;padding:13px;border-radius:4px;font-weight:700 !important;border-bottom:none;}
+@media(max-width:1024px){#mainNav{padding:0 28px;}.nav-links{display:none;}.nav-hamburger{display:flex;}}
+@media(max-width:480px){#mainNav{padding:0 16px;height:60px;}.nav-drawer{top:60px;}.nav-logo-text{font-size:13px;}}
+.article-header{padding:116px 24px 52px;background:var(--bg);border-bottom:1px solid var(--border);}
+.article-header-inner{max-width:760px;margin:0 auto;}
+.breadcrumb{display:flex;align-items:center;gap:6px;font-size:12px;color:var(--light);margin-bottom:20px;flex-wrap:wrap;}
+.breadcrumb a{color:var(--light);text-decoration:none;}
+.breadcrumb a:hover{color:var(--red);}
+.breadcrumb span{color:var(--border);}
+.article-tag{display:inline-flex;align-items:center;background:var(--tag-bg);color:var(--red);font-size:11px;font-weight:700;letter-spacing:0.06em;padding:4px 12px;border-radius:100px;margin-bottom:18px;}
+.article-h1{font-family:'Shippori Mincho',serif;font-size:clamp(20px,3vw,34px);font-weight:700;color:var(--ink);line-height:1.65;margin-bottom:20px;}
+.article-meta{display:flex;align-items:center;gap:20px;flex-wrap:wrap;font-size:12px;color:var(--light);}
+.article-body{padding:72px 24px 100px;}
+.article-body-inner{max-width:760px;margin:0 auto;}
+.summary-box{background:var(--bg);border-left:4px solid var(--red);padding:24px 28px;border-radius:0 6px 6px 0;margin-bottom:52px;}
+.summary-box-title{font-size:11px;font-weight:700;color:var(--red);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:12px;}
+.summary-box ul{list-style:none;display:flex;flex-direction:column;gap:8px;}
+.summary-box ul li{display:flex;align-items:flex-start;gap:8px;font-size:14px;line-height:1.8;color:var(--ink);}
+.summary-box ul li::before{content:'✓';color:var(--red);font-weight:700;flex-shrink:0;margin-top:1px;}
+.article-body-inner h2{font-family:'Shippori Mincho',serif;font-size:clamp(17px,2.2vw,24px);font-weight:700;color:var(--ink);line-height:1.65;margin:56px 0 20px;padding-bottom:10px;border-bottom:1px solid var(--border);position:relative;}
+.article-body-inner h2::after{content:'';position:absolute;bottom:-1px;left:0;width:48px;height:2px;background:var(--red);}
+.article-body-inner h3{font-family:'Shippori Mincho',serif;font-size:clamp(15px,1.8vw,19px);font-weight:700;color:var(--ink);line-height:1.7;margin:36px 0 14px;padding-left:14px;border-left:3px solid var(--red);}
+.article-body-inner p{font-size:15px;line-height:2;color:var(--body);margin-bottom:22px;}
+.article-body-inner strong{color:var(--ink);font-weight:700;}
+.article-body-inner a{color:var(--red-dark);font-weight:700;text-decoration:underline;text-underline-offset:2px;}
+.article-body-inner ul,.article-body-inner ol{list-style:none;margin-bottom:22px;display:flex;flex-direction:column;gap:8px;}
+.article-body-inner ul li,.article-body-inner ol li{font-size:14px;line-height:1.9;color:var(--body);display:flex;align-items:flex-start;gap:10px;}
+.article-body-inner ul li::before{content:'─';color:var(--red);flex-shrink:0;margin-top:4px;font-size:12px;}
+.article-body-inner ol{counter-reset:ol;}
+.article-body-inner ol li{counter-increment:ol;}
+.article-body-inner ol li::before{content:counter(ol);background:var(--red);color:#fff;width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0;margin-top:2px;font-family:'DM Mono',monospace;}
+.pain-cards{display:flex;flex-direction:column;gap:12px;margin:24px 0;}
+.pain-card{background:var(--bg);border-left:4px solid var(--red);border-radius:0 8px 8px 0;padding:18px 20px;display:flex;align-items:flex-start;gap:12px;}
+.pain-card-icon{font-size:22px;flex-shrink:0;margin-top:2px;}
+.pain-card-body{font-size:14px;line-height:1.85;color:var(--body);}
+.pain-card-body strong{color:var(--ink);}
+.point-box{background:var(--bg2);border-radius:8px;padding:20px 24px;margin:20px 0;}
+.point-box-label{font-size:10px;font-family:'DM Mono',monospace;color:var(--red);letter-spacing:0.12em;text-transform:uppercase;margin-bottom:10px;}
+.point-box p{font-size:14px;line-height:1.9;color:var(--body);margin-bottom:0;}
+.case-box{border:1px solid #cffafe;border-left:5px solid var(--red);border-radius:0 10px 10px 0;padding:24px 26px;margin:28px 0;background:linear-gradient(135deg,#ecfeff,#f0fdf4);}
+.case-box p{margin-bottom:0;font-size:14px;line-height:1.9;color:var(--body);}
+.stat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:24px 0;}
+.stat-card{background:#fff;border:1px solid var(--border);border-top:3px solid var(--danger);border-radius:6px;padding:22px 16px;text-align:center;}
+.stat-card .v{font-family:'Shippori Mincho',serif;font-size:30px;font-weight:700;color:var(--danger);line-height:1;}
+.stat-card .l{font-size:11.5px;color:var(--body);line-height:1.6;margin-top:10px;}
+.inline-cta{background:var(--bg);border:1px solid var(--border);border-top:4px solid var(--red);border-radius:10px;padding:36px;margin:52px 0;text-align:center;}
+.inline-cta-tag{font-size:11px;color:var(--red);font-weight:700;letter-spacing:0.08em;margin-bottom:12px;}
+.inline-cta h3{font-family:'Shippori Mincho',serif;font-size:clamp(16px,2vw,22px);font-weight:700;color:var(--ink);line-height:1.65;margin-bottom:12px;}
+.inline-cta p{font-size:14px;color:var(--body);line-height:1.9;margin-bottom:22px;}
+.cta-btns-pair{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;}
+.btn-cta-red{display:inline-flex;align-items:center;gap:6px;background:var(--red);color:#fff;padding:13px 28px;border-radius:4px;font-size:14px;font-weight:700;text-decoration:none;transition:background 0.2s,transform 0.2s;}
+.btn-cta-red:hover{background:var(--red-dark);transform:translateY(-2px);}
+.btn-cta-ghost{display:inline-flex;align-items:center;gap:6px;background:#fff;color:var(--red);border:1.5px solid var(--red);padding:13px 28px;border-radius:4px;font-size:14px;font-weight:700;text-decoration:none;transition:background 0.2s;}
+.btn-cta-ghost:hover{background:var(--tag-bg);}
+.btn-cta-note{display:block;margin-top:12px;font-size:11px;color:var(--light);}
+.flow{background:var(--demo-bg);color:#cbd5e1;border-radius:8px;padding:20px 22px;font-family:'DM Mono',monospace;font-size:12.5px;line-height:1.9;white-space:pre-wrap;margin:24px 0;overflow-x:auto;}
+.flow .a{color:#f87171;}
+.flow .c{color:#67e8f9;}
+code{font-family:'DM Mono',monospace;background:var(--bg2);border:1px solid var(--border);border-radius:4px;padding:2px 7px;font-size:0.9em;color:var(--red-dark);word-break:break-all;}
+.note{font-size:12px;color:var(--light);margin-top:-12px;margin-bottom:22px;}
+.related-section{padding:60px 24px;background:var(--white);border-top:1px solid var(--border);}
+.related-inner{max-width:760px;margin:0 auto;}
+.related-label{font-family:'DM Mono',monospace;font-size:11px;color:var(--red);letter-spacing:0.14em;text-transform:uppercase;margin-bottom:20px;}
+.related-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;}
+.related-card{border:1px solid var(--border);border-top:3px solid var(--red);padding:20px;text-decoration:none;color:inherit;border-radius:0 0 6px 6px;transition:box-shadow 0.2s,transform 0.2s;}
+.related-card:hover{box-shadow:0 4px 16px rgba(0,0,0,0.07);transform:translateY(-2px);}
+.related-card-tag{font-size:10px;font-family:'DM Mono',monospace;color:var(--red);letter-spacing:0.1em;margin-bottom:8px;}
+.related-card-title{font-family:'Shippori Mincho',serif;font-size:14px;font-weight:700;color:var(--ink);line-height:1.6;}
+.back-section{padding:28px 24px;background:var(--bg);border-top:1px solid var(--border);}
+.back-section-inner{max-width:760px;margin:0 auto;}
+.back-link{display:inline-flex;align-items:center;gap:6px;font-size:13px;color:var(--body);text-decoration:none;transition:color 0.2s;}
+.back-link:hover{color:var(--red);}
+footer{background:#1f1f1f;border-top:1px solid rgba(255,255,255,0.06);padding:40px 60px;display:flex;align-items:center;justify-content:space-between;}
+.footer-logo{display:flex;align-items:center;gap:10px;}
+.footer-logo-mark{width:20px;height:20px;background:var(--red);clip-path:polygon(50% 0%,0% 100%,18% 100%,50% 38%,82% 100%,100% 100%);}
+.footer-logo-text{font-family:'DM Mono',monospace;font-size:13px;color:rgba(255,255,255,0.55);}
+.footer-logo-text span{color:var(--red);}
+.footer-copy{font-size:11px;color:rgba(255,255,255,0.25);font-family:'DM Mono',monospace;}
+.reveal{opacity:0;transform:translateY(18px);transition:opacity 0.55s ease,transform 0.55s ease;}
+.reveal.visible{opacity:1;transform:translateY(0);}
+@media(max-width:768px){
+  .article-header,.article-body,.back-section,.related-section{padding-left:16px;padding-right:16px;}
+  .article-header{padding-top:88px;}
+  .stat-grid{grid-template-columns:1fr;}
+  .related-grid{grid-template-columns:1fr !important;}
+  .cta-btns-pair{flex-direction:column;align-items:center;}
+  .inline-cta{padding:24px 18px;}
+  footer{flex-direction:column;gap:14px;text-align:center;padding:28px 16px;}
+}
+</style>
+</head>
+<body>
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-P6VNBWH3" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
+<nav id="mainNav">
+  <a href="/" class="nav-logo">
+    <img src="/images/logo.png" alt="AIdealize">
+    <span class="nav-logo-text"><span>AI</span>dealize</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="/column/">コラム</a></li>
+    <li><a href="/service/">サービス</a></li>
+    <li><a href="https://aidealize.com/bpr/">DX事例</a></li>
+    <li><a href="/works/">実績</a></li>
+    <li><a href="/company.html">会社概要</a></li>
+    <li><a href="/service/prevention/#contact" class="nav-cta">無料でサイト点検</a></li>
+  </ul>
+  <button class="nav-hamburger" id="navHamburger" aria-label="メニュー"><span></span><span></span><span></span></button>
+</nav>
+<div class="nav-drawer" id="navDrawer">
+  <ul>
+    <li><a href="/column/" class="drawer-link">コラム</a></li>
+    <li><a href="/service/" class="drawer-link">サービス</a></li>
+    <li><a href="https://aidealize.com/bpr/" class="drawer-link">DX事例</a></li>
+    <li><a href="/works/" class="drawer-link">実績</a></li>
+    <li><a href="/company.html" class="drawer-link">会社概要</a></li>
+    <li><a href="/service/prevention/#contact">無料でサイト点検</a></li>
+  </ul>
+</div>
+
+<header class="article-header">
+  <div class="article-header-inner">
+    <nav class="breadcrumb" aria-label="パンくず">
+      <a href="/">ホーム</a><span>/</span>
+      <a href="/column/">コラム</a><span>/</span>
+      <span>Wix・Jimdo・STUDIOとPHPの脆弱性</span>
+    </nav>
+    <div class="article-tag">Webセキュリティ / ニュース解説</div>
+    <h1 class="article-h1">
+      Wix・Jimdo・STUDIOのサイトでも、<br>
+      PHPの脆弱性は関係ある？<br>
+      確認したい3つのこと。
+    </h1>
+    <div class="article-meta">
+      <div>2026年10月24日</div>
+      <div>読了約5分</div>
+      <div>AIdealize編集部</div>
+    </div>
+  </div>
+</header>
+
+<article class="article-body">
+<div class="article-body-inner">
+
+  <div class="summary-box reveal">
+    <div class="summary-box-title">この記事でわかること</div>
+    <ul>
+      <li>Wix・Jimdo・STUDIOなどのサービス型サイトが、PHPの脆弱性の対象になるかどうか</li>
+      <li>「対象外」でも確認しておきたい3つのこと</li>
+      <li>自分のサイトがどのタイプか、請求書とログイン画面で見分ける方法</li>
+      <li>制作会社にそのまま送れる、確認の依頼文</li>
+    </ul>
+  </div>
+
+  <p>2026年10月21日に公表された、PHPの重大な脆弱性（CVE-2026-109618、CVE-2026-109619）。ニュースを見て、「うちのホームページはWixで作っているけれど、大丈夫？」「Jimdoだと関係あるの？」と気になった方も多いと思います。この記事では、サービス型のサイトで確認したいことを整理します。脆弱性そのものの概要は、<a href="/column/php-kinkyu-vulnerability-chusho-kakunin/">こちらの記事</a>にまとめています。</p>
+
+  <h2>結論｜サービス型のサイトは、基本的に対象外です</h2>
+
+  <p>Wix・Jimdo・STUDIOのように、サービス側でサイトを運営してくれる仕組みでは、サーバーの環境は運営会社が管理しています。PHPを更新する作業は、お客様ではなく運営会社が行うものです。そのため、<strong>今回のPHPの脆弱性については、基本的に対象外</strong>と考えて問題ありません。</p>
+
+  <div class="point-box">
+    <div class="point-box-label">ただし「何も見なくていい」わけではありません</div>
+    <p>対象外なのは、あくまで「サービス型のサイトそのもの」です。同じ会社のホームページの中に、レンタルサーバー上の別のシステムが混ざっていることがあります。<strong>混ざっていないかを一度確かめておく</strong>のが、今回のいちばん大切な確認です。</p>
+  </div>
+
+  <h2>まず、自分のサイトがどのタイプかを確かめる</h2>
+
+  <p>PHPの脆弱性の影響を受けるかどうかは、「サイトがどこで動いているか」で決まります。次の4つのうち、どれにあたるかを確認してください。</p>
+
+  <ul>
+    <li><strong>サービス型（Wix・Jimdo・STUDIOなど）</strong>：サーバーは運営会社が管理。PHPの更新作業はありません。基本的に対象外です。</li>
+    <li><strong>静的なHTMLだけのサイト</strong>：PHPを使っていなければ、対象外です。</li>
+    <li><strong>レンタルサーバー上のWordPressなど</strong>：PHPで動いているため、対象になり得ます。サーバーの管理画面で、PHPのバージョンを確認してください。</li>
+    <li><strong>自社サーバー・VPS</strong>：ご自身（または委託先）でPHPを更新する必要があります。</li>
+  </ul>
+
+  <p>どのタイプか分からないときは、<strong>毎月の請求書</strong>が手がかりになります。Wixなどのサービスへの支払いなら、サービス型です。レンタルサーバーへの支払いがあれば、そのサーバーで何かが動いている可能性があります。ログイン画面のURLに「wp-admin」と入っていれば、WordPressです。</p>
+
+  <h2>サービス型でも確認したい3つのこと</h2>
+
+  <ol>
+    <li><strong>同じドメインの中に、別のシステムが混ざっていないか</strong>：たとえば「お知らせ・ブログだけWordPress」「予約や資料請求のフォームだけ別のシステム」「サブドメインで別のサイトを動かしている」といった形です。これらがレンタルサーバー上のPHPで動いていれば、今回の対象になり得ます。サイトのメニューを一つずつ開き、URLが変わるところがないかを見てみてください。</li>
+    <li><strong>運営会社の公式のお知らせを見る</strong>：公式のヘルプやお知らせ、障害・メンテナンス情報に、今回の件についての案内が出ていないかを確認します。案内が見つからない場合は、運営会社のサポートに「今回のPHPの脆弱性の影響はありますか」と問い合わせるのが確実です。</li>
+    <li><strong>ログイン情報を見直す</strong>：PHPの件とは別の話ですが、ニュースで注目が集まる時期は、不審なメールやログイン試行も増えがちです。サイトの管理画面のパスワードを、ほかのサービスと使い回していないか、二段階認証を設定できるサービスなら設定しているかを、この機会に確認しておきましょう。</li>
+  </ol>
+
+  <h2>制作会社に送る確認の文面</h2>
+
+  <p>サイトを制作会社に作ってもらった場合は、次の文面をそのまま送れます。</p>
+
+  <div class="case-box reveal">
+    <p>お世話になっております。弊社のホームページについて、確認させてください。<br>
+    ①サイトで使っているサービス（Wix・Jimdo・STUDIO、またはレンタルサーバーなど）<br>
+    ②お知らせ・フォーム・予約など、別のシステムが混ざっているか<br>
+    ③2026年10月21日に公表されたPHPの脆弱性（CVE-2026-109618／109619）への対応状況<br>
+    お手数ですが、分かる範囲で教えてください。</p>
+  </div>
+
+  <div class="inline-cta reveal">
+    <div class="inline-cta-tag">無料相談・費用契約なし</div>
+    <h3>「うちのサイトは、どのタイプ？」を、<br>外部の視点で無料点検します。</h3>
+    <p>公開情報の範囲で、PHPなどのバージョン露出・管理画面の露出・SSLの状態を点検し、優先度の高い対策から整理してお渡しします。押し売りはしません。</p>
+    <div class="cta-btns-pair">
+      <a href="/service/prevention/#contact" class="btn-cta-red">無料でサイト点検を受ける →</a>
+      <a href="/column/php-taisaku-update-tejun-wordpress/" class="btn-cta-ghost">自分でできる対策手順を読む</a>
+    </div>
+    <span class="btn-cta-note">オンライン対応・押し売りなし</span>
+  </div>
+
+  <h2>よくある質問（FAQ）</h2>
+  <h3>Wixで作ったサイトは、PHPの脆弱性の対象になりますか？</h3>
+  <p>サービス型のサイトは、サーバー側の環境を運営会社が管理しており、お客様がPHPを更新する作業はありません。そのため基本的には対象外です。ただし、同じドメインの中に別のシステム（お知らせだけWordPress、予約フォームだけ別サービスなど）が混ざっている場合は、そちらを確認してください。</p>
+  <h3>JimdoやSTUDIOも同じ考え方でよいですか？</h3>
+  <p>はい。Wix・Jimdo・STUDIOのようにサービス側でサイトを運営する仕組みは、同じ考え方で確認できます。運営会社の公式のお知らせやヘルプに、今回の件についての案内が出ていないかを確認すると安心です。</p>
+  <h3>独自ドメインを使っていても、同じですか？</h3>
+  <p>独自ドメインは、サイトの「住所」にあたります。住所がサービス型のサイトを指している間は、中身の管理は運営会社が行います。一方、住所がレンタルサーバーなどを指している場合は、そのサーバーのPHPを確認する必要があります。契約書や請求書で、どこにサイトを置いているかを確かめてください。</p>
+  <h3>自分のサイトがどのタイプか分かりません。どうすればよいですか？</h3>
+  <p>まず、毎月の請求書を見て、Wixなどのサービスへの支払いか、レンタルサーバーへの支払いかを確認します。それでも分からない場合は、サイトを作った制作会社に「使っているサービスやサーバー」と「今回のPHPの脆弱性への対応状況」を問い合わせるのが確実です。</p>
+  <h3>サービス型なら、何もしなくてよいですか？</h3>
+  <p>PHPの更新作業という意味では、お客様側でやることはありません。ただ、運営会社からのお知らせの確認と、同じ会社が運用している別のシステムの確認は、この機会にしておくと安心です。</p>
+
+  <h2>まとめ｜サービス型は基本的に安心。ただし「別のシステム」を一度だけ確認</h2>
+  <p>Wix・Jimdo・STUDIOなどのサービス型サイトは、PHPの更新を運営会社が行うため、今回の脆弱性では基本的に対象外です。<strong>確認しておきたいのは、同じドメインの中に別のシステムが混ざっていないか、運営会社からのお知らせが出ていないか</strong>の2点です。ここまで確かめられれば、安心して日常の運用に戻れます。</p>
+
+  <p class="note">参考：<a href="https://www.ipa.go.jp/security/security-alert/2026/pre-alert20261021.html" rel="noopener">IPA「【事前準備のお願い】PHPのセキュリティリリース公開予定について」</a>、<a href="https://www.watch.impress.co.jp/docs/news/2150159.html" rel="noopener">Impress Watch「国内大手サービスで緊急メンテやサービス停止 PHP脆弱性で対策」</a>（国家サイバー統括室のX投稿を引用）、<a href="https://www.cisa.gov/news-events/alerts/2026/10/21/critical-vulnerabilities-php-require-immediate-patching" rel="noopener">CISA「Critical Vulnerabilities in PHP Require Immediate Patching」</a>。状況は日々更新されます。最新情報は各機関の発表をご確認ください。</p>
+
+</div>
+</article>
+
+<section style="padding:0 24px 40px;background:#fff;">
+  <div style="max-width:760px;margin:0 auto;padding:20px 22px;border:1px solid #e2e8f0;border-left:4px solid #0891b2;border-radius:6px;background:#f8fafc;font-size:14px;line-height:2;">
+    <strong style="color:#0e7490;">あわせて読みたい</strong><br>
+    <a href="/column/php-kinkyu-vulnerability-chusho-kakunin/" style="color:#1e293b;">PHPの重大な脆弱性、うちのサイトは大丈夫？中小企業が今日確認すべき3つのこと</a><br>
+    <a href="/column/php-taisaku-update-tejun-wordpress/" style="color:#1e293b;">PHPの脆弱性、自分でできる対策は？バージョン確認・更新・やってはいけないこと</a><br>
+    <a href="/column/wordpress-kanri-marumie/" style="color:#1e293b;">WordPressの管理画面、丸見えになっていませんか？5分でできる自己チェック</a><br>
+    <a href="/column/hoshu-keiyaku-wana/" style="color:#1e293b;">「保守契約」を結んでいるのに、なぜサイトは古いままなのか？</a>
+  </div>
+</section>
+
+
+<section class="related-section">
+  <div class="related-inner">
+    <div class="related-label">Related Articles</div>
+    <div class="related-grid">
+      <a href="/column/hoshu-keiyaku-wana/" class="related-card">
+        <div class="related-card-tag">Webセキュリティ / 保守契約</div>
+        <div class="related-card-title">「保守契約」を結んでいるのに、なぜサイトは古いままなのか？制作会社との見えない溝の正体。</div>
+      </a>
+      <a href="/column/ssl-shometsu-kigen/" class="related-card">
+        <div class="related-card-tag">Webセキュリティ / 保守</div>
+        <div class="related-card-title">SSL証明書の「期限切れ・失効」で何が起きる？「保護されていない通信」警告の正体と対処。</div>
+      </a>
+      <a href="/column/wordpress-kanri-marumie/" class="related-card">
+        <div class="related-card-tag">Webセキュリティ / WordPress</div>
+        <div class="related-card-title">WordPressの管理画面、丸見えになっていませんか？5分でできる自己チェック。</div>
+      </a>
+      <a href="/column/torihikisaki-security-hojokin/" class="related-card">
+        <div class="related-card-tag">Webセキュリティ / 補助金</div>
+        <div class="related-card-title">取引先に「セキュリティ大丈夫？」と聞かれたら？IPA「42.1%」と補助金活用術。</div>
+      </a>
+      <a href="/column/komuten-site-tenken/" class="related-card">
+        <div class="related-card-tag">工務店Web集客 / 実態調査</div>
+        <div class="related-card-title">地方の工務店サイトを点検してわかった「放置サイト」の実態と脱出策。</div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<div class="back-section">
+  <div class="back-section-inner">
+    <a href="/column/" class="back-link">← コラム一覧に戻る</a>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-logo">
+    <div class="footer-logo-mark"></div>
+    <span class="footer-logo-text"><span>A</span>idealize株式会社</span>
+  </div>
+  <span class="footer-copy">© 2020–2026 AIdealize Inc. All rights reserved.</span>
+</footer>
+
+<script>
+(function(){
+  const btn=document.getElementById('navHamburger');
+  const drawer=document.getElementById('navDrawer');
+  const nav=document.getElementById('mainNav');
+  btn.addEventListener('click',function(){btn.classList.toggle('open');drawer.classList.toggle('open');});
+  drawer.querySelectorAll('.drawer-link').forEach(function(l){l.addEventListener('click',function(){btn.classList.remove('open');drawer.classList.remove('open');});});
+  window.addEventListener('scroll',function(){nav.classList.toggle('scrolled',window.scrollY>10);});
+})();
+const obs=new IntersectionObserver(function(e){e.forEach(function(x){if(x.isIntersecting)x.target.classList.add('visible');});},{threshold:0.08,rootMargin:'0px 0px -30px 0px'});
+document.querySelectorAll('.reveal').forEach(function(el){obs.observe(el);});
+</script>
+<script src="/js/lead-capture.js"></script>
+</body>
+</html>
