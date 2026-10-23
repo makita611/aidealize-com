@@ -78,7 +78,7 @@ nav.gn a:hover { border-color:var(--ink) }
 .check { display:grid; grid-template-columns:1.1fr 1fr; gap:48px; align-items:start }
 .promise { list-style:none; margin-top:18px; border-top:1px solid var(--ink) }
 .promise li { padding:14px 0; border-bottom:1px solid var(--line); display:flex; gap:16px; font-size:15px }
-.promise li i { font-style:normal; font-weight:700; width:24px; flex:none }
+.promise li i { font-style:normal; font-weight:700; min-width:24px; white-space:nowrap; flex:none }
 .qrbox { border:1.5px solid var(--ink); padding:26px; text-align:center }
 .qrbox .ph { width:140px; height:140px; margin:14px auto; border:1.5px dashed var(--mute); display:flex; align-items:center; justify-content:center; color:var(--mute); font-size:12px }
 @media (max-width:860px) { .check { grid-template-columns:1fr; gap:28px } }
@@ -126,3 +126,57 @@ footer p { opacity:.7; margin-top:8px }
 .licband { border:1px solid var(--ink); display:grid; grid-template-columns:repeat(3,1fr); margin-top:26px; font-size:12.5px }
 .licband div { padding:12px 16px; border-right:1px solid var(--line) } .licband div:last-child { border-right:0 } .licband span { display:block; color:var(--mute); font-size:11px; letter-spacing:.1em }
 @media (max-width:860px) { .licband { grid-template-columns:1fr } .licband div { border-right:0; border-bottom:1px solid var(--line) } }
+
+/* 点検の見るところ（ピクトグラム） */
+.picgrid { display:grid; grid-template-columns:repeat(4,1fr); gap:28px 22px; margin-top:34px }
+.pic img { width:100%; height:auto; border:1px solid var(--line) }
+.pic b { display:block; margin-top:10px; font-size:17px } .pic span { display:block; font-size:13px; color:var(--mute); line-height:1.6 }
+@media (max-width:860px) { .picgrid { grid-template-columns:1fr 1fr; gap:20px 14px } }
+
+
+/* FV slideshow（CSSのみ・JSなし。opacity と transform だけを動かすので軽い） */
+.hero .fvs { position:absolute; inset:0; overflow:hidden; background:#111 }
+.hero .fvs img { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; opacity:0; transform:scale(1); transform-origin:50% 55%; animation:fvk 24s linear infinite }
+.hero .fvs img:nth-child(1) { animation-name:fvk1; animation-delay:0s }
+.hero .fvs img:nth-child(2) { animation-delay:6s }
+.hero .fvs img:nth-child(3) { animation-delay:12s }
+.hero .fvs img:nth-child(4) { animation-delay:18s }
+@keyframes fvk  { 0% { opacity:0; transform:scale(1) } 6% { opacity:1 } 25% { opacity:1 } 31% { opacity:0; transform:scale(1.1) } 100% { opacity:0; transform:scale(1.1) } }
+@keyframes fvk1 { 0% { opacity:1; transform:scale(1) } 25% { opacity:1 } 31% { opacity:0; transform:scale(1.1) } 100% { opacity:0; transform:scale(1.1) } }
+@media (prefers-reduced-motion:reduce) { .hero .fvs img { animation:none } .hero .fvs img:nth-child(1) { opacity:1 } .hero .fvs img:nth-child(n+2) { display:none } }
+.hero .dots { position:absolute; right:clamp(16px,4vw,48px); bottom:clamp(20px,4vw,40px); z-index:3; display:flex; gap:8px }
+.hero .dots i { width:26px; height:2px; background:rgba(255,255,255,.35); display:block; position:relative; overflow:hidden }
+.hero .dots i::after { content:""; position:absolute; inset:0; background:#fff; transform:scaleX(0); transform-origin:left; animation:fvd 24s linear infinite }
+.hero .dots i:nth-child(2)::after { animation-delay:6s } .hero .dots i:nth-child(3)::after { animation-delay:12s } .hero .dots i:nth-child(4)::after { animation-delay:18s }
+@keyframes fvd { 0% { transform:scaleX(0) } 25% { transform:scaleX(1) } 25.01%,100% { transform:scaleX(0) } }
+@media (prefers-reduced-motion:reduce) { .hero .dots { display:none } }
+
+/* QR */
+.qrbox .qrimg { width:140px; height:140px; margin:14px auto; display:block; border:1px solid var(--line); padding:6px; background:#fff }
+.qrbox .btn { display:inline-block; margin-top:4px }
+
+/* 小さな工事の前→後（縦写真） */
+.smallba { display:grid; grid-template-columns:repeat(2,1fr); gap:44px 48px; margin-top:34px; max-width:980px }
+.smallba .pr { display:grid; grid-template-columns:1fr 1fr; gap:6px }
+.smallba figure { position:relative } .smallba img { width:100%; aspect-ratio:3/4; object-fit:cover; display:block; background:#ddd }
+.smallba figcaption { font-size:11px; letter-spacing:.14em; color:var(--mute); margin-top:5px; text-align:center }
+.smallba .af figcaption { color:var(--ink); font-weight:700 }
+.smallba h3 { font-size:16px; margin-top:12px } .smallba p { font-size:13px; color:var(--mute); line-height:1.6 }
+@media (max-width:860px) { .smallba { grid-template-columns:1fr 1fr; gap:24px 14px } }
+
+/* 点検報告書の見本 */
+.rep { display:grid; grid-template-columns:minmax(0,420px) 1fr; gap:44px; align-items:start; margin-top:30px }
+.rep img { width:100%; border:1px solid var(--line); display:block }
+.rep .cap { font-size:12.5px; color:var(--mute); margin-top:8px }
+.rep ol { list-style:none; border-top:1px solid var(--ink) }
+.rep ol li { padding:14px 0; border-bottom:1px solid var(--line); font-size:15px } .rep ol li b { display:block; font-size:17px }
+@media (max-width:860px) { .rep { grid-template-columns:1fr; gap:24px } }
+
+/* よくある質問 */
+.faq { margin-top:26px; border-top:1px solid var(--ink) }
+.faq details { border-bottom:1px solid var(--line); padding:0 }
+.faq summary { cursor:pointer; padding:18px 36px 18px 0; font-weight:700; font-size:16.5px; list-style:none; position:relative }
+.faq summary::-webkit-details-marker { display:none }
+.faq summary::after { content:"＋"; position:absolute; right:6px; top:16px; font-weight:400 }
+.faq details[open] summary::after { content:"－" }
+.faq .a { padding:0 0 20px; color:#333; font-size:15px; line-height:1.85; max-width:46em }
