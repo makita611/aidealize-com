@@ -180,3 +180,39 @@ footer p { opacity:.7; margin-top:8px }
 .faq summary::after { content:"＋"; position:absolute; right:6px; top:16px; font-weight:400 }
 .faq details[open] summary::after { content:"－" }
 .faq .a { padding:0 0 20px; color:#333; font-size:15px; line-height:1.85; max-width:46em }
+
+
+/* 読みやすさ v3：文字を大きく・濃く・太めに／写真の上の文字を読みやすく／確認メモを消せるように */
+:root { --mute:#444 }
+body { font-family:"Hiragino Kaku Gothic ProN","Hiragino Sans","Yu Gothic Medium","游ゴシック Medium","YuGothic","Meiryo","Noto Sans JP",sans-serif; font-weight:500; font-size:17px; line-height:1.9 }
+section { padding:clamp(48px,7vw,92px) 0 }
+.label { font-size:13px; letter-spacing:.14em; color:#444; font-weight:700 }
+.lead { font-size:18px; color:#333; max-width:42em }
+nav.gn { font-size:15px; gap:24px; font-weight:700 }
+.hd .tel { font-size:15px } .hd .tel b { font-size:20px }
+.hero::after { background:linear-gradient(to top, rgba(0,0,0,.88), rgba(0,0,0,.6) 38%, rgba(0,0,0,.12) 72%) }
+.hero h1, .hero p, .hero .label { text-shadow:0 1px 16px rgba(0,0,0,.6) }
+.hero h1 { font-weight:800 }
+.hero p { font-size:19px; opacity:1; max-width:31em; color:#fff }
+.hero .label { color:#fff; opacity:1 }
+.btn { font-size:16px; padding:16px 30px }
+.bacard h3 { font-size:19px } .bacard p, .bacap { font-size:15px; color:#333 }
+.bacard .ba figcaption, .ba figcaption { font-size:14px; color:#333 }
+.tags span { font-size:13.5px }
+.door h3 { font-size:26px } .door p { font-size:16px; color:#333 } .door .n { color:#444 } .door a.more { font-size:15.5px }
+.step b { font-size:14.5px } .step span { font-size:14.5px; color:#333 }
+.flow .f b { font-size:18px } .flow .f span { font-size:15px; color:#333 } .flow .f .n { font-size:13px; color:#444 }
+.tri b { font-size:18px } .tri span { font-size:14.5px; color:#333 }
+.promise li { font-size:16.5px }
+.faq summary { font-size:18px } .faq .a { font-size:16.5px }
+.hist li { font-size:16px } .licband { font-size:14.5px } .licband span { font-size:12.5px; color:#444 }
+.co dt, .co dd { font-size:16px } .co dt { color:#444 }
+.tl h3 { font-size:21px } .tl .row p { font-size:15.5px; color:#333 } .tl .no { color:#444 }
+.facts .k { font-size:13px; color:#444 } .facts .v { font-size:17px }
+.crumb { font-size:14px; color:#444 }
+.rep .cap { font-size:13.5px; color:#444 } .rep ol li { font-size:16.5px } .rep ol li b { font-size:18px }
+.smallba { max-width:none } .smallba h3 { font-size:19px } .smallba p { font-size:15px; color:#333 } .smallba figcaption { font-size:13.5px; color:#333 }
+footer { font-size:14.5px } footer p { opacity:.88 }
+.proto { font-size:13px !important; line-height:1.6 } .proto button { margin-left:14px; background:transparent; color:#fff; border:1px solid #fff; font:inherit; font-size:12px; padding:1px 10px; cursor:pointer }
+.nm mark { background:none !important; outline:0 !important; padding:0 !important; color:inherit !important }
+@media (max-width:860px) { body { font-size:16.5px } .lead { font-size:17px } .hero p { font-size:17px } }
