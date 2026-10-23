@@ -82,7 +82,7 @@ section.sec.soft{background:var(--bg-soft)}
 section.sec.warm{background:var(--bg-warm)}
 .sec-head{margin:0 0 32px}
 .sec-head .kicker{font-size:13px;font-weight:700;letter-spacing:.14em;color:var(--brand);margin:0 0 6px}
-.sec-head h2{font-size:clamp(23px,3.2vw,31px);line-height:1.45;margin:0 0 10px}
+.sec-head h1,.sec-head h2{font-size:clamp(23px,3.2vw,31px);line-height:1.45;margin:0 0 10px}
 .sec-head p{color:var(--ink-soft);margin:0}
 .center{text-align:center}
 @media (max-width:640px){section.sec{padding:48px 0}}
