@@ -308,3 +308,11 @@ h2.sec { font-size:clamp(23px,2.4vw,30px) }
 /* v9 小さな工事の写真を一回り大きく（クリックでさらに拡大） */
 .smallba { max-width:1120px; gap:44px 56px }
 .smallba .pr { gap:10px }
+
+
+/* v10 ピクトグラムの見るところ */
+.ptiles { display:grid; grid-template-columns:repeat(4,1fr); gap:16px; margin-top:26px }
+.ptile { border:1.5px solid #111; background:#fff; padding:18px 14px 20px; text-align:center }
+.ptile img { width:100%; max-width:220px; height:130px; object-fit:contain; margin:0 auto 6px }
+.ptile b { display:block; font-size:18px } .ptile span { display:block; font-size:14.5px; color:#333; line-height:1.65; margin-top:4px }
+@media (max-width:860px) { .ptiles { grid-template-columns:1fr 1fr; gap:12px } .ptile img { height:100px } }
