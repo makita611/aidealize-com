@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://aidealize.com/</loc><lastmod>2026-06-13</lastmod><priority>1.0</priority></url>
+  <url><loc>https://aidealize.com/</loc><lastmod>2026-10-03</lastmod><priority>1.0</priority></url>
   <url><loc>https://aidealize.com/portfolio/form-works/</loc><lastmod>2026-09-20</lastmod><priority>0.6</priority></url>
   <url><loc>https://aidealize.com/portfolio/form-works/technology</loc><lastmod>2026-09-20</lastmod><priority>0.5</priority></url>
   <url><loc>https://aidealize.com/portfolio/form-works/studio</loc><lastmod>2026-09-20</lastmod><priority>0.5</priority></url>
-  <url><loc>https://aidealize.com/column/</loc><lastmod>2026-09-18</lastmod><priority>0.8</priority></url>
+  <url><loc>https://aidealize.com/column/</loc><lastmod>2026-10-03</lastmod><priority>0.8</priority></url>
   <url><loc>https://aidealize.com/column/kintai-kanri-ai/</loc><lastmod>2026-09-13</lastmod><priority>0.8</priority></url>
   <url><loc>https://aidealize.com/column/insatsu-gyomu-rpa/</loc><lastmod>2026-09-14</lastmod><priority>0.8</priority></url>
   <url><loc>https://aidealize.com/column/ai-jinji-teichakuritsu/</loc><lastmod>2026-09-15</lastmod><priority>0.8</priority></url>
@@ -68,12 +68,13 @@
   <url><loc>https://aidealize.com/column/clinic-shukyaku-jirei/</loc><lastmod>2026-06-26</lastmod><priority>0.8</priority></url>
   <url><loc>https://aidealize.com/column/meo-shukyaku/</loc><lastmod>2026-06-27</lastmod><priority>0.8</priority></url>
   <url><loc>https://aidealize.com/column/kokoku-shukyaku/</loc><lastmod>2026-06-29</lastmod><priority>0.8</priority></url>
-  <url><loc>https://aidealize.com/service/</loc><lastmod>2026-07-08</lastmod><priority>0.6</priority></url>
+  <url><loc>https://aidealize.com/service/</loc><lastmod>2026-10-03</lastmod><priority>0.6</priority></url>
   <url><loc>https://aidealize.com/service/marketing/</loc><lastmod>2026-07-08</lastmod><priority>0.7</priority></url>
   <url><loc>https://aidealize.com/service/clinic-marketing/</loc><lastmod>2026-09-11</lastmod><priority>0.7</priority></url>
   <url><loc>https://aidealize.com/service/cvr/</loc><lastmod>2026-07-08</lastmod><priority>0.7</priority></url>
   <url><loc>https://aidealize.com/service/chiho-shukyaku/</loc><lastmod>2026-10-03</lastmod><priority>0.8</priority></url>
-  <url><loc>https://aidealize.com/works/artmake-komi/</loc><lastmod>2026-10-03</lastmod><priority>0.7</priority></url>
+  <url><loc>https://aidealize.com/works/</loc><lastmod>2026-10-03</lastmod><priority>0.6</priority></url>
+  <url><loc>https://aidealize.com/works/artmake-komi/</loc><lastmod>2026-10-26</lastmod><priority>0.7</priority></url>
   <url><loc>https://aidealize.com/shukyaku-shindan</loc><lastmod>2026-07-09</lastmod><priority>0.7</priority></url>
   <url><loc>https://aidealize.com/site-check</loc><lastmod>2026-07-09</lastmod><priority>0.7</priority></url>
   <url><loc>https://aidealize.com/bpr/</loc><lastmod>2026-07-08</lastmod><priority>0.7</priority></url>
@@ -106,6 +107,13 @@
   <url><loc>https://aidealize.com/column/ga4-ai-assistant/</loc><lastmod>2026-10-03</lastmod><priority>0.8</priority></url>
   <url><loc>https://aidealize.com/column/komuten-akiya-soudan/</loc><lastmod>2026-10-03</lastmod><priority>0.8</priority></url>
   <url><loc>https://aidealize.com/column/tenpo-joho-tooitsu/</loc><lastmod>2026-10-03</lastmod><priority>0.8</priority></url>
+  <url><loc>https://aidealize.com/column/artmake-shukyaku-unyo-manabi/</loc><lastmod>2026-10-26</lastmod><priority>0.8</priority></url>
+  <url><loc>https://aidealize.com/column/toiawase-fuenai-4tsu-no-suji/</loc><lastmod>2026-10-03</lastmod><priority>0.8</priority></url>
+  <url><loc>https://aidealize.com/column/ga4-search-console-maitsuki/</loc><lastmod>2026-10-03</lastmod><priority>0.8</priority></url>
+  <url><loc>https://aidealize.com/column/komuten-hp-shukyaku-dosen/</loc><lastmod>2026-10-03</lastmod><priority>0.8</priority></url>
+  <url><loc>https://aidealize.com/column/map-hp-sns-yusenjun/</loc><lastmod>2026-10-03</lastmod><priority>0.8</priority></url>
+  <url><loc>https://aidealize.com/column/toiawase-juchu-tsunagaranai/</loc><lastmod>2026-10-03</lastmod><priority>0.8</priority></url>
+  <url><loc>https://aidealize.com/column/ai-shukyaku-mae-data/</loc><lastmod>2026-10-03</lastmod><priority>0.8</priority></url>
   <url><loc>https://aidealize.com/column/torihikisaki-security-hojokin/</loc><lastmod>2026-08-25</lastmod><priority>0.8</priority></url>
   <url><loc>https://aidealize.com/column/iryou-clinic-security/</loc><lastmod>2026-08-25</lastmod><priority>0.8</priority></url>
   <url><loc>https://aidealize.com/column/wordpress-kanri-marumie/</loc><lastmod>2026-08-25</lastmod><priority>0.8</priority></url>
