@@ -45,6 +45,8 @@
 - [ホームページを作り直しても問い合わせが増えない会社が、最初に見る4つの数字](https://aidealize.com/column/toiawase-fuenai-4tsu-no-suji/)
 - [小さな会社のGA4・サーチコンソール、毎月これだけ見れば次の改善が決まる](https://aidealize.com/column/ga4-search-console-maitsuki/)
 - [工務店のホームページ集客：施工事例を増やす前に整える導線](https://aidealize.com/column/komuten-hp-shukyaku-dosen/)
+- [古いホームページは直す？作り直す？判断に必要な7つのチェック](https://aidealize.com/column/hp-naosu-tsukurinaosu-hantei/)
+- [サイト制作の見積りで失敗しないために、公開後の更新・計測まで決めておくこと](https://aidealize.com/column/site-seisaku-mitsumori-kokai-go/)
 - [アートメイクサロンの集客を自社で運用して分かったこと：主役はコラムではなかった](https://aidealize.com/column/artmake-shukyaku-unyo-manabi/)
 - [Googleマップ・ホームページ・SNSは何から直すべきか（地域店舗向け）](https://aidealize.com/column/map-hp-sns-yusenjun/)
 - [問い合わせが来ても受注につながらない会社の、相談内容・返信・計測の整え方](https://aidealize.com/column/toiawase-juchu-tsunagaranai/)
