@@ -559,6 +559,8 @@ footer .ridge-line{max-width:var(--max);margin:0 auto 34px}
 .ibcal-list ul{margin:6px 0 0;padding:0;list-style:none;columns:2;column-gap:24px}
 .ibcal-list li{padding:3px 0;break-inside:avoid}
 @media(max-width:520px){.ibcal-list ul{columns:1}}
+.cal-tabs{display:flex;gap:8px;margin:0 0 14px;flex-wrap:wrap}.cal-tab{font:inherit;font-size:.95rem;padding:8px 18px;border:1px solid #cfc7b2;background:#fff;color:#34502f;border-radius:999px;cursor:pointer}.cal-tab.on{background:#34502f;color:#fff;border-color:#34502f}.cal-panel[hidden]{display:none}
+.bridge-note{margin-top:22px;padding:18px 22px;border-left:3px solid #34502f;background:rgba(255,255,255,.55);border-radius:0 8px 8px 0}.bridge-note p{margin:0 0 .5em;line-height:1.9}.bridge-note p:last-child{margin-bottom:0}.bridge-note b{font-family:"Shippori Mincho",serif;font-size:1.1em;color:#243a21}
 </style>
 </head>
 <body data-page="top">
@@ -612,9 +614,9 @@ footer .ridge-line{max-width:var(--max);margin:0 auto 34px}
       <span class="eyebrow">滋賀県米原市・伊吹山のふもと</span>
       <h1><span>伊吹山のふもとで、</span><span>季節の野菜と</span><span>ハーブのビュッフェを。</span></h1>
       <div class="name">農家レストラン＆ハーブスキンケア　いぶきハーブ・ガーデン</div>
-      <p class="desc">伊吹山のふもとで、季節の野菜とハーブを味わい、ゆっくり過ごす農家レストランです。昔から「薬草の山」として知られてきたこの地で、滋賀の野菜とハーブを使った料理を、好きなだけ。食後は、無添加ソフトクリームや、ハーブのスキンケアのお土産もどうぞ。</p>
+      <p class="desc">伊吹山のふもとで、季節の野菜とハーブを味わい、ゆっくり過ごす農家レストランです。昔から「薬草の宝庫」として知られてきたこの地で、滋賀の野菜とハーブを使った料理を、好きなだけ。食後は、無添加ソフトクリームや、ハーブのスキンケアのお土産もどうぞ。</p>
       <div class="cta">
-        <a class="btn" href="lunch/#reserve" data-track="line">LINEでランチを予約</a>
+        <a class="btn" href="lunch/#reserve" data-track="line">LINEでランチを予約リクエスト</a>
         <a class="btn line" href="news/#calendar" data-track="calendar">今月の営業日を見る</a>
       </div>
       <div class="facts">
@@ -654,15 +656,15 @@ footer .ridge-line{max-width:var(--max);margin:0 auto 34px}
       <figure><div class="photo"><img src="assets/c-dish-lemoncake.jpg" alt="ひとつずつ包まれたレモンケーキ" loading="lazy"></div><figcaption>レモンケーキ（ある日）</figcaption></figure>
       <figure><div class="photo"><img src="assets/c-dish-drink.jpg" alt="レモンを添えた冷たいドリンク" loading="lazy"></div><figcaption>ドリンク（別料金・ビュッフェには含まれません）</figcaption></figure>
     </div>
-    <p class="credit" style="text-align:left">写真：いぶきハーブ・ガーデン提供・提案用。料理は日によって変わります。</p>
+    <p class="credit" style="text-align:left">写真：いぶきハーブ・ガーデン提供・提案用。</p>
     <div class="plans">
         <div class="plan-card"><h3>ランチビュッフェ</h3><div class="yen">3,300円<small>大人・税込</small></div>
-          <ul><li>小学生 1,650円／幼児（3〜6歳）600円／3歳未満 無料</li><li>1部 11:30〜／2部 13:00〜（ご予約優先）</li><li>料理・デザートで約20種類（日によって変わります）。ドリンクは別料金</li><li>お席は各回70分の入替制</li></ul></div>
+          <ul><li>小学生 1,650円／幼児（3〜6歳）600円／3歳未満 無料</li><li>1部 11:30〜／2部 13:00〜（ご予約優先）</li><li>料理・デザートで約20種類。ドリンクは別料金</li><li>お席は各回70分の入替制</li></ul></div>
         <div class="plan-card op"><div class="photo op-photo"><img src="assets/oneplate.jpg" alt="ハンバーグと野菜のワンプレートランチ（ある日）" loading="lazy"></div><h3>ワンプレートランチ</h3><div class="yen">2,300円<small>デザート付き・税込</small></div>
           <ul><li>毎週木曜日のみ</li><li>11:30〜14:00（L.O. 13:30）</li><li>ビュッフェより軽めに楽しみたい方に</li></ul></div>
       </div>
     <div class="btnrow">
-      <a class="btn" href="lunch/#reserve" data-track="line">LINEで予約する</a>
+      <a class="btn" href="lunch/#reserve" data-track="line">LINEで予約リクエスト</a>
       <a class="btn line" href="lunch/">料金・メニュー・ご予約方法</a>
     </div>
   </div>
@@ -681,7 +683,13 @@ footer .ridge-line{max-width:var(--max);margin:0 auto 34px}
   <div class="wrap ibuki-text">
     <div class="alt">MT. IBUKI　1,377m</div>
     <h2>伊吹山のふもとで、季節に出会う。</h2>
-    <p>昔から「薬草の山」として知られてきた伊吹山。季節ごとに表情を変える姿を、ふもとから見上げられます。</p>
+    <p>昔から「薬草の宝庫」として知られてきた伊吹山。季節ごとに表情を変える姿を、ふもとから見上げられます。</p>
+    <div class="bridge-note">
+      <p><b>この橋を渡ると、ゆっくり時間が流れる別世界。</b></p>
+      <p>橋を渡れば、そこは大自然という非日常。薬草の宝庫である伊吹山の麓で、忙しい毎日を忘れてゆっくり過ごしてください。</p>
+      <p>橋を渡りきったら、そこからはハーブと山の風の世界。忙しい毎日から離れられない方こそ、この橋を渡ってください。</p>
+      <p>ゆっくりが待っています。</p>
+    </div>
   </div>
   <!-- 季節の窓：写真ごとに撮った場所・向きが違うので、位置合わせはせず1枚ずつ額縁で見せる（PC=大きな写真＋季節の一覧／スマホ=横にスワイプ） -->
   <div class="wrap">
@@ -807,7 +815,7 @@ footer .ridge-line{max-width:var(--max);margin:0 auto 34px}
     <div>
       <span class="label">OUR STORY</span>
       <blockquote>かつてにぎわった場所に、<br>もう一度、人の集まる時間を。</blockquote>
-      <p>いぶきハーブ・ガーデンは、地域の人が集った公共施設を生かして生まれたお店です。薬草の山・伊吹山の麓だからこそできる料理と、ハーブの商品を届けたい。その想いから始まりました。</p>
+      <p>いぶきハーブ・ガーデンは、地域の人が集った公共施設を生かして生まれたお店です。薬草の宝庫・伊吹山の麓だからこそできる料理と、ハーブの商品を届けたい。その想いから始まりました。</p>
       <p>開業にあたってはクラウドファンディングを行い、地域の内からも外からも、たくさんの方に応援していただきました。</p>
             <div class="sign">※代表者のことばは、お話をうかがったうえで実際の言葉に差し替えます</div>
     </div>
@@ -819,7 +827,7 @@ footer .ridge-line{max-width:var(--max);margin:0 auto 34px}
     <!-- VOICE（お客様の声）は、Googleの口コミの掲載内容・出典・表示方法を確認できるまで非表示（監査 2026-09-30） -->
     <span class="label">INSTAGRAM</span>
     <div class="ig" style="border-top:0;padding-top:0;margin-top:0">
-      <p>毎日の料理は Instagram で。フォロワー<b>3,163</b>人</p>
+      <p>毎日の料理は Instagram で。フォロワー<b>3,700</b>人超</p>
       <a class="btn line" href="https://www.instagram.com/ibuki_herbs/" target="_blank" rel="noopener" data-track="instagram">Instagramを見る</a>
     </div>
   </div>
@@ -840,7 +848,7 @@ footer .ridge-line{max-width:var(--max);margin:0 auto 34px}
         <span class="label">RESERVATION</span>
         <h3>ご予約</h3>
         <p>公式LINEかお電話で。日付・1部か2部か・人数をお知らせください。InstagramのDMでも承ります。</p>
-        <a class="btn" href="lunch/#reserve" data-track="line"><span class="dot"></span>LINEで予約する</a>
+        <a class="btn" href="lunch/#reserve" data-track="line"><span class="dot"></span>LINEで予約リクエスト</a>
         <a class="btn line" href="tel:0749562790" data-track="tel">0749-56-2790</a>
       </div>
       <div>
@@ -858,7 +866,7 @@ footer .ridge-line{max-width:var(--max);margin:0 auto 34px}
   <p>ビュッフェは1部・2部とも、ご予約の方を優先してご案内しています。<br>公式LINE・お電話でどうぞ。</p>
   <div class="row3">
     <a class="btn line-w" href="news/#calendar" data-track="calendar">今月の営業日</a>
-    <a class="btn" href="lunch/#reserve" data-track="line">LINEで予約する</a>
+    <a class="btn" href="lunch/#reserve" data-track="line">LINEで予約リクエスト</a>
     <a class="btn line-w" href="tel:0749562790" data-track="tel">0749-56-2790</a>
   </div>
 </div>

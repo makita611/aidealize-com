@@ -559,6 +559,8 @@ footer .ridge-line{max-width:var(--max);margin:0 auto 34px}
 .ibcal-list ul{margin:6px 0 0;padding:0;list-style:none;columns:2;column-gap:24px}
 .ibcal-list li{padding:3px 0;break-inside:avoid}
 @media(max-width:520px){.ibcal-list ul{columns:1}}
+.cal-tabs{display:flex;gap:8px;margin:0 0 14px;flex-wrap:wrap}.cal-tab{font:inherit;font-size:.95rem;padding:8px 18px;border:1px solid #cfc7b2;background:#fff;color:#34502f;border-radius:999px;cursor:pointer}.cal-tab.on{background:#34502f;color:#fff;border-color:#34502f}.cal-panel[hidden]{display:none}
+.bridge-note{margin-top:22px;padding:18px 22px;border-left:3px solid #34502f;background:rgba(255,255,255,.55);border-radius:0 8px 8px 0}.bridge-note p{margin:0 0 .5em;line-height:1.9}.bridge-note p:last-child{margin-bottom:0}.bridge-note b{font-family:"Shippori Mincho",serif;font-size:1.1em;color:#243a21}
 </style>
 </head>
 <body data-page="lunch">
@@ -621,7 +623,7 @@ footer .ridge-line{max-width:var(--max);margin:0 auto 34px}
         <div class="item">
           <h3>ランチビュッフェ</h3>
           <div class="price">3,300円<small>大人・税込</small></div>
-          <p>小学生 1,650円／幼児（3〜6歳）600円／3歳未満は無料。料理とデザートを合わせて約20種類が並びます（日によって変わります）。ドリンクは別料金です。</p>
+          <p>小学生 1,650円／幼児（3〜6歳）600円／3歳未満は無料。料理とデザートを合わせて約20種類が並びます。ドリンクは別料金です。</p>
         </div>
         <div class="item">
           <h3>ワンプレートランチ</h3>
@@ -643,11 +645,11 @@ footer .ridge-line{max-width:var(--max);margin:0 auto 34px}
   <div class="wrap">
     <span class="label">MENU</span>
     <h2>ある日のビュッフェ</h2>
-    <p class="lead">並ぶ料理は季節や日によって変わります。2026年10月の例をご紹介します。四季の写真は<a href="../menu/">季節のメニュー</a>でご覧いただけます。</p>
+    <p class="lead">2026年10月のお料理の一部をご紹介します。四季の写真は<a href="../menu/">季節のメニュー</a>でご覧いただけます。</p>
     <div class="menu-grid">
-      <figure><div class="photo"><img src="../assets/n-nasu.jpg" alt="名札つきのお茄子の照り焼き"></div><figcaption>お茄子の照り焼き</figcaption></figure>
-      <figure><div class="photo"><img src="../assets/n-sasami.jpg" alt="名札つきの梅肉とささみの天ぷら"></div><figcaption>梅肉とささみの天ぷら</figcaption></figure>
-      <figure><div class="photo"><img src="../assets/n-menchi.jpg" alt="名札つきのキャベツたっぷりひと口メンチカツ"></div><figcaption>キャベツたっぷりひと口メンチカツ</figcaption></figure>
+      <figure><div class="photo"><img src="../assets/n-nasu.jpg" alt="お茄子の照り焼き"></div><figcaption>お茄子の照り焼き</figcaption></figure>
+      <figure><div class="photo"><img src="../assets/n-sasami.jpg" alt="梅肉とささみの天ぷら"></div><figcaption>梅肉とささみの天ぷら</figcaption></figure>
+      <figure><div class="photo"><img src="../assets/n-menchi.jpg" alt="キャベツたっぷりひと口メンチカツ"></div><figcaption>キャベツたっぷりひと口メンチカツ</figcaption></figure>
       <figure><div class="photo"><img src="../assets/d-mochirin.jpg" alt="器に盛られた、もちもち食感のドーナツ「伊吹もっちりん」"></div><figcaption>伊吹もっちりん（デザート）</figcaption></figure>
     </div>
     <p class="cap" style="margin-top:10px">写真：いぶきハーブ・ガーデン提供・提案用。</p>
@@ -662,11 +664,11 @@ footer .ridge-line{max-width:var(--max);margin:0 auto 34px}
       <h3>ご予約は、LINEがかんたん</h3>
       <p class="why">公式LINEかお電話でお受けしています。InstagramのDMでご希望をいただいた場合も承ります。</p>
       <ol class="steps">
-        <li>LINEで「いぶきハーブ・ガーデン」を友だち追加</li>
-        <li>日付・1部か2部か・人数を送る</li>
-        <li>お店から確定のお返事が届いたら完了</li>
+        <li>LINEの予約画面で、日付・1部か2部か・人数を選んで「予約リクエスト」を送る</li>
+        <li>お店が空席を確認して、承認すると予約が確定します（お返事が届くまでは、まだ確定ではありません）</li>
+        <li>満席のときは、別の日をご案内します</li>
       </ol>
-      <a class="btn" href="../lunch/#reserve" data-track="line"><span class="dot"></span>LINEで予約する</a>
+      <a class="btn" href="../lunch/#reserve" data-track="line"><span class="dot"></span>LINEで予約リクエスト</a>
       <ul class="ways">
         <li><b>お電話</b><a href="tel:0749562790" data-track="tel">0749-56-2790</a></li>
         <li><b>InstagramのDM</b><a href="https://www.instagram.com/ibuki_herbs/" target="_blank" rel="noopener" data-track="instagram_dm">@ibuki_herbs</a></li>
@@ -693,7 +695,7 @@ footer .ridge-line{max-width:var(--max);margin:0 auto 34px}
   <h2>伊吹山のふもとで、<br>ゆっくりランチを。</h2>
   <p>ビュッフェは1部・2部とも、ご予約の方を優先してご案内しています。</p>
   <div class="row">
-    <a class="btn" href="../lunch/#reserve" data-track="line">LINEで予約する</a>
+    <a class="btn" href="../lunch/#reserve" data-track="line">LINEで予約リクエスト</a>
     <a class="btn line-w" href="tel:0749562790" data-track="tel">0749-56-2790</a>
   </div>
 </div>

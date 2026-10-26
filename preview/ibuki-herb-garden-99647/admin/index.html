@@ -411,7 +411,7 @@ $("btnReset").onclick = ()=>{ if(confirm(`${st.month}月を初期値（火水＝
 $("btnSave").onclick = async ()=>{ st.updated=isoToday(); render(); say((await saveData(st)) ? `${st.month}月分を保存しました（このパソコンの中）。` : "保存できませんでした。"); };
 function dataUrlToBlob(u){ const p=u.split(","), bin=atob(p[1]), a=new Uint8Array(bin.length); for(let i=0;i<bin.length;i++) a[i]=bin.charCodeAt(i); return new Blob([a],{type:p[0].replace("data:","").replace(";base64","")}); }   /* fetch(data:) はCSPのconnect-srcで止まるため自前で変換 */
 function download(name,blob){ const a=document.createElement("a"); a.href=URL.createObjectURL(blob); a.download=name; document.body.appendChild(a); a.click(); a.remove(); setTimeout(()=>URL.revokeObjectURL(a.href),4000); }
-$("btnExport").onclick = ()=>{ download("calendar.json", new Blob([exportJson()],{type:"application/json"})); say("calendar.json を書き出しました。"); };
+$("btnExport").onclick = ()=>{ download("calendar_"+ymKey(st.year,st.month)+".json", new Blob([exportJson()],{type:"application/json"})); say("calendar_"+ymKey(st.year,st.month)+".json を書き出しました。"); };
 $("btnImport").onclick = ()=>$("fileIn").click();
 $("fileIn").onchange = async e=>{
   const f=e.target.files[0]; if(!f) return;
