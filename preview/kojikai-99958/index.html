@@ -61,8 +61,9 @@ select{font-size:16px;padding:6px 10px;border:2px solid var(--line);border-radiu
 <section id="t-search">
 <div class="search"><input type="text" id="q" value="認知機能低下"><button id="go">探す</button></div>
 <div class="chips" id="chips"></div>
+<div class="chips" style="margin-top:0">例：<span class="chip ex" style="cursor:pointer" onclick="setQ('認知機能低下')">認知機能低下</span><span class="chip ex" style="cursor:pointer" onclick="setQ('ふらつき')">ふらつき</span><span class="chip ex" style="cursor:pointer" onclick="setQ('不眠')">不眠</span><span class="chip ex" style="cursor:pointer" onclick="setQ('食欲低下')">食欲低下</span></div>
 <div id="results"></div>
-<p class="note">言い換え（「物忘れ」「もの忘れ」など）も一緒に探します。見つかった報告書には、年月・事業所・原本へのリンクを付けます。</p>
+<p class="note">言い換え（「物忘れ」「もの忘れ」など）も一緒に探します。見つかった報告書には、年月・事業所・原本へのリンクを付けます。<br><b>このデモは、架空の10件の報告書で動いています。</b>ほかの言葉でも探せますが、見つかるのは、この10件の範囲です。言い換えの例は、上の4つで確認できます。</p>
 </section>
 <section id="t-index" class="hide">
 <p style="margin:0 0 8px">年月・利用者・事業所・内容のひとことの目次です。「いつごろの報告書か」を、ここで探せます。</p>
@@ -110,7 +111,7 @@ select{font-size:16px;padding:6px 10px;border:2px solid var(--line);border-radiu
 </main>
 <script>
 const NAMES={13:"山田 花子",27:"佐藤 一郎",41:"鈴木 美咲",58:"高橋 健"};
-const SYN={"認知機能低下":["認知機能低下","物忘れ","もの忘れ","記憶力の低下","認知機能の低下"]};
+const SYN={"認知機能低下":["認知機能低下","物忘れ","もの忘れ","記憶力の低下","認知機能の低下"],"ふらつき":["ふらつき","よろめき","つまずき","転倒","転び"],"不眠":["不眠","眠れない","目が覚める","睡眠"],"食欲低下":["食欲","食事量","食べられ"]};
 const R=[
 {id:13,ym:"2026年8月",office:"〇〇訪問介護",text:"夜間に何度も目が覚める訴えあり。日中は落ち着いている。経過を観察する。",one:"夜間の不眠の訴え。経過観察"},
 {id:13,ym:"2026年9月",office:"〇〇訪問介護",text:"日中の活動量が増え、睡眠は安定。服薬は自分で管理できている。",one:"睡眠は安定。服薬は自己管理"},
@@ -131,7 +132,7 @@ function doSearch(){
  const q=$("#q").value.trim();const words=SYN[q]||[q];
  $("#chips").innerHTML=`<span>探した言葉：</span>`+words.map((w,i)=>`<span class="chip${i?" ex":""}">${w}</span>`).join("")+(words.length>1?`<span>（言い換えを含む）</span>`:"");
  const hit=R.filter(r=>words.some(w=>r.text.includes(w)));
- $("#results").innerHTML=hit.length?hit.map(r=>`<div class="card"><div class="top"><span class="id">${label(r.id)}</span><span>${r.ym}</span><span>${r.office}</span></div><p>${hl(r.text,words)}</p><div class="src">原本：報告書_${r.id}_${r.ym.replace(/[^0-9]/g,"")}.pdf（リンク）</div></div>`).join(""):`<p>見つかりませんでした。</p>`;
+ $("#results").innerHTML=hit.length?hit.map(r=>`<div class="card"><div class="top"><span class="id">${label(r.id)}</span><span>${r.ym}</span><span>${r.office}</span></div><p>${hl(r.text,words)}</p><div class="src">原本：報告書_${r.id}_${r.ym.replace(/[^0-9]/g,"")}.pdf（リンク）</div></div>`).join(""):`<p>見つかりませんでした。（このデモは、架空の10件の報告書だけを対象にしています）</p>`;
 }
 function renderIndex(){
  $("#indextbl").innerHTML=`<tr><th style="width:120px">年月</th><th style="width:200px">利用者</th><th style="width:180px">事業所</th><th>内容のひとこと</th></tr>`+R.map(r=>`<tr><td>${r.ym}</td><td>${label(r.id)}</td><td>${r.office}</td><td>${r.one}</td></tr>`).join("");
@@ -168,6 +169,7 @@ function init(){
 }
 document.querySelectorAll("#tabs button").forEach(b=>b.onclick=()=>show(b.dataset.t));
 function show(t){document.querySelectorAll("#tabs button").forEach(x=>x.classList.toggle("on",x.dataset.t===t));["search","index","summary","trend","next"].forEach(k=>$("#t-"+k).classList.toggle("hide",k!==t));}
+function setQ(w){$("#q").value=w;doSearch();}
 $("#go").onclick=doSearch;$("#q").onkeydown=e=>{if(e.key==="Enter")doSearch()};
 $("#uid").onchange=renderSummary;
 $("#showname").onchange=()=>{const u=$("#uid").value;init();$("#uid").value=u;renderSummary();};
