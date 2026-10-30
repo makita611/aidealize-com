@@ -1,0 +1,158 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>訪問前チェック 試作</title>
+<style>
+:root{--brand:#2f6f55;--ink:#1e2a25;--soft:#52615a;--muted:#7b8a83;--line:#dfe7e2;--tint:#eef5f1;--warn:#a85a1a;--warnbg:#fff6ec}
+*{box-sizing:border-box}
+body{margin:0;background:#fff;color:var(--ink);font-family:"Hiragino Sans","Yu Gothic UI","Noto Sans JP",system-ui,sans-serif;line-height:1.7;font-size:16px}
+.wrap{max-width:980px;margin:0 auto;padding:20px 16px 60px}
+h1{font-size:24px;margin:6px 0 4px}
+h2{font-size:18px;margin:0 0 8px}
+.sub{color:var(--soft);margin:0 0 14px}
+.tag{display:inline-block;font-size:12px;border:1px solid var(--line);background:var(--tint);color:var(--brand);border-radius:999px;padding:1px 10px;margin-left:6px;vertical-align:middle}
+.box{border:1px solid var(--line);border-radius:14px;padding:14px 16px;margin:12px 0;background:#fff}
+.box.soft{background:var(--tint);border-color:#cfe0d5}
+.box.warn{background:var(--warnbg);border-color:#efd5b8}
+textarea{width:100%;min-height:96px;border:1px solid #c9d6cf;border-radius:10px;padding:10px 12px;font:inherit;resize:vertical}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin:8px 0}
+.chip{border:1px solid #c9d6cf;background:#fff;border-radius:999px;padding:5px 14px;cursor:pointer;font:inherit;font-size:14px;color:var(--ink)}
+.chip.on{background:var(--brand);border-color:var(--brand);color:#fff}
+.btn{background:var(--brand);color:#fff;border:0;border-radius:10px;padding:10px 22px;font:inherit;font-size:16px;cursor:pointer}
+.ex{font-size:14px;color:var(--soft)}
+.ex button{margin-right:6px}
+.item{border-top:1px solid var(--line);padding:10px 0}
+.item:first-child{border-top:0}
+.item .n{display:inline-block;min-width:26px;height:26px;line-height:26px;text-align:center;background:var(--brand);color:#fff;border-radius:50%;font-size:13px;margin-right:8px}
+.item b{font-size:16px}
+.item ul{margin:6px 0 4px 38px;padding:0}
+.item li{margin:2px 0}
+.src{font-size:12px;color:var(--muted);margin-left:38px}
+.src span{display:inline-block;border:1px solid var(--line);border-radius:6px;padding:0 6px;margin-right:6px;background:#fff}
+.who{font-size:12px;color:var(--brand)}
+.note{font-size:13px;color:var(--muted)}
+.cols{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+@media(max-width:720px){.cols{grid-template-columns:1fr}}
+.hide{display:none}
+.foot{font-size:12px;color:var(--muted);margin-top:22px;border-top:1px solid var(--line);padding-top:12px}
+</style>
+</head>
+<body>
+<div class="wrap">
+<h1>訪問前チェック（試作）<span class="tag">架空の例で動いています</span></h1>
+<p class="sub">訪問の前に、利用者さんの状況を声や文章で入れると、「確認すること・気をつけること」を、<b>適切なケアマネジメント手法（認知症）</b>の項目から拾って返します。</p>
+
+<div class="box soft">
+<h2>① 状況を入れる（声で話した内容が、ここに文字で入るイメージです）</h2>
+<textarea id="txt" placeholder="例：80代の女性、独居。物忘れが進んで、薬を飲み忘れることが増えた。最近ふらつくことがある。"></textarea>
+<div class="chips" id="chips"></div>
+<div class="ex">例を入れる：
+<button class="chip" data-ex="0">物忘れ＋服薬</button>
+<button class="chip" data-ex="1">ふらつき・転倒</button>
+<button class="chip" data-ex="2">家族の疲れ＋気になる様子</button>
+</div>
+<p style="margin:10px 0 0"><button class="btn" id="go">チェックを作る</button></p>
+<p class="note" style="margin:8px 0 0">※氏名は入れずに、「80代女性・独居」のように話す想定です。</p>
+</div>
+
+<div id="out" class="hide">
+<div class="box" id="read"></div>
+<div class="box warn hide" id="abuse"></div>
+<div class="box" id="list"></div>
+</div>
+
+<div class="foot">
+<p>このデモは、<b>適切なケアマネジメント手法 疾患別ケア：認知症 項目一覧（株式会社日本総合研究所・令和6年12月版）</b>の項目名と留意点をもとにした試作です。内容の正確さは、必ず原本でご確認ください。</p>
+<p>これは<b>確認の補助</b>です。ケアの判断や、虐待かどうかの判断は、必ず人（ケアマネジャー・多職種・市町村・地域包括支援センター）が行います。入力は架空の例で、実際の利用者さんの情報は使っていません。</p>
+</div>
+</div>
+
+<script>
+const $=s=>document.querySelector(s);
+/* 状況の種類 → 適ケア（認知症）の項目 */
+const SC={
+ med:{label:"物忘れ・服薬",kw:["飲み忘れ","服薬","薬","物忘れ","もの忘れ","忘れ"],items:["24","16","6"]},
+ fall:{label:"ふらつき・転倒",kw:["ふらつ","転倒","転び","つまずき","よろめ"],items:["32","30","24"]},
+ bpsd:{label:"不穏・イライラ・拒否",kw:["イライラ","怒","不穏","拒否","興奮","暴言","落ち着かな","徘徊"],items:["34","35","36","37"]},
+ eat:{label:"食事・水分・むせ",kw:["食欲","食事","むせ","水分","飲まな","やせ","痩せ","体重"],items:["26","25","33"]},
+ fam:{label:"家族の負担",kw:["家族","娘","息子","妻","夫","介護疲れ","疲れ","負担"],items:["38","39","5","40"]},
+ alone:{label:"独居・見守り",kw:["独居","一人暮らし","ひとり暮らし","身寄り","近所"],items:["6","14","41"]},
+ money:{label:"金銭・契約・意思決定",kw:["お金","金銭","通帳","契約","詐欺","訪問販売","判断","決められ"],items:["8","10","11"]},
+ clean:{label:"清潔・入浴・排泄",kw:["入浴","お風呂","着替え","におい","臭","失禁","トイレ","清潔"],items:["21","27","23"]},
+ visit:{label:"受診・医療との連携",kw:["受診","通院","病院","主治医","診断"],items:["1","2","12"]}
+};
+/* 項目番号 → 項目名・確認すること・相談先（適ケア認知症 項目一覧 令和6年12月版） */
+const IT={
+"1":{n:"認知症と診断されるに至った経緯の把握",c:["診断に至るまでのエピソード、中核症状の現れ方","受診の状況（頻度・通院方法・受診を妨げる要因・同行者）"],w:"医師・看護師"},
+"2":{n:"これまでの医療及び他の専門職の関わりの把握",c:["主治医意見書などで、医師の判断の状況を確認する","腎疾患・糖尿病などの併存疾患と、通院・服薬の状況"],w:"医師・歯科医師・看護師・PT/OT/ST・社会福祉士"},
+"5":{n:"疾患に対する家族・支援者の受けとめや理解を深めることの支援",c:["認知症の特徴や進行、ケアの方法に対する家族の理解度","家族への支援（情緒的・情報的・手段的）が必要か"],w:"医師・看護師・社会福祉士・介護職"},
+"6":{n:"変化していくことを念頭に置いた認知症の総合アセスメントの実施",c:["本人の日常生活の状況と、状態を見守る体制（同居者・事業者など）","自宅内の動線、段差、室内の温湿度・照度、家電（エアコンなど）の操作状況"],w:"医師・看護師・薬剤師・PT/OT/ST・介護職"},
+"8":{n:"意思決定支援の重要性への本人及び家族等の理解をうながす支援体制を整える",c:["本人の意思決定能力の状況と、意思決定についての想い・不安","キーパーソンの有無、金銭管理の状況"],w:"看護師・PT/OT/ST・社会福祉士・介護職"},
+"10":{n:"本人の意思を捉えるためのエピソード等の把握",c:["これまでの暮らしや大事にしてきたことから、本人の意思をつかむ"],w:"医師・看護師・社会福祉士・介護職"},
+"11":{n:"意思決定支援体制を整える",c:["本人の意思を支える人と、決める場面・手順を決めておく"],w:"社会福祉士・介護職など"},
+"12":{n:"かかりつけ医との連携",c:["かかりつけ医の状況と連絡の取り方を確認する（必要に応じて、専門医・認知症サポート医とも）"],w:"医師・看護師"},
+"14":{n:"サービス事業者や地域の関係する人との連携体制を整える",c:["本人に関わっている人の体制を確認する（同居者・支援者・事業者・近所の人など）"],w:"社会福祉士・介護職など"},
+"16":{n:"本人の生活のリズムの把握",c:["一週間の生活のリズムと、その変化"],w:"看護師・PT/OT/ST・介護職"},
+"21":{n:"清潔に関する状況の変化を把握し保つことの支援",c:["入浴・着替えなど、清潔に関する状況の変化"],w:"看護師・歯科衛生士・介護職"},
+"23":{n:"日常と異なる状態の把握とそれを表明することの支援",c:["いつもと違う様子に、本人や周りの人が気づき、伝えられる形になっているか"],w:"医師・看護師・介護職"},
+"24":{n:"薬の管理と服薬を一定の水準で継続できるようにする支援体制を整える",c:["医師・専門職の指導内容に対する、本人・家族の理解度","薬の管理（誰が・どこで・どう管理しているか）と、服薬の状況"],w:"医師・看護師・薬剤師"},
+"25":{n:"必要な水分量の把握と、摂取できるようにする支援体制を整える",c:["必要な水分量と、日々の摂取の状況"],w:"医師・看護師・管理栄養士・介護職"},
+"26":{n:"必要な栄養及び日常的な摂取状況の把握と、摂取を支援する体制を整える",c:["食事の量・内容・摂取の方法を確認する","体重や食欲の変化"],w:"医師・看護師・管理栄養士・歯科医師"},
+"27":{n:"できるだけ自立した排泄を続けられるようにすることの支援体制を整える",c:["排泄の状況と、トイレまでの動線・環境"],w:"医師・看護師・PT/OT/ST・介護職"},
+"30":{n:"状態に合った活動と参加を実現する環境整備",c:["今できる活動・参加と、それを妨げている環境"],w:"PT/OT/ST・社会福祉士・介護職"},
+"32":{n:"転倒の予防の支援",c:["ADL/IADLの状態（している・できる・できない動作）","筋力の低下、空間認識の状況","日常の動線と環境（段差・照度・手すり）"],w:"医師・看護師・薬剤師・PT/OT/ST・介護職"},
+"33":{n:"誤嚥の予防の支援",c:["むせ・食事中の様子・口の中の状態を確認する"],w:"医師・歯科医師・看護師・ST・歯科衛生士"},
+"34":{n:"行動・心理症状の具体的内容を把握する体制を整える",c:["どんな状況・タイミングで起きているか（起きやすい場面、定期的か）","本人の24時間の生活リズム・過ごし方"],w:"医師・歯科医師・看護師・薬剤師・PT/OT/ST"},
+"35":{n:"本人の不安やストレスの把握",c:["本人が感じる不安（有無・内容・程度）","痛みやかゆみなど、言葉にならない不快の有無","生活環境に対する本人の好み"],w:"医師・看護師・薬剤師・社会福祉士・管理栄養士・介護職"},
+"36":{n:"背景要因に対する対応策の実施の支援",c:["本人の健康状態・生活状況から、背景の要因を探し、非薬物の対応から考える"],w:"医師・看護師・薬剤師・管理栄養士・歯科衛生士ほか"},
+"37":{n:"背景要因に対する家族等の理解を深めることの支援",c:["背景要因について、家族に伝わっているか"],w:"医師・看護師・社会福祉士・介護職"},
+"38":{n:"家族等に対し相談支援が提供される体制を整える",c:["家族が感じる不安・負担感・葛藤","日々の介護へのねぎらいと、相談先の有無"],w:"医師・看護師・社会福祉士・介護職"},
+"39":{n:"家族等の仕事と生活のリズムが保たれるようにすることの支援",c:["家族の仕事・休息の時間が確保できているか"],w:"社会福祉士・介護職"},
+"40":{n:"本人や家族等にかかわる理解者を増やすことの支援",c:["身近に、本人や家族を理解して支えてくれる人がいるか"],w:"社会福祉士・介護職など"},
+"41":{n:"将来にわたり生活を継続できるようにすることの支援",c:["今後の変化に備えた、生活の継続のための準備"],w:"医師・看護師・社会福祉士・介護職"}
+};
+/* 気になる様子（虐待の視点）— キーワードで反応。判定はしない */
+const AB_KW=["叩","殴","あざ","アザ","痣","ケガ","言葉が荒","傷","怒鳴","暴言","閉じ込","食事を与え","食べさせて","会わせて","会わせない","お金を取","勝手に使","年金","放置","部屋に入れ","風呂に入れて","不潔","汚れ"];
+const AB_VIEW=[
+ ["安全の確認","いま、本人の生命や身体に危険がないか"],
+ ["身体の状況","傷・あざの場所と状態を、事実のまま具体的に記録する／通院や介護サービスの利用状況"],
+ ["精神の状態","表情や行動の様子（虐待による影響が表れていることがある）"],
+ ["生活環境","居室など、生活している環境の様子"],
+ ["養護者・同居者","年齢、職業、生活歴、関係性、負担の状況など"]
+];
+const EX=[
+ "80代の女性、独居。物忘れが進んで、薬を飲み忘れることが増えた。最近、ふらつくことがある。",
+ "70代の男性、日中ひとりで過ごすことが多い。この1か月で、ふらついて転びそうになる場面が増えた。",
+ "80代の女性、同居の息子と二人暮らし。介護疲れで息子の言葉が荒い。腕にあざがあり、本人は理由を話さない。食事量も減ってきた。"
+];
+const sel=new Set();
+function renderChips(){
+ $("#chips").innerHTML=Object.entries(SC).map(([k,v])=>`<button class="chip${sel.has(k)?" on":""}" data-k="${k}">${v.label}</button>`).join("");
+ document.querySelectorAll("#chips .chip").forEach(b=>b.onclick=()=>{const k=b.dataset.k;sel.has(k)?sel.delete(k):sel.add(k);renderChips()});
+}
+function run(){
+ const t=$("#txt").value||"";
+ const hit=new Set(sel);
+ Object.entries(SC).forEach(([k,v])=>{ if(v.kw.some(w=>t.includes(w))) hit.add(k); });
+ if(!hit.size){ $("#out").classList.remove("hide"); $("#read").innerHTML="<b>状況を読み取れませんでした。</b><br>下の「状況のタグ」を選ぶか、例を入れて試してください。（このデモは、いくつかの代表的な状況に対応しています）"; $("#list").innerHTML=""; $("#abuse").classList.add("hide"); return; }
+ /* 項目の集約（重複なし・出てきた順） */
+ const order=[];hit.forEach(k=>SC[k].items.forEach(i=>{if(!order.includes(i))order.push(i)}));
+ $("#out").classList.remove("hide");
+ $("#read").innerHTML=`<h2>読み取った状況</h2>`+[...hit].map(k=>`<span class="chip on" style="cursor:default">${SC[k].label}</span>`).join(" ")+`<p class="note" style="margin:8px 0 0">入力の言葉と、選んだタグから読み取っています。違っていたら、タグを足し引きして、もう一度押してください。</p>`;
+ $("#list").innerHTML=`<h2>訪問で確認すること・気をつけること（${order.length}項目）</h2>`+order.map((i,idx)=>{const d=IT[i];return `<div class="item"><span class="n">${idx+1}</span><b>${d.n}</b><ul>${d.c.map(x=>`<li>${x}</li>`).join("")}</ul><div class="src"><span>適ケア・認知症 項目${i}</span><span class="who">相談先の例：${d.w}</span></div></div>`}).join("");
+ const ab=AB_KW.some(w=>t.includes(w));
+ const A=$("#abuse");
+ if(ab){A.classList.remove("hide");A.innerHTML=`<h2>気になる様子があります（虐待の視点）</h2><p style="margin:0 0 8px">入力に、気になる言葉がありました。<b>虐待かどうかは、このシステムでは判断しません。</b>ひとりで抱え込まず、<b>市町村・地域包括支援センターに相談</b>することを、まず考えてください。</p><p style="margin:0 0 4px"><b>事実確認で見るポイント</b>（国のマニュアルより）</p><ul style="margin:0 0 8px 20px;padding:0">${AB_VIEW.map(v=>`<li><b>${v[0]}</b>：${v[1]}</li>`).join("")}</ul><p class="note" style="margin:0">出典：厚生労働省 老健局「市町村・都道府県における高齢者虐待への対応と養護者支援について」（令和8年3月）の事実確認の項目。訪問で気づく兆候の一覧は、自治体のマニュアルなどで補う予定です。</p>`}
+ else{A.classList.add("hide");A.innerHTML=""}
+}
+$("#go").onclick=run;
+document.querySelectorAll("[data-ex]").forEach(b=>b.onclick=()=>{ $("#txt").value=EX[+b.dataset.ex]; sel.clear(); renderChips(); run(); });
+renderChips();
+/* スクリーンショット用: #ex=0/1/2 */
+const m=location.hash.match(/ex=(\d)/); if(m){ $("#txt").value=EX[+m[1]]; run(); }
+</script>
+</body>
+</html>
