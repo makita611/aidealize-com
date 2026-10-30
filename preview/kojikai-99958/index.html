@@ -1,0 +1,176 @@
+<!doctype html>
+<html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow"><meta name="color-scheme" content="light">
+<title>報告書の検索・振り返り（デモ・架空のデータ）</title>
+<style>
+:root{color-scheme:light;--ink:#233029;--soft:#4a5a51;--muted:#6c7a72;--line:#dfe7e2;--brand:#2f6b4f;--brand-ink:#1f4d38;--tint:#e7f1ea;--bg:#f4f8f5;--amber:#8a5a12;--amber-bg:#fbf1de;--hl:#fff1a8}
+*{box-sizing:border-box}
+html,body{margin:0;background:#fff;color:var(--ink)}
+body{font-family:"Noto Sans JP","Hiragino Kaku Gothic ProN","Yu Gothic",Meiryo,sans-serif;font-size:16px;line-height:1.7;letter-spacing:.02em}
+.bar{background:var(--amber-bg);color:var(--amber);font-size:13px;padding:6px 16px;text-align:center;border-bottom:1px solid #eadcb8}
+header{display:flex;align-items:center;gap:16px;padding:12px 24px;border-bottom:1px solid var(--line)}
+header b{font-size:19px}
+header .sp{flex:1}
+.priv{display:flex;align-items:center;gap:8px;font-size:14px;color:var(--soft)}
+.priv input{width:18px;height:18px}
+nav{display:flex;gap:4px;padding:10px 24px 0;border-bottom:1px solid var(--line)}
+nav button{border:0;background:none;padding:10px 18px;font-size:16px;font-family:inherit;color:var(--soft);border-bottom:3px solid transparent;cursor:pointer}
+nav button.on{color:var(--brand-ink);font-weight:700;border-color:var(--brand)}
+main{padding:18px 24px 30px;max-width:1180px}
+.search{display:flex;gap:10px;margin-bottom:8px}
+.search input[type=text]{flex:1;font-size:20px;padding:10px 14px;border:2px solid var(--line);border-radius:10px;font-family:inherit}
+.search button{background:var(--brand);color:#fff;border:0;border-radius:10px;padding:0 24px;font-size:17px;font-family:inherit;cursor:pointer}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin:6px 0 14px;font-size:14px;color:var(--soft);align-items:center}
+.chip{background:var(--tint);color:var(--brand-ink);border-radius:999px;padding:2px 12px}
+.chip.ex{background:#fff;border:1px dashed #b9c9bf;color:var(--soft)}
+.card{border:2px solid var(--line);border-radius:14px;padding:12px 18px;margin-bottom:10px;background:#fff}
+.card .top{display:flex;gap:12px;align-items:center;flex-wrap:wrap;font-size:14px;color:var(--soft)}
+.card .id{background:var(--brand);color:#fff;border-radius:8px;padding:0 10px;font-weight:700}
+.card p{margin:4px 0 2px;font-size:17px}
+.card .src{font-size:13px;color:var(--muted)}
+mark{background:var(--hl);padding:0 2px;border-radius:3px}
+table{border-collapse:collapse;width:100%;font-size:16px}
+th,td{border:2px solid var(--line);padding:8px 12px;text-align:left;vertical-align:top}
+th{background:var(--tint);color:var(--brand-ink)}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.box{border:2px solid var(--line);border-radius:14px;padding:14px 18px;background:#fff}
+.box.soft{background:var(--bg)}
+.box h3{margin:0 0 6px;font-size:18px;color:var(--brand-ink)}
+.box ul{margin:0;padding-left:1.2em}
+.box li{margin-bottom:3px}
+.tl{border-left:4px solid var(--brand);padding-left:14px;margin:8px 0}
+.tl div{margin-bottom:8px}
+.tl b{color:var(--brand-ink)}
+.tag{display:inline-block;font-size:12px;font-weight:700;padding:2px 9px;border-radius:999px;background:var(--amber-bg);color:var(--amber);margin-left:6px}
+.note{font-size:13px;color:var(--muted);margin-top:8px}
+select{font-size:16px;padding:6px 10px;border:2px solid var(--line);border-radius:8px;font-family:inherit}
+.hide{display:none}
+.brow{display:grid;grid-template-columns:210px 1fr 130px;gap:10px;align-items:center;margin:8px 0;font-size:16px}
+.brow .lab{line-height:1.35}
+.brow .lab small{display:block;color:var(--muted);font-size:12px}
+.track{background:#e8eeea;border-radius:8px;height:26px;overflow:hidden}
+.fill{height:100%;background:var(--brand);border-radius:8px}
+.fill.alt{background:#b08a3a}
+.brow .num{font-weight:700;font-size:16px;text-align:right}
+.brow .num small{font-weight:400;color:var(--muted);font-size:12px}
+</style></head><body>
+<div class="bar">デモ画面です。表示している報告書・利用者名・事業所名は、すべて<b>架空のデータ</b>です。</div>
+<header><b>報告書の検索・振り返り</b><span class="sp"></span>
+<label class="priv"><input type="checkbox" id="showname"> 氏名を表示（この端末の中だけ）</label></header>
+<nav id="tabs"><button data-t="search" class="on">検索</button><button data-t="index">目次</button><button data-t="summary">経過のまとめ</button><button data-t="trend">傾向を調べる</button><button data-t="next">次の一手</button></nav>
+<main>
+<section id="t-search">
+<div class="search"><input type="text" id="q" value="認知機能低下"><button id="go">探す</button></div>
+<div class="chips" id="chips"></div>
+<div id="results"></div>
+<p class="note">言い換え（「物忘れ」「もの忘れ」など）も一緒に探します。見つかった報告書には、年月・事業所・原本へのリンクを付けます。</p>
+</section>
+<section id="t-index" class="hide">
+<p style="margin:0 0 8px">年月・利用者・事業所・内容のひとことの目次です。「いつごろの報告書か」を、ここで探せます。</p>
+<table id="indextbl"></table>
+<p class="note">「内容のひとこと」はAIが作った下書きです。大事な報告書は、原本で確認します。</p>
+</section>
+<section id="t-summary" class="hide">
+<p style="margin:0 0 8px">利用者：<select id="uid"></select></p>
+<div class="grid"><div class="box soft"><h3>経過のまとめ（AIの下書き）</h3><div id="sum"></div></div>
+<div class="box"><h3>時系列</h3><div class="tl" id="tl"></div></div></div>
+</section>
+<section id="t-trend" class="hide">
+<p style="margin:0 0 10px">蓄積した報告書から、<b>傾向</b>を調べる例です（架空の24人のデータ）。</p>
+<div class="grid">
+<div class="box soft"><h3>① 物忘れのあと、ふらつき・転倒は起きやすいか<span class="tag">イメージ</span></h3>
+<p style="margin:0 0 6px;font-size:14px;color:var(--soft)">その後3か月以内に、ふらつき・転倒の報告があった人の割合</p>
+<div id="bar1"></div></div>
+<div class="box soft"><h3>② ふらつきのあと、どの対応が改善につながったか<span class="tag">イメージ</span></h3>
+<p style="margin:0 0 6px;font-size:14px;color:var(--soft)">対応したあと、次の報告で「改善」とあった人の割合</p>
+<div id="bar2"></div></div>
+</div>
+<div class="grid" style="margin-top:14px">
+<div class="box"><h3>AIの読み方（下書き）</h3><p id="read" style="margin:0"></p></div>
+<div class="box"><h3>読むときの注意</h3><ul><li>「関連がある」ことで、<b>原因とは限りません</b></li><li>人数が少ないと、偏ります。件数が増えるほど、確かさが上がります</li><li>個人が分かる形では出さず、集計だけを見ます</li><li>対応の判断は、必ず人（ケアマネ・多職種）が行います</li></ul></div>
+</div>
+</section>
+<section id="t-next" class="hide">
+<p style="margin:0 0 8px">検索や目次の「その先」。探したあとに、先回りして用意できることの例です。</p>
+<div class="grid">
+<div class="box soft"><h3>① 先回りの下書き<span class="tag">イメージ</span></h3>
+<p style="margin:0 0 4px"><b>13番：来月のサービス担当者会議の議題案</b></p>
+<ul><li>睡眠の中断：8月に訴え、9月は安定。夜間の様子を、今月も確認する</li><li>ふらつき：入浴時に新たに報告。手すり・福祉用具の見直しを相談する</li><li>前回会議からの変化を、1枚にまとめる</li></ul>
+<p class="note">過去の報告書から、議題と変化点を拾った下書きです。直して使います。</p></div>
+<div class="box soft"><h3>② 似た事例を探す<span class="tag">イメージ</span></h3>
+<p style="margin:0 0 4px"><b>「入浴時のふらつき」の過去事例</b></p>
+<ul><li>27番（2026年9月）手すりの追加と、デイでの入浴介助に切り替え</li><li>41番（2026年6月）浴室の段差を解消し、見守りの時間帯を調整</li></ul>
+<p class="note">氏名を除いて、事例検討会や研修の資料にまとめることもできます。</p></div>
+<div class="box soft"><h3>③ 傾向を調べる<span class="tag">イメージ</span></h3><ul><li>物忘れのある方に、その後起きやすいこと（例：ふらつき・転倒）</li><li>どんな対応のあとに、回復・改善が多いか</li></ul><p class="note">「傾向を調べる」のタブで見られます。</p></div>
+<div class="box soft"><h3>④ 続くサインに気づく<span class="tag">イメージ</span></h3>
+<ul><li>同じ項目（例：物忘れ）が、3か月続いた利用者の一覧</li><li>提出が遅れている事業所の報告書の一覧</li></ul></div>
+<div class="box soft"><h3>⑤ 月報・実績の集計<span class="tag">相談</span></h3>
+<ul><li>報告書や記録から、件数を自動で数える</li><li>行政へ出す様式に整えて、Excel・PDFにする</li></ul>
+<p class="note">お使いのソフトから出せるデータによって、できる範囲が変わります。</p></div>
+</div></section>
+</main>
+<script>
+const NAMES={13:"山田 花子",27:"佐藤 一郎",41:"鈴木 美咲",58:"高橋 健"};
+const SYN={"認知機能低下":["認知機能低下","物忘れ","もの忘れ","記憶力の低下","認知機能の低下"]};
+const R=[
+{id:13,ym:"2026年8月",office:"〇〇訪問介護",text:"夜間に何度も目が覚める訴えあり。日中は落ち着いている。経過を観察する。",one:"夜間の不眠の訴え。経過観察"},
+{id:13,ym:"2026年9月",office:"〇〇訪問介護",text:"日中の活動量が増え、睡眠は安定。服薬は自分で管理できている。",one:"睡眠は安定。服薬は自己管理"},
+{id:13,ym:"2026年10月",office:"△△デイサービス",text:"入浴時にふらつきあり。職員が付き添って入浴。手すりの確認が必要。",one:"入浴時のふらつき。手すりの確認"},
+{id:27,ym:"2026年7月",office:"△△デイサービス",text:"物忘れが増え、日にちを間違えることがある。家族に伝え、様子をみる。",one:"物忘れが増加。家族へ共有"},
+{id:27,ym:"2026年8月",office:"△△デイサービス",text:"日にちの間違いが続く。認知機能低下の可能性があり、主治医への相談を検討。",one:"認知機能低下の可能性。受診を検討"},
+{id:27,ym:"2026年9月",office:"□□訪問看護",text:"入浴時のふらつきあり。手すりを追加し、デイでの入浴介助に切り替え。",one:"入浴時ふらつき。手すり追加・デイで入浴"},
+{id:41,ym:"2026年5月",office:"□□訪問看護",text:"もの忘れが目立つ。薬の飲み忘れが週に2回ほど。声かけの時間を調整した。",one:"飲み忘れ週2回。声かけを調整"},
+{id:41,ym:"2026年6月",office:"〇〇訪問介護",text:"浴室の段差でつまずきそうになる。段差を解消し、見守りの時間帯を調整。",one:"浴室の段差を解消。見守り調整"},
+{id:58,ym:"2026年8月",office:"□□訪問看護",text:"食欲が落ちている。水分は摂れている。次回、体重を確認する。",one:"食欲低下。体重を確認予定"},
+{id:58,ym:"2026年9月",office:"□□訪問看護",text:"食事量は戻りつつある。表情も明るい。",one:"食事量は回復傾向"},
+];
+const $=s=>document.querySelector(s);
+const showName=()=>$("#showname").checked;
+const label=id=>showName()?`${id}番（${NAMES[id]}）`:`${id}番`;
+function hl(t,words){let o=t;words.forEach(w=>{o=o.split(w).join(`<mark>${w}</mark>`)});return o}
+function doSearch(){
+ const q=$("#q").value.trim();const words=SYN[q]||[q];
+ $("#chips").innerHTML=`<span>探した言葉：</span>`+words.map((w,i)=>`<span class="chip${i?" ex":""}">${w}</span>`).join("")+(words.length>1?`<span>（言い換えを含む）</span>`:"");
+ const hit=R.filter(r=>words.some(w=>r.text.includes(w)));
+ $("#results").innerHTML=hit.length?hit.map(r=>`<div class="card"><div class="top"><span class="id">${label(r.id)}</span><span>${r.ym}</span><span>${r.office}</span></div><p>${hl(r.text,words)}</p><div class="src">原本：報告書_${r.id}_${r.ym.replace(/[^0-9]/g,"")}.pdf（リンク）</div></div>`).join(""):`<p>見つかりませんでした。</p>`;
+}
+function renderIndex(){
+ $("#indextbl").innerHTML=`<tr><th style="width:120px">年月</th><th style="width:200px">利用者</th><th style="width:180px">事業所</th><th>内容のひとこと</th></tr>`+R.map(r=>`<tr><td>${r.ym}</td><td>${label(r.id)}</td><td>${r.office}</td><td>${r.one}</td></tr>`).join("");
+}
+function renderSummary(){
+ const id=+$("#uid").value;const list=R.filter(r=>r.id===id);
+ $("#tl").innerHTML=list.map(r=>`<div><b>${r.ym}</b>　${r.office}<br>${r.text}</div>`).join("");
+ const S={13:"8月の夜間の不眠は、9月には落ち着きました。10月は、入浴時のふらつきが新しい課題です。手すりの確認と、入浴の見守りを検討する段階です。",27:"7月からの物忘れが続き、8月には受診の検討に進んでいます。9月は入浴時のふらつきが出て、手すりとデイでの入浴介助に切り替えました。物忘れの経過と、受診の結果の確認が必要です。",41:"5月の飲み忘れは、声かけの調整で対応しています。6月は浴室の段差を解消しました。その後の飲み忘れの回数を、確認したいところです。",58:"8月の食欲低下は、9月に回復傾向です。体重の確認結果が、報告書にはまだありません。"};
+ $("#sum").innerHTML=`<p style="margin:0 0 6px"><b>${label(id)}</b></p><p style="margin:0">${S[id]}</p><p class="note">AIが報告書から作った下書きです。内容は、原本で確認します。</p>`;
+}
+
+const U=[
+{m:1,f:1,a:"手すり追加",o:"改善"},{m:1,f:1,a:"手すり追加",o:"改善"},{m:1,f:1,a:"体操・歩行練習",o:"改善"},
+{m:1,f:1,a:"見守りの調整",o:"変化なし"},{m:1,f:1,a:"手すり追加",o:"変化なし"},{m:1,f:1,a:"体操・歩行練習",o:"改善"},
+{m:1,f:1,a:"見守りの調整",o:"改善"},{m:1,f:0},{m:1,f:0},{m:1,f:0},{m:1,f:0},{m:1,f:0},
+{m:0,f:1,a:"手すり追加",o:"改善"},{m:0,f:1,a:"体操・歩行練習",o:"改善"},
+{m:0,f:0},{m:0,f:0},{m:0,f:0},{m:0,f:0},{m:0,f:0},{m:0,f:0},{m:0,f:0},{m:0,f:0},{m:0,f:0},{m:0,f:0}
+];
+function pct(a,b){return b?Math.round(a*100/b):0}
+function bar(label,sub,a,b,alt){const p=pct(a,b);return `<div class="brow"><div class="lab">${label}${sub?`<small>${sub}</small>`:""}</div><div class="track"><div class="fill${alt?" alt":""}" style="width:${p}%"></div></div><div class="num">${p}%<br><small>${a}人 / ${b}人</small></div></div>`}
+function renderTrend(){
+ const wm=U.filter(u=>u.m), wo=U.filter(u=>!u.m);
+ const fm=wm.filter(u=>u.f).length, fo=wo.filter(u=>u.f).length;
+ $("#bar1").innerHTML=bar("物忘れの報告あり","",fm,wm.length,false)+bar("物忘れの報告なし","",fo,wo.length,true);
+ const acts=["手すり追加","体操・歩行練習","見守りの調整"];
+ const fall=U.filter(u=>u.f);
+ $("#bar2").innerHTML=acts.map(a=>{const g=fall.filter(u=>u.a===a);return bar(a,"",g.filter(u=>u.o==="改善").length,g.length,false)}).join("");
+ $("#read").innerHTML=`この24人では、物忘れの報告があった人のほうが、その後にふらつき・転倒が報告される割合が高い（${pct(fm,wm.length)}％と${pct(fo,wo.length)}％）傾向がありました。ふらつきが出たあとは、「体操・歩行練習」や「手すり追加」のあとに改善した人が多い一方、人数は少なく、偏りの可能性があります。<br><br><b>確かめること：</b>人数を増やしたときも同じか／ほかの要因（薬、生活環境）／個別の状況。`;
+}
+
+function init(){
+ $("#uid").innerHTML=[13,27,41,58].map(i=>`<option value="${i}">${label(i)}</option>`).join("");
+ renderIndex();renderSummary();doSearch();renderTrend();
+}
+document.querySelectorAll("#tabs button").forEach(b=>b.onclick=()=>show(b.dataset.t));
+function show(t){document.querySelectorAll("#tabs button").forEach(x=>x.classList.toggle("on",x.dataset.t===t));["search","index","summary","trend","next"].forEach(k=>$("#t-"+k).classList.toggle("hide",k!==t));}
+$("#go").onclick=doSearch;$("#q").onkeydown=e=>{if(e.key==="Enter")doSearch()};
+$("#uid").onchange=renderSummary;
+$("#showname").onchange=()=>{const u=$("#uid").value;init();$("#uid").value=u;renderSummary();};
+init();
+const h=location.hash.replace("#","");if(h){const p=new URLSearchParams(h);if(p.get("n")==="1"){$("#showname").checked=true;init();}if(p.get("u")){$("#uid").value=p.get("u");renderSummary();}if(p.get("t"))show(p.get("t"));}
+</script></body></html>
