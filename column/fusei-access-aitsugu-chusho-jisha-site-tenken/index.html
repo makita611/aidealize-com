@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>相次ぐ不正アクセス・情報漏えい｜中小企業が自社サイトで今すぐ点検したい5つのこと【AIdealize】</title>
+<meta name="description" content="国内で相次ぐ不正アクセスによる情報漏えい。IPA（10/9）とJPCERT/CC（10/8・10/23更新）の注意喚起をもとに、攻撃者が実際にやっていることと、中小企業が自社サイトで今すぐ点検したい5つのことを整理します。">
+<link rel="canonical" href="https://aidealize.com/column/fusei-access-aitsugu-chusho-jisha-site-tenken/">
+<meta property="og:title" content="相次ぐ不正アクセス・情報漏えい｜中小企業が自社サイトで今すぐ点検したい5つのこと">
+<meta property="og:description" content="IPA・JPCERT/CCの注意喚起をもとに、相次ぐ不正アクセスの手口と、自社サイトで点検したい5つのことを整理。">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://aidealize.com/column/fusei-access-aitsugu-chusho-jisha-site-tenken/">
+<meta property="og:site_name" content="AIdealize株式会社">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700;900&family=Shippori+Mincho:wght@400;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-P6VNBWH3');</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "相次ぐ不正アクセス・情報漏えい｜中小企業が自社サイトで今すぐ点検したい5つのこと",
+  "description": "IPA・JPCERT/CCの注意喚起をもとに、相次ぐ不正アクセスの手口と、自社サイトで点検したい5つのことを整理。",
+  "datePublished": "2026-11-01",
+  "dateModified": "2026-11-01",
+  "author": {"@type": "Organization", "name": "AIdealize株式会社"},
+  "publisher": {"@type": "Organization", "name": "AIdealize株式会社", "url": "https://aidealize.com"}
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "うちは小さな会社です。それでも狙われますか？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "JPCERT/CCによると、攻撃者は標的ごとに既知の脆弱性や設定の不備を探します。会社の規模ではなく、外から見える状態の管理が手薄かどうかが、狙われやすさにつながります。まずは公開しているものの洗い出しから始めてください。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "何から手をつければよいですか？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "最初は「①外に公開しているものの洗い出し」です。ホームページ、フォーム、管理画面、利用しているクラウドサービスを一覧にし、誰が管理しているかを書き出します。それだけでも、更新漏れや退職者のアカウントなどの抜けが見つかります。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "多要素認証（二段階認証）は、必ず設定したほうがよいですか？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "IPAは、認証の強化として、多要素認証とパスワードの見直しを挙げています。管理画面やクラウドサービスで設定できるものは、設定しておくことをおすすめします。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "自社サイトのログは、どこで見られますか？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "レンタルサーバーの管理画面や、各クラウドサービスの管理画面にアクセスログや操作ログが用意されていることが多いです。保存期間はサービスごとに違うため、いつまで残るかも確認しておきましょう。分からない場合は、サーバー会社や制作会社に問い合わせてください。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "被害にあったかもしれないと思ったら、どうすればよいですか？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "原因が分からなくても、まず事案として扱い、専門のセキュリティ事業者に調査を相談してください。JPCERT/CCもインシデント対応の相談窓口を設けています。自分で原因を探してファイルを消すと、調査に必要な痕跡が失われることがあるため、あわせてご注意ください。"
+      }
+    }
+  ]
+}
+</script>
+<style>
+:root{
+  --red:#0891b2;--red-dark:#0e7490;
+  --ink:#1e293b;--body:#4b5563;--light:#94a3b8;
+  --border:#e2e8f0;--bg:#f8fafc;--bg2:#f1f5f9;--white:#fff;
+  --tag-bg:#ecfeff;--green:#059669;--green-bg:#ecfdf5;
+  --demo-bg:#0f172a;--amber-bg:#fef3c7;--amber-tx:#92400e;--danger:#dc2626;--danger-bg:#fef2f2;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{font-family:'Noto Sans JP',sans-serif;background:var(--white);color:var(--ink);overflow-x:hidden;line-height:1.7;}
+#mainNav{position:fixed;top:0;left:0;right:0;z-index:1000;display:flex;align-items:center;justify-content:space-between;padding:0 60px;height:68px;background:rgba(255,255,255,0.97);border-bottom:1px solid var(--border);backdrop-filter:blur(12px);transition:box-shadow 0.3s;}
+#mainNav.scrolled{box-shadow:0 2px 16px rgba(0,0,0,0.06);}
+.nav-logo{display:flex;align-items:center;gap:10px;text-decoration:none;}
+.nav-logo img{height:34px;width:auto;}
+.nav-logo-text{font-family:'DM Mono',monospace;font-size:15px;font-weight:500;color:var(--ink);letter-spacing:0.02em;}
+.nav-logo-text span{color:var(--red);}
+.nav-links{display:flex;align-items:center;gap:32px;list-style:none;}
+.nav-links a{font-size:13px;font-weight:500;color:var(--body);text-decoration:none;transition:color 0.2s;}
+.nav-links a:hover{color:var(--ink);}
+.nav-cta{background:var(--red) !important;color:#fff !important;padding:9px 20px;border-radius:4px;font-size:12px !important;font-weight:700 !important;}
+.nav-cta:hover{background:var(--red-dark) !important;}
+.nav-hamburger{display:none;flex-direction:column;justify-content:center;gap:5px;width:40px;height:40px;background:none;border:none;cursor:pointer;}
+.nav-hamburger span{display:block;width:22px;height:2px;background:var(--ink);transition:all 0.3s;transform-origin:center;}
+.nav-hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg);}
+.nav-hamburger.open span:nth-child(2){opacity:0;}
+.nav-hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
+.nav-drawer{display:none;position:fixed;top:68px;left:0;right:0;background:#fff;border-bottom:2px solid var(--red);padding:20px 28px 28px;z-index:999;}
+.nav-drawer.open{display:block;}
+.nav-drawer ul{list-style:none;display:flex;flex-direction:column;}
+.nav-drawer ul li a{display:block;padding:13px 0;font-size:15px;font-weight:500;color:var(--ink);text-decoration:none;border-bottom:1px solid var(--border);}
+.nav-drawer ul li:last-child a{margin-top:16px;text-align:center;background:var(--red);color:#fff !important;padding:13px;border-radius:4px;font-weight:700 !important;border-bottom:none;}
+@media(max-width:1024px){#mainNav{padding:0 28px;}.nav-links{display:none;}.nav-hamburger{display:flex;}}
+@media(max-width:480px){#mainNav{padding:0 16px;height:60px;}.nav-drawer{top:60px;}.nav-logo-text{font-size:13px;}}
+.article-header{padding:116px 24px 52px;background:var(--bg);border-bottom:1px solid var(--border);}
+.article-header-inner{max-width:760px;margin:0 auto;}
+.breadcrumb{display:flex;align-items:center;gap:6px;font-size:12px;color:var(--light);margin-bottom:20px;flex-wrap:wrap;}
+.breadcrumb a{color:var(--light);text-decoration:none;}
+.breadcrumb a:hover{color:var(--red);}
+.breadcrumb span{color:var(--border);}
+.article-tag{display:inline-flex;align-items:center;background:var(--tag-bg);color:var(--red);font-size:11px;font-weight:700;letter-spacing:0.06em;padding:4px 12px;border-radius:100px;margin-bottom:18px;}
+.article-h1{font-family:'Shippori Mincho',serif;font-size:clamp(20px,3vw,34px);font-weight:700;color:var(--ink);line-height:1.65;margin-bottom:20px;}
+.article-meta{display:flex;align-items:center;gap:20px;flex-wrap:wrap;font-size:12px;color:var(--light);}
+.article-body{padding:72px 24px 100px;}
+.article-body-inner{max-width:760px;margin:0 auto;}
+.summary-box{background:var(--bg);border-left:4px solid var(--red);padding:24px 28px;border-radius:0 6px 6px 0;margin-bottom:52px;}
+.summary-box-title{font-size:11px;font-weight:700;color:var(--red);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:12px;}
+.summary-box ul{list-style:none;display:flex;flex-direction:column;gap:8px;}
+.summary-box ul li{display:flex;align-items:flex-start;gap:8px;font-size:14px;line-height:1.8;color:var(--ink);}
+.summary-box ul li::before{content:'✓';color:var(--red);font-weight:700;flex-shrink:0;margin-top:1px;}
+.article-body-inner h2{font-family:'Shippori Mincho',serif;font-size:clamp(17px,2.2vw,24px);font-weight:700;color:var(--ink);line-height:1.65;margin:56px 0 20px;padding-bottom:10px;border-bottom:1px solid var(--border);position:relative;}
+.article-body-inner h2::after{content:'';position:absolute;bottom:-1px;left:0;width:48px;height:2px;background:var(--red);}
+.article-body-inner h3{font-family:'Shippori Mincho',serif;font-size:clamp(15px,1.8vw,19px);font-weight:700;color:var(--ink);line-height:1.7;margin:36px 0 14px;padding-left:14px;border-left:3px solid var(--red);}
+.article-body-inner p{font-size:15px;line-height:2;color:var(--body);margin-bottom:22px;}
+.article-body-inner strong{color:var(--ink);font-weight:700;}
+.article-body-inner a{color:var(--red-dark);font-weight:700;text-decoration:underline;text-underline-offset:2px;}
+.article-body-inner ul,.article-body-inner ol{list-style:none;margin-bottom:22px;display:flex;flex-direction:column;gap:8px;}
+.article-body-inner ul li,.article-body-inner ol li{font-size:14px;line-height:1.9;color:var(--body);display:flex;align-items:flex-start;gap:10px;}
+.article-body-inner ul li::before{content:'─';color:var(--red);flex-shrink:0;margin-top:4px;font-size:12px;}
+.article-body-inner ol{counter-reset:ol;}
+.article-body-inner ol li{counter-increment:ol;}
+.article-body-inner ol li::before{content:counter(ol);background:var(--red);color:#fff;width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0;margin-top:2px;font-family:'DM Mono',monospace;}
+.pain-cards{display:flex;flex-direction:column;gap:12px;margin:24px 0;}
+.pain-card{background:var(--bg);border-left:4px solid var(--red);border-radius:0 8px 8px 0;padding:18px 20px;display:flex;align-items:flex-start;gap:12px;}
+.pain-card-icon{font-size:22px;flex-shrink:0;margin-top:2px;}
+.pain-card-body{font-size:14px;line-height:1.85;color:var(--body);}
+.pain-card-body strong{color:var(--ink);}
+.point-box{background:var(--bg2);border-radius:8px;padding:20px 24px;margin:20px 0;}
+.point-box-label{font-size:10px;font-family:'DM Mono',monospace;color:var(--red);letter-spacing:0.12em;text-transform:uppercase;margin-bottom:10px;}
+.point-box p{font-size:14px;line-height:1.9;color:var(--body);margin-bottom:0;}
+.case-box{border:1px solid #cffafe;border-left:5px solid var(--red);border-radius:0 10px 10px 0;padding:24px 26px;margin:28px 0;background:linear-gradient(135deg,#ecfeff,#f0fdf4);}
+.case-box p{margin-bottom:0;font-size:14px;line-height:1.9;color:var(--body);}
+.stat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:24px 0;}
+.stat-card{background:#fff;border:1px solid var(--border);border-top:3px solid var(--danger);border-radius:6px;padding:22px 16px;text-align:center;}
+.stat-card .v{font-family:'Shippori Mincho',serif;font-size:30px;font-weight:700;color:var(--danger);line-height:1;}
+.stat-card .l{font-size:11.5px;color:var(--body);line-height:1.6;margin-top:10px;}
+.inline-cta{background:var(--bg);border:1px solid var(--border);border-top:4px solid var(--red);border-radius:10px;padding:36px;margin:52px 0;text-align:center;}
+.inline-cta-tag{font-size:11px;color:var(--red);font-weight:700;letter-spacing:0.08em;margin-bottom:12px;}
+.inline-cta h3{font-family:'Shippori Mincho',serif;font-size:clamp(16px,2vw,22px);font-weight:700;color:var(--ink);line-height:1.65;margin-bottom:12px;}
+.inline-cta p{font-size:14px;color:var(--body);line-height:1.9;margin-bottom:22px;}
+.cta-btns-pair{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;}
+.btn-cta-red{display:inline-flex;align-items:center;gap:6px;background:var(--red);color:#fff;padding:13px 28px;border-radius:4px;font-size:14px;font-weight:700;text-decoration:none;transition:background 0.2s,transform 0.2s;}
+.btn-cta-red:hover{background:var(--red-dark);transform:translateY(-2px);}
+.btn-cta-ghost{display:inline-flex;align-items:center;gap:6px;background:#fff;color:var(--red);border:1.5px solid var(--red);padding:13px 28px;border-radius:4px;font-size:14px;font-weight:700;text-decoration:none;transition:background 0.2s;}
+.btn-cta-ghost:hover{background:var(--tag-bg);}
+.btn-cta-note{display:block;margin-top:12px;font-size:11px;color:var(--light);}
+.flow{background:var(--demo-bg);color:#cbd5e1;border-radius:8px;padding:20px 22px;font-family:'DM Mono',monospace;font-size:12.5px;line-height:1.9;white-space:pre-wrap;margin:24px 0;overflow-x:auto;}
+.flow .a{color:#f87171;}
+.flow .c{color:#67e8f9;}
+code{font-family:'DM Mono',monospace;background:var(--bg2);border:1px solid var(--border);border-radius:4px;padding:2px 7px;font-size:0.9em;color:var(--red-dark);word-break:break-all;}
+.note{font-size:12px;color:var(--light);margin-top:-12px;margin-bottom:22px;}
+.related-section{padding:60px 24px;background:var(--white);border-top:1px solid var(--border);}
+.related-inner{max-width:760px;margin:0 auto;}
+.related-label{font-family:'DM Mono',monospace;font-size:11px;color:var(--red);letter-spacing:0.14em;text-transform:uppercase;margin-bottom:20px;}
+.related-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;}
+.related-card{border:1px solid var(--border);border-top:3px solid var(--red);padding:20px;text-decoration:none;color:inherit;border-radius:0 0 6px 6px;transition:box-shadow 0.2s,transform 0.2s;}
+.related-card:hover{box-shadow:0 4px 16px rgba(0,0,0,0.07);transform:translateY(-2px);}
+.related-card-tag{font-size:10px;font-family:'DM Mono',monospace;color:var(--red);letter-spacing:0.1em;margin-bottom:8px;}
+.related-card-title{font-family:'Shippori Mincho',serif;font-size:14px;font-weight:700;color:var(--ink);line-height:1.6;}
+.back-section{padding:28px 24px;background:var(--bg);border-top:1px solid var(--border);}
+.back-section-inner{max-width:760px;margin:0 auto;}
+.back-link{display:inline-flex;align-items:center;gap:6px;font-size:13px;color:var(--body);text-decoration:none;transition:color 0.2s;}
+.back-link:hover{color:var(--red);}
+footer{background:#1f1f1f;border-top:1px solid rgba(255,255,255,0.06);padding:40px 60px;display:flex;align-items:center;justify-content:space-between;}
+.footer-logo{display:flex;align-items:center;gap:10px;}
+.footer-logo-mark{width:20px;height:20px;background:var(--red);clip-path:polygon(50% 0%,0% 100%,18% 100%,50% 38%,82% 100%,100% 100%);}
+.footer-logo-text{font-family:'DM Mono',monospace;font-size:13px;color:rgba(255,255,255,0.55);}
+.footer-logo-text span{color:var(--red);}
+.footer-copy{font-size:11px;color:rgba(255,255,255,0.25);font-family:'DM Mono',monospace;}
+.reveal{opacity:0;transform:translateY(18px);transition:opacity 0.55s ease,transform 0.55s ease;}
+.reveal.visible{opacity:1;transform:translateY(0);}
+@media(max-width:768px){
+  .article-header,.article-body,.back-section,.related-section{padding-left:16px;padding-right:16px;}
+  .article-header{padding-top:88px;}
+  .stat-grid{grid-template-columns:1fr;}
+  .related-grid{grid-template-columns:1fr !important;}
+  .cta-btns-pair{flex-direction:column;align-items:center;}
+  .inline-cta{padding:24px 18px;}
+  footer{flex-direction:column;gap:14px;text-align:center;padding:28px 16px;}
+}
+</style>
+</head>
+<body>
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-P6VNBWH3" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
+<nav id="mainNav">
+  <a href="/" class="nav-logo">
+    <img src="/images/logo.png" alt="AIdealize">
+    <span class="nav-logo-text"><span>AI</span>dealize</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="/column/">コラム</a></li>
+    <li><a href="/service/">サービス</a></li>
+    <li><a href="https://aidealize.com/bpr/">DX事例</a></li>
+    <li><a href="/works/">実績</a></li>
+    <li><a href="/company.html">会社概要</a></li>
+    <li><a href="/service/prevention/#contact" class="nav-cta">無料でサイト点検</a></li>
+  </ul>
+  <button class="nav-hamburger" id="navHamburger" aria-label="メニュー"><span></span><span></span><span></span></button>
+</nav>
+<div class="nav-drawer" id="navDrawer">
+  <ul>
+    <li><a href="/column/" class="drawer-link">コラム</a></li>
+    <li><a href="/service/" class="drawer-link">サービス</a></li>
+    <li><a href="https://aidealize.com/bpr/" class="drawer-link">DX事例</a></li>
+    <li><a href="/works/" class="drawer-link">実績</a></li>
+    <li><a href="/company.html" class="drawer-link">会社概要</a></li>
+    <li><a href="/service/prevention/#contact">無料でサイト点検</a></li>
+  </ul>
+</div>
+
+<header class="article-header">
+  <div class="article-header-inner">
+    <nav class="breadcrumb" aria-label="パンくず">
+      <a href="/">ホーム</a><span>/</span>
+      <a href="/column/">コラム</a><span>/</span>
+      <span>相次ぐ不正アクセスと自社サイトの点検</span>
+    </nav>
+    <div class="article-tag">Webセキュリティ / ニュース解説</div>
+    <h1 class="article-h1">
+      相次ぐ不正アクセス・情報漏えい。<br>
+      中小企業が、自社サイトで<br>
+      今すぐ点検したい5つのこと。
+    </h1>
+    <div class="article-meta">
+      <div>2026年11月1日</div>
+      <div>読了約7分</div>
+      <div>AIdealize編集部</div>
+    </div>
+  </div>
+</header>
+
+<article class="article-body">
+<div class="article-body-inner">
+
+  <div class="summary-box reveal">
+    <div class="summary-box-title">この記事でわかること</div>
+    <ul>
+      <li>いま国内で相次ぐ不正アクセスの傾向（IPA・JPCERT/CCの注意喚起）</li>
+      <li>攻撃者が実際にやっていること</li>
+      <li>自社サイトで今すぐ点検したい5つのこと</li>
+      <li>おかしな形跡を見つけたときの考え方</li>
+    </ul>
+  </div>
+
+  <p>2026年9月ごろから、金融機関や通信事業者など、国内の幅広い事業者で、不正アクセスによる情報漏えいの公表が相次いでいます。IPAは10月9日、JPCERT/CCは10月8日（10月23日更新）に、それぞれ注意喚起を出しました。「大きな会社の話でしょ」と思われるかもしれません。ただ、そこで挙げられている手口は、<strong>中小企業の公開サイトやシステムにも、そのまま当てはまるもの</strong>です。この記事では、公的機関の発表をもとに、自社で今すぐできる点検を5つに絞ってお伝えします。</p>
+
+  <h2>いま、何が起きているのか</h2>
+
+  <div class="pain-cards">
+    <div class="pain-card reveal"><div class="pain-card-icon">🌐</div><div class="pain-card-body"><strong>侵入の起点は「外に公開しているもの」と「アカウント」</strong><br>IPAは、公表事例の傾向から、外部公開しているアプリケーションやサービスの侵害と、アカウントの侵害が侵入の起点になっていると考えられるとしています。</div></div>
+    <div class="pain-card reveal"><div class="pain-card-icon">🧩</div><div class="pain-card-body"><strong>ひとつの脆弱性が原因ではない</strong><br>JPCERT/CCによると、複数の製品・サービスにまたがる被害で、共通の単一の脆弱性によるものではありません。標的ごとに手口を変えている可能性があります。</div></div>
+    <div class="pain-card reveal"><div class="pain-card-icon">🗂️</div><div class="pain-card-body"><strong>表に出ない「管理用のシステム」も狙われる</strong><br>一般の利用者向けアプリだけでなく、BIツールや従業員向けの管理システムなど、不特定多数が使う想定ではないシステムにも被害が出ています。</div></div>
+    <div class="pain-card reveal"><div class="pain-card-icon">🤖</div><div class="pain-card-body"><strong>AIを使った探索ツールの悪用も確認</strong><br>JPCERT/CC（10月23日追記）は、AIを用いたペネトレーションテスト（侵入テスト）用の基盤を使い、公開Webアプリの脆弱性探索や設定ファイルの窃取を試みる事例が確認されたとしています。</div></div>
+  </div>
+
+  <p>なお、IPAのページには個別の事案名は記載されていません。盗まれた情報は、公開するという脅迫や、不正な売買につながる傾向があるともされています。</p>
+
+  <h2>攻撃者が実際にやっていること（JPCERT/CC）</h2>
+
+  <ul>
+    <li><strong>既知の脆弱性を探して、試す</strong>：標的ごとに、更新されていない既知の脆弱性がないかスキャンして悪用を試みます。</li>
+    <li><strong>「置きっぱなしのファイル」を狙う</strong>：環境設定ファイルやバックアップファイルを盗み出すなど、管理の不備を突く攻撃も見られます。</li>
+    <li><strong>公開アプリを解析して、内側の入口（API）を探す</strong>：画面からは操作できない内部のAPIを狙い、権限の変更や不正なアカウントの作成を試みる例があります。</li>
+    <li><strong>侵入後にWebシェルを置く</strong>：公開サーバーから届く場所に不正なプログラムを置き、遠隔から操作する例が確認されています。</li>
+  </ul>
+
+  <p>特別な技術というより、<strong>「更新されていない」「外から見える」「置きっぱなし」</strong>という、日頃の管理のすきを順番に探す攻撃だと言えます。</p>
+
+  <h2>自社サイトで今すぐ点検したい5つのこと</h2>
+
+  <h3>① 外に公開しているものを、洗い出す</h3>
+  <p>ホームページ本体だけでなく、お問い合わせ・予約・会員のシステム、管理画面、クラウドサービスやVPNなど、<strong>インターネットから届くものを一覧にします</strong>。IPAも、利用している外部サービスを、できる限り網羅的に洗い出すよう求めています。「誰が作って、誰が管理しているか」まで書き出すと、抜けが見つかります。</p>
+
+  <h3>② 「置きっぱなしのファイル」がないか確かめる</h3>
+  <p>設定ファイル、バックアップ（過去のサイトを丸ごと固めたファイルなど）、テスト用のページが、外から見える場所に残っていないかを確認します。制作会社が作業用に置いたまま、というケースが少なくありません。見つけたら、削除するか、外から見えない場所へ移します。</p>
+
+  <div class="point-box">
+    <div class="point-box-label">当社の外周点検データから</div>
+    <p>当社が北関東の公開サイト約2万3千件を、外部から見える情報の範囲で自動診断したところ、<strong>管理画面（ログイン画面）が外から見える状態のサイトは約3割</strong>ありました。見えていること自体がすぐ侵害につながるわけではありませんが、攻撃者が最初に探す場所のひとつです。</p>
+  </div>
+
+  <h3>③ 管理画面とログインを守る</h3>
+  <p>IPAは、認証の強化（多要素認証、パスワード）と、アカウントの棚卸しを挙げています。具体的には、次の点を確認します。</p>
+  <ul>
+    <li>管理画面に、二段階認証を設定できるか。設定してあるか</li>
+    <li>ほかのサービスと同じパスワードを、使い回していないか</li>
+    <li>退職者や、以前の制作会社のアカウントが、有効なまま残っていないか</li>
+    <li>作った覚えのないアカウントが、増えていないか</li>
+  </ul>
+
+  <h3>④ 更新されていないものを、なくす</h3>
+  <p>CMS（WordPressやMovable Typeなど）、プラグイン、そのサーバーのPHPなど、構成要素のどれかが古いままだと、そこが入口になります。直近でも、PHP、WordPress本体、Movable Typeに重要な更新が出ています。それぞれの確認方法は、関連記事にまとめています。</p>
+
+  <h3>⑤ ログを残す。そして、不要なデータは持たない</h3>
+  <p>異常に気づくには、ログ（アクセスや操作の記録）が必要です。ログを取っているか、どれくらいの期間残っているかを、レンタルサーバーや各サービスで確認しておきます。あわせて、<strong>使い終わった個人情報や、保存期間を過ぎたデータは消す</strong>。「盗まれて困るデータを、そもそも持たない」のがいちばん確実な備えです。IPAも「不要な情報は持たない」を基本に挙げています。</p>
+
+  <h2>もし、おかしな形跡を見つけたら</h2>
+
+  <p>知らないアカウントがある、身に覚えのないファイルがある、ログに不審なアクセスが並んでいる。そうしたときは、<strong>原因が分からなくても、まず「セキュリティの事案かもしれない」として扱う</strong>のが、IPAの案内の考え方です。自社だけで調べ切ろうとせず、専門のセキュリティ事業者への詳細調査の依頼が強く勧められています。JPCERT/CCも、インシデント対応の相談窓口を設けています。</p>
+
+  <div class="point-box">
+    <div class="point-box-label">経営者に向けて</div>
+    <p>IPAは、経営者が認識すべき考え方として、「経営者主導で進める」「取引先や委託先を含めて見る」「平時も緊急時も関係者と連絡を取り合う」の3つを挙げています。まずは、<a href="/column/security-action-sengen-tejun/">SECURITY ACTIONの宣言</a>のように、小さく始められる一歩から取りかかるのがおすすめです。</p>
+  </div>
+
+  <div class="inline-cta reveal">
+    <div class="inline-cta-tag">無料相談・費用契約なし</div>
+    <h3>「外からどう見えているか」を、<br>無料で点検します。</h3>
+    <p>公開情報の範囲で、管理画面の露出、CMSやPHPのバージョンの露出、SSLの状態を点検し、優先度の高い対策から整理してお渡しします。押し売りはしません。</p>
+    <div class="cta-btns-pair">
+      <a href="/service/prevention/#contact" class="btn-cta-red">無料でサイト点検を受ける →</a>
+      <a href="/column/wordpress-kanri-marumie/" class="btn-cta-ghost">管理画面の自己チェックを読む</a>
+    </div>
+    <span class="btn-cta-note">オンライン対応・押し売りなし</span>
+  </div>
+
+  <h2>よくある質問（FAQ）</h2>
+  <h3>うちは小さな会社です。それでも狙われますか？</h3>
+  <p>JPCERT/CCによると、攻撃者は標的ごとに既知の脆弱性や設定の不備を探します。会社の規模ではなく、外から見える状態の管理が手薄かどうかが、狙われやすさにつながります。まずは公開しているものの洗い出しから始めてください。</p>
+  <h3>何から手をつければよいですか？</h3>
+  <p>最初は「①外に公開しているものの洗い出し」です。ホームページ、フォーム、管理画面、利用しているクラウドサービスを一覧にし、誰が管理しているかを書き出します。それだけでも、更新漏れや退職者のアカウントなどの抜けが見つかります。</p>
+  <h3>多要素認証（二段階認証）は、必ず設定したほうがよいですか？</h3>
+  <p>IPAは、認証の強化として、多要素認証とパスワードの見直しを挙げています。管理画面やクラウドサービスで設定できるものは、設定しておくことをおすすめします。</p>
+  <h3>自社サイトのログは、どこで見られますか？</h3>
+  <p>レンタルサーバーの管理画面や、各クラウドサービスの管理画面にアクセスログや操作ログが用意されていることが多いです。保存期間はサービスごとに違うため、いつまで残るかも確認しておきましょう。分からない場合は、サーバー会社や制作会社に問い合わせてください。</p>
+  <h3>被害にあったかもしれないと思ったら、どうすればよいですか？</h3>
+  <p>原因が分からなくても、まず事案として扱い、専門のセキュリティ事業者に調査を相談してください。JPCERT/CCもインシデント対応の相談窓口を設けています。自分で原因を探してファイルを消すと、調査に必要な痕跡が失われることがあるため、あわせてご注意ください。</p>
+
+  <h2>まとめ｜公開しているものを洗い出し、更新・ログイン・データを見直す</h2>
+  <p>今回の注意喚起が示しているのは、特別な攻撃ではなく、<strong>「外に公開しているものの管理」と「アカウントの管理」</strong>の大切さです。①公開しているものの洗い出し、②置きっぱなしのファイルの確認、③管理画面とログインの強化、④更新、⑤ログと不要データの整理。この5つを、できるところから順に進めてください。</p>
+
+  <p class="note">参考：<a href="https://www.ipa.go.jp/security/security-alert/2026/alert20261009.html" rel="noopener">IPA「不正アクセスによる漏えい等の事案を踏まえ、速やかに実施すべき対策等について」</a>（2026年10月9日）、<a href="https://www.jpcert.or.jp/at/2026/at260030.html" rel="noopener">JPCERT/CC「直近で相次いでいる国内組織における不正アクセスに関する注意喚起」</a>（2026年10月8日公開・10月23日更新）。外周点検の数値は、当社による公開情報の自動診断で、侵害の有無を示すものではありません。状況は更新されます。最新情報は各機関の発表をご確認ください。</p>
+
+</div>
+</article>
+
+<section style="padding:0 24px 40px;background:#fff;">
+  <div style="max-width:760px;margin:0 auto;padding:20px 22px;border:1px solid #e2e8f0;border-left:4px solid #0891b2;border-radius:6px;background:#f8fafc;font-size:14px;line-height:2;">
+    <strong style="color:#0e7490;">あわせて読みたい</strong><br>
+    <a href="/column/movable-type-yoreisei-jisha-kakunin/" style="color:#1e293b;">Movable Typeの重大な脆弱性、うちのサイトは対象？確認する手順とやること</a><br>
+    <a href="/column/wordpress-kanri-marumie/" style="color:#1e293b;">WordPressの管理画面、丸見えになっていませんか？5分でできる自己チェック</a><br>
+    <a href="/column/homepage-kojinjoho-rouei-form-taisaku/" style="color:#1e293b;">ホームページから個人情報が漏れる原因と、お問い合わせフォームの5つの確認ポイント</a><br>
+    <a href="/column/security-action-sengen-tejun/" style="color:#1e293b;">SECURITY ACTION（IPA）とは？一つ星・二つ星の違いと宣言の手順</a>
+  </div>
+</section>
+
+
+<section class="related-section">
+  <div class="related-inner">
+    <div class="related-label">Related Articles</div>
+    <div class="related-grid">
+      <a href="/column/chusho-cyber-attack-higai-taisaku/" class="related-card">
+        <div class="related-card-tag">Webセキュリティ / 被害対策</div>
+        <div class="related-card-title">中小企業のサイバー攻撃被害、実は約6割。入口は「放置された設定」だった。</div>
+      </a>
+      <a href="/column/homepage-kojinjoho-rouei-form-taisaku/" class="related-card">
+        <div class="related-card-tag">Webセキュリティ / 個人情報</div>
+        <div class="related-card-title">ホームページから個人情報が漏れる原因と、お問い合わせフォームの5つの確認ポイント。</div>
+      </a>
+      <a href="/column/security-action-sengen-tejun/" class="related-card">
+        <div class="related-card-tag">Webセキュリティ / SECURITY ACTION</div>
+        <div class="related-card-title">SECURITY ACTION（IPA）とは？一つ星・二つ星の違いと宣言の手順。</div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<div class="back-section">
+  <div class="back-section-inner">
+    <a href="/column/" class="back-link">← コラム一覧に戻る</a>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-logo">
+    <div class="footer-logo-mark"></div>
+    <span class="footer-logo-text"><span>A</span>idealize株式会社</span>
+  </div>
+  <span class="footer-copy">© 2020–2026 AIdealize Inc. All rights reserved.</span>
+</footer>
+
+<script>
+(function(){
+  const btn=document.getElementById('navHamburger');
+  const drawer=document.getElementById('navDrawer');
+  const nav=document.getElementById('mainNav');
+  btn.addEventListener('click',function(){btn.classList.toggle('open');drawer.classList.toggle('open');});
+  drawer.querySelectorAll('.drawer-link').forEach(function(l){l.addEventListener('click',function(){btn.classList.remove('open');drawer.classList.remove('open');});});
+  window.addEventListener('scroll',function(){nav.classList.toggle('scrolled',window.scrollY>10);});
+})();
+const obs=new IntersectionObserver(function(e){e.forEach(function(x){if(x.isIntersecting)x.target.classList.add('visible');});},{threshold:0.08,rootMargin:'0px 0px -30px 0px'});
+document.querySelectorAll('.reveal').forEach(function(el){obs.observe(el);});
+</script>
+<script src="/js/lead-capture.js"></script>
+</body>
+</html>
