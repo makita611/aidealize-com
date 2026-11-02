@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Movable Typeの重大な脆弱性（CVE-2026-96408）｜自社サイトが対象か確認する方法と対策【AIdealize】</title>
+<meta name="description" content="2026年10月7日にIPAが注意喚起したMovable Typeの脆弱性（JVN#91153973）。影響を受けるバージョン、修正版、自社サイトが対象かの確認手順、更新できないときの暫定対策、制作会社に送る文面まで整理します。">
+<link rel="canonical" href="https://aidealize.com/column/movable-type-yoreisei-jisha-kakunin/">
+<meta property="og:title" content="Movable Typeの重大な脆弱性（CVE-2026-96408）｜自社サイトが対象か確認する方法と対策">
+<meta property="og:description" content="Movable Typeの脆弱性（JVN#91153973）の影響バージョン、修正版、確認手順と対策を整理。">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://aidealize.com/column/movable-type-yoreisei-jisha-kakunin/">
+<meta property="og:site_name" content="AIdealize株式会社">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700;900&family=Shippori+Mincho:wght@400;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-P6VNBWH3');</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Movable Typeの重大な脆弱性（CVE-2026-96408）｜自社サイトが対象か確認する方法と対策",
+  "description": "Movable Typeの脆弱性（JVN#91153973）の影響バージョン、修正版、確認手順と対策を整理。",
+  "datePublished": "2026-11-01",
+  "dateModified": "2026-11-01",
+  "author": {"@type": "Organization", "name": "AIdealize株式会社"},
+  "publisher": {"@type": "Organization", "name": "AIdealize株式会社", "url": "https://aidealize.com"}
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Movable Typeを使っているかどうか、どうすれば分かりますか？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "管理画面にログインできる場合は、ログイン画面に「Movable Type」と表示されるかを確認します。管理画面のURLに mt.cgi が含まれていることも手がかりになります。ログイン情報が分からないときは、サイトを作った制作会社や保守の担当者に問い合わせるのが確実です。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "サイトを止めたほうがいいですか？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "IPAの案内では、まず修正版への更新が基本です。すぐに更新できない場合は、案内されているワークアラウンド（特定のCGIファイルの削除や実行権限の削除など）を、バックアップを取ったうえで検討してください。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "WordPressで作っているサイトも対象ですか？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "今回の脆弱性はMovable Typeのものです。WordPressは別のシステムのため、今回の件の対象ではありません。ただしWordPressにも別の重要な更新が出ています。詳しくは関連記事をご覧ください。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "更新を制作会社に頼んだほうがいいですか？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "独自のカスタマイズが入っている場合は、制作会社や保守の担当者に依頼するのが安全です。更新前のバックアップと、更新後の表示確認までをセットで依頼してください。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "サポートが終わった古いバージョンを使っています。どうすればよいですか？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "8.4系や7系以前などの古い版も影響を受けるとされています。更新だけでは済まないことがあるため、サポート中の版への移行を、開発元の案内を確認しながら検討してください。"
+      }
+    }
+  ]
+}
+</script>
+<style>
+:root{
+  --red:#0891b2;--red-dark:#0e7490;
+  --ink:#1e293b;--body:#4b5563;--light:#94a3b8;
+  --border:#e2e8f0;--bg:#f8fafc;--bg2:#f1f5f9;--white:#fff;
+  --tag-bg:#ecfeff;--green:#059669;--green-bg:#ecfdf5;
+  --demo-bg:#0f172a;--amber-bg:#fef3c7;--amber-tx:#92400e;--danger:#dc2626;--danger-bg:#fef2f2;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{font-family:'Noto Sans JP',sans-serif;background:var(--white);color:var(--ink);overflow-x:hidden;line-height:1.7;}
+#mainNav{position:fixed;top:0;left:0;right:0;z-index:1000;display:flex;align-items:center;justify-content:space-between;padding:0 60px;height:68px;background:rgba(255,255,255,0.97);border-bottom:1px solid var(--border);backdrop-filter:blur(12px);transition:box-shadow 0.3s;}
+#mainNav.scrolled{box-shadow:0 2px 16px rgba(0,0,0,0.06);}
+.nav-logo{display:flex;align-items:center;gap:10px;text-decoration:none;}
+.nav-logo img{height:34px;width:auto;}
+.nav-logo-text{font-family:'DM Mono',monospace;font-size:15px;font-weight:500;color:var(--ink);letter-spacing:0.02em;}
+.nav-logo-text span{color:var(--red);}
+.nav-links{display:flex;align-items:center;gap:32px;list-style:none;}
+.nav-links a{font-size:13px;font-weight:500;color:var(--body);text-decoration:none;transition:color 0.2s;}
+.nav-links a:hover{color:var(--ink);}
+.nav-cta{background:var(--red) !important;color:#fff !important;padding:9px 20px;border-radius:4px;font-size:12px !important;font-weight:700 !important;}
+.nav-cta:hover{background:var(--red-dark) !important;}
+.nav-hamburger{display:none;flex-direction:column;justify-content:center;gap:5px;width:40px;height:40px;background:none;border:none;cursor:pointer;}
+.nav-hamburger span{display:block;width:22px;height:2px;background:var(--ink);transition:all 0.3s;transform-origin:center;}
+.nav-hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg);}
+.nav-hamburger.open span:nth-child(2){opacity:0;}
+.nav-hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
+.nav-drawer{display:none;position:fixed;top:68px;left:0;right:0;background:#fff;border-bottom:2px solid var(--red);padding:20px 28px 28px;z-index:999;}
+.nav-drawer.open{display:block;}
+.nav-drawer ul{list-style:none;display:flex;flex-direction:column;}
+.nav-drawer ul li a{display:block;padding:13px 0;font-size:15px;font-weight:500;color:var(--ink);text-decoration:none;border-bottom:1px solid var(--border);}
+.nav-drawer ul li:last-child a{margin-top:16px;text-align:center;background:var(--red);color:#fff !important;padding:13px;border-radius:4px;font-weight:700 !important;border-bottom:none;}
+@media(max-width:1024px){#mainNav{padding:0 28px;}.nav-links{display:none;}.nav-hamburger{display:flex;}}
+@media(max-width:480px){#mainNav{padding:0 16px;height:60px;}.nav-drawer{top:60px;}.nav-logo-text{font-size:13px;}}
+.article-header{padding:116px 24px 52px;background:var(--bg);border-bottom:1px solid var(--border);}
+.article-header-inner{max-width:760px;margin:0 auto;}
+.breadcrumb{display:flex;align-items:center;gap:6px;font-size:12px;color:var(--light);margin-bottom:20px;flex-wrap:wrap;}
+.breadcrumb a{color:var(--light);text-decoration:none;}
+.breadcrumb a:hover{color:var(--red);}
+.breadcrumb span{color:var(--border);}
+.article-tag{display:inline-flex;align-items:center;background:var(--tag-bg);color:var(--red);font-size:11px;font-weight:700;letter-spacing:0.06em;padding:4px 12px;border-radius:100px;margin-bottom:18px;}
+.article-h1{font-family:'Shippori Mincho',serif;font-size:clamp(20px,3vw,34px);font-weight:700;color:var(--ink);line-height:1.65;margin-bottom:20px;}
+.article-meta{display:flex;align-items:center;gap:20px;flex-wrap:wrap;font-size:12px;color:var(--light);}
+.article-body{padding:72px 24px 100px;}
+.article-body-inner{max-width:760px;margin:0 auto;}
+.summary-box{background:var(--bg);border-left:4px solid var(--red);padding:24px 28px;border-radius:0 6px 6px 0;margin-bottom:52px;}
+.summary-box-title{font-size:11px;font-weight:700;color:var(--red);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:12px;}
+.summary-box ul{list-style:none;display:flex;flex-direction:column;gap:8px;}
+.summary-box ul li{display:flex;align-items:flex-start;gap:8px;font-size:14px;line-height:1.8;color:var(--ink);}
+.summary-box ul li::before{content:'✓';color:var(--red);font-weight:700;flex-shrink:0;margin-top:1px;}
+.article-body-inner h2{font-family:'Shippori Mincho',serif;font-size:clamp(17px,2.2vw,24px);font-weight:700;color:var(--ink);line-height:1.65;margin:56px 0 20px;padding-bottom:10px;border-bottom:1px solid var(--border);position:relative;}
+.article-body-inner h2::after{content:'';position:absolute;bottom:-1px;left:0;width:48px;height:2px;background:var(--red);}
+.article-body-inner h3{font-family:'Shippori Mincho',serif;font-size:clamp(15px,1.8vw,19px);font-weight:700;color:var(--ink);line-height:1.7;margin:36px 0 14px;padding-left:14px;border-left:3px solid var(--red);}
+.article-body-inner p{font-size:15px;line-height:2;color:var(--body);margin-bottom:22px;}
+.article-body-inner strong{color:var(--ink);font-weight:700;}
+.article-body-inner a{color:var(--red-dark);font-weight:700;text-decoration:underline;text-underline-offset:2px;}
+.article-body-inner ul,.article-body-inner ol{list-style:none;margin-bottom:22px;display:flex;flex-direction:column;gap:8px;}
+.article-body-inner ul li,.article-body-inner ol li{font-size:14px;line-height:1.9;color:var(--body);display:flex;align-items:flex-start;gap:10px;}
+.article-body-inner ul li::before{content:'─';color:var(--red);flex-shrink:0;margin-top:4px;font-size:12px;}
+.article-body-inner ol{counter-reset:ol;}
+.article-body-inner ol li{counter-increment:ol;}
+.article-body-inner ol li::before{content:counter(ol);background:var(--red);color:#fff;width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0;margin-top:2px;font-family:'DM Mono',monospace;}
+.pain-cards{display:flex;flex-direction:column;gap:12px;margin:24px 0;}
+.pain-card{background:var(--bg);border-left:4px solid var(--red);border-radius:0 8px 8px 0;padding:18px 20px;display:flex;align-items:flex-start;gap:12px;}
+.pain-card-icon{font-size:22px;flex-shrink:0;margin-top:2px;}
+.pain-card-body{font-size:14px;line-height:1.85;color:var(--body);}
+.pain-card-body strong{color:var(--ink);}
+.point-box{background:var(--bg2);border-radius:8px;padding:20px 24px;margin:20px 0;}
+.point-box-label{font-size:10px;font-family:'DM Mono',monospace;color:var(--red);letter-spacing:0.12em;text-transform:uppercase;margin-bottom:10px;}
+.point-box p{font-size:14px;line-height:1.9;color:var(--body);margin-bottom:0;}
+.case-box{border:1px solid #cffafe;border-left:5px solid var(--red);border-radius:0 10px 10px 0;padding:24px 26px;margin:28px 0;background:linear-gradient(135deg,#ecfeff,#f0fdf4);}
+.case-box p{margin-bottom:0;font-size:14px;line-height:1.9;color:var(--body);}
+.stat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:24px 0;}
+.stat-card{background:#fff;border:1px solid var(--border);border-top:3px solid var(--danger);border-radius:6px;padding:22px 16px;text-align:center;}
+.stat-card .v{font-family:'Shippori Mincho',serif;font-size:30px;font-weight:700;color:var(--danger);line-height:1;}
+.stat-card .l{font-size:11.5px;color:var(--body);line-height:1.6;margin-top:10px;}
+.inline-cta{background:var(--bg);border:1px solid var(--border);border-top:4px solid var(--red);border-radius:10px;padding:36px;margin:52px 0;text-align:center;}
+.inline-cta-tag{font-size:11px;color:var(--red);font-weight:700;letter-spacing:0.08em;margin-bottom:12px;}
+.inline-cta h3{font-family:'Shippori Mincho',serif;font-size:clamp(16px,2vw,22px);font-weight:700;color:var(--ink);line-height:1.65;margin-bottom:12px;}
+.inline-cta p{font-size:14px;color:var(--body);line-height:1.9;margin-bottom:22px;}
+.cta-btns-pair{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;}
+.btn-cta-red{display:inline-flex;align-items:center;gap:6px;background:var(--red);color:#fff;padding:13px 28px;border-radius:4px;font-size:14px;font-weight:700;text-decoration:none;transition:background 0.2s,transform 0.2s;}
+.btn-cta-red:hover{background:var(--red-dark);transform:translateY(-2px);}
+.btn-cta-ghost{display:inline-flex;align-items:center;gap:6px;background:#fff;color:var(--red);border:1.5px solid var(--red);padding:13px 28px;border-radius:4px;font-size:14px;font-weight:700;text-decoration:none;transition:background 0.2s;}
+.btn-cta-ghost:hover{background:var(--tag-bg);}
+.btn-cta-note{display:block;margin-top:12px;font-size:11px;color:var(--light);}
+.flow{background:var(--demo-bg);color:#cbd5e1;border-radius:8px;padding:20px 22px;font-family:'DM Mono',monospace;font-size:12.5px;line-height:1.9;white-space:pre-wrap;margin:24px 0;overflow-x:auto;}
+.flow .a{color:#f87171;}
+.flow .c{color:#67e8f9;}
+code{font-family:'DM Mono',monospace;background:var(--bg2);border:1px solid var(--border);border-radius:4px;padding:2px 7px;font-size:0.9em;color:var(--red-dark);word-break:break-all;}
+.note{font-size:12px;color:var(--light);margin-top:-12px;margin-bottom:22px;}
+.related-section{padding:60px 24px;background:var(--white);border-top:1px solid var(--border);}
+.related-inner{max-width:760px;margin:0 auto;}
+.related-label{font-family:'DM Mono',monospace;font-size:11px;color:var(--red);letter-spacing:0.14em;text-transform:uppercase;margin-bottom:20px;}
+.related-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;}
+.related-card{border:1px solid var(--border);border-top:3px solid var(--red);padding:20px;text-decoration:none;color:inherit;border-radius:0 0 6px 6px;transition:box-shadow 0.2s,transform 0.2s;}
+.related-card:hover{box-shadow:0 4px 16px rgba(0,0,0,0.07);transform:translateY(-2px);}
+.related-card-tag{font-size:10px;font-family:'DM Mono',monospace;color:var(--red);letter-spacing:0.1em;margin-bottom:8px;}
+.related-card-title{font-family:'Shippori Mincho',serif;font-size:14px;font-weight:700;color:var(--ink);line-height:1.6;}
+.back-section{padding:28px 24px;background:var(--bg);border-top:1px solid var(--border);}
+.back-section-inner{max-width:760px;margin:0 auto;}
+.back-link{display:inline-flex;align-items:center;gap:6px;font-size:13px;color:var(--body);text-decoration:none;transition:color 0.2s;}
+.back-link:hover{color:var(--red);}
+footer{background:#1f1f1f;border-top:1px solid rgba(255,255,255,0.06);padding:40px 60px;display:flex;align-items:center;justify-content:space-between;}
+.footer-logo{display:flex;align-items:center;gap:10px;}
+.footer-logo-mark{width:20px;height:20px;background:var(--red);clip-path:polygon(50% 0%,0% 100%,18% 100%,50% 38%,82% 100%,100% 100%);}
+.footer-logo-text{font-family:'DM Mono',monospace;font-size:13px;color:rgba(255,255,255,0.55);}
+.footer-logo-text span{color:var(--red);}
+.footer-copy{font-size:11px;color:rgba(255,255,255,0.25);font-family:'DM Mono',monospace;}
+.reveal{opacity:0;transform:translateY(18px);transition:opacity 0.55s ease,transform 0.55s ease;}
+.reveal.visible{opacity:1;transform:translateY(0);}
+@media(max-width:768px){
+  .article-header,.article-body,.back-section,.related-section{padding-left:16px;padding-right:16px;}
+  .article-header{padding-top:88px;}
+  .stat-grid{grid-template-columns:1fr;}
+  .related-grid{grid-template-columns:1fr !important;}
+  .cta-btns-pair{flex-direction:column;align-items:center;}
+  .inline-cta{padding:24px 18px;}
+  footer{flex-direction:column;gap:14px;text-align:center;padding:28px 16px;}
+}
+</style>
+</head>
+<body>
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-P6VNBWH3" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
+<nav id="mainNav">
+  <a href="/" class="nav-logo">
+    <img src="/images/logo.png" alt="AIdealize">
+    <span class="nav-logo-text"><span>AI</span>dealize</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="/column/">コラム</a></li>
+    <li><a href="/service/">サービス</a></li>
+    <li><a href="https://aidealize.com/bpr/">DX事例</a></li>
+    <li><a href="/works/">実績</a></li>
+    <li><a href="/company.html">会社概要</a></li>
+    <li><a href="/service/prevention/#contact" class="nav-cta">無料でサイト点検</a></li>
+  </ul>
+  <button class="nav-hamburger" id="navHamburger" aria-label="メニュー"><span></span><span></span><span></span></button>
+</nav>
+<div class="nav-drawer" id="navDrawer">
+  <ul>
+    <li><a href="/column/" class="drawer-link">コラム</a></li>
+    <li><a href="/service/" class="drawer-link">サービス</a></li>
+    <li><a href="https://aidealize.com/bpr/" class="drawer-link">DX事例</a></li>
+    <li><a href="/works/" class="drawer-link">実績</a></li>
+    <li><a href="/company.html" class="drawer-link">会社概要</a></li>
+    <li><a href="/service/prevention/#contact">無料でサイト点検</a></li>
+  </ul>
+</div>
+
+<header class="article-header">
+  <div class="article-header-inner">
+    <nav class="breadcrumb" aria-label="パンくず">
+      <a href="/">ホーム</a><span>/</span>
+      <a href="/column/">コラム</a><span>/</span>
+      <span>Movable Typeの脆弱性</span>
+    </nav>
+    <div class="article-tag">Webセキュリティ / ニュース解説</div>
+    <h1 class="article-h1">
+      Movable Typeの重大な脆弱性、<br>
+      うちのサイトは対象？<br>
+      確認する手順とやること。
+    </h1>
+    <div class="article-meta">
+      <div>2026年11月1日</div>
+      <div>読了約6分</div>
+      <div>AIdealize編集部</div>
+    </div>
+  </div>
+</header>
+
+<article class="article-body">
+<div class="article-body-inner">
+
+  <div class="summary-box reveal">
+    <div class="summary-box-title">この記事でわかること</div>
+    <ul>
+      <li>Movable Typeの脆弱性（JVN#91153973）の内容と、影響を受けるバージョン</li>
+      <li>案内されている修正版と、自社サイトが対象かを確かめる3ステップ</li>
+      <li>すぐに更新できないときの暫定対策（ワークアラウンド）</li>
+      <li>制作会社にそのまま送れる、確認の依頼文</li>
+    </ul>
+  </div>
+
+  <p>2026年10月7日、IPA（情報処理推進機構）が、CMS「Movable Type」の複数の脆弱性（JVN#91153973）について注意を呼びかけました。Movable Typeは、企業のホームページやお知らせ・ブログに、長く使われてきた国産のCMSです。「うちのサイトのお知らせはMovable Typeかもしれない」「制作会社に任せていて、よく分からない」という方に向けて、確認の手順と対策を整理します。</p>
+
+  <h2>まず結論｜Movable Typeを使っているなら、バージョン確認と更新を</h2>
+
+  <p>今回の脆弱性は、悪用されると<strong>システム上で任意のPerlコードや任意のSQLコマンドが実行される可能性</strong>があるものです。開発元（シックス・アパート）が修正版を公開しているため、<strong>お使いのバージョンを確認し、修正版へ更新する</strong>のが基本の対応です。</p>
+
+  <div class="pain-cards">
+    <div class="pain-card reveal"><div class="pain-card-icon">🚨</div><div class="pain-card-body"><strong>コードインジェクション（CVE-2026-96408）</strong><br>深刻度は「緊急」、CVSS v3の基本値は9.4です。任意のPerlコードが実行される可能性があります。</div></div>
+    <div class="pain-card reveal"><div class="pain-card-icon">🗄️</div><div class="pain-card-body"><strong>SQLインジェクション（CVE-2026-103668）</strong><br>深刻度は「重要」、基本値は8.6です。任意のSQLコマンドが実行される可能性があります。</div></div>
+    <div class="pain-card reveal"><div class="pain-card-icon">📦</div><div class="pain-card-body"><strong>ほかにも複数の脆弱性が修正されています</strong><br>上の2件以外にも修正があります。詳細は開発元の公式情報で確認してください。</div></div>
+  </div>
+
+  <h2>影響を受けるバージョンと、修正版</h2>
+
+  <p>IPAの案内では、次のバージョンが影響を受けるとされています。</p>
+
+  <ul>
+    <li><strong>Movable Type</strong>：9.2.1以前（9.2系、クラウド版のみ）／9.0.9以前（9.0系、Advancedを含む）／8.8.5以前（8.8系、Advancedを含む）／8.0.12以前（8.0系、Advancedを含む）</li>
+    <li><strong>Movable Type Premium</strong>：9.2.1以前（9.2系、クラウド版のみ）／9.0.9以前（9.0系、Advancedを含む）／2.17以前（2系、Advancedを含む）</li>
+    <li><strong>サポートが終了した版</strong>：8.4系、7系以前のMovable Type、Movable Type Premium 1系も影響を受けるとされています。</li>
+  </ul>
+
+  <p>案内されている修正版は、<strong>Movable Type：9.3.0、9.0.10、8.8.6、8.0.13／Movable Type Premium：9.3.0、9.0.10、2.18</strong>です。お使いの系統（9.0系、8.8系など）に合った版へ更新します。サポートが終了している古い版をお使いの場合は、更新だけでは済まないことがあるため、開発元の案内を見ながら、サポート中の版への移行を検討してください。</p>
+
+  <div class="point-box">
+    <div class="point-box-label">クラウド版をお使いの場合</div>
+    <p>「クラウド版のみ」と書かれた系統は、提供元が運用している環境です。お客様側での作業が必要かどうかは、提供元の案内で確認してください。</p>
+  </div>
+
+  <h2>自分のサイトが対象か確かめる3ステップ</h2>
+
+  <ol>
+    <li><strong>そもそもMovable Typeで動いているかを確かめる</strong>：サイトのお知らせやブログ部分の管理画面にログインできる方は、ログイン画面に「Movable Type」と表示されるかを見てください。管理画面のURLに <code>mt.cgi</code> が入っている環境も多くあります。ログイン情報が分からない場合は、サイトを作った制作会社に聞くのが確実です。</li>
+    <li><strong>バージョンを確認する</strong>：管理画面にログインして、バージョンの表示を確認します。見つからない場合は、制作会社や保守の担当者に「Movable Typeのバージョンはいくつですか」と聞いてください。</li>
+    <li><strong>上の対象バージョンと照らし合わせる</strong>：お使いのバージョンが「以前」の範囲に入っていれば、更新が必要です。</li>
+  </ol>
+
+  <h2>すぐに更新できないときの暫定対策</h2>
+
+  <p>テストや調整の都合で、すぐに更新できないこともあります。IPAの案内では、更新できない場合の<strong>ワークアラウンド（回避策）</strong>として、次の方法が示されています。</p>
+
+  <ul>
+    <li><strong>CGI版</strong>：<code>mt-upgrade.cgi</code>、<code>mt-search.cgi</code>、<code>mt-ftsearch.cgi</code> の3つを削除するか、実行権限を外します。</li>
+    <li><strong>PSGI版（MT 6.2以降）</strong>：設定ファイル <code>mt-config.cgi</code> に、<code>RestrictedPSGIApp</code> で <code>upgrade</code>、<code>new_search</code>、<code>ft_search</code> を指定します（<code>ft_search</code> はMT 6.2.4以降）。</li>
+  </ul>
+
+  <div class="point-box">
+    <div class="point-box-label">作業の前に</div>
+    <p>ファイルの削除や設定変更の前に、<strong>必ずバックアップ</strong>を取ってください。これらの機能を止めると、サイト内検索など一部の機能に影響が出る場合があります。あくまで「更新までの一時しのぎ」と考え、早めに修正版へ更新するのが基本です。</p>
+  </div>
+
+  <h2>更新するときに気をつけたいこと</h2>
+
+  <ol>
+    <li><strong>更新前にバックアップを取る</strong>：サイトのファイルとデータベースの両方を取っておきます。</li>
+    <li><strong>可能ならテスト環境で先に確認する</strong>：長く使っているサイトは、独自のカスタマイズやプラグインが入っていることがあります。更新で表示や機能が崩れないかを、先に確かめられると安心です。</li>
+    <li><strong>更新後に、表示と管理画面の動作を確認する</strong>：トップページ、お知らせ、問い合わせフォーム、管理画面へのログインを一通り見ます。</li>
+  </ol>
+
+  <h2>制作会社に送る確認の文面</h2>
+
+  <p>次の文面を、そのまま送れます。</p>
+
+  <div class="case-box reveal">
+    <p>お世話になっております。弊社のホームページについて、確認させてください。<br>
+    ①サイト（またはお知らせ・ブログ部分）でMovable Typeを使っているか<br>
+    ②使っている場合、現在のバージョン<br>
+    ③2026年10月7日にIPAが注意喚起した、Movable Typeの脆弱性（JVN#91153973）への対応状況と、更新の予定<br>
+    お手数ですが、分かる範囲で教えてください。</p>
+  </div>
+
+  <div class="inline-cta reveal">
+    <div class="inline-cta-tag">無料相談・費用契約なし</div>
+    <h3>「うちのサイトは、何で動いている？」を、<br>外部の視点で無料点検します。</h3>
+    <p>公開情報の範囲で、CMSの種類やバージョンの露出、管理画面の露出、SSLの状態を点検し、優先度の高い対策から整理してお渡しします。押し売りはしません。</p>
+    <div class="cta-btns-pair">
+      <a href="/service/prevention/#contact" class="btn-cta-red">無料でサイト点検を受ける →</a>
+      <a href="/column/hoshu-keiyaku-wana/" class="btn-cta-ghost">保守契約の落とし穴を読む</a>
+    </div>
+    <span class="btn-cta-note">オンライン対応・押し売りなし</span>
+  </div>
+
+  <h2>よくある質問（FAQ）</h2>
+  <h3>Movable Typeを使っているかどうか、どうすれば分かりますか？</h3>
+  <p>管理画面にログインできる場合は、ログイン画面に「Movable Type」と表示されるかを確認します。管理画面のURLに mt.cgi が含まれていることも手がかりになります。ログイン情報が分からないときは、サイトを作った制作会社や保守の担当者に問い合わせるのが確実です。</p>
+  <h3>サイトを止めたほうがいいですか？</h3>
+  <p>IPAの案内では、まず修正版への更新が基本です。すぐに更新できない場合は、案内されているワークアラウンド（特定のCGIファイルの削除や実行権限の削除など）を、バックアップを取ったうえで検討してください。</p>
+  <h3>WordPressで作っているサイトも対象ですか？</h3>
+  <p>今回の脆弱性はMovable Typeのものです。WordPressは別のシステムのため、今回の件の対象ではありません。ただしWordPressにも別の重要な更新が出ています。詳しくは関連記事をご覧ください。</p>
+  <h3>更新を制作会社に頼んだほうがいいですか？</h3>
+  <p>独自のカスタマイズが入っている場合は、制作会社や保守の担当者に依頼するのが安全です。更新前のバックアップと、更新後の表示確認までをセットで依頼してください。</p>
+  <h3>サポートが終わった古いバージョンを使っています。どうすればよいですか？</h3>
+  <p>8.4系や7系以前などの古い版も影響を受けるとされています。更新だけでは済まないことがあるため、サポート中の版への移行を、開発元の案内を確認しながら検討してください。</p>
+
+  <h2>まとめ｜Movable Typeなら、まずバージョンの確認から</h2>
+  <p>Movable Typeを使っている場合は、<strong>バージョンを確認し、修正版（9.3.0、9.0.10、8.8.6、8.0.13など）へ更新する</strong>のが基本です。すぐに更新できないときは、IPAが示すワークアラウンドで一時的に備えつつ、早めに更新の段取りをつけてください。使っているか分からないときは、制作会社への一通の確認から始められます。</p>
+
+  <p class="note">参考：<a href="https://www.ipa.go.jp/security/security-alert/2026/20261007-jvn.html" rel="noopener">IPA「「Movable Type」における複数の脆弱性について（JVN#91153973）」</a>（2026年10月7日）。状況は更新されることがあります。最新情報は、IPA・JPCERT/CCおよび開発元の発表をご確認ください。</p>
+
+</div>
+</article>
+
+<section style="padding:0 24px 40px;background:#fff;">
+  <div style="max-width:760px;margin:0 auto;padding:20px 22px;border:1px solid #e2e8f0;border-left:4px solid #0891b2;border-radius:6px;background:#f8fafc;font-size:14px;line-height:2;">
+    <strong style="color:#0e7490;">あわせて読みたい</strong><br>
+    <a href="/column/php-kinkyu-vulnerability-chusho-kakunin/" style="color:#1e293b;">PHPの重大な脆弱性、うちのサイトは大丈夫？中小企業が今日確認すべき3つのこと</a><br>
+    <a href="/column/fusei-access-aitsugu-chusho-jisha-site-tenken/" style="color:#1e293b;">相次ぐ不正アクセス・情報漏えい｜中小企業が自社サイトで今すぐ点検したい5つのこと</a><br>
+    <a href="/column/hoshu-keiyaku-wana/" style="color:#1e293b;">「保守契約」を結んでいるのに、なぜサイトは古いままなのか？</a>
+  </div>
+</section>
+
+
+<section class="related-section">
+  <div class="related-inner">
+    <div class="related-label">Related Articles</div>
+    <div class="related-grid">
+      <a href="/column/php-kinkyu-vulnerability-chusho-kakunin/" class="related-card">
+        <div class="related-card-tag">Webセキュリティ / ニュース解説</div>
+        <div class="related-card-title">PHPの重大な脆弱性、うちのサイトは大丈夫？中小企業が今日確認すべき3つのこと。</div>
+      </a>
+      <a href="/column/hoshu-keiyaku-wana/" class="related-card">
+        <div class="related-card-tag">Webセキュリティ / 保守契約</div>
+        <div class="related-card-title">「保守契約」を結んでいるのに、なぜサイトは古いままなのか？制作会社との見えない溝の正体。</div>
+      </a>
+      <a href="/column/wordpress-kanri-marumie/" class="related-card">
+        <div class="related-card-tag">Webセキュリティ / WordPress</div>
+        <div class="related-card-title">WordPressの管理画面、丸見えになっていませんか？5分でできる自己チェック。</div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<div class="back-section">
+  <div class="back-section-inner">
+    <a href="/column/" class="back-link">← コラム一覧に戻る</a>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-logo">
+    <div class="footer-logo-mark"></div>
+    <span class="footer-logo-text"><span>A</span>idealize株式会社</span>
+  </div>
+  <span class="footer-copy">© 2020–2026 AIdealize Inc. All rights reserved.</span>
+</footer>
+
+<script>
+(function(){
+  const btn=document.getElementById('navHamburger');
+  const drawer=document.getElementById('navDrawer');
+  const nav=document.getElementById('mainNav');
+  btn.addEventListener('click',function(){btn.classList.toggle('open');drawer.classList.toggle('open');});
+  drawer.querySelectorAll('.drawer-link').forEach(function(l){l.addEventListener('click',function(){btn.classList.remove('open');drawer.classList.remove('open');});});
+  window.addEventListener('scroll',function(){nav.classList.toggle('scrolled',window.scrollY>10);});
+})();
+const obs=new IntersectionObserver(function(e){e.forEach(function(x){if(x.isIntersecting)x.target.classList.add('visible');});},{threshold:0.08,rootMargin:'0px 0px -30px 0px'});
+document.querySelectorAll('.reveal').forEach(function(el){obs.observe(el);});
+</script>
+<script src="/js/lead-capture.js"></script>
+</body>
+</html>

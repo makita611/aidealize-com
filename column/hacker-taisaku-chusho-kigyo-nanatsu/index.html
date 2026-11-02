@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ハッカーに狙われない会社になる方法｜中小企業が最初にやる7つのサイバー攻撃対策【AIdealize】</title>
+<meta name="description" content="サイバー攻撃を完全に防ぐ方法はありません。だからこそ「狙われにくくする」と「被害を小さくする」の両方を。警察庁・IPAの公表資料をもとに、中小企業が最初にやる7つの対策を、効果の大きい順に解説します。">
+<link rel="canonical" href="https://aidealize.com/column/hacker-taisaku-chusho-kigyo-nanatsu/">
+<meta property="og:title" content="ハッカーに狙われない会社になる方法｜中小企業が最初にやる7つのサイバー攻撃対策">
+<meta property="og:description" content="警察庁・IPAの公表資料をもとに、中小企業が最初にやる7つのサイバー攻撃対策を整理。">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://aidealize.com/column/hacker-taisaku-chusho-kigyo-nanatsu/">
+<meta property="og:site_name" content="AIdealize株式会社">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700;900&family=Shippori+Mincho:wght@400;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-P6VNBWH3');</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "ハッカーに狙われない会社になる方法｜中小企業が最初にやる7つのサイバー攻撃対策",
+  "description": "警察庁・IPAの公表資料をもとに、中小企業が最初にやる7つのサイバー攻撃対策を整理。",
+  "datePublished": "2026-11-03",
+  "dateModified": "2026-11-03",
+  "author": {"@type": "Organization", "name": "AIdealize株式会社"},
+  "publisher": {"@type": "Organization", "name": "AIdealize株式会社", "url": "https://aidealize.com"}
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "ハッカーの攻撃を、完全に防ぐことはできますか？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "完全に防ぐ方法はありません。現実的には、二段階認証や更新などで「狙われにくくする」ことと、バックアップや連絡先の準備で「被害を小さくする」ことを、両方進めます。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "小さな会社でも、本当に狙われるのですか？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "警察庁の資料（令和8年上半期）では、ランサムウェア被害企業の約6割が中小企業でした。攻撃者は規模を選ぶというより、更新されていない機器や漏れたパスワードなど、入りやすいところを探します。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "費用をかけられません。最初にやることは何ですか？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "費用がほとんどかからないものから始められます。メールと管理画面の二段階認証、パスワードの使い回しをやめること、連絡先を紙に書くことの3つです。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "セキュリティソフトを入れていれば大丈夫ですか？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "ソフトは大切ですが、それだけでは足りません。警察庁の資料では、侵入経路の約5割がVPN機器とされています。パソコンのソフトに加えて、機器やホームページの更新、パスワードの管理も必要です。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "自社のホームページが安全か、調べる方法はありますか？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "管理画面が外から見えていないか、CMSやPHPのバージョンが古くないか、使っていない古いページが残っていないかを確認します。当社では、公開情報の範囲で外から点検する無料の点検も行っています。"
+      }
+    }
+  ]
+}
+</script>
+<style>
+:root{
+  --red:#0891b2;--red-dark:#0e7490;
+  --ink:#1e293b;--body:#4b5563;--light:#94a3b8;
+  --border:#e2e8f0;--bg:#f8fafc;--bg2:#f1f5f9;--white:#fff;
+  --tag-bg:#ecfeff;--green:#059669;--green-bg:#ecfdf5;
+  --demo-bg:#0f172a;--amber-bg:#fef3c7;--amber-tx:#92400e;--danger:#dc2626;--danger-bg:#fef2f2;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{font-family:'Noto Sans JP',sans-serif;background:var(--white);color:var(--ink);overflow-x:hidden;line-height:1.7;}
+#mainNav{position:fixed;top:0;left:0;right:0;z-index:1000;display:flex;align-items:center;justify-content:space-between;padding:0 60px;height:68px;background:rgba(255,255,255,0.97);border-bottom:1px solid var(--border);backdrop-filter:blur(12px);transition:box-shadow 0.3s;}
+#mainNav.scrolled{box-shadow:0 2px 16px rgba(0,0,0,0.06);}
+.nav-logo{display:flex;align-items:center;gap:10px;text-decoration:none;}
+.nav-logo img{height:34px;width:auto;}
+.nav-logo-text{font-family:'DM Mono',monospace;font-size:15px;font-weight:500;color:var(--ink);letter-spacing:0.02em;}
+.nav-logo-text span{color:var(--red);}
+.nav-links{display:flex;align-items:center;gap:32px;list-style:none;}
+.nav-links a{font-size:13px;font-weight:500;color:var(--body);text-decoration:none;transition:color 0.2s;}
+.nav-links a:hover{color:var(--ink);}
+.nav-cta{background:var(--red) !important;color:#fff !important;padding:9px 20px;border-radius:4px;font-size:12px !important;font-weight:700 !important;}
+.nav-cta:hover{background:var(--red-dark) !important;}
+.nav-hamburger{display:none;flex-direction:column;justify-content:center;gap:5px;width:40px;height:40px;background:none;border:none;cursor:pointer;}
+.nav-hamburger span{display:block;width:22px;height:2px;background:var(--ink);transition:all 0.3s;transform-origin:center;}
+.nav-hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg);}
+.nav-hamburger.open span:nth-child(2){opacity:0;}
+.nav-hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
+.nav-drawer{display:none;position:fixed;top:68px;left:0;right:0;background:#fff;border-bottom:2px solid var(--red);padding:20px 28px 28px;z-index:999;}
+.nav-drawer.open{display:block;}
+.nav-drawer ul{list-style:none;display:flex;flex-direction:column;}
+.nav-drawer ul li a{display:block;padding:13px 0;font-size:15px;font-weight:500;color:var(--ink);text-decoration:none;border-bottom:1px solid var(--border);}
+.nav-drawer ul li:last-child a{margin-top:16px;text-align:center;background:var(--red);color:#fff !important;padding:13px;border-radius:4px;font-weight:700 !important;border-bottom:none;}
+@media(max-width:1024px){#mainNav{padding:0 28px;}.nav-links{display:none;}.nav-hamburger{display:flex;}}
+@media(max-width:480px){#mainNav{padding:0 16px;height:60px;}.nav-drawer{top:60px;}.nav-logo-text{font-size:13px;}}
+.article-header{padding:116px 24px 52px;background:var(--bg);border-bottom:1px solid var(--border);}
+.article-header-inner{max-width:760px;margin:0 auto;}
+.breadcrumb{display:flex;align-items:center;gap:6px;font-size:12px;color:var(--light);margin-bottom:20px;flex-wrap:wrap;}
+.breadcrumb a{color:var(--light);text-decoration:none;}
+.breadcrumb a:hover{color:var(--red);}
+.breadcrumb span{color:var(--border);}
+.article-tag{display:inline-flex;align-items:center;background:var(--tag-bg);color:var(--red);font-size:11px;font-weight:700;letter-spacing:0.06em;padding:4px 12px;border-radius:100px;margin-bottom:18px;}
+.article-h1{font-family:'Shippori Mincho',serif;font-size:clamp(20px,3vw,34px);font-weight:700;color:var(--ink);line-height:1.65;margin-bottom:20px;}
+.article-meta{display:flex;align-items:center;gap:20px;flex-wrap:wrap;font-size:12px;color:var(--light);}
+.article-body{padding:72px 24px 100px;}
+.article-body-inner{max-width:760px;margin:0 auto;}
+.summary-box{background:var(--bg);border-left:4px solid var(--red);padding:24px 28px;border-radius:0 6px 6px 0;margin-bottom:52px;}
+.summary-box-title{font-size:11px;font-weight:700;color:var(--red);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:12px;}
+.summary-box ul{list-style:none;display:flex;flex-direction:column;gap:8px;}
+.summary-box ul li{display:flex;align-items:flex-start;gap:8px;font-size:14px;line-height:1.8;color:var(--ink);}
+.summary-box ul li::before{content:'✓';color:var(--red);font-weight:700;flex-shrink:0;margin-top:1px;}
+.article-body-inner h2{font-family:'Shippori Mincho',serif;font-size:clamp(17px,2.2vw,24px);font-weight:700;color:var(--ink);line-height:1.65;margin:56px 0 20px;padding-bottom:10px;border-bottom:1px solid var(--border);position:relative;}
+.article-body-inner h2::after{content:'';position:absolute;bottom:-1px;left:0;width:48px;height:2px;background:var(--red);}
+.article-body-inner h3{font-family:'Shippori Mincho',serif;font-size:clamp(15px,1.8vw,19px);font-weight:700;color:var(--ink);line-height:1.7;margin:36px 0 14px;padding-left:14px;border-left:3px solid var(--red);}
+.article-body-inner p{font-size:15px;line-height:2;color:var(--body);margin-bottom:22px;}
+.article-body-inner strong{color:var(--ink);font-weight:700;}
+.article-body-inner a{color:var(--red-dark);font-weight:700;text-decoration:underline;text-underline-offset:2px;}
+.article-body-inner ul,.article-body-inner ol{list-style:none;margin-bottom:22px;display:flex;flex-direction:column;gap:8px;}
+.article-body-inner ul li,.article-body-inner ol li{font-size:14px;line-height:1.9;color:var(--body);display:flex;align-items:flex-start;gap:10px;}
+.article-body-inner ul li::before{content:'─';color:var(--red);flex-shrink:0;margin-top:4px;font-size:12px;}
+.article-body-inner ol{counter-reset:ol;}
+.article-body-inner ol li{counter-increment:ol;}
+.article-body-inner ol li::before{content:counter(ol);background:var(--red);color:#fff;width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0;margin-top:2px;font-family:'DM Mono',monospace;}
+.pain-cards{display:flex;flex-direction:column;gap:12px;margin:24px 0;}
+.pain-card{background:var(--bg);border-left:4px solid var(--red);border-radius:0 8px 8px 0;padding:18px 20px;display:flex;align-items:flex-start;gap:12px;}
+.pain-card-icon{font-size:22px;flex-shrink:0;margin-top:2px;}
+.pain-card-body{font-size:14px;line-height:1.85;color:var(--body);}
+.pain-card-body strong{color:var(--ink);}
+.point-box{background:var(--bg2);border-radius:8px;padding:20px 24px;margin:20px 0;}
+.point-box-label{font-size:10px;font-family:'DM Mono',monospace;color:var(--red);letter-spacing:0.12em;text-transform:uppercase;margin-bottom:10px;}
+.point-box p{font-size:14px;line-height:1.9;color:var(--body);margin-bottom:0;}
+.case-box{border:1px solid #cffafe;border-left:5px solid var(--red);border-radius:0 10px 10px 0;padding:24px 26px;margin:28px 0;background:linear-gradient(135deg,#ecfeff,#f0fdf4);}
+.case-box p{margin-bottom:0;font-size:14px;line-height:1.9;color:var(--body);}
+.stat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:24px 0;}
+.stat-card{background:#fff;border:1px solid var(--border);border-top:3px solid var(--danger);border-radius:6px;padding:22px 16px;text-align:center;}
+.stat-card .v{font-family:'Shippori Mincho',serif;font-size:30px;font-weight:700;color:var(--danger);line-height:1;}
+.stat-card .l{font-size:11.5px;color:var(--body);line-height:1.6;margin-top:10px;}
+.inline-cta{background:var(--bg);border:1px solid var(--border);border-top:4px solid var(--red);border-radius:10px;padding:36px;margin:52px 0;text-align:center;}
+.inline-cta-tag{font-size:11px;color:var(--red);font-weight:700;letter-spacing:0.08em;margin-bottom:12px;}
+.inline-cta h3{font-family:'Shippori Mincho',serif;font-size:clamp(16px,2vw,22px);font-weight:700;color:var(--ink);line-height:1.65;margin-bottom:12px;}
+.inline-cta p{font-size:14px;color:var(--body);line-height:1.9;margin-bottom:22px;}
+.cta-btns-pair{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;}
+.btn-cta-red{display:inline-flex;align-items:center;gap:6px;background:var(--red);color:#fff;padding:13px 28px;border-radius:4px;font-size:14px;font-weight:700;text-decoration:none;transition:background 0.2s,transform 0.2s;}
+.btn-cta-red:hover{background:var(--red-dark);transform:translateY(-2px);}
+.btn-cta-ghost{display:inline-flex;align-items:center;gap:6px;background:#fff;color:var(--red);border:1.5px solid var(--red);padding:13px 28px;border-radius:4px;font-size:14px;font-weight:700;text-decoration:none;transition:background 0.2s;}
+.btn-cta-ghost:hover{background:var(--tag-bg);}
+.btn-cta-note{display:block;margin-top:12px;font-size:11px;color:var(--light);}
+.flow{background:var(--demo-bg);color:#cbd5e1;border-radius:8px;padding:20px 22px;font-family:'DM Mono',monospace;font-size:12.5px;line-height:1.9;white-space:pre-wrap;margin:24px 0;overflow-x:auto;}
+.flow .a{color:#f87171;}
+.flow .c{color:#67e8f9;}
+code{font-family:'DM Mono',monospace;background:var(--bg2);border:1px solid var(--border);border-radius:4px;padding:2px 7px;font-size:0.9em;color:var(--red-dark);word-break:break-all;}
+.note{font-size:12px;color:var(--light);margin-top:-12px;margin-bottom:22px;}
+.related-section{padding:60px 24px;background:var(--white);border-top:1px solid var(--border);}
+.related-inner{max-width:760px;margin:0 auto;}
+.related-label{font-family:'DM Mono',monospace;font-size:11px;color:var(--red);letter-spacing:0.14em;text-transform:uppercase;margin-bottom:20px;}
+.related-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;}
+.related-card{border:1px solid var(--border);border-top:3px solid var(--red);padding:20px;text-decoration:none;color:inherit;border-radius:0 0 6px 6px;transition:box-shadow 0.2s,transform 0.2s;}
+.related-card:hover{box-shadow:0 4px 16px rgba(0,0,0,0.07);transform:translateY(-2px);}
+.related-card-tag{font-size:10px;font-family:'DM Mono',monospace;color:var(--red);letter-spacing:0.1em;margin-bottom:8px;}
+.related-card-title{font-family:'Shippori Mincho',serif;font-size:14px;font-weight:700;color:var(--ink);line-height:1.6;}
+.back-section{padding:28px 24px;background:var(--bg);border-top:1px solid var(--border);}
+.back-section-inner{max-width:760px;margin:0 auto;}
+.back-link{display:inline-flex;align-items:center;gap:6px;font-size:13px;color:var(--body);text-decoration:none;transition:color 0.2s;}
+.back-link:hover{color:var(--red);}
+footer{background:#1f1f1f;border-top:1px solid rgba(255,255,255,0.06);padding:40px 60px;display:flex;align-items:center;justify-content:space-between;}
+.footer-logo{display:flex;align-items:center;gap:10px;}
+.footer-logo-mark{width:20px;height:20px;background:var(--red);clip-path:polygon(50% 0%,0% 100%,18% 100%,50% 38%,82% 100%,100% 100%);}
+.footer-logo-text{font-family:'DM Mono',monospace;font-size:13px;color:rgba(255,255,255,0.55);}
+.footer-logo-text span{color:var(--red);}
+.footer-copy{font-size:11px;color:rgba(255,255,255,0.25);font-family:'DM Mono',monospace;}
+.reveal{opacity:0;transform:translateY(18px);transition:opacity 0.55s ease,transform 0.55s ease;}
+.reveal.visible{opacity:1;transform:translateY(0);}
+@media(max-width:768px){
+  .article-header,.article-body,.back-section,.related-section{padding-left:16px;padding-right:16px;}
+  .article-header{padding-top:88px;}
+  .stat-grid{grid-template-columns:1fr;}
+  .related-grid{grid-template-columns:1fr !important;}
+  .cta-btns-pair{flex-direction:column;align-items:center;}
+  .inline-cta{padding:24px 18px;}
+  footer{flex-direction:column;gap:14px;text-align:center;padding:28px 16px;}
+}
+</style>
+</head>
+<body>
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-P6VNBWH3" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
+<nav id="mainNav">
+  <a href="/" class="nav-logo">
+    <img src="/images/logo.png" alt="AIdealize">
+    <span class="nav-logo-text"><span>AI</span>dealize</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="/column/">コラム</a></li>
+    <li><a href="/service/">サービス</a></li>
+    <li><a href="https://aidealize.com/bpr/">DX事例</a></li>
+    <li><a href="/works/">実績</a></li>
+    <li><a href="/company.html">会社概要</a></li>
+    <li><a href="/service/prevention/#contact" class="nav-cta">無料でサイト点検</a></li>
+  </ul>
+  <button class="nav-hamburger" id="navHamburger" aria-label="メニュー"><span></span><span></span><span></span></button>
+</nav>
+<div class="nav-drawer" id="navDrawer">
+  <ul>
+    <li><a href="/column/" class="drawer-link">コラム</a></li>
+    <li><a href="/service/" class="drawer-link">サービス</a></li>
+    <li><a href="https://aidealize.com/bpr/" class="drawer-link">DX事例</a></li>
+    <li><a href="/works/" class="drawer-link">実績</a></li>
+    <li><a href="/company.html" class="drawer-link">会社概要</a></li>
+    <li><a href="/service/prevention/#contact">無料でサイト点検</a></li>
+  </ul>
+</div>
+
+<header class="article-header">
+  <div class="article-header-inner">
+    <nav class="breadcrumb" aria-label="パンくず">
+      <a href="/">ホーム</a><span>/</span>
+      <a href="/column/">コラム</a><span>/</span>
+      <span>ハッカーに狙われない会社になる方法</span>
+    </nav>
+    <div class="article-tag">Webセキュリティ / 基本対策</div>
+    <h1 class="article-h1">
+      ハッカーに狙われない会社になる方法。<br>
+      中小企業が最初にやる、<br>
+      7つのサイバー攻撃対策。
+    </h1>
+    <div class="article-meta">
+      <div>2026年11月3日</div>
+      <div>読了約7分</div>
+      <div>AIdealize編集部</div>
+    </div>
+  </div>
+</header>
+
+<article class="article-body">
+<div class="article-body-inner">
+
+  <div class="summary-box reveal">
+    <div class="summary-box-title">この記事でわかること</div>
+    <ul>
+      <li>中小企業がなぜ狙われるのか（警察庁・IPAの公表資料から）</li>
+      <li>最初にやる7つの対策（効果の大きい順）</li>
+      <li>全部は無理なときの優先順位</li>
+      <li>国の枠組み（SECURITY ACTIONなど）の使い方</li>
+    </ul>
+  </div>
+
+  <p>「ハッカーに狙われない会社にするには、何をすればいいのか」。最近のニュースを見て、そう感じた経営者の方は多いと思います。先に正直にお伝えすると、<strong>攻撃を完全に防ぐ方法はありません</strong>。現実的なゴールは、<strong>狙われにくくすること</strong>と、<strong>やられても被害を小さくすること</strong>の2つです。この記事では、警察庁とIPAの公表資料をもとに、中小企業が最初にやる7つの対策を、効果の大きい順にまとめました。</p>
+
+  <h2>なぜ中小企業が狙われるのか</h2>
+
+  <div class="pain-cards">
+    <div class="pain-card reveal"><div class="pain-card-icon">🏭</div><div class="pain-card-body"><strong>被害の約6割は中小企業</strong><br>警察庁の資料（令和8年上半期）では、ランサムウェア被害を受けた企業のうち、中小企業が約6割を占めています。被害報告は123件で、半期ごとでは統計開始以降で最多でした。</div></div>
+    <div class="pain-card reveal"><div class="pain-card-icon">🚪</div><div class="pain-card-body"><strong>入口は「更新されていない機器」と「漏れたパスワード」</strong><br>同じ資料で、侵入経路はVPN機器が約5割を占めるとされています。攻撃者は、未修正の脆弱性や、漏えいした認証情報を悪用して入ってきます。</div></div>
+    <div class="pain-card reveal"><div class="pain-card-icon">🔗</div><div class="pain-card-body"><strong>取引先を踏み台にする攻撃も多い</strong><br>IPAの「情報セキュリティ10大脅威 2026」では、組織向けの1位がランサム攻撃、2位がサプライチェーンや委託先を狙った攻撃でした。小さな会社でも、取引先の入口として狙われます。</div></div>
+  </div>
+
+  <p>つまり、攻撃者は特別な手を使っているというより、<strong>「更新されていない」「パスワードが弱い・使い回している」「外から見える」</strong>という、管理のすきを順番に探しています。だから、地味な基本対策が、いちばん効きます。</p>
+
+  <h2>中小企業が最初にやる7つの対策</h2>
+
+  <h3>① ログインに「二段階認証」をかける</h3>
+  <p>メール、クラウドサービス、ホームページの管理画面、VPNなど、<strong>外からログインできるものすべて</strong>に、パスワードに加えて確認コードなどを求める設定（多要素認証）を入れます。パスワードが漏れても、すぐには入られなくなります。まず、社長や管理者のアカウントと、メールから始めるのがおすすめです。</p>
+
+  <h3>② パスワードの使い回しをやめる</h3>
+  <p>ほかのサービスから漏れたパスワードを使って、片っ端から試す攻撃があります。サービスごとに違う、長いパスワードにして、覚えきれない分は<strong>パスワード管理ツール</strong>に任せると、楽に続けられます。退職した人のアカウントを残さないことも大切です。</p>
+
+  <h3>③ ソフトと機器を、常に最新に保つ</h3>
+  <p>パソコン、ホームページのCMS（WordPressなど）、プラグイン、サーバーのPHP、そして<strong>VPN機器やルーター</strong>が対象です。警察庁の資料で入口の約5割を占めたのが、このVPN機器でした。「自動更新をオン」「サポートが終わった機器は入れ替える」を基本にします。最近の具体例は、<a href="/column/php-kinkyu-vulnerability-chusho-kakunin/">PHPの脆弱性</a>や<a href="/column/wordpress-core-cve-2026-87902-kakunin/">WordPress本体の脆弱性</a>の記事で整理しています。</p>
+
+  <h3>④ 外から見えるものを、減らす</h3>
+  <p>使っていない古いサイト、テスト用のページ、置きっぱなしのバックアップファイル、外から誰でも開ける管理画面は、<strong>攻撃者にとっての入口</strong>です。まず「外に公開しているもの」を一覧にして、不要なものは閉じます。自社サイトでの点検の進め方は、<a href="/column/fusei-access-aitsugu-chusho-jisha-site-tenken/">自社サイトで点検したい5つのこと</a>にまとめました。</p>
+
+  <h3>⑤ バックアップを取り、別の場所に置く</h3>
+  <p>これは「防ぐ」ではなく「被害を小さくする」対策です。警察庁の資料では、攻撃者は侵入後に<strong>バックアップも探して消そうとする</strong>とされています。同じネットワークにつなぎっぱなしの外付けHDDだけでは、一緒に暗号化されることがあります。<strong>ネットワークから切り離した場所に、定期的に取る</strong>こと、そして<strong>実際に戻せるか</strong>を、一度試しておくことが大切です。</p>
+
+  <h3>⑥ 怪しいメールは、まず共有する</h3>
+  <p>最近の侵入は、添付ファイルの感染よりも、機器の弱点やパスワードの悪用が中心になっています。それでも、偽の請求書や偽のログイン画面に誘導するメールは、いまも多く届きます。「あれ？と思ったら、開く前に社内で共有する」というルールだけでも、被害を防げます。</p>
+
+  <h3>⑦ 何かあったときの連絡先を、決めておく</h3>
+  <p>被害にあったとき、いちばん困るのは「誰に何を連絡すればいいか分からない」ことです。<strong>社内の責任者、システムを見ている会社（制作会社・保守会社）、警察の相談窓口</strong>の連絡先を、紙1枚に書いて、すぐ見られる場所に置きます。それだけで、初動の速さが変わります。</p>
+
+  <div class="point-box">
+    <div class="point-box-label">被害が大きくなる理由</div>
+    <p>警察庁の資料では、令和8年上半期の被害組織のうち、<strong>復旧に総額1,000万円以上かかった組織が約6割</strong>、<strong>1か月未満で復旧できた組織は5割弱</strong>でした。復旧には時間も費用もかかります。だからこそ、入られにくくする対策と、バックアップ・連絡先の準備を、両方やっておくことに意味があります。</p>
+  </div>
+
+  <h2>全部は無理、という場合の優先順位</h2>
+
+  <p>一度に全部やる必要はありません。時間がないときは、次の順番で進めてみてください。</p>
+
+  <ol>
+    <li><strong>今週</strong>：①メールと管理画面に二段階認証、⑦連絡先を紙に書く</li>
+    <li><strong>今月</strong>：③更新状況の確認（PC・CMS・VPN機器）、⑤バックアップの場所と復元の確認</li>
+    <li><strong>来月以降</strong>：②パスワード管理の整理、④外に公開しているものの棚卸し、⑥社内ルールづくり</li>
+  </ol>
+
+  <p>自社だけで進めるのが難しい場合は、国の枠組みも使えます。IPAの<strong>SECURITY ACTION</strong>は、取り組み宣言から始められる制度で、取引先への説明にも使えます（<a href="/column/security-action-sengen-tejun/">手順はこちら</a>）。また、IPAが整理している「<strong>サイバーセキュリティお助け隊サービス</strong>」のように、中小企業向けに見守りや駆けつけ対応をまとめたサービスもあります。内容と費用は事業者ごとに違うので、比べて選んでください。</p>
+
+  <div class="inline-cta reveal">
+    <div class="inline-cta-tag">無料相談・費用契約なし</div>
+    <h3>「うちのサイト、外からどう見える？」を、<br>無料で点検します。</h3>
+    <p>公開情報の範囲で、管理画面の露出、CMSやPHPのバージョンの露出、SSLの状態を点検し、優先度の高い対策から整理してお渡しします。押し売りはしません。</p>
+    <div class="cta-btns-pair">
+      <a href="/service/prevention/#contact" class="btn-cta-red">無料でサイト点検を受ける →</a>
+      <a href="/column/chusho-security-hajimekata/" class="btn-cta-ghost">中小企業のセキュリティの始め方を読む</a>
+    </div>
+    <span class="btn-cta-note">オンライン対応・押し売りなし</span>
+  </div>
+
+  <h2>よくある質問（FAQ）</h2>
+  <h3>ハッカーの攻撃を、完全に防ぐことはできますか？</h3>
+  <p>完全に防ぐ方法はありません。現実的には、二段階認証や更新などで「狙われにくくする」ことと、バックアップや連絡先の準備で「被害を小さくする」ことを、両方進めます。</p>
+  <h3>小さな会社でも、本当に狙われるのですか？</h3>
+  <p>警察庁の資料（令和8年上半期）では、ランサムウェア被害企業の約6割が中小企業でした。攻撃者は規模を選ぶというより、更新されていない機器や漏れたパスワードなど、入りやすいところを探します。</p>
+  <h3>費用をかけられません。最初にやることは何ですか？</h3>
+  <p>費用がほとんどかからないものから始められます。メールと管理画面の二段階認証、パスワードの使い回しをやめること、連絡先を紙に書くことの3つです。</p>
+  <h3>セキュリティソフトを入れていれば大丈夫ですか？</h3>
+  <p>ソフトは大切ですが、それだけでは足りません。警察庁の資料では、侵入経路の約5割がVPN機器とされています。パソコンのソフトに加えて、機器やホームページの更新、パスワードの管理も必要です。</p>
+  <h3>自社のホームページが安全か、調べる方法はありますか？</h3>
+  <p>管理画面が外から見えていないか、CMSやPHPのバージョンが古くないか、使っていない古いページが残っていないかを確認します。当社では、公開情報の範囲で外から点検する無料の点検も行っています。</p>
+
+  <h2>まとめ｜「狙われにくく」と「被害を小さく」を、地味に積み上げる</h2>
+  <p>ハッカー対策に、魔法のような方法はありません。<strong>二段階認証、パスワード、更新、公開しているものの整理、バックアップ、メールのルール、連絡先</strong>。この7つを、できるところから積み上げるのが、いちばん確実です。まずは今週、メールと管理画面の二段階認証と、連絡先の紙1枚から始めてみてください。</p>
+
+  <p class="note">参考：<a href="https://www.npa.go.jp/publications/statistics/cybersecurity/index.html" rel="noopener">警察庁「令和8年上半期におけるサイバー空間をめぐる脅威の情勢等について」</a>（2026年9月）、<a href="https://www.ipa.go.jp/security/10threats/10threats2026.html" rel="noopener">IPA「情報セキュリティ10大脅威 2026」</a>。数値や制度は更新されることがあります。最新の情報は各公式サイトをご確認ください。</p>
+
+</div>
+</article>
+
+<section style="padding:0 24px 40px;background:#fff;">
+  <div style="max-width:760px;margin:0 auto;padding:20px 22px;border:1px solid #e2e8f0;border-left:4px solid #0891b2;border-radius:6px;background:#f8fafc;font-size:14px;line-height:2;">
+    <strong style="color:#0e7490;">あわせて読みたい</strong><br>
+    <a href="/column/chusho-security-hajimekata/" style="color:#1e293b;">中小企業のセキュリティの始め方</a><br>
+    <a href="/column/fusei-access-aitsugu-chusho-jisha-site-tenken/" style="color:#1e293b;">相次ぐ不正アクセス・情報漏えい｜自社サイトで今すぐ点検したい5つのこと</a><br>
+    <a href="/column/security-action-sengen-tejun/" style="color:#1e293b;">SECURITY ACTION（IPA）とは？一つ星・二つ星の違いと宣言の手順</a>
+  </div>
+</section>
+
+
+<section class="related-section">
+  <div class="related-inner">
+    <div class="related-label">Related Articles</div>
+    <div class="related-grid">
+      <a href="/column/chusho-cyber-attack-higai-taisaku/" class="related-card">
+        <div class="related-card-tag">Webセキュリティ / 被害対策</div>
+        <div class="related-card-title">中小企業のサイバー攻撃被害、実は約6割。入口は「放置された設定」だった。</div>
+      </a>
+      <a href="/column/security-action-sengen-tejun/" class="related-card">
+        <div class="related-card-tag">Webセキュリティ / SECURITY ACTION</div>
+        <div class="related-card-title">SECURITY ACTION（IPA）とは？一つ星・二つ星の違いと宣言の手順。</div>
+      </a>
+      <a href="/column/wordpress-kanri-marumie/" class="related-card">
+        <div class="related-card-tag">Webセキュリティ / WordPress</div>
+        <div class="related-card-title">WordPressの管理画面、丸見えになっていませんか？5分でできる自己チェック。</div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<div class="back-section">
+  <div class="back-section-inner">
+    <a href="/column/" class="back-link">← コラム一覧に戻る</a>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-logo">
+    <div class="footer-logo-mark"></div>
+    <span class="footer-logo-text"><span>A</span>idealize株式会社</span>
+  </div>
+  <span class="footer-copy">© 2020–2026 AIdealize Inc. All rights reserved.</span>
+</footer>
+
+<script>
+(function(){
+  const btn=document.getElementById('navHamburger');
+  const drawer=document.getElementById('navDrawer');
+  const nav=document.getElementById('mainNav');
+  btn.addEventListener('click',function(){btn.classList.toggle('open');drawer.classList.toggle('open');});
+  drawer.querySelectorAll('.drawer-link').forEach(function(l){l.addEventListener('click',function(){btn.classList.remove('open');drawer.classList.remove('open');});});
+  window.addEventListener('scroll',function(){nav.classList.toggle('scrolled',window.scrollY>10);});
+})();
+const obs=new IntersectionObserver(function(e){e.forEach(function(x){if(x.isIntersecting)x.target.classList.add('visible');});},{threshold:0.08,rootMargin:'0px 0px -30px 0px'});
+document.querySelectorAll('.reveal').forEach(function(el){obs.observe(el);});
+</script>
+<script src="/js/lead-capture.js"></script>
+</body>
+</html>

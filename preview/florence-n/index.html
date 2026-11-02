@@ -102,6 +102,14 @@
   .svc-intro p{margin:0;color:var(--ink-2)}
   .svc-intro h3{margin:0 0 8px;color:var(--blue-d);font-size:1.15rem}
 
+  .svc--featured{position:relative;margin-bottom:18px;background:var(--blue-l);border:2px solid var(--blue);border-radius:var(--radius);padding:30px 30px 28px}
+  .svc--featured:hover{transform:none}
+  .svc--featured h3{font-size:1.3rem;margin:0 0 10px}
+  .svc--featured p{color:var(--ink);font-size:.98rem;margin:0 0 12px}
+  .svc--featured ul{margin:0 0 18px;padding-left:1.2em;color:var(--ink)}
+  .svc--featured li{margin-bottom:4px}
+  .svc-label{position:absolute;top:-13px;left:24px;background:var(--accent);color:#fff;font-weight:800;font-size:.75rem;letter-spacing:.12em;padding:.25em .9em;border-radius:999px}
+
   /* 流れ */
   .flow{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;counter-reset:step}
   .step{position:relative;background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:28px 20px 22px;text-align:center}
@@ -199,6 +207,7 @@
         <span>👶 小児・医療的ケア児にも対応</span>
         <span>🤝 主治医・ケアマネと連携</span>
         <span>💗 看護・リハビリ・緩和ケア</span>
+        <span>🏠 自費の訪問看護にも対応</span>
       </div>
     </div>
     <div class="hero-figure">
@@ -266,6 +275,17 @@
         <h3>確かな記録と連携で、安心の在宅ケアを</h3>
         <p>一回ごとの訪問看護記録にもとづき、体調の変化を主治医・ケアマネジャーと共有。医療処置からリハビリ、精神的な支えまで、下記のような幅広いケアをその方に合わせてご提供します。</p>
       </div>
+    </div>
+    <div class="svc svc--featured" id="jihi">
+      <span class="svc-label">NEW</span>
+      <h3>自費の訪問看護</h3>
+      <p>医療保険・介護保険の枠にとらわれず、ご希望に合わせて看護師がご自宅（施設・入院先を含む）にお伺いします。「保険の回数や時間では足りない」「外出や旅行・行事に付き添ってほしい」「ご家族が休める時間をつくりたい」など、保険ではカバーしにくいご要望にお応えします。<span class="todo">要確認：対応できる内容・対象・料金・受付時間</span></p>
+      <ul>
+        <li>保険の訪問回数・時間を超える見守りや看護</li>
+        <li>通院・外出・行事などへの看護師の付き添い</li>
+        <li>ご家族の休息（レスパイト）のための代替ケア</li>
+      </ul>
+      <a class="btn btn--primary" href="#contact">自費の訪問看護について相談する</a>
     </div>
     <div class="services">
       <div class="svc"><h3><span>◆</span>健康管理・医療処置</h3><p>血圧・体温などの健康チェック、点滴、褥瘡（床ずれ）の処置、カテーテル管理などの医療的ケア。</p></div>
