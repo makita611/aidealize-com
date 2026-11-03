@@ -250,16 +250,18 @@ h2.sec { font-size:clamp(23px,2.4vw,30px) }
 
 
 /* v6 FVを「左に文字・右に引きの写真」に／拡大表示／ご相談の流れ */
-.hero.split { display:grid; grid-template-columns:minmax(340px,36%) 1fr; min-height:0; background:#111; align-items:stretch; padding:0 }
+.hero.split { display:grid; grid-template-columns:minmax(0,1fr); min-height:0; background:#111; align-items:stretch; padding:0; overflow:hidden }
 .hero.split::after { display:none }
-.hero.split .hero-text { display:flex; flex-direction:column; justify-content:center; padding:clamp(28px,4.4vw,72px) clamp(24px,4vw,64px) clamp(28px,4.4vw,72px) max(4vw, calc((100vw - 1120px) / 2)) }
+.hero.split .hero-text { min-width:0; display:flex; flex-direction:column; justify-content:center; padding:clamp(28px,4.4vw,72px) clamp(24px,4vw,64px) clamp(28px,4.4vw,72px) max(4vw, calc((100vw - 1120px) / 2)) }
 .hero.split h1 { font-size:clamp(28px,3vw,44px); text-shadow:none; margin:12px 0 16px }
 .hero.split p { font-size:16px; text-shadow:none; max-width:26em; color:#eee }
 .hero.split .label { text-shadow:none; color:#ccc }
 .hero.split .hero-photo { position:relative; aspect-ratio:4/3; overflow:hidden; background:#111; min-width:0 }
 .hero.split .fvs { position:absolute; inset:0 }
 .hero.split .dots { right:16px; bottom:14px }
-@media (max-width:860px) { .hero.split { grid-template-columns:1fr } .hero.split .hero-photo { order:-1; aspect-ratio:4/3 } .hero.split .hero-text { padding:26px 22px 34px } .hero.split h1 { font-size:30px } }
+/* PC：左に文字・右に写真（861px以上のみ）。スマホ：文字→写真の1列 */
+@media (min-width:861px) { .hero.split { grid-template-columns:minmax(360px,40%) minmax(0,1fr) } }
+@media (max-width:860px) { .hero.split .hero-photo { order:2; aspect-ratio:16/10 } .hero.split .hero-text { min-width:0; order:1; padding:28px 22px 30px; min-width:0 } .hero.split h1 { font-size:clamp(24px,7vw,30px) } .hero.split .cta .btn { flex:1 1 100%; text-align:center } }
 
 .zoomable { cursor:zoom-in }
 .zoomhint { font-size:13px; color:#555; margin-top:10px }
@@ -300,8 +302,8 @@ h2.sec { font-size:clamp(23px,2.4vw,30px) }
 
 /* v8 */
 .nw { display:inline-block }
-.hero.split { grid-template-columns:minmax(360px,40%) 1fr }
-.hero.split h1 { font-size:clamp(26px,2.5vw,40px); line-height:1.4 }
+.hero.split h1 { line-height:1.4 }
+@media (min-width:861px) { .hero.split h1 { font-size:clamp(26px,2.5vw,40px) } }
 .fl-card .art { aspect-ratio:16/9; background:#f1f1f1; display:flex; align-items:center; justify-content:center; border-bottom:1px solid #ddd }
 .fl-card .art svg { position:static; width:72px; height:72px; stroke-width:1.2 }
 
@@ -316,3 +318,26 @@ h2.sec { font-size:clamp(23px,2.4vw,30px) }
 .ptile img { width:100%; max-width:220px; height:130px; object-fit:contain; margin:0 auto 6px }
 .ptile b { display:block; font-size:18px } .ptile span { display:block; font-size:14.5px; color:#333; line-height:1.65; margin-top:4px }
 @media (max-width:860px) { .ptiles { grid-template-columns:1fr 1fr; gap:12px } .ptile img { height:100px } }
+
+
+/* v11 スマホメニュー・QR・補足 */
+.mm { display:none }
+.mm summary { list-style:none; cursor:pointer; padding:8px 14px; border:1.5px solid var(--ink); font-weight:700; font-size:14px }
+.mm summary::-webkit-details-marker { display:none }
+.mm nav { position:absolute; left:0; right:0; top:100%; background:#fff; border-bottom:1px solid var(--ink); display:grid; padding:6px 4vw 14px }
+.mm nav a { padding:13px 0; border-bottom:1px solid var(--line); text-decoration:none; font-weight:700; font-size:16px }
+.mm nav a.cta-line { margin-top:12px; background:#111; color:#fff; text-align:center; border:0 }
+header.top .hd { position:relative }
+.hd .tel a { text-decoration:none }
+.sec-note { font-size:14px; color:#444; margin-top:14px; max-width:44em }
+.door-main { background:#111; color:#fff }
+.consult { display:grid; grid-template-columns:1.1fr 1fr; gap:48px; align-items:start }
+@media (max-width:860px) {
+  .mm { display:block }
+  .hd .tel { display:none }
+  .hd { height:60px }
+  .qrbox .qrimg { display:none !important }
+  .consult { grid-template-columns:1fr; gap:28px }
+}
+nav.gn a { white-space:nowrap }
+@media (min-width:861px) and (max-width:1180px) { nav.gn { gap:14px; font-size:13.5px } .hd { gap:12px } .logo { white-space:nowrap } .hd .tel span { display:none } }
