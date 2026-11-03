@@ -38,3 +38,7 @@
 /wp-login.php       /            301
 /wp-json/           /            301
 /wp-json/*          /            301
+
+# terapua -> terapia (preview address renamed)
+/preview/terapua-47391/*  /preview/terapia-47391/:splat  301
+/preview/terapua-47391    /preview/terapia-47391/  301
