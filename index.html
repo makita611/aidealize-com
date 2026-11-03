@@ -371,6 +371,14 @@ footer{background:var(--navy2);padding:44px 60px;display:flex;align-items:center
 .proof-note{font-size:11px;color:rgba(255,255,255,0.55);line-height:1.7;}
 .proof-link{display:inline-block;margin-top:10px;font-size:13px;font-weight:700;color:#fca5a5;text-decoration:none;}
 .take-card{background:#fff;border-radius:14px;padding:22px 26px;color:var(--ink);}
+.take-card{display:grid;grid-template-columns:120px 1fr;gap:18px;align-items:center;}
+.take-photo{width:120px;height:150px;object-fit:cover;object-position:center top;border-radius:10px;display:block;}
+.cta-photo{width:100%;height:auto;border-radius:12px;display:block;margin:0 0 22px;}
+/* 閲覧効率: 余白を詰めて、1画面で見える情報量を増やす */
+.hero{min-height:auto;padding-top:96px;padding-bottom:56px;}
+.section,.column-section,.company-section{padding-top:64px;padding-bottom:64px;}
+.cta-section{padding-top:72px;padding-bottom:72px;}
+@media(max-width:640px){.section,.column-section,.company-section{padding-top:48px;padding-bottom:48px;}.hero{padding-bottom:40px;}}
 .take-card-title{font-size:13px;font-weight:700;color:var(--ink);margin-bottom:10px;}
 .take-list{list-style:none;display:flex;flex-direction:column;gap:8px;}
 .take-list li{display:flex;gap:10px;font-size:13px;line-height:1.6;color:var(--body);}
@@ -601,12 +609,15 @@ footer{background:var(--navy2);padding:44px 60px;display:flex;align-items:center
       <a class="proof-link" href="/works/artmake-komi/">やったことと数字を読む →</a>
     </div>
     <div class="take-card reveal">
+      <img class="take-photo" src="/images/top-woman-portrait.webp" width="800" height="900" alt="ノートPCとタブレットを手に、笑顔で相談に応じる女性スタッフのイメージ" loading="eager">
+      <div class="take-body">
       <div class="take-card-title">無料30分の相談で持ち帰れるもの</div>
       <ul class="take-list">
         <li><b>01</b>優先して直す3つのこと</li>
         <li><b>02</b>毎月見ればいい数字</li>
         <li><b>03</b>最初の30日でやること（案）</li>
       </ul>
+      </div>
     </div>
   </div>
 </section>
@@ -957,6 +968,7 @@ window.addEventListener('message', function(e){
       <div class="s-eyebrow">無料相談・お問い合わせ</div>
       <h2 class="s-h2" style="color:#fff;">まず30分、<br>今のサイトと集客の状況を<br>聞かせてください。</h2>
       <p class="cta-desc">「何から相談すればいいか分からない」で構いません。サイトのURLと、最近の問い合わせがどこから来ているかを伺い、優先して直すところを一緒に整理します。</p>
+      <img class="cta-photo" src="/images/top-woman-consult.webp" width="900" height="506" alt="オンラインで画面を見ながら、一緒に集客の状況を整理する相談のイメージ" loading="lazy">
       <div class="cta-proof">
         <div class="cta-proof-item">無料・オンライン30分</div>
         <div class="cta-proof-item">優先して直す3つのことを、その場でお伝えします</div>
