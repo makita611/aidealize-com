@@ -42,3 +42,9 @@
 # terapua -> terapia (preview address renamed)
 /preview/terapua-47391/*  /preview/terapia-47391/:splat  301
 /preview/terapua-47391    /preview/terapia-47391/  301
+
+# terapia preview: 構成変更（会社→てらぴぁ→採用）に伴う旧URLの転送
+/preview/terapia-47391/recruit/*   /preview/terapia-47391/terapia/recruit/:splat  301
+/preview/terapia-47391/blog/*      /preview/terapia-47391/news/:splat  301
+/preview/terapia-47391/about/      /preview/terapia-47391/terapia/  301
+/preview/terapia-47391/guide/      /preview/terapia-47391/terapia/  301
