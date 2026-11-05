@@ -1,0 +1,13 @@
+/* うち（goldexperience.jp）で足した部分のスタイル。本部サイトの layout.css は変更せず、ここで補う */
+ul#newsList li time { display: inline-block; min-width: 7em; color: #8a6a3a; font-size: .9em; }
+ul#newsList li a { color: #4a3b2a; text-decoration: none; }
+ul#newsList li a:hover { text-decoration: underline; }
+ul#newsList li .gx-cat { display: inline-block; margin-left: 10px; padding: 1px 10px; border-radius: 999px; background: #fdeef4; color: #c13b77; font-size: .78em; font-weight: bold; }
+.gx-post { max-width: 760px; margin: 0 auto; line-height: 2; color: #4a3b2a; }
+.gx-post h2 { font-size: 1.5em; line-height: 1.5; color: #e4682a; margin: 0 0 .6em; }
+.gx-post h3 { font-size: 1.15em; margin: 1.6em 0 .4em; color: #c13b77; border-left: 6px solid #ea79aa; padding-left: .6em; }
+.gx-post p { margin: 0 0 1.1em; }
+.gx-post .gx-meta { color: #8a6a3a; font-size: .9em; margin-bottom: 1.2em; }
+.gx-post .gx-cta { margin: 2em 0 0; padding: 1.2em 1.4em; background: #fff8f1; border: 2px dashed #f5a8b5; border-radius: 16px; }
+.gx-post .gx-cta a { color: #c13b77; font-weight: bold; }
+.gx-note { font-size: .85em; color: #8a6a3a; }
