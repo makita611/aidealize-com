@@ -1,0 +1,13 @@
+/* 採用ページを本部サイトの枠に収めるための調整（本部の layout.css との衝突を打ち消す） */
+.page-main01 h1.gx-title { margin: 0; font-family: "Zen Maru Gothic", "Hiragino Maru Gothic ProN", "Yu Gothic UI", sans-serif; font-weight: 700; font-size: 2.2rem; line-height: 1.3; color: #f08a1c; letter-spacing: .08em; text-shadow: 0 2px 0 rgba(255,255,255,.8); padding: .3em 0 .2em .2em; }
+.gx-recruit { font-size: 16px; line-height: 1.9; color: #4a3b2a; }
+.gx-recruit *, .gx-recruit *::before, .gx-recruit *::after { box-sizing: border-box; }
+.gx-recruit h1, .gx-recruit h2, .gx-recruit h3 { background: none; border: 0; padding: 0; text-shadow: none; }
+.gx-recruit ul, .gx-recruit ol { list-style: none; }
+.gx-recruit li:before { content: none; }
+.gx-recruit p, .gx-recruit li { color: inherit; }
+.gx-recruit img { max-width: 100%; height: auto; }
+.gx-recruit .wrap, .gx-recruit .narrow { padding-left: 0; padding-right: 0; }
+.gx-recruit a.btn { text-decoration: none; }
+.gx-recruit .sticky-apply { position: fixed; }
+@media (max-width: 767px) { .page-main01 h1.gx-title { font-size: 1.6rem; } }
