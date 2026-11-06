@@ -165,6 +165,30 @@ footer{background:#1f1f1f;border-top:1px solid rgba(255,255,255,0.06);padding:40
   .inline-cta{padding:24px 18px;}
   footer{flex-direction:column;gap:14px;text-align:center;padding:28px 16px;}
 }
+
+.fv-cta{display:inline-flex;align-items:center;background:var(--red);color:#fff;padding:15px 28px;border-radius:6px;font-size:15px;font-weight:700;text-decoration:none;margin:6px 0 10px;}
+.fv-cta:hover{background:var(--red-dark);}
+.fv-note{font-size:12px;color:var(--body);line-height:1.7;margin-bottom:16px;}
+.fv-take{list-style:none;display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:18px 0 0;padding:0;}
+.fv-take li{background:#fff;border:1px solid var(--border);border-radius:8px;padding:12px;font-size:12px;line-height:1.6;color:var(--body);margin:0;}
+.fv-take b{display:block;color:var(--ink);font-size:13px;margin-bottom:2px;}
+.sample-label{font-size:11px;color:var(--light);margin:14px 0 6px;}
+.sample-docs{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:0 0 24px;}
+.sdoc{background:#fff;border:1px solid var(--border);border-radius:8px;padding:10px;font-size:11px;color:var(--body);line-height:1.5;}
+.sdoc h4{font-size:11px;color:var(--red);margin-bottom:6px;}
+.sdoc i{display:block;height:7px;border-radius:3px;background:var(--bg2);margin:5px 0;}
+.sdoc i.s{width:60%;}.sdoc i.m{width:80%;}
+.sdoc .bar{display:flex;align-items:flex-end;gap:3px;height:34px;margin-top:6px;}
+.sdoc .bar span{flex:1;background:var(--tag-bg);border-top:3px solid var(--red);}
+.step-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:20px 0 28px;}
+.step-card{border:1px solid var(--border);border-radius:10px;padding:16px;background:#fff;}
+.step-card .no{font-size:11px;font-weight:700;color:var(--red);letter-spacing:.06em;}
+.step-card h3{font-size:15px;margin:2px 0 8px;}
+.step-card p{font-size:13px;line-height:1.7;color:var(--body);margin:0 0 8px;}
+.step-card .out{font-size:12px;background:var(--bg);border-radius:6px;padding:8px 10px;color:var(--ink);}
+.case-card{border:1px solid var(--border);border-radius:10px;padding:16px;background:var(--bg);margin:8px 0 14px;}
+.case-card .src{font-size:11px;color:var(--light);margin-top:8px;line-height:1.6;}
+@media(max-width:768px){.fv-take,.sample-docs,.step-cards{grid-template-columns:1fr;}.fv-cta{width:100%;justify-content:center;}}
 </style>
 </head>
 <body>
@@ -205,11 +229,21 @@ footer{background:#1f1f1f;border-top:1px solid rgba(255,255,255,0.06);padding:40
     </nav>
     <div class="article-tag">サービス / Web集客の伴走支援</div>
     <h1 class="article-h1">
-      地方の会社とお店の集客を、<br>データを見ながら一緒に改善します。
+      小さな会社・お店の集客を、<br>「何を直すか」から一緒に決めます。
     </h1>
-    <div class="article-meta">
-      <div>全国対応（オンライン）</div>
-      <div>最初のご相談は無料</div>
+    <p class="fv-note" style="font-size:14px;">ホームページはあるのに問い合わせが少ない。Googleマップ、SNS、紹介、広告のどこを直せばよいか分からない。今の状況を見て、優先して直すことを3つに絞り、実行後は数字で確かめます。</p>
+    <a href="/#contact" class="fv-cta">まず30分、無料で優先順位を整理する →</a>
+    <div class="fv-note">オンライン30分・押し売りなし・1〜2営業日以内にご返信。予約増・売上増はお約束しません。支援が不要なときは、そうお伝えします。</div>
+    <ul class="fv-take">
+      <li><b>優先して直す3点</b>サイト・マップ・SNSから効く順に</li>
+      <li><b>毎月見る数字</b>見るべき指標とその見方</li>
+      <li><b>最初の30日案</b>自力で進める場合にも使える形</li>
+    </ul>
+    <div class="sample-label">相談で持ち帰る資料のレイアウト見本（内容はダミーです。実際の相談内容に合わせて作成します）</div>
+    <div class="sample-docs" aria-label="成果物レイアウト見本">
+      <div class="sdoc"><h4>現状まとめ</h4><i class="m"></i><i></i><i class="s"></i></div>
+      <div class="sdoc"><h4>優先順位 1〜3</h4><i class="m"></i><i class="m"></i><i class="s"></i></div>
+      <div class="sdoc"><h4>月次レポート（1枚）</h4><div class="bar"><span style="height:30%"></span><span style="height:45%"></span><span style="height:70%"></span><span style="height:55%"></span></div></div>
     </div>
   </div>
 </header>
@@ -239,13 +273,18 @@ footer{background:#1f1f1f;border-top:1px solid rgba(255,255,255,0.06);padding:40
   </ul>
 
   <h2 id="flow">進め方：調べる → 直す → 数える</h2>
-<div style="overflow-x:auto;"><table style="width:100%;border-collapse:collapse;margin:20px 0 28px;font-size:14px;line-height:1.7;"><tr style="background:#f5f5f5;"><th style="text-align:left;padding:10px;border:1px solid #e5e5e5;white-space:nowrap;">段階</th><th style="text-align:left;padding:10px;border:1px solid #e5e5e5;white-space:nowrap;">やること</th><th style="text-align:left;padding:10px;border:1px solid #e5e5e5;white-space:nowrap;">手元に残るもの</th></tr><tr><td style="padding:10px;border:1px solid #e5e5e5;vertical-align:top;text-align:left;">1. 調べる（最初の1か月）</td><td style="padding:10px;border:1px solid #e5e5e5;vertical-align:top;text-align:left;">検索での見つかり方、Googleマップ、口コミ、SNS、ホームページ、競合を確認。アクセス解析（GA4・サーチコンソール）が入っていなければ設定します</td><td style="padding:10px;border:1px solid #e5e5e5;vertical-align:top;text-align:left;">現状のまとめと、効く順の打ち手リスト</td></tr><tr><td style="padding:10px;border:1px solid #e5e5e5;vertical-align:top;text-align:left;">2. 直す（2か月目〜）</td><td style="padding:10px;border:1px solid #e5e5e5;vertical-align:top;text-align:left;">情報のズレを直す、入口のページを作る、施工事例やメニューを検索に出る形に書き直す、Googleマップを整える</td><td style="padding:10px;border:1px solid #e5e5e5;vertical-align:top;text-align:left;">直したページ・記事・設定</td></tr><tr><td style="padding:10px;border:1px solid #e5e5e5;vertical-align:top;text-align:left;">3. 数える（毎月）</td><td style="padding:10px;border:1px solid #e5e5e5;vertical-align:top;text-align:left;">問い合わせを「どこで知ったか」別に数える台帳をつくり、月1回の定例で数字を見て次の手を決める</td><td style="padding:10px;border:1px solid #e5e5e5;vertical-align:top;text-align:left;">月次レポート・相談台帳</td></tr></table></div>
+<div class="step-cards">
+    <div class="step-card"><div class="no">STEP 1 ／ 最初の1か月</div><h3>調べる</h3><p>検索での見つかり方、Googleマップ、口コミ、SNS、ホームページ、競合を確認。アクセス解析（GA4・サーチコンソール）が未設定なら設定します。</p><div class="out">残るもの：現状のまとめと、効く順の打ち手リスト</div></div>
+    <div class="step-card"><div class="no">STEP 2 ／ 2か月目〜</div><h3>直す</h3><p>情報のズレを直す、入口のページを作る、施工事例やメニューを検索に出る形に書き直す、Googleマップを整える。</p><div class="out">残るもの：直したページ・記事・設定</div></div>
+    <div class="step-card"><div class="no">STEP 3 ／ 毎月</div><h3>数える</h3><p>問い合わせを「どこで知ったか」別に数える台帳をつくり、月1回の定例で数字を見て次の手を決めます。</p><div class="out">残るもの：月次レポート・相談台帳</div></div>
+  </div>
   <p>SNSを毎日更新していただく必要はありません。<strong>現場の写真を送っていただければ、記事や投稿にするのはこちらで行います</strong>。社長さんにお願いするのは「写真を撮る」と「お客さんにどこで知ったかを聞く」の2つだけです。</p>
 
   <h2 id="price">料金の目安</h2>
 <div style="overflow-x:auto;"><table style="width:100%;border-collapse:collapse;margin:20px 0 28px;font-size:14px;line-height:1.7;"><tr style="background:#f5f5f5;"><th style="text-align:left;padding:10px;border:1px solid #e5e5e5;white-space:nowrap;">内容</th><th style="text-align:left;padding:10px;border:1px solid #e5e5e5;white-space:nowrap;">料金</th><th style="text-align:left;padding:10px;border:1px solid #e5e5e5;white-space:nowrap;">含まれるもの・補足</th></tr><tr><td style="padding:10px;border:1px solid #e5e5e5;vertical-align:top;text-align:left;">集客の伴走支援</td><td style="padding:10px;border:1px solid #e5e5e5;vertical-align:top;text-align:left;"><strong>月5万円〜</strong>（税別）</td><td style="padding:10px;border:1px solid #e5e5e5;vertical-align:top;text-align:left;">月10〜20時間が目安。月1回のオンライン定例、アクセス解析の月次レポート、ページ・記事の改善、Googleマップ・SNS運用の相談。期間は3〜6か月から</td></tr><tr><td style="padding:10px;border:1px solid #e5e5e5;vertical-align:top;text-align:left;">ホームページ制作・リニューアル</td><td style="padding:10px;border:1px solid #e5e5e5;vertical-align:top;text-align:left;">内容に応じてお見積り</td><td style="padding:10px;border:1px solid #e5e5e5;vertical-align:top;text-align:left;">ページ数・写真撮影の有無・予約機能などで変わります。伴走支援と組み合わせることもできます</td></tr><tr><td style="padding:10px;border:1px solid #e5e5e5;vertical-align:top;text-align:left;">契約後の保守</td><td style="padding:10px;border:1px solid #e5e5e5;vertical-align:top;text-align:left;">差し替え 1回3,000円〜<br>ページ追加 1ページ15,000円〜<br>継続サポート 月1万円〜（いずれも税別）</td><td style="padding:10px;border:1px solid #e5e5e5;vertical-align:top;text-align:left;">文字・写真の差し替え、ページの追加、月1回の更新・数字の確認など。必要なものだけ選べます</td></tr><tr><td style="padding:10px;border:1px solid #e5e5e5;vertical-align:top;text-align:left;">最初のご相談・サイト点検</td><td style="padding:10px;border:1px solid #e5e5e5;vertical-align:top;text-align:left;"><strong>無料</strong></td><td style="padding:10px;border:1px solid #e5e5e5;vertical-align:top;text-align:left;">オンラインで30分ほど。押し売りはしません</td></tr></table></div>
   <div class="note">金額は目安です。対応範囲・期間・地域（現地訪問の有無）によって変わるため、ご相談のうえでお見積りします。補助金を活用したご依頼にも、見積書・契約書・報告書の形でご対応しています。ドメインやGoogleマップなどのアカウントは、お客様名義で管理していただく形をおすすめしています。</div>
 
+  <div class="inline-cta"><div class="cta-btns-pair"><a href="/#contact" class="btn-cta-red">まず30分、無料で優先順位を整理する →</a></div><span class="btn-cta-note">予約増・売上増は保証しません。支援が不要なときは、そうお伝えします。</span></div>
   <h2 id="consult">30分の無料相談で持ち帰れるもの</h2>
   <ol>
     <li><strong>優先して直す3つのこと</strong>：今のサイト・Googleマップ・SNSのうち、効く順に3つ</li>
@@ -262,7 +301,12 @@ footer{background:#1f1f1f;border-top:1px solid rgba(255,255,255,0.06);padding:40
   </ul>
 
   <h2>事例</h2>
-  <p><span style="display:inline-block;font-size:11px;font-weight:700;padding:2px 10px;border-radius:100px;background:#fde8eb;color:#9B0C22;margin-bottom:6px;">自社支援実績</span><br><a href="/works/artmake-komi/"><strong>アートメイクサロン：検索からのクリックが5か月で月2回→178回に</strong></a><br>Googleマップが使えない条件のなかで、エリアページと悩みに答えるコラムを積み上げ、平均掲載順位は6月の33.8位から9月は11.3位へ。やったこと、数字、まだできていないことを公開しています（代表の家族が営む事業です。予約数・売上は計測できないため載せていません）。運用して分かったことは<a href="/column/artmake-shukyaku-unyo-manabi/">コラム</a>にまとめています。</p>
+  <div class="case-card">
+    <span style="display:inline-block;font-size:11px;font-weight:700;padding:2px 10px;border-radius:100px;background:#fde8eb;color:#9B0C22;margin-bottom:6px;">自社支援実績</span><br>
+    <a href="/works/artmake-komi/"><strong>アートメイクサロン：検索からのクリックが5か月で月2回→178回に</strong></a>
+    <p style="margin-top:6px;">Googleマップが使えない条件のなかで、エリアページと悩みに答えるコラムを積み上げ、平均掲載順位は6月の33.8位から9月は11.3位へ。やったこと、数字、まだできていないことを公開しています。運用して分かったことは<a href="/column/artmake-shukyaku-unyo-manabi/">コラム</a>にまとめています。</p>
+    <div class="src">対象：artmake-komi（代表の家族が営む事業）／期間：5月〜9月／指標：Google検索のクリック数・平均掲載順位／データ源：Google Search Console／予約数・売上はサイト上では計測しておらず、増加を示すものではありません。</div>
+  </div>
   <p>ほかの事例は、お客様の許可をいただいたものから順に公開していきます。</p>
 
   <div class="inline-cta reveal">
@@ -270,7 +314,7 @@ footer{background:#1f1f1f;border-top:1px solid rgba(255,255,255,0.06);padding:40
     <h3>まずは今のサイトとGoogleマップを、<br>一緒に見てみませんか。</h3>
     <p>検索での見つかり方、情報のズレ、問い合わせまでの導線を確認し、効く順の打ち手をお伝えします。</p>
     <div class="cta-btns-pair">
-      <a href="/#contact" class="btn-cta-red">まず30分、無料で相談する →</a>
+      <a href="/#contact" class="btn-cta-red">まず30分、無料で優先順位を整理する →</a>
       <a href="/works/artmake-komi/" class="btn-cta-ghost">集客の事例を見る</a>
     </div>
     <span class="btn-cta-note">オンライン対応・押し売りなし</span>

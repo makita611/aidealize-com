@@ -325,7 +325,8 @@ $("bNext").onclick=function(){var n=new Date(now.getFullYear(),now.getMonth()+1,
 $("selY").onchange=$("selM").onchange=function(){loadMonth(+$("selY").value,+$("selM").value)};
 $("wd").onclick=function(e){var b=e.target.closest("[data-w]");if(!b)return;var w=+b.dataset.w,i=S.closedWd.indexOf(w);if(i>=0)S.closedWd.splice(i,1);else S.closedWd.push(w);saveS();renderControls()};
 $("hOpen").onclick=function(){S.holidayOpen=!S.holidayOpen;saveS();renderControls()};
-$("bRebuild").onclick=function(){D.days=defaultDays(Y,M);saveM();renderAll();$("msg").textContent=M+"月を、毎週の定休日と祝日の設定で作り直しました。"};
+function toast(t){var el=$("toastN");if(!el){el=document.createElement("div");el.id="toastN";el.setAttribute("role","status");el.style.cssText="position:fixed;left:50%;bottom:84px;transform:translateX(-50%);max-width:88vw;background:#1e293b;color:#fff;font-size:14px;line-height:1.6;padding:12px 18px;border-radius:10px;z-index:9999;box-shadow:0 6px 24px rgba(0,0,0,.25);opacity:0;transition:opacity .2s;pointer-events:none;text-align:center";document.body.appendChild(el)}el.textContent=t;el.style.opacity="1";clearTimeout(toast.t);toast.t=setTimeout(function(){el.style.opacity="0"},3200)}
+$("bRebuild").onclick=function(){D.days=defaultDays(Y,M);saveM();renderAll();var m=M+"月を、毎週の定休日と祝日の設定で作り直しました。下の「②日付」と最後のプレビューに反映されています。";$("msg").textContent=m;toast(m)};
 $("tpWrap").oninput=function(e){var t=e.target;if(t.dataset.n!==undefined)S.types[+t.dataset.n].name=t.value;if(t.dataset.c!==undefined)S.types[+t.dataset.c].color=t.value;saveS();renderGrid();$("cycTxt").textContent=activeTypes().map(function(i){return S.types[i-1].name}).join(" → ");draw()};
 $("hours").oninput=function(){S.hours=$("hours").value;saveS();draw()};
 $("shop").oninput=function(){S.shop=$("shop").value;saveS();draw()};
