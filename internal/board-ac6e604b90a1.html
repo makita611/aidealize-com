@@ -1,0 +1,86 @@
+<!doctype html><html lang="ja"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex, nofollow, noarchive"><meta name="referrer" content="no-referrer"><meta name="color-scheme" content="light">
+<title>aidealize 集客ボード</title>
+<style>
+:root{color-scheme:light}
+body{margin:0;background:#fff;color:#222;font:15px/1.7 -apple-system,"Hiragino Sans","Yu Gothic",sans-serif}
+main{overflow-x:hidden;max-width:760px;margin:0 auto;padding:20px 16px 60px}
+h1{font-size:22px;margin:0 0 2px}h2{font-size:17px;margin:34px 0 4px}
+.sub{color:#777;font-size:13px}.hint{color:#666;font-size:13px;margin:0 0 10px}
+.cards{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+.card{border:1px solid #e5e5e5;border-radius:12px;padding:12px 14px}
+.card .n{font-size:28px;font-weight:700;line-height:1.2}.card .l{font-size:13px;color:#555}
+.up{color:#1a8a4a}.down{color:#c0392b}.flat{color:#888}
+.sum{background:#f6f3ee;border-radius:12px;padding:14px 16px}
+.sum li{margin:4px 0}
+.bars{display:flex;align-items:flex-end;gap:5px;height:120px;margin-top:8px}
+.col{flex:1;display:flex;flex-direction:column-reverse;height:100%}
+.seg{width:100%}.lab{display:flex;gap:5px;font-size:10px;color:#888;margin-top:3px}.lab span{flex:1;text-align:center}
+.leg{display:flex;flex-wrap:wrap;gap:10px;font-size:12px;margin-top:8px}.leg i{display:inline-block;width:10px;height:10px;border-radius:2px;margin-right:4px}
+table{width:100%;table-layout:fixed;border-collapse:collapse;font-size:13px}th,td{padding:7px 4px;border-bottom:1px solid #eee;text-align:right}
+th:first-child,td:first-child{text-align:left;word-break:break-all}th{color:#777;font-weight:500}
+.spark{font-size:12px;color:#888}
+</style></head><body><main>
+<h1>aidealize 集客ボード</h1>
+<div class="sub" id="gen"></div>
+
+<h2>今週のまとめ</h2>
+<div class="sum"><ul id="sum" style="margin:0;padding-left:18px"></ul></div>
+
+<h2>ひと目でわかる数字(先週 vs その前の週)</h2>
+<p class="hint">「今週」は月曜〜昨日までの途中経過なので、比べるのは直前の2つの完全な週だよ。</p>
+<div class="cards" id="cards"></div>
+
+<h2>来た人の数(週ごと・流入元別)</h2>
+<p class="hint">どこから来たか。いちばん右が今週(途中)。</p>
+<div class="bars" id="bars"></div><div class="lab" id="lab"></div><div class="leg" id="leg"></div>
+
+<h2>お客さんの行動(週ごと)</h2>
+<p class="hint">問い合わせや診断など「成果に近い動き」だけ。0が続くものは要点検。</p>
+<table id="ev"></table>
+
+<h2>どのボタンが押されている?(直近28日)</h2>
+<table id="cta"></table>
+
+<h2>入口になっているページ(直近28日)</h2>
+<p class="hint">「読まれ率」は、ちゃんと見られた訪問の割合。高いほど良い。</p>
+<table id="pg"></table>
+</main>
+<script>
+const D={"generated": "2026-11-09 22:30", "weeks": ["8/24", "8/31", "9/7", "9/14", "9/21", "9/28", "10/5", "10/12", "10/19", "10/26", "11/2", "11/9"], "channels": {"検索": [74, 81, 97, 91, 73, 110, 188, 236, 517, 246, 219, 0], "直接": [66, 67, 82, 85, 85, 67, 109, 58, 105, 60, 131, 0], "SNS": [0, 1, 0, 1, 3, 2, 0, 1, 18, 1, 0, 0], "その他": [3, 20, 11, 1, 1, 0, 1, 1, 0, 0, 0, 0], "他サイト": [8, 2, 6, 5, 0, 2, 2, 0, 9, 4, 1, 0], "AI": [1, 2, 0, 1, 2, 0, 1, 2, 1, 0, 0, 0]}, "users": [141, 145, 172, 167, 157, 168, 271, 270, 580, 279, 321, 0], "events": {"form_success": [0, 0, 0, 0, 0, 1, 2, 3, 1, 1, 1, 0], "form_submit": [0, 4, 1, 12, 4, 3, 3, 3, 2, 4, 2, 0], "line_friend_click": [0, 2, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0], "cta_click": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 7, 0], "scan_lead_submit": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], "generate_soap_note": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]}, "evnames": {"form_success": "問い合わせ送信(成功)", "form_submit": "フォーム送信ボタン", "line_friend_click": "LINE友だち追加クリック", "cta_click": "ボタン/リンククリック(全体)", "scan_lead_submit": "サイト診断のリード送信", "generate_soap_note": "SOAPデモ使用"}, "pages": [{"page": "/column/kaigo-bcp-kunren-jisshirei", "sessions": 428, "eng": 100, "sec": 156}, {"page": "/column/php-kinkyu-vulnerability-chusho-kakunin", "sessions": 276, "eng": 100, "sec": 171}, {"page": "/", "sessions": 105, "eng": 92, "sec": 123}, {"page": "(not set)", "sessions": 93, "eng": 0, "sec": 0}, {"page": "/lp/jinzai", "sessions": 92, "eng": 97, "sec": 8}, {"page": "/column/keibi-henko-tantosha-kaigi", "sessions": 78, "eng": 100, "sec": 131}, {"page": "/tools/eigyobi-calendar", "sessions": 63, "eng": 95, "sec": 197}, {"page": "/column/ninteichosahyo-tokki-kakikata", "sessions": 54, "eng": 96, "sec": 1407}, {"page": "/column/php-taisaku-update-tejun-wordpress", "sessions": 35, "eng": 100, "sec": 300}, {"page": "/service/bcp", "sessions": 25, "eng": 88, "sec": 39}, {"page": "/column/houkan-kaishi-shuryo-jikoku", "sessions": 24, "eng": 100, "sec": 132}, {"page": "/bpr/case/110", "sessions": 18, "eng": 100, "sec": 28}, {"page": "/column/ssl-shometsu-kigen", "sessions": 16, "eng": 100, "sec": 307}, {"page": "/column/wordpress-core-cve-2026-87902-kakunin", "sessions": 14, "eng": 100, "sec": 70}, {"page": "/company", "sessions": 13, "eng": 85, "sec": 78}], "cta": [["(not set)", 8162], ["tool", 3], ["contact", 3], ["service", 1]], "range": ["2026-08-24", "2026-11-08"]};
+const $=id=>document.getElementById(id);
+const sum=a=>a.reduce((x,y)=>x+y,0);
+$('gen').textContent='更新 '+D.generated+'(GA4・'+D.range[0]+'〜'+D.range[1]+')';
+const W=D.weeks.length, L=W-2, P=W-3;
+const tot=D.weeks.map((_,i)=>sum(Object.values(D.channels).map(a=>a[i])));
+const chg=(a,b)=>b?Math.round((a-b)/b*100):null;
+function badge(a,b){const c=chg(a,b);if(c===null)return'<span class="flat">比較なし</span>';
+ return c>0?`<span class="up">▲${c}%</span>`:c<0?`<span class="down">▼${-c}%</span>`:'<span class="flat">±0%</span>'}
+const card=(l,a,b)=>`<div class="card"><div class="n">${a}</div><div class="l">${l}</div><div class="l">前の週 ${b} → ${badge(a,b)}</div></div>`;
+const f=k=>D.events[k]||new Array(W).fill(0);
+const sr=(D.channels['検索']||new Array(W).fill(0));
+$('cards').innerHTML=
+ card('訪問数',tot[L],tot[P])+card('訪問した人数',D.users[L],D.users[P])+
+ card('検索から来た数',sr[L],sr[P])+card('問い合わせ送信(成功)',f('form_success')[L],f('form_success')[P])+
+ card('LINE友だち追加クリック',f('line_friend_click')[L],f('line_friend_click')[P])+
+ card('ボタン・リンククリック',f('cta_click')[L],f('cta_click')[P]);
+const COL={'検索':'#2e7d6b','AI':'#7b5ea7','直接':'#9aa5b1','SNS':'#e08a3c','他サイト':'#4a7fc1','広告':'#c0504d','その他':'#d8d8d8'};
+const names=Object.keys(D.channels).sort((a,b)=>sum(D.channels[b])-sum(D.channels[a]));
+const mx=Math.max(...tot,1);
+$('bars').innerHTML=D.weeks.map((_,i)=>`<div class="col" title="${D.weeks[i]}週 計${tot[i]}">`+
+ names.map(n=>`<div class="seg" style="height:${D.channels[n][i]/mx*100}%;background:${COL[n]||'#ccc'}"></div>`).join('')+'</div>').join('');
+$('lab').innerHTML=D.weeks.map((w,i)=>`<span>${i==W-1?'今週':w}</span>`).join('');
+$('leg').innerHTML=names.map(n=>`<span><i style="background:${COL[n]||'#ccc'}"></i>${n} ${sum(D.channels[n])}</span>`).join('');
+$('ev').innerHTML='<tr><th>動き</th><th>先週</th><th>前の週</th><th>直近6週</th></tr>'+Object.keys(D.evnames).map(k=>
+ `<tr><td>${D.evnames[k]}</td><td>${f(k)[L]}</td><td>${f(k)[P]}</td><td class="spark">${f(k).slice(-6).join(' · ')}</td></tr>`).join('');
+$('cta').innerHTML='<tr><th>押された種類</th><th>回数</th></tr>'+(D.cta.length?D.cta.map(([k,v])=>`<tr><td>${k||'(未分類)'}</td><td>${v}</td></tr>`).join(''):'<tr><td colspan=2>まだデータなし</td></tr>');
+$('pg').innerHTML='<tr><th>ページ</th><th>訪問</th><th>読まれ率</th><th>滞在</th></tr>'+D.pages.map(p=>`<tr><td>${p.page}</td><td>${p.sessions}</td><td>${p.eng}%</td><td>${p.sec}秒</td></tr>`).join('');
+const li=[];const c=chg(tot[L],tot[P]);
+li.push(`先週の訪問は ${tot[L]} 件(前の週 ${tot[P]} 件${c===null?'':'、'+(c>=0?'+':'')+c+'%'})。`);
+const best=names.map(n=>[n,D.channels[n][L]]).sort((a,b)=>b[1]-a[1])[0];
+if(best)li.push(`いちばん多い入口は「${best[0]}」で ${best[1]} 件。`);
+const fs=f('form_success')[L],fsub=f('form_submit')[L];
+li.push(fs===0?`問い合わせ送信(成功)は先週0件${fsub?`(送信ボタンは${fsub}回押されている)`:''}。`:`問い合わせ送信が ${fs} 件あったよ。`);
+li.push(`よく入口になるのは ${D.pages.slice(0,3).map(p=>p.page).join(' / ')}。`);
+$('sum').innerHTML=li.map(x=>`<li>${x}</li>`).join('');
+</script></body></html>
