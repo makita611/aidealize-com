@@ -3,10 +3,10 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Wix・Jimdo・STUDIOは基本的に対象外｜PHP脆弱性との関係と確認すべき3つのこと【AIdealize】</title>
-<meta name="description" content="結論：Wix・Jimdo・STUDIOなどのサービス型サイトは、PHPの重大な脆弱性（CVE-2026-109618/109619）の基本的に対象外です。なぜ対象外なのかと、それでも確認したい3つのこと（同じドメインに別システムが混ざっていないか／運営会社の案内／制作会社への確認）を整理します。">
+<title>Wix・JimdoはPHP脆弱性の対象？基本的に対象外、ただし確認したい3点【2026年10月】</title>
+<meta name="description" content="Wix・Jimdo・STUDIOなどのサービス型サイトは、PHPの重大な脆弱性（2026年10月21日公表）の影響を、基本的には受けにくい仕組みです。ただし、同じドメインに別システムが混ざっていないか、運営会社の案内、制作会社への確認の3点は見ておきましょう。">
 <link rel="canonical" href="https://aidealize.com/column/wix-jimdo-php-kyojakusei-taisho/">
-<meta property="og:title" content="Wix・Jimdo・STUDIOは基本的に対象外｜PHP脆弱性との関係と確認すべき3つのこと">
+<meta property="og:title" content="Wix・JimdoはPHP脆弱性の対象？基本的に対象外、ただし確認したい3点">
 <meta property="og:description" content="Wix・Jimdo・STUDIOなどのサービス型サイトとPHPの脆弱性の関係と、サービス型でも確認したい3つのこと。">
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://aidealize.com/column/wix-jimdo-php-kyojakusei-taisho/">
@@ -22,8 +22,8 @@
   "@type": "Article",
   "headline": "Wix・Jimdo・STUDIOは基本的に対象外｜PHP脆弱性との関係と確認すべき3つのこと",
   "description": "Wix・Jimdo・STUDIOなどのサービス型サイトとPHPの脆弱性の関係と、サービス型でも確認したい3つのこと。",
-  "datePublished": "2026-10-24",
-  "dateModified": "2026-10-24",
+  "datePublished": "2026-10-24","image":"https://aidealize.com/images/logo.png",
+  "dateModified":"2026-11-10",
   "author": {"@type": "Organization", "name": "AIdealize株式会社"},
   "publisher": {"@type": "Organization", "name": "AIdealize株式会社", "url": "https://aidealize.com"}
 }
@@ -226,6 +226,8 @@ footer{background:#1f1f1f;border-top:1px solid rgba(255,255,255,0.06);padding:40
     </ul>
   </div>
 
+  <p><strong>先に結論：</strong>Wix・Jimdo・STUDIOなどのサービス型サイトは、自社でPHPを入れて動かす仕組みではないため、この脆弱性について利用者が自分で更新作業をする必要は、基本的にありません。ただし「基本的に」であり、同じドメインに別のシステム（WordPressなど）が混ざっていないかの確認は必要です。</p>
+
   <p>2026年10月21日に公表された、PHPの重大な脆弱性（CVE-2026-109618、CVE-2026-109619）。ニュースを見て、「うちのホームページはWixで作っているけれど、大丈夫？」「Jimdoだと関係あるの？」と気になった方も多いと思います。この記事では、サービス型のサイトで確認したいことを整理します。脆弱性そのものの概要は、<a href="/column/php-kinkyu-vulnerability-chusho-kakunin/">こちらの記事</a>にまとめています。</p>
 
   <h2>結論｜サービス型のサイトは、基本的に対象外です</h2>
@@ -316,25 +318,17 @@ footer{background:#1f1f1f;border-top:1px solid rgba(255,255,255,0.06);padding:40
   <div class="related-inner">
     <div class="related-label">Related Articles</div>
     <div class="related-grid">
-      <a href="/column/hoshu-keiyaku-wana/" class="related-card">
-        <div class="related-card-tag">Webセキュリティ / 保守契約</div>
-        <div class="related-card-title">「保守契約」を結んでいるのに、なぜサイトは古いままなのか？制作会社との見えない溝の正体。</div>
+      <a href="/column/php-kinkyu-vulnerability-chusho-kakunin/" class="related-card">
+        <div class="related-card-tag">Webセキュリティ / ニュース解説</div>
+        <div class="related-card-title">PHPの重大な脆弱性、      うちのサイトは大丈夫？      中小企業が今日確認すべき3つのこと。</div>
       </a>
-      <a href="/column/ssl-shometsu-kigen/" class="related-card">
-        <div class="related-card-tag">Webセキュリティ / 保守</div>
-        <div class="related-card-title">SSL証明書の「期限切れ・失効」で何が起きる？「保護されていない通信」警告の正体と対処。</div>
+      <a href="/column/wordpress-core-cve-2026-87902-kakunin/" class="related-card">
+        <div class="related-card-tag">Webセキュリティ / ニュース解説</div>
+        <div class="related-card-title">WordPress本体の重大な脆弱性      （CVE-2026-87902）。      7.1.2への更新と、確認すること。</div>
       </a>
-      <a href="/column/wordpress-kanri-marumie/" class="related-card">
-        <div class="related-card-tag">Webセキュリティ / WordPress</div>
-        <div class="related-card-title">WordPressの管理画面、丸見えになっていませんか？5分でできる自己チェック。</div>
-      </a>
-      <a href="/column/torihikisaki-security-hojokin/" class="related-card">
-        <div class="related-card-tag">Webセキュリティ / 補助金</div>
-        <div class="related-card-title">取引先に「セキュリティ大丈夫？」と聞かれたら？IPA「42.1%」と補助金活用術。</div>
-      </a>
-      <a href="/column/komuten-site-tenken/" class="related-card">
-        <div class="related-card-tag">工務店Web集客 / 実態調査</div>
-        <div class="related-card-title">地方の工務店サイトを点検してわかった「放置サイト」の実態と脱出策。</div>
+      <a href="/column/php-taisaku-update-tejun-wordpress/" class="related-card">
+        <div class="related-card-tag">Webセキュリティ / 対策ガイド</div>
+        <div class="related-card-title">PHPの脆弱性、自分でできる対策は？      バージョン確認・更新・やってはいけないこと      WordPressサイト向けの手順ガイド。</div>
       </a>
     </div>
   </div>

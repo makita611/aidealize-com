@@ -16,7 +16,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700;900&family=Shippori+Mincho:wght@400;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
 <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-P6VNBWH3');</script>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"SOAP記録AIの方式比較｜音声入力・文字起こし・生成AIの違い","description":"SOAP記録AIを、音声入力、文字起こし、要約、SOAP自動構造化の4方式で比較。精度、修正負担、電子カルテ連携、向く現場、注意点を訪問看護向けに解説します。","datePublished":"2026-09-02","dateModified":"2026-09-02","author":{"@type":"Organization","name":"AIdealize株式会社"},"publisher":{"@type":"Organization","name":"AIdealize株式会社","url":"https://aidealize.com"},"mainEntityOfPage":"https://aidealize.com/column/soap-kiroku-ai-hikaku/"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"SOAP記録AIの方式比較｜音声入力・文字起こし・生成AIの違い","description":"SOAP記録AIを、音声入力、文字起こし、要約、SOAP自動構造化の4方式で比較。精度、修正負担、電子カルテ連携、向く現場、注意点を訪問看護向けに解説します。","datePublished":"2026-09-02","image":"https://aidealize.com/images/logo.png","dateModified":"2026-11-10","author":{"@type":"Organization","name":"AIdealize株式会社"},"publisher":{"@type":"Organization","name":"AIdealize株式会社","url":"https://aidealize.com"},"mainEntityOfPage":"https://aidealize.com/column/soap-kiroku-ai-hikaku/"}</script>
 <style>
 :root{
   --red:#0891b2;--red-dark:#0e7490;
@@ -174,23 +174,30 @@ footer{background:#1f1f1f;border-top:1px solid rgba(255,255,255,0.06);padding:40
 <h2>同じ音声で比較テストする</h2><p>方式を比較するときは、個人を特定できないテスト音声を1本用意し、全候補に同じ内容を入力します。生成時間だけでなく、確定までの修正時間と欠落項目を記録してください。</p>
 <div class="point-box"><div class="point-box-label">注意</div><p>生成AIは自然な文章を作れても、臨床上の正しさを保証しません。観察した事実、看護師の評価、次回計画の境界を確認し、事業所の記録基準に従って確定してください。</p></div>
 <div class="inline-cta reveal"><div class="inline-cta-tag">実画面で比較</div><h3>音声からSOAP下書きになる流れを無料で確認。</h3><p>専用アプリを増やさず、LINE音声から下書きを作る方式を試せます。</p><div class="cta-btns-pair"><a href="/lp/hanamaru-kango/" class="btn-cta-red">無料デモを見る →</a></div></div>
-<h2>FAQ</h2><h3>文字起こしだけでも記録は速くなりますか？</h3><p>タイピングは減りますが、長い文章から必要事項を選びSOAPへ整理する作業は残ります。</p><h3>SOAP形式は必須ですか？</h3><p>法令でSOAPだけが指定されているわけではありません。事業所の様式と連携先が必要とする情報に合わせて選びます。</p></div></article>
+<h2>状況別｜どの方式から試すか</h2><div class="dwrap"><table class="dtable"><thead><tr><th>状況</th><th>先に試す方式</th><th>見るポイント</th></tr></thead><tbody><tr><td>訪問後の記録時間を減らしたい</td><td>音声の文字起こし → 要約</td><td>訪問先での録音可否、聞き取り精度、修正にかかる時間</td></tr><tr><td>会議・面談の記録が多い</td><td>会話要約型</td><td>専門用語・固有名詞の誤変換、要点の抜け漏れ</td></tr><tr><td>SOAP形式で書くことが決まっている</td><td>SOAP構造化AI</td><td>主観（S）と客観（O）が混ざらないか、評価（A）を勝手に作らないか</td></tr><tr><td>既存の電子カルテ・記録ソフトを変えたくない</td><td>文字起こし＋コピー運用</td><td>貼り付け後の修正の手間、転記ミスを防ぐ確認手順</td></tr></tbody></table></div>
+<h2>比較軸を6つにそろえる</h2><p>製品名ではなく、次の6軸で同じ質問を投げると、比較がぶれません。</p><div class="dwrap"><table class="dtable"><thead><tr><th>比較軸</th><th>事業所が確認すること</th></tr></thead><tbody><tr><td>入力方法</td><td>スマホ・PC・専用機のどれか。訪問先で使えるか</td></tr><tr><td>個人情報</td><td>入力内容の保存場所・期間、AIの学習に使われるか、委託契約の有無</td></tr><tr><td>確認責任</td><td>誰が内容を確認し、どの時点で確定とするか（最終確認は専門職）</td></tr><tr><td>電子カルテ連携</td><td>直接連携かコピー運用か。既存の記録様式に合うか</td></tr><tr><td>費用</td><td>初期費用・月額・ID追加・保守を含む総額</td></tr><tr><td>試用時の検証</td><td>同じ素材で複数方式を試せるか、試用後のデータの扱い</td></tr></tbody></table></div>
+<h2>試用は「同じ素材」で3ステップ</h2><ol><li><strong>素材を1本決める：</strong>個人が特定されないテスト用の会話・メモを用意する</li><li><strong>全方式に同じ素材を入れる：</strong>生成までの時間と修正した箇所を記録する</li><li><strong>確定までの時間で比べる：</strong>見た目の出来より、直して確定するまでの時間と修正の種類で判断する</li></ol>
+<div class="point-box"><div class="point-box-label">前提</div><p>AIは記録の下書きを支援するもので、専門職による確認と最終判断を置き換えるものではありません。以下の比較軸は、当社が実務の観点から整理した視点であり、法令上の要件ではありません。</p></div><p>運用の注意点は<a href="/column/soap-ai-jidosakusei-chuiten/">SOAPをAIで自動作成するときの注意点</a>、導入前の確認項目は<a href="/column/houkan-kiroku-ai-checklist/">訪問看護の記録AI 導入前チェックリスト</a>、音声入力の考え方は<a href="/column/kaigo-kiroku-onsei-nyuryoku/">介護記録の音声入力</a>にまとめています。</p>
+<h2>FAQ</h2><h3>文字起こしだけでも記録は速くなりますか？</h3><p>タイピングは減りますが、長い文章から必要事項を選びSOAPへ整理する作業は残ります。</p><h3>SOAP形式は必須ですか？</h3><p>法令でSOAPだけが指定されているわけではありません。事業所の様式と連携先が必要とする情報に合わせて選びます。</p>
+<div class="next-read" style="margin:36px 0 8px;padding:18px 22px;background:#f8fafc;border:1px solid #e2e8f0;border-radius:8px;"><div style="font-size:12px;font-weight:700;color:#0e7490;letter-spacing:.06em;margin-bottom:8px;">次に読む</div><ul style="margin:0;padding-left:1.2em;line-height:2;font-size:14px;"><li><a href="/column/hanamaru-kango-ai/" style="font-weight:700;">訪問看護記録書Ⅱ（SOAP記録）、LINEで話すだけでAIが自動作成する時代へ。</a></li><li><a href="/column/soap-ai-jidosakusei-chuiten/" style="font-weight:700;">SOAPをAIで自動作成するときの注意点音声入力から記録を&quot;下書き&quot;する安全な進め方</a></li><li><a href="/column/kaigo-kiroku-onsei-nyuryoku/" style="font-weight:700;">介護記録は「音声入力」で激変する。
+      話すだけでSOAP・記録が完成するAI活用と選び方。</a></li></ul></div>
+</div></article>
 
 <section class="related-section">
   <div class="related-inner">
     <div class="related-label">Related Articles</div>
     <div class="related-grid">
+      <a href="/column/hanamaru-kango-ai/" class="related-card">
+        <div class="related-card-tag">介護DX・記録効率化</div>
+        <div class="related-card-title">訪問看護記録書Ⅱ（SOAP記録）、LINEで話すだけでAIが自動作成する時代へ。</div>
+      </a>
+      <a href="/column/soap-ai-jidosakusei-chuiten/" class="related-card">
+        <div class="related-card-tag">介護記録・音声AI</div>
+        <div class="related-card-title">SOAPをAIで自動作成するときの注意点音声入力から記録を&quot;下書き&quot;する安全な進め方</div>
+      </a>
       <a href="/column/kaigo-kiroku-onsei-nyuryoku/" class="related-card">
-        <div class="related-card-tag">介護記録 / AI</div>
-        <div class="related-card-title">介護記録は「音声入力」で激変する。話すだけでSOAP・記録が完成するAI活用と選び方。</div>
-      </a>
-      <a href="/column/houkan-ict-kasan/" class="related-card">
-        <div class="related-card-tag">制度 / 訪問看護</div>
-        <div class="related-card-title">訪問看護のICT加算とは。要件・算定のポイントを整理。</div>
-      </a>
-      <a href="/column/houkan-jinzai-busoku/" class="related-card">
-        <div class="related-card-tag">人材 / 訪問看護</div>
-        <div class="related-card-title">訪問看護の人材不足、なぜ深刻化するのか。採用だけに頼らない、AI活用という対策。</div>
+        <div class="related-card-tag">記録効率化 / 音声入力AI</div>
+        <div class="related-card-title">介護記録は「音声入力」で激変する。      話すだけでSOAP・記録が完成するAI活用と選び方。</div>
       </a>
     </div>
   </div>
