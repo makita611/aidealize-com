@@ -19,9 +19,14 @@ h1{font-size:22px;margin:0 0 2px}h2{font-size:17px;margin:34px 0 4px}
 .leg{display:flex;flex-wrap:wrap;gap:10px;font-size:12px;margin-top:8px}.leg i{display:inline-block;width:10px;height:10px;border-radius:2px;margin-right:4px}
 table{width:100%;table-layout:fixed;border-collapse:collapse;font-size:13px}th,td{padding:7px 4px;border-bottom:1px solid #eee;text-align:right}
 th:first-child,td:first-child{text-align:left;word-break:break-all}th{color:#777;font-weight:500}
+.nav{display:flex;gap:8px;overflow-x:auto;padding-bottom:10px;margin-bottom:6px;-webkit-overflow-scrolling:touch}
+.nav a{white-space:nowrap;border:1px solid #d8d8d8;border-radius:999px;padding:6px 14px;font-size:13px;color:#333;text-decoration:none}
+.nav a.cur{background:#2e7d6b;border-color:#2e7d6b;color:#fff}
 .spark{font-size:12px;color:#888}
 </style></head><body><main>
-<h1>aidealize 集客ボード</h1>
+<nav class="nav" id="nav"></nav>
+<h1 id="ttl"></h1>
+<div class="sub" id="note"></div>
 <div class="sub" id="gen"></div>
 
 <h2>今週のまとめ</h2>
@@ -39,17 +44,21 @@ th:first-child,td:first-child{text-align:left;word-break:break-all}th{color:#777
 <p class="hint">問い合わせや診断など「成果に近い動き」だけ。0が続くものは要点検。</p>
 <table id="ev"></table>
 
-<h2>どのボタンが押されている?(直近28日)</h2>
-<table id="cta"></table>
+<div id="ctawrap"><h2>どのボタンが押されている?(直近28日)</h2>
+<table id="cta"></table></div>
 
 <h2>入口になっているページ(直近28日)</h2>
 <p class="hint">「読まれ率」は、ちゃんと見られた訪問の割合。高いほど良い。</p>
 <table id="pg"></table>
 </main>
 <script>
-const D={"generated": "2026-11-09 22:30", "weeks": ["8/24", "8/31", "9/7", "9/14", "9/21", "9/28", "10/5", "10/12", "10/19", "10/26", "11/2", "11/9"], "channels": {"検索": [74, 81, 97, 91, 73, 110, 188, 236, 517, 246, 219, 0], "直接": [66, 67, 82, 85, 85, 67, 109, 58, 105, 60, 131, 0], "SNS": [0, 1, 0, 1, 3, 2, 0, 1, 18, 1, 0, 0], "その他": [3, 20, 11, 1, 1, 0, 1, 1, 0, 0, 0, 0], "他サイト": [8, 2, 6, 5, 0, 2, 2, 0, 9, 4, 1, 0], "AI": [1, 2, 0, 1, 2, 0, 1, 2, 1, 0, 0, 0]}, "users": [141, 145, 172, 167, 157, 168, 271, 270, 580, 279, 321, 0], "events": {"form_success": [0, 0, 0, 0, 0, 1, 2, 3, 1, 1, 1, 0], "form_submit": [0, 4, 1, 12, 4, 3, 3, 3, 2, 4, 2, 0], "line_friend_click": [0, 2, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0], "cta_click": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 7, 0], "scan_lead_submit": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], "generate_soap_note": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]}, "evnames": {"form_success": "問い合わせ送信(成功)", "form_submit": "フォーム送信ボタン", "line_friend_click": "LINE友だち追加クリック", "cta_click": "ボタン/リンククリック(全体)", "scan_lead_submit": "サイト診断のリード送信", "generate_soap_note": "SOAPデモ使用"}, "pages": [{"page": "/column/kaigo-bcp-kunren-jisshirei", "sessions": 428, "eng": 100, "sec": 156}, {"page": "/column/php-kinkyu-vulnerability-chusho-kakunin", "sessions": 276, "eng": 100, "sec": 171}, {"page": "/", "sessions": 105, "eng": 92, "sec": 123}, {"page": "(not set)", "sessions": 93, "eng": 0, "sec": 0}, {"page": "/lp/jinzai", "sessions": 92, "eng": 97, "sec": 8}, {"page": "/column/keibi-henko-tantosha-kaigi", "sessions": 78, "eng": 100, "sec": 131}, {"page": "/tools/eigyobi-calendar", "sessions": 63, "eng": 95, "sec": 197}, {"page": "/column/ninteichosahyo-tokki-kakikata", "sessions": 54, "eng": 96, "sec": 1407}, {"page": "/column/php-taisaku-update-tejun-wordpress", "sessions": 35, "eng": 100, "sec": 300}, {"page": "/service/bcp", "sessions": 25, "eng": 88, "sec": 39}, {"page": "/column/houkan-kaishi-shuryo-jikoku", "sessions": 24, "eng": 100, "sec": 132}, {"page": "/bpr/case/110", "sessions": 18, "eng": 100, "sec": 28}, {"page": "/column/ssl-shometsu-kigen", "sessions": 16, "eng": 100, "sec": 307}, {"page": "/column/wordpress-core-cve-2026-87902-kakunin", "sessions": 14, "eng": 100, "sec": 70}, {"page": "/company", "sessions": 13, "eng": 85, "sec": 78}], "cta": [["(not set)", 8162], ["tool", 3], ["contact", 3], ["service", 1]], "range": ["2026-08-24", "2026-11-08"]};
+const D={"key": "aidealize", "name": "aidealize(自社)", "url": "https://aidealize.com/", "generated": "2026-11-10 10:56", "weeks": ["8/24", "8/31", "9/7", "9/14", "9/21", "9/28", "10/5", "10/12", "10/19", "10/26", "11/2", "11/9"], "channels": {"検索": [74, 81, 97, 91, 73, 110, 188, 236, 517, 246, 219, 42], "直接": [66, 67, 82, 85, 85, 67, 109, 58, 105, 60, 131, 6], "SNS": [0, 1, 0, 1, 3, 2, 0, 1, 18, 1, 0, 0], "その他": [3, 20, 11, 1, 1, 0, 1, 1, 0, 0, 0, 1], "他サイト": [8, 2, 6, 5, 0, 2, 2, 0, 9, 4, 1, 0], "AI": [1, 2, 0, 1, 2, 0, 1, 2, 1, 0, 0, 0]}, "users": [141, 145, 172, 167, 157, 168, 271, 270, 580, 279, 321, 44], "events": {"form_success": [0, 0, 0, 0, 0, 1, 2, 3, 1, 1, 1, 1], "form_submit": [0, 4, 1, 12, 4, 3, 3, 3, 2, 4, 2, 1], "line_friend_click": [0, 2, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0], "cta_click": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 7, 18], "scan_lead_submit": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], "generate_soap_note": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]}, "evnames": {"form_success": "問い合わせ送信(成功)", "form_submit": "フォーム送信ボタン", "line_friend_click": "LINE友だち追加クリック", "cta_click": "ボタン/リンククリック(全体)", "scan_lead_submit": "サイト診断のリード送信", "generate_soap_note": "SOAPデモ使用"}, "pages": [{"page": "/column/kaigo-bcp-kunren-jisshirei", "sessions": 435, "eng": 100, "sec": 154}, {"page": "/column/php-kinkyu-vulnerability-chusho-kakunin", "sessions": 276, "eng": 100, "sec": 171}, {"page": "/", "sessions": 106, "eng": 92, "sec": 122}, {"page": "/lp/jinzai", "sessions": 92, "eng": 97, "sec": 8}, {"page": "(not set)", "sessions": 89, "eng": 0, "sec": 0}, {"page": "/column/keibi-henko-tantosha-kaigi", "sessions": 76, "eng": 100, "sec": 113}, {"page": "/tools/eigyobi-calendar", "sessions": 63, "eng": 95, "sec": 188}, {"page": "/column/ninteichosahyo-tokki-kakikata", "sessions": 55, "eng": 96, "sec": 1381}, {"page": "/column/php-taisaku-update-tejun-wordpress", "sessions": 35, "eng": 100, "sec": 300}, {"page": "/service/bcp", "sessions": 26, "eng": 88, "sec": 39}, {"page": "/column/houkan-kaishi-shuryo-jikoku", "sessions": 24, "eng": 100, "sec": 133}, {"page": "/bpr/case/110", "sessions": 21, "eng": 100, "sec": 27}, {"page": "/column/ssl-shometsu-kigen", "sessions": 17, "eng": 100, "sec": 362}, {"page": "/column/wordpress-core-cve-2026-87902-kakunin", "sessions": 15, "eng": 100, "sec": 162}, {"page": "/company", "sessions": 13, "eng": 85, "sec": 81}], "cta": [["(not set)", 8285], ["tool", 18], ["contact", 3], ["service", 2], ["column", 1], ["lp", 1]], "range": ["2026-08-24", "2026-11-09"], "nav": [{"label": "全社", "href": "board-0d71fd5bbe87.html", "cur": false}, {"label": "aidealize", "href": "board-ac6e604b90a1.html", "cur": true}, {"label": "komi", "href": "https://artmake-komi.com/internal/board-o7onmndtuog.html", "cur": false}, {"label": "内枦保住建", "href": "board-072f103d4083.html", "cur": false}, {"label": "K&T", "href": "board-e59cf5a6a551.html", "cur": false}, {"label": "いぶきハーブ・ガーデン", "href": "board-322d59c5260b.html", "cur": false}, {"label": "goldexperience.jp", "href": "board-12365fdc21a0.html", "cur": false}]};
 const $=id=>document.getElementById(id);
 const sum=a=>a.reduce((x,y)=>x+y,0);
+$('nav').innerHTML=D.nav.map(n=>`<a href="${n.href}"${n.cur?' class="cur"':''}>${n.label}</a>`).join('');
+$('ttl').textContent=D.name.split('(')[0]+' 集客ボード';document.title=D.name+' 集客ボード';
+$('note').textContent=D.note||'';
+if(!D.cta.length)$('ctawrap').style.display='none';
 $('gen').textContent='更新 '+D.generated+'(GA4・'+D.range[0]+'〜'+D.range[1]+')';
 const W=D.weeks.length, L=W-2, P=W-3;
 const tot=D.weeks.map((_,i)=>sum(Object.values(D.channels).map(a=>a[i])));
@@ -58,12 +67,11 @@ function badge(a,b){const c=chg(a,b);if(c===null)return'<span class="flat">比�
  return c>0?`<span class="up">▲${c}%</span>`:c<0?`<span class="down">▼${-c}%</span>`:'<span class="flat">±0%</span>'}
 const card=(l,a,b)=>`<div class="card"><div class="n">${a}</div><div class="l">${l}</div><div class="l">前の週 ${b} → ${badge(a,b)}</div></div>`;
 const f=k=>D.events[k]||new Array(W).fill(0);
+const evk=Object.keys(D.evnames);
 const sr=(D.channels['検索']||new Array(W).fill(0));
 $('cards').innerHTML=
  card('訪問数',tot[L],tot[P])+card('訪問した人数',D.users[L],D.users[P])+
- card('検索から来た数',sr[L],sr[P])+card('問い合わせ送信(成功)',f('form_success')[L],f('form_success')[P])+
- card('LINE友だち追加クリック',f('line_friend_click')[L],f('line_friend_click')[P])+
- card('ボタン・リンククリック',f('cta_click')[L],f('cta_click')[P]);
+ card('検索から来た数',sr[L],sr[P])+evk.slice(0,3).map(k=>card(D.evnames[k],f(k)[L],f(k)[P])).join('');
 const COL={'検索':'#2e7d6b','AI':'#7b5ea7','直接':'#9aa5b1','SNS':'#e08a3c','他サイト':'#4a7fc1','広告':'#c0504d','その他':'#d8d8d8'};
 const names=Object.keys(D.channels).sort((a,b)=>sum(D.channels[b])-sum(D.channels[a]));
 const mx=Math.max(...tot,1);
@@ -79,8 +87,7 @@ const li=[];const c=chg(tot[L],tot[P]);
 li.push(`先週の訪問は ${tot[L]} 件(前の週 ${tot[P]} 件${c===null?'':'、'+(c>=0?'+':'')+c+'%'})。`);
 const best=names.map(n=>[n,D.channels[n][L]]).sort((a,b)=>b[1]-a[1])[0];
 if(best)li.push(`いちばん多い入口は「${best[0]}」で ${best[1]} 件。`);
-const fs=f('form_success')[L],fsub=f('form_submit')[L];
-li.push(fs===0?`問い合わせ送信(成功)は先週0件${fsub?`(送信ボタンは${fsub}回押されている)`:''}。`:`問い合わせ送信が ${fs} 件あったよ。`);
+if(evk[0])li.push(`「${D.evnames[evk[0]]}」は先週 ${f(evk[0])[L]} 件(前の週 ${f(evk[0])[P]} 件)。`);
 li.push(`よく入口になるのは ${D.pages.slice(0,3).map(p=>p.page).join(' / ')}。`);
 $('sum').innerHTML=li.map(x=>`<li>${x}</li>`).join('');
 </script></body></html>
