@@ -26,7 +26,7 @@ th:first-child,td:first-child{text-align:left;word-break:break-all}th{color:#777
 </style></head><body><main>
 <nav class="nav" id="nav"></nav>
 <h1 id="ttl"></h1>
-<div class="sub" id="note"></div>
+<div class="sub"><a id="siteurl" target="_blank" rel="noopener" style="color:#2e7d6b"></a></div>
 <div class="sub" id="gen"></div>
 
 <h2>今週のまとめ</h2>
@@ -52,12 +52,12 @@ th:first-child,td:first-child{text-align:left;word-break:break-all}th{color:#777
 <table id="pg"></table>
 </main>
 <script>
-const D={"key": "ibuki", "name": "いぶきハーブ・ガーデン", "url": "https://ibuki-herbs.com/", "generated": "2026-11-10 10:56", "weeks": ["8/24", "8/31", "9/7", "9/14", "9/21", "9/28", "10/5", "10/12", "10/19", "10/26", "11/2", "11/9"], "channels": {"検索": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 10], "その他": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2]}, "users": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 6], "events": {"cta_click": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3], "click": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2]}, "evnames": {"cta_click": "ボタン/リンククリック(全体)", "click": "外部リンククリック"}, "pages": [{"page": "/", "sessions": 3, "eng": 100, "sec": 277}, {"page": "/shop", "sessions": 3, "eng": 0, "sec": 0}, {"page": "/menu", "sessions": 2, "eng": 50, "sec": 114}, {"page": "/news", "sessions": 2, "eng": 0, "sec": 857}, {"page": "/lunch", "sessions": 1, "eng": 100, "sec": 116}], "cta": [], "range": ["2026-08-24", "2026-11-09"], "nav": [{"label": "全社", "href": "board-0d71fd5bbe87.html", "cur": false}, {"label": "aidealize", "href": "board-ac6e604b90a1.html", "cur": false}, {"label": "komi", "href": "https://artmake-komi.com/internal/board-o7onmndtuog.html", "cur": false}, {"label": "内枦保住建", "href": "board-072f103d4083.html", "cur": false}, {"label": "K&T", "href": "board-e59cf5a6a551.html", "cur": false}, {"label": "いぶきハーブ・ガーデン", "href": "board-322d59c5260b.html", "cur": true}, {"label": "goldexperience.jp", "href": "board-12365fdc21a0.html", "cur": false}]};
+const D={"key": "ibuki", "name": "いぶきハーブ・ガーデン", "url": "https://ibuki-herbs.com/", "generated": "2026-11-10 22:01", "weeks": ["8/24", "8/31", "9/7", "9/14", "9/21", "9/28", "10/5", "10/12", "10/19", "10/26", "11/2", "11/9"], "channels": {"検索": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 10]}, "users": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 6], "events": {"cta_click": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3], "click": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2]}, "evnames": {"cta_click": "ボタン/リンククリック(全体)", "click": "外部リンククリック"}, "pages": [{"page": "/", "sessions": 3, "eng": 100, "sec": 857}, {"page": "/shop", "sessions": 3, "eng": 33, "sec": 246}, {"page": "/menu", "sessions": 2, "eng": 50, "sec": 114}, {"page": "/lunch", "sessions": 1, "eng": 100, "sec": 116}, {"page": "/news", "sessions": 1, "eng": 0, "sec": 10}], "cta": [], "range": ["2026-08-24", "2026-11-09"], "nav": [{"label": "全社", "href": "board-0d71fd5bbe87.html", "cur": false}, {"label": "aidealize", "href": "board-ac6e604b90a1.html", "cur": false}, {"label": "komi 集客", "href": "https://artmake-komi.com/internal/board-o7onmndtuog.html", "cur": false}, {"label": "komi GA4", "href": "board-a8709da8ebf0.html", "cur": false}, {"label": "内枦保住建", "href": "board-072f103d4083.html", "cur": false}, {"label": "K&T", "href": "board-e59cf5a6a551.html", "cur": false}, {"label": "いぶきハーブ・ガーデン", "href": "board-322d59c5260b.html", "cur": true}, {"label": "goldexperience.jp", "href": "board-12365fdc21a0.html", "cur": false}]};
 const $=id=>document.getElementById(id);
 const sum=a=>a.reduce((x,y)=>x+y,0);
 $('nav').innerHTML=D.nav.map(n=>`<a href="${n.href}"${n.cur?' class="cur"':''}>${n.label}</a>`).join('');
 $('ttl').textContent=D.name.split('(')[0]+' 集客ボード';document.title=D.name+' 集客ボード';
-$('note').textContent=D.note||'';
+$('siteurl').textContent=D.url.replace(/^https?:\/\//,'');$('siteurl').href=D.url;
 if(!D.cta.length)$('ctawrap').style.display='none';
 $('gen').textContent='更新 '+D.generated+'(GA4・'+D.range[0]+'〜'+D.range[1]+')';
 const W=D.weeks.length, L=W-2, P=W-3;
