@@ -138,6 +138,12 @@ body{font-family:'Noto Sans JP',sans-serif;background:var(--white);color:var(--i
 .article-body-inner ol{counter-reset:ol;}
 .article-body-inner ol li{counter-increment:ol;display:block;position:relative;padding-left:34px;}
 .article-body-inner ol li::before{content:counter(ol);background:var(--red);color:#fff;width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0;position:absolute;left:0;top:4px;font-family:'DM Mono',monospace;}
+.lead-band{background:#eaf4fb;border-left:4px solid #3a9bd5;border-radius:6px;padding:14px 18px;margin:0 0 26px;font-size:15px;line-height:1.8;color:var(--body);}
+.lead-band strong{font-size:1.25em;color:#1f6fa5;}
+details.fold{border:1px solid #dfe5ea;border-radius:8px;margin:0 0 22px;background:#fafbfc;}
+details.fold>summary{cursor:pointer;padding:12px 16px;font-size:13.5px;font-weight:700;color:var(--body);}
+details.fold>.dwrap{padding:0 12px 12px;}
+.case-box{background:#eef8f0;}
 .note{font-size:12.5px;color:var(--light);line-height:1.8;margin:-8px 0 22px;}
 .point-box{background:var(--bg2);border-radius:8px;padding:20px 24px;margin:20px 0;}
 .point-box-label{font-size:10px;font-family:'DM Mono',monospace;color:var(--red);letter-spacing:0.12em;text-transform:uppercase;margin-bottom:10px;}
@@ -248,6 +254,8 @@ footer{background:#1f1f1f;border-top:1px solid rgba(255,255,255,0.06);padding:40
 <article class="article-body">
 <div class="article-body-inner">
 
+  <div class="lead-band">施工事例ページがあるサイトのうち、具体的な数字が十分に載っているのは <strong>29%</strong>（10社中7社にはない）。FAQがあるのも29%でした。</div>
+
   <div class="summary-box reveal">
     <div class="summary-box-title">この記事でわかること</div>
     <ul>
@@ -298,6 +306,7 @@ footer{background:#1f1f1f;border-top:1px solid rgba(255,255,255,0.06);padding:40
 
   <p>調査時期は2026年10月。対象は、Googleマップに掲載されている工務店・注文住宅・リフォーム・外壁塗装・屋根工事の事業者のうち、公式サイトに到達できたものです。1社で複数サイトがある場合やエラーで到達できなかったサイトの扱い、「事例あり」「FAQあり」「数字5個以上」の判定ルールは、下の「この調査の限界」にもまとめています。</p>
 
+  <details class="fold"><summary>エリア別のデータを見る（群馬・埼玉・茨城・栃木・千葉北西部・長野・滋賀）</summary>
   <div class="dwrap">
   <table class="dtable">
     <thead><tr><th>エリア</th><th>サイト数</th><th>サイト情報整備度の中央値</th><th>80点以上</th><th>事例ページあり</th><th>FAQあり</th></tr></thead>
@@ -307,8 +316,9 @@ footer{background:#1f1f1f;border-top:1px solid rgba(255,255,255,0.06);padding:40
     </tbody>
   </table>
   </div>
+  </details>
 
-  <p>エリア別の中央値は65〜68点で、地域差はほとんどありません。差があるのは、地域ではなく<strong>サイトごと</strong>です。</p>
+  <p>エリア別の中央値は65〜68点で、地域差はほとんどありません（詳細は下の折りたたみ）。差があるのは、地域ではなく<strong>サイトごと</strong>です。</p>
 
   <p>「サイト情報整備度」は当社基準の100点満点で、次の3つで採点しました。AI掲載率を測る指標ではありません。</p>
   <ul>
@@ -338,8 +348,7 @@ footer{background:#1f1f1f;border-top:1px solid rgba(255,255,255,0.06);padding:40
   </table>
   </div>
 
-  <p>点数の高さ別に、各サイトが持っているものを見ると、次のようになります。</p>
-
+  <details class="fold"><summary>点数帯別に、各サイトが持っているものを見る</summary>
   <div class="dwrap">
   <table class="dtable">
     <thead><tr><th>サイト情報整備度</th><th>サイト数</th><th>事例ページ</th><th>FAQ</th><th>代表者の言葉</th><th>ブログ・お知らせ</th><th>構造化データ</th></tr></thead>
@@ -348,6 +357,7 @@ footer{background:#1f1f1f;border-top:1px solid rgba(255,255,255,0.06);padding:40
     </tbody>
   </table>
   </div>
+  </details>
 
   <div class="note">※この表は、点数の付け方（配点）をそのまま反映したものです。「これらを持つとAIに紹介される」ことを示すものではありません。</div>
 
