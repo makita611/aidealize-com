@@ -221,8 +221,11 @@ export async function onRequestGet(context) {
     const pageTitle = decodeEntities(pick(headHtml, /<title[^>]*>([\s\S]*?)<\/title>/i));
     const ogSite = decodeEntities(pick(headHtml, /<meta[^>]+property=["']og:site_name["'][^>]*content=["']([^"']+)["']/i)
       || pick(headHtml, /<meta[^>]+content=["']([^"']+)["'][^>]+property=["']og:site_name["']/i));
-    // 会社名の手がかり：og:site_name 優先、無ければ <title> の末尾側（「ページ名｜会社名」型）を採用
-    const siteName = ogSite || (pageTitle.split(/\s*[|｜\-–—:：]\s*/).filter(Boolean).pop() || pageTitle);
+    // 会社名の手がかり：og:site_name 優先。無ければ <title> を区切りで割り、社名らしい語を含む区間を採用。
+    // それも無ければ先頭区間（「会社名｜キャッチコピー」型が多いため）。
+    const titleParts = pageTitle.split(/\s*[|｜\-–—:：/／]\s*/).filter(Boolean);
+    const orgRe = /株式会社|有限会社|合同会社|\(株\)|（株）|医院|クリニック|病院|歯科|工務店|建設|工業|製作所|事務所|協会|組合|商工|センター|法人|学園|サロン|商店|ホーム|診療所/;
+    const siteName = ogSite || titleParts.find(p => orgRe.test(p)) || titleParts[0] || pageTitle;
 
     logDiagnosis(context, 'security', finalUrl.toString(), score, {
       site_name: siteName,
