@@ -24,7 +24,7 @@
   "@type": "Article",
   "headline": "病院のデータ連携・業務自動化 事例3選【2026】",
   "description": "病院のデータ連携・業務自動化を、実際の事例3つで解説。成果が出るデータ連携・書類自動化・記録AIの実例と、小さく始めて“使われる”DXにする進め方まで。",
-  "datePublished": "2026-06-25","dateModified":"2026-06-25","image":"https://aidealize.com/images/jinzaitop1.jpg",
+  "datePublished": "2026-06-25","dateModified":"2026-11-11","image":"https://aidealize.com/images/jinzaitop1.jpg",
   "author": {"@type": "Organization", "name": "AIdealize株式会社"},
   "publisher": {"@type": "Organization", "name": "AIdealize株式会社", "url": "https://aidealize.com"}
 }
@@ -362,6 +362,43 @@ footer{background:#1f1f1f;border-top:1px solid rgba(255,255,255,0.06);padding:40
     <div class="point-box-label">ポイント</div>
     <p>カルテ自体が電子化されても、その<strong>周辺業務（他システムへの転記・書類作成・集計・報告・他職種への共有）が手作業のまま</strong>残っていると、全体の効率は上がりません。むしろ「カルテに入力した内容を、別の書類にもう一度書く」といった二重作業が発生していることもあります。電子カルテと周辺業務を<strong>データ連携・自動化でつなぐ</strong>ことで、はじめて投資が効いてきます。</p>
   </div>
+
+  <h2>病院のデータ連携は「APIがない」でも進められる｜連携方法の選び方</h2>
+
+  <p>データ連携・業務自動化の相談で最初にぶつかるのが、「うちのシステムにはAPIがない（または公開されていない）」という壁です。電子カルテや介護・医療系ソフトは、外部と自由につなげるAPIを一般公開していないことが多く、Power Automateのような自動化ツールを入れても、<strong>つなぐ先に出口がなければ動きません</strong>。ツールを選ぶ前に、まず「データの出口がどこにあるか」を確認するのが近道です。</p>
+
+  <div class="cmp reveal">
+    <div class="cmp-row head">
+      <div class="cmp-cell">連携の方法</div>
+      <div class="cmp-cell">向いている場面</div>
+    </div>
+    <div class="cmp-row">
+      <div class="cmp-cell"><strong>① 公式API・連携仕様</strong></div>
+      <div class="cmp-cell">提供されていれば最も安定。ベンダーに「連携仕様はあるか」を最初に確認する</div>
+    </div>
+    <div class="cmp-row">
+      <div class="cmp-cell"><strong>② CSV出力・取り込み</strong></div>
+      <div class="cmp-cell">多くのソフトにある現実的な本命。定期的に出力したデータを取り込み、集計や書類作成に使う</div>
+    </div>
+    <div class="cmp-row">
+      <div class="cmp-cell"><strong>③ ベンダー・連携事業者経由</strong></div>
+      <div class="cmp-cell">ベンダー自身が連携の窓口を持つ場合。契約や保守の範囲を事前に確認する</div>
+    </div>
+    <div class="cmp-row">
+      <div class="cmp-cell"><strong>④ 入力の入口を別に作る</strong></div>
+      <div class="cmp-cell">既存ソフトに手を入れず、フォーム・音声入力・OCRで最初にデータを作り、必要な形に整える</div>
+    </div>
+  </div>
+
+  <p>画面操作を真似て自動入力するRPAという方法もありますが、画面のレイアウトが変わるたびに止まるため、保守の手間が積み上がりやすく、私たちは基本的に勧めていません。まずは②〜④で済まないかを検討します。</p>
+
+  <h3>つなぐ前に、現場に3つだけ聞く</h3>
+  <ol>
+    <li>今使っているソフトは何で、データを<strong>CSVなどで出力できるか</strong></li>
+    <li>その出力・転記は<strong>誰が、どれくらいの頻度で</strong>手作業しているか</li>
+    <li>いちばん時間を取られている手作業は何か（転記・集計・報告書・他職種への共有など）</li>
+  </ol>
+  <p>この3つが分かると、「そもそもシステム同士をつなぐ必要があるのか」が見えてきます。実際には<strong>転記と書類作成が主な手間</strong>で、連携基盤を作らなくても、CSV取り込みやAI-OCRで十分に解消できるケースも少なくありません。同じ考え方は<a href="/column/careplan-renkei-ocr-chigai/">ケアプラン連携とOCRの違い</a>や、<a href="/column/denshi-karte-norikae/">電子カルテの乗り換え</a>を検討する場面でも当てはまります。なお、規模の大きい基幹システム同士の統合はSIerの領域です。AIdealizeでは、その周辺に残る転記・集計・書類・記録業務の自動化から小さく支援します。</p>
 
   <h2>失敗しない病院DXの進め方</h2>
 
