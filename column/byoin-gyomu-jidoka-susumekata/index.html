@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>病院の業務自動化、何から始める？自動化しやすい業務7つと進め方【2026】｜AIdealize</title>
+<meta name="description" content="病院の業務自動化を、情シスが少ない現場でも進められるように整理。転記・書類作成・集計・院内連絡・記録など自動化しやすい7業務、優先順位の付け方、APIがない場合のデータ連携、個人情報の扱いまで2026年版で解説します。">
+<link rel="canonical" href="https://aidealize.com/column/byoin-gyomu-jidoka-susumekata/">
+<meta property="og:title" content="病院の業務自動化、何から始める？自動化しやすい業務7つと進め方">
+<meta property="og:description" content="病院の業務自動化を、情シスが少ない現場でも進められるように整理。転記・書類作成・集計・院内連絡・記録など自動化しやすい7業務、優先順位の付け方、APIがない場合のデータ連携、個人情報の扱いまで2026年版で解説します。">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://aidealize.com/column/byoin-gyomu-jidoka-susumekata/">
+<meta property="og:site_name" content="AIdealize株式会社">
+<meta property="og:image" content="https://aidealize.com/images/jinzaitop1.jpg">
+<meta name="twitter:image" content="https://aidealize.com/images/jinzaitop1.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700;900&family=Shippori+Mincho:wght@400;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-P6VNBWH3');</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "病院の業務自動化、何から始める？自動化しやすい業務7つと進め方",
+  "description": "病院の業務自動化を、情シスが少ない現場でも進められるように整理。転記・書類作成・集計・院内連絡・記録など自動化しやすい7業務、優先順位の付け方、APIがない場合のデータ連携、個人情報の扱いまで2026年版で解説します。",
+  "datePublished": "2026-11-11","dateModified":"2026-11-11","image":"https://aidealize.com/images/jinzaitop1.jpg",
+  "author": {"@type": "Organization", "name": "AIdealize株式会社"},
+  "publisher": {"@type": "Organization", "name": "AIdealize株式会社", "url": "https://aidealize.com"}
+}
+</script>
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@type": "FAQPage",
+ "mainEntity": [
+  {
+   "@type": "Question",
+   "name": "病院の業務自動化は何から始めればよいですか？",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "まず「毎日・毎週くり返していて、手順が決まっていて、人が手で転記している業務」を1つ選ぶのが定石です。転記、定型書類の作成、集計、院内連絡などは効果が見えやすく、失敗しても影響が小さいため最初の一歩に向いています。"
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "システムにAPIがなくても業務自動化はできますか？",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "できます。多くの医療・介護系ソフトにはCSV出力があり、定期的に出力したデータを取り込んで集計や書類作成に使う方法が現実的です。そのほか、ベンダーの連携窓口の利用や、フォーム・音声入力・OCRで入力の入口を別に作る方法があります。"
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "院内に情報システム担当がいなくても進められますか？",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "進められます。大がかりな基盤づくりから入らず、1業務ずつ小さく始めれば、専任のシステム担当がいなくても回せます。ただし患者情報を扱う場合は、医療情報システムの安全管理に関するガイドラインに沿った運用の確認が必要です。"
+   }
+  }
+ ]
+}
+</script>
+<style>
+:root{
+  --red:#0891b2;--red-dark:#0e7490;
+  --ink:#1e293b;--body:#4b5563;--light:#94a3b8;
+  --border:#e2e8f0;--bg:#f8fafc;--bg2:#f1f5f9;--white:#fff;
+  --tag-bg:#ecfeff;--green:#059669;--green-bg:#ecfdf5;
+  --demo-bg:#0f172a;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{font-family:'Noto Sans JP',sans-serif;background:var(--white);color:var(--ink);overflow-x:hidden;line-height:1.7;}
+
+/* NAV */
+#mainNav{position:fixed;top:0;left:0;right:0;z-index:1000;display:flex;align-items:center;justify-content:space-between;padding:0 60px;height:68px;background:rgba(255,255,255,0.97);border-bottom:1px solid var(--border);backdrop-filter:blur(12px);transition:box-shadow 0.3s;}
+#mainNav.scrolled{box-shadow:0 2px 16px rgba(0,0,0,0.06);}
+.nav-logo{display:flex;align-items:center;gap:10px;text-decoration:none;}
+.nav-logo img{height:34px;width:auto;}
+.nav-logo-text{font-family:'DM Mono',monospace;font-size:15px;font-weight:500;color:var(--ink);letter-spacing:0.02em;}
+.nav-logo-text span{color:var(--red);}
+.nav-links{display:flex;align-items:center;gap:32px;list-style:none;}
+.nav-links a{font-size:13px;font-weight:500;color:var(--body);text-decoration:none;transition:color 0.2s;}
+.nav-links a:hover{color:var(--ink);}
+.nav-cta{background:var(--red) !important;color:#fff !important;padding:9px 20px;border-radius:4px;font-size:12px !important;font-weight:700 !important;}
+.nav-cta:hover{background:var(--red-dark) !important;}
+.nav-hamburger{display:none;flex-direction:column;justify-content:center;gap:5px;width:40px;height:40px;background:none;border:none;cursor:pointer;}
+.nav-hamburger span{display:block;width:22px;height:2px;background:var(--ink);transition:all 0.3s;transform-origin:center;}
+.nav-hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg);}
+.nav-hamburger.open span:nth-child(2){opacity:0;}
+.nav-hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
+.nav-drawer{display:none;position:fixed;top:68px;left:0;right:0;background:#fff;border-bottom:2px solid var(--red);padding:20px 28px 28px;z-index:999;}
+.nav-drawer.open{display:block;}
+.nav-drawer ul{list-style:none;display:flex;flex-direction:column;}
+.nav-drawer ul li a{display:block;padding:13px 0;font-size:15px;font-weight:500;color:var(--ink);text-decoration:none;border-bottom:1px solid var(--border);}
+.nav-drawer ul li:last-child a{margin-top:16px;text-align:center;background:var(--red);color:#fff !important;padding:13px;border-radius:4px;font-weight:700 !important;border-bottom:none;}
+@media(max-width:1024px){#mainNav{padding:0 28px;}.nav-links{display:none;}.nav-hamburger{display:flex;}}
+@media(max-width:480px){#mainNav{padding:0 16px;height:60px;}.nav-drawer{top:60px;}.nav-logo-text{font-size:13px;}}
+
+/* ARTICLE HEADER */
+.article-header{padding:116px 24px 52px;background:var(--bg);border-bottom:1px solid var(--border);}
+.article-header-inner{max-width:760px;margin:0 auto;}
+.breadcrumb{display:flex;align-items:center;gap:6px;font-size:12px;color:var(--light);margin-bottom:20px;}
+.breadcrumb a{color:var(--light);text-decoration:none;}
+.breadcrumb a:hover{color:var(--red);}
+.breadcrumb span{color:var(--border);}
+.article-tag{display:inline-flex;align-items:center;background:var(--tag-bg);color:var(--red);font-size:11px;font-weight:700;letter-spacing:0.06em;padding:4px 12px;border-radius:100px;margin-bottom:18px;}
+.article-h1{font-family:'Shippori Mincho',serif;font-size:clamp(20px,3vw,34px);font-weight:700;color:var(--ink);line-height:1.65;margin-bottom:20px;}
+.article-meta{display:flex;align-items:center;gap:20px;flex-wrap:wrap;font-size:12px;color:var(--light);}
+
+/* ARTICLE BODY */
+.article-body{padding:72px 24px 100px;}
+.article-body-inner{max-width:760px;margin:0 auto;}
+
+/* SUMMARY BOX */
+.summary-box{background:var(--bg);border-left:4px solid var(--red);padding:24px 28px;border-radius:0 6px 6px 0;margin-bottom:52px;}
+.summary-box-title{font-size:11px;font-weight:700;color:var(--red);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:12px;}
+.summary-box ul{list-style:none;display:flex;flex-direction:column;gap:8px;}
+.summary-box ul li{display:flex;align-items:flex-start;gap:8px;font-size:14px;line-height:1.8;color:var(--ink);}
+.summary-box ul li::before{content:'✓';color:var(--red);font-weight:700;flex-shrink:0;margin-top:1px;}
+
+/* HEADINGS */
+.article-body-inner h2{font-family:'Shippori Mincho',serif;font-size:clamp(17px,2.2vw,24px);font-weight:700;color:var(--ink);line-height:1.65;margin:56px 0 20px;padding-bottom:10px;border-bottom:1px solid var(--border);position:relative;}
+.article-body-inner h2::after{content:'';position:absolute;bottom:-1px;left:0;width:48px;height:2px;background:var(--red);}
+.article-body-inner h3{font-family:'Shippori Mincho',serif;font-size:clamp(15px,1.8vw,19px);font-weight:700;color:var(--ink);line-height:1.7;margin:36px 0 14px;padding-left:14px;border-left:3px solid var(--red);}
+.article-body-inner p{font-size:15px;line-height:2;color:var(--body);margin-bottom:22px;}
+.article-body-inner strong{color:var(--ink);font-weight:700;}
+.article-body-inner ul,.article-body-inner ol{list-style:none;margin-bottom:22px;display:flex;flex-direction:column;gap:8px;}
+.article-body-inner ul li,.article-body-inner ol li{font-size:14px;line-height:1.9;color:var(--body);display:flex;align-items:flex-start;gap:10px;}
+.article-body-inner ul li::before{content:'─';color:var(--red);flex-shrink:0;margin-top:4px;font-size:12px;}
+.article-body-inner ol{counter-reset:ol;}
+.article-body-inner ol li{counter-increment:ol;}
+.article-body-inner ol li::before{content:counter(ol);background:var(--red);color:#fff;width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0;margin-top:2px;font-family:'DM Mono',monospace;}
+
+/* PAIN CARDS */
+.pain-cards{display:flex;flex-direction:column;gap:12px;margin:24px 0;}
+.pain-card{background:var(--bg);border-left:4px solid var(--red);border-radius:0 8px 8px 0;padding:18px 20px;display:flex;align-items:flex-start;gap:12px;}
+.pain-card-icon{font-size:22px;flex-shrink:0;margin-top:2px;}
+.pain-card-body{font-size:14px;line-height:1.85;color:var(--body);}
+.pain-card-body strong{color:var(--ink);}
+
+/* POINT BOX */
+.point-box{background:var(--bg2);border-radius:8px;padding:20px 24px;margin:20px 0;}
+.point-box-label{font-size:10px;font-family:'DM Mono',monospace;color:var(--red);letter-spacing:0.12em;text-transform:uppercase;margin-bottom:10px;}
+.point-box p{font-size:14px;line-height:1.9;color:var(--body);margin-bottom:0;}
+
+/* INLINE CTA */
+.inline-cta{background:var(--bg);border:1px solid var(--border);border-top:4px solid var(--red);border-radius:10px;padding:36px;margin:52px 0;text-align:center;}
+.inline-cta-tag{font-size:11px;color:var(--red);font-weight:700;letter-spacing:0.08em;margin-bottom:12px;}
+.inline-cta h3{font-family:'Shippori Mincho',serif;font-size:clamp(16px,2vw,22px);font-weight:700;color:var(--ink);line-height:1.65;margin-bottom:12px;}
+.inline-cta p{font-size:14px;color:var(--body);line-height:1.9;margin-bottom:22px;}
+.cta-btns-pair{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;}
+.btn-cta-red{display:inline-flex;align-items:center;gap:6px;background:var(--red);color:#fff;padding:13px 28px;border-radius:4px;font-size:14px;font-weight:700;text-decoration:none;transition:background 0.2s,transform 0.2s;}
+.btn-cta-red:hover{background:var(--red-dark);transform:translateY(-2px);}
+.btn-cta-ghost{display:inline-flex;align-items:center;gap:6px;background:#fff;color:var(--red);border:1.5px solid var(--red);padding:13px 28px;border-radius:4px;font-size:14px;font-weight:700;text-decoration:none;transition:background 0.2s;}
+.btn-cta-ghost:hover{background:var(--tag-bg);}
+.btn-cta-note{display:block;margin-top:12px;font-size:11px;color:var(--light);}
+
+/* COMPARE TABLE */
+.cmp{margin:24px 0;border:1px solid var(--border);border-radius:8px;overflow:hidden;}
+.cmp-row{display:grid;grid-template-columns:1fr 1fr;}
+.cmp-row.head .cmp-cell{background:var(--bg2);font-weight:700;color:var(--ink);font-size:13px;}
+.cmp-cell{padding:14px 16px;font-size:13px;line-height:1.8;color:var(--body);border-bottom:1px solid var(--border);}
+.cmp-cell:first-child{border-right:1px solid var(--border);}
+.cmp-row:last-child .cmp-cell{border-bottom:none;}
+.cmp-cell strong{color:var(--ink);}
+
+/* EFFECT GRID */
+.effect-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:24px 0;}
+.effect-card{background:var(--bg);border-top:3px solid var(--red);border-radius:6px;padding:20px 16px;}
+.effect-num{font-family:'DM Mono',monospace;font-size:10px;color:var(--red);letter-spacing:0.12em;margin-bottom:8px;}
+.effect-title{font-family:'Shippori Mincho',serif;font-size:15px;font-weight:700;color:var(--ink);line-height:1.6;margin-bottom:8px;}
+.effect-body{font-size:12px;line-height:1.85;color:var(--body);}
+
+/* BACK */
+.back-section{padding:28px 24px;background:var(--bg);border-top:1px solid var(--border);}
+.back-section-inner{max-width:760px;margin:0 auto;}
+.back-link{display:inline-flex;align-items:center;gap:6px;font-size:13px;color:var(--body);text-decoration:none;transition:color 0.2s;}
+.back-link:hover{color:var(--red);}
+
+/* RELATED */
+.related-section{padding:60px 24px;background:var(--white);border-top:1px solid var(--border);}
+.related-inner{max-width:760px;margin:0 auto;}
+.related-label{font-family:'DM Mono',monospace;font-size:11px;color:var(--red);letter-spacing:0.14em;text-transform:uppercase;margin-bottom:20px;}
+.related-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;}
+.related-card{border:1px solid var(--border);border-top:3px solid var(--red);padding:20px;text-decoration:none;color:inherit;border-radius:0 0 6px 6px;transition:box-shadow 0.2s,transform 0.2s;}
+.related-card:hover{box-shadow:0 4px 16px rgba(0,0,0,0.07);transform:translateY(-2px);}
+.related-card-tag{font-size:10px;font-family:'DM Mono',monospace;color:var(--red);letter-spacing:0.1em;margin-bottom:8px;}
+.related-card-title{font-family:'Shippori Mincho',serif;font-size:14px;font-weight:700;color:var(--ink);line-height:1.6;}
+
+/* FOOTER */
+footer{background:#1f1f1f;border-top:1px solid rgba(255,255,255,0.06);padding:40px 60px;display:flex;align-items:center;justify-content:space-between;}
+.footer-logo{display:flex;align-items:center;gap:10px;}
+.footer-logo-mark{width:20px;height:20px;background:var(--red);clip-path:polygon(50% 0%,0% 100%,18% 100%,50% 38%,82% 100%,100% 100%);}
+.footer-logo-text{font-family:'DM Mono',monospace;font-size:13px;color:rgba(255,255,255,0.55);}
+.footer-logo-text span{color:var(--red);}
+.footer-copy{font-size:11px;color:rgba(255,255,255,0.25);font-family:'DM Mono',monospace;}
+
+.reveal{opacity:0;transform:translateY(18px);transition:opacity 0.55s ease,transform 0.55s ease;}
+.reveal.visible{opacity:1;transform:translateY(0);}
+
+@media(max-width:768px){
+  .article-header,.article-body,.back-section,.related-section{padding-left:16px;padding-right:16px;}
+  .article-header{padding-top:88px;}
+  .effect-grid{grid-template-columns:1fr;}
+  .related-grid{grid-template-columns:1fr !important;}
+  .cta-btns-pair{flex-direction:column;align-items:center;}
+  .inline-cta{padding:24px 18px;}
+  footer{flex-direction:column;gap:14px;text-align:center;padding:28px 16px;}
+}
+</style>
+<style>
+.dwrap{overflow-x:auto;margin:24px 0}.dtable{width:100%;border-collapse:collapse;font-size:13px}.dtable th,.dtable td{border:1px solid var(--border);padding:11px 13px;text-align:left;vertical-align:top;line-height:1.7}.dtable th{background:var(--bg2);color:var(--ink);font-weight:700}.dtable td{color:var(--body)}
+</style>
+</head>
+<body>
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-P6VNBWH3" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
+<!-- NAV -->
+<nav id="mainNav">
+  <a href="/" class="nav-logo">
+    <img src="/images/logo.png" alt="AIdealize">
+    <span class="nav-logo-text"><span>AI</span>dealize</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="/column/">コラム</a></li>
+    <li><a href="/service/">サービス</a></li>
+    <li><a href="https://aidealize.com/bpr/">DX事例</a></li>
+    <li><a href="/works/">実績</a></li>
+    <li><a href="/company.html">会社概要</a></li>
+    <li><a href="/lp/ai-lp1" class="nav-cta">無料で相談する</a></li>
+  </ul>
+  <button class="nav-hamburger" id="navHamburger" aria-label="メニュー">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+<div class="nav-drawer" id="navDrawer">
+  <ul>
+    <li><a href="/column/" class="drawer-link">コラム</a></li>
+    <li><a href="/service/" class="drawer-link">サービス</a></li>
+    <li><a href="https://aidealize.com/bpr/" class="drawer-link">DX事例</a></li>
+    <li><a href="/works/" class="drawer-link">実績</a></li>
+    <li><a href="/company.html" class="drawer-link">会社概要</a></li>
+    <li><a href="/lp/ai-lp1">無料で相談する</a></li>
+  </ul>
+</div>
+
+<!-- ARTICLE HEADER -->
+<header class="article-header">
+  <div class="article-header-inner">
+    <nav class="breadcrumb" aria-label="パンくず">
+      <a href="/">ホーム</a><span>/</span>
+      <a href="/column/">コラム</a><span>/</span>
+      <span>病院の業務自動化</span>
+    </nav>
+    <div class="article-tag">病院DX / 業務自動化</div>
+    <h1 class="article-h1">
+      病院の業務自動化、何から始める？<br>
+      自動化しやすい業務7つと、失敗しない進め方。
+    </h1>
+    <div class="article-meta">
+      <div>📅 2026年11月11日</div>
+      <div>⏱ 読了約9分</div>
+      <div>✍ AIdealize編集部</div>
+    </div>
+  </div>
+</header>
+
+<article class="article-body">
+<div class="article-body-inner">
+
+  <div class="summary-box reveal">
+    <div class="summary-box-title">この記事でわかること</div>
+    <ul>
+      <li>病院で自動化しやすい業務7つと、それぞれの進め方</li>
+      <li>どの業務から着手するかを決める「優先順位」の付け方</li>
+      <li>システムにAPIがなくても進められるデータ連携の考え方</li>
+      <li>患者情報を扱うときに先に確認しておくこと</li>
+    </ul>
+  </div>
+
+  <p>「業務を自動化したいけれど、何から手をつければいいか分からない」「院内にシステム担当が少なく、大きなプロジェクトは回せない」——病院の業務自動化の相談では、この2つが特に多く聞かれます。</p>
+  <p>結論から言うと、<strong>最初の1つは“くり返しが多く、手順が決まっていて、人が手で転記している業務”</strong>を選ぶのが近道です。この記事では、自動化しやすい業務を7つに整理し、優先順位の付け方と進め方をまとめます。電子カルテの導入全般やDXの考え方は、<a href="/column/byoin-dx-jirei/">病院のDXは「事例」で考えると進む</a>で解説しています。</p>
+
+  <h2>自動化しやすい業務7つ</h2>
+  <p>電子カルテや各種システムの「周辺」に残っている手作業ほど、自動化の効果が出やすい傾向があります。</p>
+
+  <div class="cmp reveal">
+    <div class="cmp-row head">
+      <div class="cmp-cell">業務</div>
+      <div class="cmp-cell">自動化の方向性</div>
+    </div>
+    <div class="cmp-row">
+      <div class="cmp-cell"><strong>① システム間の転記</strong></div>
+      <div class="cmp-cell">CSV出力の取り込みなどで、二重入力と転記ミスを減らす</div>
+    </div>
+    <div class="cmp-row">
+      <div class="cmp-cell"><strong>② 定型書類の作成</strong></div>
+      <div class="cmp-cell">紹介状・報告書・各種届出などのひな形に、データを自動で差し込む</div>
+    </div>
+    <div class="cmp-row">
+      <div class="cmp-cell"><strong>③ 集計・月次報告</strong></div>
+      <div class="cmp-cell">日々のデータを自動で集計し、報告用の表やグラフまで作る</div>
+    </div>
+    <div class="cmp-row">
+      <div class="cmp-cell"><strong>④ 院内の連絡・通知</strong></div>
+      <div class="cmp-cell">予定・変更・未対応の連絡を、決まった条件で自動送信する</div>
+    </div>
+    <div class="cmp-row">
+      <div class="cmp-cell"><strong>⑤ 記録・申し送り</strong></div>
+      <div class="cmp-cell">音声入力やAIで下書きを作り、確認と修正だけを人が行う</div>
+    </div>
+    <div class="cmp-row">
+      <div class="cmp-cell"><strong>⑥ 紙・FAXの取り込み</strong></div>
+      <div class="cmp-cell">OCRで文字にし、必要な項目だけをデータ化する</div>
+    </div>
+    <div class="cmp-row">
+      <div class="cmp-cell"><strong>⑦ 予約・問い合わせ対応</strong></div>
+      <div class="cmp-cell">よくある質問や予約変更の受付を、フォームや自動返信で処理する</div>
+    </div>
+  </div>
+
+  <h2>優先順位は「頻度 × 手間 × 影響の小ささ」で決める</h2>
+  <p>7つすべてに着手する必要はありません。次の3つの観点で、候補に点数をつけてみてください。</p>
+  <ol>
+    <li><strong>頻度</strong>：毎日・毎週など、くり返しが多いほど効果が大きい</li>
+    <li><strong>手間</strong>：1回あたりの作業時間が長い、または転記ミスが起きやすい</li>
+    <li><strong>影響の小ささ</strong>：うまくいかなくても診療に直結しない（最初はここが大切）</li>
+  </ol>
+  <div class="point-box">
+    <div class="point-box-label">ポイント</div>
+    <p>最初に選ぶなら、<strong>診療そのものに直結しない事務業務</strong>（集計、定型書類、院内連絡）がおすすめです。成功体験を作ってから、記録や連携など医療情報に近い領域へ広げると、現場の納得感も得やすくなります。</p>
+  </div>
+
+  <h2>APIがない場合のデータ連携の考え方</h2>
+  <p>「うちのシステムはAPIが使えない」という場合でも、あきらめる必要はありません。現実的には、次の順で検討します。</p>
+  <ol>
+    <li><strong>公式の連携仕様があるか</strong>をベンダーに確認する</li>
+    <li><strong>CSV出力・取り込み</strong>で足りないかを考える（多くの現場でこれが本命です）</li>
+    <li>ベンダーや連携事業者の窓口が使えないか確認する</li>
+    <li>既存ソフトに手を入れず、<strong>フォーム・音声入力・OCRで入力の入口を別に作る</strong></li>
+  </ol>
+  <p>画面操作を真似て自動入力する方法もありますが、画面が変わるたびに止まりやすく、保守の手間が積み上がるため、基本的には最後の選択肢と考えてください。詳しくは<a href="/column/byoin-dx-jirei/">病院のデータ連携は「APIがない」でも進められる</a>の章で解説しています。</p>
+
+  <h2>患者情報を扱うときに先に確認すること</h2>
+  <p>患者情報を含む業務を自動化する場合は、次の点を先に確認しておくと、後戻りを防げます。</p>
+  <ul>
+    <li>厚生労働省の「医療情報システムの安全管理に関するガイドライン」に沿った運用になっているか</li>
+    <li>データを外部のクラウドやAIサービスに送る場合、その範囲と契約内容（委託先の管理を含む）</li>
+    <li>誰がどのデータにアクセスできるか（権限と記録の残し方）</li>
+    <li>止まったときに、手作業へ戻せる手順があるか</li>
+  </ul>
+  <p>最初は患者の個人情報を含まない業務（集計、院内連絡、予約の問い合わせ対応など）から始め、安全管理の体制を確認しながら広げるのが堅実です。</p>
+
+  <h2>進め方の流れ</h2>
+  <ol>
+    <li><strong>業務を書き出す</strong>：誰が、何を、どのくらいの頻度で、どのシステムからどこへ転記しているかを洗い出す</li>
+    <li><strong>1業務に絞る</strong>：上の3つの観点で、いちばん効果が見えやすいものを選ぶ</li>
+    <li><strong>小さく試す</strong>：1部署・1か月などの範囲で試し、削減できた時間と、困りごとを記録する</li>
+    <li><strong>定着させる</strong>：現場の意見を反映し、手順書と問い合わせ先を整えてから横展開する</li>
+  </ol>
+
+  <h2>規模の大きな病院・施設の場合</h2>
+  <p>複数の部署・拠点にまたがる大きな施設では、基幹システム同士の統合は専門のSIerの領域になります。一方で、<strong>その周辺に残る転記・集計・書類・記録の手作業</strong>は、小さく切り出して自動化できます。基幹の入れ替えを待たずに、効果の出やすい部分から着手するのが現実的です。</p>
+
+  <h2>まとめ</h2>
+  <ul>
+    <li>最初の1つは「くり返しが多く、手順が決まっていて、転記している業務」から</li>
+    <li>優先順位は「頻度 × 手間 × 影響の小ささ」で決める</li>
+    <li>APIがなくても、CSV取り込みや入力の入口づくりで進められる</li>
+    <li>患者情報を扱う前に、安全管理と委託先の範囲を確認する</li>
+  </ul>
+  <p>自院でどの業務から始めるべきか迷う場合は、現状の業務フローを一緒に整理するところから支援できます。</p>
+
+  <div class="inline-cta reveal">
+    <div class="inline-cta-tag">無料相談・費用契約なし</div>
+    <h3>自院の業務、どこから自動化する？<br>無料診断で一緒に整理します。</h3>
+    <p>現状の業務をヒアリングし、「どこが問題で、AI・自動化で何が解決できるか」を明確にします。費用・契約は一切不要です。</p>
+    <div class="cta-btns-pair">
+      <a href="https://aidealize.com/bpr/industry/%E7%97%85%E9%99%A2/" class="btn-cta-red">病院の業務改善事例を見る →</a>
+      <a href="/lp/hanamaru-kango/" class="btn-cta-ghost">記録AIを試す</a>
+    </div>
+    <span class="btn-cta-note">オンライン対応・所要約30分・押し売りなし</span>
+  </div>
+
+</div>
+</article>
+
+<!-- 関連記事 -->
+<section class="related-section">
+  <div class="related-inner">
+    <div class="related-label">Related Articles</div>
+    <div class="related-grid">
+      <a href="/column/byoin-dx-jirei/" class="related-card">
+        <div class="related-card-tag">病院DX / データ連携</div>
+        <div class="related-card-title">病院のDXは「事例」で考えると進む。データ連携・業務自動化の成功パターン。</div>
+      </a>
+      <a href="/column/byoin-yoyaku-system-donyu/" class="related-card">
+        <div class="related-card-tag">予約システム / 病院DX</div>
+        <div class="related-card-title">病院の予約システム導入、      何から検討すべきか。</div>
+      </a>
+      <a href="/column/meo-tsugino-itte/" class="related-card">
+        <div class="related-card-tag">MEO / クリニック集客</div>
+        <div class="related-card-title">MEO対策をやり切ったのに伸び悩む。      「次の一手」は何をすべきか。</div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<div class="back-section">
+  <div class="back-section-inner">
+    <a href="/column/" class="back-link">← コラム一覧に戻る</a>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-logo">
+    <div class="footer-logo-mark"></div>
+    <span class="footer-logo-text"><span>A</span>idealize株式会社</span>
+  </div>
+  <span class="footer-copy">© 2020–2026 AIdealize Inc. All rights reserved.</span>
+</footer>
+
+<script>
+(function(){
+  const btn=document.getElementById('navHamburger');
+  const drawer=document.getElementById('navDrawer');
+  const nav=document.getElementById('mainNav');
+  btn.addEventListener('click',function(){btn.classList.toggle('open');drawer.classList.toggle('open');});
+  drawer.querySelectorAll('.drawer-link').forEach(function(l){l.addEventListener('click',function(){btn.classList.remove('open');drawer.classList.remove('open');});});
+  window.addEventListener('scroll',function(){nav.classList.toggle('scrolled',window.scrollY>10);});
+})();
+const obs=new IntersectionObserver(function(e){e.forEach(function(x){if(x.isIntersecting)x.target.classList.add('visible');});},{threshold:0.08,rootMargin:'0px 0px -30px 0px'});
+document.querySelectorAll('.reveal').forEach(function(el){obs.observe(el);});
+</script>
+<script src="/js/lead-capture.js"></script>
+</body>
+</html>
