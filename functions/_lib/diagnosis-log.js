@@ -7,14 +7,21 @@ const GAS_URL = 'https://script.google.com/macros/s/AKfycbweIGAPeJwD-U8D4Cks6fjG
 
 // GAS側（GAS form.md参照）に log_type='site_diagnosis' の分岐コードをデプロイするまでは無効化。
 // 有効化前に送ると旧doPostが「フォーム記録」シートに空行を作り、通知メールを毎回飛ばしてしまう。
-const ENABLED = false;
+const ENABLED = true; // 2026-11-11: GAS側(バージョン15)に診断ログ分岐をデプロイ済み・動作確認済み
 
-export function logDiagnosis(context, checkType, url, score) {
+export function logDiagnosis(context, checkType, url, score, extra) {
   if (!ENABLED) return;
   try {
     const { request } = context;
     const cf = request.cf || {};
+    const ex = extra || {};
     const body = new URLSearchParams({
+      site_name: ex.site_name || '',
+      page_title: ex.page_title || '',
+      bad: ex.bad == null ? '' : String(ex.bad),
+      warn: ex.warn == null ? '' : String(ex.warn),
+      cms: ex.cms || '',
+      admin_exposed: ex.admin_exposed || '',
       log_type: 'site_diagnosis',
       check_type: checkType, // 'site'（集客診断）| 'security'（Prevention）
       url: url || '',

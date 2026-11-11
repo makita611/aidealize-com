@@ -218,7 +218,20 @@ export async function onRequestGet(context) {
       bad:  checks.filter(c => c.status === 'bad').length,
     };
 
-    logDiagnosis(context, 'security', finalUrl.toString(), score);
+    const pageTitle = decodeEntities(pick(headHtml, /<title[^>]*>([\s\S]*?)<\/title>/i));
+    const ogSite = decodeEntities(pick(headHtml, /<meta[^>]+property=["']og:site_name["'][^>]*content=["']([^"']+)["']/i)
+      || pick(headHtml, /<meta[^>]+content=["']([^"']+)["'][^>]+property=["']og:site_name["']/i));
+    // 会社名の手がかり：og:site_name 優先、無ければ <title> の末尾側（「ページ名｜会社名」型）を採用
+    const siteName = ogSite || (pageTitle.split(/\s*[|｜\-–—:：]\s*/).filter(Boolean).pop() || pageTitle);
+
+    logDiagnosis(context, 'security', finalUrl.toString(), score, {
+      site_name: siteName,
+      page_title: pageTitle,
+      bad: counts.bad,
+      warn: counts.warn,
+      cms: cms ? (cms + (cmsVersion ? ' ' + cmsVersion : '')) : '',
+      admin_exposed: exposedAdmin && exposedAdmin.length ? '1' : '',
+    });
 
     return json({
       ok: true,
@@ -226,7 +239,8 @@ export async function onRequestGet(context) {
       fetchedAt: new Date().toISOString(),
       score, counts,
       meta: {
-        title: decodeEntities(pick(headHtml, /<title[^>]*>([\s\S]*?)<\/title>/i)),
+        title: pageTitle,
+        siteName,
         server, poweredBy, cms, cmsVersion,
         exposedAdmin,
       },
