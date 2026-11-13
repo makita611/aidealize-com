@@ -1,5 +1,5 @@
 <!doctype html><html lang="ja"><head><meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex, nofollow, noarchive"><meta name="referrer" content="no-referrer"><meta name="color-scheme" content="light">
+<meta name="viewport" content="width=device-width,initial-scale=1"><meta name="color-scheme" content="light">
 <title>aidealize 集客ボード</title>
 <style>
 :root{color-scheme:light}
@@ -47,12 +47,34 @@ th:first-child,td:first-child{text-align:left;word-break:break-all}th{color:#777
 <div id="ctawrap"><h2>どのボタンが押されている?(直近28日)</h2>
 <table id="cta"></table></div>
 
+<div id="gscwrap"><h2>Google検索での見られ方(直近28日)</h2>
+<p class="hint" id="gschint"></p>
+<div class="cards" id="gcards"></div>
+<h2>検索の表示回数(週ごと)</h2><p class="hint">検索結果に出た回数。クリックの手前の数字。</p>
+<div class="bars" id="gimp"></div><div class="lab" id="glab1"></div>
+<h2>検索からのクリック(週ごと)</h2>
+<div class="bars" id="gclk"></div><div class="lab" id="glab2"></div>
+<h2>クリック率(週ごと)</h2><p class="hint">表示された中で押された割合。低いと「出ているのに選ばれていない」。</p>
+<div class="bars" id="gctr"></div><div class="lab" id="glab3"></div>
+<h2>検索ワード(直近28日)</h2>
+<table id="gq"></table>
+<h2>表示は多いワード(直近28日)</h2><p class="hint">出ているのに押されないワードは、タイトルや説明文の見直し候補。</p>
+<table id="gqi"></table>
+<h2>検索で出ているページ(直近28日)</h2>
+<table id="gp"></table></div>
+
+<div id="aiwrap"><h2>ChatGPTなどAIからの訪問(週ごと)</h2>
+<p class="hint" id="aihint"></p>
+<div class="bars" id="aibars"></div><div class="lab" id="ailab"></div>
+<table id="aisrc" style="margin-top:10px"></table>
+<table id="aipg" style="margin-top:10px"></table></div>
+
 <h2>入口になっているページ(直近28日)</h2>
 <p class="hint">「読まれ率」は、ちゃんと見られた訪問の割合。高いほど良い。</p>
 <table id="pg"></table>
 </main>
 <script>
-const D={"key": "uchihebo", "name": "内枦保住建", "url": "https://uchihebo.jp/", "generated": "2026-11-10 22:01", "weeks": ["8/24", "8/31", "9/7", "9/14", "9/21", "9/28", "10/5", "10/12", "10/19", "10/26", "11/2", "11/9"], "channels": {"直接": [43, 30, 45, 23, 16, 41, 40, 26, 38, 46, 36, 4], "検索": [63, 43, 55, 39, 11, 41, 33, 28, 22, 30, 28, 6], "他サイト": [2, 3, 4, 1, 1, 2, 1, 1, 0, 2, 1, 0], "SNS": [4, 3, 2, 2, 4, 2, 2, 4, 2, 3, 5, 1], "AI": [0, 0, 0, 0, 0, 0, 0, 0, 2, 2, 0, 0], "その他": [0, 2, 3, 0, 0, 1, 0, 0, 0, 0, 4, 0]}, "users": [87, 66, 85, 53, 29, 72, 64, 55, 58, 76, 67, 10], "events": {"click": [5, 3, 0, 2, 0, 5, 3, 4, 4, 2, 3, 3], "form_submit": [2, 1, 1, 1, 3, 1, 0, 0, 0, 0, 1, 0]}, "evnames": {"click": "外部リンククリック", "form_submit": "フォーム送信ボタン"}, "pages": [{"page": "/", "sessions": 148, "eng": 79, "sec": 211}, {"page": "/contact", "sessions": 76, "eng": 64, "sec": 20}, {"page": "(not set)", "sessions": 15, "eng": 0, "sec": 0}, {"page": "/about", "sessions": 12, "eng": 50, "sec": 113}, {"page": "/recruit", "sessions": 6, "eng": 67, "sec": 49}, {"page": "/achievement", "sessions": 5, "eng": 40, "sec": 24}, {"page": "/archives/completion/1357", "sessions": 3, "eng": 100, "sec": 365}, {"page": "/land-info", "sessions": 3, "eng": 67, "sec": 214}, {"page": "/archives/news/835", "sessions": 2, "eng": 0, "sec": 3}, {"page": "/pers-drawing", "sessions": 2, "eng": 0, "sec": 3}, {"page": "/archives/completion/84", "sessions": 1, "eng": 0, "sec": 0}, {"page": "/archives/completion/971", "sessions": 1, "eng": 100, "sec": 38}, {"page": "/archives/news/1442", "sessions": 1, "eng": 0, "sec": 0}, {"page": "/archives/news/1469", "sessions": 1, "eng": 0, "sec": 0}, {"page": "/archives/news/655", "sessions": 1, "eng": 0, "sec": 0}], "cta": [], "range": ["2026-08-24", "2026-11-09"], "nav": [{"label": "全社", "href": "board-0d71fd5bbe87.html", "cur": false}, {"label": "aidealize", "href": "board-ac6e604b90a1.html", "cur": false}, {"label": "komi 集客", "href": "https://artmake-komi.com/internal/board-o7onmndtuog.html", "cur": false}, {"label": "komi GA4", "href": "board-a8709da8ebf0.html", "cur": false}, {"label": "内枦保住建", "href": "board-072f103d4083.html", "cur": true}, {"label": "K&T", "href": "board-e59cf5a6a551.html", "cur": false}, {"label": "いぶきハーブ・ガーデン", "href": "board-322d59c5260b.html", "cur": false}, {"label": "goldexperience.jp", "href": "board-12365fdc21a0.html", "cur": false}]};
+const D={"key": "uchihebo", "name": "内枦保住建", "url": "https://uchihebo.jp/", "ai": {"weekly": [0, 0, 0, 0, 0, 0, 0, 0, 2, 2, 0, 0], "sources": [["chatgpt.com", 3], ["gemini.google.com", 1]], "pages": [["/", 2], ["/achievement", 1], ["/about", 1]]}, "gsc": {"clicks": [34, 19, 15, 23, 7, 17, 10, 24, 11, 17, 13, 3], "imp": [315, 210, 256, 466, 221, 246, 978, 508, 132, 144, 143, 44], "ctr": [10.79, 9.05, 5.86, 4.94, 3.17, 6.91, 1.02, 4.72, 8.33, 11.81, 9.09, 6.82], "t28": {"clicks": 59, "imp": 578, "ctr": 10.21, "pos": 5.9}, "tprev": {"clicks": 51, "imp": 2220, "ctr": 2.3, "pos": 8.6}, "top": [{"q": "内枦保住建", "clicks": 25, "imp": 80, "ctr": 31.2, "pos": 4.8}, {"q": "内枦保", "clicks": 1, "imp": 62, "ctr": 1.6, "pos": 5.0}, {"q": "うちへぼ", "clicks": 1, "imp": 14, "ctr": 7.1, "pos": 1.4}, {"q": "エンフェス", "clicks": 0, "imp": 23, "ctr": 0, "pos": 9.2}, {"q": "エンフェス 宮崎", "clicks": 0, "imp": 20, "ctr": 0, "pos": 9.2}, {"q": "都城 工務店", "clicks": 0, "imp": 12, "ctr": 0, "pos": 17.2}, {"q": "うちぼ", "clicks": 0, "imp": 6, "ctr": 0, "pos": 7.2}, {"q": "都城市 工務店", "clicks": 0, "imp": 6, "ctr": 0, "pos": 1.2}], "top_imp": [{"q": "内枦保住建", "clicks": 25, "imp": 80, "ctr": 31.2, "pos": 4.8}, {"q": "内枦保", "clicks": 1, "imp": 62, "ctr": 1.6, "pos": 5.0}, {"q": "エンフェス", "clicks": 0, "imp": 23, "ctr": 0, "pos": 9.2}, {"q": "エンフェス 宮崎", "clicks": 0, "imp": 20, "ctr": 0, "pos": 9.2}, {"q": "うちへぼ", "clicks": 1, "imp": 14, "ctr": 7.1, "pos": 1.4}, {"q": "都城 工務店", "clicks": 0, "imp": 12, "ctr": 0, "pos": 17.2}, {"q": "うちぼ", "clicks": 0, "imp": 6, "ctr": 0, "pos": 7.2}, {"q": "都城市 工務店", "clicks": 0, "imp": 6, "ctr": 0, "pos": 1.2}], "pages": [{"page": "https://uchihebo.jp/", "clicks": 50, "imp": 458, "ctr": 10.9}, {"page": "https://uchihebo.jp/about", "clicks": 5, "imp": 203, "ctr": 2.5}, {"page": "https://uchihebo.jp/recruit", "clicks": 4, "imp": 35, "ctr": 11.4}, {"page": "https://uchihebo.jp/land-info", "clicks": 2, "imp": 18, "ctr": 11.1}, {"page": "https://uchihebo.jp/archives/perspective/91", "clicks": 1, "imp": 1, "ctr": 100}, {"page": "https://uchihebo.jp/achievement", "clicks": 0, "imp": 20, "ctr": 0}, {"page": "https://uchihebo.jp/archives/completion/414", "clicks": 0, "imp": 6, "ctr": 0}, {"page": "https://uchihebo.jp/archives/completion/642", "clicks": 0, "imp": 1, "ctr": 0}], "through": "2026-11-10"}, "generated": "2026-11-13 16:30", "weeks": ["8/24", "8/31", "9/7", "9/14", "9/21", "9/28", "10/5", "10/12", "10/19", "10/26", "11/2", "11/9"], "channels": {"直接": [43, 30, 45, 23, 16, 41, 40, 26, 38, 46, 36, 22], "検索": [63, 43, 55, 39, 11, 41, 33, 28, 22, 30, 28, 17], "他サイト": [2, 3, 4, 1, 1, 2, 1, 1, 0, 2, 1, 0], "SNS": [4, 3, 2, 2, 4, 2, 2, 4, 2, 3, 5, 2], "AI": [0, 0, 0, 0, 0, 0, 0, 0, 2, 2, 0, 0], "その他": [0, 2, 3, 0, 0, 1, 0, 0, 0, 0, 4, 0]}, "users": [87, 66, 85, 53, 29, 72, 64, 55, 58, 76, 67, 36], "events": {"click": [5, 3, 0, 2, 0, 5, 3, 4, 4, 2, 3, 3], "form_submit": [2, 1, 1, 1, 3, 1, 0, 0, 0, 0, 1, 0]}, "evnames": {"click": "外部リンククリック", "form_submit": "フォーム送信ボタン"}, "pages": [{"page": "/", "sessions": 139, "eng": 79, "sec": 218}, {"page": "/contact", "sessions": 85, "eng": 65, "sec": 2127}, {"page": "(not set)", "sessions": 15, "eng": 0, "sec": 0}, {"page": "/about", "sessions": 12, "eng": 42, "sec": 106}, {"page": "/recruit", "sessions": 6, "eng": 67, "sec": 49}, {"page": "/achievement", "sessions": 5, "eng": 40, "sec": 24}, {"page": "/archives/completion/1357", "sessions": 3, "eng": 100, "sec": 365}, {"page": "/land-info", "sessions": 3, "eng": 67, "sec": 214}, {"page": "", "sessions": 2, "eng": 50, "sec": 11}, {"page": "/pers-drawing", "sessions": 2, "eng": 0, "sec": 3}, {"page": "/archives/completion/84", "sessions": 1, "eng": 0, "sec": 0}, {"page": "/archives/completion/971", "sessions": 1, "eng": 100, "sec": 38}, {"page": "/archives/news/1442", "sessions": 1, "eng": 0, "sec": 0}, {"page": "/archives/news/1469", "sessions": 1, "eng": 0, "sec": 0}, {"page": "/archives/news/655", "sessions": 1, "eng": 0, "sec": 0}], "cta": [], "range": ["2026-08-24", "2026-11-12"], "nav": [{"label": "全社", "href": "board-0d71fd5bbe87.html", "cur": false}, {"label": "aidealize", "href": "board-ac6e604b90a1.html", "cur": false}, {"label": "komi 集客", "href": "https://artmake-komi.com/internal/board-o7onmndtuog.html", "cur": false}, {"label": "komi GA4", "href": "board-a8709da8ebf0.html", "cur": false}, {"label": "内枦保住建", "href": "board-072f103d4083.html", "cur": true}, {"label": "K&T", "href": "board-e59cf5a6a551.html", "cur": false}, {"label": "いぶきハーブ・ガーデン", "href": "board-322d59c5260b.html", "cur": false}, {"label": "goldexperience.jp", "href": "board-12365fdc21a0.html", "cur": false}]};
 const $=id=>document.getElementById(id);
 const sum=a=>a.reduce((x,y)=>x+y,0);
 $('nav').innerHTML=D.nav.map(n=>`<a href="${n.href}"${n.cur?' class="cur"':''}>${n.label}</a>`).join('');
@@ -83,6 +105,26 @@ $('ev').innerHTML='<tr><th>動き</th><th>先週</th><th>前の週</th><th>直�
  `<tr><td>${D.evnames[k]}</td><td>${f(k)[L]}</td><td>${f(k)[P]}</td><td class="spark">${f(k).slice(-6).join(' · ')}</td></tr>`).join('');
 $('cta').innerHTML='<tr><th>押された種類</th><th>回数</th></tr>'+(D.cta.length?D.cta.map(([k,v])=>`<tr><td>${k||'(未分類)'}</td><td>${v}</td></tr>`).join(''):'<tr><td colspan=2>まだデータなし</td></tr>');
 $('pg').innerHTML='<tr><th>ページ</th><th>訪問</th><th>読まれ率</th><th>滞在</th></tr>'+D.pages.map(p=>`<tr><td>${p.page}</td><td>${p.sessions}</td><td>${p.eng}%</td><td>${p.sec}秒</td></tr>`).join('');
+
+const bar1=(id,lid,vals,color,fmt)=>{const m=Math.max(...vals,1);$(id).innerHTML=vals.map((v,i)=>`<div class="col" title="${D.weeks[i]}週 ${fmt?fmt(v):v}"><div class="seg" style="height:${v/m*100}%;background:${color}"></div></div>`).join('');
+ $(lid).innerHTML=vals.map((v,i)=>`<span>${i==W-1?(fmt?fmt(v):v):(i%2==W%2?D.weeks[i]:'')}</span>`).join('')};
+const dl=(a,b)=>{const c=chg(a,b);return c===null?'':'前の28日比 '+(c>=0?'+':'')+c+'%'};
+const nf=n=>Math.round(n).toLocaleString('ja-JP');
+if(D.gsc){const g=D.gsc,a=g.t28,b=g.tprev;
+ $('gschint').textContent='〜'+g.through+'まで(Googleの集計は2〜3日遅れ)。いちばん右の週は途中経過。';
+ const gc=(l,v,s)=>`<div class="card"><div class="n">${v}</div><div class="l">${l}</div><div class="l">${s}</div></div>`;
+ $('gcards').innerHTML=gc('検索での表示回数',nf(a.imp),dl(a.imp,b.imp))+gc('検索からのクリック',nf(a.clicks),dl(a.clicks,b.clicks))+gc('クリック率',a.ctr.toFixed(1)+'%','前の28日 '+b.ctr.toFixed(1)+'%')+gc('平均の掲載順位',a.pos.toFixed(1)+'位','前の28日 '+b.pos.toFixed(1)+'位');
+ bar1('gimp','glab1',g.imp,'#4a7fc1');bar1('gclk','glab2',g.clicks,'#2e7d6b');bar1('gctr','glab3',g.ctr,'#e08a3c',v=>v.toFixed(1)+'%');
+ const qh='<tr><th>ワード</th><th>表示</th><th>押された</th><th>率</th><th>順位</th></tr>';
+ const qr=q=>`<tr><td>${q.q}</td><td>${q.imp}</td><td>${q.clicks}</td><td>${q.ctr.toFixed(1)}%</td><td>${q.pos.toFixed(1)}</td></tr>`;
+ $('gq').innerHTML=qh+g.top.map(qr).join('');$('gqi').innerHTML=qh+g.top_imp.map(qr).join('');
+ $('gp').innerHTML='<tr><th>ページ</th><th>表示</th><th>押された</th><th>率</th></tr>'+g.pages.map(p=>`<tr><td>${p.page.replace(/^https?:\/\/[^/]+/,'')||'/'}</td><td>${p.imp}</td><td>${p.clicks}</td><td>${p.ctr.toFixed(1)}%</td></tr>`).join('');
+}else $('gscwrap').style.display='none';
+if(D.ai){const ai=D.ai;bar1('aibars','ailab',ai.weekly,'#7b5ea7');
+ $('aihint').textContent='直近12週の合計 '+sum(ai.weekly)+'回。ChatGPT・Perplexity・Geminiなどに紹介されて来た訪問。'+(sum(ai.weekly)?'':'まだ確認できていません。');
+ $('aisrc').innerHTML='<tr><th>AIの種類(28日)</th><th>訪問</th></tr>'+(ai.sources.length?ai.sources.map(([k,v])=>`<tr><td>${k}</td><td>${v}</td></tr>`).join(''):'<tr><td colspan=2>まだなし</td></tr>');
+ $('aipg').innerHTML='<tr><th>AI経由で最初に見たページ(28日)</th><th>訪問</th></tr>'+(ai.pages.length?ai.pages.map(([k,v])=>`<tr><td>${k}</td><td>${v}</td></tr>`).join(''):'<tr><td colspan=2>まだなし</td></tr>');
+}else $('aiwrap').style.display='none';
 const li=[];const c=chg(tot[L],tot[P]);
 li.push(`先週の訪問は ${tot[L]} 件(前の週 ${tot[P]} 件${c===null?'':'、'+(c>=0?'+':'')+c+'%'})。`);
 const best=names.map(n=>[n,D.channels[n][L]]).sort((a,b)=>b[1]-a[1])[0];

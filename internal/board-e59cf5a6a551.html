@@ -1,5 +1,5 @@
 <!doctype html><html lang="ja"><head><meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex, nofollow, noarchive"><meta name="referrer" content="no-referrer"><meta name="color-scheme" content="light">
+<meta name="viewport" content="width=device-width,initial-scale=1"><meta name="color-scheme" content="light">
 <title>aidealize 集客ボード</title>
 <style>
 :root{color-scheme:light}
@@ -47,12 +47,34 @@ th:first-child,td:first-child{text-align:left;word-break:break-all}th{color:#777
 <div id="ctawrap"><h2>どのボタンが押されている?(直近28日)</h2>
 <table id="cta"></table></div>
 
+<div id="gscwrap"><h2>Google検索での見られ方(直近28日)</h2>
+<p class="hint" id="gschint"></p>
+<div class="cards" id="gcards"></div>
+<h2>検索の表示回数(週ごと)</h2><p class="hint">検索結果に出た回数。クリックの手前の数字。</p>
+<div class="bars" id="gimp"></div><div class="lab" id="glab1"></div>
+<h2>検索からのクリック(週ごと)</h2>
+<div class="bars" id="gclk"></div><div class="lab" id="glab2"></div>
+<h2>クリック率(週ごと)</h2><p class="hint">表示された中で押された割合。低いと「出ているのに選ばれていない」。</p>
+<div class="bars" id="gctr"></div><div class="lab" id="glab3"></div>
+<h2>検索ワード(直近28日)</h2>
+<table id="gq"></table>
+<h2>表示は多いワード(直近28日)</h2><p class="hint">出ているのに押されないワードは、タイトルや説明文の見直し候補。</p>
+<table id="gqi"></table>
+<h2>検索で出ているページ(直近28日)</h2>
+<table id="gp"></table></div>
+
+<div id="aiwrap"><h2>ChatGPTなどAIからの訪問(週ごと)</h2>
+<p class="hint" id="aihint"></p>
+<div class="bars" id="aibars"></div><div class="lab" id="ailab"></div>
+<table id="aisrc" style="margin-top:10px"></table>
+<table id="aipg" style="margin-top:10px"></table></div>
+
 <h2>入口になっているページ(直近28日)</h2>
 <p class="hint">「読まれ率」は、ちゃんと見られた訪問の割合。高いほど良い。</p>
 <table id="pg"></table>
 </main>
 <script>
-const D={"key": "kt99", "name": "K&T(kt99.jp)", "url": "https://kt99.jp/", "generated": "2026-11-10 22:01", "weeks": ["8/24", "8/31", "9/7", "9/14", "9/21", "9/28", "10/5", "10/12", "10/19", "10/26", "11/2", "11/9"], "channels": {"検索": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 5, 19], "SNS": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 8, 4], "直接": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 5, 7], "他サイト": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2]}, "users": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 18, 24], "events": {"click": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 6], "line_click": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0], "tel_click": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0]}, "evnames": {"click": "外部リンククリック", "line_click": "LINEクリック(誘導)", "tel_click": "電話タップ"}, "pages": [{"page": "/", "sessions": 18, "eng": 89, "sec": 328}, {"page": "/handyman", "sessions": 10, "eng": 70, "sec": 23}, {"page": "/company", "sessions": 8, "eng": 62, "sec": 154}, {"page": "/private-emergency", "sessions": 3, "eng": 33, "sec": 94}, {"page": "(not set)", "sessions": 2, "eng": 0, "sec": 0}, {"page": "/column/hadano-katazuke", "sessions": 2, "eng": 0, "sec": 1}, {"page": "/column/hikkoshi-mae-fuyouhin-shobun", "sessions": 2, "eng": 100, "sec": 36}, {"page": "/care-taxi", "sessions": 1, "eng": 100, "sec": 1297}, {"page": "/column/isehara-katazuke", "sessions": 1, "eng": 0, "sec": 0}, {"page": "/column/jitensha-bouhan-touroku-massho", "sessions": 1, "eng": 100, "sec": 14}, {"page": "/column/kaigo-taxi-ryokin-shikumi-sagamihara", "sessions": 1, "eng": 100, "sec": 81}, {"page": "/katazuke", "sessions": 1, "eng": 100, "sec": 1065}], "cta": [], "range": ["2026-08-24", "2026-11-09"], "nav": [{"label": "全社", "href": "board-0d71fd5bbe87.html", "cur": false}, {"label": "aidealize", "href": "board-ac6e604b90a1.html", "cur": false}, {"label": "komi 集客", "href": "https://artmake-komi.com/internal/board-o7onmndtuog.html", "cur": false}, {"label": "komi GA4", "href": "board-a8709da8ebf0.html", "cur": false}, {"label": "内枦保住建", "href": "board-072f103d4083.html", "cur": false}, {"label": "K&T", "href": "board-e59cf5a6a551.html", "cur": true}, {"label": "いぶきハーブ・ガーデン", "href": "board-322d59c5260b.html", "cur": false}, {"label": "goldexperience.jp", "href": "board-12365fdc21a0.html", "cur": false}]};
+const D={"key": "kt99", "name": "K&T(kt99.jp)", "url": "https://kt99.jp/", "ai": {"weekly": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], "sources": [], "pages": []}, "gsc": {"clicks": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 64, 23], "imp": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 766, 511], "ctr": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 8.36, 4.5], "t28": {"clicks": 87, "imp": 1277, "ctr": 6.81, "pos": 10.8}, "tprev": {"clicks": 0, "imp": 0, "ctr": 0, "pos": 0}, "top": [{"q": "株式会社k&t", "clicks": 19, "imp": 32, "ctr": 59.4, "pos": 1.2}, {"q": "株式会社k＆t", "clicks": 5, "imp": 11, "ctr": 45.5, "pos": 2.3}, {"q": "株式会社ｋ＆ｔ", "clicks": 2, "imp": 5, "ctr": 40.0, "pos": 1.8}, {"q": "k&t", "clicks": 1, "imp": 45, "ctr": 2.2, "pos": 6.0}, {"q": "伊勢原市 遺品整理", "clicks": 1, "imp": 2, "ctr": 50.0, "pos": 14.5}, {"q": "自転車 防犯登録 解除", "clicks": 0, "imp": 93, "ctr": 0, "pos": 8.7}, {"q": "防犯登録 抹消", "clicks": 0, "imp": 64, "ctr": 0, "pos": 7.1}, {"q": "実家の片付け 売れるもの", "clicks": 0, "imp": 60, "ctr": 0, "pos": 11.1}], "top_imp": [{"q": "自転車 防犯登録 解除", "clicks": 0, "imp": 93, "ctr": 0, "pos": 8.7}, {"q": "防犯登録 抹消", "clicks": 0, "imp": 64, "ctr": 0, "pos": 7.1}, {"q": "実家の片付け 売れるもの", "clicks": 0, "imp": 60, "ctr": 0, "pos": 11.1}, {"q": "自転車防犯登録解除", "clicks": 0, "imp": 48, "ctr": 0, "pos": 8.8}, {"q": "k&t", "clicks": 1, "imp": 45, "ctr": 2.2, "pos": 6.0}, {"q": "株式会社k&t", "clicks": 19, "imp": 32, "ctr": 59.4, "pos": 1.2}, {"q": "実家整理 相模原", "clicks": 0, "imp": 20, "ctr": 0, "pos": 6.5}, {"q": "実家片付け 相模原", "clicks": 0, "imp": 19, "ctr": 0, "pos": 3.9}], "pages": [{"page": "https://kt99.jp/", "clicks": 26, "imp": 127, "ctr": 20.5}, {"page": "https://kt99.jp/katazuke/", "clicks": 24, "imp": 127, "ctr": 18.9}, {"page": "https://kt99.jp/company/", "clicks": 13, "imp": 167, "ctr": 7.8}, {"page": "https://kt99.jp/column/hachioji-katazuke/", "clicks": 4, "imp": 20, "ctr": 20.0}, {"page": "https://kt99.jp/care-taxi/", "clicks": 3, "imp": 54, "ctr": 5.6}, {"page": "https://kt99.jp/column/hadano-katazuke/", "clicks": 3, "imp": 21, "ctr": 14.3}, {"page": "https://kt99.jp/column/hikkoshi-mae-fuyouhin-shobun/", "clicks": 3, "imp": 11, "ctr": 27.3}, {"page": "https://kt99.jp/column/sagamihara-chuo-katazuke/", "clicks": 3, "imp": 46, "ctr": 6.5}], "through": "2026-11-10"}, "generated": "2026-11-13 16:30", "weeks": ["8/24", "8/31", "9/7", "9/14", "9/21", "9/28", "10/5", "10/12", "10/19", "10/26", "11/2", "11/9"], "channels": {"検索": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 5, 72], "SNS": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 8, 18], "直接": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 5, 19], "その他": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 4], "他サイト": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 4]}, "users": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 18, 81], "events": {"click": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 13], "line_click": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1], "tel_click": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1]}, "evnames": {"click": "外部リンククリック", "line_click": "LINEクリック(誘導)", "tel_click": "電話タップ"}, "pages": [{"page": "/", "sessions": 47, "eng": 72, "sec": 221}, {"page": "/company", "sessions": 23, "eng": 70, "sec": 91}, {"page": "/handyman", "sessions": 12, "eng": 75, "sec": 24}, {"page": "/private-emergency", "sessions": 9, "eng": 22, "sec": 71}, {"page": "(not set)", "sessions": 8, "eng": 0, "sec": 0}, {"page": "/care-taxi", "sessions": 7, "eng": 57, "sec": 228}, {"page": "/column/jitensha-bouhan-touroku-massho", "sessions": 7, "eng": 86, "sec": 57}, {"page": "", "sessions": 4, "eng": 0, "sec": 0}, {"page": "/katazuke", "sessions": 4, "eng": 100, "sec": 305}, {"page": "/column/hikkoshi-mae-fuyouhin-shobun", "sessions": 3, "eng": 100, "sec": 39}, {"page": "/column/hadano-katazuke", "sessions": 2, "eng": 0, "sec": 1}, {"page": "/column/isehara-katazuke", "sessions": 2, "eng": 50, "sec": 45}, {"page": "/column/kaigo-taxi-ryokin-shikumi-sagamihara", "sessions": 2, "eng": 100, "sec": 57}, {"page": "/column", "sessions": 1, "eng": 0, "sec": 5}, {"page": "/column/aircon-torihazushi-jibun-gyosha", "sessions": 1, "eng": 100, "sec": 8}], "cta": [], "range": ["2026-08-24", "2026-11-12"], "nav": [{"label": "全社", "href": "board-0d71fd5bbe87.html", "cur": false}, {"label": "aidealize", "href": "board-ac6e604b90a1.html", "cur": false}, {"label": "komi 集客", "href": "https://artmake-komi.com/internal/board-o7onmndtuog.html", "cur": false}, {"label": "komi GA4", "href": "board-a8709da8ebf0.html", "cur": false}, {"label": "内枦保住建", "href": "board-072f103d4083.html", "cur": false}, {"label": "K&T", "href": "board-e59cf5a6a551.html", "cur": true}, {"label": "いぶきハーブ・ガーデン", "href": "board-322d59c5260b.html", "cur": false}, {"label": "goldexperience.jp", "href": "board-12365fdc21a0.html", "cur": false}]};
 const $=id=>document.getElementById(id);
 const sum=a=>a.reduce((x,y)=>x+y,0);
 $('nav').innerHTML=D.nav.map(n=>`<a href="${n.href}"${n.cur?' class="cur"':''}>${n.label}</a>`).join('');
@@ -83,6 +105,26 @@ $('ev').innerHTML='<tr><th>動き</th><th>先週</th><th>前の週</th><th>直�
  `<tr><td>${D.evnames[k]}</td><td>${f(k)[L]}</td><td>${f(k)[P]}</td><td class="spark">${f(k).slice(-6).join(' · ')}</td></tr>`).join('');
 $('cta').innerHTML='<tr><th>押された種類</th><th>回数</th></tr>'+(D.cta.length?D.cta.map(([k,v])=>`<tr><td>${k||'(未分類)'}</td><td>${v}</td></tr>`).join(''):'<tr><td colspan=2>まだデータなし</td></tr>');
 $('pg').innerHTML='<tr><th>ページ</th><th>訪問</th><th>読まれ率</th><th>滞在</th></tr>'+D.pages.map(p=>`<tr><td>${p.page}</td><td>${p.sessions}</td><td>${p.eng}%</td><td>${p.sec}秒</td></tr>`).join('');
+
+const bar1=(id,lid,vals,color,fmt)=>{const m=Math.max(...vals,1);$(id).innerHTML=vals.map((v,i)=>`<div class="col" title="${D.weeks[i]}週 ${fmt?fmt(v):v}"><div class="seg" style="height:${v/m*100}%;background:${color}"></div></div>`).join('');
+ $(lid).innerHTML=vals.map((v,i)=>`<span>${i==W-1?(fmt?fmt(v):v):(i%2==W%2?D.weeks[i]:'')}</span>`).join('')};
+const dl=(a,b)=>{const c=chg(a,b);return c===null?'':'前の28日比 '+(c>=0?'+':'')+c+'%'};
+const nf=n=>Math.round(n).toLocaleString('ja-JP');
+if(D.gsc){const g=D.gsc,a=g.t28,b=g.tprev;
+ $('gschint').textContent='〜'+g.through+'まで(Googleの集計は2〜3日遅れ)。いちばん右の週は途中経過。';
+ const gc=(l,v,s)=>`<div class="card"><div class="n">${v}</div><div class="l">${l}</div><div class="l">${s}</div></div>`;
+ $('gcards').innerHTML=gc('検索での表示回数',nf(a.imp),dl(a.imp,b.imp))+gc('検索からのクリック',nf(a.clicks),dl(a.clicks,b.clicks))+gc('クリック率',a.ctr.toFixed(1)+'%','前の28日 '+b.ctr.toFixed(1)+'%')+gc('平均の掲載順位',a.pos.toFixed(1)+'位','前の28日 '+b.pos.toFixed(1)+'位');
+ bar1('gimp','glab1',g.imp,'#4a7fc1');bar1('gclk','glab2',g.clicks,'#2e7d6b');bar1('gctr','glab3',g.ctr,'#e08a3c',v=>v.toFixed(1)+'%');
+ const qh='<tr><th>ワード</th><th>表示</th><th>押された</th><th>率</th><th>順位</th></tr>';
+ const qr=q=>`<tr><td>${q.q}</td><td>${q.imp}</td><td>${q.clicks}</td><td>${q.ctr.toFixed(1)}%</td><td>${q.pos.toFixed(1)}</td></tr>`;
+ $('gq').innerHTML=qh+g.top.map(qr).join('');$('gqi').innerHTML=qh+g.top_imp.map(qr).join('');
+ $('gp').innerHTML='<tr><th>ページ</th><th>表示</th><th>押された</th><th>率</th></tr>'+g.pages.map(p=>`<tr><td>${p.page.replace(/^https?:\/\/[^/]+/,'')||'/'}</td><td>${p.imp}</td><td>${p.clicks}</td><td>${p.ctr.toFixed(1)}%</td></tr>`).join('');
+}else $('gscwrap').style.display='none';
+if(D.ai){const ai=D.ai;bar1('aibars','ailab',ai.weekly,'#7b5ea7');
+ $('aihint').textContent='直近12週の合計 '+sum(ai.weekly)+'回。ChatGPT・Perplexity・Geminiなどに紹介されて来た訪問。'+(sum(ai.weekly)?'':'まだ確認できていません。');
+ $('aisrc').innerHTML='<tr><th>AIの種類(28日)</th><th>訪問</th></tr>'+(ai.sources.length?ai.sources.map(([k,v])=>`<tr><td>${k}</td><td>${v}</td></tr>`).join(''):'<tr><td colspan=2>まだなし</td></tr>');
+ $('aipg').innerHTML='<tr><th>AI経由で最初に見たページ(28日)</th><th>訪問</th></tr>'+(ai.pages.length?ai.pages.map(([k,v])=>`<tr><td>${k}</td><td>${v}</td></tr>`).join(''):'<tr><td colspan=2>まだなし</td></tr>');
+}else $('aiwrap').style.display='none';
 const li=[];const c=chg(tot[L],tot[P]);
 li.push(`先週の訪問は ${tot[L]} 件(前の週 ${tot[P]} 件${c===null?'':'、'+(c>=0?'+':'')+c+'%'})。`);
 const best=names.map(n=>[n,D.channels[n][L]]).sort((a,b)=>b[1]-a[1])[0];
