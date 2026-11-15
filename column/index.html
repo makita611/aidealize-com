@@ -568,6 +568,42 @@
       "position": 93,
       "url": "https://aidealize.com/column/toiawase-fuenai-4tsu-no-suji/",
       "name": "ホームページを作り直しても問い合わせが増えない会社が、最初に見る4つの数字｜サーチコンソールとGA4で原因を切り分ける"
+    },
+    {
+      "@type": "ListItem",
+      "position": 94,
+      "url": "https://aidealize.com/column/zumen-sekisan-ai-dekiru-genkai/",
+      "name": "図面からの積算はAIでどこまで効率化できる？できる範囲と、人の確認が残る範囲"
+    },
+    {
+      "@type": "ListItem",
+      "position": 95,
+      "url": "https://aidealize.com/column/zumen-hiroidashi-ai-yarikata/",
+      "name": "図面の拾い出しとは？やり方の基本と、手作業・ソフト・AI・代行の使い分け"
+    },
+    {
+      "@type": "ListItem",
+      "position": 96,
+      "url": "https://aidealize.com/column/zumen-ocr-dekiru-dekinai/",
+      "name": "図面OCRでできること・できないこと｜図番・寸法・部品表の読み取りの現実"
+    },
+    {
+      "@type": "ListItem",
+      "position": 97,
+      "url": "https://aidealize.com/column/mitsumori-zumen-zokujinka/",
+      "name": "見積作成が属人化する理由と、図面を使う会社が最初にやるべき3つの整理"
+    },
+    {
+      "@type": "ListItem",
+      "position": 98,
+      "url": "https://aidealize.com/column/zumen-gyomu-dx-koumuten-setsubi-seizo/",
+      "name": "工務店・設備工事・製造業の図面業務DX｜業種ごとに詰まりやすい場所と最初の一歩"
+    },
+    {
+      "@type": "ListItem",
+      "position": 99,
+      "url": "https://aidealize.com/column/zumen-yomitori-mae-seiri-rule/",
+      "name": "AIで図面を読み取る前に整えておきたい7つのルール｜ファイル・縮尺・改訂・凡例"
     }
   ]
 }
@@ -671,6 +707,7 @@ body { font-family: 'Noto Sans JP', sans-serif; background: var(--white); color:
 .article-card-side.cat-kasan  { background: #059669; }
 .article-card-side.cat-soshiki{ background: #7c3aed; }
 .article-card-side.cat-security{ background: #dc2626; }
+.article-card-side.cat-zumen{ background: #0891b2; }
 
 /* 2-column grid to keep the list compact */
 .article-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; align-items: start; }
@@ -782,16 +819,101 @@ footer {
 
     <!-- カテゴリ絞り込み -->
     <div class="filter-bar" id="filterBar">
-      <button class="filter-chip active" data-filter="all">すべて<span class="chip-count">110</span></button>
+      <button class="filter-chip active" data-filter="all">すべて<span class="chip-count">116</span></button>
       <button class="filter-chip" data-filter="security">Webサイト・セキュリティ<span class="chip-count">25</span></button>
       <button class="filter-chip" data-filter="shukyaku">集客・マーケ<span class="chip-count">22</span></button>
       <button class="filter-chip" data-filter="hr">人材・組織<span class="chip-count">11</span></button>
       <button class="filter-chip" data-filter="dx">介護DX・記録<span class="chip-count">41</span></button>
       <button class="filter-chip" data-filter="seido">制度・加算<span class="chip-count">11</span></button>
+      <button class="filter-chip" data-filter="zumen">図面・積算<span class="chip-count">6</span></button>
     </div>
 
     <!-- 新しい順（上が最新） -->
     <div class="article-grid">
+    <a href="/column/zumen-yomitori-mae-seiri-rule/" class="article-card" data-cat="zumen">
+      <div class="article-card-side cat-zumen"></div>
+      <div class="article-card-body">
+        <div style="display:flex;align-items:center;gap:10px;margin-bottom:4px;">
+          <div class="article-card-tag">図面データ化 / 整備ルール</div>
+          <span style="font-size:11px;color:var(--light);">2026.11.13</span>
+        </div>
+        <div class="article-card-title">AIで図面を読み取る前に整えておきたい7つのルール｜ファイル・縮尺・改訂・凡例</div>
+        <div class="article-card-desc">図面を読み取る前に整えたい7つのルール。ファイル形式・命名・縮尺・改訂・凡例・機密区分を整理。</div>
+      </div>
+      <div class="article-card-arrow-col">
+        <span class="article-card-arrow">→</span>
+      </div>
+    </a>
+    <a href="/column/mitsumori-zumen-zokujinka/" class="article-card" data-cat="zumen">
+      <div class="article-card-side cat-zumen"></div>
+      <div class="article-card-body">
+        <div style="display:flex;align-items:center;gap:10px;margin-bottom:4px;">
+          <div class="article-card-tag">見積作成 / 属人化</div>
+          <span style="font-size:11px;color:var(--light);">2026.11.12</span>
+        </div>
+        <div class="article-card-title">見積作成が属人化する理由と、図面を使う会社が最初にやるべき3つの整理</div>
+        <div class="article-card-desc">見積作成が属人化する理由と、AIを入れる前に整理したい3つのこと。前提条件・過去案件・拾い出しの形式を揃える方法。</div>
+      </div>
+      <div class="article-card-arrow-col">
+        <span class="article-card-arrow">→</span>
+      </div>
+    </a>
+    <a href="/column/zumen-gyomu-dx-koumuten-setsubi-seizo/" class="article-card" data-cat="zumen">
+      <div class="article-card-side cat-zumen"></div>
+      <div class="article-card-body">
+        <div style="display:flex;align-items:center;gap:10px;margin-bottom:4px;">
+          <div class="article-card-tag">図面業務DX / 業種別</div>
+          <span style="font-size:11px;color:var(--light);">2026.11.12</span>
+        </div>
+        <div class="article-card-title">工務店・設備工事・製造業の図面業務DX｜業種ごとに詰まりやすい場所と最初の一歩</div>
+        <div class="article-card-desc">工務店・設備工事・製造業の図面業務で詰まりやすい場所と、DXの最初の一歩を業種別に整理。</div>
+      </div>
+      <div class="article-card-arrow-col">
+        <span class="article-card-arrow">→</span>
+      </div>
+    </a>
+    <a href="/column/zumen-ocr-dekiru-dekinai/" class="article-card" data-cat="zumen">
+      <div class="article-card-side cat-zumen"></div>
+      <div class="article-card-body">
+        <div style="display:flex;align-items:center;gap:10px;margin-bottom:4px;">
+          <div class="article-card-tag">図面OCR / 読み取りAI</div>
+          <span style="font-size:11px;color:var(--light);">2026.11.11</span>
+        </div>
+        <div class="article-card-title">図面OCRでできること・できないこと｜図番・寸法・部品表の読み取りの現実</div>
+        <div class="article-card-desc">図面OCRで読み取りやすい項目と難しい項目を整理。結果は「確定値」でなく「候補＋確認」で使う考え方と、選ぶ前のチェック項目。</div>
+      </div>
+      <div class="article-card-arrow-col">
+        <span class="article-card-arrow">→</span>
+      </div>
+    </a>
+    <a href="/column/zumen-hiroidashi-ai-yarikata/" class="article-card" data-cat="zumen">
+      <div class="article-card-side cat-zumen"></div>
+      <div class="article-card-body">
+        <div style="display:flex;align-items:center;gap:10px;margin-bottom:4px;">
+          <div class="article-card-tag">拾い出し / 図面積算</div>
+          <span style="font-size:11px;color:var(--light);">2026.11.10</span>
+        </div>
+        <div class="article-card-title">図面の拾い出しとは？やり方の基本と、手作業・ソフト・AI・代行の使い分け</div>
+        <div class="article-card-desc">拾い出しの基本手順とミスが出やすい箇所、手作業・ソフト・AI・代行の使い分けを整理。AI利用時の検算ルールも。</div>
+      </div>
+      <div class="article-card-arrow-col">
+        <span class="article-card-arrow">→</span>
+      </div>
+    </a>
+    <a href="/column/zumen-sekisan-ai-dekiru-genkai/" class="article-card" data-cat="zumen">
+      <div class="article-card-side cat-zumen"></div>
+      <div class="article-card-body">
+        <div style="display:flex;align-items:center;gap:10px;margin-bottom:4px;">
+          <div class="article-card-tag">図面積算 / AI</div>
+          <span style="font-size:11px;color:var(--light);">2026.11.09</span>
+        </div>
+        <div class="article-card-title">図面からの積算はAIでどこまで効率化できる？できる範囲と、人の確認が残る範囲</div>
+        <div class="article-card-desc">図面積算で、AIが手伝いやすい工程と人が確認すべき工程を整理。全自動を目指さず「下書き＋確認」で始める考え方を解説。</div>
+      </div>
+      <div class="article-card-arrow-col">
+        <span class="article-card-arrow">→</span>
+      </div>
+    </a>
     <a href="/column/koumuten-ai-search-site-jittai/" class="article-card" data-cat="shukyaku">
       <div class="article-card-side cat-kaigo"></div>
       <div class="article-card-body">
