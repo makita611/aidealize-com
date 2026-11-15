@@ -1,0 +1,137 @@
+<!doctype html><html lang="ja"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1"><meta name="color-scheme" content="light">
+<title>aidealize 集客ボード</title>
+<style>
+:root{color-scheme:light}
+body{margin:0;background:#fff;color:#222;font:15px/1.7 -apple-system,"Hiragino Sans","Yu Gothic",sans-serif}
+main{overflow-x:hidden;max-width:760px;margin:0 auto;padding:20px 16px 60px}
+h1{font-size:22px;margin:0 0 2px}h2{font-size:17px;margin:34px 0 4px}
+.sub{color:#777;font-size:13px}.hint{color:#666;font-size:13px;margin:0 0 10px}
+.cards{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+.card{border:1px solid #e5e5e5;border-radius:12px;padding:12px 14px}
+.card .n{font-size:28px;font-weight:700;line-height:1.2}.card .l{font-size:13px;color:#555}
+.up{color:#1a8a4a}.down{color:#c0392b}.flat{color:#888}
+.sum{background:#f6f3ee;border-radius:12px;padding:14px 16px}
+.sum li{margin:4px 0}
+.bars{display:flex;align-items:flex-end;gap:5px;height:120px;margin-top:8px}
+.col{flex:1;display:flex;flex-direction:column-reverse;height:100%}
+.seg{width:100%}.lab{display:flex;gap:5px;font-size:10px;color:#888;margin-top:3px}.lab span{flex:1;text-align:center}
+.leg{display:flex;flex-wrap:wrap;gap:10px;font-size:12px;margin-top:8px}.leg i{display:inline-block;width:10px;height:10px;border-radius:2px;margin-right:4px}
+table{width:100%;table-layout:fixed;border-collapse:collapse;font-size:13px}th,td{padding:7px 4px;border-bottom:1px solid #eee;text-align:right}
+th:first-child,td:first-child{text-align:left;word-break:break-all}th{color:#777;font-weight:500}
+.nav{display:flex;gap:8px;overflow-x:auto;padding-bottom:10px;margin-bottom:6px;-webkit-overflow-scrolling:touch}
+.nav a{white-space:nowrap;border:1px solid #d8d8d8;border-radius:999px;padding:6px 14px;font-size:13px;color:#333;text-decoration:none}
+.nav a.cur{background:#2e7d6b;border-color:#2e7d6b;color:#fff}
+.spark{font-size:12px;color:#888}
+</style></head><body><main>
+<nav class="nav" id="nav"></nav>
+<h1 id="ttl"></h1>
+<div class="sub"><a id="siteurl" target="_blank" rel="noopener" style="color:#2e7d6b"></a></div>
+<div class="sub" id="gen"></div>
+<div class="sub" id="launch" style="color:#2e7d6b"></div>
+
+<h2>今週のまとめ</h2>
+<div class="sum"><ul id="sum" style="margin:0;padding-left:18px"></ul></div>
+
+<h2>ひと目でわかる数字(先週 vs その前の週)</h2>
+<p class="hint">「今週」は月曜〜昨日までの途中経過なので、比べるのは直前の2つの完全な週だよ。</p>
+<div class="cards" id="cards"></div>
+
+<h2>来た人の数(週ごと・流入元別)</h2>
+<p class="hint">どこから来たか。いちばん右が今週(途中)。</p>
+<div class="bars" id="bars"></div><div class="lab" id="lab"></div><div class="leg" id="leg"></div>
+
+<h2>お客さんの行動(週ごと)</h2>
+<p class="hint">問い合わせや診断など「成果に近い動き」だけ。0が続くものは要点検。</p>
+<table id="ev"></table>
+
+<div id="ctawrap"><h2>どのボタンが押されている?(直近28日)</h2>
+<table id="cta"></table></div>
+
+<div id="gscwrap"><h2>Google検索での見られ方(直近28日)</h2>
+<p class="hint" id="gschint"></p>
+<div class="cards" id="gcards"></div>
+<h2>検索の表示回数(週ごと)</h2><p class="hint">検索結果に出た回数。クリックの手前の数字。</p>
+<div class="bars" id="gimp"></div><div class="lab" id="glab1"></div>
+<h2>検索からのクリック(週ごと)</h2>
+<div class="bars" id="gclk"></div><div class="lab" id="glab2"></div>
+<h2>クリック率(週ごと)</h2><p class="hint">表示された中で押された割合。低いと「出ているのに選ばれていない」。</p>
+<div class="bars" id="gctr"></div><div class="lab" id="glab3"></div>
+<h2>検索ワード(直近28日)</h2>
+<table id="gq"></table>
+<h2>表示は多いワード(直近28日)</h2><p class="hint">出ているのに押されないワードは、タイトルや説明文の見直し候補。</p>
+<table id="gqi"></table>
+<h2>検索で出ているページ(直近28日)</h2>
+<table id="gp"></table></div>
+
+<div id="aiwrap"><h2>ChatGPTなどAIからの訪問(週ごと)</h2>
+<p class="hint" id="aihint"></p>
+<div class="bars" id="aibars"></div><div class="lab" id="ailab"></div>
+<table id="aisrc" style="margin-top:10px"></table>
+<table id="aipg" style="margin-top:10px"></table></div>
+
+<h2>入口になっているページ(直近28日)</h2>
+<p class="hint">「読まれ率」は、ちゃんと見られた訪問の割合。高いほど良い。</p>
+<table id="pg"></table>
+</main>
+<script>
+const D={"key": "kangokaigo", "name": "看護介護の現場", "url": "https://kangokaigo-genba.com/", "ai": {"weekly": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], "sources": [], "pages": []}, "gsc": {"clicks": [0, 0, 0, 0, 0, 1, 1, 0, 1, 1, 1, 0], "imp": [0, 0, 0, 1, 16, 12, 26, 19, 56, 32, 42, 0], "ctr": [0, 0, 0, 0.0, 0.0, 8.33, 3.85, 0.0, 1.79, 3.12, 2.38, 0], "t28": {"clicks": 3, "imp": 152, "ctr": 1.97, "pos": 11.8}, "tprev": {"clicks": 2, "imp": 52, "ctr": 3.85, "pos": 29.5}, "top": [{"q": "雇用条件 聞き方", "clicks": 1, "imp": 1, "ctr": 100, "pos": 16}, {"q": "訪問看護 件数", "clicks": 0, "imp": 5, "ctr": 0, "pos": 18.4}, {"q": "訪問 看護 働き 方", "clicks": 0, "imp": 4, "ctr": 0, "pos": 29}, {"q": "訪問 看護 オンコール 大変", "clicks": 0, "imp": 2, "ctr": 0, "pos": 81}, {"q": "訪問看護師 一日の流れ", "clicks": 0, "imp": 2, "ctr": 0, "pos": 29}, {"q": "訪問 看護 オンコール の 実際", "clicks": 0, "imp": 1, "ctr": 0, "pos": 98}, {"q": "訪問 看護 オンコール 頻度", "clicks": 0, "imp": 1, "ctr": 0, "pos": 65}, {"q": "訪問 看護 合わ ない", "clicks": 0, "imp": 1, "ctr": 0, "pos": 30}], "top_imp": [{"q": "訪問看護 件数", "clicks": 0, "imp": 5, "ctr": 0, "pos": 18.4}, {"q": "訪問 看護 働き 方", "clicks": 0, "imp": 4, "ctr": 0, "pos": 29}, {"q": "訪問 看護 オンコール 大変", "clicks": 0, "imp": 2, "ctr": 0, "pos": 81}, {"q": "訪問看護師 一日の流れ", "clicks": 0, "imp": 2, "ctr": 0, "pos": 29}, {"q": "雇用条件 聞き方", "clicks": 1, "imp": 1, "ctr": 100, "pos": 16}, {"q": "訪問 看護 オンコール の 実際", "clicks": 0, "imp": 1, "ctr": 0, "pos": 98}, {"q": "訪問 看護 オンコール 頻度", "clicks": 0, "imp": 1, "ctr": 0, "pos": 65}, {"q": "訪問 看護 合わ ない", "clicks": 0, "imp": 1, "ctr": 0, "pos": 30}], "pages": [{"page": "https://kangokaigo-genba.com/articles/kaigo-kyuyo-naiyaku-mikata/", "clicks": 1, "imp": 1, "ctr": 100}, {"page": "https://kangokaigo-genba.com/articles/naitei-shomen-kakunin/", "clicks": 1, "imp": 12, "ctr": 8.3}, {"page": "https://kangokaigo-genba.com/data/houmon-kango-jigyosho/", "clicks": 1, "imp": 12, "ctr": 8.3}, {"page": "https://kangokaigo-genba.com/articles/agent-kakunin-irai/", "clicks": 0, "imp": 3, "ctr": 0}, {"page": "https://kangokaigo-genba.com/articles/houkan-kango-hataraki-kata/", "clicks": 0, "imp": 8, "ctr": 0}, {"page": "https://kangokaigo-genba.com/articles/houkan-tenshoku-mensetsu-kakunin/", "clicks": 0, "imp": 5, "ctr": 0}, {"page": "https://kangokaigo-genba.com/articles/houmon-kango-doukou/", "clicks": 0, "imp": 22, "ctr": 0}, {"page": "https://kangokaigo-genba.com/articles/houmon-kango-kanrisha-taisei/", "clicks": 0, "imp": 5, "ctr": 0}], "through": "2026-11-13"}, "generated": "2026-11-16 01:50", "weeks": ["8/31", "9/7", "9/14", "9/21", "9/28", "10/5", "10/12", "10/19", "10/26", "11/2", "11/9", "11/16"], "channels": {"直接": [0, 0, 0, 76, 47, 8, 8, 9, 20, 6, 6, 0], "その他": [0, 0, 0, 0, 6, 0, 0, 0, 0, 0, 0, 0], "検索": [0, 0, 0, 1, 0, 1, 4, 0, 1, 1, 3, 0], "他サイト": [0, 0, 0, 0, 1, 2, 0, 0, 1, 1, 1, 0]}, "users": [0, 0, 0, 67, 54, 11, 10, 9, 22, 7, 10, 0], "events": {"checklist_view": [0, 0, 0, 4, 0, 1, 0, 0, 1, 1, 0, 0], "condition_select": [0, 0, 0, 6, 0, 0, 0, 0, 0, 0, 0, 0], "click": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 0], "article_next_read": [0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0]}, "evnames": {"checklist_view": "checklist_view", "condition_select": "condition_select", "click": "外部リンククリック", "article_next_read": "article_next_read"}, "pages": [{"page": "/", "sessions": 40, "eng": 20, "sec": 84}, {"page": "/articles/houkan-tenshoku-mensetsu-kakunin", "sessions": 4, "eng": 25, "sec": 40}, {"page": "/data/houmon-kango-jigyosho", "sessions": 2, "eng": 50, "sec": 136}, {"page": "/articles/houmon-kango-doukou", "sessions": 1, "eng": 100, "sec": 43}, {"page": "/articles/kaigo-kyuyo-naiyaku-mikata", "sessions": 1, "eng": 100, "sec": 677}, {"page": "/contact", "sessions": 1, "eng": 0, "sec": 0}], "cta": [], "range": ["2026-08-31", "2026-11-15"], "nav": [{"label": "全社", "href": "board-0d71fd5bbe87.html", "cur": false}, {"label": "aidealize", "href": "board-ac6e604b90a1.html", "cur": false}, {"label": "komi 集客", "href": "https://artmake-komi.com/internal/board-o7onmndtuog.html", "cur": false}, {"label": "komi GA4", "href": "board-a8709da8ebf0.html", "cur": false}, {"label": "内枦保住建", "href": "board-072f103d4083.html", "cur": false}, {"label": "K&T", "href": "board-e59cf5a6a551.html", "cur": false}, {"label": "いぶきハーブ・ガーデン", "href": "board-322d59c5260b.html", "cur": false}, {"label": "看護介護の現場", "href": "board-cfb230b96fe0.html", "cur": true}, {"label": "goldexperience.jp", "href": "board-12365fdc21a0.html", "cur": false}]};
+const $=id=>document.getElementById(id);
+const sum=a=>a.reduce((x,y)=>x+y,0);
+$('nav').innerHTML=D.nav.map(n=>`<a href="${n.href}"${n.cur?' class="cur"':''}>${n.label}</a>`).join('');
+$('ttl').textContent=D.name.split('(')[0]+' 集客ボード';document.title=D.name+' 集客ボード';
+$('siteurl').textContent=D.url.replace(/^https?:\/\//,'');$('siteurl').href=D.url;
+if(!D.cta.length)$('ctawrap').style.display='none';
+$('gen').textContent='更新 '+D.generated+'(GA4・'+D.range[0]+'〜'+D.range[1]+')';
+if(D.launch)$('launch').textContent='公開日 '+D.launch+'(それより前の数字は載せていません)';
+const W=D.weeks.length, L=W-2, P=W-3;
+const tot=D.weeks.map((_,i)=>sum(Object.values(D.channels).map(a=>a[i])));
+const chg=(a,b)=>b?Math.round((a-b)/b*100):null;
+function badge(a,b){const c=chg(a,b);if(c===null)return'<span class="flat">比較なし</span>';
+ return c>0?`<span class="up">▲${c}%</span>`:c<0?`<span class="down">▼${-c}%</span>`:'<span class="flat">±0%</span>'}
+const card=(l,a,b)=>`<div class="card"><div class="n">${a}</div><div class="l">${l}</div><div class="l">前の週 ${b} → ${badge(a,b)}</div></div>`;
+const f=k=>D.events[k]||new Array(W).fill(0);
+const evk=Object.keys(D.evnames);
+const sr=(D.channels['検索']||new Array(W).fill(0));
+$('cards').innerHTML=
+ card('訪問数',tot[L],tot[P])+card('訪問した人数',D.users[L],D.users[P])+
+ card('検索から来た数',sr[L],sr[P])+evk.slice(0,3).map(k=>card(D.evnames[k],f(k)[L],f(k)[P])).join('');
+const COL={'検索':'#2e7d6b','AI':'#7b5ea7','直接':'#9aa5b1','SNS':'#e08a3c','他サイト':'#4a7fc1','広告':'#c0504d','その他':'#d8d8d8'};
+const names=Object.keys(D.channels).sort((a,b)=>sum(D.channels[b])-sum(D.channels[a]));
+const mx=Math.max(...tot,1);
+$('bars').innerHTML=D.weeks.map((_,i)=>`<div class="col" title="${D.weeks[i]}週 計${tot[i]}">`+
+ names.map(n=>`<div class="seg" style="height:${D.channels[n][i]/mx*100}%;background:${COL[n]||'#ccc'}"></div>`).join('')+'</div>').join('');
+$('lab').innerHTML=D.weeks.map((w,i)=>`<span>${i==W-1?'今週':w}</span>`).join('');
+$('leg').innerHTML=names.map(n=>`<span><i style="background:${COL[n]||'#ccc'}"></i>${n} ${sum(D.channels[n])}</span>`).join('');
+$('ev').innerHTML='<tr><th>動き</th><th>先週</th><th>前の週</th><th>直近6週</th></tr>'+Object.keys(D.evnames).map(k=>
+ `<tr><td>${D.evnames[k]}</td><td>${f(k)[L]}</td><td>${f(k)[P]}</td><td class="spark">${f(k).slice(-6).join(' · ')}</td></tr>`).join('');
+$('cta').innerHTML='<tr><th>押された種類</th><th>回数</th></tr>'+(D.cta.length?D.cta.map(([k,v])=>`<tr><td>${k||'(未分類)'}</td><td>${v}</td></tr>`).join(''):'<tr><td colspan=2>まだデータなし</td></tr>');
+$('pg').innerHTML='<tr><th>ページ</th><th>訪問</th><th>読まれ率</th><th>滞在</th></tr>'+D.pages.map(p=>`<tr><td>${p.page}</td><td>${p.sessions}</td><td>${p.eng}%</td><td>${p.sec}秒</td></tr>`).join('');
+
+const bar1=(id,lid,vals,color,fmt)=>{const m=Math.max(...vals,1);$(id).innerHTML=vals.map((v,i)=>`<div class="col" title="${D.weeks[i]}週 ${fmt?fmt(v):v}"><div class="seg" style="height:${v/m*100}%;background:${color}"></div></div>`).join('');
+ $(lid).innerHTML=vals.map((v,i)=>`<span>${i==W-1?(fmt?fmt(v):v):(i%2==W%2?D.weeks[i]:'')}</span>`).join('')};
+const dl=(a,b)=>{const c=chg(a,b);return c===null?'':'前の28日比 '+(c>=0?'+':'')+c+'%'};
+const nf=n=>Math.round(n).toLocaleString('ja-JP');
+if(D.gsc){const g=D.gsc,a=g.t28,b=g.tprev;
+ $('gschint').textContent='〜'+g.through+'まで(Googleの集計は2〜3日遅れ)。いちばん右の週は途中経過。';
+ const gc=(l,v,s)=>`<div class="card"><div class="n">${v}</div><div class="l">${l}</div><div class="l">${s}</div></div>`;
+ $('gcards').innerHTML=gc('検索での表示回数',nf(a.imp),dl(a.imp,b.imp))+gc('検索からのクリック',nf(a.clicks),dl(a.clicks,b.clicks))+gc('クリック率',a.ctr.toFixed(1)+'%','前の28日 '+b.ctr.toFixed(1)+'%')+gc('平均の掲載順位',a.pos.toFixed(1)+'位','前の28日 '+b.pos.toFixed(1)+'位');
+ bar1('gimp','glab1',g.imp,'#4a7fc1');bar1('gclk','glab2',g.clicks,'#2e7d6b');bar1('gctr','glab3',g.ctr,'#e08a3c',v=>v.toFixed(1)+'%');
+ const qh='<tr><th>ワード</th><th>表示</th><th>押された</th><th>率</th><th>順位</th></tr>';
+ const qr=q=>`<tr><td>${q.q}</td><td>${q.imp}</td><td>${q.clicks}</td><td>${q.ctr.toFixed(1)}%</td><td>${q.pos.toFixed(1)}</td></tr>`;
+ $('gq').innerHTML=qh+g.top.map(qr).join('');$('gqi').innerHTML=qh+g.top_imp.map(qr).join('');
+ $('gp').innerHTML='<tr><th>ページ</th><th>表示</th><th>押された</th><th>率</th></tr>'+g.pages.map(p=>`<tr><td>${p.page.replace(/^https?:\/\/[^/]+/,'')||'/'}</td><td>${p.imp}</td><td>${p.clicks}</td><td>${p.ctr.toFixed(1)}%</td></tr>`).join('');
+}else $('gscwrap').style.display='none';
+if(D.ai){const ai=D.ai;bar1('aibars','ailab',ai.weekly,'#7b5ea7');
+ $('aihint').textContent='直近12週の合計 '+sum(ai.weekly)+'回。ChatGPT・Perplexity・Geminiなどに紹介されて来た訪問。'+(sum(ai.weekly)?'':'まだ確認できていません。');
+ $('aisrc').innerHTML='<tr><th>AIの種類(28日)</th><th>訪問</th></tr>'+(ai.sources.length?ai.sources.map(([k,v])=>`<tr><td>${k}</td><td>${v}</td></tr>`).join(''):'<tr><td colspan=2>まだなし</td></tr>');
+ $('aipg').innerHTML='<tr><th>AI経由で最初に見たページ(28日)</th><th>訪問</th></tr>'+(ai.pages.length?ai.pages.map(([k,v])=>`<tr><td>${k}</td><td>${v}</td></tr>`).join(''):'<tr><td colspan=2>まだなし</td></tr>');
+}else $('aiwrap').style.display='none';
+const li=[];const c=chg(tot[L],tot[P]);
+li.push(`先週の訪問は ${tot[L]} 件(前の週 ${tot[P]} 件${c===null?'':'、'+(c>=0?'+':'')+c+'%'})。`);
+const best=names.map(n=>[n,D.channels[n][L]]).sort((a,b)=>b[1]-a[1])[0];
+if(best)li.push(`いちばん多い入口は「${best[0]}」で ${best[1]} 件。`);
+if(evk[0])li.push(`「${D.evnames[evk[0]]}」は先週 ${f(evk[0])[L]} 件(前の週 ${f(evk[0])[P]} 件)。`);
+li.push(`よく入口になるのは ${D.pages.slice(0,3).map(p=>p.page).join(' / ')}。`);
+$('sum').innerHTML=li.map(x=>`<li>${x}</li>`).join('');
+</script></body></html>
