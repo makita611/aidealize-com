@@ -19,7 +19,7 @@
 <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-P6VNBWH3');</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "鋼板の重量計算のやり方｜比重7.85と計算式、板厚・幅・長さから出す手順", "description": "鋼板の重量は「板厚×幅×長さ×7.85÷1,000,000」で出せます。計算例、1平方メートルあたりの重量、ミスしやすい点、自動化するときの注意をまとめました。", "datePublished": "2026-11-19", "dateModified": "2026-11-19", "image": "https://aidealize.com/images/jinzaitop1.jpg", "mainEntityOfPage": "https://aidealize.com/column/tekiban-juryo-keisan-hiju/", "author": {"@type": "Organization", "name": "AIdealize株式会社"}, "publisher": {"@type": "Organization", "name": "AIdealize株式会社", "url": "https://aidealize.com"}}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "鋼板の重量計算に使う比重はいくつですか？", "acceptedAnswer": {"@type": "Answer", "text": "一般的な鋼（SS400、SM400Aなど）は7.85（g/cm³）です。ステンレス（SUS304）は約7.93、アルミ合金は約2.7が目安です。"}}, {"@type": "Question", "name": "実際の重量と計算値は合いますか？", "acceptedAnswer": {"@type": "Answer", "text": "計算値は理論重量です。実際の鋼板には板厚の公差があるため、わずかに差が出ます。見積では理論重量を使うのが一般的です。"}}, {"@type": "Question", "name": "重量の計算はAIに任せてよいですか？", "acceptedAnswer": {"@type": "Answer", "text": "式そのものはプログラムの固定計算にしたほうが確実です。AIは図面から寸法や板厚を読み取る補助に使い、読み取り結果は人が確認するのが安全です。"}}]}</script>
-<style>.zd-t{border-collapse:collapse;width:100%;margin:16px 0;font-size:14px}.zd-t th,.zd-t td{border:1px solid #d5dde6;padding:6px 8px;text-align:right}.zd-t th{background:#f1f5f9}.zd-t td:first-child{text-align:left}</style><style>
+<style>.zd-t{border-collapse:collapse;width:100%;margin:16px 0;font-size:14px}.zd-t th,.zd-t td{border:1px solid #d5dde6;padding:6px 8px;text-align:right}.zd-t th{background:#f1f5f9}.zd-t td:first-child{text-align:left}.zd-fig{margin:22px 0;text-align:center}.zd-fig img{max-width:100%;height:auto;border:1px solid #e2e8f0;border-radius:8px}.zd-fig figcaption{font-size:13px;color:#64748b;margin-top:6px}.zd-free{background:#ecfeff;border:1px solid #a5d3df;border-radius:10px;padding:18px 20px;margin:24px 0}</style><style>
 :root{
   --red:#0891b2;--red-dark:#0e7490;
   --ink:#1e293b;--body:#4b5563;--light:#94a3b8;
@@ -249,7 +249,8 @@ footer{background:#1f1f1f;border-top:1px solid rgba(255,255,255,0.06);padding:40
     <li><strong>枚数の掛け忘れ</strong>：1枚あたりの重量を出したまま、合計に枚数を反映しない。</li>
     <li><strong>グロスとネット</strong>：外形の長方形で出した重量なのか、切り欠きや穴を引いた重量なのか。違いは<a href="/column/zumen-gross-net-chigai/">グロスとネットの違い</a>で解説しています。</li>
   </ol>
-  <h2>自動化するときの注意</h2>
+    <figure class="zd-fig"><img src="/images/zumen/flow.svg" alt="図面データから見積明細までの流れの図解" width="900" height="230" loading="lazy"><figcaption>図面データから見積明細まで。計算は固定の式、読み取りは確認つき</figcaption></figure>
+<h2>自動化するときの注意</h2>
   <p>この計算は決まった式なので、AIに「判断」させるものではなく、プログラムに固定値で持たせるのが確実です。AIを使うのは、図面や材料表から板厚・寸法を読み取る部分で、そこで読み違えが起きないよう、読み取り結果は人が確認する流れにします。</p>
   <p>板厚や材質が図面に書かれていないときは、推定で埋めず、質問として返す設計にしておくと、見積の事故を減らせます。実際に寸法を動かして重量が変わる様子は、<a href="/service/zumen-sanshutsu/">図面から数量が出るデモ</a>で確認できます。</p>
   <h2>まとめ</h2>
@@ -260,7 +261,7 @@ footer{background:#1f1f1f;border-top:1px solid rgba(255,255,255,0.06);padding:40
     <p>板の形から重量・塗装面積・穴数を出し、見積明細の形にまとめるまでを、架空の部材で公開しています。</p>
     <div class="cta-btns-pair">
       <a href="/service/zumen-sanshutsu/" class="btn-cta-red">図面から数量が出るデモを見る →</a>
-      <a href="/lp/zumen-sekisan/" class="btn-cta-ghost">図面積算のAI活用を相談する</a>
+      <a href="/tools/zumen-tenken/" class="btn-cta-ghost">無料で図面（DXF）を点検する</a>
     </div>
     <span class="btn-cta-note">デモは架空の部材です。貴社の図面・様式に合わせた試作のご相談も承ります</span>
   </div>

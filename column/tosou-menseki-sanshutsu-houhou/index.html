@@ -19,7 +19,7 @@
 <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-P6VNBWH3');</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "塗装面積の出し方｜鋼板の両面・端面・穴の内側を数える計算例", "description": "鋼板の塗装面積は「表裏の面積＋端面（外周×板厚）＋穴の内側」で出します。隅切りと穴のあるリブでの計算例と、グロスとの差、塗らない箇所の扱いを解説。", "datePublished": "2026-11-19", "dateModified": "2026-11-19", "image": "https://aidealize.com/images/jinzaitop1.jpg", "mainEntityOfPage": "https://aidealize.com/column/tosou-menseki-sanshutsu-houhou/", "author": {"@type": "Organization", "name": "AIdealize株式会社"}, "publisher": {"@type": "Organization", "name": "AIdealize株式会社", "url": "https://aidealize.com"}}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "塗装面積は表裏だけで数えてもよいですか？", "acceptedAnswer": {"@type": "Answer", "text": "薄い板なら概算としては使えます。ただし板が厚いと端面と穴の内側の割合が増えるため、見積ルールに合わせて足すかどうかを決めておく必要があります。"}}, {"@type": "Question", "name": "摩擦接合面など、塗らない部分は引きますか？", "acceptedAnswer": {"@type": "Answer", "text": "会社や客先の見積ルールによります。引く場合は、どの面を塗らないかを図面や仕様書で確認し、ルールとして固定しておくと、計算が安定します。"}}, {"@type": "Question", "name": "塗装面積の計算を自動化できますか？", "acceptedAnswer": {"@type": "Answer", "text": "図面データから板の輪郭と穴が取り出せれば、式で自動計算できます。スキャン図面の場合は、寸法を読み取って入力する工程が追加で必要です。"}}]}</script>
-<style>.zd-t{border-collapse:collapse;width:100%;margin:16px 0;font-size:14px}.zd-t th,.zd-t td{border:1px solid #d5dde6;padding:6px 8px;text-align:right}.zd-t th{background:#f1f5f9}.zd-t td:first-child{text-align:left}</style><style>
+<style>.zd-t{border-collapse:collapse;width:100%;margin:16px 0;font-size:14px}.zd-t th,.zd-t td{border:1px solid #d5dde6;padding:6px 8px;text-align:right}.zd-t th{background:#f1f5f9}.zd-t td:first-child{text-align:left}.zd-fig{margin:22px 0;text-align:center}.zd-fig img{max-width:100%;height:auto;border:1px solid #e2e8f0;border-radius:8px}.zd-fig figcaption{font-size:13px;color:#64748b;margin-top:6px}.zd-free{background:#ecfeff;border:1px solid #a5d3df;border-radius:10px;padding:18px 20px;margin:24px 0}</style><style>
 :root{
   --red:#0891b2;--red-dark:#0e7490;
   --ink:#1e293b;--body:#4b5563;--light:#94a3b8;
@@ -238,7 +238,8 @@ footer{background:#1f1f1f;border-top:1px solid rgba(255,255,255,0.06);padding:40
     <li><strong>穴の内側</strong>：穴の内周（円周）× 板厚。穴の数だけ足す。</li>
   </ol>
   <p>板が厚いほど、端面と穴の内側の割合が増えます。薄板では表裏だけで概算できますが、厚板では無視できなくなります。</p>
-  <h2>計算例：隅切りと穴のあるリブ</h2>
+    <figure class="zd-fig"><img src="/images/zumen/tosou-menseki.svg" alt="塗装面積の内訳の図解：表裏の面、端面、穴の内側" width="680" height="205" loading="lazy"><figcaption>塗装面積は、表裏・端面・穴の内側の3つの合計</figcaption></figure>
+<h2>計算例：隅切りと穴のあるリブ</h2>
   <p>板厚22mm、幅808mm、高さ524mm。下の2隅を60mmで隅切りし、直径44mmの穴を2か所あけたリブです。</p>
   <table class="zd-t"><tr><th>部分</th><th>計算</th><th>面積</th></tr>
   <tr><td>表裏</td><td>416,751 mm² × 2</td><td>833,502 mm²</td></tr>
@@ -262,7 +263,7 @@ footer{background:#1f1f1f;border-top:1px solid rgba(255,255,255,0.06);padding:40
     <p>貴社の見積ルール（塗る面・塗らない面・単価の考え方）に合わせた計算の試作をご相談いただけます。</p>
     <div class="cta-btns-pair">
       <a href="/service/zumen-sanshutsu/" class="btn-cta-red">図面から数量が出るデモを見る →</a>
-      <a href="/lp/zumen-sekisan/" class="btn-cta-ghost">図面積算のAI活用を相談する</a>
+      <a href="/tools/zumen-tenken/" class="btn-cta-ghost">無料で図面（DXF）を点検する</a>
     </div>
     <span class="btn-cta-note">デモは架空の部材です。貴社の図面・様式に合わせた試作のご相談も承ります</span>
   </div>

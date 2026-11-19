@@ -19,7 +19,7 @@
 <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-P6VNBWH3');</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "「グロス」と「ネット」の違いとは？重量と塗装面積の見積への影響", "description": "鋼材・板金の見積で使うグロスとネットの違いを、切り欠きと穴のある板の計算例で解説。重量・塗装面積・材料費のどれに影響するかと、決め方の注意点。", "datePublished": "2026-11-19", "dateModified": "2026-11-19", "image": "https://aidealize.com/images/jinzaitop1.jpg", "mainEntityOfPage": "https://aidealize.com/column/zumen-gross-net-chigai/", "author": {"@type": "Organization", "name": "AIdealize株式会社"}, "publisher": {"@type": "Organization", "name": "AIdealize株式会社", "url": "https://aidealize.com"}}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "グロスとネットのどちらで見積を出すべきですか？", "acceptedAnswer": {"@type": "Answer", "text": "客先の指示と社内の決めごとによります。材料費はグロス、塗装やめっきはネットが目安ですが、客先が「グロスで」と指定する場合もあります。見積書に、どちらで数えたかを明記しておくと食い違いを防げます。"}}, {"@type": "Question", "name": "グロスとネットで、どのくらい差が出ますか？", "acceptedAnswer": {"@type": "Answer", "text": "形によって大きく変わります。この記事の例では重量で約1.6%でした。切り欠きや穴が多い小さな部材では、差の割合が大きくなります。"}}, {"@type": "Question", "name": "図面が紙やスキャンだと、ネットは出せませんか？", "acceptedAnswer": {"@type": "Answer", "text": "出せますが、輪郭を人が読み取って寸法から控除する手間がかかります。CADデータ（DXFなど）があれば、形から面積を計算できます。"}}]}</script>
-<style>.zd-t{border-collapse:collapse;width:100%;margin:16px 0;font-size:14px}.zd-t th,.zd-t td{border:1px solid #d5dde6;padding:6px 8px;text-align:right}.zd-t th{background:#f1f5f9}.zd-t td:first-child{text-align:left}</style><style>
+<style>.zd-t{border-collapse:collapse;width:100%;margin:16px 0;font-size:14px}.zd-t th,.zd-t td{border:1px solid #d5dde6;padding:6px 8px;text-align:right}.zd-t th{background:#f1f5f9}.zd-t td:first-child{text-align:left}.zd-fig{margin:22px 0;text-align:center}.zd-fig img{max-width:100%;height:auto;border:1px solid #e2e8f0;border-radius:8px}.zd-fig figcaption{font-size:13px;color:#64748b;margin-top:6px}.zd-free{background:#ecfeff;border:1px solid #a5d3df;border-radius:10px;padding:18px 20px;margin:24px 0}</style><style>
 :root{
   --red:#0891b2;--red-dark:#0e7490;
   --ink:#1e293b;--body:#4b5563;--light:#94a3b8;
@@ -240,7 +240,8 @@ footer{background:#1f1f1f;border-top:1px solid rgba(255,255,255,0.06);padding:40
   <h2>計算例：隅切りと穴のあるリブ</h2>
   <p>板厚22mm、幅808mm、高さ524mmのリブで、下の2隅を60mmで隅切りし、直径44mmの穴を2か所あけた場合を考えます。比重は7.85で計算します。</p>
   <table class="zd-t"><tr><th></th><th>グロス</th><th>ネット</th></tr><tr><td>面積</td><td>423,392 mm²</td><td>416,751 mm²</td></tr><tr><td>重量</td><td>73.12 kg</td><td>71.97 kg</td></tr></table>
-  <p>重量の差は約1.15kg（約1.6%）です。1枚では小さな差ですが、同じ部材が何十枚もある案件や、切り欠きが多い部材では、積み上がって見積の合計に表れます。</p>
+    <figure class="zd-fig"><img src="/images/zumen/gross-net.svg" alt="グロスとネットの違いの図解：外形の長方形と、隅切りと穴を引いた実形" width="600" height="310" loading="lazy"><figcaption>グロスは外形の長方形、ネットは隅切りと穴を引いた実形</figcaption></figure>
+<p>重量の差は約1.15kg（約1.6%）です。1枚では小さな差ですが、同じ部材が何十枚もある案件や、切り欠きが多い部材では、積み上がって見積の合計に表れます。</p>
   <div class="point-box">
     <div class="point-box-label">ここが重要</div>
     <p>重量が「グロスで合っている」ことは、「ネットでも合っている」ことの証明にはなりません。見積書と数字が一致した、という確認だけでは、どちらで数えたのかが分からないためです。</p>
@@ -266,7 +267,7 @@ footer{background:#1f1f1f;border-top:1px solid rgba(255,255,255,0.06);padding:40
     <p>隅切り・穴・切り欠きのある板で、重量と塗装面積の差を確認できるデモを公開しています。</p>
     <div class="cta-btns-pair">
       <a href="/service/zumen-sanshutsu/" class="btn-cta-red">図面から数量が出るデモを見る →</a>
-      <a href="/lp/zumen-sekisan/" class="btn-cta-ghost">図面積算のAI活用を相談する</a>
+      <a href="/tools/zumen-tenken/" class="btn-cta-ghost">無料で図面（DXF）を点検する</a>
     </div>
     <span class="btn-cta-note">デモは架空の部材です。貴社の図面・様式に合わせた試作のご相談も承ります</span>
   </div>

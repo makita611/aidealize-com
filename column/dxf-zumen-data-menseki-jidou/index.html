@@ -19,7 +19,7 @@
 <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-P6VNBWH3');</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "DXFとは？図面データから面積・重量を自動で出せる理由と、スキャン図面との違い", "description": "DXFは線や円を座標で持つCADの交換形式で、板の面積を数学的に正確に計算できます。スキャンPDFとの違い、自動計算の流れ、注意点を解説。", "datePublished": "2026-11-19", "dateModified": "2026-11-19", "image": "https://aidealize.com/images/jinzaitop1.jpg", "mainEntityOfPage": "https://aidealize.com/column/dxf-zumen-data-menseki-jidou/", "author": {"@type": "Organization", "name": "AIdealize株式会社"}, "publisher": {"@type": "Organization", "name": "AIdealize株式会社", "url": "https://aidealize.com"}}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "DXFファイルはどのソフトで開けますか？", "acceptedAnswer": {"@type": "Answer", "text": "JW_CADをはじめ、多くのCADソフトや無料のビューアで開けます。ソフトによって文字の表示や縮尺の扱いが異なることがあります。"}}, {"@type": "Question", "name": "スキャンしたPDFからDXFを作れますか？", "acceptedAnswer": {"@type": "Answer", "text": "画像を線データに変換するソフトはありますが、輪郭がずれたり、寸法線や文字が混ざったりして、そのまま面積計算に使える精度が出るとは限りません。人の確認が前提になります。"}}, {"@type": "Question", "name": "DXFから出した面積は、どのくらい正確ですか？", "acceptedAnswer": {"@type": "Answer", "text": "図形が正しく描かれ、単位が合っていれば、形状どおりに計算できます。ただし、図面そのものの寸法ミスや、板厚の指定漏れは別に確認する必要があります。"}}]}</script>
-<style>.zd-t{border-collapse:collapse;width:100%;margin:16px 0;font-size:14px}.zd-t th,.zd-t td{border:1px solid #d5dde6;padding:6px 8px;text-align:right}.zd-t th{background:#f1f5f9}.zd-t td:first-child{text-align:left}</style><style>
+<style>.zd-t{border-collapse:collapse;width:100%;margin:16px 0;font-size:14px}.zd-t th,.zd-t td{border:1px solid #d5dde6;padding:6px 8px;text-align:right}.zd-t th{background:#f1f5f9}.zd-t td:first-child{text-align:left}.zd-fig{margin:22px 0;text-align:center}.zd-fig img{max-width:100%;height:auto;border:1px solid #e2e8f0;border-radius:8px}.zd-fig figcaption{font-size:13px;color:#64748b;margin-top:6px}.zd-free{background:#ecfeff;border:1px solid #a5d3df;border-radius:10px;padding:18px 20px;margin:24px 0}</style><style>
 :root{
   --red:#0891b2;--red-dark:#0e7490;
   --ink:#1e293b;--body:#4b5563;--light:#94a3b8;
@@ -234,7 +234,8 @@ footer{background:#1f1f1f;border-top:1px solid rgba(255,255,255,0.06);padding:40
   <h2>DXFとは</h2>
   <p>DXF（Drawing Exchange Format）は、CADソフトの間で図面をやり取りするための形式です。図面の中身は、線・円・折れ線といった図形が、座標つきで記録されています。写真のような画像ではなく、「どこからどこへ線を引くか」という情報の集まりです。</p>
   <h2>スキャン図面との違い</h2>
-  <table class="zd-t"><tr><th></th><th>DXF／CADデータ</th><th>スキャン図面（画像PDF）</th></tr>
+    <figure class="zd-fig"><img src="/images/zumen/vector-vs-scan.svg" alt="CADデータとスキャン図面の違いの図解" width="600" height="262" loading="lazy"><figcaption>CADデータは座標が残り、スキャンは画素の集まり</figcaption></figure>
+<table class="zd-t"><tr><th></th><th>DXF／CADデータ</th><th>スキャン図面（画像PDF）</th></tr>
   <tr><td>中身</td><td>線・円の座標</td><td>画素（点の集まり）</td></tr>
   <tr><td>面積</td><td>閉じた図形から計算で出せる</td><td>輪郭を読み取る必要がある</td></tr>
   <tr><td>誤差</td><td>形状どおりに正確</td><td>縮尺・かすれ・文字や寸法線の重なりで揺れる</td></tr>
@@ -270,7 +271,7 @@ footer{background:#1f1f1f;border-top:1px solid rgba(255,255,255,0.06);padding:40
     <p>図面の形式（DXF・ベクターPDF・スキャン）と件数をお聞きしたうえで、向き不向きもお伝えします。</p>
     <div class="cta-btns-pair">
       <a href="/service/zumen-sanshutsu/" class="btn-cta-red">図面から数量が出るデモを見る →</a>
-      <a href="/lp/zumen-sekisan/" class="btn-cta-ghost">図面積算のAI活用を相談する</a>
+      <a href="/tools/zumen-tenken/" class="btn-cta-ghost">無料で図面（DXF）を点検する</a>
     </div>
     <span class="btn-cta-note">デモは架空の部材です。貴社の図面・様式に合わせた試作のご相談も承ります</span>
   </div>
