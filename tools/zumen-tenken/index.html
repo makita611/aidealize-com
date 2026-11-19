@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>無料 図面（DXF）点検ツール｜閉じた輪郭・穴・単位を確認して重量も出す｜AIdealize</title>
+<meta name="description" content="DXF図面をブラウザに入れるだけで、閉じた輪郭・穴・単位の抜けを点検し、板厚を入れるとネット重量と塗装面積も算出。ファイルは送信されず、登録も不要です。">
+<link rel="canonical" href="https://aidealize.com/tools/zumen-tenken/">
+<meta property="og:title" content="無料 図面（DXF）点検ツール｜閉じた輪郭・穴・単位を確認して重量も出す">
+<meta property="og:description" content="DXF図面をブラウザに入れるだけで、閉じた輪郭・穴・単位の抜けを点検し、板厚を入れるとネット重量と塗装面積も算出。ファイルは送信されず、登録も不要です。">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://aidealize.com/tools/zumen-tenken/">
+<meta property="og:site_name" content="AIdealize株式会社">
+<meta property="og:image" content="https://aidealize.com/images/jinzaitop1.jpg">
+<meta name="twitter:image" content="https://aidealize.com/images/jinzaitop1.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700;900&family=Shippori+Mincho:wght@400;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-P6VNBWH3');</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "無料 図面（DXF）点検ツール｜閉じた輪郭・穴・単位を確認して重量も出す", "description": "DXF図面をブラウザに入れるだけで、閉じた輪郭・穴・単位の抜けを点検し、板厚を入れるとネット重量と塗装面積も算出。ファイルは送信されず、登録も不要です。", "datePublished": "2026-11-19", "dateModified": "2026-11-19", "image": "https://aidealize.com/images/jinzaitop1.jpg", "mainEntityOfPage": "https://aidealize.com/tools/zumen-tenken/", "author": {"@type": "Organization", "name": "AIdealize株式会社"}, "publisher": {"@type": "Organization", "name": "AIdealize株式会社", "url": "https://aidealize.com"}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "アップロードした図面はどこかに送られますか？", "acceptedAnswer": {"@type": "Answer", "text": "送られません。ファイルはお使いのブラウザの中だけで読み取り、計算します。サーバーには保存も送信もしません。"}}, {"@type": "Question", "name": "DWGやPDFの図面は点検できますか？", "acceptedAnswer": {"@type": "Answer", "text": "現在はASCII形式のDXFのみ対応しています。DWGはCADソフトでDXFに保存し直してください。PDFは対応していません。"}}, {"@type": "Question", "name": "点検の結果は、そのまま見積に使えますか？", "acceptedAnswer": {"@type": "Answer", "text": "目安としての確認用です。円弧・スプラインは面積に含めず、板厚や材質は図面データの外にあるため、最終的な数量は人が確認してください。"}}]}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebApplication", "name": "無料 図面（DXF）点検ツール", "url": "https://aidealize.com/tools/zumen-tenken/", "applicationCategory": "BusinessApplication", "operatingSystem": "Web", "offers": {"@type": "Offer", "price": "0", "priceCurrency": "JPY"}, "publisher": {"@type": "Organization", "name": "AIdealize株式会社"}}</script>
+<style>.zd-t{border-collapse:collapse;width:100%;margin:16px 0;font-size:14px}.zd-t th,.zd-t td{border:1px solid #d5dde6;padding:6px 8px;text-align:right}.zd-t th{background:#f1f5f9}.zd-t td:first-child{text-align:left}.zd-fig{margin:22px 0;text-align:center}.zd-fig img{max-width:100%;height:auto;border:1px solid #e2e8f0;border-radius:8px}.zd-fig figcaption{font-size:13px;color:#64748b;margin-top:6px}.zd-free{background:#ecfeff;border:1px solid #a5d3df;border-radius:10px;padding:18px 20px;margin:24px 0}</style><style>
+:root{
+  --red:#0891b2;--red-dark:#0e7490;
+  --ink:#1e293b;--body:#4b5563;--light:#94a3b8;
+  --border:#e2e8f0;--bg:#f8fafc;--bg2:#f1f5f9;--white:#fff;
+  --tag-bg:#ecfeff;--green:#059669;--green-bg:#ecfdf5;
+  --demo-bg:#0f172a;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{font-family:'Noto Sans JP',sans-serif;background:var(--white);color:var(--ink);overflow-x:hidden;line-height:1.7;}
+
+/* NAV */
+#mainNav{position:fixed;top:0;left:0;right:0;z-index:1000;display:flex;align-items:center;justify-content:space-between;padding:0 60px;height:68px;background:rgba(255,255,255,0.97);border-bottom:1px solid var(--border);backdrop-filter:blur(12px);transition:box-shadow 0.3s;}
+#mainNav.scrolled{box-shadow:0 2px 16px rgba(0,0,0,0.06);}
+.nav-logo{display:flex;align-items:center;gap:10px;text-decoration:none;}
+.nav-logo img{height:34px;width:auto;}
+.nav-logo-text{font-family:'DM Mono',monospace;font-size:15px;font-weight:500;color:var(--ink);letter-spacing:0.02em;}
+.nav-logo-text span{color:var(--red);}
+.nav-links{display:flex;align-items:center;gap:32px;list-style:none;}
+.nav-links a{font-size:13px;font-weight:500;color:var(--body);text-decoration:none;transition:color 0.2s;}
+.nav-links a:hover{color:var(--ink);}
+.nav-cta{background:var(--red) !important;color:#fff !important;padding:9px 20px;border-radius:4px;font-size:12px !important;font-weight:700 !important;}
+.nav-cta:hover{background:var(--red-dark) !important;}
+.nav-hamburger{display:none;flex-direction:column;justify-content:center;gap:5px;width:40px;height:40px;background:none;border:none;cursor:pointer;}
+.nav-hamburger span{display:block;width:22px;height:2px;background:var(--ink);transition:all 0.3s;transform-origin:center;}
+.nav-hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg);}
+.nav-hamburger.open span:nth-child(2){opacity:0;}
+.nav-hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
+.nav-drawer{display:none;position:fixed;top:68px;left:0;right:0;background:#fff;border-bottom:2px solid var(--red);padding:20px 28px 28px;z-index:999;}
+.nav-drawer.open{display:block;}
+.nav-drawer ul{list-style:none;display:flex;flex-direction:column;}
+.nav-drawer ul li a{display:block;padding:13px 0;font-size:15px;font-weight:500;color:var(--ink);text-decoration:none;border-bottom:1px solid var(--border);}
+.nav-drawer ul li:last-child a{margin-top:16px;text-align:center;background:var(--red);color:#fff !important;padding:13px;border-radius:4px;font-weight:700 !important;border-bottom:none;}
+@media(max-width:1024px){#mainNav{padding:0 28px;}.nav-links{display:none;}.nav-hamburger{display:flex;}}
+@media(max-width:480px){#mainNav{padding:0 16px;height:60px;}.nav-drawer{top:60px;}.nav-logo-text{font-size:13px;}}
+
+/* ARTICLE HEADER */
+.article-header{padding:116px 24px 52px;background:var(--bg);border-bottom:1px solid var(--border);}
+.article-header-inner{max-width:760px;margin:0 auto;}
+.breadcrumb{display:flex;align-items:center;gap:6px;font-size:12px;color:var(--light);margin-bottom:20px;}
+.breadcrumb a{color:var(--light);text-decoration:none;}
+.breadcrumb a:hover{color:var(--red);}
+.breadcrumb span{color:var(--border);}
+.article-tag{display:inline-flex;align-items:center;background:var(--tag-bg);color:var(--red);font-size:11px;font-weight:700;letter-spacing:0.06em;padding:4px 12px;border-radius:100px;margin-bottom:18px;}
+.article-h1{font-family:'Shippori Mincho',serif;font-size:clamp(20px,3vw,34px);font-weight:700;color:var(--ink);line-height:1.65;margin-bottom:20px;}
+.article-meta{display:flex;align-items:center;gap:20px;flex-wrap:wrap;font-size:12px;color:var(--light);}
+
+/* ARTICLE BODY */
+.article-body{padding:72px 24px 100px;}
+.article-body-inner{max-width:760px;margin:0 auto;}
+
+/* SUMMARY BOX */
+.summary-box{background:var(--bg);border-left:4px solid var(--red);padding:24px 28px;border-radius:0 6px 6px 0;margin-bottom:52px;}
+.summary-box-title{font-size:11px;font-weight:700;color:var(--red);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:12px;}
+.summary-box ul{list-style:none;display:flex;flex-direction:column;gap:8px;}
+.summary-box ul li{display:flex;align-items:flex-start;gap:8px;font-size:14px;line-height:1.8;color:var(--ink);}
+.summary-box ul li::before{content:'✓';color:var(--red);font-weight:700;flex-shrink:0;margin-top:1px;}
+
+/* HEADINGS */
+.article-body-inner h2{font-family:'Shippori Mincho',serif;font-size:clamp(17px,2.2vw,24px);font-weight:700;color:var(--ink);line-height:1.65;margin:56px 0 20px;padding-bottom:10px;border-bottom:1px solid var(--border);position:relative;}
+.article-body-inner h2::after{content:'';position:absolute;bottom:-1px;left:0;width:48px;height:2px;background:var(--red);}
+.article-body-inner h3{font-family:'Shippori Mincho',serif;font-size:clamp(15px,1.8vw,19px);font-weight:700;color:var(--ink);line-height:1.7;margin:36px 0 14px;padding-left:14px;border-left:3px solid var(--red);}
+.article-body-inner p{font-size:15px;line-height:2;color:var(--body);margin-bottom:22px;}
+.article-body-inner strong{color:var(--ink);font-weight:700;}
+.article-body-inner ul,.article-body-inner ol{list-style:none;margin-bottom:22px;display:flex;flex-direction:column;gap:8px;}
+.article-body-inner ul li,.article-body-inner ol li{font-size:14px;line-height:1.9;color:var(--body);display:flex;align-items:flex-start;gap:10px;}
+.article-body-inner ul li::before{content:'─';color:var(--red);flex-shrink:0;margin-top:4px;font-size:12px;}
+.article-body-inner ol{counter-reset:ol;}
+.article-body-inner ol li{counter-increment:ol;}
+.article-body-inner ol li::before{content:counter(ol);background:var(--red);color:#fff;width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0;margin-top:2px;font-family:'DM Mono',monospace;}
+
+/* PAIN CARDS */
+.pain-cards{display:flex;flex-direction:column;gap:12px;margin:24px 0;}
+.pain-card{background:var(--bg);border-left:4px solid var(--red);border-radius:0 8px 8px 0;padding:18px 20px;display:flex;align-items:flex-start;gap:12px;}
+.pain-card-icon{font-size:22px;flex-shrink:0;margin-top:2px;}
+.pain-card-body{font-size:14px;line-height:1.85;color:var(--body);}
+.pain-card-body strong{color:var(--ink);}
+
+/* COMPARE TABLE */
+.compare-wrap{overflow-x:auto;margin:24px 0 32px;}
+.compare-table{width:100%;border-collapse:collapse;font-size:13.5px;min-width:480px;}
+.compare-table th{padding:12px 18px;text-align:center;font-size:12px;font-weight:700;letter-spacing:0.05em;background:var(--bg2);color:var(--ink);border-bottom:2px solid var(--border);}
+.compare-table th:first-child{text-align:left;}
+.compare-table th.hl{background:var(--red);color:#fff;}
+.compare-table td{padding:12px 18px;border-bottom:1px solid var(--border);vertical-align:middle;line-height:1.7;color:var(--body);text-align:center;}
+.compare-table td:first-child{text-align:left;font-weight:600;color:var(--ink);}
+.compare-table td.hl{background:var(--tag-bg);color:var(--ink);font-weight:600;}
+.check{color:var(--red);font-weight:700;}
+.cross{color:#bbb;}
+
+/* POINT BOX */
+.point-box{background:var(--bg2);border-radius:8px;padding:20px 24px;margin:20px 0;}
+.point-box-label{font-size:10px;font-family:'DM Mono',monospace;color:var(--red);letter-spacing:0.12em;text-transform:uppercase;margin-bottom:10px;}
+.point-box p{font-size:14px;line-height:1.9;color:var(--body);margin-bottom:0;}
+
+/* INLINE CTA */
+.inline-cta{background:var(--bg);border:1px solid var(--border);border-top:4px solid var(--red);border-radius:10px;padding:36px;margin:52px 0;text-align:center;}
+.inline-cta-tag{font-size:11px;color:var(--red);font-weight:700;letter-spacing:0.08em;margin-bottom:12px;}
+.inline-cta h3{font-family:'Shippori Mincho',serif;font-size:clamp(16px,2vw,22px);font-weight:700;color:var(--ink);line-height:1.65;margin-bottom:12px;}
+.inline-cta p{font-size:14px;color:var(--body);line-height:1.9;margin-bottom:22px;}
+.cta-btns-pair{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;}
+.btn-cta-red{display:inline-flex;align-items:center;gap:6px;background:var(--red);color:#fff;padding:13px 28px;border-radius:4px;font-size:14px;font-weight:700;text-decoration:none;transition:background 0.2s,transform 0.2s;}
+.btn-cta-red:hover{background:var(--red-dark);transform:translateY(-2px);}
+.btn-cta-note{display:block;margin-top:12px;font-size:11px;color:var(--light);}
+
+/* EFFECT GRID */
+.effect-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:24px 0;}
+.effect-card{background:var(--bg);border-top:3px solid var(--red);border-radius:6px;padding:20px 16px;}
+.effect-num{font-family:'DM Mono',monospace;font-size:10px;color:var(--red);letter-spacing:0.12em;margin-bottom:8px;}
+.effect-title{font-family:'Shippori Mincho',serif;font-size:15px;font-weight:700;color:var(--ink);line-height:1.6;margin-bottom:8px;}
+.effect-body{font-size:12px;line-height:1.85;color:var(--body);}
+
+/* BACK */
+.back-section{padding:28px 24px;background:var(--bg);border-top:1px solid var(--border);}
+.back-section-inner{max-width:760px;margin:0 auto;}
+.back-link{display:inline-flex;align-items:center;gap:6px;font-size:13px;color:var(--body);text-decoration:none;transition:color 0.2s;}
+.back-link:hover{color:var(--red);}
+
+/* RELATED */
+.related-section{padding:60px 24px;background:var(--white);border-top:1px solid var(--border);}
+.related-inner{max-width:760px;margin:0 auto;}
+.related-label{font-family:'DM Mono',monospace;font-size:11px;color:var(--red);letter-spacing:0.14em;text-transform:uppercase;margin-bottom:20px;}
+.related-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+.related-card{border:1px solid var(--border);border-top:3px solid var(--red);padding:20px;text-decoration:none;color:inherit;border-radius:0 0 6px 6px;transition:box-shadow 0.2s,transform 0.2s;}
+.related-card:hover{box-shadow:0 4px 16px rgba(0,0,0,0.07);transform:translateY(-2px);}
+.related-card-tag{font-size:10px;font-family:'DM Mono',monospace;color:var(--red);letter-spacing:0.1em;margin-bottom:8px;}
+.related-card-title{font-family:'Shippori Mincho',serif;font-size:14px;font-weight:700;color:var(--ink);line-height:1.6;}
+
+/* FOOTER */
+footer{background:#1f1f1f;border-top:1px solid rgba(255,255,255,0.06);padding:40px 60px;display:flex;align-items:center;justify-content:space-between;}
+.footer-logo{display:flex;align-items:center;gap:10px;}
+.footer-logo-mark{width:20px;height:20px;background:var(--red);clip-path:polygon(50% 0%,0% 100%,18% 100%,50% 38%,82% 100%,100% 100%);}
+.footer-logo-text{font-family:'DM Mono',monospace;font-size:13px;color:rgba(255,255,255,0.55);}
+.footer-logo-text span{color:var(--red);}
+.footer-copy{font-size:11px;color:rgba(255,255,255,0.25);font-family:'DM Mono',monospace;}
+
+.reveal{opacity:0;transform:translateY(18px);transition:opacity 0.55s ease,transform 0.55s ease;}
+.reveal.visible{opacity:1;transform:translateY(0);}
+
+@media(max-width:768px){
+  .article-header,.article-body,.back-section,.related-section{padding-left:16px;padding-right:16px;}
+  .article-header{padding-top:88px;}
+  .effect-grid{grid-template-columns:1fr;}
+  .related-grid{grid-template-columns:1fr;}
+  .cta-btns-pair{flex-direction:column;align-items:center;}
+  .inline-cta{padding:24px 18px;}
+  footer{flex-direction:column;gap:14px;text-align:center;padding:28px 16px;}
+}
+</style>
+<style>
+.tk-box{border:2px dashed #7dc3d3;border-radius:12px;padding:24px;text-align:center;background:#f8fdff;margin:18px 0}
+.tk-row{display:flex;flex-wrap:wrap;gap:14px;align-items:center;justify-content:center;margin:12px 0}
+.tk-row input[type=number]{width:90px;padding:6px;border:1px solid #cbd5e1;border-radius:6px;font-size:15px}
+.tk-btn{display:inline-block;background:#0891b2;color:#fff;border:0;border-radius:8px;padding:10px 20px;font-size:15px;font-weight:700;cursor:pointer}
+.tk-sub{background:#fff;color:#0e7490;border:1px solid #0891b2}
+.tk-res{margin-top:22px}.tk-f{list-style:none;padding:0}.tk-f li{padding:8px 12px;margin:6px 0;border-radius:6px;font-size:14.5px}
+.tk-f .ok{background:#ecfdf5;color:#065f46}.tk-f .warn{background:#fef3c7;color:#92400e}.tk-f .ng{background:#fef2f2;color:#991b1b}
+.tk-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;align-items:start}@media(max-width:700px){.tk-grid{grid-template-columns:1fr}}
+.tk-note{font-size:13px;color:#64748b}
+</style></head>
+<body>
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-P6VNBWH3" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
+<!-- NAV -->
+<nav id="mainNav">
+  <a href="/" class="nav-logo">
+    <img src="/images/logo.png" alt="AIdealize">
+    <span class="nav-logo-text"><span>AI</span>dealize</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="/column/">コラム</a></li>
+    <li><a href="/service/">サービス</a></li>
+    <li><a href="https://aidealize.com/bpr/">DX事例</a></li>
+    <li><a href="/works/">実績</a></li>
+    <li><a href="/company.html">会社概要</a></li>
+    <li><a href="/lp/zumen-sekisan/" class="nav-cta">図面積算の相談</a></li>
+  </ul>
+  <button class="nav-hamburger" id="navHamburger" aria-label="メニュー">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+<div class="nav-drawer" id="navDrawer">
+  <ul>
+    <li><a href="/column/" class="drawer-link">コラム</a></li>
+    <li><a href="/service/" class="drawer-link">サービス</a></li>
+    <li><a href="https://aidealize.com/bpr/" class="drawer-link">DX事例</a></li>
+    <li><a href="/works/" class="drawer-link">実績</a></li>
+    <li><a href="/company.html" class="drawer-link">会社概要</a></li>
+    <li><a href="/lp/zumen-sekisan/">図面積算の相談</a></li>
+  </ul>
+</div>
+
+<!-- ARTICLE HEADER -->
+<header class="article-header">
+  <div class="article-header-inner">
+    <nav class="breadcrumb" aria-label="パンくず">
+      <a href="/">ホーム</a><span>/</span>
+      <a href="/service/zumen-sanshutsu/">図面から数量を出すデモ</a><span>/</span>
+      <span>無料 図面（DXF）点検</span>
+    </nav>
+    <div class="article-tag">無料ツール</div>
+    <h1 class="article-h1">無料 図面（DXF）点検。<br>閉じた輪郭・穴・単位を確かめて、重量も出す。</h1>
+    <div class="article-meta"><div class="article-meta-item">無料・登録不要</div><div class="article-meta-item">ファイルは送信されません</div></div>
+  </div>
+</header>
+
+<article class="article-body">
+<div class="article-body-inner">
+  <p>お手持ちのDXFをここに入れると、<strong>閉じた輪郭・穴・単位</strong>を点検します。板厚を入れれば、<strong>グロス/ネット重量と塗装面積</strong>も出ます。計算はすべてお使いのブラウザの中で行い、<strong>ファイルは送信されません</strong>。登録も不要です。</p>
+  <div class="tk-box">
+    <div class="tk-row"><input id="tkFile" type="file" accept=".dxf"><label>板厚 <input id="tkT" type="number" value="22" min="0" step="0.5"> mm</label><button class="tk-btn" id="tkRun" type="button">点検する</button></div>
+    <div class="tk-row"><span class="tk-note">ファイルが手元にない場合：</span><button class="tk-btn tk-sub" type="button" data-s="R-01" data-t="22">サンプル：リブ</button><button class="tk-btn tk-sub" type="button" data-s="B-01" data-t="25">サンプル：ベースPL</button><button class="tk-btn tk-sub" type="button" data-s="G-01" data-t="12">サンプル：ガセット</button></div>
+  </div>
+  <div class="tk-res" id="tkRes" aria-live="polite"></div>
+  <h2>何を点検するか</h2>
+  <ul>
+    <li><strong>単位</strong>：mm以外、または未設定でないか。</li>
+    <li><strong>閉じた輪郭</strong>：外形が閉じているか（端が離れていると面積が出ません）。</li>
+    <li><strong>穴</strong>：外形の内側にある円・閉じた図形を穴として数える。</li>
+    <li><strong>混在</strong>：外形の外の図形、円弧・スプライン、閉じていない線、極端なサイズ。</li>
+  </ul>
+  <p class="tk-note">対応はASCII形式のDXFのみ（DWG・PDF・画像は不可）。円弧・スプラインは面積に含めません。結果は確認用の目安で、板厚・材質は図面の外（材料表）で確認してください。</p>
+  <h2>点検のあとに</h2>
+  <p>点検でつまずいた図面や、スキャン図面しか手元にない場合は、<a href="/column/dxf-zumen-data-menseki-jidou/">DXFと面積の自動算出</a>の記事や、<a href="/service/zumen-sanshutsu/">図面から数量が出るデモ</a>をご覧ください。貴社の図面・見積様式での試作は<a href="/lp/zumen-sekisan/">こちら</a>から相談できます。</p>
+  <div class="inline-cta reveal">
+    <div class="inline-cta-tag">相談する</div>
+    <h3>点検の先の、数量算出と見積明細まで<br>任せたい方へ。</h3>
+    <p>貴社の図面と見積様式をもとに、どこまで自動で埋まるかを小さく確認します。向かない場合はその旨もお伝えします。</p>
+    <div class="cta-btns-pair"><a href="/lp/zumen-sekisan/" class="btn-cta-red">図面積算のAI活用を相談する →</a><a href="/service/zumen-sanshutsu/" class="btn-cta-ghost">デモを見る</a></div>
+    <span class="btn-cta-note">オンライン対応・押し売りなし</span>
+  </div>
+<style>
+  .faq-list{margin:28px 0 8px;}
+  .faq-item{border:1px solid #d8eaee;border-radius:10px;margin-bottom:12px;overflow:hidden;background:#fff;}
+  .faq-item summary{list-style:none;cursor:pointer;padding:16px 48px 16px 18px;font-size:15px;font-weight:700;color:#0f2b33;line-height:1.6;position:relative;}
+  .faq-item summary::-webkit-details-marker{display:none;}
+  .faq-item summary::after{content:'+';position:absolute;right:18px;top:50%;transform:translateY(-50%);font-size:22px;font-weight:400;color:#0891b2;}
+  .faq-item[open] summary::after{content:'−';}
+  .faq-item .faq-a{padding:0 18px 18px;font-size:14px;color:#4b5563;line-height:1.95;}
+  .faq-item .faq-a a{color:#0891b2;}
+  </style>
+  <h2>よくある質問</h2>
+  <div class="faq-list">
+    <details class="faq-item"><summary>アップロードした図面はどこかに送られますか？</summary><div class="faq-a">送られません。ファイルはお使いのブラウザの中だけで読み取り、計算します。サーバーには保存も送信もしません。</div></details>
+    <details class="faq-item"><summary>DWGやPDFの図面は点検できますか？</summary><div class="faq-a">現在はASCII形式のDXFのみ対応しています。DWGはCADソフトでDXFに保存し直してください。PDFは対応していません。</div></details>
+    <details class="faq-item"><summary>点検の結果は、そのまま見積に使えますか？</summary><div class="faq-a">目安としての確認用です。円弧・スプラインは面積に含めず、板厚や材質は図面データの外にあるため、最終的な数量は人が確認してください。</div></details>
+  </div>
+
+</div>
+<section class="related-section">
+  <div class="related-inner">
+    <div class="related-label">Related Articles</div>
+    <div class="related-grid">
+      <a href="/column/dxf-zumen-data-menseki-jidou/" class="related-card">
+        <div class="related-card-tag">DXF / 図面データ</div>
+        <div class="related-card-title">DXFとは？図面データから面積・重量を自動で出せる理由</div>
+      </a>
+      <a href="/column/zumen-gross-net-chigai/" class="related-card">
+        <div class="related-card-tag">図面積算 / 用語</div>
+        <div class="related-card-title">「グロス」と「ネット」の違いとは？重量と塗装面積の見積への影響</div>
+      </a>
+      <a href="/column/mitsumori-meisai-sakusei-sekisan-yield/" class="related-card">
+        <div class="related-card-tag">見積明細 / 歩留まり</div>
+        <div class="related-card-title">鉄骨・板金の見積明細書の作り方｜設計数量・歩留まり・所要量</div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<div class="back-section">
+  <div class="back-section-inner">
+    <a href="/column/" class="back-link">← コラム一覧に戻る</a>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-logo">
+    <div class="footer-logo-mark"></div>
+    <span class="footer-logo-text"><span>A</span>idealize株式会社</span>
+  </div>
+  <span class="footer-copy">© 2020–2026 AIdealize Inc. All rights reserved.</span>
+</footer>
+
+<script>
+(function(){
+  const btn=document.getElementById('navHamburger');
+  const drawer=document.getElementById('navDrawer');
+  const nav=document.getElementById('mainNav');
+  btn.addEventListener('click',function(){btn.classList.toggle('open');drawer.classList.toggle('open');});
+  drawer.querySelectorAll('.drawer-link').forEach(function(l){l.addEventListener('click',function(){btn.classList.remove('open');drawer.classList.remove('open');});});
+  window.addEventListener('scroll',function(){nav.classList.toggle('scrolled',window.scrollY>10);});
+})();
+const obs=new IntersectionObserver(function(e){e.forEach(function(x){if(x.isIntersecting)x.target.classList.add('visible');});},{threshold:0.08,rootMargin:'0px 0px -30px 0px'});
+document.querySelectorAll('.reveal').forEach(function(el){obs.observe(el);});
+</script>
+<script src="/js/lead-capture.js"></script>
+<script src="/tools/zumen-tenken/tenken.js"></script>
+<script>
+(function(){
+var $=function(i){return document.getElementById(i)},res=$("tkRes");
+var ic={ok:"✔ ",warn:"⚠ ",ng:"✖ "};
+function esc(s){return String(s).replace(/[&<>]/g,function(c){return {"&":"&amp;","<":"&lt;",">":"&gt;"}[c]})}
+function show(r){
+  var h='<h2>点検結果</h2><ul class="tk-f">'+r.findings.map(function(f){return '<li class="'+f.lv+'">'+ic[f.lv]+esc(f.msg)+'</li>'}).join("")+'</ul>';
+  if(r.ok){var x=r.result,f=function(n,d){return n.toLocaleString("ja-JP",{maximumFractionDigits:d})};
+    var xs=x.outer.map(function(p){return p[0]}),ys=x.outer.map(function(p){return p[1]}),x0=Math.min.apply(null,xs),y1=Math.max.apply(null,ys);
+    var pt=function(p){return (p[0]-x0)+","+(y1-p[1])};
+    var sv='<svg viewBox="'+(-x.w*.05)+' '+(-x.h*.05)+' '+(x.w*1.1)+' '+(x.h*1.1)+'" style="width:100%;max-height:260px"><polygon points="'+x.outer.map(pt).join(" ")+'" fill="#e8eef5" stroke="#1d3557" stroke-width="'+Math.max(x.w,x.h)/180+'"/>'+x.holeShapes.map(function(c){return c.length===3&&typeof c[0]==="number"&&!c[0].length?'<circle cx="'+(c[0]-x0)+'" cy="'+(y1-c[1])+'" r="'+c[2]+'" fill="#fff" stroke="#1d3557" stroke-width="'+Math.max(x.w,x.h)/180+'"/>':'<polygon points="'+c.map(pt).join(" ")+'" fill="#fff" stroke="#1d3557" stroke-width="'+Math.max(x.w,x.h)/180+'"/>'}).join("")+'</svg>';
+    var tb='<table class="zd-t"><tr><th>項目</th><th>値</th></tr><tr><td>外形（幅×高さ）</td><td>'+f(x.w,1)+' × '+f(x.h,1)+' mm</td></tr><tr><td>穴の数</td><td>'+x.holes+'</td></tr><tr><td>グロス面積</td><td>'+f(x.grossArea,0)+' mm²</td></tr><tr><td>ネット面積</td><td>'+f(x.netArea,0)+' mm²</td></tr>';
+    if(x.t){tb+='<tr><td>板厚</td><td>'+x.t+' mm</td></tr><tr><td>グロス重量</td><td>'+f(x.grossKg,2)+' kg</td></tr><tr><td>ネット重量</td><td><b>'+f(x.netKg,2)+' kg</b></td></tr><tr><td>塗装面積</td><td>'+f(x.paint,3)+' ㎡</td></tr>'}
+    tb+='</table><p class="tk-note">重量は比重7.85で計算。塗装面積＝表裏＋端面（外周×板厚）＋穴の内側。</p>';
+    h+='<div class="tk-grid"><div>'+sv+'</div><div>'+tb+'</div></div>';}
+  res.innerHTML=h;
+  try{window.dataLayer=window.dataLayer||[];window.dataLayer.push({event:"zumen_tenken_run",tenken_ok:r.ok?"ok":"ng"})}catch(e){}
+}
+function run(text){var t=parseFloat($("tkT").value)||0;show(window.ZumenTenken.analyze(text,t))}
+$("tkRun").onclick=function(){var f=$("tkFile").files[0];if(!f){res.innerHTML='<ul class="tk-f"><li class="warn">⚠ DXFファイルを選んでください。</li></ul>';return}
+  var rd=new FileReader();rd.onload=function(){run(rd.result)};rd.readAsText(f)};
+document.querySelectorAll("[data-s]").forEach(function(b){b.onclick=function(){$("tkT").value=b.getAttribute("data-t");
+  fetch("/service/zumen-sanshutsu/dxf/"+b.getAttribute("data-s")+".dxf").then(function(r){return r.text()}).then(run)}});
+})();
+</script>
+</body>
+</html>
