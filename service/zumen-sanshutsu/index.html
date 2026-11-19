@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>図面作成から面積・重量・見積明細まで｜図面積算の自動化デモ｜AIdealize</title>
+<meta name="description" content="板や部材の図面（DXF）を作り、同じ形状から重量・塗装面積・穴数を厳密に算出して見積明細にまとめるデモ。寸法を動かして試せます。">
+<link rel="canonical" href="https://aidealize.com/service/zumen-sanshutsu/">
+<meta property="og:title" content="図面作成から面積・重量・見積明細まで｜図面積算の自動化デモ">
+<meta property="og:description" content="板や部材の図面（DXF）を作り、同じ形状から重量・塗装面積・穴数を厳密に算出して見積明細にまとめるデモ。寸法を動かして試せます。">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://aidealize.com/service/zumen-sanshutsu/">
+<meta property="og:site_name" content="AIdealize株式会社">
+<meta property="og:image" content="https://aidealize.com/images/jinzaitop1.jpg">
+<meta name="twitter:image" content="https://aidealize.com/images/jinzaitop1.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700;900&family=Shippori+Mincho:wght@400;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-P6VNBWH3');</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "図面作成から面積・重量・見積明細まで｜図面積算の自動化デモ", "description": "板や部材の図面（DXF）を作り、同じ形状から重量・塗装面積・穴数を厳密に算出して見積明細にまとめるデモ。寸法を動かして試せます。", "datePublished": "2026-11-19", "dateModified": "2026-11-19", "image": "https://aidealize.com/images/jinzaitop1.jpg", "mainEntityOfPage": "https://aidealize.com/service/zumen-sanshutsu/", "author": {"@type": "Organization", "name": "AIdealize株式会社"}, "publisher": {"@type": "Organization", "name": "AIdealize株式会社", "url": "https://aidealize.com"}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "このデモの部材や単価は実在のものですか？", "acceptedAnswer": {"@type": "Answer", "text": "すべてデモ用の架空データです。単価は仮置きの値で、実際の見積には使えません。"}}, {"@type": "Question", "name": "スキャンした紙の図面でも、同じように数量が出ますか？", "acceptedAnswer": {"@type": "Answer", "text": "このデモはCADデータ（ベクター）から出しているため、形状どおりに正確に計算できます。スキャン図面の場合は、寸法を読み取って控除する工程が加わり、人の確認が必要です。"}}, {"@type": "Question", "name": "見積の自動化を依頼するには、何を用意すればよいですか？", "acceptedAnswer": {"@type": "Answer", "text": "現在お使いの見積明細の様式と、過去の図面を1〜2件いただければ、どこまで自動で埋まるかを小さく確認できます。図面はお客様の環境内で扱う前提でご相談ください。"}}]}</script>
+<style>.zd-t{border-collapse:collapse;width:100%;margin:16px 0;font-size:14px}.zd-t th,.zd-t td{border:1px solid #d5dde6;padding:6px 8px;text-align:right}.zd-t th{background:#f1f5f9}.zd-t td:first-child{text-align:left}</style><style>
+:root{
+  --red:#0891b2;--red-dark:#0e7490;
+  --ink:#1e293b;--body:#4b5563;--light:#94a3b8;
+  --border:#e2e8f0;--bg:#f8fafc;--bg2:#f1f5f9;--white:#fff;
+  --tag-bg:#ecfeff;--green:#059669;--green-bg:#ecfdf5;
+  --demo-bg:#0f172a;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{font-family:'Noto Sans JP',sans-serif;background:var(--white);color:var(--ink);overflow-x:hidden;line-height:1.7;}
+
+/* NAV */
+#mainNav{position:fixed;top:0;left:0;right:0;z-index:1000;display:flex;align-items:center;justify-content:space-between;padding:0 60px;height:68px;background:rgba(255,255,255,0.97);border-bottom:1px solid var(--border);backdrop-filter:blur(12px);transition:box-shadow 0.3s;}
+#mainNav.scrolled{box-shadow:0 2px 16px rgba(0,0,0,0.06);}
+.nav-logo{display:flex;align-items:center;gap:10px;text-decoration:none;}
+.nav-logo img{height:34px;width:auto;}
+.nav-logo-text{font-family:'DM Mono',monospace;font-size:15px;font-weight:500;color:var(--ink);letter-spacing:0.02em;}
+.nav-logo-text span{color:var(--red);}
+.nav-links{display:flex;align-items:center;gap:32px;list-style:none;}
+.nav-links a{font-size:13px;font-weight:500;color:var(--body);text-decoration:none;transition:color 0.2s;}
+.nav-links a:hover{color:var(--ink);}
+.nav-cta{background:var(--red) !important;color:#fff !important;padding:9px 20px;border-radius:4px;font-size:12px !important;font-weight:700 !important;}
+.nav-cta:hover{background:var(--red-dark) !important;}
+.nav-hamburger{display:none;flex-direction:column;justify-content:center;gap:5px;width:40px;height:40px;background:none;border:none;cursor:pointer;}
+.nav-hamburger span{display:block;width:22px;height:2px;background:var(--ink);transition:all 0.3s;transform-origin:center;}
+.nav-hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg);}
+.nav-hamburger.open span:nth-child(2){opacity:0;}
+.nav-hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
+.nav-drawer{display:none;position:fixed;top:68px;left:0;right:0;background:#fff;border-bottom:2px solid var(--red);padding:20px 28px 28px;z-index:999;}
+.nav-drawer.open{display:block;}
+.nav-drawer ul{list-style:none;display:flex;flex-direction:column;}
+.nav-drawer ul li a{display:block;padding:13px 0;font-size:15px;font-weight:500;color:var(--ink);text-decoration:none;border-bottom:1px solid var(--border);}
+.nav-drawer ul li:last-child a{margin-top:16px;text-align:center;background:var(--red);color:#fff !important;padding:13px;border-radius:4px;font-weight:700 !important;border-bottom:none;}
+@media(max-width:1024px){#mainNav{padding:0 28px;}.nav-links{display:none;}.nav-hamburger{display:flex;}}
+@media(max-width:480px){#mainNav{padding:0 16px;height:60px;}.nav-drawer{top:60px;}.nav-logo-text{font-size:13px;}}
+
+/* ARTICLE HEADER */
+.article-header{padding:116px 24px 52px;background:var(--bg);border-bottom:1px solid var(--border);}
+.article-header-inner{max-width:760px;margin:0 auto;}
+.breadcrumb{display:flex;align-items:center;gap:6px;font-size:12px;color:var(--light);margin-bottom:20px;}
+.breadcrumb a{color:var(--light);text-decoration:none;}
+.breadcrumb a:hover{color:var(--red);}
+.breadcrumb span{color:var(--border);}
+.article-tag{display:inline-flex;align-items:center;background:var(--tag-bg);color:var(--red);font-size:11px;font-weight:700;letter-spacing:0.06em;padding:4px 12px;border-radius:100px;margin-bottom:18px;}
+.article-h1{font-family:'Shippori Mincho',serif;font-size:clamp(20px,3vw,34px);font-weight:700;color:var(--ink);line-height:1.65;margin-bottom:20px;}
+.article-meta{display:flex;align-items:center;gap:20px;flex-wrap:wrap;font-size:12px;color:var(--light);}
+
+/* ARTICLE BODY */
+.article-body{padding:72px 24px 100px;}
+.article-body-inner{max-width:760px;margin:0 auto;}
+
+/* SUMMARY BOX */
+.summary-box{background:var(--bg);border-left:4px solid var(--red);padding:24px 28px;border-radius:0 6px 6px 0;margin-bottom:52px;}
+.summary-box-title{font-size:11px;font-weight:700;color:var(--red);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:12px;}
+.summary-box ul{list-style:none;display:flex;flex-direction:column;gap:8px;}
+.summary-box ul li{display:flex;align-items:flex-start;gap:8px;font-size:14px;line-height:1.8;color:var(--ink);}
+.summary-box ul li::before{content:'✓';color:var(--red);font-weight:700;flex-shrink:0;margin-top:1px;}
+
+/* HEADINGS */
+.article-body-inner h2{font-family:'Shippori Mincho',serif;font-size:clamp(17px,2.2vw,24px);font-weight:700;color:var(--ink);line-height:1.65;margin:56px 0 20px;padding-bottom:10px;border-bottom:1px solid var(--border);position:relative;}
+.article-body-inner h2::after{content:'';position:absolute;bottom:-1px;left:0;width:48px;height:2px;background:var(--red);}
+.article-body-inner h3{font-family:'Shippori Mincho',serif;font-size:clamp(15px,1.8vw,19px);font-weight:700;color:var(--ink);line-height:1.7;margin:36px 0 14px;padding-left:14px;border-left:3px solid var(--red);}
+.article-body-inner p{font-size:15px;line-height:2;color:var(--body);margin-bottom:22px;}
+.article-body-inner strong{color:var(--ink);font-weight:700;}
+.article-body-inner ul,.article-body-inner ol{list-style:none;margin-bottom:22px;display:flex;flex-direction:column;gap:8px;}
+.article-body-inner ul li,.article-body-inner ol li{font-size:14px;line-height:1.9;color:var(--body);display:flex;align-items:flex-start;gap:10px;}
+.article-body-inner ul li::before{content:'─';color:var(--red);flex-shrink:0;margin-top:4px;font-size:12px;}
+.article-body-inner ol{counter-reset:ol;}
+.article-body-inner ol li{counter-increment:ol;}
+.article-body-inner ol li::before{content:counter(ol);background:var(--red);color:#fff;width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0;margin-top:2px;font-family:'DM Mono',monospace;}
+
+/* PAIN CARDS */
+.pain-cards{display:flex;flex-direction:column;gap:12px;margin:24px 0;}
+.pain-card{background:var(--bg);border-left:4px solid var(--red);border-radius:0 8px 8px 0;padding:18px 20px;display:flex;align-items:flex-start;gap:12px;}
+.pain-card-icon{font-size:22px;flex-shrink:0;margin-top:2px;}
+.pain-card-body{font-size:14px;line-height:1.85;color:var(--body);}
+.pain-card-body strong{color:var(--ink);}
+
+/* COMPARE TABLE */
+.compare-wrap{overflow-x:auto;margin:24px 0 32px;}
+.compare-table{width:100%;border-collapse:collapse;font-size:13.5px;min-width:480px;}
+.compare-table th{padding:12px 18px;text-align:center;font-size:12px;font-weight:700;letter-spacing:0.05em;background:var(--bg2);color:var(--ink);border-bottom:2px solid var(--border);}
+.compare-table th:first-child{text-align:left;}
+.compare-table th.hl{background:var(--red);color:#fff;}
+.compare-table td{padding:12px 18px;border-bottom:1px solid var(--border);vertical-align:middle;line-height:1.7;color:var(--body);text-align:center;}
+.compare-table td:first-child{text-align:left;font-weight:600;color:var(--ink);}
+.compare-table td.hl{background:var(--tag-bg);color:var(--ink);font-weight:600;}
+.check{color:var(--red);font-weight:700;}
+.cross{color:#bbb;}
+
+/* POINT BOX */
+.point-box{background:var(--bg2);border-radius:8px;padding:20px 24px;margin:20px 0;}
+.point-box-label{font-size:10px;font-family:'DM Mono',monospace;color:var(--red);letter-spacing:0.12em;text-transform:uppercase;margin-bottom:10px;}
+.point-box p{font-size:14px;line-height:1.9;color:var(--body);margin-bottom:0;}
+
+/* INLINE CTA */
+.inline-cta{background:var(--bg);border:1px solid var(--border);border-top:4px solid var(--red);border-radius:10px;padding:36px;margin:52px 0;text-align:center;}
+.inline-cta-tag{font-size:11px;color:var(--red);font-weight:700;letter-spacing:0.08em;margin-bottom:12px;}
+.inline-cta h3{font-family:'Shippori Mincho',serif;font-size:clamp(16px,2vw,22px);font-weight:700;color:var(--ink);line-height:1.65;margin-bottom:12px;}
+.inline-cta p{font-size:14px;color:var(--body);line-height:1.9;margin-bottom:22px;}
+.cta-btns-pair{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;}
+.btn-cta-red{display:inline-flex;align-items:center;gap:6px;background:var(--red);color:#fff;padding:13px 28px;border-radius:4px;font-size:14px;font-weight:700;text-decoration:none;transition:background 0.2s,transform 0.2s;}
+.btn-cta-red:hover{background:var(--red-dark);transform:translateY(-2px);}
+.btn-cta-note{display:block;margin-top:12px;font-size:11px;color:var(--light);}
+
+/* EFFECT GRID */
+.effect-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:24px 0;}
+.effect-card{background:var(--bg);border-top:3px solid var(--red);border-radius:6px;padding:20px 16px;}
+.effect-num{font-family:'DM Mono',monospace;font-size:10px;color:var(--red);letter-spacing:0.12em;margin-bottom:8px;}
+.effect-title{font-family:'Shippori Mincho',serif;font-size:15px;font-weight:700;color:var(--ink);line-height:1.6;margin-bottom:8px;}
+.effect-body{font-size:12px;line-height:1.85;color:var(--body);}
+
+/* BACK */
+.back-section{padding:28px 24px;background:var(--bg);border-top:1px solid var(--border);}
+.back-section-inner{max-width:760px;margin:0 auto;}
+.back-link{display:inline-flex;align-items:center;gap:6px;font-size:13px;color:var(--body);text-decoration:none;transition:color 0.2s;}
+.back-link:hover{color:var(--red);}
+
+/* RELATED */
+.related-section{padding:60px 24px;background:var(--white);border-top:1px solid var(--border);}
+.related-inner{max-width:760px;margin:0 auto;}
+.related-label{font-family:'DM Mono',monospace;font-size:11px;color:var(--red);letter-spacing:0.14em;text-transform:uppercase;margin-bottom:20px;}
+.related-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+.related-card{border:1px solid var(--border);border-top:3px solid var(--red);padding:20px;text-decoration:none;color:inherit;border-radius:0 0 6px 6px;transition:box-shadow 0.2s,transform 0.2s;}
+.related-card:hover{box-shadow:0 4px 16px rgba(0,0,0,0.07);transform:translateY(-2px);}
+.related-card-tag{font-size:10px;font-family:'DM Mono',monospace;color:var(--red);letter-spacing:0.1em;margin-bottom:8px;}
+.related-card-title{font-family:'Shippori Mincho',serif;font-size:14px;font-weight:700;color:var(--ink);line-height:1.6;}
+
+/* FOOTER */
+footer{background:#1f1f1f;border-top:1px solid rgba(255,255,255,0.06);padding:40px 60px;display:flex;align-items:center;justify-content:space-between;}
+.footer-logo{display:flex;align-items:center;gap:10px;}
+.footer-logo-mark{width:20px;height:20px;background:var(--red);clip-path:polygon(50% 0%,0% 100%,18% 100%,50% 38%,82% 100%,100% 100%);}
+.footer-logo-text{font-family:'DM Mono',monospace;font-size:13px;color:rgba(255,255,255,0.55);}
+.footer-logo-text span{color:var(--red);}
+.footer-copy{font-size:11px;color:rgba(255,255,255,0.25);font-family:'DM Mono',monospace;}
+
+.reveal{opacity:0;transform:translateY(18px);transition:opacity 0.55s ease,transform 0.55s ease;}
+.reveal.visible{opacity:1;transform:translateY(0);}
+
+@media(max-width:768px){
+  .article-header,.article-body,.back-section,.related-section{padding-left:16px;padding-right:16px;}
+  .article-header{padding-top:88px;}
+  .effect-grid{grid-template-columns:1fr;}
+  .related-grid{grid-template-columns:1fr;}
+  .cta-btns-pair{flex-direction:column;align-items:center;}
+  .inline-cta{padding:24px 18px;}
+  footer{flex-direction:column;gap:14px;text-align:center;padding:28px 16px;}
+}
+</style>
+<style>
+.zd-m{border-collapse:collapse;width:100%;margin:16px 0;font-size:14px}.zd-m th,.zd-m td{border:1px solid #d5dde6;padding:6px 8px;text-align:right}.zd-m th{background:#f1f5f9}.zd-m td:first-child,.zd-m td:nth-child(2),.zd-m td:nth-child(3){text-align:left}
+.zd-cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px;margin:20px 0}.zd-card{border:1px solid #d5dde6;border-radius:8px;padding:14px;background:#fff}.zd-card h3{font-size:16px;margin:8px 0 2px}.zd-card small{color:#64748b;font-weight:400}.zd-sv{height:140px}.zd-sv svg{width:100%;height:100%}.zd-k{width:100%;border-collapse:collapse;margin:8px 0}.zd-k td{border-bottom:1px solid #eee;padding:3px 0}.zd-k td:last-child{text-align:right}
+.zd-calc{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin:20px 0}@media(max-width:700px){.zd-calc{grid-template-columns:1fr}}.zd-calc label{display:block;margin:8px 0;font-size:14px}.zd-calc input[type=range]{width:100%}.zd-res{background:#f1f5f9;padding:12px;border-radius:8px;margin-top:10px}.zd-wrap{overflow-x:auto}</style></head>
+<body>
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-P6VNBWH3" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
+<!-- NAV -->
+<nav id="mainNav">
+  <a href="/" class="nav-logo">
+    <img src="/images/logo.png" alt="AIdealize">
+    <span class="nav-logo-text"><span>AI</span>dealize</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="/column/">コラム</a></li>
+    <li><a href="/service/">サービス</a></li>
+    <li><a href="https://aidealize.com/bpr/">DX事例</a></li>
+    <li><a href="/works/">実績</a></li>
+    <li><a href="/company.html">会社概要</a></li>
+    <li><a href="/lp/zumen-sekisan/" class="nav-cta">図面積算の相談</a></li>
+  </ul>
+  <button class="nav-hamburger" id="navHamburger" aria-label="メニュー">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+<div class="nav-drawer" id="navDrawer">
+  <ul>
+    <li><a href="/column/" class="drawer-link">コラム</a></li>
+    <li><a href="/service/" class="drawer-link">サービス</a></li>
+    <li><a href="https://aidealize.com/bpr/" class="drawer-link">DX事例</a></li>
+    <li><a href="/works/" class="drawer-link">実績</a></li>
+    <li><a href="/company.html" class="drawer-link">会社概要</a></li>
+    <li><a href="/lp/zumen-sekisan/">図面積算の相談</a></li>
+  </ul>
+</div>
+
+<!-- ARTICLE HEADER -->
+<header class="article-header">
+  <div class="article-header-inner">
+    <nav class="breadcrumb" aria-label="パンくず">
+      <a href="/">ホーム</a><span>/</span>
+      <a href="/service/">サービス</a><span>/</span>
+      <span>図面から数量を出すデモ</span>
+    </nav>
+    <div class="article-tag">サービス・図面積算</div>
+    <h1 class="article-h1">図面づくりから数量算出まで。<br>ネットの重量・塗装面積が、図面から出る。</h1>
+    <div class="article-meta">
+      <div class="article-meta-item">📅 2026年11月19日</div>
+      <div class="article-meta-item">⏱ 読了約6分</div>
+      <div class="article-meta-item">✍ AIdealize編集部</div>
+    </div>
+  </div>
+</header>
+
+<article class="article-body">
+<div class="article-body-inner">
+
+  <p>部材の図面（DXF）を作り、同じ形状データから<strong>グロス・ネット重量、塗装面積、穴数</strong>を厳密に算出して、見積明細の様式にまとめるデモです。図面がCADデータ（ベクター）なので、切り欠きや穴を引いた<strong>ネット</strong>が誤差なく出ます。</p>
+  <p style="font-size:13px;color:#64748b">掲載の部材・単価はすべてデモ用の架空データです。</p>
+  <h2>1. 作成した図面と算出結果</h2>
+  <div class="zd-cards"><div class="zd-card"><div class="zd-sv"><svg xmlns="http://www.w3.org/2000/svg" viewBox="-30 -30 868 584"><path d="M60.0,524.0 L748.0,524.0 L808.0,464.0 L808.0,0.0 L0.0,0.0 L0.0,464.0Z" fill="#e8eef5" stroke="#1d3557" stroke-width="4"/><circle cx="150" cy="264" r="22" fill="#fff" stroke="#1d3557" stroke-width="4"/><circle cx="658" cy="264" r="22" fill="#fff" stroke="#1d3557" stroke-width="4"/></svg></div><h3>R-01 リブ <small>SM400A PL22</small></h3><p>808×524 mm ／ 穴2</p><table class="zd-k"><tr><td>グロス重量</td><td>73.12 kg</td></tr><tr><td>ネット重量</td><td><b>71.97 kg</b></td></tr><tr><td>塗装面積</td><td>0.897 ㎡</td></tr></table><a href="dxf/R-01.dxf" download>DXFをダウンロード</a></div><div class="zd-card"><div class="zd-sv"><svg xmlns="http://www.w3.org/2000/svg" viewBox="-30 -30 560 560"><path d="M0.0,500.0 L500.0,500.0 L500.0,0.0 L0.0,0.0Z" fill="#e8eef5" stroke="#1d3557" stroke-width="4"/><circle cx="60" cy="440" r="14" fill="#fff" stroke="#1d3557" stroke-width="4"/><circle cx="440" cy="440" r="14" fill="#fff" stroke="#1d3557" stroke-width="4"/><circle cx="60" cy="60" r="14" fill="#fff" stroke="#1d3557" stroke-width="4"/><circle cx="440" cy="60" r="14" fill="#fff" stroke="#1d3557" stroke-width="4"/></svg></div><h3>B-01 ベースPL <small>SM400A PL25</small></h3><p>500×500 mm ／ 穴4</p><table class="zd-k"><tr><td>グロス重量</td><td>49.06 kg</td></tr><tr><td>ネット重量</td><td><b>48.58 kg</b></td></tr><tr><td>塗装面積</td><td>0.554 ㎡</td></tr></table><a href="dxf/B-01.dxf" download>DXFをダウンロード</a></div><div class="zd-card"><div class="zd-sv"><svg xmlns="http://www.w3.org/2000/svg" viewBox="-30 -30 460 360"><path d="M80.0,300.0 L320.0,300.0 L400.0,220.0 L400.0,0.0 L0.0,0.0 L0.0,220.0Z" fill="#e8eef5" stroke="#1d3557" stroke-width="4"/><circle cx="200" cy="150" r="18" fill="#fff" stroke="#1d3557" stroke-width="4"/></svg></div><h3>G-01 ガセット <small>SM400A PL12</small></h3><p>400×300 mm ／ 穴1</p><table class="zd-k"><tr><td>グロス重量</td><td>11.3 kg</td></tr><tr><td>ネット重量</td><td><b>10.61 kg</b></td></tr><tr><td>塗装面積</td><td>0.242 ㎡</td></tr></table><a href="dxf/G-01.dxf" download>DXFをダウンロード</a></div></div>
+  <h2>2. 寸法を変えて試す</h2>
+  <div class="zd-calc"><div id="cv"></div><div>
+  <label>幅 <span id="vw"></span> mm<input id="w" type="range" min="200" max="1200" value="808"></label>
+  <label>高さ <span id="vh"></span> mm<input id="h" type="range" min="200" max="800" value="524"></label>
+  <label>板厚 <span id="vt"></span> mm<input id="t" type="range" min="6" max="40" value="22"></label>
+  <label>隅切り <span id="vc"></span> mm<input id="c" type="range" min="0" max="150" value="60"></label>
+  <label>穴径 <span id="vd"></span> mm（2か所）<input id="d" type="range" min="0" max="80" value="44"></label>
+  <div class="zd-res" id="res"></div></div></div>
+  <h2>3. 見積明細の様式例</h2>
+  <div class="zd-wrap"><table class="zd-m"><tr><th>項目</th><th>材質</th><th>寸法</th><th>数量</th><th>設計数量(ネットkg)</th><th>所要量(グロスkg)</th><th>塗装(㎡)</th><th>穴数</th><th>金額(円)</th></tr><tr><td>R-01 リブ</td><td>SM400A</td><td>PL22×808×524</td><td>4</td><td>287.9</td><td>292.5</td><td>3.59</td><td>8</td><td>55,846</td></tr><tr><td>B-01 ベースPL</td><td>SM400A</td><td>PL25×500×500</td><td>2</td><td>97.2</td><td>98.1</td><td>1.11</td><td>8</td><td>20,862</td></tr><tr><td>G-01 ガセット</td><td>SM400A</td><td>PL12×400×300</td><td>8</td><td>84.9</td><td>90.4</td><td>1.94</td><td>8</td><td>19,472</td></tr><tr><th colspan="8">合計</th><th>96,180</th></tr></table></div>
+  <p style="font-size:13px;color:#64748b">材料は長方形で購入するため所要量はグロス、設計数量と塗装はネットで算出。単価は材料180円/kg・穴加工400円/箇所の仮置き、比重は7.85固定です。</p>
+  <h2>なぜ、数字が正確に出るのか</h2>
+  <p>重量や面積の計算は、AIに判断させるのではなく、決まった式で計算します。AIの出番は、図面や材料表から寸法・板厚を読み取る部分です。読み取れない項目や図面どうしの食い違いは、推定で埋めずに質問として返します。仕組みは<a href="/column/dxf-zumen-data-menseki-jidou/">DXFとは？図面データから面積・重量を自動で出せる理由</a>で解説しています。</p>
+  <h2>できること・できないこと</h2>
+  <ul>
+    <li><strong>できる</strong>：CADデータ（DXF・ベクターPDF）からの面積・重量・塗装面積・穴数の算出、見積明細の様式への出力。</li>
+    <li><strong>人の確認が残る</strong>：スキャン図面の輪郭の読み取り、図面どうしの食い違いの判断、最終的な数量と金額の確認。</li>
+    <li><strong>未実施</strong>：溶接延長の自動算出など。デモには含めていません。</li>
+  </ul>
+  <h2>関連コラム</h2>
+  <ul>
+    <li><a href="/column/zumen-gross-net-chigai/">「グロス」と「ネット」の違いとは？重量と塗装面積の見積への影響</a></li>
+    <li><a href="/column/tekiban-juryo-keisan-hiju/">鋼板の重量計算のやり方｜比重7.85と計算式</a></li>
+    <li><a href="/column/tosou-menseki-sanshutsu-houhou/">塗装面積の出し方｜両面・端面・穴の内側の数え方</a></li>
+    <li><a href="/column/dxf-zumen-data-menseki-jidou/">DXFとは？図面データから面積・重量を自動で出せる理由</a></li>
+    <li><a href="/column/mitsumori-meisai-sakusei-sekisan-yield/">鉄骨・板金の見積明細書の作り方｜設計数量・歩留まり・所要量</a></li>
+  </ul>
+  <div class="inline-cta reveal">
+    <div class="inline-cta-tag">相談する</div>
+    <h3>貴社の図面・見積様式で、<br>どこまで自動で埋まるか試せます。</h3>
+    <p>現在の見積明細の様式と、過去の図面を1〜2件いただければ、小さく確認します。向かない場合はその旨もお伝えします。</p>
+    <div class="cta-btns-pair"><a href="/lp/zumen-sekisan/" class="btn-cta-red">図面積算のAI活用を相談する →</a></div>
+    <span class="btn-cta-note">オンライン対応・押し売りなし</span>
+  </div>
+<style>
+  .faq-list{margin:28px 0 8px;}
+  .faq-item{border:1px solid #d8eaee;border-radius:10px;margin-bottom:12px;overflow:hidden;background:#fff;}
+  .faq-item summary{list-style:none;cursor:pointer;padding:16px 48px 16px 18px;font-size:15px;font-weight:700;color:#0f2b33;line-height:1.6;position:relative;}
+  .faq-item summary::-webkit-details-marker{display:none;}
+  .faq-item summary::after{content:'+';position:absolute;right:18px;top:50%;transform:translateY(-50%);font-size:22px;font-weight:400;color:#0891b2;}
+  .faq-item[open] summary::after{content:'−';}
+  .faq-item .faq-a{padding:0 18px 18px;font-size:14px;color:#4b5563;line-height:1.95;}
+  .faq-item .faq-a a{color:#0891b2;}
+  </style>
+  <h2>よくある質問</h2>
+  <div class="faq-list">
+    <details class="faq-item"><summary>このデモの部材や単価は実在のものですか？</summary><div class="faq-a">すべてデモ用の架空データです。単価は仮置きの値で、実際の見積には使えません。</div></details>
+    <details class="faq-item"><summary>スキャンした紙の図面でも、同じように数量が出ますか？</summary><div class="faq-a">このデモはCADデータ（ベクター）から出しているため、形状どおりに正確に計算できます。スキャン図面の場合は、寸法を読み取って控除する工程が加わり、人の確認が必要です。</div></details>
+    <details class="faq-item"><summary>見積の自動化を依頼するには、何を用意すればよいですか？</summary><div class="faq-a">現在お使いの見積明細の様式と、過去の図面を1〜2件いただければ、どこまで自動で埋まるかを小さく確認できます。図面はお客様の環境内で扱う前提でご相談ください。</div></details>
+  </div>
+
+</div>
+<section class="related-section">
+  <div class="related-inner">
+    <div class="related-label">Related Articles</div>
+    <div class="related-grid">
+      <a href="/column/zumen-gross-net-chigai/" class="related-card">
+        <div class="related-card-tag">図面積算 / 用語</div>
+        <div class="related-card-title">「グロス」と「ネット」の違いとは？重量と塗装面積の見積への影響</div>
+      </a>
+      <a href="/column/dxf-zumen-data-menseki-jidou/" class="related-card">
+        <div class="related-card-tag">DXF / 図面データ</div>
+        <div class="related-card-title">DXFとは？図面データから面積・重量を自動で出せる理由</div>
+      </a>
+      <a href="/column/mitsumori-meisai-sakusei-sekisan-yield/" class="related-card">
+        <div class="related-card-tag">見積明細 / 歩留まり</div>
+        <div class="related-card-title">鉄骨・板金の見積明細書の作り方｜設計数量・歩留まり・所要量</div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<div class="back-section">
+  <div class="back-section-inner">
+    <a href="/column/" class="back-link">← コラム一覧に戻る</a>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-logo">
+    <div class="footer-logo-mark"></div>
+    <span class="footer-logo-text"><span>A</span>idealize株式会社</span>
+  </div>
+  <span class="footer-copy">© 2020–2026 AIdealize Inc. All rights reserved.</span>
+</footer>
+
+<script>
+(function(){
+  const btn=document.getElementById('navHamburger');
+  const drawer=document.getElementById('navDrawer');
+  const nav=document.getElementById('mainNav');
+  btn.addEventListener('click',function(){btn.classList.toggle('open');drawer.classList.toggle('open');});
+  drawer.querySelectorAll('.drawer-link').forEach(function(l){l.addEventListener('click',function(){btn.classList.remove('open');drawer.classList.remove('open');});});
+  window.addEventListener('scroll',function(){nav.classList.toggle('scrolled',window.scrollY>10);});
+})();
+const obs=new IntersectionObserver(function(e){e.forEach(function(x){if(x.isIntersecting)x.target.classList.add('visible');});},{threshold:0.08,rootMargin:'0px 0px -30px 0px'});
+document.querySelectorAll('.reveal').forEach(function(el){obs.observe(el);});
+</script>
+<script src="/js/lead-capture.js"></script>
+<script>
+(function(){var R=7.85e-6,$=function(i){return document.getElementById(i)};
+function go(){var w=+$("w").value,h=+$("h").value,t=+$("t").value,c=+$("c").value,d=+$("d").value,r=d/2;
+["w","h","t","c","d"].forEach(function(k){$("v"+k).textContent=$(k).value});
+var o=c?[[c,0],[w-c,0],[w,c],[w,h],[0,h],[0,c]]:[[0,0],[w,0],[w,h],[0,h]];
+var ar=function(p){return Math.abs(p.reduce(function(s,a,i){var b=p[(i+1)%p.length];return s+a[0]*b[1]-b[0]*a[1]},0))/2};
+var pm=function(p){return p.reduce(function(s,a,i){var b=p[(i+1)%p.length];return s+Math.hypot(a[0]-b[0],a[1]-b[1])},0)};
+var net=ar(o)-2*Math.PI*r*r,edge=(pm(o)+2*2*Math.PI*r)*t,paint=(2*net+edge)/1e6;
+$("cv").innerHTML='<svg viewBox="-30 -30 '+(w+60)+' '+(h+60)+'" style="width:100%;max-height:300px"><path d="M'+o.map(function(q){return q[0]+","+(h-q[1])}).join(" L")+'Z" fill="#e8eef5" stroke="#1d3557" stroke-width="4"/>'+(d?'<circle cx="'+w*0.19+'" cy="'+h/2+'" r="'+r+'" fill="#fff" stroke="#1d3557" stroke-width="4"/><circle cx="'+w*0.81+'" cy="'+h/2+'" r="'+r+'" fill="#fff" stroke="#1d3557" stroke-width="4"/>':"")+'</svg>';
+$("res").innerHTML="グロス重量 "+(w*h*t*R).toFixed(2)+" kg<br>ネット重量 <b>"+(net*t*R).toFixed(2)+" kg</b><br>塗装面積 "+paint.toFixed(3)+" ㎡"}
+document.querySelectorAll(".zd-calc input").forEach(function(e){e.oninput=go});go()})();
+</script>
+</body>
+</html>
