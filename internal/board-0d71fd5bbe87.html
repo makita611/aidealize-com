@@ -12,10 +12,28 @@ a.b small{display:block;color:#888;font-size:12px}
 </style></head><body><main>
 <h1>集客ボード 全社</h1>
 <div class="sub" id="gen"></div>
+<div id="sum"></div>
 <div id="list"></div>
 </main>
+<style>
+main{max-width:760px}
+table.s{width:100%;border-collapse:collapse;font-size:13px;margin:6px 0 4px}
+table.s th{background:#f4f4f4;text-align:right;padding:6px 8px;font-weight:600;border-bottom:1px solid #ddd}
+table.s th:first-child,table.s td:first-child{text-align:left}
+table.s td{text-align:right;padding:7px 8px;border-bottom:1px solid #eee}
+.up{color:#0a7d32}.dn{color:#c0392b}.fl{color:#888}.note{color:#888;font-size:12px;margin:2px 0 14px}
+@media print{a.b{display:none}}
+</style>
 <script>
-const D={"generated": "2026-11-16 01:50", "nav": [{"label": "全社", "href": "board-0d71fd5bbe87.html", "cur": true}, {"label": "aidealize", "href": "board-ac6e604b90a1.html", "cur": false}, {"label": "komi 集客", "href": "https://artmake-komi.com/internal/board-o7onmndtuog.html", "cur": false}, {"label": "komi GA4", "href": "board-a8709da8ebf0.html", "cur": false}, {"label": "内枦保住建", "href": "board-072f103d4083.html", "cur": false}, {"label": "K&T", "href": "board-e59cf5a6a551.html", "cur": false}, {"label": "いぶきハーブ・ガーデン", "href": "board-322d59c5260b.html", "cur": false}, {"label": "看護介護の現場", "href": "board-cfb230b96fe0.html", "cur": false}, {"label": "goldexperience.jp", "href": "board-12365fdc21a0.html", "cur": false}]};
+const D={"generated": "2026-11-21 15:58", "nav": [{"label": "全社", "href": "board-0d71fd5bbe87.html", "cur": true}, {"label": "aidealize", "href": "board-ac6e604b90a1.html", "cur": false}, {"label": "komi 集客", "href": "https://artmake-komi.com/internal/board-o7onmndtuog.html", "cur": false}, {"label": "komi GA4", "href": "board-a8709da8ebf0.html", "cur": false}, {"label": "内枦保住建", "href": "board-072f103d4083.html", "cur": false}, {"label": "K&T", "href": "board-e59cf5a6a551.html", "cur": false}, {"label": "いぶきハーブ・ガーデン", "href": "board-322d59c5260b.html", "cur": false}, {"label": "看護介護の現場", "href": "board-cfb230b96fe0.html", "cur": false}, {"label": "goldexperience.jp", "href": "board-12365fdc21a0.html", "cur": false}], "sums": [{"key": "aidealize", "name": "aidealize(自社)", "week": "11/9", "sess": [333, 351], "cv": [2, 1], "ai": [0, 0], "gsc": {"clicks": [437, 258], "imp": [10588, 8193], "pos": [12.5, 10.9]}, "launch": null}, {"key": "goldexperience", "name": "goldexperience.jp", "week": "11/9", "sess": [59, 74], "cv": [0, 0], "ai": [0, 0], "gsc": {"clicks": [0, 0], "imp": [3, 0], "pos": [3, 0]}, "launch": null}, {"key": "ibuki", "name": "いぶきハーブ・ガーデン", "week": "11/9", "sess": [230, 0], "cv": [0, 0], "ai": [0, 0], "gsc": {"clicks": [85, 0], "imp": [953, 0], "pos": [3.4, 0]}, "launch": "11/11"}, {"key": "kangokaigo", "name": "看護介護の現場", "week": "11/9", "sess": [10, 8], "cv": [0, 0], "ai": [0, 0], "gsc": {"clicks": [4, 2], "imp": [179, 65], "pos": [12.8, 25.2]}, "launch": null}, {"key": "komi", "name": "komi(artmake-komi)", "week": "11/9", "sess": [96, 122], "cv": [0, 0], "ai": [11, 14], "gsc": {"clicks": [202, 173], "imp": [3700, 2824], "pos": [16.3, 16.8]}, "launch": null}, {"key": "kt99", "name": "K&T(kt99.jp)", "week": "11/9", "sess": [167, 18], "cv": [1, 1], "ai": [0, 0], "gsc": {"clicks": [159, 0], "imp": [5863, 0], "pos": [9.6, 0]}, "launch": null}, {"key": "uchihebo", "name": "内枦保住建", "week": "11/9", "sess": [68, 74], "cv": [0, 0], "ai": [0, 0], "gsc": {"clicks": [66, 60], "imp": [590, 1926], "pos": [5.4, 8.6]}, "launch": null}]};
+function d(a){const[n,p]=a;if(!p)return n?`${n} <span class="fl">(新規)</span>`:'-';const r=(n-p)/p*100;
+ const c=r>=5?'up':r<=-5?'dn':'fl';return `${n.toLocaleString()} <span class="${c}">${r>=0?'+':''}${r.toFixed(0)}%</span>`}
+function pos(a){const[n,p]=a;if(!n)return '-';const df=p?p-n:0;const c=df>=0.5?'up':df<=-0.5?'dn':'fl';return `${n} <span class="${c}">${p?(df>=0?'▲':'▼')+Math.abs(df).toFixed(1):''}</span>`}
+if(D.sums&&D.sums.length){const wk=D.sums[0].week;
+ document.getElementById('sum').innerHTML=`<table class="s"><tr><th>サイト</th><th>訪問(先週)</th><th>成果</th><th>AI経由</th><th>検索クリック(28日)</th><th>表示(28日)</th><th>平均順位</th></tr>`+
+ D.sums.map(s=>`<tr><td>${s.name.split('(')[0]}</td><td>${d(s.sess)}</td><td>${d(s.cv)}</td><td>${d(s.ai)}</td><td>${s.gsc?d(s.gsc.clicks):'-'}</td><td>${s.gsc?d(s.gsc.imp):'-'}</td><td>${s.gsc?pos(s.gsc.pos):'-'}</td></tr>`).join('')+`</table>
+ <div class="note">訪問・成果・AI経由は「${wk}〜の週」と前の週の比較。検索は直近28日と前28日の比較。成果=問い合わせ・LINE・電話・メールなど。緑=増・赤=減（±5%未満は灰）。順位は▲が改善。</div>`}
+if(location.hash==='#export'){document.getElementById('list').style.display='none'}
 document.getElementById('gen').textContent='会社を選ぶとその会社の数字が見られるよ(更新 '+D.generated+')';
 document.getElementById('list').innerHTML=D.nav.filter(n=>n.label!=='全社').map(n=>`<a class="b" href="${n.href}">${n.label}<small>先週の数字・流入元・成果の動き</small></a>`).join('');
 </script></body></html>
