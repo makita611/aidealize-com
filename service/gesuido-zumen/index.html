@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>上下水道の図面・数量拾いの自動化｜CADデータから数量計算書まで｜AIdealize</title>
+<meta name="description" content="上下水道の図面（平面図・縦断図）から、人孔・延長・土工などの数量を拾い、数量計算書・取込用CSVにまとめる仕組みを、確認を残す前提で小さく試作します。">
+<link rel="canonical" href="https://aidealize.com/service/gesuido-zumen/">
+<meta property="og:title" content="上下水道の図面・数量拾いの自動化｜CADデータから数量計算書まで">
+<meta property="og:description" content="上下水道の図面（平面図・縦断図）から、人孔・延長・土工などの数量を拾い、数量計算書・取込用CSVにまとめる仕組みを、確認を残す前提で小さく試作します。">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://aidealize.com/service/gesuido-zumen/">
+<meta property="og:site_name" content="AIdealize株式会社">
+<meta property="og:image" content="https://aidealize.com/images/jinzaitop1.jpg">
+<meta name="twitter:image" content="https://aidealize.com/images/jinzaitop1.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700;900&family=Shippori+Mincho:wght@400;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-P6VNBWH3');</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "上下水道の図面・数量拾いの自動化｜CADデータから数量計算書まで", "description": "上下水道の図面（平面図・縦断図）から、人孔・延長・土工などの数量を拾い、数量計算書・取込用CSVにまとめる仕組みを、確認を残す前提で小さく試作します。", "datePublished": "2026-11-19", "dateModified": "2026-11-19", "image": "https://aidealize.com/images/jinzaitop1.jpg", "mainEntityOfPage": "https://aidealize.com/service/gesuido-zumen/", "author": {"@type": "Organization", "name": "AIdealize株式会社"}, "publisher": {"@type": "Organization", "name": "AIdealize株式会社", "url": "https://aidealize.com"}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "下水道の実図面で精度は確認できていますか？", "acceptedAnswer": {"@type": "Answer", "text": "建築図面の個数・面積の拾いで方式を確かめた段階で、下水道の実図面での精度はこれから検証します。公開されているサンプル図面や、お預かりする過去案件の図面で、できる範囲と誤差を測ってからお伝えします。"}}, {"@type": "Question", "name": "CADデータがない場合は対応できますか？", "acceptedAnswer": {"@type": "Answer", "text": "ベクターPDFなら文字や線を取り出せる場合があります。画像だけのスキャン図面は、読み取りと人の確認の工程が増えます。まず手元の図面の形式を確認します。"}}, {"@type": "Question", "name": "図面を外部のAIサービスに送りますか？", "acceptedAnswer": {"@type": "Answer", "text": "原則として、図面は外部のAIサービスに送らず、お客様の環境または手元の環境で処理する設計を前提にご相談します。外部サービスを使う場合は、事前にご相談し、同意をいただきます。"}}, {"@type": "Question", "name": "費用はどのくらいですか？", "acceptedAnswer": {"@type": "Answer", "text": "対象の図面・工種・納品形態（引き渡しか利用料型か）で変わります。まず、過去案件1〜2件での小さな検証の範囲と費用の上限をご提示します。"}}]}</script>
+<style>.zd-t{border-collapse:collapse;width:100%;margin:16px 0;font-size:14px}.zd-t th,.zd-t td{border:1px solid #d5dde6;padding:6px 8px;text-align:right}.zd-t th{background:#f1f5f9}.zd-t td:first-child{text-align:left}.zd-fig{margin:22px 0;text-align:center}.zd-fig img{max-width:100%;height:auto;border:1px solid #e2e8f0;border-radius:8px}.zd-fig figcaption{font-size:13px;color:#64748b;margin-top:6px}.zd-free{background:#ecfeff;border:1px solid #a5d3df;border-radius:10px;padding:18px 20px;margin:24px 0}</style><style>
+:root{
+  --red:#0891b2;--red-dark:#0e7490;
+  --ink:#1e293b;--body:#4b5563;--light:#94a3b8;
+  --border:#e2e8f0;--bg:#f8fafc;--bg2:#f1f5f9;--white:#fff;
+  --tag-bg:#ecfeff;--green:#059669;--green-bg:#ecfdf5;
+  --demo-bg:#0f172a;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{font-family:'Noto Sans JP',sans-serif;background:var(--white);color:var(--ink);overflow-x:hidden;line-height:1.7;}
+
+/* NAV */
+#mainNav{position:fixed;top:0;left:0;right:0;z-index:1000;display:flex;align-items:center;justify-content:space-between;padding:0 60px;height:68px;background:rgba(255,255,255,0.97);border-bottom:1px solid var(--border);backdrop-filter:blur(12px);transition:box-shadow 0.3s;}
+#mainNav.scrolled{box-shadow:0 2px 16px rgba(0,0,0,0.06);}
+.nav-logo{display:flex;align-items:center;gap:10px;text-decoration:none;}
+.nav-logo img{height:34px;width:auto;}
+.nav-logo-text{font-family:'DM Mono',monospace;font-size:15px;font-weight:500;color:var(--ink);letter-spacing:0.02em;}
+.nav-logo-text span{color:var(--red);}
+.nav-links{display:flex;align-items:center;gap:32px;list-style:none;}
+.nav-links a{font-size:13px;font-weight:500;color:var(--body);text-decoration:none;transition:color 0.2s;}
+.nav-links a:hover{color:var(--ink);}
+.nav-cta{background:var(--red) !important;color:#fff !important;padding:9px 20px;border-radius:4px;font-size:12px !important;font-weight:700 !important;}
+.nav-cta:hover{background:var(--red-dark) !important;}
+.nav-hamburger{display:none;flex-direction:column;justify-content:center;gap:5px;width:40px;height:40px;background:none;border:none;cursor:pointer;}
+.nav-hamburger span{display:block;width:22px;height:2px;background:var(--ink);transition:all 0.3s;transform-origin:center;}
+.nav-hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg);}
+.nav-hamburger.open span:nth-child(2){opacity:0;}
+.nav-hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
+.nav-drawer{display:none;position:fixed;top:68px;left:0;right:0;background:#fff;border-bottom:2px solid var(--red);padding:20px 28px 28px;z-index:999;}
+.nav-drawer.open{display:block;}
+.nav-drawer ul{list-style:none;display:flex;flex-direction:column;}
+.nav-drawer ul li a{display:block;padding:13px 0;font-size:15px;font-weight:500;color:var(--ink);text-decoration:none;border-bottom:1px solid var(--border);}
+.nav-drawer ul li:last-child a{margin-top:16px;text-align:center;background:var(--red);color:#fff !important;padding:13px;border-radius:4px;font-weight:700 !important;border-bottom:none;}
+@media(max-width:1024px){#mainNav{padding:0 28px;}.nav-links{display:none;}.nav-hamburger{display:flex;}}
+@media(max-width:480px){#mainNav{padding:0 16px;height:60px;}.nav-drawer{top:60px;}.nav-logo-text{font-size:13px;}}
+
+/* ARTICLE HEADER */
+.article-header{padding:116px 24px 52px;background:var(--bg);border-bottom:1px solid var(--border);}
+.article-header-inner{max-width:760px;margin:0 auto;}
+.breadcrumb{display:flex;align-items:center;gap:6px;font-size:12px;color:var(--light);margin-bottom:20px;}
+.breadcrumb a{color:var(--light);text-decoration:none;}
+.breadcrumb a:hover{color:var(--red);}
+.breadcrumb span{color:var(--border);}
+.article-tag{display:inline-flex;align-items:center;background:var(--tag-bg);color:var(--red);font-size:11px;font-weight:700;letter-spacing:0.06em;padding:4px 12px;border-radius:100px;margin-bottom:18px;}
+.article-h1{font-family:'Shippori Mincho',serif;font-size:clamp(20px,3vw,34px);font-weight:700;color:var(--ink);line-height:1.65;margin-bottom:20px;}
+.article-meta{display:flex;align-items:center;gap:20px;flex-wrap:wrap;font-size:12px;color:var(--light);}
+
+/* ARTICLE BODY */
+.article-body{padding:72px 24px 100px;}
+.article-body-inner{max-width:760px;margin:0 auto;}
+
+/* SUMMARY BOX */
+.summary-box{background:var(--bg);border-left:4px solid var(--red);padding:24px 28px;border-radius:0 6px 6px 0;margin-bottom:52px;}
+.summary-box-title{font-size:11px;font-weight:700;color:var(--red);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:12px;}
+.summary-box ul{list-style:none;display:flex;flex-direction:column;gap:8px;}
+.summary-box ul li{display:flex;align-items:flex-start;gap:8px;font-size:14px;line-height:1.8;color:var(--ink);}
+.summary-box ul li::before{content:'✓';color:var(--red);font-weight:700;flex-shrink:0;margin-top:1px;}
+
+/* HEADINGS */
+.article-body-inner h2{font-family:'Shippori Mincho',serif;font-size:clamp(17px,2.2vw,24px);font-weight:700;color:var(--ink);line-height:1.65;margin:56px 0 20px;padding-bottom:10px;border-bottom:1px solid var(--border);position:relative;}
+.article-body-inner h2::after{content:'';position:absolute;bottom:-1px;left:0;width:48px;height:2px;background:var(--red);}
+.article-body-inner h3{font-family:'Shippori Mincho',serif;font-size:clamp(15px,1.8vw,19px);font-weight:700;color:var(--ink);line-height:1.7;margin:36px 0 14px;padding-left:14px;border-left:3px solid var(--red);}
+.article-body-inner p{font-size:15px;line-height:2;color:var(--body);margin-bottom:22px;}
+.article-body-inner strong{color:var(--ink);font-weight:700;}
+.article-body-inner ul,.article-body-inner ol{list-style:none;margin-bottom:22px;display:flex;flex-direction:column;gap:8px;}
+.article-body-inner ul li,.article-body-inner ol li{font-size:14px;line-height:1.9;color:var(--body);display:flex;align-items:flex-start;gap:10px;}
+.article-body-inner ul li::before{content:'─';color:var(--red);flex-shrink:0;margin-top:4px;font-size:12px;}
+.article-body-inner ol{counter-reset:ol;}
+.article-body-inner ol li{counter-increment:ol;}
+.article-body-inner ol li::before{content:counter(ol);background:var(--red);color:#fff;width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0;margin-top:2px;font-family:'DM Mono',monospace;}
+
+/* PAIN CARDS */
+.pain-cards{display:flex;flex-direction:column;gap:12px;margin:24px 0;}
+.pain-card{background:var(--bg);border-left:4px solid var(--red);border-radius:0 8px 8px 0;padding:18px 20px;display:flex;align-items:flex-start;gap:12px;}
+.pain-card-icon{font-size:22px;flex-shrink:0;margin-top:2px;}
+.pain-card-body{font-size:14px;line-height:1.85;color:var(--body);}
+.pain-card-body strong{color:var(--ink);}
+
+/* COMPARE TABLE */
+.compare-wrap{overflow-x:auto;margin:24px 0 32px;}
+.compare-table{width:100%;border-collapse:collapse;font-size:13.5px;min-width:480px;}
+.compare-table th{padding:12px 18px;text-align:center;font-size:12px;font-weight:700;letter-spacing:0.05em;background:var(--bg2);color:var(--ink);border-bottom:2px solid var(--border);}
+.compare-table th:first-child{text-align:left;}
+.compare-table th.hl{background:var(--red);color:#fff;}
+.compare-table td{padding:12px 18px;border-bottom:1px solid var(--border);vertical-align:middle;line-height:1.7;color:var(--body);text-align:center;}
+.compare-table td:first-child{text-align:left;font-weight:600;color:var(--ink);}
+.compare-table td.hl{background:var(--tag-bg);color:var(--ink);font-weight:600;}
+.check{color:var(--red);font-weight:700;}
+.cross{color:#bbb;}
+
+/* POINT BOX */
+.point-box{background:var(--bg2);border-radius:8px;padding:20px 24px;margin:20px 0;}
+.point-box-label{font-size:10px;font-family:'DM Mono',monospace;color:var(--red);letter-spacing:0.12em;text-transform:uppercase;margin-bottom:10px;}
+.point-box p{font-size:14px;line-height:1.9;color:var(--body);margin-bottom:0;}
+
+/* INLINE CTA */
+.inline-cta{background:var(--bg);border:1px solid var(--border);border-top:4px solid var(--red);border-radius:10px;padding:36px;margin:52px 0;text-align:center;}
+.inline-cta-tag{font-size:11px;color:var(--red);font-weight:700;letter-spacing:0.08em;margin-bottom:12px;}
+.inline-cta h3{font-family:'Shippori Mincho',serif;font-size:clamp(16px,2vw,22px);font-weight:700;color:var(--ink);line-height:1.65;margin-bottom:12px;}
+.inline-cta p{font-size:14px;color:var(--body);line-height:1.9;margin-bottom:22px;}
+.cta-btns-pair{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;}
+.btn-cta-red{display:inline-flex;align-items:center;gap:6px;background:var(--red);color:#fff;padding:13px 28px;border-radius:4px;font-size:14px;font-weight:700;text-decoration:none;transition:background 0.2s,transform 0.2s;}
+.btn-cta-red:hover{background:var(--red-dark);transform:translateY(-2px);}
+.btn-cta-note{display:block;margin-top:12px;font-size:11px;color:var(--light);}
+
+/* EFFECT GRID */
+.effect-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:24px 0;}
+.effect-card{background:var(--bg);border-top:3px solid var(--red);border-radius:6px;padding:20px 16px;}
+.effect-num{font-family:'DM Mono',monospace;font-size:10px;color:var(--red);letter-spacing:0.12em;margin-bottom:8px;}
+.effect-title{font-family:'Shippori Mincho',serif;font-size:15px;font-weight:700;color:var(--ink);line-height:1.6;margin-bottom:8px;}
+.effect-body{font-size:12px;line-height:1.85;color:var(--body);}
+
+/* BACK */
+.back-section{padding:28px 24px;background:var(--bg);border-top:1px solid var(--border);}
+.back-section-inner{max-width:760px;margin:0 auto;}
+.back-link{display:inline-flex;align-items:center;gap:6px;font-size:13px;color:var(--body);text-decoration:none;transition:color 0.2s;}
+.back-link:hover{color:var(--red);}
+
+/* RELATED */
+.related-section{padding:60px 24px;background:var(--white);border-top:1px solid var(--border);}
+.related-inner{max-width:760px;margin:0 auto;}
+.related-label{font-family:'DM Mono',monospace;font-size:11px;color:var(--red);letter-spacing:0.14em;text-transform:uppercase;margin-bottom:20px;}
+.related-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+.related-card{border:1px solid var(--border);border-top:3px solid var(--red);padding:20px;text-decoration:none;color:inherit;border-radius:0 0 6px 6px;transition:box-shadow 0.2s,transform 0.2s;}
+.related-card:hover{box-shadow:0 4px 16px rgba(0,0,0,0.07);transform:translateY(-2px);}
+.related-card-tag{font-size:10px;font-family:'DM Mono',monospace;color:var(--red);letter-spacing:0.1em;margin-bottom:8px;}
+.related-card-title{font-family:'Shippori Mincho',serif;font-size:14px;font-weight:700;color:var(--ink);line-height:1.6;}
+
+/* FOOTER */
+footer{background:#1f1f1f;border-top:1px solid rgba(255,255,255,0.06);padding:40px 60px;display:flex;align-items:center;justify-content:space-between;}
+.footer-logo{display:flex;align-items:center;gap:10px;}
+.footer-logo-mark{width:20px;height:20px;background:var(--red);clip-path:polygon(50% 0%,0% 100%,18% 100%,50% 38%,82% 100%,100% 100%);}
+.footer-logo-text{font-family:'DM Mono',monospace;font-size:13px;color:rgba(255,255,255,0.55);}
+.footer-logo-text span{color:var(--red);}
+.footer-copy{font-size:11px;color:rgba(255,255,255,0.25);font-family:'DM Mono',monospace;}
+
+.reveal{opacity:0;transform:translateY(18px);transition:opacity 0.55s ease,transform 0.55s ease;}
+.reveal.visible{opacity:1;transform:translateY(0);}
+
+@media(max-width:768px){
+  .article-header,.article-body,.back-section,.related-section{padding-left:16px;padding-right:16px;}
+  .article-header{padding-top:88px;}
+  .effect-grid{grid-template-columns:1fr;}
+  .related-grid{grid-template-columns:1fr;}
+  .cta-btns-pair{flex-direction:column;align-items:center;}
+  .inline-cta{padding:24px 18px;}
+  footer{flex-direction:column;gap:14px;text-align:center;padding:28px 16px;}
+}
+</style>
+</head>
+<body>
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-P6VNBWH3" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
+<!-- NAV -->
+<nav id="mainNav">
+  <a href="/" class="nav-logo">
+    <img src="/images/logo.png" alt="AIdealize">
+    <span class="nav-logo-text"><span>AI</span>dealize</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="/column/">コラム</a></li>
+    <li><a href="/service/">サービス</a></li>
+    <li><a href="https://aidealize.com/bpr/">DX事例</a></li>
+    <li><a href="/works/">実績</a></li>
+    <li><a href="/company.html">会社概要</a></li>
+    <li><a href="/lp/zumen-sekisan/" class="nav-cta">図面積算の相談</a></li>
+  </ul>
+  <button class="nav-hamburger" id="navHamburger" aria-label="メニュー">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+<div class="nav-drawer" id="navDrawer">
+  <ul>
+    <li><a href="/column/" class="drawer-link">コラム</a></li>
+    <li><a href="/service/" class="drawer-link">サービス</a></li>
+    <li><a href="https://aidealize.com/bpr/" class="drawer-link">DX事例</a></li>
+    <li><a href="/works/" class="drawer-link">実績</a></li>
+    <li><a href="/company.html" class="drawer-link">会社概要</a></li>
+    <li><a href="/lp/zumen-sekisan/">図面積算の相談</a></li>
+  </ul>
+</div>
+
+<!-- ARTICLE HEADER -->
+<header class="article-header">
+  <div class="article-header-inner">
+    <nav class="breadcrumb" aria-label="パンくず">
+      <a href="/">ホーム</a><span>/</span>
+      <a href="/service/">サービス</a><span>/</span>
+      <span>上下水道の図面・数量拾い</span>
+    </nav>
+    <div class="article-tag">サービス・上下水道</div>
+    <h1 class="article-h1">上下水道の図面から数量拾いまで。<br>確認を残しながら、手作業を減らす。</h1>
+    <div class="article-meta">
+      <div class="article-meta-item">📅 2026年11月19日</div>
+      <div class="article-meta-item">⏱ 読了約6分</div>
+      <div class="article-meta-item">✍ AIdealize編集部</div>
+    </div>
+  </div>
+</header>
+
+<article class="article-body">
+<div class="article-body-inner">
+
+  <p>平面図・縦断図から人孔の個数、管路の延長、土工などの数量を拾い、数量計算書や積算システム取込用のCSVにまとめる作業は、手間がかかり、チェックにも時間を使います。この作業を、<strong>数字の計算は決まった式で、読み取り結果は根拠つきで人が確認する</strong>形に組み替える取り組みです。</p>
+  <div class="zd-free"><strong>現在の到達点（正直に）</strong><p style="margin:6px 0 0">建築図面で、建具の個数（表と配置図の二重チェック）、床・壁の面積、図面間の食い違いの検出を確かめた方式を、上下水道の図面に応用する段階です。<strong>下水道・上水道の実図面での精度は、これから検証します。</strong>できた範囲と未確認の範囲は、分けてお伝えします。</p></div>
+  <h2>考え方：画像を「見る」のではなく、データを「読む」</h2>
+  <p>生成AIに図面の画像を見せる方式は、数字の取り違えや回転した文字の誤読が起きやすく、数量の用途には不向きです（<a href="/column/gesuido-zumen-gazo-ai-machigai/">理由はこちら</a>）。CADデータ（DXF・JWW・ベクターPDF）の文字・線・記号を座標のデータとして直接読み、個数・延長はプログラムで計算し、別の方法で検算します。</p>
+    <figure class="zd-fig"><img src="/images/zumen/flow.svg" alt="図面データから数量・見積明細までの流れの図解" width="900" height="230" loading="lazy"><figcaption>図面データから数量へ。計算は固定の式で行います</figcaption></figure>
+
+  <h2>できること・人が残ること</h2>
+  <table class="zd-t"><tr><th>工程</th><th>機械が担う</th><th>人が見る</th></tr>
+  <tr><td>図面の読み取り</td><td>人孔番号・延長・管径・深さの抽出</td><td>書式のゆれの判断</td></tr>
+  <tr><td>数量の計算</td><td>延長・個数・区間表・合計</td><td>基準書の当てはめ</td></tr>
+  <tr><td>チェック</td><td>整合（深さ・勾配・延長）の自動検算、疑い箇所の提示</td><td>疑い箇所の最終判断</td></tr>
+  <tr><td>出力</td><td>数量計算書の様式・取込用CSV</td><td>最終の数量と責任</td></tr></table>
+  <h2>進め方（小さく試す）</h2>
+  <ol>
+    <li><strong>対象を絞る</strong>：工種と図面の種類を1つに（例：開削の管路）。</li>
+    <li><strong>過去案件で再現する</strong>：人が作った数量計算書を正解として、同じ図面から再現できるかを比べる。</li>
+    <li><strong>差の原因を分ける</strong>：読み取りの誤り／基準の当てはめ／図面の食い違い。</li>
+    <li><strong>取込形式に合わせる</strong>：積算システムに入る列・コード・単位で出力する。</li>
+    <li><strong>実案件で併走する</strong>：人の作業と並行して使い、効果を測る。</li>
+  </ol>
+  <h2>無料で試せるもの</h2>
+  <ul>
+    <li><a href="/tools/gesuido-dobukari-keisan/">土被り・人孔深・勾配の計算ツール</a></li>
+    <li><a href="/tools/zumen-tenken/">無料 図面（DXF）点検ツール</a>（ファイルは送信されません）</li>
+    <li><a href="/service/zumen-sanshutsu/">図面から数量が出るデモ</a>（板・部材の例）</li>
+  </ul>
+  <h2>関連コラム</h2>
+  <ul>
+    <li><a href="/column/gesuido-zumen-suryo-guide/">上下水道の図面と数量拾いの完全ガイド｜読み方・数量計算・自動化の進め方</a></li>
+    <li><a href="/column/gesuido-suryo-keisansho-tsukurikata/">下水道工事の数量計算書の作り方｜図面から数量を集計する流れと書き方のポイント</a></li>
+    <li><a href="/column/kokyo-koji-suryo-jidoka-susumekata/">公共工事の数量拾いを自動化するときの進め方｜小さく試して、確認を残す</a></li>
+    <li><a href="/column/gesuido-zumen-cad-data-chushutsu/">CADデータから下水道図面の延長・個数を取り出す考え方｜DXF・JWWの文字と記号</a></li>
+    <li><a href="/column/zumen-ai-seido-hakari-kata/">図面から数量を出すAIの精度の測り方｜一致率だけで「できた」と言わない</a></li>
+  </ul>
+
+  <div class="inline-cta reveal"><div class="inline-cta-tag">相談する</div><h3>まず、過去案件1〜2件で<br>どこまで再現できるかを確かめませんか。</h3><p>図面の形式・件数・今の手順をお聞きしたうえで、向き不向きも含めてお伝えします。外部のAIには送らない前提でご相談できます。</p><div class="cta-btns-pair"><a href="/lp/zumen-sekisan/" class="btn-cta-red">図面積算のAI活用を相談する →</a></div><span class="btn-cta-note">オンライン対応・押し売りなし</span></div>
+<style>
+  .faq-list{margin:28px 0 8px;}
+  .faq-item{border:1px solid #d8eaee;border-radius:10px;margin-bottom:12px;overflow:hidden;background:#fff;}
+  .faq-item summary{list-style:none;cursor:pointer;padding:16px 48px 16px 18px;font-size:15px;font-weight:700;color:#0f2b33;line-height:1.6;position:relative;}
+  .faq-item summary::-webkit-details-marker{display:none;}
+  .faq-item summary::after{content:'+';position:absolute;right:18px;top:50%;transform:translateY(-50%);font-size:22px;font-weight:400;color:#0891b2;}
+  .faq-item[open] summary::after{content:'−';}
+  .faq-item .faq-a{padding:0 18px 18px;font-size:14px;color:#4b5563;line-height:1.95;}
+  .faq-item .faq-a a{color:#0891b2;}
+  </style>
+  <h2>よくある質問</h2>
+  <div class="faq-list">
+    <details class="faq-item"><summary>下水道の実図面で精度は確認できていますか？</summary><div class="faq-a">建築図面の個数・面積の拾いで方式を確かめた段階で、下水道の実図面での精度はこれから検証します。公開されているサンプル図面や、お預かりする過去案件の図面で、できる範囲と誤差を測ってからお伝えします。</div></details>
+    <details class="faq-item"><summary>CADデータがない場合は対応できますか？</summary><div class="faq-a">ベクターPDFなら文字や線を取り出せる場合があります。画像だけのスキャン図面は、読み取りと人の確認の工程が増えます。まず手元の図面の形式を確認します。</div></details>
+    <details class="faq-item"><summary>図面を外部のAIサービスに送りますか？</summary><div class="faq-a">原則として、図面は外部のAIサービスに送らず、お客様の環境または手元の環境で処理する設計を前提にご相談します。外部サービスを使う場合は、事前にご相談し、同意をいただきます。</div></details>
+    <details class="faq-item"><summary>費用はどのくらいですか？</summary><div class="faq-a">対象の図面・工種・納品形態（引き渡しか利用料型か）で変わります。まず、過去案件1〜2件での小さな検証の範囲と費用の上限をご提示します。</div></details>
+  </div>
+
+</div>
+<section class="related-section">
+  <div class="related-inner">
+    <div class="related-label">Related Articles</div>
+    <div class="related-grid">
+      <a href="/column/gesuido-zumen-suryo-guide/" class="related-card">
+        <div class="related-card-tag">上下水道・図面</div>
+        <div class="related-card-title">上下水道の図面と数量拾いの完全ガイド｜読み方・数量計算・自動化の進め方</div>
+      </a>
+      <a href="/column/gesuido-suryo-keisansho-tsukurikata/" class="related-card">
+        <div class="related-card-tag">下水道・数量計算</div>
+        <div class="related-card-title">下水道工事の数量計算書の作り方｜図面から数量を集計する流れと書き方のポイント</div>
+      </a>
+      <a href="/column/kokyo-koji-suryo-jidoka-susumekata/" class="related-card">
+        <div class="related-card-tag">自治体・進め方</div>
+        <div class="related-card-title">公共工事の数量拾いを自動化するときの進め方｜小さく試して、確認を残す</div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<div class="back-section">
+  <div class="back-section-inner">
+    <a href="/column/" class="back-link">← コラム一覧に戻る</a>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-logo">
+    <div class="footer-logo-mark"></div>
+    <span class="footer-logo-text"><span>A</span>idealize株式会社</span>
+  </div>
+  <span class="footer-copy">© 2020–2026 AIdealize Inc. All rights reserved.</span>
+</footer>
+
+<script>
+(function(){
+  const btn=document.getElementById('navHamburger');
+  const drawer=document.getElementById('navDrawer');
+  const nav=document.getElementById('mainNav');
+  btn.addEventListener('click',function(){btn.classList.toggle('open');drawer.classList.toggle('open');});
+  drawer.querySelectorAll('.drawer-link').forEach(function(l){l.addEventListener('click',function(){btn.classList.remove('open');drawer.classList.remove('open');});});
+  window.addEventListener('scroll',function(){nav.classList.toggle('scrolled',window.scrollY>10);});
+})();
+const obs=new IntersectionObserver(function(e){e.forEach(function(x){if(x.isIntersecting)x.target.classList.add('visible');});},{threshold:0.08,rootMargin:'0px 0px -30px 0px'});
+document.querySelectorAll('.reveal').forEach(function(el){obs.observe(el);});
+</script>
+<script src="/js/lead-capture.js"></script>
+</body>
+</html>

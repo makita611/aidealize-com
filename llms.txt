@@ -61,3 +61,12 @@
 - [会社概要](https://aidealize.com/company.html)
 - [コラム一覧](https://aidealize.com/column/)
 - [営業日カレンダー作成ツール（無料）](https://aidealize.com/tools/eigyobi-calendar/): 定休日・祝日を反映し、日付を押すだけでInstagram用の営業日カレンダー画像(PNG)を作る無料ツール。背景に好きな写真を使える。登録不要
+
+## 図面・上下水道の数量拾い
+- 上下水道の図面と数量拾いの完全ガイド: https://aidealize.com/column/gesuido-zumen-suryo-guide/
+- 上下水道の図面・数量拾いの自動化（サービス）: https://aidealize.com/service/gesuido-zumen/
+- 図面から数量が出るデモ: https://aidealize.com/service/zumen-sanshutsu/
+- 無料 図面（DXF）点検ツール: https://aidealize.com/tools/zumen-tenken/
+- 土被り・人孔深・勾配の計算ツール: https://aidealize.com/tools/gesuido-dobukari-keisan/
+- 鋼材重量計算ツール: https://aidealize.com/tools/koubutsu-juryo-keisan/
+- 図面積算・数量拾いの用語集: https://aidealize.com/column/zumen-sekisan-yougoshu/

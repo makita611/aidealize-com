@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>土被り・人孔深・勾配の計算ツール（無料）｜下水道の縦断図の数値から計算｜AIdealize</title>
+<meta name="description" content="下水道の縦断図の地盤高・管底高・管径・延長から、人孔深・土被り・勾配（‰）を計算する無料ツール。登録不要で、入力値は送信されません。">
+<link rel="canonical" href="https://aidealize.com/tools/gesuido-dobukari-keisan/">
+<meta property="og:title" content="土被り・人孔深・勾配の計算ツール（無料）｜下水道の縦断図の数値から計算">
+<meta property="og:description" content="下水道の縦断図の地盤高・管底高・管径・延長から、人孔深・土被り・勾配（‰）を計算する無料ツール。登録不要で、入力値は送信されません。">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://aidealize.com/tools/gesuido-dobukari-keisan/">
+<meta property="og:site_name" content="AIdealize株式会社">
+<meta property="og:image" content="https://aidealize.com/images/jinzaitop1.jpg">
+<meta name="twitter:image" content="https://aidealize.com/images/jinzaitop1.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700;900&family=Shippori+Mincho:wght@400;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-P6VNBWH3');</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "土被り・人孔深・勾配の計算ツール（無料）｜下水道の縦断図の数値から計算", "description": "下水道の縦断図の地盤高・管底高・管径・延長から、人孔深・土被り・勾配（‰）を計算する無料ツール。登録不要で、入力値は送信されません。", "datePublished": "2026-11-19", "dateModified": "2026-11-19", "image": "https://aidealize.com/images/jinzaitop1.jpg", "mainEntityOfPage": "https://aidealize.com/tools/gesuido-dobukari-keisan/", "author": {"@type": "Organization", "name": "AIdealize株式会社"}, "publisher": {"@type": "Organization", "name": "AIdealize株式会社", "url": "https://aidealize.com"}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "管厚は土被りに含まれますか？", "acceptedAnswer": {"@type": "Answer", "text": "このツールは管厚を含めず、管の内径で計算します。基準によっては外径（管厚を含む）で計算するため、発注者の基準で確認してください。"}}, {"@type": "Question", "name": "計算結果はそのまま設計に使えますか？", "acceptedAnswer": {"@type": "Answer", "text": "確認用の目安です。実務では、発注者の設計指針と図面の凡例に従って確認してください。"}}]}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebApplication", "name": "土被り・人孔深・勾配の計算ツール", "url": "https://aidealize.com/tools/gesuido-dobukari-keisan/", "applicationCategory": "BusinessApplication", "operatingSystem": "Web", "offers": {"@type": "Offer", "price": "0", "priceCurrency": "JPY"}, "publisher": {"@type": "Organization", "name": "AIdealize株式会社"}}</script>
+<style>.zd-t{border-collapse:collapse;width:100%;margin:16px 0;font-size:14px}.zd-t th,.zd-t td{border:1px solid #d5dde6;padding:6px 8px;text-align:right}.zd-t th{background:#f1f5f9}.zd-t td:first-child{text-align:left}.zd-fig{margin:22px 0;text-align:center}.zd-fig img{max-width:100%;height:auto;border:1px solid #e2e8f0;border-radius:8px}.zd-fig figcaption{font-size:13px;color:#64748b;margin-top:6px}.zd-free{background:#ecfeff;border:1px solid #a5d3df;border-radius:10px;padding:18px 20px;margin:24px 0}</style><style>
+:root{
+  --red:#0891b2;--red-dark:#0e7490;
+  --ink:#1e293b;--body:#4b5563;--light:#94a3b8;
+  --border:#e2e8f0;--bg:#f8fafc;--bg2:#f1f5f9;--white:#fff;
+  --tag-bg:#ecfeff;--green:#059669;--green-bg:#ecfdf5;
+  --demo-bg:#0f172a;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{font-family:'Noto Sans JP',sans-serif;background:var(--white);color:var(--ink);overflow-x:hidden;line-height:1.7;}
+
+/* NAV */
+#mainNav{position:fixed;top:0;left:0;right:0;z-index:1000;display:flex;align-items:center;justify-content:space-between;padding:0 60px;height:68px;background:rgba(255,255,255,0.97);border-bottom:1px solid var(--border);backdrop-filter:blur(12px);transition:box-shadow 0.3s;}
+#mainNav.scrolled{box-shadow:0 2px 16px rgba(0,0,0,0.06);}
+.nav-logo{display:flex;align-items:center;gap:10px;text-decoration:none;}
+.nav-logo img{height:34px;width:auto;}
+.nav-logo-text{font-family:'DM Mono',monospace;font-size:15px;font-weight:500;color:var(--ink);letter-spacing:0.02em;}
+.nav-logo-text span{color:var(--red);}
+.nav-links{display:flex;align-items:center;gap:32px;list-style:none;}
+.nav-links a{font-size:13px;font-weight:500;color:var(--body);text-decoration:none;transition:color 0.2s;}
+.nav-links a:hover{color:var(--ink);}
+.nav-cta{background:var(--red) !important;color:#fff !important;padding:9px 20px;border-radius:4px;font-size:12px !important;font-weight:700 !important;}
+.nav-cta:hover{background:var(--red-dark) !important;}
+.nav-hamburger{display:none;flex-direction:column;justify-content:center;gap:5px;width:40px;height:40px;background:none;border:none;cursor:pointer;}
+.nav-hamburger span{display:block;width:22px;height:2px;background:var(--ink);transition:all 0.3s;transform-origin:center;}
+.nav-hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg);}
+.nav-hamburger.open span:nth-child(2){opacity:0;}
+.nav-hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
+.nav-drawer{display:none;position:fixed;top:68px;left:0;right:0;background:#fff;border-bottom:2px solid var(--red);padding:20px 28px 28px;z-index:999;}
+.nav-drawer.open{display:block;}
+.nav-drawer ul{list-style:none;display:flex;flex-direction:column;}
+.nav-drawer ul li a{display:block;padding:13px 0;font-size:15px;font-weight:500;color:var(--ink);text-decoration:none;border-bottom:1px solid var(--border);}
+.nav-drawer ul li:last-child a{margin-top:16px;text-align:center;background:var(--red);color:#fff !important;padding:13px;border-radius:4px;font-weight:700 !important;border-bottom:none;}
+@media(max-width:1024px){#mainNav{padding:0 28px;}.nav-links{display:none;}.nav-hamburger{display:flex;}}
+@media(max-width:480px){#mainNav{padding:0 16px;height:60px;}.nav-drawer{top:60px;}.nav-logo-text{font-size:13px;}}
+
+/* ARTICLE HEADER */
+.article-header{padding:116px 24px 52px;background:var(--bg);border-bottom:1px solid var(--border);}
+.article-header-inner{max-width:760px;margin:0 auto;}
+.breadcrumb{display:flex;align-items:center;gap:6px;font-size:12px;color:var(--light);margin-bottom:20px;}
+.breadcrumb a{color:var(--light);text-decoration:none;}
+.breadcrumb a:hover{color:var(--red);}
+.breadcrumb span{color:var(--border);}
+.article-tag{display:inline-flex;align-items:center;background:var(--tag-bg);color:var(--red);font-size:11px;font-weight:700;letter-spacing:0.06em;padding:4px 12px;border-radius:100px;margin-bottom:18px;}
+.article-h1{font-family:'Shippori Mincho',serif;font-size:clamp(20px,3vw,34px);font-weight:700;color:var(--ink);line-height:1.65;margin-bottom:20px;}
+.article-meta{display:flex;align-items:center;gap:20px;flex-wrap:wrap;font-size:12px;color:var(--light);}
+
+/* ARTICLE BODY */
+.article-body{padding:72px 24px 100px;}
+.article-body-inner{max-width:760px;margin:0 auto;}
+
+/* SUMMARY BOX */
+.summary-box{background:var(--bg);border-left:4px solid var(--red);padding:24px 28px;border-radius:0 6px 6px 0;margin-bottom:52px;}
+.summary-box-title{font-size:11px;font-weight:700;color:var(--red);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:12px;}
+.summary-box ul{list-style:none;display:flex;flex-direction:column;gap:8px;}
+.summary-box ul li{display:flex;align-items:flex-start;gap:8px;font-size:14px;line-height:1.8;color:var(--ink);}
+.summary-box ul li::before{content:'✓';color:var(--red);font-weight:700;flex-shrink:0;margin-top:1px;}
+
+/* HEADINGS */
+.article-body-inner h2{font-family:'Shippori Mincho',serif;font-size:clamp(17px,2.2vw,24px);font-weight:700;color:var(--ink);line-height:1.65;margin:56px 0 20px;padding-bottom:10px;border-bottom:1px solid var(--border);position:relative;}
+.article-body-inner h2::after{content:'';position:absolute;bottom:-1px;left:0;width:48px;height:2px;background:var(--red);}
+.article-body-inner h3{font-family:'Shippori Mincho',serif;font-size:clamp(15px,1.8vw,19px);font-weight:700;color:var(--ink);line-height:1.7;margin:36px 0 14px;padding-left:14px;border-left:3px solid var(--red);}
+.article-body-inner p{font-size:15px;line-height:2;color:var(--body);margin-bottom:22px;}
+.article-body-inner strong{color:var(--ink);font-weight:700;}
+.article-body-inner ul,.article-body-inner ol{list-style:none;margin-bottom:22px;display:flex;flex-direction:column;gap:8px;}
+.article-body-inner ul li,.article-body-inner ol li{font-size:14px;line-height:1.9;color:var(--body);display:flex;align-items:flex-start;gap:10px;}
+.article-body-inner ul li::before{content:'─';color:var(--red);flex-shrink:0;margin-top:4px;font-size:12px;}
+.article-body-inner ol{counter-reset:ol;}
+.article-body-inner ol li{counter-increment:ol;}
+.article-body-inner ol li::before{content:counter(ol);background:var(--red);color:#fff;width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0;margin-top:2px;font-family:'DM Mono',monospace;}
+
+/* PAIN CARDS */
+.pain-cards{display:flex;flex-direction:column;gap:12px;margin:24px 0;}
+.pain-card{background:var(--bg);border-left:4px solid var(--red);border-radius:0 8px 8px 0;padding:18px 20px;display:flex;align-items:flex-start;gap:12px;}
+.pain-card-icon{font-size:22px;flex-shrink:0;margin-top:2px;}
+.pain-card-body{font-size:14px;line-height:1.85;color:var(--body);}
+.pain-card-body strong{color:var(--ink);}
+
+/* COMPARE TABLE */
+.compare-wrap{overflow-x:auto;margin:24px 0 32px;}
+.compare-table{width:100%;border-collapse:collapse;font-size:13.5px;min-width:480px;}
+.compare-table th{padding:12px 18px;text-align:center;font-size:12px;font-weight:700;letter-spacing:0.05em;background:var(--bg2);color:var(--ink);border-bottom:2px solid var(--border);}
+.compare-table th:first-child{text-align:left;}
+.compare-table th.hl{background:var(--red);color:#fff;}
+.compare-table td{padding:12px 18px;border-bottom:1px solid var(--border);vertical-align:middle;line-height:1.7;color:var(--body);text-align:center;}
+.compare-table td:first-child{text-align:left;font-weight:600;color:var(--ink);}
+.compare-table td.hl{background:var(--tag-bg);color:var(--ink);font-weight:600;}
+.check{color:var(--red);font-weight:700;}
+.cross{color:#bbb;}
+
+/* POINT BOX */
+.point-box{background:var(--bg2);border-radius:8px;padding:20px 24px;margin:20px 0;}
+.point-box-label{font-size:10px;font-family:'DM Mono',monospace;color:var(--red);letter-spacing:0.12em;text-transform:uppercase;margin-bottom:10px;}
+.point-box p{font-size:14px;line-height:1.9;color:var(--body);margin-bottom:0;}
+
+/* INLINE CTA */
+.inline-cta{background:var(--bg);border:1px solid var(--border);border-top:4px solid var(--red);border-radius:10px;padding:36px;margin:52px 0;text-align:center;}
+.inline-cta-tag{font-size:11px;color:var(--red);font-weight:700;letter-spacing:0.08em;margin-bottom:12px;}
+.inline-cta h3{font-family:'Shippori Mincho',serif;font-size:clamp(16px,2vw,22px);font-weight:700;color:var(--ink);line-height:1.65;margin-bottom:12px;}
+.inline-cta p{font-size:14px;color:var(--body);line-height:1.9;margin-bottom:22px;}
+.cta-btns-pair{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;}
+.btn-cta-red{display:inline-flex;align-items:center;gap:6px;background:var(--red);color:#fff;padding:13px 28px;border-radius:4px;font-size:14px;font-weight:700;text-decoration:none;transition:background 0.2s,transform 0.2s;}
+.btn-cta-red:hover{background:var(--red-dark);transform:translateY(-2px);}
+.btn-cta-note{display:block;margin-top:12px;font-size:11px;color:var(--light);}
+
+/* EFFECT GRID */
+.effect-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:24px 0;}
+.effect-card{background:var(--bg);border-top:3px solid var(--red);border-radius:6px;padding:20px 16px;}
+.effect-num{font-family:'DM Mono',monospace;font-size:10px;color:var(--red);letter-spacing:0.12em;margin-bottom:8px;}
+.effect-title{font-family:'Shippori Mincho',serif;font-size:15px;font-weight:700;color:var(--ink);line-height:1.6;margin-bottom:8px;}
+.effect-body{font-size:12px;line-height:1.85;color:var(--body);}
+
+/* BACK */
+.back-section{padding:28px 24px;background:var(--bg);border-top:1px solid var(--border);}
+.back-section-inner{max-width:760px;margin:0 auto;}
+.back-link{display:inline-flex;align-items:center;gap:6px;font-size:13px;color:var(--body);text-decoration:none;transition:color 0.2s;}
+.back-link:hover{color:var(--red);}
+
+/* RELATED */
+.related-section{padding:60px 24px;background:var(--white);border-top:1px solid var(--border);}
+.related-inner{max-width:760px;margin:0 auto;}
+.related-label{font-family:'DM Mono',monospace;font-size:11px;color:var(--red);letter-spacing:0.14em;text-transform:uppercase;margin-bottom:20px;}
+.related-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+.related-card{border:1px solid var(--border);border-top:3px solid var(--red);padding:20px;text-decoration:none;color:inherit;border-radius:0 0 6px 6px;transition:box-shadow 0.2s,transform 0.2s;}
+.related-card:hover{box-shadow:0 4px 16px rgba(0,0,0,0.07);transform:translateY(-2px);}
+.related-card-tag{font-size:10px;font-family:'DM Mono',monospace;color:var(--red);letter-spacing:0.1em;margin-bottom:8px;}
+.related-card-title{font-family:'Shippori Mincho',serif;font-size:14px;font-weight:700;color:var(--ink);line-height:1.6;}
+
+/* FOOTER */
+footer{background:#1f1f1f;border-top:1px solid rgba(255,255,255,0.06);padding:40px 60px;display:flex;align-items:center;justify-content:space-between;}
+.footer-logo{display:flex;align-items:center;gap:10px;}
+.footer-logo-mark{width:20px;height:20px;background:var(--red);clip-path:polygon(50% 0%,0% 100%,18% 100%,50% 38%,82% 100%,100% 100%);}
+.footer-logo-text{font-family:'DM Mono',monospace;font-size:13px;color:rgba(255,255,255,0.55);}
+.footer-logo-text span{color:var(--red);}
+.footer-copy{font-size:11px;color:rgba(255,255,255,0.25);font-family:'DM Mono',monospace;}
+
+.reveal{opacity:0;transform:translateY(18px);transition:opacity 0.55s ease,transform 0.55s ease;}
+.reveal.visible{opacity:1;transform:translateY(0);}
+
+@media(max-width:768px){
+  .article-header,.article-body,.back-section,.related-section{padding-left:16px;padding-right:16px;}
+  .article-header{padding-top:88px;}
+  .effect-grid{grid-template-columns:1fr;}
+  .related-grid{grid-template-columns:1fr;}
+  .cta-btns-pair{flex-direction:column;align-items:center;}
+  .inline-cta{padding:24px 18px;}
+  footer{flex-direction:column;gap:14px;text-align:center;padding:28px 16px;}
+}
+</style>
+<style>
+.tk-box{border:2px dashed #7dc3d3;border-radius:12px;padding:24px;text-align:center;background:#f8fdff;margin:18px 0}
+.tk-row{display:flex;flex-wrap:wrap;gap:14px;align-items:center;justify-content:center;margin:12px 0}
+.tk-row input[type=number]{width:90px;padding:6px;border:1px solid #cbd5e1;border-radius:6px;font-size:15px}
+.tk-btn{display:inline-block;background:#0891b2;color:#fff;border:0;border-radius:8px;padding:10px 20px;font-size:15px;font-weight:700;cursor:pointer}
+.tk-sub{background:#fff;color:#0e7490;border:1px solid #0891b2}
+.tk-res{margin-top:22px}.tk-f{list-style:none;padding:0}.tk-f li:before{content:none!important}.tk-f li{padding:8px 12px;margin:6px 0;border-radius:6px;font-size:14.5px}
+.tk-f .ok{background:#ecfdf5;color:#065f46}.tk-f .warn{background:#fef3c7;color:#92400e}.tk-f .ng{background:#fef2f2;color:#991b1b}
+.tk-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;align-items:start}@media(max-width:700px){.tk-grid{grid-template-columns:1fr}}
+.tk-note{font-size:13px;color:#64748b}
+</style><style>.tk-in{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px;margin:14px 0}.tk-in label{font-size:14px;display:block}.tk-in input,.tk-in select{width:100%;padding:7px;border:1px solid #cbd5e1;border-radius:6px;font-size:15px;box-sizing:border-box;margin-top:3px}.tk-out{background:#f1f5f9;border-radius:8px;padding:14px;margin-top:14px}.tk-out b{font-size:17px}</style></head>
+<body>
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-P6VNBWH3" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
+<!-- NAV -->
+<nav id="mainNav">
+  <a href="/" class="nav-logo">
+    <img src="/images/logo.png" alt="AIdealize">
+    <span class="nav-logo-text"><span>AI</span>dealize</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="/column/">コラム</a></li>
+    <li><a href="/service/">サービス</a></li>
+    <li><a href="https://aidealize.com/bpr/">DX事例</a></li>
+    <li><a href="/works/">実績</a></li>
+    <li><a href="/company.html">会社概要</a></li>
+    <li><a href="/lp/zumen-sekisan/" class="nav-cta">図面積算の相談</a></li>
+  </ul>
+  <button class="nav-hamburger" id="navHamburger" aria-label="メニュー">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+<div class="nav-drawer" id="navDrawer">
+  <ul>
+    <li><a href="/column/" class="drawer-link">コラム</a></li>
+    <li><a href="/service/" class="drawer-link">サービス</a></li>
+    <li><a href="https://aidealize.com/bpr/" class="drawer-link">DX事例</a></li>
+    <li><a href="/works/" class="drawer-link">実績</a></li>
+    <li><a href="/company.html" class="drawer-link">会社概要</a></li>
+    <li><a href="/lp/zumen-sekisan/">図面積算の相談</a></li>
+  </ul>
+</div>
+
+<!-- ARTICLE HEADER -->
+<header class="article-header">
+  <div class="article-header-inner">
+    <nav class="breadcrumb" aria-label="パンくず">
+      <a href="/">ホーム</a><span>/</span>
+      <a href="/column/gesuido-zumen-suryo-guide/">上下水道の図面と数量拾い</a><span>/</span>
+      <span>土被り・人孔深の計算</span>
+    </nav>
+    <div class="article-tag">無料ツール</div>
+    <h1 class="article-h1">土被り・人孔深・勾配の計算ツール。<br>縦断図の数値を入れるだけ。</h1>
+    <div class="article-meta"><div class="article-meta-item">無料・登録不要</div><div class="article-meta-item">入力値は送信されません</div></div>
+  </div>
+</header>
+
+<article class="article-body">
+<div class="article-body-inner">
+  <p>人孔の地盤高と管底高、管径、区間の延長を入れると、<strong>人孔深・土被り・勾配（‰）</strong>を計算します。入力した値はブラウザの中だけで使われ、送信されません。</p>
+  <div class="tk-box" style="text-align:left">
+    <div class="tk-in">
+      <label>上流 地盤高（m）<input id="gUp" type="number" step="0.001" value="10.500"></label>
+      <label>上流 管底高（m）<input id="invUp" type="number" step="0.001" value="8.900"></label>
+      <label>下流 地盤高（m）<input id="gDown" type="number" step="0.001" value="10.300"></label>
+      <label>下流 管底高（m）<input id="invDown" type="number" step="0.001" value="8.800"></label>
+      <label>管径（mm）<input id="pipe" type="number" step="1" value="250"></label>
+      <label>区間延長（m）<input id="len" type="number" step="0.01" value="30"></label>
+    </div>
+    <div class="tk-out" id="out" aria-live="polite"></div>
+  </div>
+  <h2>計算式</h2>
+  <ul>
+    <li><strong>人孔深</strong> ＝ 地盤高 − 管底高</li>
+    <li><strong>土被り</strong> ＝ 地盤高 − 管底高 − 管径（管の厚みは含めない）</li>
+    <li><strong>勾配（‰）</strong> ＝（上流の管底高 − 下流の管底高）÷ 延長 × 1000</li>
+  </ul>
+  <p class="tk-note">管厚を土被りに含めるか、高さの基準面（T.P.など）は自治体・図面ごとに異なります。結果は確認用の目安で、実務では発注者の基準でご確認ください。式の解説は<a href="/column/gesuido-dobukari-jinkoshin-keisan/">土被りと人孔深の計算方法</a>へ。</p>
+  <div class="inline-cta reveal"><div class="inline-cta-tag">NEXT STEP</div><h3>図面から人孔・延長の数量を<br>まとめて出したい方へ。</h3><p>数量計算書づくりの自動化を、小さな試作から相談できます。</p><div class="cta-btns-pair"><a href="/service/gesuido-zumen/" class="btn-cta-red">上下水道の図面・数量拾いの自動化を見る →</a></div></div>
+  <script>(function(){var $=function(i){return document.getElementById(i)};var ids=["gUp","invUp","gDown","invDown","pipe","len"];
+  function f(n,d){return n.toLocaleString("ja-JP",{minimumFractionDigits:d,maximumFractionDigits:d})}
+  function run(){var r=window.GesuidoCalc.calc({gUp:+$("gUp").value,invUp:+$("invUp").value,gDown:+$("gDown").value,invDown:+$("invDown").value,pipeMm:+$("pipe").value,length:+$("len").value});
+  var h="上流：人孔深 <b>"+f(r.depthUp,3)+" m</b> ／ 土被り <b>"+f(r.coverUp,3)+" m</b><br>下流：人孔深 <b>"+f(r.depthDown,3)+" m</b> ／ 土被り <b>"+f(r.coverDown,3)+" m</b><br>落差 "+f(r.drop,3)+" m"+(r.slope!==null?" ／ 勾配 <b>"+f(r.slope,2)+" ‰</b>":"");
+  if(r.warn.length)h+='<ul class="tk-f" style="margin-top:10px">'+r.warn.map(function(w){return '<li class="warn">⚠ '+w+'</li>'}).join("")+'</ul>';$("out").innerHTML=h}
+  ids.forEach(function(i){$(i).oninput=run});run()})();</script>
+<style>
+  .faq-list{margin:28px 0 8px;}
+  .faq-item{border:1px solid #d8eaee;border-radius:10px;margin-bottom:12px;overflow:hidden;background:#fff;}
+  .faq-item summary{list-style:none;cursor:pointer;padding:16px 48px 16px 18px;font-size:15px;font-weight:700;color:#0f2b33;line-height:1.6;position:relative;}
+  .faq-item summary::-webkit-details-marker{display:none;}
+  .faq-item summary::after{content:'+';position:absolute;right:18px;top:50%;transform:translateY(-50%);font-size:22px;font-weight:400;color:#0891b2;}
+  .faq-item[open] summary::after{content:'−';}
+  .faq-item .faq-a{padding:0 18px 18px;font-size:14px;color:#4b5563;line-height:1.95;}
+  .faq-item .faq-a a{color:#0891b2;}
+  </style>
+  <h2>よくある質問</h2>
+  <div class="faq-list">
+    <details class="faq-item"><summary>管厚は土被りに含まれますか？</summary><div class="faq-a">このツールは管厚を含めず、管の内径で計算します。基準によっては外径（管厚を含む）で計算するため、発注者の基準で確認してください。</div></details>
+    <details class="faq-item"><summary>計算結果はそのまま設計に使えますか？</summary><div class="faq-a">確認用の目安です。実務では、発注者の設計指針と図面の凡例に従って確認してください。</div></details>
+  </div>
+
+</div>
+<section class="related-section">
+  <div class="related-inner">
+    <div class="related-label">Related Articles</div>
+    <div class="related-grid">
+      <a href="/column/gesuido-dobukari-jinkoshin-keisan/" class="related-card">
+        <div class="related-card-tag">下水道・計算</div>
+        <div class="related-card-title">土被りと人孔深の計算方法｜地盤高・管底高・管径から出す式と注意点</div>
+      </a>
+      <a href="/column/gesuido-heimenzu-judanzu-mikata/" class="related-card">
+        <div class="related-card-tag">下水道・図面の読み方</div>
+        <div class="related-card-title">下水道の平面図・縦断図の読み方｜管底高・土被り・勾配をどこで見るか</div>
+      </a>
+      <a href="/column/gesuido-zumen-suryo-guide/" class="related-card">
+        <div class="related-card-tag">上下水道・図面</div>
+        <div class="related-card-title">上下水道の図面と数量拾いの完全ガイド｜読み方・数量計算・自動化の進め方</div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<div class="back-section">
+  <div class="back-section-inner">
+    <a href="/column/" class="back-link">← コラム一覧に戻る</a>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-logo">
+    <div class="footer-logo-mark"></div>
+    <span class="footer-logo-text"><span>A</span>idealize株式会社</span>
+  </div>
+  <span class="footer-copy">© 2020–2026 AIdealize Inc. All rights reserved.</span>
+</footer>
+
+<script>
+(function(){
+  const btn=document.getElementById('navHamburger');
+  const drawer=document.getElementById('navDrawer');
+  const nav=document.getElementById('mainNav');
+  btn.addEventListener('click',function(){btn.classList.toggle('open');drawer.classList.toggle('open');});
+  drawer.querySelectorAll('.drawer-link').forEach(function(l){l.addEventListener('click',function(){btn.classList.remove('open');drawer.classList.remove('open');});});
+  window.addEventListener('scroll',function(){nav.classList.toggle('scrolled',window.scrollY>10);});
+})();
+const obs=new IntersectionObserver(function(e){e.forEach(function(x){if(x.isIntersecting)x.target.classList.add('visible');});},{threshold:0.08,rootMargin:'0px 0px -30px 0px'});
+document.querySelectorAll('.reveal').forEach(function(el){obs.observe(el);});
+</script>
+<script src="/js/lead-capture.js"></script>
+<script src="/tools/gesuido-dobukari-keisan/calc.js"></script>
+</body>
+</html>
